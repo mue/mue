@@ -475,6 +475,25 @@
             "customisation": "Personalización",
             "custom_css": "CSS personalizado",
             "custom_css_subtitle": "Personaliza el estilo de Mue con hojas de estilo en cascada (CSS).",
+            "custom_widget": {
+              "title": "Custom Widget",
+              "subtitle": "Embed your favourite sites or tools directly into Mue with iFrames.",
+              "add": "Add Widget",
+              "new": "New Widget",
+              "edit": "Edit Widget",
+              "name": "Widget Name",
+              "url": "Widget URL",
+              "no_widgets": "No custom widgets",
+              "add_some": "Add some",
+              "render_above": "Render above other widgets",
+              "positions": {
+                "center": "Center (with other widgets)",
+                "top_left": "Top Left",
+                "top_right": "Top Right",
+                "bottom_left": "Bottom Left",
+                "bottom_right": "Bottom Right"
+              }
+            },
             "custom_js": "JS personalizado",
             "tab_name": "Nombre de la pestaña",
             "tab_name_subtitle": "Cambiar el nombre de la pestaña que aparece en el navegador",

@@ -475,6 +475,25 @@
             "customisation": "Customisation",
             "custom_css": "Custom CSS",
             "custom_css_subtitle": "Maak Mue je eigen door middel van Cascading Style Sheets (CSS).",
+            "custom_widget": {
+              "title": "Custom Widget",
+              "subtitle": "Embed your favourite sites or tools directly into Mue with iFrames.",
+              "add": "Add Widget",
+              "new": "New Widget",
+              "edit": "Edit Widget",
+              "name": "Widget Name",
+              "url": "Widget URL",
+              "no_widgets": "No custom widgets",
+              "add_some": "Add some",
+              "render_above": "Render above other widgets",
+              "positions": {
+                "center": "Center (with other widgets)",
+                "top_left": "Top Left",
+                "top_right": "Top Right",
+                "bottom_left": "Bottom Left",
+                "bottom_right": "Bottom Right"
+              }
+            },
             "custom_js": "Custom JS",
             "tab_name": "Tab name",
             "tab_name_subtitle": "Verander de naam van het tabblad dat in je browser tevoorschijn komt",

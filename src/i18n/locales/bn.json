@@ -475,6 +475,25 @@
             "customisation": "কাস্টমাইজেশন",
             "custom_css": "মনের মতো CSS",
             "custom_css_subtitle": "ক্যাসকেডিং স্টাইল শীট (CSS) দিয়ে আপনার জন্য Mue-এর স্টাইলিং কাস্টমাইজ করুন।",
+            "custom_widget": {
+              "title": "Custom Widget",
+              "subtitle": "Embed your favourite sites or tools directly into Mue with iFrames.",
+              "add": "Add Widget",
+              "new": "New Widget",
+              "edit": "Edit Widget",
+              "name": "Widget Name",
+              "url": "Widget URL",
+              "no_widgets": "No custom widgets",
+              "add_some": "Add some",
+              "render_above": "Render above other widgets",
+              "positions": {
+                "center": "Center (with other widgets)",
+                "top_left": "Top Left",
+                "top_right": "Top Right",
+                "bottom_left": "Bottom Left",
+                "bottom_right": "Bottom Right"
+              }
+            },
             "custom_js": "মনের মতো JS",
             "tab_name": "Tab name",
             "tab_name_subtitle": "আপনার ব্রাউজারে প্রদর্শিত ট্যাবের নাম পরিবর্তন করুন",

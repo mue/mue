@@ -475,6 +475,25 @@
             "customisation": "தனிப்பயனாக்கம்",
             "custom_css": "தனிப்பயன் சிஎச்எச்",
             "custom_css_subtitle": "மியூ ச்டைலிங் அடுக்கு பாணி தாள்கள் (சிஎச்எச்) மூலம் உங்களுக்கு தனிப்பயனாக்கப்பட்டது.",
+            "custom_widget": {
+              "title": "Custom Widget",
+              "subtitle": "Embed your favourite sites or tools directly into Mue with iFrames.",
+              "add": "Add Widget",
+              "new": "New Widget",
+              "edit": "Edit Widget",
+              "name": "Widget Name",
+              "url": "Widget URL",
+              "no_widgets": "No custom widgets",
+              "add_some": "Add some",
+              "render_above": "Render above other widgets",
+              "positions": {
+                "center": "Center (with other widgets)",
+                "top_left": "Top Left",
+                "top_right": "Top Right",
+                "bottom_left": "Bottom Left",
+                "bottom_right": "Bottom Right"
+              }
+            },
             "custom_js": "தனிப்பயன் js",
             "tab_name": "தாவல் பெயர்",
             "tab_name_subtitle": "உங்கள் உலாவியில் தோன்றும் தாவலின் பெயரை மாற்றவும்",

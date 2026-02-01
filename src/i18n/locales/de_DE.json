@@ -475,6 +475,25 @@
             "customisation": "Anpassung",
             "custom_css": "Benutzerdefiniertes CSS",
             "custom_css_subtitle": "Passen Sie das Styling von Mue mit Cascading Style Sheets (CSS) an Ihre Bedürfnisse an.",
+            "custom_widget": {
+              "title": "Custom Widget",
+              "subtitle": "Embed your favourite sites or tools directly into Mue with iFrames.",
+              "add": "Add Widget",
+              "new": "New Widget",
+              "edit": "Edit Widget",
+              "name": "Widget Name",
+              "url": "Widget URL",
+              "no_widgets": "No custom widgets",
+              "add_some": "Add some",
+              "render_above": "Render above other widgets",
+              "positions": {
+                "center": "Center (with other widgets)",
+                "top_left": "Top Left",
+                "top_right": "Top Right",
+                "bottom_left": "Bottom Left",
+                "bottom_right": "Bottom Right"
+              }
+            },
             "custom_js": "Benutzerdefiniertes JS",
             "tab_name": "Tab Name",
             "tab_name_subtitle": "Ändern Sie den Namen der Tabs, die in Ihrem Browser angezeigt werden",

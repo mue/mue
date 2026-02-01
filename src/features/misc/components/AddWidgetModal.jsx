@@ -16,8 +16,8 @@ function AddWidgetModal({ urlError, addWidget, closeModal, edit, editData, editW
       <div className="shareHeader">
         <span className="title">
           {edit
-            ? variables.getMessage('modals.main.settings.sections.advanced.custom_widget_edit')
-            : variables.getMessage('modals.main.settings.sections.advanced.custom_widget_new')}
+            ? variables.getMessage('modals.main.settings.sections.advanced.custom_widget.edit')
+            : variables.getMessage('modals.main.settings.sections.advanced.custom_widget.new')}
         </span>
         <Tooltip title={variables.getMessage('modals.main.settings.buttons.close')}>
           <div className="close" onClick={() => closeModal()}>
@@ -30,7 +30,7 @@ function AddWidgetModal({ urlError, addWidget, closeModal, edit, editData, editW
           <input
             type="text"
             className="text-field-input"
-            placeholder={variables.getMessage('modals.main.settings.sections.advanced.custom_widget_name')}
+            placeholder={variables.getMessage('modals.main.settings.sections.advanced.custom_widget.name')}
             value={name}
             onChange={(e) => setName(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
           />
@@ -39,7 +39,7 @@ function AddWidgetModal({ urlError, addWidget, closeModal, edit, editData, editW
           <input
             type="text"
             className="text-field-input"
-            placeholder={variables.getMessage('modals.main.settings.sections.advanced.custom_widget_url')}
+            placeholder={variables.getMessage('modals.main.settings.sections.advanced.custom_widget.url')}
             value={url}
             onChange={(e) => setUrl(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
           />
@@ -50,16 +50,16 @@ function AddWidgetModal({ urlError, addWidget, closeModal, edit, editData, editW
             value={position}
             onChange={(e) => setPosition(e.target.value)}
           >
-            <option value="center">Center (with other widgets)</option>
-            <option value="top-left">Top Left</option>
-            <option value="top-right">Top Right</option>
-            <option value="bottom-left">Bottom Left</option>
-            <option value="bottom-right">Bottom Right</option>
+            <option value="center">{variables.getMessage('modals.main.settings.sections.advanced.custom_widget.positions.center')}</option>
+            <option value="top-left">{variables.getMessage('modals.main.settings.sections.advanced.custom_widget.positions.top_left')}</option>
+            <option value="top-right">{variables.getMessage('modals.main.settings.sections.advanced.custom_widget.positions.top_right')}</option>
+            <option value="bottom-left">{variables.getMessage('modals.main.settings.sections.advanced.custom_widget.positions.bottom_left')}</option>
+            <option value="bottom-right">{variables.getMessage('modals.main.settings.sections.advanced.custom_widget.positions.bottom_right')}</option>
           </select>
         </div>
         <div className="text-field" style={{ gridColumn: 'span 2' }}>
           <div className="checkbox-wrapper">
-            <span className="checkbox-label">Render above other widgets</span>
+            <span className="checkbox-label">{variables.getMessage('modals.main.settings.sections.advanced.custom_widget.render_above')}</span>
             <input
               type="checkbox"
               id="renderAbove"
@@ -81,14 +81,14 @@ function AddWidgetModal({ urlError, addWidget, closeModal, edit, editData, editW
             type="settings"
             onClick={() => editWidget(editData, name, url, position, renderAbove)}
             icon={<MdWidgets />}
-            label={variables.getMessage('modals.main.settings.sections.advanced.custom_widget_edit_button')}
+            label={variables.getMessage('modals.main.settings.sections.advanced.custom_widget.edit_button')}
           />
         ) : (
           <Button
             type="settings"
             onClick={() => addWidget(name, url, position, renderAbove)}
             icon={<MdWidgets />}
-            label={variables.getMessage('modals.main.settings.sections.advanced.custom_widget_add')}
+            label={variables.getMessage('modals.main.settings.sections.advanced.custom_widget.add')}
           />
         )}
       </div>

@@ -475,6 +475,25 @@
             "customisation": "Fərdiləşdirmə",
             "custom_css": "Xüsusi CSS",
             "custom_css_subtitle": "Cascading Style Sheets (CSS) ilə Mue-nun üslubunu fərdiləşdirin.",
+            "custom_widget": {
+              "title": "Custom Widget",
+              "subtitle": "Embed your favourite sites or tools directly into Mue with iFrames.",
+              "add": "Add Widget",
+              "new": "New Widget",
+              "edit": "Edit Widget",
+              "name": "Widget Name",
+              "url": "Widget URL",
+              "no_widgets": "No custom widgets",
+              "add_some": "Add some",
+              "render_above": "Render above other widgets",
+              "positions": {
+                "center": "Center (with other widgets)",
+                "top_left": "Top Left",
+                "top_right": "Top Right",
+                "bottom_left": "Bottom Left",
+                "bottom_right": "Bottom Right"
+              }
+            },
             "custom_js": "Xüsusi JS",
             "tab_name": "Vərəq adı",
             "tab_name_subtitle": "Brauzerinizdə görünən vərəqin adını dəyişdirin",

@@ -209,15 +209,15 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
       <>
         <Row>
           <Content
-            title={variables.getMessage('modals.main.settings.sections.advanced.custom_widget')}
-            subtitle={variables.getMessage('modals.main.settings.sections.advanced.custom_widget_subtitle')}
+            title={variables.getMessage('modals.main.settings.sections.advanced.custom_widget.title')}
+            subtitle={variables.getMessage('modals.main.settings.sections.advanced.custom_widget.subtitle')}
           />
           <Action>
             <Button
               type="settings"
               onClick={() => setShowAddWidgetModal(true)}
               icon={<MdWidgets />}
-              label={variables.getMessage('modals.main.settings.sections.advanced.custom_widget_add')}
+              label={variables.getMessage('modals.main.settings.sections.advanced.custom_widget.add')}
             />
           </Action>
         </Row>
@@ -226,16 +226,16 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
             <div className="emptyNewMessage">
               <MdWidgets />
               <span className="title">
-                {variables.getMessage('modals.main.settings.sections.advanced.custom_widget_no_widgets')}
+                {variables.getMessage('modals.main.settings.sections.advanced.custom_widget.no_widgets')}
               </span>
               <span className="subtitle">
-                {variables.getMessage('modals.main.settings.sections.advanced.custom_widget_add_some')}
+                {variables.getMessage('modals.main.settings.sections.advanced.custom_widget.add_some')}
               </span>
               <Button
                 type="settings"
                 onClick={() => setShowAddWidgetModal(true)}
                 icon={<MdWidgets />}
-                label={variables.getMessage('modals.main.settings.sections.advanced.custom_widget_add')}
+                label={variables.getMessage('modals.main.settings.sections.advanced.custom_widget.add')}
               />
             </div>
           </div>
@@ -282,7 +282,7 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
     header = (
       <Header
         title={variables.getMessage(`${ADVANCED_SECTION}.title`)}
-        secondaryTitle={variables.getMessage(`${ADVANCED_SECTION}.custom_widget`)}
+        secondaryTitle={variables.getMessage(`${ADVANCED_SECTION}.custom_widget.title`)}
         goBack={() => onSubSectionChange(null, sectionName)}
         report={false}
       />
@@ -353,8 +353,8 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
             icon={<MdCode />}
           />
           <Section
-            title={variables.getMessage(`${ADVANCED_SECTION}.custom_widget`)}
-            subtitle={variables.getMessage(`${ADVANCED_SECTION}.custom_widget_subtitle`)}
+            title={variables.getMessage(`${ADVANCED_SECTION}.custom_widget.title`)}
+            subtitle={variables.getMessage(`${ADVANCED_SECTION}.custom_widget.subtitle`)}
             onClick={() => onSubSectionChange('customwidget', sectionName)}
             icon={<MdWidgets />}
           />
