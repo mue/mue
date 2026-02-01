@@ -29,6 +29,7 @@ export function install(type, input, sideload, collection) {
 
     case 'photos': {
       const currentPhotos = JSON.parse(localStorage.getItem('photo_packs')) || [];
+      const hadPhotoPacks = currentPhotos.length > 0;
       input.photos.forEach((photo) => {
         currentPhotos.push(photo);
       });
@@ -41,8 +42,11 @@ export function install(type, input, sideload, collection) {
       localStorage.removeItem('backgroundchange');
       // Clear image queue to ensure fresh background loads
       clearQueuesOnSettingChange('packInstall');
-      // Set refresh event to emit after installed data is saved
-      refreshEvent = 'backgroundrefresh';
+      // Only refresh background if this is the first photo pack being installed
+      // Otherwise just update the queue without jarring the user with an immediate refresh
+      if (!hadPhotoPacks) {
+        refreshEvent = 'backgroundrefresh';
+      }
       break;
     }
 
