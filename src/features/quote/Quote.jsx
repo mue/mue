@@ -25,8 +25,12 @@ export default function Quote() {
     const zoomQuote = localStorage.getItem('zoomQuote');
     return `${1.2 * Number((zoomQuote || 100) / 100)}em`;
   });
-  const [authorDetails, setAuthorDetails] = useState(localStorage.getItem('authorDetails') === 'true');
-  const [isLegacyStyle, setIsLegacyStyle] = useState(localStorage.getItem('widgetStyle') === 'legacy');
+  const [authorDetails, setAuthorDetails] = useState(
+    localStorage.getItem('authorDetails') === 'true',
+  );
+  const [isLegacyStyle, setIsLegacyStyle] = useState(
+    localStorage.getItem('widgetStyle') === 'legacy',
+  );
 
   // Compute if current quote is favorited
   const isFavourited = useMemo(() => {
@@ -62,8 +66,9 @@ export default function Quote() {
       }
     };
 
-    const shouldRefresh = localStorage.getItem('quotechange') === 'refresh' ||
-                         localStorage.getItem('quotechange') === null;
+    const shouldRefresh =
+      localStorage.getItem('quotechange') === 'refresh' ||
+      localStorage.getItem('quotechange') === null;
 
     if (shouldRefresh) {
       getQuote();
@@ -100,8 +105,9 @@ export default function Quote() {
         {quoteData.quote}
       </span>
 
-      {authorDetails && (
-        isLegacyStyle ? (
+      {authorDetails &&
+        quoteData.author &&
+        (isLegacyStyle ? (
           <AuthorInfoLegacy
             author={quoteData.author}
             authorlink={quoteData.authorlink}
@@ -122,8 +128,7 @@ export default function Quote() {
             onShare={() => toggleShareModal(true)}
             isFavourited={isFavourited}
           />
-        )
-      )}
+        ))}
     </div>
   );
 }

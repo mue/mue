@@ -1,0 +1,198 @@
+@use 'scss/variables' as *;
+
+.customQuoteContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-bottom: 20px;
+}
+
+.customQuoteItem {
+  position: relative;
+  padding: 20px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+
+  @include themed {
+    background: t($modal-secondaryColour);
+    border: 1px solid t($modal-border);
+  }
+
+  &:hover {
+    .quoteRemoveBtn {
+      opacity: 1;
+    }
+  }
+
+  .quoteHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .quoteLabel {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+
+      @include themed {
+        color: t($color);
+        opacity: 0.7;
+      }
+
+      .quoteLabelIcon {
+        font-size: 1rem;
+        opacity: 0.6;
+      }
+    }
+  }
+
+  .quoteRemoveBtn {
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.2s ease;
+    opacity: 0.7;
+
+    @include themed {
+      background: t($modal-sidebarActive);
+      border: 1px solid t($modal-border);
+      color: t($color);
+    }
+
+    &:hover {
+      background: rgba(255, 100, 100, 0.15);
+      border-color: rgba(255, 100, 100, 0.3);
+      color: rgba(255, 100, 100, 0.9);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  .quoteContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-right: 50px;
+    width: 100%;
+  }
+
+  .quoteInputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+
+    .quoteTextarea {
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 1rem;
+      line-height: 1.6;
+      resize: vertical;
+      transition: all 0.2s ease;
+      min-height: 80px;
+      width: 100%;
+      box-sizing: border-box;
+
+      @include themed {
+        background: t($modal-background);
+        border: 1px solid t($modal-border);
+        color: t($color);
+      }
+
+      &:focus {
+        outline: none;
+
+        @include themed {
+          border-color: t($link);
+        }
+      }
+
+      &::placeholder {
+        @include themed {
+          color: t($subColor);
+        }
+        opacity: 0.5;
+      }
+    }
+
+    .authorInput {
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      width: 100%;
+      box-sizing: border-box;
+
+      @include themed {
+        background: t($modal-background);
+        border: 1px solid t($modal-border);
+        color: t($color);
+      }
+
+      &:focus {
+        outline: none;
+
+        @include themed {
+          border-color: t($link);
+        }
+      }
+
+      &::placeholder {
+        @include themed {
+          color: t($subColor);
+        }
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.customQuoteEmpty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  gap: 16px;
+
+  .emptyIcon {
+    font-size: 4rem;
+    margin-bottom: 8px;
+
+    @include themed {
+      color: t($subColor);
+    }
+    opacity: 0.3;
+  }
+
+  .emptyTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+
+    @include themed {
+      color: t($color);
+    }
+  }
+
+  .emptySubtitle {
+    font-size: 0.95rem;
+    max-width: 400px;
+    margin-bottom: 8px;
+
+    @include themed {
+      color: t($subColor);
+    }
+  }
+}

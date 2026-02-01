@@ -13,6 +13,7 @@ import {
 import { Checkbox, Dropdown, Textarea } from 'components/Form/Settings';
 import { Button } from 'components/Elements';
 import { FREQUENCY_OPTIONS } from 'utils/frequencyManager';
+import './QuoteOptions.scss';
 
 const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => {
   const getCustom = () => {
@@ -143,9 +144,11 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
                 localStorage.removeItem('quoteQueue');
               }
               // Notify the frequency interval hook that the frequency changed
-              window.dispatchEvent(new CustomEvent('frequencyChanged', {
-                detail: { type: 'quote' }
-              }));
+              window.dispatchEvent(
+                new CustomEvent('frequencyChanged', {
+                  detail: { type: 'quote' },
+                }),
+              );
             }}
             items={FREQUENCY_OPTIONS.map((opt) => ({
               value: opt.value,
@@ -209,35 +212,48 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
         </Row>
 
         {customQuote.length !== 0 ? (
-          <div className="messagesContainer">
-            {customQuote.map((_url, index) => (
-              <div className="messageMap" key={index}>
-                <div className="icon">
-                  <MdOutlineFormatQuote />
-                </div>
-                <div className="messageText">
-                  <Textarea
-                    value={customQuote[index].quote}
-                    placeholder={variables.getMessage('modals.main.settings.sections.quote.title')}
-                    onChange={(e) => handleCustomQuote(e, true, index, 'quote')}
-                    style={{ fontSize: '22px', fontWeight: 'bold' }}
-                    minRows={1}
-                  />
-                  <Textarea
-                    value={customQuote[index].author}
-                    placeholder={variables.getMessage('modals.main.settings.sections.quote.author')}
-                    className="subtitle"
-                    onChange={(e) => handleCustomQuote(e, true, index, 'author')}
-                    minRows={1}
-                  />
-                </div>
-                <div>
-                  <div className="messageAction">
-                    <Button
-                      type="settings"
+          <div className="customQuoteContainer">
+            {customQuote.map((quote, index) => (
+              <div className="customQuoteItem" key={index}>
+                <div className="quoteContent">
+                  <div className="quoteHeader">
+                    <span className="quoteLabel">
+                      <MdOutlineFormatQuote className="quoteLabelIcon" />
+                      {variables.getMessage('modals.main.settings.sections.quote.title')}
+                    </span>
+                    <button
+                      className="quoteRemoveBtn"
                       onClick={() => modifyCustomQuote('remove', index)}
-                      icon={<MdCancel />}
-                      label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+                      aria-label={variables.getMessage(
+                        'modals.main.marketplace.product.buttons.remove',
+                      )}
+                    >
+                      <MdCancel />
+                    </button>
+                  </div>
+                  <div className="quoteInputGroup">
+                    <Textarea
+                      value={quote.quote}
+                      placeholder={variables.getMessage(
+                        'modals.main.settings.sections.quote.title',
+                      )}
+                      onChange={(e) => handleCustomQuote(e, true, index, 'quote')}
+                      minRows={3}
+                      className="quoteTextarea"
+                    />
+                  </div>
+                  <div className="quoteInputGroup">
+                    <label className="quoteLabel">
+                      {variables.getMessage('modals.main.settings.sections.quote.author')}
+                    </label>
+                    <input
+                      type="text"
+                      className="authorInput"
+                      value={quote.author}
+                      placeholder={variables.getMessage(
+                        'modals.main.settings.sections.quote.author',
+                      )}
+                      onChange={(e) => handleCustomQuote(e, true, index, 'author')}
                     />
                   </div>
                 </div>
@@ -245,20 +261,18 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
             ))}
           </div>
         ) : (
-          <div className="photosEmpty">
-            <div className="emptyNewMessage">
-              <MdOutlineFormatQuote />
-              <span className="title">{variables.getMessage(`${QUOTE_SECTION}.no_quotes`)}</span>
-              <span className="subtitle">
-                {variables.getMessage('modals.main.settings.sections.message.add_some')}
-              </span>
-              <Button
-                type="settings"
-                onClick={() => modifyCustomQuote('add')}
-                icon={<MdAdd />}
-                label={variables.getMessage(`${QUOTE_SECTION}.add`)}
-              />
-            </div>
+          <div className="customQuoteEmpty">
+            <MdOutlineFormatQuote className="emptyIcon" />
+            <span className="emptyTitle">{variables.getMessage(`${QUOTE_SECTION}.no_quotes`)}</span>
+            <span className="emptySubtitle">
+              {variables.getMessage('modals.main.settings.sections.message.add_some')}
+            </span>
+            <Button
+              type="settings"
+              onClick={() => modifyCustomQuote('add')}
+              icon={<MdAdd />}
+              label={variables.getMessage(`${QUOTE_SECTION}.add`)}
+            />
           </div>
         )}
       </>
