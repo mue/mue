@@ -1,6 +1,6 @@
 import variables from 'config/variables';
 
-import { useState, memo } from 'react';
+import { useState, memo, useEffect } from 'react';
 import { MdAddLink, MdClose } from 'react-icons/md';
 import { Tooltip } from 'components/Elements';
 import { Button } from 'components/Elements';
@@ -17,6 +17,62 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
   const [iconData, setIconData] = useState(edit && editData.iconData ? editData.iconData : null);
   const [iconPreview, setIconPreview] = useState(null);
   const [uploadError, setUploadError] = useState('');
+  const [suggestedName, setSuggestedName] = useState('');
+  const [resetKey, setResetKey] = useState(Date.now());
+
+  // Reset form when modal opens for adding new link
+  useEffect(() => {
+    if (!edit) {
+      // Clear localStorage for the form fields
+      localStorage.removeItem('quicklink_modal_name');
+      localStorage.removeItem('quicklink_modal_url');
+      localStorage.removeItem('quicklink_modal_iconType');
+      localStorage.removeItem('quicklink_modal_icon_url');
+      localStorage.removeItem('quicklink_modal_emoji');
+
+      // Reset all state
+      setName('');
+      setUrl('');
+      setIcon('');
+      setIconType('auto');
+      setIconData(null);
+      setIconPreview(null);
+      setUploadError('');
+      setSuggestedName('');
+
+      // Change the key to force remount
+      setResetKey(Date.now());
+    }
+  }, [edit]);
+
+  // Extract domain name from URL as suggestion
+  useEffect(() => {
+    if (name || !url) {
+      setSuggestedName('');
+      return;
+    }
+
+    try {
+      let urlToTest = url;
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        urlToTest = 'https://' + url;
+      }
+
+      const domain = new URL(urlToTest).hostname;
+      if (domain) {
+        // Extract first part of domain (e.g., "google" from "google.com", "bbc" from "bbc.co.uk")
+        const parts = domain.split('.');
+        let name = parts[0];
+        // Handle cases like "co.uk" where we want "bbc" not "co"
+        if (parts.length > 2 && parts[parts.length - 2] === 'co') {
+          name = parts[parts.length - 3];
+        }
+        setSuggestedName(name);
+      }
+    } catch (e) {
+      setSuggestedName('');
+    }
+  }, [url, name]);
 
   const handleIconUpload = async (e) => {
     const file = e.target.files[0];
@@ -33,15 +89,25 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
   };
 
   const handleSubmit = () => {
+    // Use suggested name if no name was entered
+    const finalName = name || suggestedName || '';
+
     if (edit) {
-      editLink(editData, name, url, icon, iconType, iconData);
+      editLink(editData, finalName, url, icon, iconType, iconData);
     } else {
-      addLink(name, url, icon, iconType, iconData);
+      addLink(finalName, url, icon, iconType, iconData);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit();
     }
   };
 
   return (
-    <div className="addLinkModal">
+    <div className="addLinkModal" onKeyDown={handleKeyDown}>
       <div className="shareHeader">
         <span className="title">
           {edit
@@ -57,14 +123,22 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
       <div className="quicklinkModalTextbox">
         <div className="addLinkModal-row">
           <div className="addLinkModal-field">
-            <label className="addLinkModal-label">
-              {variables.getMessage('widgets.quicklinks.name')}
-            </label>
+            <div className="addLinkModal-labelRow">
+              <label className="addLinkModal-label">
+                {variables.getMessage('widgets.quicklinks.name')}
+              </label>
+              {suggestedName && !name && (
+                <span className="addLinkModal-suggestedText">
+                  Suggested: {suggestedName}
+                </span>
+              )}
+            </div>
             <Text
+              key={`name-${resetKey}`}
               name="quicklink_modal_name"
               noSetting={true}
               onChange={(value) => setName(value)}
-              placeholder="Enter link name (optional)"
+              placeholder={suggestedName || 'Enter link name (optional)'}
             />
           </div>
           <div className="addLinkModal-field">
@@ -73,10 +147,18 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
               <span className="addLinkModal-required">*</span>
             </label>
             <Text
+              key={`url-${resetKey}`}
               name="quicklink_modal_url"
               noSetting={true}
-              onChange={(value) => setUrl(value)}
-              placeholder="https://example.com"
+              onChange={(value) => {
+                // Auto-add https:// if no protocol specified
+                let finalValue = value;
+                if (value && !value.startsWith('http://') && !value.startsWith('https://')) {
+                  finalValue = 'https://' + value;
+                }
+                setUrl(finalValue);
+              }}
+              placeholder="example.com"
             />
           </div>
         </div>
@@ -100,6 +182,7 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
         {iconType === 'custom_url' && (
           <div className="text-field" style={{ gridColumn: 'span 2' }}>
             <Text
+              key={`icon-url-${resetKey}`}
               name="quicklink_modal_icon_url"
               noSetting={true}
               onChange={(value) => setIcon(value)}
@@ -132,6 +215,7 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
         {iconType === 'emoji' && (
           <div className="text-field" style={{ gridColumn: 'span 2' }}>
             <Text
+              key={`emoji-${resetKey}`}
               name="quicklink_modal_emoji"
               noSetting={true}
               onChange={(value) => setIcon(value)}
