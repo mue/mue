@@ -6,6 +6,7 @@ import ReminderInfo from '../components/ReminderInfo';
 import SidebarToggle from '../components/SidebarToggle';
 import ErrorBoundary from '../../../../features/misc/modals/ErrorBoundary';
 import { TAB_TYPES } from '../constants/tabConfig';
+import { SearchInput } from 'components/Form/Settings';
 
 const Tabs = ({
   children,
@@ -41,8 +42,9 @@ const Tabs = ({
   const [currentName, setCurrentName] = useState(initial.name);
   const [showReminder, setShowReminder] = useState(localStorage.getItem('showReminder') === 'true');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(
-    localStorage.getItem('sidebarCollapsed') === 'true'
+    localStorage.getItem('sidebarCollapsed') === 'true',
   );
+  const [searchQuery, setSearchQuery] = useState('');
   const contentRef = useRef(null);
 
   const handleTabClick = (tab, name) => {
@@ -127,6 +129,12 @@ const Tabs = ({
   // Show sidebar for Settings and Discover tabs
   const showSidebar = activeTab === TAB_TYPES.SETTINGS || activeTab === TAB_TYPES.DISCOVER;
 
+  // Filter tabs based on search query
+  const filteredChildren = children.filter((tab) => {
+    if (!searchQuery.trim()) return true;
+    return tab.props.label.toLowerCase().includes(searchQuery.toLowerCase());
+  });
+
   // Keyboard shortcut for sidebar toggle (Ctrl/Cmd + B)
   useEffect(() => {
     const handleKeyPress = (e) => {
@@ -147,9 +155,17 @@ const Tabs = ({
       {showSidebar ? (
         <div className={`modalSidebar ${isSidebarCollapsed ? 'collapsed' : 'expanded'}`}>
           <div className="sidebarHeader">
+            {!isSidebarCollapsed && activeTab === TAB_TYPES.SETTINGS && (
+              <SearchInput
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={t('widgets.search')}
+                fullWidth
+              />
+            )}
             <SidebarToggle isCollapsed={isSidebarCollapsed} onToggle={handleToggleSidebar} />
           </div>
-          {children.map((tab, index) => (
+          {filteredChildren.map((tab, index) => (
             <Tab
               key={index}
               currentTab={currentTab}
@@ -159,6 +175,9 @@ const Tabs = ({
               isCollapsed={isSidebarCollapsed}
             />
           ))}
+          {searchQuery.trim() && filteredChildren.length === 0 && (
+            <div className="sidebarEmptyState">{t('widgets.weather.not_found')}</div>
+          )}
           {!isSidebarCollapsed && (
             <ReminderInfo isVisible={showReminder} onHide={handleHideReminder} />
           )}

@@ -1,4 +1,4 @@
-import { FiSidebar } from "react-icons/fi";
+import { FiSidebar } from 'react-icons/fi';
 import { Tooltip } from 'components/Elements';
 import { useT } from 'contexts/TranslationContext';
 
