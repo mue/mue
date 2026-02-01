@@ -70,9 +70,7 @@ function Header(props) {
 
   return (
     <div className="modalHeader">
-      <span className="mainTitle">
-        {props.secondaryTitle || props.title}
-      </span>
+      <span className="mainTitle">{props.secondaryTitle || props.title}</span>
       <div className="headerActions">
         {props.visibilityToggle && <VisibilityToggle />}
         {props.report !== false && <ReportButton />}

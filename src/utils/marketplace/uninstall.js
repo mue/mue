@@ -54,9 +54,7 @@ export function uninstall(type, name) {
       );
       if (packContents && packContents.photos) {
         installedContents = installedContents.filter((item) => {
-          return !packContents.photos.some(
-            (content) => content.url?.default === item.url?.default,
-          );
+          return !packContents.photos.some((content) => content.url?.default === item.url?.default);
         });
       }
       localStorage.setItem('photo_packs', JSON.stringify(installedContents));

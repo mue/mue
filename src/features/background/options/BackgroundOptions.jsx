@@ -28,11 +28,15 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
     variables.getMessage('modals.main.loading'),
   ]);
   const [backgroundCategoriesOG, setBackgroundCategoriesOG] = useState([]);
-  const [backgroundAPI, setBackgroundAPI] = useState(localStorage.getItem('backgroundAPI') || 'mue');
+  const [backgroundAPI, setBackgroundAPI] = useState(
+    localStorage.getItem('backgroundAPI') || 'mue',
+  );
   const [marketplaceEnabled] = useState(localStorage.getItem('photo_packs'));
 
   // Auto-show source section for types without effects/display settings
-  const shouldShowSourceByDefault = ['colour', 'random_colour', 'random_gradient'].includes(backgroundType);
+  const shouldShowSourceByDefault = ['colour', 'random_colour', 'random_gradient'].includes(
+    backgroundType,
+  );
 
   const controllerRef = useRef(null);
 
@@ -65,23 +69,26 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
     setBackgroundCategoriesOG(data);
   }, [backgroundAPI]);
 
-  const updateAPI = useCallback((e) => {
-    localStorage.setItem('nextImage', null);
-    // Clear prefetch queue when API changes to prevent showing cached images from old API
-    clearQueuesOnSettingChange('backgroundAPI');
-    if (e === 'mue') {
-      setBackgroundCategories(backgroundCategoriesOG);
-      setBackgroundAPI('mue');
-    } else {
-      const data = [...backgroundCategories];
-      data.forEach((category) => {
-        delete category.count;
-      });
+  const updateAPI = useCallback(
+    (e) => {
+      localStorage.setItem('nextImage', null);
+      // Clear prefetch queue when API changes to prevent showing cached images from old API
+      clearQueuesOnSettingChange('backgroundAPI');
+      if (e === 'mue') {
+        setBackgroundCategories(backgroundCategoriesOG);
+        setBackgroundAPI('mue');
+      } else {
+        const data = [...backgroundCategories];
+        data.forEach((category) => {
+          delete category.count;
+        });
 
-      setBackgroundAPI('unsplash');
-      setBackgroundCategories(data);
-    }
-  }, [backgroundCategories, backgroundCategoriesOG]);
+        setBackgroundAPI('unsplash');
+        setBackgroundCategories(data);
+      }
+    },
+    [backgroundCategories, backgroundCategoriesOG],
+  );
 
   useEffect(() => {
     controllerRef.current = new AbortController();
@@ -207,9 +214,7 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
           {showEffects && (
             <NavigationCard
               icon={MdOutlineAutoAwesome}
-              title={variables.getMessage(
-                'modals.main.settings.sections.background.effects.title',
-              )}
+              title={variables.getMessage('modals.main.settings.sections.background.effects.title')}
               subtitle={variables.getMessage(
                 'modals.main.settings.sections.background.effects.subtitle',
               )}
@@ -219,9 +224,7 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
         </>
       )}
 
-      {!currentSubSection && showEffects && (
-        <DisplaySettings usingImage={usingImage} />
-      )}
+      {!currentSubSection && showEffects && <DisplaySettings usingImage={usingImage} />}
 
       {currentSubSection === 'source' && (
         <>

@@ -192,19 +192,14 @@ function Todo({ todoRef, floatRef, position, xPosition, yPosition }) {
                 <div className="todosEmpty">
                   <div className="emptyNewMessage">
                     <MdPlaylistRemove />
-                    <span className="title">
-                      {t('widgets.navbar.todo.no_todos')}
-                    </span>
+                    <span className="title">{t('widgets.navbar.todo.no_todos')}</span>
                     <span className="subtitle">
                       {t('modals.main.settings.sections.message.add_some')}
                     </span>
                   </div>
                 </div>
               ) : (
-                <SortableList
-                  items={todo.map((_, index) => index)}
-                  onDragEnd={handleDragEnd}
-                >
+                <SortableList items={todo.map((_, index) => index)} onDragEnd={handleDragEnd}>
                   {todo.map((todoItem, index) => (
                     <SortableItem key={index} id={index}>
                       {({ attributes, listeners }) => (
@@ -222,11 +217,7 @@ function Todo({ todoRef, floatRef, position, xPosition, yPosition }) {
                             readOnly={todoItem.done}
                             minRows={1}
                           />
-                          <Tooltip
-                            title={t(
-                              'modals.main.marketplace.product.buttons.remove',
-                            )}
-                          >
+                          <Tooltip title={t('modals.main.marketplace.product.buttons.remove')}>
                             <MdDelete onClick={() => updateTodo('remove', index)} />
                           </Tooltip>
                           <DragHandle {...attributes} {...listeners} />

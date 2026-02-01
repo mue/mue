@@ -26,7 +26,6 @@ const ColourOptions = () => {
     EventBus.emit('refresh', 'background');
   };
 
-
   return (
     <Row final={true}>
       <Content

@@ -74,7 +74,7 @@ export function initTranslations(locale) {
     uk,
     vi,
     zh_CN,
-    zh_Hant
+    zh_Hant,
   });
 
   return i18n;
@@ -113,5 +113,5 @@ export const translations = {
   uk,
   vi,
   zh_CN,
-  zh_Hant
+  zh_Hant,
 };

@@ -10,7 +10,12 @@ function Lightbox({ modalClose, img }) {
       <span className="closeModal" onClick={modalClose}>
         &times;
       </span>
-      <img src={getProxiedImageUrl(img)} className="lightboximg" draggable={false} alt="ItemPage screenshot" />
+      <img
+        src={getProxiedImageUrl(img)}
+        className="lightboximg"
+        draggable={false}
+        alt="ItemPage screenshot"
+      />
     </>
   );
 }

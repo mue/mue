@@ -12,7 +12,9 @@ export function useBackgroundEvents(backgroundData, refreshBackground) {
         localStorage.setItem('welcomeImage', JSON.stringify(backgroundData));
       } else if (event === 'background') {
         handleVisibilityToggle();
-      } else if (['marketplacebackgrounduninstall', 'backgroundwelcome', 'backgroundrefresh'].includes(event)) {
+      } else if (
+        ['marketplacebackgrounduninstall', 'backgroundwelcome', 'backgroundrefresh'].includes(event)
+      ) {
         refreshBackground();
       } else if (event === 'backgroundeffect') {
         applyFilters();
@@ -20,7 +22,9 @@ export function useBackgroundEvents(backgroundData, refreshBackground) {
     };
 
     const handleVisibilityToggle = () => {
-      const element = document.getElementById(backgroundData.video ? 'backgroundVideo' : 'backgroundImage');
+      const element = document.getElementById(
+        backgroundData.video ? 'backgroundVideo' : 'backgroundImage',
+      );
       const photoInfo = document.querySelector('.photoInformation');
       const isEnabled = localStorage.getItem('background') !== 'false';
 
@@ -36,10 +40,15 @@ export function useBackgroundEvents(backgroundData, refreshBackground) {
       // Check if refresh needed
       const type = localStorage.getItem('backgroundType');
       const needsRefresh =
-        (type !== backgroundData.type && !(backgroundData.photoInfo?.offline && type === backgroundData.type)) ||
-        (backgroundData.type === 'api' && localStorage.getItem('backgroundAPI') !== backgroundData.currentAPI) ||
+        (type !== backgroundData.type &&
+          !(backgroundData.photoInfo?.offline && type === backgroundData.type)) ||
+        (backgroundData.type === 'api' &&
+          localStorage.getItem('backgroundAPI') !== backgroundData.currentAPI) ||
         (type === 'custom' && backgroundData.type !== 'custom') ||
-        (backgroundData.photoInfo?.pun && JSON.parse(localStorage.getItem('backgroundExclude') || '[]').includes(backgroundData.photoInfo.pun));
+        (backgroundData.photoInfo?.pun &&
+          JSON.parse(localStorage.getItem('backgroundExclude') || '[]').includes(
+            backgroundData.photoInfo.pun,
+          ));
 
       if (needsRefresh) refreshBackground();
     };

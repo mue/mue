@@ -66,9 +66,7 @@ function PhotoInformation({ info, url, api }) {
   const [other, setOther] = useState(false);
   const [shareModal, openShareModal] = useState(false);
   const [excludeModal, openExcludeModal] = useState(false);
-  const [favouriteTooltipText, setFavouriteTooltipText] = useState(
-    t('widgets.quote.favourite'),
-  );
+  const [favouriteTooltipText, setFavouriteTooltipText] = useState(t('widgets.quote.favourite'));
 
   if (info.hidden === true || !info.credit) {
     return null;
@@ -206,20 +204,12 @@ function PhotoInformation({ info, url, api }) {
           />
         </Tooltip>
         {!info.offline && (
-          <Tooltip
-            title={t('widgets.background.download')}
-            key="download"
-            placement="top"
-          >
+          <Tooltip title={t('widgets.background.download')} key="download" placement="top">
             <Download onClick={() => downloadImage(info)} />
           </Tooltip>
         )}
         {info.pun && info.category && (
-          <Tooltip
-            title={t('widgets.background.exclude')}
-            key="exclude"
-            placement="top"
-          >
+          <Tooltip title={t('widgets.background.exclude')} key="exclude" placement="top">
             <VisibilityOff onClick={() => openExcludeModal(true)} />
           </Tooltip>
         )}
@@ -368,9 +358,7 @@ function PhotoInformation({ info, url, api }) {
 
           {(showExtraInfo || other) && excludeModal === false ? (
             <>
-              <span className="subtitle">
-                {t('widgets.background.information')}
-              </span>
+              <span className="subtitle">{t('widgets.background.information')}</span>
               <InformationItems />
               <ActionButtons />
             </>

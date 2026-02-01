@@ -40,14 +40,16 @@ function Search() {
         variables.stats.postEvent('feature', 'Voice search');
         // Use Chrome Search API - respects user's default search engine
         if (chrome && chrome.search && chrome.search.query) {
-          chrome.search.query({
-            text: searchText.value,
-            disposition: 'CURRENT_TAB',
-          }).catch((error) => {
-            console.error('Search API error:', error);
-            // Fallback to Google search if API fails
-            window.location.href = `https://www.google.com/search?q=${encodeURIComponent(searchText.value)}`;
-          });
+          chrome.search
+            .query({
+              text: searchText.value,
+              disposition: 'CURRENT_TAB',
+            })
+            .catch((error) => {
+              console.error('Search API error:', error);
+              // Fallback to Google search if API fails
+              window.location.href = `https://www.google.com/search?q=${encodeURIComponent(searchText.value)}`;
+            });
         } else {
           // Fallback for browsers without chrome.search API
           window.location.href = `https://www.google.com/search?q=${encodeURIComponent(searchText.value)}`;
@@ -96,14 +98,16 @@ function Search() {
 
     // Use Chrome Search API - respects user's default search engine
     if (chrome && chrome.search && chrome.search.query) {
-      chrome.search.query({
-        text: value,
-        disposition: 'CURRENT_TAB',
-      }).catch((error) => {
-        console.error('Search API error:', error);
-        // Fallback to Google search if API fails
-        window.location.href = `https://www.google.com/search?q=${encodeURIComponent(value)}`;
-      });
+      chrome.search
+        .query({
+          text: value,
+          disposition: 'CURRENT_TAB',
+        })
+        .catch((error) => {
+          console.error('Search API error:', error);
+          // Fallback to Google search if API fails
+          window.location.href = `https://www.google.com/search?q=${encodeURIComponent(value)}`;
+        });
     } else {
       // Fallback for browsers without chrome.search API
       window.location.href = `https://www.google.com/search?q=${encodeURIComponent(value)}`;
@@ -114,9 +118,7 @@ function Search() {
     <div className="searchComponents">
       <div className="searchMain">
         <div className={classList}>
-          <Tooltip
-            title={t('modals.main.settings.sections.search.voice_search')}
-          >
+          <Tooltip title={t('modals.main.settings.sections.search.voice_search')}>
             {microphone}
           </Tooltip>
         </div>

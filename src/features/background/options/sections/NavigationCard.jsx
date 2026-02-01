@@ -10,9 +10,7 @@ const NavigationCard = ({ icon: Icon, title, subtitle, onClick, action }) => {
           <span className="subtitle">{subtitle}</span>
         </div>
       </div>
-      <div className="action">
-        {action || <MdOutlineKeyboardArrowRight />}
-      </div>
+      <div className="action">{action || <MdOutlineKeyboardArrowRight />}</div>
     </div>
   );
 };

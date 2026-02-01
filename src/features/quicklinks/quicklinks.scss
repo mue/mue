@@ -19,14 +19,79 @@
 .quicklinkscontainer {
   border-radius: 12px;
   z-index: 1;
-  display: flex;
-  place-content: center center;
-  flex-wrap: wrap;
   padding: 0 25px;
-  gap: 12px;
   max-width: 100%;
   overflow-x: visible;
   box-sizing: border-box;
+
+  // Grid layout (NEW)
+  &.layout-grid {
+    display: grid;
+    gap: 16px;
+    justify-content: center;
+
+    &.cols-auto {
+      grid-template-columns: repeat(auto-fit, minmax(80px, 120px));
+    }
+
+    &.cols-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    &.cols-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    &.cols-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    &.cols-5 {
+      grid-template-columns: repeat(5, 1fr);
+    }
+    &.cols-6 {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    &.rows-auto {
+      grid-auto-rows: auto;
+    }
+
+    &.rows-2 {
+      grid-template-rows: repeat(2, 1fr);
+      grid-auto-flow: column;
+    }
+    &.rows-3 {
+      grid-template-rows: repeat(3, 1fr);
+      grid-auto-flow: column;
+    }
+    &.rows-4 {
+      grid-template-rows: repeat(4, 1fr);
+      grid-auto-flow: column;
+    }
+  }
+
+  // Flex layout (EXISTING - backward compatibility)
+  &.layout-flex {
+    display: flex;
+    place-content: center center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  // Compact layout (NEW)
+  &.layout-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  // Default to flex if no layout class specified
+  &:not(.layout-grid):not(.layout-flex):not(.layout-compact) {
+    display: flex;
+    place-content: center center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
 
   &.sortable-quicklinks {
     cursor: default;
@@ -43,6 +108,61 @@
   ::placeholder {
     color: #636e72;
     opacity: 1;
+  }
+}
+
+// Group headers (NEW)
+.quicklinks-group {
+  grid-column: 1 / -1;
+  margin-top: 16px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  .group-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    user-select: none;
+
+    .group-icon {
+      font-size: 20px;
+    }
+
+    .group-name {
+      flex: 1;
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .group-count {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .group-toggle {
+      font-size: 18px;
+      transition: transform 0.2s ease;
+
+      &.collapsed {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  .group-items {
+    display: contents;
+
+    &.collapsed {
+      display: none;
+    }
   }
 }
 

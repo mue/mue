@@ -10,8 +10,8 @@ import { shouldUpdateByFrequency, FREQUENCY_INTERVALS } from 'utils/frequencyMan
  */
 export function useFrequencyInterval(type, updateCallback) {
   // Track frequency in state so we can react to changes
-  const [frequency, setFrequency] = useState(() =>
-    localStorage.getItem(`${type}Frequency`) || 'refresh'
+  const [frequency, setFrequency] = useState(
+    () => localStorage.getItem(`${type}Frequency`) || 'refresh',
   );
 
   // Listen for frequency changes via custom storage events

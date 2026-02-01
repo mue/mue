@@ -49,7 +49,9 @@
 
   padding: 10px 20px;
   border-radius: 12px !important;
-  transition: background 0.2s ease, transform 0.1s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease;
   position: relative;
 
   @include themed {
@@ -183,7 +185,11 @@
   flex-flow: row;
   justify-content: center;
   gap: 20px;
-  transition: background 0.2s ease, transform 0.1s ease, border 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease,
+    border 0.2s ease,
+    box-shadow 0.2s ease;
   cursor: pointer;
 
   &:hover {

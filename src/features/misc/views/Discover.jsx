@@ -135,7 +135,9 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
         preset_settings: 'presets',
       };
 
-      const pathSegment = deepLinkData.category ? (pathMap[deepLinkData.category] || 'packs') : 'packs';
+      const pathSegment = deepLinkData.category
+        ? pathMap[deepLinkData.category] || 'packs'
+        : 'packs';
       iframeRef.current.src = `${MARKETPLACE_URL}/${pathSegment}/${deepLinkData.itemId}?embed=true${previewParam}${themeParam}`;
     }
   }, [deepLinkData, previewParam]);
@@ -159,12 +161,12 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
             const itemType = payload.item.type;
 
             fetch(`${variables.constants.API_URL}/marketplace/item/${itemId}`)
-              .then(res => res.json())
+              .then((res) => res.json())
               .then(({ data }) => {
                 // Install with fresh data from API
                 installItem(data.type, data);
               })
-              .catch(error => {
+              .catch((error) => {
                 console.error('Failed to fetch item from API, using iframe data:', error);
                 // Fallback to iframe data if API fetch fails
                 installItem(itemType, payload.item);
@@ -177,7 +179,7 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
                       type: 'marketplace:item:installed',
                       payload: { id: itemId, installed: true },
                     },
-                    MARKETPLACE_URL
+                    MARKETPLACE_URL,
                   );
                 }
               });
@@ -194,7 +196,7 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
                   type: 'marketplace:item:installed',
                   payload: { id: payload.item.id || payload.item.name, installed: false },
                 },
-                MARKETPLACE_URL
+                MARKETPLACE_URL,
               );
             }
           }
@@ -213,7 +215,7 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
                   type: 'marketplace:item:installed',
                   payload: { id: payload.id, installed: isInstalled },
                 },
-                MARKETPLACE_URL
+                MARKETPLACE_URL,
               );
             }
           }
@@ -276,7 +278,7 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
           type: 'marketplace:theme',
           payload: { theme },
         },
-        MARKETPLACE_URL
+        MARKETPLACE_URL,
       );
     }
   };
@@ -306,19 +308,19 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
         overlayClassName="Overlay"
         ariaHideApp={false}
       >
-        <Lightbox
-          modalClose={() => setShowLightbox(false)}
-          img={lightboxImg}
-        />
+        <Lightbox modalClose={() => setShowLightbox(false)} img={lightboxImg} />
       </Modal>
       {isLoading && (
-        <div className="loaderHolder" style={{
-          position: 'absolute',
-          top: '20%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 10
-        }}>
+        <div
+          className="loaderHolder"
+          style={{
+            position: 'absolute',
+            top: '20%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 10,
+          }}
+        >
           <div id="loader"></div>
           <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
         </div>
@@ -335,7 +337,9 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
               quote_packs: 'packs',
               preset_settings: 'presets',
             };
-            const pathSegment = deepLinkData.category ? (pathMap[deepLinkData.category] || 'packs') : 'packs';
+            const pathSegment = deepLinkData.category
+              ? pathMap[deepLinkData.category] || 'packs'
+              : 'packs';
             return `${MARKETPLACE_URL}/${pathSegment}/${deepLinkData.itemId}?embed=true${previewParam}${themeParam}`;
           }
           return category === 'collections'
@@ -376,7 +380,11 @@ function Discover(props) {
     >
       {sections.map(({ label, name }) => (
         <div key={name} label={variables.getMessage(label)} name={name}>
-          <DiscoverContent category={name} onBreadcrumbsChange={props.onBreadcrumbsChange} deepLinkData={props.deepLinkData} />
+          <DiscoverContent
+            category={name}
+            onBreadcrumbsChange={props.onBreadcrumbsChange}
+            deepLinkData={props.deepLinkData}
+          />
         </div>
       ))}
     </Tabs>

@@ -1,6 +1,13 @@
 import variables from 'config/variables';
 import { memo, useState, useEffect, useCallback } from 'react';
-import { MdUpdate, MdOutlineExtensionOff, MdSendTimeExtension, MdExplore, MdViewModule, MdViewList } from 'react-icons/md';
+import {
+  MdUpdate,
+  MdOutlineExtensionOff,
+  MdSendTimeExtension,
+  MdExplore,
+  MdViewModule,
+  MdViewList,
+} from 'react-icons/md';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
@@ -75,11 +82,11 @@ const Added = memo(() => {
       // Navigate to discover tab with the item
       const itemId = data.name;
       updateHash(`#discover/all?item=${itemId}`);
-      
+
       // Trigger navigation
       const event = new window.Event('popstate');
       window.dispatchEvent(event);
-      
+
       variables.stats.postEvent('marketplace', 'ItemPage viewed');
     }
   }, []);
@@ -175,10 +182,7 @@ const Added = memo(() => {
         overlayClassName="Overlay resetoverlay"
         ariaHideApp={false}
       >
-        <SideloadFailedModal
-          modalClose={() => setShowFailed(false)}
-          reason={failedReason}
-        />
+        <SideloadFailedModal modalClose={() => setShowFailed(false)} reason={failedReason} />
       </Modal>
       <FileUpload
         id="file-input"
@@ -211,9 +215,7 @@ const Added = memo(() => {
         <div className="emptyItems">
           <div className="emptyNewMessage">
             <MdOutlineExtensionOff />
-            <span className="title">
-              {variables.getMessage('modals.main.addons.empty.title')}
-            </span>
+            <span className="title">{variables.getMessage('modals.main.addons.empty.title')}</span>
             <span className="subtitle">
               {variables.getMessage('modals.main.addons.empty.description')}
             </span>
@@ -249,7 +251,15 @@ const Added = memo(() => {
           />
         </CustomActions>
       </Header>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '15px', marginBottom: '15px' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: '15px',
+          marginBottom: '15px',
+        }}
+      >
         <Dropdown
           label={variables.getMessage('modals.main.addons.sort.title')}
           name="sortAddons"

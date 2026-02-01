@@ -31,9 +31,7 @@ const Navbar = ({ openModal }) => {
           t('modals.main.settings.sections.background.title')
         );
       default:
-        return t(
-          'modals.main.settings.sections.appearance.navbar.refresh_options.page',
-        );
+        return t('modals.main.settings.sections.appearance.navbar.refresh_options.page');
     }
   };
 
@@ -92,9 +90,7 @@ const Navbar = ({ openModal }) => {
   const navbar = (
     <div className="navbar-container">
       <div className={classList}>
-        {viewEnabled && backgroundEnabled ? (
-          <Maximise fontSize={zoomFontSize} />
-        ) : null}
+        {viewEnabled && backgroundEnabled ? <Maximise fontSize={zoomFontSize} /> : null}
         {notesEnabled && <Notes fontSize={zoomFontSize} />}
         {todoEnabled && <Todo fontSize={zoomFontSize} />}
         {appsEnabled && <Apps fontSize={zoomFontSize} />}
@@ -121,11 +117,7 @@ const Navbar = ({ openModal }) => {
     </div>
   );
 
-  return navbarHover ? (
-    <div className="navbar-hover">{navbar}</div>
-  ) : (
-    navbar
-  );
+  return navbarHover ? <div className="navbar-hover">{navbar}</div> : navbar;
 };
 
 export { Navbar as default, Navbar };

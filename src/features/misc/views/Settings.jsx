@@ -92,12 +92,13 @@ function Settings(props) {
   const t = useT();
 
   // Recalculate section labels when language changes
-  const translatedSections = useMemo(() =>
-    sections.map(section => ({
-      ...section,
-      translatedLabel: t(section.label)
-    })),
-    [t]
+  const translatedSections = useMemo(
+    () =>
+      sections.map((section) => ({
+        ...section,
+        translatedLabel: t(section.label),
+      })),
+    [t],
   );
 
   return (

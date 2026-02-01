@@ -17,10 +17,7 @@ const Switch = memo((props) => {
       props.onChange(value);
     }
 
-    variables.stats.postEvent(
-      'setting',
-      `${props.name} ${checked ? 'enabled' : 'disabled'}`,
-    );
+    variables.stats.postEvent('setting', `${props.name} ${checked ? 'enabled' : 'disabled'}`);
 
     if (props.element) {
       if (!document.querySelector(props.element)) {

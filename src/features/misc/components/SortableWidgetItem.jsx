@@ -28,10 +28,14 @@ export const SortableWidgetItem = ({ value, startEditWidget, deleteWidget }) => 
         <MdWidgets />
       </div>
       <div className="widget-content">
-        <div className="widget-name">{value.name} {value.id ? `(#${value.id})` : ''}</div>
+        <div className="widget-name">
+          {value.name} {value.id ? `(#${value.id})` : ''}
+        </div>
         <div className="widget-url">{value.url}</div>
         <div className="widget-position">
-          {value.position ? value.position.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase()) : 'Top Right'}
+          {value.position
+            ? value.position.replace('-', ' ').replace(/\b\w/g, (l) => l.toUpperCase())
+            : 'Top Right'}
           {value.renderAbove ? ' • Above widgets' : ''}
         </div>
       </div>

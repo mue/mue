@@ -3,7 +3,20 @@ import Tooltip from 'components/Elements/Tooltip/Tooltip';
 
 const Button = forwardRef(
   (
-    { icon, label, type, iconPlacement, onClick, active, disabled, tooltipTitle, tooltipKey, href, style, badge },
+    {
+      icon,
+      label,
+      type,
+      iconPlacement,
+      onClick,
+      active,
+      disabled,
+      tooltipTitle,
+      tooltipKey,
+      href,
+      style,
+      badge,
+    },
     ref,
   ) => {
     let className;
@@ -51,9 +64,15 @@ const Button = forwardRef(
     );
 
     const linkButton = (
-      <a className={className} onClick={onClick} ref={ref} disabled={disabled} href={href} style={style}
-                   target="_blank"
-              rel="noopener noreferrer"
+      <a
+        className={className}
+        onClick={onClick}
+        ref={ref}
+        disabled={disabled}
+        href={href}
+        style={style}
+        target="_blank"
+        rel="noopener noreferrer"
       >
         {icon}
         {label}

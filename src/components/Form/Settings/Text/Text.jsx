@@ -8,7 +8,17 @@ import EventBus from 'utils/eventbus';
 import './Text.scss';
 
 const Text = memo((props) => {
-  const { name, upperCaseFirst, element, category, onChange, title, textarea, customcss, placeholder } = props;
+  const {
+    name,
+    upperCaseFirst,
+    element,
+    category,
+    onChange,
+    title,
+    textarea,
+    customcss,
+    placeholder,
+  } = props;
   const defaultValue = props.default;
   const [value, setValue] = useState(localStorage.getItem(name) || '');
 

@@ -315,17 +315,14 @@ const LocationSearch = memo((props) => {
     ],
   );
 
-  const clearSearch = useCallback(
-    (e) => {
-      e.stopPropagation();
-      setSearchQuery('');
-      setSuggestions([]);
-      if (searchInputRef.current) {
-        searchInputRef.current.focus();
-      }
-    },
-    [],
-  );
+  const clearSearch = useCallback((e) => {
+    e.stopPropagation();
+    setSearchQuery('');
+    setSuggestions([]);
+    if (searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, []);
 
   const id = 'location-search-' + name;
   const displayValue = locationData?.displayName || placeholder || 'Search location...';

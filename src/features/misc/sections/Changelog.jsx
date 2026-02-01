@@ -32,7 +32,7 @@ const Changelog = () => {
           type: 'mue:theme',
           payload: { theme },
         },
-        blogOrigin
+        blogOrigin,
       );
     }
   };

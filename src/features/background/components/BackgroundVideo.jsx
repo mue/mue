@@ -8,13 +8,7 @@ function BackgroundVideo({ url, filterStyle }) {
   const shouldLoop = useMemo(() => localStorage.getItem('backgroundVideoLoop') === 'true', []);
 
   return (
-    <video
-      autoPlay
-      muted={isMuted}
-      loop={shouldLoop}
-      style={filterStyle}
-      id="backgroundVideo"
-    >
+    <video autoPlay muted={isMuted} loop={shouldLoop} style={filterStyle} id="backgroundVideo">
       <source src={url} />
     </video>
   );

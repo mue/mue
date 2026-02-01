@@ -18,10 +18,7 @@ const Checkbox = memo((props) => {
       props.onChange(value);
     }
 
-    variables.stats.postEvent(
-      'setting',
-      `${props.name} ${value ? 'enabled' : 'disabled'}`,
-    );
+    variables.stats.postEvent('setting', `${props.name} ${value ? 'enabled' : 'disabled'}`);
 
     if (props.element) {
       if (!document.querySelector(props.element)) {
@@ -33,12 +30,15 @@ const Checkbox = memo((props) => {
     EventBus.emit('refresh', props.category);
   }, [checked, props]);
 
-  const handleKeyDown = useCallback((e) => {
-    if ((e.key === ' ' || e.key === 'Enter') && !props.disabled) {
-      e.preventDefault();
-      handleChange();
-    }
-  }, [handleChange, props.disabled]);
+  const handleKeyDown = useCallback(
+    (e) => {
+      if ((e.key === ' ' || e.key === 'Enter') && !props.disabled) {
+        e.preventDefault();
+        handleChange();
+      }
+    },
+    [handleChange, props.disabled],
+  );
 
   return (
     <div className={`checkbox-wrapper ${props.disabled ? 'disabled' : ''}`}>
@@ -53,9 +53,7 @@ const Checkbox = memo((props) => {
         aria-label={props.text}
         onKeyDown={handleKeyDown}
       />
-      <div className={`checkbox-box ${checked ? 'checked' : ''}`}>
-        {checked && <MdCheck />}
-      </div>
+      <div className={`checkbox-box ${checked ? 'checked' : ''}`}>{checked && <MdCheck />}</div>
     </div>
   );
 });

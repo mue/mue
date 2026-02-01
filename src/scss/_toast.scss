@@ -12,7 +12,9 @@
   @include themed() {
     background: t($background) !important;
     color: t($color) !important;
-    box-shadow: t($boxShadow), 0 8px 32px rgb(0 0 0 / 20%) !important;
+    box-shadow:
+      t($boxShadow),
+      0 8px 32px rgb(0 0 0 / 20%) !important;
   }
 
   border-radius: $borderRadius !important;
@@ -29,7 +31,9 @@
 
   &:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 0 0 1px #484848, 0 12px 40px rgb(0 0 0 / 30%) !important;
+    box-shadow:
+      0 0 0 1px #484848,
+      0 12px 40px rgb(0 0 0 / 30%) !important;
   }
 }
 

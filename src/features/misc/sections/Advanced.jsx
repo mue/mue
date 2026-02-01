@@ -29,9 +29,7 @@ import EventBus from 'utils/eventbus';
 
 function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName }) {
   const [resetModal, setResetModal] = useState(false);
-  const [widgets, setWidgets] = useState(
-    JSON.parse(localStorage.getItem('customWidgets') || '[]')
-  );
+  const [widgets, setWidgets] = useState(JSON.parse(localStorage.getItem('customWidgets') || '[]'));
   const [showAddWidgetModal, setShowAddWidgetModal] = useState(false);
   const [widgetUrlError, setWidgetUrlError] = useState('');
   const [editWidget, setEditWidget] = useState(false);
@@ -96,7 +94,9 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
       <Row final={true}>
         <Content
           title={variables.getMessage('modals.main.settings.sections.advanced.custom_css')}
-          subtitle={variables.getMessage('modals.main.settings.sections.advanced.custom_css_subtitle')}
+          subtitle={variables.getMessage(
+            'modals.main.settings.sections.advanced.custom_css_subtitle',
+          )}
         />
         <Action>
           <Text name="customcss" textarea={true} category="other" customcss={true} />
@@ -167,7 +167,10 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
     const data = widgets.map((item) => {
       if (item.key === og.key) {
         // Only regenerate ID if name changed
-        const newId = item.name !== widgetName ? generateUniqueId(widgetName) : (item.id || generateUniqueId(widgetName));
+        const newId =
+          item.name !== widgetName
+            ? generateUniqueId(widgetName)
+            : item.id || generateUniqueId(widgetName);
         return {
           ...item,
           name: widgetName,
@@ -209,15 +212,21 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
       <>
         <Row>
           <Content
-            title={variables.getMessage('modals.main.settings.sections.advanced.custom_widget.title')}
-            subtitle={variables.getMessage('modals.main.settings.sections.advanced.custom_widget.subtitle')}
+            title={variables.getMessage(
+              'modals.main.settings.sections.advanced.custom_widget.title',
+            )}
+            subtitle={variables.getMessage(
+              'modals.main.settings.sections.advanced.custom_widget.subtitle',
+            )}
           />
           <Action>
             <Button
               type="settings"
               onClick={() => setShowAddWidgetModal(true)}
               icon={<MdWidgets />}
-              label={variables.getMessage('modals.main.settings.sections.advanced.custom_widget.add')}
+              label={variables.getMessage(
+                'modals.main.settings.sections.advanced.custom_widget.add',
+              )}
             />
           </Action>
         </Row>
@@ -226,16 +235,22 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
             <div className="emptyNewMessage">
               <MdWidgets />
               <span className="title">
-                {variables.getMessage('modals.main.settings.sections.advanced.custom_widget.no_widgets')}
+                {variables.getMessage(
+                  'modals.main.settings.sections.advanced.custom_widget.no_widgets',
+                )}
               </span>
               <span className="subtitle">
-                {variables.getMessage('modals.main.settings.sections.advanced.custom_widget.add_some')}
+                {variables.getMessage(
+                  'modals.main.settings.sections.advanced.custom_widget.add_some',
+                )}
               </span>
               <Button
                 type="settings"
                 onClick={() => setShowAddWidgetModal(true)}
                 icon={<MdWidgets />}
-                label={variables.getMessage('modals.main.settings.sections.advanced.custom_widget.add')}
+                label={variables.getMessage(
+                  'modals.main.settings.sections.advanced.custom_widget.add',
+                )}
               />
             </div>
           </div>
@@ -372,7 +387,9 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
 
           <Row>
             <Content
-              title={variables.getMessage('modals.main.settings.sections.advanced.marketplace_img_proxy')}
+              title={variables.getMessage(
+                'modals.main.settings.sections.advanced.marketplace_img_proxy',
+              )}
               subtitle={variables.getMessage(
                 'modals.main.settings.sections.advanced.marketplace_img_proxy_subtitle',
               )}

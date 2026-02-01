@@ -29,16 +29,10 @@ function NavbarOptions() {
       <Row final={false}>
         <Content
           title={t('modals.main.settings.additional_settings')}
-          subtitle={t(
-            'modals.main.settings.sections.appearance.navbar.additional',
-          )}
+          subtitle={t('modals.main.settings.sections.appearance.navbar.additional')}
         />
         <Action>
-          <Checkbox
-            name="navbarHover"
-            text={t(`${NAVBAR_SECTION}.hover`)}
-            category="navbar"
-          />
+          <Checkbox name="navbarHover" text={t(`${NAVBAR_SECTION}.hover`)} category="navbar" />
         </Action>
       </Row>
     );
@@ -107,9 +101,7 @@ function NavbarOptions() {
 
     return (
       <Row>
-        <Content
-          title={t('modals.main.settings.sections.appearance.navbar.widgets')}
-        />
+        <Content title={t('modals.main.settings.sections.appearance.navbar.widgets')} />
         <Action>
           <div className="navbarButtonOptions">
             {buttons.map((button, index) => (
@@ -126,9 +118,7 @@ function NavbarOptions() {
       <Row final={false} inactive={!showRefreshOptions}>
         <Content
           title={t(`${NAVBAR_SECTION}.refresh`)}
-          subtitle={t(
-            'modals.main.settings.sections.appearance.navbar.refresh_subtitle',
-          )}
+          subtitle={t('modals.main.settings.sections.appearance.navbar.refresh_subtitle')}
         />
         <Action>
           <Dropdown
@@ -137,9 +127,7 @@ function NavbarOptions() {
             items={[
               {
                 value: 'page',
-                text: t(
-                  'modals.main.settings.sections.appearance.navbar.refresh_options.page',
-                ),
+                text: t('modals.main.settings.sections.appearance.navbar.refresh_options.page'),
               },
               {
                 value: 'background',

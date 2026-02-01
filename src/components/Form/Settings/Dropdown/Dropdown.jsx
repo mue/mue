@@ -48,10 +48,7 @@ const Dropdown = memo((props) => {
   }, [closeDropdown]);
 
   // Memoize items count to avoid unnecessary recalculations
-  const itemsCount = useMemo(() =>
-    props.items.filter((i) => i !== null).length,
-    [props.items]
-  );
+  const itemsCount = useMemo(() => props.items.filter((i) => i !== null).length, [props.items]);
 
   const calculatePosition = useCallback(() => {
     if (controlRef.current) {
@@ -124,9 +121,7 @@ const Dropdown = memo((props) => {
       if (rafId) window.cancelAnimationFrame(rafId);
       window.removeEventListener('scroll', updatePosition);
       window.removeEventListener('resize', updatePosition);
-      scrollableElements.forEach(el =>
-        el.removeEventListener('scroll', updatePosition)
-      );
+      scrollableElements.forEach((el) => el.removeEventListener('scroll', updatePosition));
     };
   }, [isOpen, calculatePosition]);
 
@@ -137,19 +132,25 @@ const Dropdown = memo((props) => {
     }
   }, [isOpen, props.searchable]);
 
-  const handleSearchChange = useCallback((e) => {
-    setSearchQuery(e.target.value);
-    if (!isOpen) {
-      openDropdown();
-    }
-  }, [isOpen, openDropdown]);
+  const handleSearchChange = useCallback(
+    (e) => {
+      setSearchQuery(e.target.value);
+      if (!isOpen) {
+        openDropdown();
+      }
+    },
+    [isOpen, openDropdown],
+  );
 
-  const handleInputClick = useCallback((e) => {
-    e.stopPropagation();
-    if (!isOpen) {
-      openDropdown();
-    }
-  }, [isOpen, openDropdown]);
+  const handleInputClick = useCallback(
+    (e) => {
+      e.stopPropagation();
+      if (!isOpen) {
+        openDropdown();
+      }
+    },
+    [isOpen, openDropdown],
+  );
 
   const handleInputFocus = useCallback(() => {
     // When focusing, if not default value, pre-fill with current value for editing
@@ -241,25 +242,31 @@ const Dropdown = memo((props) => {
     [onChange],
   );
 
-  const resetItem = useCallback((e) => {
-    e?.stopPropagation();
-    const defaultValue = props.default || props.items[0]?.value;
-    onChange(defaultValue);
-    toast(variables.getMessage('toasts.reset'));
-  }, [onChange, props.default, props.items]);
-
-  const clearSearch = useCallback((e) => {
-    e.stopPropagation();
-    setSearchQuery('');
-    if (props.searchable) {
-      // Reset to default value (first item, usually "Automatic")
+  const resetItem = useCallback(
+    (e) => {
+      e?.stopPropagation();
       const defaultValue = props.default || props.items[0]?.value;
       onChange(defaultValue);
-    }
-    if (searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [props, onChange]);
+      toast(variables.getMessage('toasts.reset'));
+    },
+    [onChange, props.default, props.items],
+  );
+
+  const clearSearch = useCallback(
+    (e) => {
+      e.stopPropagation();
+      setSearchQuery('');
+      if (props.searchable) {
+        // Reset to default value (first item, usually "Automatic")
+        const defaultValue = props.default || props.items[0]?.value;
+        onChange(defaultValue);
+      }
+      if (searchInputRef.current) {
+        searchInputRef.current.focus();
+      }
+    },
+    [props, onChange],
+  );
 
   const id = 'dropdown' + props.name;
   const label = props.label || '';
@@ -267,14 +274,19 @@ const Dropdown = memo((props) => {
   const defaultValue = props.default || props.items[0]?.value;
 
   // Filter items based on search query
-  const filteredItems = props.searchable && searchQuery
-    ? props.items.filter((item) =>
-        item !== null && item.text.toLowerCase().includes(searchQuery.toLowerCase()),
-      )
-    : props.items;
+  const filteredItems =
+    props.searchable && searchQuery
+      ? props.items.filter(
+          (item) => item !== null && item.text.toLowerCase().includes(searchQuery.toLowerCase()),
+        )
+      : props.items;
 
   return (
-    <div className={`dropdown ${id} ${props.disabled ? 'disabled' : ''}`} ref={containerRef} onClick={(e) => e.stopPropagation()}>
+    <div
+      className={`dropdown ${id} ${props.disabled ? 'disabled' : ''}`}
+      ref={containerRef}
+      onClick={(e) => e.stopPropagation()}
+    >
       {label && (
         <div className="dropdown-header">
           <label className="dropdown-label">{label}</label>

@@ -5,14 +5,10 @@ import { getBackgroundOptionItems } from '../optionTypes';
 
 const SourceSection = ({ backgroundType, marketplaceEnabled, onTypeChange }) => {
   return (
-    <Row
-      final={backgroundType === 'random_colour' || backgroundType === 'random_gradient'}
-    >
+    <Row final={backgroundType === 'random_colour' || backgroundType === 'random_gradient'}>
       <Content
         title={variables.getMessage('modals.main.settings.sections.background.source.title')}
-        subtitle={variables.getMessage(
-          'modals.main.settings.sections.background.source.subtitle',
-        )}
+        subtitle={variables.getMessage('modals.main.settings.sections.background.source.subtitle')}
       />
       <Action>
         <Dropdown

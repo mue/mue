@@ -26,9 +26,11 @@ const DisplaySettings = ({ usingImage }) => {
                 clearQueuesOnSettingChange('backgroundFrequency');
               }
               // Notify the frequency interval hook that the frequency changed
-              window.dispatchEvent(new CustomEvent('frequencyChanged', {
-                detail: { type: 'background' }
-              }));
+              window.dispatchEvent(
+                new CustomEvent('frequencyChanged', {
+                  detail: { type: 'background' },
+                }),
+              );
             }}
             items={FREQUENCY_OPTIONS.map((opt) => ({
               value: opt.value,
@@ -53,7 +55,9 @@ const DisplaySettings = ({ usingImage }) => {
           />
           <Checkbox
             name="photoInformation"
-            text={variables.getMessage('modals.main.settings.sections.background.photo_information')}
+            text={variables.getMessage(
+              'modals.main.settings.sections.background.photo_information',
+            )}
             element=".other"
           />
           <Checkbox

@@ -190,12 +190,7 @@ function ModalTopBar({
             </button>
           </Tooltip>
         </div>
-        <img
-          src={mueAboutIcon}
-          alt="Mue"
-          className="topBarLogo"
-          draggable={false}
-        />
+        <img src={mueAboutIcon} alt="Mue" className="topBarLogo" draggable={false} />
         {breadcrumbPath.length > 0 && (
           <nav className="breadcrumbs" aria-label="Breadcrumb navigation">
             {breadcrumbPath.map((item, index) => {
@@ -228,7 +223,9 @@ function ModalTopBar({
                       {item.label}
                     </span>
                   )}
-                  {!isLast && <MdChevronRight className="breadcrumb-separator" aria-hidden="true" />}
+                  {!isLast && (
+                    <MdChevronRight className="breadcrumb-separator" aria-hidden="true" />
+                  )}
                 </span>
               );
             })}
@@ -239,7 +236,8 @@ function ModalTopBar({
         <div className="topBarNavigation">
           {NAVBAR_BUTTONS.map(({ tab, icon: Icon, messageKey }) => {
             // Show badge for Library tab when there are installed addons
-            const badgeValue = tab === TAB_TYPES.LIBRARY && installedCount > 0 ? installedCount : undefined;
+            const badgeValue =
+              tab === TAB_TYPES.LIBRARY && installedCount > 0 ? installedCount : undefined;
 
             return (
               <Button

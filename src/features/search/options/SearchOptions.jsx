@@ -48,7 +48,6 @@ const AdditionalOptions = () => {
 };
 
 const SearchOptions = () => {
-
   return (
     <>
       <Header

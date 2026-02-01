@@ -15,8 +15,7 @@ function Library(props) {
       <div label={variables.getMessage('modals.main.addons.added')} name="added">
         <Added />
       </div>
-      <div label={variables.getMessage('modals.main.addons.create.title')} name="create">
-      </div>
+      <div label={variables.getMessage('modals.main.addons.create.title')} name="create"></div>
     </Tabs>
   );
 }

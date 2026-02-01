@@ -97,8 +97,18 @@ const DatePicker = memo((props) => {
   };
 
   const monthNames = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ];
 
   const renderCalendar = () => {
@@ -126,7 +136,7 @@ const DatePicker = memo((props) => {
           onClick={() => handleDateSelect(day)}
         >
           {day}
-        </div>
+        </div>,
       );
     }
 
@@ -166,7 +176,8 @@ const DatePicker = memo((props) => {
                 <MdChevronLeft />
               </button>
               <span className="calendar-month">
-                {monthNames[viewDate.getMonth()]}{props.hideYear ? '' : ` ${viewDate.getFullYear()}`}
+                {monthNames[viewDate.getMonth()]}
+                {props.hideYear ? '' : ` ${viewDate.getFullYear()}`}
               </span>
               <button onClick={handleNextMonth} className="calendar-nav">
                 <MdChevronRight />
@@ -181,9 +192,7 @@ const DatePicker = memo((props) => {
               <div>Fr</div>
               <div>Sa</div>
             </div>
-            <div className="calendar-grid">
-              {renderCalendar()}
-            </div>
+            <div className="calendar-grid">{renderCalendar()}</div>
           </div>,
           document.body,
         )}

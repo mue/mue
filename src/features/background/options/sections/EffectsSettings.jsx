@@ -9,9 +9,7 @@ const EffectsSettings = ({ backgroundFilter, onFilterChange }) => {
     <Row final={true}>
       <Content
         title={variables.getMessage('modals.main.settings.sections.background.effects.title')}
-        subtitle={variables.getMessage(
-          'modals.main.settings.sections.background.effects.subtitle',
-        )}
+        subtitle={variables.getMessage('modals.main.settings.sections.background.effects.subtitle')}
       />
       <Action>
         <Slider

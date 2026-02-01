@@ -1,0 +1,26 @@
+.smart-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  flex-shrink: 0;
+
+  &.emoji {
+    line-height: 1;
+  }
+
+  &.letter-avatar {
+    border-radius: 50%;
+    color: white;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  img {
+    object-fit: contain;
+  }
+}

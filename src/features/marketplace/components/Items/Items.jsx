@@ -1,10 +1,6 @@
 import variables from 'config/variables';
 import React, { memo, useState, useMemo } from 'react';
-import {
-  MdCheckCircle,
-  MdOutlineUploadFile,
-  MdClose,
-} from 'react-icons/md';
+import { MdCheckCircle, MdOutlineUploadFile, MdClose } from 'react-icons/md';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 
 import { Tooltip } from 'components/Elements';
@@ -55,7 +51,16 @@ function getTypeTranslationKey(type) {
   return typeMap[type] || type;
 }
 
-function ItemCard({ item, toggleFunction, type, onCollection, isCurator, isInstalled, isAdded, onUninstall }) {
+function ItemCard({
+  item,
+  toggleFunction,
+  type,
+  onCollection,
+  isCurator,
+  isInstalled,
+  isAdded,
+  onUninstall,
+}) {
   item._onCollection = onCollection;
 
   const isSideloaded = item.sideload === true;
@@ -130,7 +135,9 @@ function ItemCard({ item, toggleFunction, type, onCollection, isCurator, isInsta
             </span>
           )}
           {item.in_collections && item.in_collections.length > 0 && !onCollection && (
-            <span className="card-collection">{item.in_collections[0].display_name || item.in_collections[0].name}</span>
+            <span className="card-collection">
+              {item.in_collections[0].display_name || item.in_collections[0].name}
+            </span>
           )}
         </div>
       </div>

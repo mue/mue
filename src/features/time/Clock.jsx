@@ -12,7 +12,10 @@ import './clock.scss';
 const formatPaddedDigits = (value) => {
   const str = String(value);
   // Format each digit individually to preserve padding with locale numerals
-  return str.split('').map(digit => formatDigits(digit)).join('');
+  return str
+    .split('')
+    .map((digit) => formatDigits(digit))
+    .join('');
 };
 
 const Clock = () => {

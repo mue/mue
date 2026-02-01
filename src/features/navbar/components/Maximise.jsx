@@ -61,9 +61,7 @@ const Maximise = memo(({ fontSize }) => {
   }, [hidden, setAttribute]);
 
   return (
-    <Tooltip
-      title={t('modals.main.settings.sections.background.buttons.view')}
-    >
+    <Tooltip title={t('modals.main.settings.sections.background.buttons.view')}>
       <button
         className="navbarButton"
         style={{ fontSize }}
