@@ -12,6 +12,7 @@
       "@/*": ["./*"],
       "i18n/*": ["./i18n/*"],
       "components/*": ["./components/*"],
+      "hooks/*": ["./hooks/*"],
       "assets/*": ["./assets/*"],
       "config/*": ["./config/*"],
       "features/*": ["./features/*"],

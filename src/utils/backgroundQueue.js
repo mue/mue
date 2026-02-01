@@ -1,39 +1,22 @@
+import { safeParseJSON } from './jsonStorage';
+
 /**
- * Background Queue Manager
- * Manages prefetch queues for background images across all background types
+ * Queue Manager
+ * Manages prefetch queues for content across features (backgrounds, quotes, etc.)
  */
 
 /**
- * Helper to safely parse JSON from localStorage
- * @param {string} key - localStorage key
- * @param {*} fallback - Fallback value if parsing fails
- * @returns {*} Parsed value or fallback
- */
-function parseJSON(key, fallback = null) {
-  const item = localStorage.getItem(key);
-  if (item === null || item === 'null') {
-    return fallback;
-  }
-  try {
-    const parsed = JSON.parse(item);
-    return parsed !== null ? parsed : fallback;
-  } catch {
-    return fallback;
-  }
-}
-
-/**
- * Manages a prefetch queue for background images
+ * Manages a prefetch queue for content items
  *
- * @class BackgroundQueueManager
+ * @class QueueManager
  * @example
- * const queueManager = new BackgroundQueueManager('imageQueue', 3);
+ * const queueManager = new QueueManager('imageQueue', 3);
  * const queue = queueManager.getQueue();
  * if (queue.length > 0) {
  *   const nextImage = queueManager.shift();
  * }
  */
-export class BackgroundQueueManager {
+export class QueueManager {
   /**
    * Creates a new queue manager
    * @param {string} storageKey - localStorage key for this queue
@@ -50,7 +33,7 @@ export class BackgroundQueueManager {
    */
   getQueue() {
     try {
-      return parseJSON(this.storageKey, []);
+      return safeParseJSON(this.storageKey, []);
     } catch (error) {
       console.warn(`Failed to get queue from ${this.storageKey}:`, error);
       return [];
@@ -149,4 +132,7 @@ export class BackgroundQueueManager {
   }
 }
 
-export default BackgroundQueueManager;
+// Backwards compatibility export
+export const BackgroundQueueManager = QueueManager;
+
+export default QueueManager;

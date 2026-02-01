@@ -6,19 +6,7 @@ import videoCheck from './videoCheck';
 import { getAllBackgrounds, getAllBackgroundsWithMetadata } from 'utils/customBackgroundDB';
 import { BackgroundQueueManager } from 'utils/backgroundQueue';
 import { getProxiedImageUrl } from 'utils/marketplace';
-
-const parseJSON = (key, fallback = null) => {
-  const item = localStorage.getItem(key);
-  if (item === null || item === 'null') {
-    return fallback;
-  }
-  try {
-    const parsed = JSON.parse(item);
-    return parsed !== null ? parsed : fallback;
-  } catch {
-    return fallback;
-  }
-};
+import { safeParseJSON } from 'utils/jsonStorage';
 
 /**
  * Fetches image data from the configured API
@@ -26,8 +14,11 @@ const parseJSON = (key, fallback = null) => {
 export async function fetchAPIImageData(excludedPun = null) {
   const api = localStorage.getItem('backgroundAPI') || 'mue';
   const quality = localStorage.getItem('apiQuality') || 'high';
-  const categories = parseJSON('apiCategories', localStorage.getItem('apiCategories'));
-  const excludes = [...parseJSON('backgroundExclude', []), ...(excludedPun ? [excludedPun] : [])];
+  const categories = safeParseJSON('apiCategories', localStorage.getItem('apiCategories'));
+  const excludes = [
+    ...safeParseJSON('backgroundExclude', []),
+    ...(excludedPun ? [excludedPun] : []),
+  ];
 
   const baseURL = `${variables.constants.API_URL}/images`;
   const collection = localStorage.getItem('unsplashCollections');
@@ -80,7 +71,7 @@ export async function getBackgroundData() {
     localStorage.getItem('showWelcome') === 'true';
 
   // Handle favourited background
-  const fav = parseJSON('favourite');
+  const fav = safeParseJSON('favourite');
   if (fav) {
     if (fav.type === 'random_colour' || fav.type === 'random_gradient') {
       return { type: 'colour', style: `background:${fav.url}` };
@@ -192,7 +183,7 @@ async function getCustomBackground(isOffline) {
 
   // Fallback to localStorage URLs if IndexedDB is empty
   if (!backgrounds || backgrounds.length === 0) {
-    const urls = parseJSON('customBackground', []);
+    const urls = safeParseJSON('customBackground', []);
     if (urls && urls.length > 0) {
       // Convert old URL format to metadata format
       backgrounds = urls.map((url) => ({ url, photoInfo: { hidden: true } }));
@@ -259,9 +250,11 @@ async function getCustomBackground(isOffline) {
 
   // Prefetch more backgrounds in the background (skip videos)
   if (queueManager.needsPrefetch() && !data.video && selected.id) {
-    prefetchCustomBackgrounds(queueManager, backgrounds, selected.id, cachedQueue).catch((error) => {
-      console.error('Failed to prefetch custom backgrounds:', error);
-    });
+    prefetchCustomBackgrounds(queueManager, backgrounds, selected.id, cachedQueue).catch(
+      (error) => {
+        console.error('Failed to prefetch custom backgrounds:', error);
+      },
+    );
   }
 
   return data;
@@ -306,7 +299,7 @@ async function prefetchCustomBackgrounds(queueManager, allBackgrounds, currentId
 function getPhotoPackBackground(isOffline) {
   if (isOffline) return getOfflineImage('photo_pack');
 
-  const photos = parseJSON('installed', []).flatMap((item) =>
+  const photos = safeParseJSON('installed', []).flatMap((item) =>
     item.type === 'photos' && item.photos ? item.photos : [],
   );
 
@@ -364,10 +357,7 @@ async function prefetchPhotoPackImages(queueManager, allPhotos, currentPhoto, cu
   const count = queueManager.getSpaceNeeded();
 
   // Get already used URLs
-  const usedUrls = [
-    currentPhoto.url,
-    ...currentQueue.map((p) => p.url),
-  ];
+  const usedUrls = [currentPhoto.url, ...currentQueue.map((p) => p.url)];
 
   // Filter available photos
   const available = allPhotos.filter((p) => !usedUrls.includes(p.url.default));
