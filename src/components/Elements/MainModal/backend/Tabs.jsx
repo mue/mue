@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { useT } from 'contexts/TranslationContext';
 import variables from 'config/variables';
 import Tab from './Tab';
@@ -38,7 +38,6 @@ const Tabs = ({
   };
 
   const initial = getInitialSection();
-  const [currentTab, setCurrentTab] = useState(initial.label);
   const [currentName, setCurrentName] = useState(initial.name);
   const [showReminder, setShowReminder] = useState(localStorage.getItem('showReminder') === 'true');
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(
@@ -47,12 +46,24 @@ const Tabs = ({
   const [searchQuery, setSearchQuery] = useState('');
   const contentRef = useRef(null);
 
+  // Derive currentTab label from currentName - avoids setState in effects
+  const currentTab = (() => {
+    if (sections && currentName) {
+      const section = sections.find((s) => s.name === currentName);
+      if (section) {
+        return t(section.label);
+      }
+    }
+    // Fallback: find label from children
+    const child = children.find((c) => c.props.name === currentName);
+    return child?.props.label || children[0]?.props.label;
+  })();
+
   const handleTabClick = (tab, name) => {
     if (name !== currentName) {
       variables.stats.postEvent('tab', `Opened ${name}`);
     }
 
-    setCurrentTab(tab);
     setCurrentName(name);
 
     // Scroll content to top when changing tabs
@@ -73,24 +84,12 @@ const Tabs = ({
     }
   }, []);
 
-  // Update labels when language changes
-  useEffect(() => {
-    if (sections && currentName) {
-      const section = sections.find((s) => s.name === currentName);
-      if (section) {
-        const newLabel = t(section.label);
-        setCurrentTab(newLabel);
-      }
-    }
-  }, [t, sections, currentName]);
-
   // Handle navigation trigger for settings sections (popstate)
-  useEffect(() => {
+  // useLayoutEffect is appropriate here for synchronous state updates before paint
+  useLayoutEffect(() => {
     if (navigationTrigger?.type === 'settings-section' && sections) {
       const section = sections.find((s) => s.name === navigationTrigger.data);
       if (section) {
-        const label = t(section.label);
-        setCurrentTab(label);
         setCurrentName(section.name);
         // Scroll content to top when navigating via browser history
         if (contentRef.current) {
@@ -98,12 +97,12 @@ const Tabs = ({
         }
       }
     }
-  }, [navigationTrigger, sections, t]);
+  }, [navigationTrigger, sections]);
 
   // Reset to first tab when requested
-  useEffect(() => {
+  // useLayoutEffect is appropriate here for synchronous state updates before paint
+  useLayoutEffect(() => {
     if (resetToFirst) {
-      setCurrentTab(children[0]?.props.label);
       setCurrentName(children[0]?.props.name);
       // Scroll content to top when resetting to first tab
       if (contentRef.current) {

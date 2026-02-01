@@ -1,4 +1,4 @@
-import { useState, memo, useRef } from 'react';
+import { useState, memo, useRef, useId } from 'react';
 import { useFloating, flip, offset, shift } from '@floating-ui/react-dom';
 import './tooltip.scss';
 
@@ -6,7 +6,7 @@ function Tooltip({ children, title, style, placement, subtitle }) {
   const [showTooltip, setShowTooltip] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [reference, setReference] = useState(null);
-  const tooltipId = useRef(`tooltip-${Math.random()}`);
+  const tooltipId = useId();
   const closeTimeout = useRef(null);
 
   const {
@@ -22,6 +22,8 @@ function Tooltip({ children, title, style, placement, subtitle }) {
       reference,
     },
   });
+
+  const { setFloating } = refs;
 
   const handleMouseEnter = () => {
     // Clear any pending close timeout if mouse re-enters during exit
@@ -76,13 +78,13 @@ function Tooltip({ children, title, style, placement, subtitle }) {
         onFocus={handleFocus}
         onBlur={handleBlur}
         ref={setReference}
-        aria-describedby={tooltipId.current}
+        aria-describedby={tooltipId}
       >
         {children}
       </div>
       {(showTooltip || isClosing) && (
         <span
-          ref={refs.setFloating}
+          ref={setFloating}
           style={{
             position: strategy,
             top: y ?? '',
