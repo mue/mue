@@ -1,0 +1,61 @@
+{
+  "permissions": {
+    "allow": ["Bash(node scripts/updatetranslations.cjs:*)"]
+  },
+  "skills": [
+    "React development with hooks and functional components",
+    "Browser extension development (Chrome, Firefox, Safari)",
+    "i18n/internationalization with multiple locales",
+    "SCSS/CSS styling and responsive design",
+    "Vite build tooling and configuration",
+    "IndexedDB and localStorage for data persistence",
+    "Web APIs (Weather, Geolocation, etc.)",
+    "Bun package manager and tooling",
+    "Git workflow (dev → beta → main branches)",
+    "Web manifest v3 for browser extensions",
+    "ESLint and code formatting standards",
+    "Commitlint with conventional commits"
+  ],
+  "rules": [
+    {
+      "title": "Translation Files",
+      "description": "en_GB.json is the base translation file. Any other translation file should be updated by editing en_GB.json first, then running `bun run translations` to ensure formatting remains consistent across all locales."
+    },
+    {
+      "title": "Branch Strategy",
+      "description": "Use the three-branch workflow: dev (active development) → beta (release candidates) → main (production/stable). All PRs should target the dev branch."
+    },
+    {
+      "title": "Commit Messages",
+      "description": "Follow conventional commits format. Use commitlint standards (feat:, fix:, chore:, docs:, etc.) for all commit messages."
+    },
+    {
+      "title": "Code Style",
+      "description": "Run `bun run lint:fix` and `bun run pretty` before committing. Follow the ESLint configuration in eslint.config.js."
+    },
+    {
+      "title": "Build Targets",
+      "description": "The project builds for multiple browsers (Chrome, Firefox, Safari). Test changes across all targets when modifying core functionality or manifests."
+    },
+    {
+      "title": "Package Manager",
+      "description": "Always use Bun (not npm or yarn) for dependency management and running scripts. The project requires Bun >= 1.3.0."
+    },
+    {
+      "title": "File Organization",
+      "description": "Components go in src/components/, features in src/features/, utilities in src/utils/. Keep the existing folder structure consistent."
+    },
+    {
+      "title": "State Management",
+      "description": "Use localStorage via useLocalStorageState hook for persistent settings. Use React Context for shared state (see src/contexts/)."
+    },
+    {
+      "title": "Styling",
+      "description": "SCSS files are organized in src/scss/. Use the existing variables (_variables.scss) and mixins (_mixins.scss) for consistency."
+    },
+    {
+      "title": "Development Server",
+      "description": "Use `bun run dev` for local development with hot reload. Use `bun run dev:host` to make it accessible on the network for testing on other devices."
+    }
+  ]
+}
