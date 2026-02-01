@@ -20,28 +20,28 @@ export default function AuthorInfo({
   const t = useT();
   const showAuthorImg = localStorage.getItem('authorImg') !== 'false';
   const hasLink = authorOccupation !== 'Unknown' && authorlink !== null;
-  const trimmedLicense = authorimglicense?.substring(0, 40) +
-                        (authorimglicense?.length > 40 ? '…' : '');
 
   return (
     <div className="author-holder">
       <div className="author">
-        {showAuthorImg && (
-          <div className="author-img" style={{ backgroundImage: `url(${authorimg})` }}>
-            {!authorimg && authorimg !== undefined && <MdPerson />}
-          </div>
-        )}
+        {showAuthorImg &&
+          (authorimglicense && authorimg ? (
+            <Tooltip title={authorimglicense}>
+              <div className="author-img" style={{ backgroundImage: `url(${authorimg})` }}>
+                {!authorimg && authorimg !== undefined && <MdPerson />}
+              </div>
+            </Tooltip>
+          ) : (
+            <div className="author-img" style={{ backgroundImage: `url(${authorimg})` }}>
+              {!authorimg && authorimg !== undefined && <MdPerson />}
+            </div>
+          ))}
 
         {author ? (
           <div className="author-content">
             <span className="title">{author}</span>
             {authorOccupation && authorOccupation !== 'Unknown' && (
               <span className="subtitle">{authorOccupation}</span>
-            )}
-            {authorimglicense && (
-              <span className="author-license" title={authorimglicense}>
-                {trimmedLicense}
-              </span>
             )}
           </div>
         ) : (

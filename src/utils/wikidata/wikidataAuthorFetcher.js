@@ -1,0 +1,286 @@
+/**
+ * Wikidata API integration for fetching author information
+ * Provides author images, occupations, and metadata with multilingual support
+ */
+
+/* global URLSearchParams */
+
+import { safeParseJSON } from '../jsonStorage';
+
+const WIKIDATA_API = 'https://www.wikidata.org/w/api.php';
+const CACHE_EXPIRY = 7 * 24 * 60 * 60 * 1000; // 7 days
+
+/**
+ * Get cached author data from localStorage
+ * @param {string} authorName - Author name
+ * @param {string} language - Language code (e.g., 'en', 'fr')
+ * @returns {object|null} Cached author data or null
+ */
+function getCachedAuthorData(authorName, language) {
+  const cacheKey = `wikidataAuthor_${authorName.toLowerCase()}_${language}`;
+  const cached = safeParseJSON(cacheKey);
+
+  if (!cached) {
+    return null;
+  }
+
+  // Check if cache has expired
+  const now = Date.now();
+  if (cached.timestamp && now - cached.timestamp > CACHE_EXPIRY) {
+    localStorage.removeItem(cacheKey);
+    return null;
+  }
+
+  return cached.data;
+}
+
+/**
+ * Cache author data in localStorage
+ * @param {string} authorName - Author name
+ * @param {string} language - Language code
+ * @param {object} data - Author data to cache
+ */
+function cacheAuthorData(authorName, language, data) {
+  const cacheKey = `wikidataAuthor_${authorName.toLowerCase()}_${language}`;
+  localStorage.setItem(
+    cacheKey,
+    JSON.stringify({
+      timestamp: Date.now(),
+      data,
+    }),
+  );
+}
+
+/**
+ * Search for an author entity in Wikidata by name
+ * @param {string} authorName - Author name to search
+ * @param {string} language - Language code for search (default: 'en')
+ * @returns {Promise<string|null>} Wikidata entity ID (e.g., 'Q937') or null
+ */
+async function searchAuthorEntity(authorName, language = 'en') {
+  try {
+    const params = new URLSearchParams({
+      action: 'wbsearchentities',
+      search: authorName,
+      language: language,
+      limit: '1',
+      format: 'json',
+      origin: '*',
+      type: 'item',
+    });
+
+    const response = await fetch(`${WIKIDATA_API}?${params}`);
+    const data = await response.json();
+
+    if (data.search && data.search.length > 0) {
+      return data.search[0].id;
+    }
+
+    return null;
+  } catch (error) {
+    console.error('Error searching Wikidata author:', error);
+    return null;
+  }
+}
+
+/**
+ * Extract occupation labels from Wikidata claims
+ * @param {object} claims - Wikidata claims object
+ * @param {string} language - Preferred language
+ * @returns {Promise<string|null>} Formatted occupation string or null
+ */
+async function extractOccupations(claims, language) {
+  if (!claims || !claims.P106) {
+    return null;
+  }
+
+  try {
+    const occupationIds = claims.P106.filter((claim) => claim.mainsnak?.datavalue?.value?.id)
+      .map((claim) => claim.mainsnak.datavalue.value.id)
+      .slice(0, 1); // Only take the first/primary occupation
+
+    if (occupationIds.length === 0) {
+      return null;
+    }
+
+    // Fetch occupation label
+    const params = new URLSearchParams({
+      action: 'wbgetentities',
+      ids: occupationIds[0],
+      props: 'labels',
+      languages: `${language}|en`,
+      format: 'json',
+      origin: '*',
+    });
+
+    const response = await fetch(`${WIKIDATA_API}?${params}`);
+    const data = await response.json();
+
+    const entity = data.entities?.[occupationIds[0]];
+    if (!entity?.labels) return null;
+
+    // Try preferred language first, then English
+    const label = entity.labels[language]?.value || entity.labels['en']?.value;
+    return label || null;
+  } catch (error) {
+    console.error('Error extracting occupations:', error);
+    return null;
+  }
+}
+
+/**
+ * Get image URL using Wikimedia Commons API (more reliable than MD5 hashing)
+ * @param {string} filename - Image filename from Wikidata
+ * @returns {Promise<string|null>} Image URL or null
+ */
+async function getCommonsImageUrl(filename) {
+  try {
+    const params = new URLSearchParams({
+      action: 'query',
+      titles: `File:${filename}`,
+      prop: 'imageinfo',
+      iiprop: 'url',
+      iiurlwidth: '300',
+      format: 'json',
+      origin: '*',
+    });
+
+    const response = await fetch(`https://commons.wikimedia.org/w/api.php?${params}`);
+    const data = await response.json();
+
+    const pages = data.query?.pages;
+    if (!pages) return null;
+
+    const pageId = Object.keys(pages)[0];
+    const imageUrl = pages[pageId]?.imageinfo?.[0]?.thumburl || pages[pageId]?.imageinfo?.[0]?.url;
+
+    return imageUrl || null;
+  } catch (error) {
+    console.error('Error fetching Commons image URL:', error);
+    return null;
+  }
+}
+
+/**
+ * Extract Wikipedia link from Wikidata sitelinks
+ * @param {object} sitelinks - Wikidata sitelinks object
+ * @param {string} language - Preferred language
+ * @returns {string|null} Wikipedia URL or null
+ */
+function extractWikipediaLink(sitelinks, language) {
+  if (!sitelinks) {
+    return null;
+  }
+
+  // Try preferred language wiki first
+  const preferredSite = `${language}wiki`;
+  if (sitelinks[preferredSite]) {
+    return sitelinks[preferredSite].url;
+  }
+
+  // Fall back to English Wikipedia
+  if (sitelinks.enwiki) {
+    return sitelinks.enwiki.url;
+  }
+
+  return null;
+}
+
+/**
+ * Fetch author information from Wikidata
+ * @param {string} authorName - Author name
+ * @param {string} language - Language code (default: 'en')
+ * @returns {Promise<object|null>} Author data object or null
+ */
+export async function fetchAuthorFromWikidata(authorName, language = 'en') {
+  if (!authorName || authorName === 'Unknown') {
+    return null;
+  }
+
+  // Check cache first
+  const cached = getCachedAuthorData(authorName, language);
+  if (cached) {
+    return cached;
+  }
+
+  try {
+    // Step 1: Search for author entity
+    const entityId = await searchAuthorEntity(authorName, language);
+    if (!entityId) {
+      // Cache negative result to avoid repeated lookups
+      cacheAuthorData(authorName, language, null);
+      return null;
+    }
+
+    // Step 2: Fetch entity data
+    const params = new URLSearchParams({
+      action: 'wbgetentities',
+      ids: entityId,
+      props: 'claims|sitelinks|descriptions',
+      languages: `${language}|en`,
+      format: 'json',
+      origin: '*',
+    });
+
+    const response = await fetch(`${WIKIDATA_API}?${params}`);
+    const data = await response.json();
+    const entity = data.entities?.[entityId];
+
+    if (!entity) {
+      cacheAuthorData(authorName, language, null);
+      return null;
+    }
+
+    // Step 3: Extract data
+    const claims = entity.claims;
+    const sitelinks = entity.sitelinks;
+
+    // Get occupation
+    const occupation = await extractOccupations(claims, language);
+
+    // Get image
+    let imageUrl = null;
+    if (claims.P18 && claims.P18.length > 0) {
+      const filename = claims.P18[0].mainsnak?.datavalue?.value;
+      if (filename) {
+        imageUrl = await getCommonsImageUrl(filename);
+      }
+    }
+
+    // Get Wikipedia link
+    const wikipediaLink = extractWikipediaLink(sitelinks, language);
+
+    // Get description
+    const description =
+      entity.descriptions?.[language]?.value || entity.descriptions?.['en']?.value;
+
+    const authorData = {
+      entityId,
+      occupation,
+      imageUrl,
+      wikipediaLink,
+      description,
+      imageLicense: imageUrl ? 'Wikimedia Commons' : null,
+    };
+
+    // Cache result
+    cacheAuthorData(authorName, language, authorData);
+
+    return authorData;
+  } catch (error) {
+    console.error('Error fetching author from Wikidata:', error);
+    return null;
+  }
+}
+
+/**
+ * Clear all Wikidata cache
+ */
+export function clearWikidataCache() {
+  const keys = Object.keys(localStorage);
+  keys.forEach((key) => {
+    if (key.startsWith('wikidataAuthor_')) {
+      localStorage.removeItem(key);
+    }
+  });
+}
