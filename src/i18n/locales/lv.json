@@ -172,6 +172,8 @@
             "author_details": "Rādīt autora detaļas",
             "custom": "Pielāgots citāts",
             "custom_subtitle": "Iestatiet savus pielāgotos citātus",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
             "no_quotes": "Nav citātu",
             "author": "Autors",
             "custom_buttons": "Pogas",
@@ -309,7 +311,8 @@
               "thirty": "Once every 30 minutes",
               "hour": "Once an hour",
               "day": "Once a day"
-            }
+            },
+            "installed_packs_title": "Installed Photo Packs"
           },
           "search": {
             "title": "Meklēšana",
@@ -732,6 +735,7 @@
     "error": "Kaut kas nogāja greizi",
     "imported": "Veiksmīgi importēts",
     "no_storage": "Nepietiek atmiņas",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Saite nokopēta",
     "stats_reset": "Statistika atiestatīta"
   }

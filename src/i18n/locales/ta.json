@@ -172,6 +172,8 @@
             "author_details": "ஆசிரியர் விவரங்கள்",
             "custom": "தனிப்பயன் மேற்கோள்",
             "custom_subtitle": "உங்கள் சொந்த தனிப்பயன் மேற்கோள்களை அமைக்கவும்",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
             "no_quotes": "மேற்கோள்கள் இல்லை",
             "author": "நூலாசிரியர்",
             "custom_buttons": "பொத்தான்கள்",
@@ -309,7 +311,8 @@
               "thirty": "Once every 30 minutes",
               "hour": "Once an hour",
               "day": "Once a day"
-            }
+            },
+            "installed_packs_title": "Installed Photo Packs"
           },
           "search": {
             "title": "தேடல்",
@@ -732,6 +735,7 @@
     "error": "ஏதோ தவறு நடந்தது",
     "imported": "வெற்றிகரமாக இறக்குமதி செய்யப்பட்டது",
     "no_storage": "போதுமான சேமிப்பு இல்லை",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "இணைப்பு நகலெடுக்கப்பட்டது",
     "stats_reset": "புள்ளிவிவரங்கள் மீட்டமைக்கப்படுகின்றன"
   }

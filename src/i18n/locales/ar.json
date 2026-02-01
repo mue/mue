@@ -172,6 +172,8 @@
             "author_details": "تفاصيل المؤلف",
             "custom": "اقتباس مخصص",
             "custom_subtitle": "قم بتعيين اقتباساتك المخصصة",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
             "no_quotes": "لا توجد اقتباسات",
             "author": "المؤلف",
             "custom_buttons": "الأزرار",
@@ -309,7 +311,8 @@
               "thirty": "Once every 30 minutes",
               "hour": "Once an hour",
               "day": "Once a day"
-            }
+            },
+            "installed_packs_title": "Installed Photo Packs"
           },
           "search": {
             "title": "البحث",
@@ -732,6 +735,7 @@
     "error": "حدث خطأ ما",
     "imported": "تم الاستيراد بنجاح",
     "no_storage": "مساحة التخزين غير كافية",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "تم نسخ الرابط",
     "stats_reset": "تم إعادة تعيين الإحصائيات"
   }

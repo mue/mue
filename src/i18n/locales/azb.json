@@ -172,6 +172,8 @@
             "author_details": "Müəllif məlumatlarını",
             "custom": "Xüsusi sitat",
             "custom_subtitle": "Öz xüsusi sitatlarınızı təyin edin",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
             "no_quotes": "Sitat yoxdur",
             "author": "Müəllif",
             "custom_buttons": "Düymələr",
@@ -309,7 +311,8 @@
               "thirty": "Once every 30 minutes",
               "hour": "Once an hour",
               "day": "Once a day"
-            }
+            },
+            "installed_packs_title": "Installed Photo Packs"
           },
           "search": {
             "title": "Axtarış",
@@ -732,6 +735,7 @@
     "error": "Bir şey səhv getdi",
     "imported": "Uğurla idxal edildi",
     "no_storage": "Kifayət qədər yaddaş yoxdur",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Link kopyalandı",
     "stats_reset": "Statistikalar sıfırlandı"
   }

@@ -172,6 +172,8 @@
             "author_details": "作者详情",
             "custom": "自定义名言",
             "custom_subtitle": "自定义名言",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
             "no_quotes": "没有名言",
             "author": "作者",
             "custom_buttons": "按钮",
@@ -309,7 +311,8 @@
               "thirty": "Once every 30 minutes",
               "hour": "Once an hour",
               "day": "Once a day"
-            }
+            },
+            "installed_packs_title": "Installed Photo Packs"
           },
           "search": {
             "title": "搜索栏",
@@ -732,6 +735,7 @@
     "error": "发生错误",
     "imported": "导入成功",
     "no_storage": "Not enough storage",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Link copied",
     "stats_reset": "Stats reset"
   }

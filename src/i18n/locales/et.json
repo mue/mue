@@ -172,6 +172,8 @@
             "author_details": "Näita autori üksikasju",
             "custom": "Kohandatud tsitaat",
             "custom_subtitle": "Määra oma kohandatud tsitaadid",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
             "no_quotes": "Tsitaate pole",
             "author": "Autor",
             "custom_buttons": "Nupud",
@@ -309,7 +311,8 @@
               "thirty": "Once every 30 minutes",
               "hour": "Once an hour",
               "day": "Once a day"
-            }
+            },
+            "installed_packs_title": "Installed Photo Packs"
           },
           "search": {
             "title": "Otsing",
@@ -732,6 +735,7 @@
     "error": "Midagi läks valesti",
     "imported": "Edukalt imporditud",
     "no_storage": "Pole piisavalt mäluruumi",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Link kopeeritud",
     "stats_reset": "Statistika lähtestatud"
   }

@@ -172,6 +172,8 @@
             "author_details": "Rodyti autoriaus informaciją",
             "custom": "Pasirinktinė citata",
             "custom_subtitle": "Nustatykite savo pasirinktines citatas",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
             "no_quotes": "Nėra citatų",
             "author": "Autorius",
             "custom_buttons": "Mygtukai",
@@ -309,7 +311,8 @@
               "thirty": "Once every 30 minutes",
               "hour": "Once an hour",
               "day": "Once a day"
-            }
+            },
+            "installed_packs_title": "Installed Photo Packs"
           },
           "search": {
             "title": "Paieška",
@@ -732,6 +735,7 @@
     "error": "Kažkas nepavyko",
     "imported": "Sėkmingai importuota",
     "no_storage": "Nepakanka saugyklos vietos",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Nuoroda nukopijuota",
     "stats_reset": "Statistika atstatyta"
   }

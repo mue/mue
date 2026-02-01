@@ -172,6 +172,8 @@
             "author_details": "Tampilkan detail penulis",
             "custom": "Kutipan kustom",
             "custom_subtitle": "Tetapkan kutipan khusus Anda sendiri",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
             "no_quotes": "Tidak ada kutipan",
             "author": "Kreator",
             "custom_buttons": "Tombol",
@@ -309,7 +311,8 @@
               "thirty": "Once every 30 minutes",
               "hour": "Once an hour",
               "day": "Once a day"
-            }
+            },
+            "installed_packs_title": "Installed Photo Packs"
           },
           "search": {
             "title": "Cari",
@@ -732,6 +735,7 @@
     "error": "Terdapat kesalahan",
     "imported": "Berhasil mengimpor",
     "no_storage": "Not enough storage",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Link copied",
     "stats_reset": "Stats reset"
   }

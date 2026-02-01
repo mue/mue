@@ -172,6 +172,8 @@
             "author_details": "Author details",
             "custom": "Custom quote",
             "custom_subtitle": "Schrijf je eigen citaten",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
             "no_quotes": "Geen citaten",
             "author": "Auteur",
             "custom_buttons": "Knoppen",
@@ -309,7 +311,8 @@
               "thirty": "Once every 30 minutes",
               "hour": "Once an hour",
               "day": "Once a day"
-            }
+            },
+            "installed_packs_title": "Installed Photo Packs"
           },
           "search": {
             "title": "Zoekbalk",
@@ -732,6 +735,7 @@
     "error": "Er is iets misgegaan",
     "imported": "Het importeren is voltooid",
     "no_storage": "Niet genoeg opslag",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Link gekopieerd",
     "stats_reset": "Stats reset"
   }

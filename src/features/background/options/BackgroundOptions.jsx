@@ -1,8 +1,11 @@
 import variables from 'config/variables';
 import { memo, useState, useEffect, useCallback, useRef } from 'react';
 import { MdSource, MdOutlineAutoAwesome } from 'react-icons/md';
+import { toast } from 'react-toastify';
 import EventBus from 'utils/eventbus';
 import { clearQueuesOnSettingChange } from 'utils/queueOperations';
+import { uninstall } from 'utils/marketplace';
+import { updateHash } from 'utils/deepLinking';
 
 import { Header } from 'components/Layout/Settings';
 import { Dropdown } from 'components/Form/Settings';
@@ -32,6 +35,18 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
     localStorage.getItem('backgroundAPI') || 'mue',
   );
   const [marketplaceEnabled] = useState(localStorage.getItem('photo_packs'));
+
+  // Helper function to get installed photo packs
+  const getInstalledPhotoPacks = () => {
+    try {
+      const installed = JSON.parse(localStorage.getItem('installed')) || [];
+      return installed.filter((item) => item.type === 'photos');
+    } catch {
+      return [];
+    }
+  };
+
+  const [installedPhotoPacks, setInstalledPhotoPacks] = useState(getInstalledPhotoPacks());
 
   // Auto-show source section for types without effects/display settings
   const shouldShowSourceByDefault = ['colour', 'random_colour', 'random_gradient'].includes(
@@ -105,6 +120,56 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
       controllerRef.current.abort();
     };
   }, [getBackgroundCategories]);
+
+  // Listen for installed addons changes
+  useEffect(() => {
+    const handleInstalledAddonsChanged = () => {
+      setInstalledPhotoPacks(getInstalledPhotoPacks());
+      // Update backgroundType if it changed (e.g., when all packs are uninstalled)
+      const currentType = localStorage.getItem('backgroundType') || 'api';
+      if (currentType !== backgroundType) {
+        setBackgroundType(currentType);
+      }
+    };
+
+    window.addEventListener('installedAddonsChanged', handleInstalledAddonsChanged);
+    return () => window.removeEventListener('installedAddonsChanged', handleInstalledAddonsChanged);
+  }, [backgroundType]);
+
+  // Handle photo pack uninstall
+  const handlePhotoPackUninstall = (type, name) => {
+    uninstall(type, name);
+    toast(variables.getMessage('toasts.uninstalled'));
+    variables.stats.postEvent('marketplace-item', `${name} uninstalled`);
+    setInstalledPhotoPacks(getInstalledPhotoPacks());
+    window.dispatchEvent(new window.Event('installedAddonsChanged'));
+  };
+
+  // Navigate to photo packs marketplace
+  const goToPhotoPacks = () => {
+    variables.updateHash('#discover/photo_packs');
+    const event = new window.Event('popstate');
+    window.dispatchEvent(event);
+  };
+
+  const handleToggle = (pack) => {
+    // Navigate to discover tab with the item
+    const itemId = pack.name;
+    updateHash(`#discover/all?item=${itemId}`);
+
+    // Trigger navigation
+    const event = new window.Event('popstate');
+    window.dispatchEvent(event);
+
+    variables.stats.postEvent('marketplace', 'ItemPage viewed');
+  };
+
+  // Get total count of photos across all installed packs
+  const getTotalPhotoCount = () => {
+    return installedPhotoPacks.reduce((total, pack) => {
+      return total + (pack.photos?.length || 0);
+    }, 0);
+  };
 
   const getBackgroundSettings = () => {
     switch (backgroundType) {
@@ -231,11 +296,16 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
           <SourceSection
             backgroundType={backgroundType}
             marketplaceEnabled={marketplaceEnabled}
+            installedPhotoPacks={installedPhotoPacks}
+            totalPhotoCount={getTotalPhotoCount()}
             onTypeChange={(value) => {
               // Clear prefetch queue when changing background type
               clearQueuesOnSettingChange('backgroundType');
               setBackgroundType(value);
             }}
+            onPhotoPackUninstall={handlePhotoPackUninstall}
+            onGoToPhotoPacks={goToPhotoPacks}
+            onToggle={handleToggle}
           />
           {getBackgroundSettings()}
         </>

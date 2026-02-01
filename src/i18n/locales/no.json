@@ -172,6 +172,8 @@
             "author_details": "Author details",
             "custom": "Custom quote",
             "custom_subtitle": "Set your own custom quotes",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
             "no_quotes": "No quotes",
             "author": "Author",
             "custom_buttons": "Buttons",
@@ -309,7 +311,8 @@
               "thirty": "Once every 30 minutes",
               "hour": "Once an hour",
               "day": "Once a day"
-            }
+            },
+            "installed_packs_title": "Installed Photo Packs"
           },
           "search": {
             "title": "Søkebar",
@@ -732,6 +735,7 @@
     "error": "Noe gikk galt",
     "imported": "Successfully imported",
     "no_storage": "Not enough storage",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Link copied",
     "stats_reset": "Stats reset"
   }

@@ -172,6 +172,8 @@
             "author_details": "Yazar hakkında daha fazla bilgi göster",
             "custom": "Özel Alıntı",
             "custom_subtitle": "Kendi özel alıntınızı belirleyin, ekleyin.",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
             "no_quotes": "Alıntı yok",
             "author": "Yazar",
             "custom_buttons": "Butonlar",
@@ -309,7 +311,8 @@
               "thirty": "Once every 30 minutes",
               "hour": "Once an hour",
               "day": "Once a day"
-            }
+            },
+            "installed_packs_title": "Installed Photo Packs"
           },
           "search": {
             "title": "Arama",
@@ -732,6 +735,7 @@
     "error": "Bir şeyler yanlış gitti",
     "imported": "Başarıyla içe aktarıldı",
     "no_storage": "Yeteri kadar yer yok",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Bağlantı kopyalandı",
     "stats_reset": "İstatistikler sıfırlandı"
   }

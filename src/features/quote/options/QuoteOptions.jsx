@@ -1,6 +1,7 @@
 import variables from 'config/variables';
 import React, { useState, useEffect } from 'react';
-import { MdCancel, MdAdd, MdSource, MdOutlineFormatQuote } from 'react-icons/md';
+import { MdCancel, MdAdd, MdSource, MdOutlineFormatQuote, MdExplore } from 'react-icons/md';
+import { toast } from 'react-toastify';
 
 import {
   Header,
@@ -13,6 +14,9 @@ import {
 import { Checkbox, Dropdown, Textarea } from 'components/Form/Settings';
 import { Button } from 'components/Elements';
 import { FREQUENCY_OPTIONS } from 'utils/frequencyManager';
+import Items from 'features/marketplace/components/Items/Items';
+import { uninstall } from 'utils/marketplace';
+import { updateHash } from 'utils/deepLinking';
 import './QuoteOptions.scss';
 
 const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => {
@@ -192,6 +196,78 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
 
   const isSourceSection = currentSubSection === 'source';
 
+  // Get installed quote packs
+  const getInstalledQuotePacks = () => {
+    try {
+      const installed = JSON.parse(localStorage.getItem('installed')) || [];
+      return installed.filter((item) => item.type === 'quotes');
+    } catch (e) {
+      return [];
+    }
+  };
+
+  const [installedQuotePacks, setInstalledQuotePacks] = useState(getInstalledQuotePacks());
+
+  // Listen for changes to installed addons
+  useEffect(() => {
+    const handleInstalledAddonsChanged = () => {
+      setInstalledQuotePacks(getInstalledQuotePacks());
+      // Update quoteType if it changed (e.g., when all packs are uninstalled)
+      const currentType = localStorage.getItem('quoteType') || 'api';
+      if (currentType !== quoteType) {
+        setQuoteType(currentType);
+      }
+    };
+
+    window.addEventListener('installedAddonsChanged', handleInstalledAddonsChanged);
+    return () => {
+      window.removeEventListener('installedAddonsChanged', handleInstalledAddonsChanged);
+    };
+  }, [quoteType]);
+
+  const handleUninstall = (type, name) => {
+    // Prevent removing the default pack if it's the only one remaining
+    const DEFAULT_PACK_ID = '0c8a5bdebd13';
+    if (installedQuotePacks.length === 1) {
+      const remainingPack = installedQuotePacks[0];
+      if (remainingPack.id === DEFAULT_PACK_ID || remainingPack.name === name) {
+        toast(variables.getMessage('toasts.quote_pack_only_one'));
+        return;
+      }
+    }
+
+    uninstall(type, name);
+    toast(variables.getMessage('toasts.uninstalled'));
+    variables.stats.postEvent('marketplace-item', `${name} uninstalled`);
+    variables.stats.postEvent('marketplace', 'Uninstall');
+    setInstalledQuotePacks(getInstalledQuotePacks());
+    window.dispatchEvent(new window.Event('installedAddonsChanged'));
+  };
+
+  const goToQuotePacks = () => {
+    updateHash('#discover/quote_packs');
+    const event = new window.Event('popstate');
+    window.dispatchEvent(event);
+  };
+
+  const handleToggle = (pack) => {
+    // Navigate to discover tab with the item
+    const itemId = pack.name;
+    updateHash(`#discover/all?item=${itemId}`);
+
+    // Trigger navigation
+    const event = new window.Event('popstate');
+    window.dispatchEvent(event);
+
+    variables.stats.postEvent('marketplace', 'ItemPage viewed');
+  };
+
+  const getTotalQuoteCount = () => {
+    return installedQuotePacks.reduce((total, pack) => {
+      return total + (pack.quotes?.length || 0);
+    }, 0);
+  };
+
   let customSettings;
   if (quoteType === 'custom' && isSourceSection) {
     customSettings = (
@@ -275,6 +351,35 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
             />
           </div>
         )}
+      </>
+    );
+  } else if (quoteType === 'quote_pack' && isSourceSection && installedQuotePacks.length > 0) {
+    const totalQuotes = getTotalQuoteCount();
+    customSettings = (
+      <>
+        <Row final={true}>
+          <Content
+            title={variables.getMessage('modals.main.settings.sections.quote.installed_packs_title')}
+            subtitle={`${installedQuotePacks.length} ${installedQuotePacks.length === 1 ? 'pack' : 'packs'} • ${totalQuotes} ${totalQuotes === 1 ? 'quote' : 'quotes'}`}
+          />
+          <Action>
+            <Button
+              type="settings"
+              onClick={goToQuotePacks}
+              icon={<MdExplore />}
+              label={variables.getMessage('modals.main.settings.sections.quote.get_more')}
+            />
+          </Action>
+        </Row>
+        <Items
+          items={installedQuotePacks}
+          isAdded={true}
+          filter=""
+          toggleFunction={handleToggle}
+          showCreateYourOwn={false}
+          onUninstall={handleUninstall}
+          viewType="grid"
+        />
       </>
     );
   } else {

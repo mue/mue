@@ -172,6 +172,8 @@
             "author_details": "Інформація про автора",
             "custom": "Користувацька цитата",
             "custom_subtitle": "Встановіть свої власні користувацьки цитати",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
             "no_quotes": "Без лапок",
             "author": "Автор",
             "custom_buttons": "Кнопки",
@@ -309,7 +311,8 @@
               "thirty": "Once every 30 minutes",
               "hour": "Once an hour",
               "day": "Once a day"
-            }
+            },
+            "installed_packs_title": "Installed Photo Packs"
           },
           "search": {
             "title": "Пошук",
@@ -732,6 +735,7 @@
     "error": "Щось пішло не так",
     "imported": "Успішно імпортовано",
     "no_storage": "Недостатньо місця для зберігання",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Посилання скопійовано",
     "stats_reset": "Статистику скинуто"
   }

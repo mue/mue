@@ -172,6 +172,8 @@
             "author_details": "Autor Details",
             "custom": "Benutzerdefiniertes Zitat",
             "custom_subtitle": "Legen Sie Ihre eigenen Zitate fest",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
             "no_quotes": "Keine Zitate",
             "author": "Autor",
             "custom_buttons": "Schaltflächen",
@@ -309,7 +311,8 @@
               "thirty": "Once every 30 minutes",
               "hour": "Once an hour",
               "day": "Once a day"
-            }
+            },
+            "installed_packs_title": "Installed Photo Packs"
           },
           "search": {
             "title": "Suche",
@@ -732,6 +735,7 @@
     "error": "Etwas ist schief gelaufen",
     "imported": "Erfolgreich importiert",
     "no_storage": "Nicht genügend Speicherplatz",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Link kopiert",
     "stats_reset": "Stats reset"
   }

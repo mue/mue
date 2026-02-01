@@ -113,14 +113,19 @@ export function useQuoteLoader(updateQuote) {
         ];
       }
 
-      if (!customQuote || customQuote.length === 0) {
+      // Filter out incomplete quotes (empty quote text)
+      const validQuotes = customQuote?.filter(
+        (q) => q.quote && q.quote.trim() !== ''
+      ) || [];
+
+      if (validQuotes.length === 0) {
         return { noQuote: true };
       }
 
-      const selected = customQuote[Math.floor(Math.random() * customQuote.length)];
+      const selected = validQuotes[Math.floor(Math.random() * validQuotes.length)];
       return {
         quote: `"${selected.quote}"`,
-        author: selected.author,
+        author: selected.author || 'Unknown',
         authorlink: getAuthorLink(selected.author),
         needsAuthorData: true,
         noQuote: false,

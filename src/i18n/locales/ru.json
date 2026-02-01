@@ -172,6 +172,8 @@
             "author_details": "Авторские сведения",
             "custom": "Пользовательская цитата",
             "custom_subtitle": "Установите свои собственные пользовательские цитаты",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
             "no_quotes": "Без кавычек",
             "author": "Автор",
             "custom_buttons": "Кнопки",
@@ -309,7 +311,8 @@
               "thirty": "Once every 30 minutes",
               "hour": "Once an hour",
               "day": "Once a day"
-            }
+            },
+            "installed_packs_title": "Installed Photo Packs"
           },
           "search": {
             "title": "Панель поиска",
@@ -732,6 +735,7 @@
     "error": "Что-то пошло не так",
     "imported": "Успешно импортировано",
     "no_storage": "Недостаточно места",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Ссылка скопирована",
     "stats_reset": "Stats reset"
   }

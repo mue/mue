@@ -9,6 +9,39 @@ import { safeParseJSON } from '../jsonStorage';
 
 const WIKIDATA_API = 'https://www.wikidata.org/w/api.php';
 const CACHE_EXPIRY = 7 * 24 * 60 * 60 * 1000; // 7 days
+const MAX_CACHE_ENTRIES = 50; // Maximum number of cached authors
+
+/**
+ * Get all Wikidata cache keys from localStorage
+ * @returns {Array<{key: string, timestamp: number}>} Array of cache entries with timestamps
+ */
+function getWikidataCacheEntries() {
+  const keys = Object.keys(localStorage);
+  return keys
+    .filter((key) => key.startsWith('wikidataAuthor_'))
+    .map((key) => {
+      const cached = safeParseJSON(key);
+      return {
+        key,
+        timestamp: cached?.timestamp || 0,
+      };
+    })
+    .sort((a, b) => a.timestamp - b.timestamp); // Oldest first
+}
+
+/**
+ * Remove oldest cache entries if cache size exceeds limit
+ */
+function pruneCache() {
+  const entries = getWikidataCacheEntries();
+
+  if (entries.length > MAX_CACHE_ENTRIES) {
+    const toRemove = entries.length - MAX_CACHE_ENTRIES;
+    entries.slice(0, toRemove).forEach((entry) => {
+      localStorage.removeItem(entry.key);
+    });
+  }
+}
 
 /**
  * Get cached author data from localStorage
@@ -36,6 +69,7 @@ function getCachedAuthorData(authorName, language) {
 
 /**
  * Cache author data in localStorage
+ * Prunes old entries if cache exceeds maximum size
  * @param {string} authorName - Author name
  * @param {string} language - Language code
  * @param {object} data - Author data to cache
@@ -49,6 +83,9 @@ function cacheAuthorData(authorName, language, data) {
       data,
     }),
   );
+
+  // Prune cache if it exceeds the limit
+  pruneCache();
 }
 
 /**
@@ -85,9 +122,10 @@ async function searchAuthorEntity(authorName, language = 'en') {
 
 /**
  * Extract occupation labels from Wikidata claims
+ * Returns the highest-ranked occupation based on Wikidata rank
  * @param {object} claims - Wikidata claims object
  * @param {string} language - Preferred language
- * @returns {Promise<string|null>} Formatted occupation string or null
+ * @returns {Promise<string|null>} Most notable occupation string or null
  */
 async function extractOccupations(claims, language) {
   if (!claims || !claims.P106) {
@@ -95,18 +133,29 @@ async function extractOccupations(claims, language) {
   }
 
   try {
-    const occupationIds = claims.P106.filter((claim) => claim.mainsnak?.datavalue?.value?.id)
-      .map((claim) => claim.mainsnak.datavalue.value.id)
-      .slice(0, 1); // Only take the first/primary occupation
+    // Get all occupations with their ranks
+    const occupations = claims.P106
+      .filter((claim) => claim.mainsnak?.datavalue?.value?.id)
+      .map((claim) => ({
+        id: claim.mainsnak.datavalue.value.id,
+        rank: claim.rank || 'normal', // 'preferred', 'normal', 'deprecated'
+      }));
 
-    if (occupationIds.length === 0) {
+    if (occupations.length === 0) {
       return null;
     }
+
+    // Sort by rank: preferred > normal > deprecated
+    const rankOrder = { preferred: 0, normal: 1, deprecated: 2 };
+    occupations.sort((a, b) => rankOrder[a.rank] - rankOrder[b.rank]);
+
+    // Take only the top-ranked occupation
+    const topOccupation = occupations[0];
 
     // Fetch occupation label
     const params = new URLSearchParams({
       action: 'wbgetentities',
-      ids: occupationIds[0],
+      ids: topOccupation.id,
       props: 'labels',
       languages: `${language}|en`,
       format: 'json',
@@ -116,7 +165,7 @@ async function extractOccupations(claims, language) {
     const response = await fetch(`${WIKIDATA_API}?${params}`);
     const data = await response.json();
 
-    const entity = data.entities?.[occupationIds[0]];
+    const entity = data.entities?.[topOccupation.id];
     if (!entity?.labels) return null;
 
     // Try preferred language first, then English

@@ -172,6 +172,8 @@
             "author_details": "Podrobnosti avtorja",
             "custom": "Lastni citat",
             "custom_subtitle": "Nastavite svoje lastne citate",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
             "no_quotes": "Brez citatov",
             "author": "Avtor",
             "custom_buttons": "Gumbi",
@@ -309,7 +311,8 @@
               "thirty": "Once every 30 minutes",
               "hour": "Once an hour",
               "day": "Once a day"
-            }
+            },
+            "installed_packs_title": "Installed Photo Packs"
           },
           "search": {
             "title": "Iskanje",
@@ -732,6 +735,7 @@
     "error": "Prišlo je do napake",
     "imported": "Uspešno uvoženo",
     "no_storage": "Ni dovolj prostora za shranjevanje",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Povezava kopirana",
     "stats_reset": "Statistika ponastavljena"
   }
