@@ -17,6 +17,7 @@
     // Container for search bar and toggle button
     .sidebarHeader {
       display: flex;
+      flex-direction: row-reverse;
       justify-content: space-between;
       align-items: center;
       gap: 0.5rem;
@@ -232,6 +233,36 @@
 // Sidebar skeleton loader
 .sidebarSkeleton {
   padding: 0.5rem 0.2rem;
+
+  .skeletonHeader {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    .skeletonToggle {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      flex-shrink: 0;
+
+      @include themed {
+        background: t($modal-sidebarActive);
+      }
+    }
+
+    .skeletonSearch {
+      flex: 1;
+      height: 38px;
+      border-radius: 10px;
+
+      @include themed {
+        background: t($modal-sidebarActive);
+      }
+    }
+  }
 
   .skeletonItem {
     display: flex;

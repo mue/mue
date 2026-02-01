@@ -154,6 +154,7 @@ const Tabs = ({
       {showSidebar ? (
         <div className={`modalSidebar ${isSidebarCollapsed ? 'collapsed' : 'expanded'}`}>
           <div className="sidebarHeader">
+            <SidebarToggle isCollapsed={isSidebarCollapsed} onToggle={handleToggleSidebar} />
             {!isSidebarCollapsed && activeTab === TAB_TYPES.SETTINGS && (
               <SearchInput
                 value={searchQuery}
@@ -162,7 +163,6 @@ const Tabs = ({
                 fullWidth
               />
             )}
-            <SidebarToggle isCollapsed={isSidebarCollapsed} onToggle={handleToggleSidebar} />
           </div>
           {filteredChildren.map((tab, index) => (
             <Tab
