@@ -154,7 +154,7 @@ const Overview = () => {
   return (
     <>
       <span className="mainTitle">
-        {variables.getMessage('modals.main.marketplace.product.overview')}
+        {variables.getMessage('modals.main.settings.sections.order.title')}
       </span>
       <div className="overviewGrid">
         <div>

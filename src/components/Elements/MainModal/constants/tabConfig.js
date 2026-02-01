@@ -65,7 +65,7 @@ export const ICON_COMPONENTS = {
 
 // Message keys for icon mapping
 export const MESSAGE_KEYS = {
-  OVERVIEW: 'modals.main.marketplace.product.overview',
+  OVERVIEW: 'modals.main.settings.sections.order.title',
   SETTINGS: 'modals.main.navbar.settings',
   LIBRARY: 'modals.main.navbar.library',
   DISCOVER: 'modals.main.navbar.discover',

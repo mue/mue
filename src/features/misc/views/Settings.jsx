@@ -24,7 +24,7 @@ import {
 } from '../sections';
 
 const sections = [
-  { label: 'modals.main.marketplace.product.overview', name: 'order', component: Overview },
+  { label: 'modals.main.settings.sections.order.title', name: 'order', component: Overview },
   {
     label: 'modals.main.settings.sections.appearance.navbar.title',
     name: 'navbar',
