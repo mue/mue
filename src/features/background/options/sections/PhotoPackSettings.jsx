@@ -133,7 +133,9 @@ const PhotoPackSettings = ({ pack }) => {
 
   const renderField = (field, index) => {
     const value =
-      field.secure && settings[field.key] ? atob(settings[field.key]) : settings[field.key] || field.default;
+      field.secure && settings[field.key]
+        ? atob(settings[field.key])
+        : settings[field.key] || field.default;
 
     switch (field.type) {
       case 'dropdown':

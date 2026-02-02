@@ -18,16 +18,21 @@ const SourceSection = ({
   onToggle,
 }) => {
   const showInstalledPhotoPacks =
-    backgroundType === 'photo_pack' &&
-    marketplaceEnabled &&
-    installedPhotoPacks.length > 0;
+    backgroundType === 'photo_pack' && marketplaceEnabled && installedPhotoPacks.length > 0;
 
   return (
     <>
-      <Row final={!showInstalledPhotoPacks && (backgroundType === 'random_colour' || backgroundType === 'random_gradient')}>
+      <Row
+        final={
+          !showInstalledPhotoPacks &&
+          (backgroundType === 'random_colour' || backgroundType === 'random_gradient')
+        }
+      >
         <Content
           title={variables.getMessage('modals.main.settings.sections.background.source.title')}
-          subtitle={variables.getMessage('modals.main.settings.sections.background.source.subtitle')}
+          subtitle={variables.getMessage(
+            'modals.main.settings.sections.background.source.subtitle',
+          )}
         />
         <Action>
           <Dropdown
@@ -44,7 +49,9 @@ const SourceSection = ({
         <>
           <Row final={true}>
             <Content
-              title={variables.getMessage('modals.main.settings.sections.background.installed_packs_title')}
+              title={variables.getMessage(
+                'modals.main.settings.sections.background.installed_packs_title',
+              )}
               subtitle={`${installedPhotoPacks.length} ${installedPhotoPacks.length === 1 ? 'pack' : 'packs'} • ${totalPhotoCount} ${totalPhotoCount === 1 ? 'photo' : 'photos'}`}
             />
             <Action>
@@ -60,7 +67,7 @@ const SourceSection = ({
             onUninstall={onPhotoPackUninstall}
             viewType="grid"
           />
-          
+
           {/* Settings for API packs */}
           {installedPhotoPacks.map((pack) =>
             pack.api_enabled ? <PhotoPackSettings key={pack.id} pack={pack} /> : null,
