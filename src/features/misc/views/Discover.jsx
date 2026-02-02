@@ -146,21 +146,21 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
   useEffect(() => {
     const handleHashChange = () => {
       if (!iframeRef.current?.contentWindow) return;
-      
+
       const hash = window.location.hash;
       if (!hash || !hash.startsWith('#discover')) return;
-      
+
       // Parse hash to determine target path
       // e.g., #discover/photo_packs/123 -> /marketplace/packs/123
       // e.g., #discover/preset_settings/456 -> /marketplace/presets/456
       // e.g., #discover/collections -> /marketplace/collections
       // e.g., #discover/collection/featured -> /marketplace/collection/featured
-      
+
       const parts = hash.slice(1).split('/');
       if (parts.length < 2) return;
-      
+
       let targetPath = '/marketplace';
-      
+
       if (parts[1] === 'collections') {
         targetPath = '/marketplace/collections';
       } else if (parts[1] === 'collection' && parts[2]) {
@@ -178,18 +178,18 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
         // Category filter
         targetPath = `/marketplace?type=${parts[1]}`;
       }
-      
+
       // Send navigation command to iframe
       const theme = getResolvedTheme();
       iframeRef.current.contentWindow.postMessage(
         {
           type: 'marketplace:navigate',
-          payload: { path: targetPath }
+          payload: { path: targetPath },
         },
-        MARKETPLACE_URL
+        MARKETPLACE_URL,
       );
     };
-    
+
     // Listen for hash changes from browser navigation
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
@@ -302,15 +302,15 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
             // e.g., /marketplace/presets/456 -> #discover/preset_settings/456
             // e.g., /marketplace/collections -> #discover/collections
             // e.g., /marketplace/collection/featured -> #discover/collection/featured
-            
+
             const path = payload.path;
-            
+
             if (path.includes('/packs/')) {
               const itemId = path.split('/packs/')[1]?.split('?')[0];
               if (itemId) {
                 // Determine type from installed items or default to photo_packs
                 const installed = JSON.parse(localStorage.getItem('installed')) || [];
-                const item = installed.find(i => i.id === itemId);
+                const item = installed.find((i) => i.id === itemId);
                 const category = item?.type || 'photo_packs';
                 updateHash(`#discover/${category}/${itemId}`);
               }

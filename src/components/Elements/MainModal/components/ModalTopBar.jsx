@@ -102,38 +102,41 @@ function ModalTopBar({
       // Use all iframe breadcrumbs except the first one (which is usually "Marketplace" or the category)
       // Skip the first breadcrumb as it's redundant with our tab label
       const relevantCrumbs = iframeBreadcrumbs.slice(1);
-      
+
       relevantCrumbs.forEach((crumb, index) => {
         const isLast = index === relevantCrumbs.length - 1;
-        
+
         breadcrumbPath.push({
           label: crumb.label,
           // Make it clickable if it has an href and it's not the last item
-          onClick: crumb.clickable && !isLast && crumb.href ? () => {
-            // Convert website href to extension hash format
-            // e.g., /marketplace/packs/123 -> #discover/photo_packs/123
-            // e.g., /marketplace/collections -> #discover/collections
-            const href = crumb.href;
-            
-            if (href.includes('/collections')) {
-              updateHash('#discover/collections');
-            } else if (href.includes('/collection/')) {
-              const collectionId = href.split('/collection/')[1]?.split('?')[0];
-              if (collectionId) {
-                updateHash(`#discover/collection/${collectionId}`);
-              }
-            } else if (href === '/marketplace' || href === '/marketplace/') {
-              updateHash('#discover/all');
-            }
-            // If it's a specific item, we'd need more context to determine the category
-            // In that case, using history.back() might be more reliable
-            else {
-              const stepsBack = relevantCrumbs.length - index - 1;
-              for (let i = 0; i < stepsBack; i++) {
-                window.history.back();
-              }
-            }
-          } : null,
+          onClick:
+            crumb.clickable && !isLast && crumb.href
+              ? () => {
+                  // Convert website href to extension hash format
+                  // e.g., /marketplace/packs/123 -> #discover/photo_packs/123
+                  // e.g., /marketplace/collections -> #discover/collections
+                  const href = crumb.href;
+
+                  if (href.includes('/collections')) {
+                    updateHash('#discover/collections');
+                  } else if (href.includes('/collection/')) {
+                    const collectionId = href.split('/collection/')[1]?.split('?')[0];
+                    if (collectionId) {
+                      updateHash(`#discover/collection/${collectionId}`);
+                    }
+                  } else if (href === '/marketplace' || href === '/marketplace/') {
+                    updateHash('#discover/all');
+                  }
+                  // If it's a specific item, we'd need more context to determine the category
+                  // In that case, using history.back() might be more reliable
+                  else {
+                    const stepsBack = relevantCrumbs.length - index - 1;
+                    for (let i = 0; i < stepsBack; i++) {
+                      window.history.back();
+                    }
+                  }
+                }
+              : null,
         });
       });
     } else if (productView) {
