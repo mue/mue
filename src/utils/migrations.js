@@ -22,7 +22,7 @@ export function migrateAPIUsersToPhotoPacks() {
   // Determine which API pack to install
   if (backgroundAPI === 'mue') {
     packToInstall = {
-      id: 'mue-photos',
+      id: 'mue_photos',
       name: 'MUE Daily Photos',
       type: 'photos',
       api_enabled: true,
@@ -67,7 +67,7 @@ export function migrateAPIUsersToPhotoPacks() {
       categories: existingCategories,
     };
 
-    localStorage.setItem('photopack_settings_mue-photos', JSON.stringify(migratedSettings));
+    localStorage.setItem('photopack_settings_mue_photos', JSON.stringify(migratedSettings));
   } else if (backgroundAPI === 'unsplash') {
     packToInstall = {
       id: 'unsplash-photos',
