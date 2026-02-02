@@ -70,7 +70,7 @@ export function migrateAPIUsersToPhotoPacks() {
     localStorage.setItem('photopack_settings_mue_photos', JSON.stringify(migratedSettings));
   } else if (backgroundAPI === 'unsplash') {
     packToInstall = {
-      id: 'unsplash-photos',
+      id: 'unsplash_photos',
       name: 'Unsplash Photos',
       type: 'photos',
       api_enabled: true,
@@ -100,7 +100,7 @@ export function migrateAPIUsersToPhotoPacks() {
       collections: existingCollections,
     };
 
-    localStorage.setItem('photopack_settings_unsplash-photos', JSON.stringify(migratedSettings));
+    localStorage.setItem('photopack_settings_unsplash_photos', JSON.stringify(migratedSettings));
 
     console.log('Unsplash migration: Migrated collection settings');
   }
