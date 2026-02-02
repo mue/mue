@@ -55,7 +55,7 @@ export async function fetchFromUnsplash(packId, settings) {
 
   try {
     // Use Mue API proxy which has the Unsplash token server-side
-    const response = await fetch(`${variables.constants.API_URL}/images/unsplash?${params}`,);
+    const response = await fetch(`${variables.constants.API_URL}/images/unsplash?${params}`);
 
     if (!response.ok) {
       if (response.status === 429) {
