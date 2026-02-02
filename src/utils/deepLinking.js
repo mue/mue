@@ -152,6 +152,8 @@ export const updateHash = (hash, pushToHistory = true) => {
     } else {
       window.history.replaceState(null, null, hash);
     }
+    // Dispatch a custom event so components can react to programmatic hash changes
+    window.dispatchEvent(new PopStateEvent('popstate'));
   } else {
     window.location.hash = hash;
   }

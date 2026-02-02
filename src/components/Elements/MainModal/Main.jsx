@@ -79,6 +79,22 @@ function MainModal({ modalClose, deepLinkData }) {
           setCurrentTab(linkData.tab);
         }
 
+        // Handle discover category navigation - update section state to match hash
+        if (linkData.tab === TAB_TYPES.DISCOVER && linkData.category) {
+          const categoryToLabel = {
+            all: variables.getMessage('modals.main.marketplace.all'),
+            photo_packs: variables.getMessage('modals.main.marketplace.photo_packs'),
+            quote_packs: variables.getMessage('modals.main.marketplace.quote_packs'),
+            preset_settings: variables.getMessage('modals.main.marketplace.preset_settings'),
+            collections: variables.getMessage('modals.main.marketplace.collections'),
+          };
+          const sectionLabel = categoryToLabel[linkData.category];
+          if (sectionLabel) {
+            setCurrentSection(sectionLabel);
+            setCurrentSectionName(linkData.category);
+          }
+        }
+
         // Handle settings section navigation
         if (linkData.tab === TAB_TYPES.SETTINGS && linkData.section) {
           setNavigationTrigger({
@@ -232,6 +248,7 @@ function MainModal({ modalClose, deepLinkData }) {
         productView={productView}
         iframeBreadcrumbs={iframeBreadcrumbs}
         onTabChange={handleChangeTab}
+        onSectionChange={handleSectionChange}
         onSubSectionChange={handleSubSectionChange}
         onClose={modalClose}
         onBack={handleBack}

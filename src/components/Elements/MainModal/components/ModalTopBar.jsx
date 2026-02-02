@@ -9,13 +9,25 @@ import mueAboutIcon from 'assets/icons/mue_about.png';
 // Map marketplace types to translation keys
 const MARKETPLACE_TYPE_TO_KEY = {
   photo_packs: 'modals.main.marketplace.photo_packs',
+  'photo packs': 'modals.main.marketplace.photo_packs',
   photos: 'modals.main.marketplace.photo_packs',
   quote_packs: 'modals.main.marketplace.quote_packs',
+  'quote packs': 'modals.main.marketplace.quote_packs',
   quotes: 'modals.main.marketplace.quote_packs',
   preset_settings: 'modals.main.marketplace.preset_settings',
+  'preset settings': 'modals.main.marketplace.preset_settings',
   settings: 'modals.main.marketplace.preset_settings',
   collections: 'modals.main.marketplace.collections',
   all: 'modals.main.marketplace.all',
+};
+
+// Map breadcrumb labels (from website) to category keys for navigation
+const BREADCRUMB_LABEL_TO_CATEGORY = {
+  'photo packs': 'photo_packs',
+  'quote packs': 'quote_packs',
+  'preset settings': 'preset_settings',
+  collections: 'collections',
+  marketplace: 'all',
 };
 
 function ModalTopBar({
@@ -26,6 +38,7 @@ function ModalTopBar({
   productView,
   iframeBreadcrumbs,
   onTabChange,
+  onSectionChange,
   onSubSectionChange,
   onClose,
   onBack,
@@ -94,7 +107,13 @@ function ModalTopBar({
   if (currentTabLabel) {
     breadcrumbPath.push({
       label: currentTabLabel,
-      onClick: productView ? productView.onBackToAll : null, // Clickable if viewing a product
+      // Make "Discover" clickable when viewing items/categories to go back to "All"
+      onClick:
+        (iframeBreadcrumbs && iframeBreadcrumbs.length > 0) || productView
+          ? () => {
+              updateHash('#discover/all');
+            }
+          : null,
     });
 
     // Check if we have iframe breadcrumbs (from Discover iframe)
@@ -106,24 +125,42 @@ function ModalTopBar({
       relevantCrumbs.forEach((crumb, index) => {
         const isLast = index === relevantCrumbs.length - 1;
 
+        // Translate the breadcrumb label if it's a known category
+        const lowerLabel = crumb.label.toLowerCase();
+        const translationKey = MARKETPLACE_TYPE_TO_KEY[lowerLabel];
+        const displayLabel = translationKey ? t(translationKey) : crumb.label;
+
+        // Get the category key for navigation
+        const categoryKey = BREADCRUMB_LABEL_TO_CATEGORY[lowerLabel];
+
         breadcrumbPath.push({
-          label: crumb.label,
+          label: displayLabel,
           // Make it clickable if it has an href and it's not the last item
           onClick:
             crumb.clickable && !isLast && crumb.href
               ? () => {
                   // Convert website href to extension hash format
-                  // e.g., /marketplace/packs/123 -> #discover/photo_packs/123
-                  // e.g., /marketplace/collections -> #discover/collections
                   const href = crumb.href;
 
-                  if (href.includes('/collections')) {
+                  // Try to extract type from URL parameters first (most reliable)
+                  if (href.includes('type=')) {
+                    const urlParams = new URLSearchParams(href.split('?')[1]);
+                    const typeParam = urlParams.get('type');
+                    if (typeParam) {
+                      updateHash(`#discover/${typeParam}`);
+                    }
+                  }
+                  // Otherwise check specific paths
+                  else if (href.includes('/collections')) {
                     updateHash('#discover/collections');
                   } else if (href.includes('/collection/')) {
                     const collectionId = href.split('/collection/')[1]?.split('?')[0];
                     if (collectionId) {
                       updateHash(`#discover/collection/${collectionId}`);
                     }
+                  } else if (categoryKey) {
+                    // If we recognized the category from the label, navigate to it
+                    updateHash(`#discover/${categoryKey}`);
                   } else if (href === '/marketplace' || href === '/marketplace/') {
                     updateHash('#discover/all');
                   }
