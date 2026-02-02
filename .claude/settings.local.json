@@ -1,5 +1,0 @@
-{
-  "permissions": {
-    "allow": ["Bash(node scripts/updatetranslations.cjs:*)"]
-  }
-}

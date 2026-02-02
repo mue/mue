@@ -1,6 +1,7 @@
 # Directories
 node_modules/
 .history/
+.claude/
 .vscode/
 build/
 .idea/

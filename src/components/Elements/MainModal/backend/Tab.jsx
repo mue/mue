@@ -1,15 +1,11 @@
-import { memo, useState, useEffect } from 'react';
+import { memo } from 'react';
 import { useT } from 'contexts/TranslationContext';
 import { Tooltip } from 'components/Elements';
 import { getIconComponent, DIVIDER_LABELS } from '../constants/tabConfig';
 
 function Tab({ label, currentTab, onClick, navbarTab, isCollapsed }) {
   const t = useT();
-  const [isExperimental, setIsExperimental] = useState(true);
-
-  useEffect(() => {
-    setIsExperimental(localStorage.getItem('experimental') !== 'false');
-  }, []);
+  const isExperimental = localStorage.getItem('experimental') !== 'false';
 
   // Get the icon component for this label (label is already translated)
   const IconComponent = getIconComponent(label, { getMessage: t });
