@@ -5,6 +5,7 @@ import { Row, Content, Action } from 'components/Layout/Settings/Item';
 import { Button } from 'components/Elements';
 import Items from 'features/marketplace/components/Items/Items';
 import { getBackgroundOptionItems } from '../optionTypes';
+import PhotoPackSettings from './PhotoPackSettings';
 
 const SourceSection = ({
   backgroundType,
@@ -59,6 +60,11 @@ const SourceSection = ({
             onUninstall={onPhotoPackUninstall}
             viewType="grid"
           />
+          
+          {/* Settings for API packs */}
+          {installedPhotoPacks.map((pack) =>
+            pack.api_enabled ? <PhotoPackSettings key={pack.id} pack={pack} /> : null,
+          )}
         </>
       )}
     </>

@@ -1,6 +1,7 @@
 import EventBus from 'utils/eventbus';
 import { clearQueuesOnSettingChange } from 'utils/queueOperations';
 import variables from 'config/variables';
+import { refreshAPIPackCache } from 'features/background/api/photoPackAPI';
 
 // todo: relocate this function
 function showReminder() {
@@ -51,10 +52,36 @@ export function install(type, input, sideload, collection) {
     case 'photos': {
       const currentPhotos = JSON.parse(localStorage.getItem('photo_packs')) || [];
       const hadPhotoPacks = currentPhotos.length > 0;
-      input.photos.forEach((photo) => {
-        currentPhotos.push(photo);
-      });
-      localStorage.setItem('photo_packs', JSON.stringify(currentPhotos));
+
+      // Handle API packs differently
+      if (input.api_enabled) {
+        // Initialize default settings
+        const defaultSettings = {};
+        input.settings_schema?.forEach((field) => {
+          defaultSettings[field.key] = field.default || '';
+        });
+        localStorage.setItem(`photopack_settings_${input.id}`, JSON.stringify(defaultSettings));
+
+        // Initialize empty cache
+        const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
+        apiPackCache[input.id] = {
+          photos: [],
+          last_fetched: 0,
+          last_refresh_attempt: 0,
+        };
+        localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
+
+        // If no API key required, fetch initial photos
+        if (!input.requires_api_key) {
+          refreshAPIPackCache(input.id);
+        }
+      } else {
+        // Static pack - add photos to pool
+        input.photos.forEach((photo) => {
+          currentPhotos.push(photo);
+        });
+        localStorage.setItem('photo_packs', JSON.stringify(currentPhotos));
+      }
 
       if (localStorage.getItem('backgroundType') !== 'photo_pack') {
         localStorage.setItem('oldBackgroundType', localStorage.getItem('backgroundType'));

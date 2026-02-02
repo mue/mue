@@ -52,18 +52,44 @@ export function uninstall(type, name) {
       packContents = JSON.parse(localStorage.getItem('installed')).find(
         (content) => content.name === name,
       );
-      if (packContents && packContents.photos) {
-        installedContents = installedContents.filter((item) => {
-          return !packContents.photos.some((content) => content.url?.default === item.url?.default);
-        });
+
+      if (packContents) {
+        if (packContents.api_enabled) {
+          // Remove API pack cache
+          const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
+          delete apiPackCache[packContents.id];
+          localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
+
+          // Remove from ready list
+          const apiPacksReady = JSON.parse(localStorage.getItem('api_packs_ready') || '[]');
+          const filtered = apiPacksReady.filter((id) => id !== packContents.id);
+          localStorage.setItem('api_packs_ready', JSON.stringify(filtered));
+
+          // Keep settings for easy reinstall (optional - can remove if desired)
+          // localStorage.removeItem(`photopack_settings_${packContents.id}`);
+        } else if (packContents.photos) {
+          // Remove static photos
+          installedContents = installedContents.filter((item) => {
+            return !packContents.photos.some(
+              (content) => content.url?.default === item.url?.default,
+            );
+          });
+          localStorage.setItem('photo_packs', JSON.stringify(installedContents));
+        }
       }
-      localStorage.setItem('photo_packs', JSON.stringify(installedContents));
-      if (installedContents.length === 0) {
+
+      // Check if all packs are uninstalled
+      const remainingInstalled = JSON.parse(localStorage.getItem('installed')).filter(
+        (item) => item.type === 'photos' && item.name !== name,
+      );
+
+      if (remainingInstalled.length === 0) {
         // Switch back to old background type or default to mue api
         localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType') || 'api');
         localStorage.removeItem('oldBackgroundType');
         localStorage.removeItem('photo_packs');
       }
+
       localStorage.removeItem('backgroundchange');
       // Clear image queue to ensure fresh background loads
       clearQueuesOnSettingChange('packUninstall');

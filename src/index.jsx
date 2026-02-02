@@ -5,6 +5,7 @@ import * as Sentry from '@sentry/react';
 import App from './App';
 import ErrorBoundary from './ErrorBoundary';
 import variables from './config/variables';
+import { migrateAPIUsersToPhotoPacks } from './utils/migrations';
 
 import './scss/index.scss';
 // the toast css is based on default so we need to import it
@@ -19,6 +20,9 @@ document.documentElement.lang = languagecode.replace('_', '-');
 
 variables.getMessage = (text, optional) =>
   variables.language.getMessage(variables.languagecode, text, optional || {});
+
+// Migrate existing API users to photo packs (one-time migration)
+migrateAPIUsersToPhotoPacks();
 
 Sentry.init({
   dsn: variables.constants.SENTRY_DSN,

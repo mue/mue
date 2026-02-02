@@ -7,6 +7,7 @@ import { getAllBackgrounds, getAllBackgroundsWithMetadata } from 'utils/customBa
 import { BackgroundQueueManager } from 'utils/backgroundQueue';
 import { getProxiedImageUrl } from 'utils/marketplace';
 import { safeParseJSON } from 'utils/jsonStorage';
+import { buildPhotoPool, checkAndRefreshAPIPacks } from './photoPackAPI';
 
 /**
  * Fetches image data from the configured API
@@ -295,15 +296,15 @@ async function prefetchCustomBackgrounds(queueManager, allBackgrounds, currentId
 
 /**
  * Gets photo pack background with prefetching and blurhash
+ * Now supports both static and API-based photo packs
  */
 function getPhotoPackBackground(isOffline) {
   if (isOffline) return getOfflineImage('photo_pack');
 
-  const photos = safeParseJSON('installed', []).flatMap((item) =>
-    item.type === 'photos' && item.photos ? item.photos : [],
-  );
+  // Build combined pool from static and API packs
+  const pool = buildPhotoPool();
 
-  if (photos.length === 0) return null;
+  if (pool.length === 0) return null;
 
   const queueManager = new BackgroundQueueManager('photoPackQueue', 3);
   let photoData;
@@ -313,19 +314,20 @@ function getPhotoPackBackground(isOffline) {
   if (cachedQueue.length > 0) {
     photoData = queueManager.shift();
   } else {
-    // Pick random photo
-    const index = Math.floor(Math.random() * photos.length);
-    const selected = photos[index];
+    // Pick random photo from pool
+    const selected = pool[Math.floor(Math.random() * pool.length)];
 
     photoData = {
-      url: getProxiedImageUrl(selected.url.default),
+      url: getProxiedImageUrl(selected.url.default || selected.url),
       type: 'photo_pack',
       photoInfo: {
         hidden: false,
         credit: selected.photographer,
         location: selected.location,
         blur_hash: selected.blur_hash || null,
-        url: selected.url.default,
+        url: selected.url.default || selected.url,
+        source: selected.source,
+        pack_id: selected.pack_id,
       },
     };
   }
@@ -338,7 +340,7 @@ function getPhotoPackBackground(isOffline) {
 
   // Prefetch more photos in the background
   if (queueManager.needsPrefetch()) {
-    prefetchPhotoPackImages(queueManager, photos, photoData, cachedQueue).catch((error) => {
+    prefetchPhotoPackImages(queueManager, pool, photoData, cachedQueue).catch((error) => {
       console.error('Failed to prefetch photo pack images:', error);
     });
   }
@@ -348,19 +350,23 @@ function getPhotoPackBackground(isOffline) {
 
 /**
  * Prefetch photo pack images in the background
+ * Supports both static and API-based photo packs
  * @param {BackgroundQueueManager} queueManager - The queue manager
- * @param {Array} allPhotos - All available photos from installed packs
+ * @param {Array} pool - Combined pool of photos from all packs
  * @param {Object} currentPhoto - The current photo data
  * @param {Array} currentQueue - The current queue state
  */
-async function prefetchPhotoPackImages(queueManager, allPhotos, currentPhoto, currentQueue) {
+async function prefetchPhotoPackImages(queueManager, pool, currentPhoto, currentQueue) {
   const count = queueManager.getSpaceNeeded();
 
   // Get already used URLs
   const usedUrls = [currentPhoto.url, ...currentQueue.map((p) => p.url)];
 
-  // Filter available photos
-  const available = allPhotos.filter((p) => !usedUrls.includes(p.url.default));
+  // Filter available photos (handle both URL formats)
+  const available = pool.filter((p) => {
+    const url = p.url.default || p.url;
+    return !usedUrls.includes(url) && !usedUrls.includes(getProxiedImageUrl(url));
+  });
 
   if (available.length === 0) return;
 
@@ -370,16 +376,21 @@ async function prefetchPhotoPackImages(queueManager, allPhotos, currentPhoto, cu
 
   // Normalize metadata
   const normalized = selected.map((photo) => ({
-    url: getProxiedImageUrl(photo.url.default),
+    url: getProxiedImageUrl(photo.url.default || photo.url),
     type: 'photo_pack',
     photoInfo: {
       hidden: false,
       credit: photo.photographer,
       location: photo.location,
       blur_hash: photo.blur_hash || null,
-      url: photo.url.default,
+      url: photo.url.default || photo.url,
+      source: photo.source,
+      pack_id: photo.pack_id,
     },
   }));
 
   queueManager.push(normalized);
+
+  // Check if any API pack cache needs refresh
+  checkAndRefreshAPIPacks();
 }
