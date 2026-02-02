@@ -142,6 +142,59 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
     }
   }, [deepLinkData, previewParam]);
 
+  // Send navigation commands to iframe when hash changes externally (e.g., browser back/forward)
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (!iframeRef.current?.contentWindow) return;
+      
+      const hash = window.location.hash;
+      if (!hash || !hash.startsWith('#discover')) return;
+      
+      // Parse hash to determine target path
+      // e.g., #discover/photo_packs/123 -> /marketplace/packs/123
+      // e.g., #discover/preset_settings/456 -> /marketplace/presets/456
+      // e.g., #discover/collections -> /marketplace/collections
+      // e.g., #discover/collection/featured -> /marketplace/collection/featured
+      
+      const parts = hash.slice(1).split('/');
+      if (parts.length < 2) return;
+      
+      let targetPath = '/marketplace';
+      
+      if (parts[1] === 'collections') {
+        targetPath = '/marketplace/collections';
+      } else if (parts[1] === 'collection' && parts[2]) {
+        targetPath = `/marketplace/collection/${parts[2]}`;
+      } else if (parts[2]) {
+        // Item view - map category to path
+        const pathMap = {
+          photo_packs: 'packs',
+          quote_packs: 'packs',
+          preset_settings: 'presets',
+        };
+        const pathSegment = pathMap[parts[1]] || 'packs';
+        targetPath = `/marketplace/${pathSegment}/${parts[2]}`;
+      } else if (parts[1] !== 'all') {
+        // Category filter
+        targetPath = `/marketplace?type=${parts[1]}`;
+      }
+      
+      // Send navigation command to iframe
+      const theme = getResolvedTheme();
+      iframeRef.current.contentWindow.postMessage(
+        {
+          type: 'marketplace:navigate',
+          payload: { path: targetPath }
+        },
+        MARKETPLACE_URL
+      );
+    };
+    
+    // Listen for hash changes from browser navigation
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   useEffect(() => {
     // Listen for postMessage events from the iframe
     const handleMessage = (event) => {
@@ -241,12 +294,44 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
           }
           break;
 
-        case 'marketplace:navigate':
+        case 'marketplace:navigation':
           // Update parent URL when iframe navigates
-          if (payload?.itemId) {
-            updateHash(`#discover/${payload.itemId}`);
-          } else if (payload?.category) {
-            updateHash(`#discover/${payload.category}`);
+          if (payload?.path) {
+            // Parse the path to extract relevant info
+            // e.g., /marketplace/packs/123 -> #discover/photo_packs/123
+            // e.g., /marketplace/presets/456 -> #discover/preset_settings/456
+            // e.g., /marketplace/collections -> #discover/collections
+            // e.g., /marketplace/collection/featured -> #discover/collection/featured
+            
+            const path = payload.path;
+            
+            if (path.includes('/packs/')) {
+              const itemId = path.split('/packs/')[1]?.split('?')[0];
+              if (itemId) {
+                // Determine type from installed items or default to photo_packs
+                const installed = JSON.parse(localStorage.getItem('installed')) || [];
+                const item = installed.find(i => i.id === itemId);
+                const category = item?.type || 'photo_packs';
+                updateHash(`#discover/${category}/${itemId}`);
+              }
+            } else if (path.includes('/presets/')) {
+              const itemId = path.split('/presets/')[1]?.split('?')[0];
+              if (itemId) {
+                updateHash(`#discover/preset_settings/${itemId}`);
+              }
+            } else if (path.includes('/collection/')) {
+              const collectionId = path.split('/collection/')[1]?.split('?')[0];
+              if (collectionId) {
+                updateHash(`#discover/collection/${collectionId}`);
+              }
+            } else if (path.includes('/collections')) {
+              updateHash('#discover/collections');
+            } else if (path === '/marketplace' || path === '/marketplace/') {
+              // Extract type from search params if present
+              const searchParams = new URLSearchParams(payload.search || '');
+              const type = searchParams.get('type') || 'all';
+              updateHash(`#discover/${type}`);
+            }
           }
           break;
 

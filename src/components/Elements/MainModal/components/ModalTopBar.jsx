@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { MdClose, MdChevronRight, MdArrowBack, MdArrowForward } from 'react-icons/md';
 import { Tooltip, Button } from 'components/Elements';
 import { NAVBAR_BUTTONS, TAB_TYPES } from '../constants/tabConfig';
+import { updateHash } from 'utils/deepLinking';
 import mueAboutIcon from 'assets/icons/mue_about.png';
 
 // Map marketplace types to translation keys
@@ -97,23 +98,43 @@ function ModalTopBar({
     });
 
     // Check if we have iframe breadcrumbs (from Discover iframe)
-    // If so, only use the last item (the item name) and keep our section
     if (iframeBreadcrumbs && iframeBreadcrumbs.length > 0) {
-      // Get the last breadcrumb item (the item name)
-      const lastCrumb = iframeBreadcrumbs[iframeBreadcrumbs.length - 1];
-
-      // Add current section if available and different from the last crumb
-      if (currentSection && currentSection !== lastCrumb.label) {
+      // Use all iframe breadcrumbs except the first one (which is usually "Marketplace" or the category)
+      // Skip the first breadcrumb as it's redundant with our tab label
+      const relevantCrumbs = iframeBreadcrumbs.slice(1);
+      
+      relevantCrumbs.forEach((crumb, index) => {
+        const isLast = index === relevantCrumbs.length - 1;
+        
         breadcrumbPath.push({
-          label: currentSection,
-          onClick: () => onBack(), // Clickable to go back
+          label: crumb.label,
+          // Make it clickable if it has an href and it's not the last item
+          onClick: crumb.clickable && !isLast && crumb.href ? () => {
+            // Convert website href to extension hash format
+            // e.g., /marketplace/packs/123 -> #discover/photo_packs/123
+            // e.g., /marketplace/collections -> #discover/collections
+            const href = crumb.href;
+            
+            if (href.includes('/collections')) {
+              updateHash('#discover/collections');
+            } else if (href.includes('/collection/')) {
+              const collectionId = href.split('/collection/')[1]?.split('?')[0];
+              if (collectionId) {
+                updateHash(`#discover/collection/${collectionId}`);
+              }
+            } else if (href === '/marketplace' || href === '/marketplace/') {
+              updateHash('#discover/all');
+            }
+            // If it's a specific item, we'd need more context to determine the category
+            // In that case, using history.back() might be more reliable
+            else {
+              const stepsBack = relevantCrumbs.length - index - 1;
+              for (let i = 0; i < stepsBack; i++) {
+                window.history.back();
+              }
+            }
+          } : null,
         });
-      }
-
-      // Add the item name from iframe
-      breadcrumbPath.push({
-        label: lastCrumb.label,
-        onClick: null, // Current item - not clickable
       });
     } else if (productView) {
       // If viewing a collection page itself (not a product within it)
