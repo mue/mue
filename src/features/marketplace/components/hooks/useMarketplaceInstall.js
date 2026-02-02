@@ -10,6 +10,10 @@ export const useMarketplaceInstall = () => {
   const controllerRef = useRef(new AbortController());
 
   const installItem = (type, data) => {
+    // Check if item is already installed before calling install
+    const installed = JSON.parse(localStorage.getItem('installed') || '[]');
+    const isNewInstall = !installed.some((item) => item.id === data.id || item.name === data.name);
+
     install(type, data);
     toast(variables.getMessage('toasts.installed'));
     variables.stats.postEvent('marketplace-item', `${data.display_name || data.name} installed`);

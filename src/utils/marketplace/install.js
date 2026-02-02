@@ -1,5 +1,6 @@
 import EventBus from 'utils/eventbus';
 import { clearQueuesOnSettingChange } from 'utils/queueOperations';
+import variables from 'config/variables';
 
 // todo: relocate this function
 function showReminder() {
@@ -7,8 +8,28 @@ function showReminder() {
   localStorage.setItem('showReminder', true);
 }
 
+/**
+ * Track download count in the API
+ */
+async function trackDownload(itemId) {
+  if (!itemId) return;
+
+  try {
+    await fetch(`${variables.constants.API_URL}/marketplace/item/${itemId}/download`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+  } catch (error) {
+    console.debug('Failed to track download:', error);
+  }
+}
+
 export function install(type, input, sideload, collection) {
   let refreshEvent = null;
+
+  // Check if item is already installed to determine if we should track download
+  const installed = JSON.parse(localStorage.getItem('installed') || '[]');
+  const isNewInstall = !installed.some((item) => item.id === input.id || item.name === input.name);
 
   switch (type) {
     case 'settings': {
@@ -73,8 +94,6 @@ export function install(type, input, sideload, collection) {
       break;
   }
 
-  const installed = JSON.parse(localStorage.getItem('installed'));
-
   if (sideload) {
     input.sideload = true;
   }
@@ -82,6 +101,11 @@ export function install(type, input, sideload, collection) {
   installed.push(input);
 
   localStorage.setItem('installed', JSON.stringify(installed));
+
+  // Track download for new installs (not re-installs)
+  if (isNewInstall && input.id) {
+    trackDownload(input.id);
+  }
 
   // Emit refresh event after all data is saved
   if (refreshEvent) {
