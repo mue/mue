@@ -37,24 +37,16 @@ export async function fetchFromMUE(packId, settings) {
 }
 
 /**
- * Fetch photos from Unsplash API
+ * Fetch photos from Unsplash API (via Mue API proxy)
  * @param {string} packId - The ID of the photo pack
- * @param {object} settings - Pack-specific settings (must include api_key)
+ * @param {object} settings - Pack-specific settings
  * @returns {Promise<object|null>} Photo object or null on error
  */
 export async function fetchFromUnsplash(packId, settings) {
-  const { api_key, collections } = settings;
-
-  if (!api_key) {
-    console.warn('Unsplash API key not configured');
-    return null;
-  }
-
-  // Deobfuscate API key
-  const decodedKey = atob(api_key);
+  const { collections } = settings;
 
   const params = new URLSearchParams({
-    orientation: 'landscape',
+    quality: 'high',
   });
 
   if (collections) {
@@ -62,11 +54,8 @@ export async function fetchFromUnsplash(packId, settings) {
   }
 
   try {
-    const response = await fetch(`https://api.unsplash.com/photos/random?${params}`, {
-      headers: {
-        Authorization: `Client-ID ${decodedKey}`,
-      },
-    });
+    // Use Mue API proxy which has the Unsplash token server-side
+    const response = await fetch(`${variables.constants.API_URL}/images/unsplash?${params}`,);
 
     if (!response.ok) {
       if (response.status === 429) {
@@ -78,13 +67,13 @@ export async function fetchFromUnsplash(packId, settings) {
     const data = await response.json();
 
     return {
-      photographer: data.user.name,
-      location: data.location?.title || 'Unknown',
-      url: { default: data.urls.regular },
+      photographer: data.photographer,
+      location: data.location?.name || 'Unknown',
+      url: { default: data.file },
       blur_hash: data.blur_hash,
-      colour: data.color,
-      unsplash_url: data.links.html,
-      photographer_url: data.user.links.html,
+      colour: data.colour,
+      unsplash_url: data.photo_page,
+      photographer_url: data.photographer_page,
     };
   } catch (error) {
     console.error('Unsplash API fetch failed:', error);

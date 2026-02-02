@@ -75,19 +75,9 @@ export function migrateAPIUsersToPhotoPacks() {
       type: 'photos',
       api_enabled: true,
       api_provider: 'unsplash',
-      requires_api_key: true,
+      requires_api_key: false,
       photos: [],
       settings_schema: [
-        {
-          key: 'api_key',
-          type: 'text',
-          label: 'Unsplash Access Key',
-          placeholder: 'Enter your Unsplash API key',
-          default: '',
-          required: true,
-          secure: true,
-          help_text: 'Get your free API key at https://unsplash.com/developers',
-        },
         {
           key: 'collections',
           type: 'text',
@@ -103,18 +93,16 @@ export function migrateAPIUsersToPhotoPacks() {
       icon_url: 'https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png',
     };
 
-    // Port existing Unsplash settings (collection IDs only, not API key since it's server-side)
+    // Port existing Unsplash settings (collection IDs)
     const existingCollections = localStorage.getItem('unsplashCollections') || '';
 
     const migratedSettings = {
       collections: existingCollections,
-      api_key: '', // User will need to provide their own API key
     };
 
     localStorage.setItem('photopack_settings_unsplash-photos', JSON.stringify(migratedSettings));
 
-    // Note: Unsplash users will need to configure their API key after migration
-    console.log('Unsplash migration: Please configure your API key in photo pack settings');
+    console.log('Unsplash migration: Migrated collection settings');
   }
 
   if (packToInstall) {
