@@ -63,8 +63,12 @@ function Tooltip({ children, title, style, placement, subtitle }) {
 
   // Determine the data-status attribute value
   const getStatus = () => {
-    if (!showTooltip && !isClosing) return 'initial';
-    if (isClosing) return 'close';
+    if (!showTooltip && !isClosing) {
+      return 'initial';
+    }
+    if (isClosing) {
+      return 'close';
+    }
     return 'open';
   };
 

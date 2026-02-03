@@ -8,7 +8,9 @@ const Textarea = memo(
 
     const adjustHeight = useCallback(() => {
       const textarea = textareaRef.current;
-      if (!textarea) return;
+      if (!textarea) {
+        return;
+      }
 
       // Reset height to auto to get the correct scrollHeight
       textarea.style.height = 'auto';

@@ -85,12 +85,12 @@
     opacity 0.2s ease-out,
     transform 0.2s ease-out;
 
-  // Initial state (not yet shown)
+  /* Initial state (not yet shown) */
   &[data-status='initial'] {
     opacity: 0;
   }
 
-  // Open state - entrance animation
+  /* Open state - entrance animation */
   &[data-status='open'] {
     opacity: 1;
     transform: translate(0, 0);
@@ -114,7 +114,7 @@
     }
   }
 
-  // Closing state - exit animation
+  /* Closing state - exit animation */
   &[data-status='close'] {
     opacity: 0;
 

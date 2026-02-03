@@ -7,20 +7,6 @@ import { getBackgroundFilterStyle, getBackgroundOverlayStyle } from '../api/back
  */
 export function useBackgroundEvents(backgroundData, refreshBackground) {
   useEffect(() => {
-    const handleEvent = (event) => {
-      if (event === 'welcomeLanguage') {
-        localStorage.setItem('welcomeImage', JSON.stringify(backgroundData));
-      } else if (event === 'background') {
-        handleVisibilityToggle();
-      } else if (
-        ['marketplacebackgrounduninstall', 'backgroundwelcome', 'backgroundrefresh'].includes(event)
-      ) {
-        refreshBackground();
-      } else if (event === 'backgroundeffect') {
-        applyFilters();
-      }
-    };
-
     const handleVisibilityToggle = () => {
       const element = document.getElementById(
         backgroundData.video ? 'backgroundVideo' : 'backgroundImage',
@@ -30,12 +16,12 @@ export function useBackgroundEvents(backgroundData, refreshBackground) {
 
       if (!isEnabled) {
         element?.style.setProperty('display', 'none');
-        if (!backgroundData.photoInfo?.hidden) photoInfo?.style.setProperty('display', 'none');
+        if (!backgroundData.photoInfo?.hidden) {photoInfo?.style.setProperty('display', 'none');}
         return;
       }
 
       element?.style.setProperty('display', 'block');
-      if (!backgroundData.photoInfo?.hidden) photoInfo?.style.setProperty('display', 'flex');
+      if (!backgroundData.photoInfo?.hidden) {photoInfo?.style.setProperty('display', 'flex');}
 
       // Check if refresh needed
       const type = localStorage.getItem('backgroundType');
@@ -50,7 +36,7 @@ export function useBackgroundEvents(backgroundData, refreshBackground) {
             backgroundData.photoInfo.pun,
           ));
 
-      if (needsRefresh) refreshBackground();
+      if (needsRefresh) {refreshBackground();}
     };
 
     const applyFilters = () => {
@@ -58,7 +44,7 @@ export function useBackgroundEvents(backgroundData, refreshBackground) {
       if (backgroundData.video) {
         const filter = getBackgroundFilterStyle();
         const element = document.getElementById('backgroundVideo');
-        if (element) element.style.webkitFilter = filter;
+        if (element) {element.style.webkitFilter = filter;}
       } else {
         // For image backgrounds, apply filters to the overlay element
         const overlayElement = document.getElementById('backgroundFilterOverlay');
@@ -68,6 +54,20 @@ export function useBackgroundEvents(backgroundData, refreshBackground) {
           overlayElement.style.webkitBackdropFilter = overlayStyle.WebkitBackdropFilter;
           overlayElement.style.backgroundColor = overlayStyle.backgroundColor;
         }
+      }
+    };
+
+    const handleEvent = (event) => {
+      if (event === 'welcomeLanguage') {
+        localStorage.setItem('welcomeImage', JSON.stringify(backgroundData));
+      } else if (event === 'background') {
+        handleVisibilityToggle();
+      } else if (
+        ['marketplacebackgrounduninstall', 'backgroundwelcome', 'backgroundrefresh'].includes(event)
+      ) {
+        refreshBackground();
+      } else if (event === 'backgroundeffect') {
+        applyFilters();
       }
     };
 

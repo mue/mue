@@ -64,47 +64,6 @@ export async function fetchAPIImageData(excludedPun = null) {
 }
 
 /**
- * Gets background data based on current configuration
- */
-export async function getBackgroundData() {
-  const isOffline =
-    localStorage.getItem('offlineMode') === 'true' ||
-    localStorage.getItem('showWelcome') === 'true';
-
-  // Handle favourited background
-  const fav = safeParseJSON('favourite');
-  if (fav) {
-    if (fav.type === 'random_colour' || fav.type === 'random_gradient') {
-      return { type: 'colour', style: `background:${fav.url}` };
-    }
-    return { url: fav.url, photoInfo: { ...fav, url: fav.url } };
-  }
-
-  const type = localStorage.getItem('backgroundType');
-
-  switch (type) {
-    case 'api':
-      return getAPIBackground(isOffline);
-
-    case 'colour':
-      return getColourBackground();
-
-    case 'random_colour':
-    case 'random_gradient':
-      return randomColourStyleBuilder(type);
-
-    case 'custom':
-      return await getCustomBackground(isOffline);
-
-    case 'photo_pack':
-      return getPhotoPackBackground(isOffline);
-
-    default:
-      return null;
-  }
-}
-
-/**
  * Gets solid colour background
  */
 function getColourBackground() {
@@ -131,7 +90,7 @@ async function getAPIBackground(isOffline) {
     data = await fetchAPIImageData();
   }
 
-  if (!data) return getOfflineImage('api');
+  if (!data) {return getOfflineImage('api');}
 
   try {
     localStorage.setItem('currentBackground', JSON.stringify(data));
@@ -191,7 +150,9 @@ async function getCustomBackground(isOffline) {
     }
   }
 
-  if (!backgrounds || backgrounds.length === 0) return null;
+  if (!backgrounds || backgrounds.length === 0) {
+    return null;
+  }
 
   const queueManager = new BackgroundQueueManager('customQueue', 3);
   let selected;
@@ -214,7 +175,9 @@ async function getCustomBackground(isOffline) {
   }
 
   // Check if selected is valid before using it
-  if (!selected) return null;
+  if (!selected) {
+    return null;
+  }
 
   const url = selected.url || selected;
 
@@ -249,16 +212,70 @@ async function getCustomBackground(isOffline) {
     console.warn('Could not save currentBackground to localStorage:', e);
   }
 
-  // Prefetch more backgrounds in the background (skip videos)
-  if (queueManager.needsPrefetch() && !data.video && selected.id) {
-    prefetchCustomBackgrounds(queueManager, backgrounds, selected.id, cachedQueue).catch(
-      (error) => {
-        console.error('Failed to prefetch custom backgrounds:', error);
-      },
-    );
+  // Prefetch next backgrounds if needed
+  if (queueManager.needsPrefetch()) {
+    const count = queueManager.getSpaceNeeded();
+    const currentIds = [selected.id, ...cachedQueue];
+    const available = backgrounds.filter((bg) => !currentIds.includes(bg.id));
+
+    if (available.length > 0) {
+      const nextBackgrounds = [];
+      for (let i = 0; i < count; i++) {
+        const randomBg = available[Math.floor(Math.random() * available.length)];
+        if (randomBg) {
+          nextBackgrounds.push(randomBg.id);
+          available.splice(available.indexOf(randomBg), 1);
+        }
+      }
+
+      if (nextBackgrounds.length > 0) {
+        queueManager.push(nextBackgrounds);
+      }
+    }
   }
 
   return data;
+}
+
+/**
+ * Gets background data based on current configuration
+ */
+export async function getBackgroundData() {
+  const isOffline =
+    localStorage.getItem('offlineMode') === 'true' ||
+    localStorage.getItem('showWelcome') === 'true';
+
+  // Handle favourited background
+  const fav = safeParseJSON('favourite');
+  if (fav) {
+    if (fav.type === 'random_colour' || fav.type === 'random_gradient') {
+      return { type: 'colour', style: `background:${fav.url}` };
+    }
+    return { url: fav.url, photoInfo: { ...fav, url: fav.url } };
+  }
+
+  const type = localStorage.getItem('backgroundType');
+
+  switch (type) {
+    case 'api':
+      return getAPIBackground(isOffline);
+
+    case 'colour':
+      return getColourBackground();
+
+    case 'random_colour':
+    case 'random_gradient':
+      return randomColourStyleBuilder(type);
+
+    case 'custom':
+      return await getCustomBackground(isOffline);
+
+    case 'photo_pack':
+      return getPhotoPackBackground(isOffline);
+
+    default:
+      return null;
+  }
 }
 
 /**

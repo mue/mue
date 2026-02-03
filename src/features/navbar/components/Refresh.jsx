@@ -10,22 +10,6 @@ function Refresh() {
   const [refreshText, setRefreshText] = useState('');
   const [refreshOption, setRefreshOption] = useState(localStorage.getItem('refreshOption') || '');
 
-  useEffect(() => {
-    const handleRefresh = (data) => {
-      if (data === 'navbar' || data === 'background' || data === 'language') {
-        setRefreshOption(localStorage.getItem('refreshOption'));
-        updateRefreshText();
-      }
-    };
-
-    EventBus.on('refresh', handleRefresh);
-    updateRefreshText();
-
-    return () => {
-      EventBus.off('refresh', handleRefresh);
-    };
-  }, [t]);
-
   function updateRefreshText() {
     let text;
     switch (localStorage.getItem('refreshOption')) {
@@ -54,6 +38,22 @@ function Refresh() {
 
     setRefreshText(text);
   }
+
+  useEffect(() => {
+    const handleRefresh = (data) => {
+      if (data === 'navbar' || data === 'background' || data === 'language') {
+        setRefreshOption(localStorage.getItem('refreshOption'));
+        updateRefreshText();
+      }
+    };
+
+    EventBus.on('refresh', handleRefresh);
+    updateRefreshText();
+
+    return () => {
+      EventBus.off('refresh', handleRefresh);
+    };
+  }, [t]);
 
   function refresh() {
     switch (refreshOption) {

@@ -420,10 +420,10 @@ const CustomSettings = memo(() => {
       try {
         localStorage.setItem(
           'customBackground',
-          JSON.stringify(updatedBackgrounds.map((bg) => bg.url)),
+          JSON.stringify(backgrounds.map((bg) => bg.url)),
         );
       } catch (_quotaError) {
-        localStorage.setItem('customBackgroundCount', updatedBackgrounds.length.toString());
+        localStorage.setItem('customBackgroundCount', backgrounds.length.toString());
       }
 
       EventBus.emit('refresh', 'background');
@@ -477,7 +477,9 @@ const CustomSettings = memo(() => {
 
   useEffect(() => {
     const dnd = customDnd.current;
-    if (!dnd) return;
+    if (!dnd) {
+      return;
+    }
 
     const handleDragOver = (e) => {
       e.preventDefault();

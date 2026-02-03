@@ -145,7 +145,9 @@ export function useQuoteLoader(updateQuote) {
     const enabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
     const quotePack = installed
       .filter((item) => {
-        if (item.type !== 'quotes') return false;
+        if (item.type !== 'quotes') {
+          return false;
+        }
         const packId = item.id || item.name;
         // Default to enabled if not in enabledPacks object
         return enabledPacks[packId] !== false;

@@ -1,13 +1,13 @@
 @use 'variables' as *;
 @use 'mixins' as *;
 
-// Toast container
+/* Toast container */
 .Toastify__toast-container {
   width: auto !important;
   padding: 16px !important;
 }
 
-// Main toast styling with glassmorphism effect
+/* Main toast styling with glassmorphism effect */
 .Toastify__toast {
   @include themed() {
     background: t($background) !important;
@@ -37,7 +37,7 @@
   }
 }
 
-// Toast body
+/* Toast body */
 .Toastify__toast-body {
   padding: 0 !important;
   font-size: 15px !important;
@@ -49,7 +49,7 @@
   }
 }
 
-// Close button
+/* Close button */
 .Toastify__close-button {
   @include themed() {
     color: t($color) !important;
@@ -64,7 +64,7 @@
   }
 }
 
-// Progress bar base styling
+/* Progress bar base styling */
 .Toastify__progress-bar {
   height: 4px !important;
   border-radius: 0 0 $borderRadius $borderRadius !important;
@@ -89,7 +89,7 @@
   }
 }
 
-// Toast type variants - all use the base glassmorphism style
+/* Toast type variants - all use the base glassmorphism style */
 .Toastify__toast--default,
 .Toastify__toast--info,
 .Toastify__toast--success,

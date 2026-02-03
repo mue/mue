@@ -7,7 +7,9 @@ import videoCheck from 'features/background/api/videoCheck';
 const FileUpload = memo(({ id, type, accept, loadFunction, multiple }) => {
   useEffect(() => {
     const fileInput = document.getElementById(id);
-    if (!fileInput) return;
+    if (!fileInput) {
+      return;
+    }
 
     const handleChange = (e) => {
       const files = Array.from(e.target.files);

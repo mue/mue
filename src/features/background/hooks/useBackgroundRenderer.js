@@ -14,10 +14,10 @@ export function useBackgroundRenderer(backgroundData) {
   const abortControllerRef = useRef(null);
 
   useEffect(() => {
-    if (backgroundData.video) return;
+    if (backgroundData.video) {return;}
 
     const element = document.getElementById('backgroundImage');
-    if (!element) return;
+    if (!element) {return;}
 
     // Abort any pending image loads
     if (abortControllerRef.current) {

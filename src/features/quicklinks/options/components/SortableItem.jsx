@@ -37,7 +37,9 @@ export const SortableItem = ({ value, enabled, startEditLink, deleteLink }) => {
         <button
           className="quicklink-action-btn"
           onClick={(e) => {
-            if (!enabled) return;
+            if (!enabled) {
+              return;
+            }
             e.stopPropagation();
             startEditLink(value);
           }}

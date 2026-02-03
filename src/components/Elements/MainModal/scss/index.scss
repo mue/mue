@@ -9,7 +9,7 @@
 @use 'modules/scrollbars' as *;
 @use 'settings/main' as *;
 @use 'marketplace/main' as *;
-// Fixed: Added sass:map module
+/* Fixed: Added sass:map module */
 
 .Overlay {
   position: fixed;
@@ -96,7 +96,6 @@
 #modal {
   height: 80vh;
   width: clamp(60vw, 1400px, 90vw);
-
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   backdrop-filter: blur(16px) saturate(180%);
   overflow: hidden;

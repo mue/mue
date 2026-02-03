@@ -35,7 +35,7 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
   const silenceEventRef = useRef(false);
 
   const setContainerDisplay = (enabled) => {
-    if (!quicklinksContainer || !quicklinksContainer.current) return;
+    if (!quicklinksContainer || !quicklinksContainer.current) {return;}
     const el = quicklinksContainer.current;
     el.classList.toggle('disabled', !enabled);
     if (!enabled) {
@@ -123,7 +123,9 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
   const editLink = async (og, name, url, icon, iconType = 'auto', iconData = null) => {
     const data = readQuicklinks();
     const dataobj = data.find((i) => i.key === og.key);
-    if (!dataobj) return;
+    if (!dataobj) {
+      return;
+    }
 
     dataobj.name = name || (await getTitleFromUrl(url));
     dataobj.url = url;
@@ -146,13 +148,19 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
   const handleDragEnd = (event) => {
     const { active, over } = event;
 
-    if (!over || !enabled) return;
-    if (active.id === over.id) return;
+    if (!over || !enabled) {
+      return;
+    }
+    if (active.id === over.id) {
+      return;
+    }
 
     const oldIndex = items.findIndex((item) => item.key === active.id);
     const newIndex = items.findIndex((item) => item.key === over.id);
 
-    if (oldIndex === -1 || newIndex === -1) return;
+    if (oldIndex === -1 || newIndex === -1) {
+      return;
+    }
 
     const newItems = arrayMove(items, oldIndex, newIndex);
 

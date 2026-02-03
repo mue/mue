@@ -64,7 +64,9 @@ function ChooseLanguage() {
 
   // Filter languages based on search query
   const filteredLanguages = useMemo(() => {
-    if (!searchQuery.trim()) return languageOptions;
+    if (!searchQuery.trim()) {
+      return languageOptions;
+    }
     const query = searchQuery.toLowerCase();
     return languageOptions.filter((lang) => lang.searchText.includes(query));
   }, [languageOptions, searchQuery]);

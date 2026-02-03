@@ -64,7 +64,9 @@ export function TranslationProvider({ children, initialLanguage }) {
   // Single translation function - the main API
   const t = useCallback(
     (key, optional = {}) => {
-      if (!i18nInstance.current) return key;
+      if (!i18nInstance.current) {
+        return key;
+      }
       return i18nInstance.current.getMessage(currentLanguage, key, optional);
     },
     [currentLanguage],

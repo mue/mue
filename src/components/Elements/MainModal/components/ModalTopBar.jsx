@@ -86,7 +86,9 @@ function ModalTopBar({
 
   // Utility function to get translated sub-section label
   const getSubSectionLabel = (subSection, sectionName) => {
-    if (!subSection || !sectionName) return subSection;
+    if (!subSection || !sectionName) {
+      return subSection;
+    }
 
     // Use the same translation pattern as the section components
     const translationKey = `modals.main.settings.sections.${sectionName}.${subSection}.title`;

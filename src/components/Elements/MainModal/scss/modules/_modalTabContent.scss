@@ -16,7 +16,6 @@
 
   @include themed {
     background: t($modal-background);
-
     margin: 0;
     border-radius: t($borderRadius);
   }

@@ -77,7 +77,9 @@ export function formatDigits(value) {
   }
   try {
     const numValue = typeof value === 'string' ? parseInt(value, 10) : value;
-    if (isNaN(numValue)) return String(value);
+    if (isNaN(numValue)) {
+      return String(value);
+    }
     return new Intl.NumberFormat(getLocaleCode(), {
       useGrouping: false,
     }).format(numValue);

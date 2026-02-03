@@ -34,7 +34,9 @@ function filterItems(item, filter, categoryFilter) {
 }
 
 function getInitials(name) {
-  if (!name) return '??';
+  if (!name) {
+    return '??';
+  }
   const words = name.split(' ');
   if (words.length === 1) {
     return name.substring(0, 2).toUpperCase();

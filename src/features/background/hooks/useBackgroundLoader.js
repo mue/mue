@@ -9,7 +9,7 @@ export function useBackgroundLoader(updateBackground, resetBackground) {
   const isLoadingRef = useRef(false);
 
   const loadBackground = useCallback(async () => {
-    if (isLoadingRef.current) return;
+    if (isLoadingRef.current) {return;}
     isLoadingRef.current = true;
 
     try {
