@@ -222,7 +222,7 @@ function ItemCard({
                 )}
               </span>
             )}
-            {item.in_collections && item.in_collections.length > 0 && !onCollection && (
+            {item.in_collections && item.in_collections.length > 0 && !onCollection && !isAdded && (
               <span className="card-collection">
                 {item.in_collections[0].display_name || item.in_collections[0].name}
               </span>
