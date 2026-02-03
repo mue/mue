@@ -175,9 +175,7 @@
 .itemSettings-field-input {
   height: 56px;
   padding: 0 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  transition: all 0.2s;
+  transition: 0.2s ease;
   font-size: 1rem;
 
   @include themed() {
