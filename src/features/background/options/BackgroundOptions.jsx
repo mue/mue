@@ -149,7 +149,7 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
 
   // Navigate to photo packs marketplace
   const goToPhotoPacks = () => {
-    variables.updateHash('#discover/photo_packs');
+    updateHash('#discover/photo_packs');
     const event = new window.Event('popstate');
     window.dispatchEvent(event);
   };
