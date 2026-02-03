@@ -195,7 +195,9 @@ function ItemCard({
           <div className="card-chips">
             {item.type && (
               <span className="card-type">
-                {variables.getMessage('modals.main.marketplace.' + getTypeTranslationKey(item.type))}
+                {variables.getMessage(
+                  'modals.main.marketplace.' + getTypeTranslationKey(item.type),
+                )}
               </span>
             )}
             {item.in_collections && item.in_collections.length > 0 && !onCollection && (
