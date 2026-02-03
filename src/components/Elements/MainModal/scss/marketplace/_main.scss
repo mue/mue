@@ -70,6 +70,7 @@
       display: flex;
       flex-flow: column;
       align-items: flex-start;
+      width: 100%;
 
       .card-title {
         font-size: 18px;
@@ -198,6 +199,13 @@
       }
     }
   }
+}
+
+.item-card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 1.5rem;
+  width: 100%;
 }
 
 .itemPage {

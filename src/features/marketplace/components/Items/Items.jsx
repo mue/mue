@@ -219,7 +219,7 @@ function ItemCard({
         )}
 
         {isAdded && onUninstall && (
-          <div style={{ display: 'flex', gap: '8px', marginTop: '10px', width: '100%' }}>
+          <div className="item-card-actions">
             <Button
               type="settings"
               onClick={(e) => {
@@ -227,7 +227,6 @@ function ItemCard({
                 setShowSettingsModal(true);
               }}
               icon={<MdSettings />}
-              label={variables.getMessage('modals.main.marketplace.product.buttons.settings')}
               style={{ flex: 1 }}
             />
             <Button
@@ -237,7 +236,6 @@ function ItemCard({
                 onUninstall(item.type, item.name);
               }}
               icon={<MdClose />}
-              label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
               style={{ flex: 1 }}
             />
           </div>
