@@ -4,8 +4,9 @@ import { MdExpandMore, MdClose, MdCheck } from 'react-icons/md';
 
 import './ChipSelect.scss';
 
-function ChipSelect({ label, options, onChange }) {
-  let start = (localStorage.getItem('apiCategories') || '').split(',');
+function ChipSelect({ label, options, onChange, name }) {
+  const storageKey = name || 'apiCategories';
+  let start = (localStorage.getItem(storageKey) || '').split(',');
   if (start[0] === '') {
     start = [];
   }
@@ -84,7 +85,8 @@ function ChipSelect({ label, options, onChange }) {
     }
 
     setOptionsSelected(newSelected);
-    localStorage.setItem('apiCategories', newSelected.join(','));
+    const storageKey = name || 'apiCategories';
+    localStorage.setItem(storageKey, newSelected.join(','));
 
     if (onChange) {
       onChange(newSelected);

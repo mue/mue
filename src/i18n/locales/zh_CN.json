@@ -312,7 +312,11 @@
               "hour": "Once an hour",
               "day": "Once a day"
             },
-            "installed_packs_title": "Installed Photo Packs"
+            "installed_packs_title": "Installed Photo Packs",
+            "photo_pack_settings": {
+              "title": "{name} Settings",
+              "refresh_photos": "Refresh Photos"
+            }
           },
           "search": {
             "title": "搜索栏",

@@ -1,54 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import variables from 'config/variables';
 import EventBus from 'utils/eventbus';
-import { Dropdown, Text, Switch, Slider } from 'components/Form/Settings';
+import { Dropdown, Text, Switch, Slider, ChipSelect } from 'components/Form/Settings';
 import { Row, Content, Action } from 'components/Layout/Settings/Item';
 import { Button } from 'components/Elements';
+import { Section } from 'components/Layout/Settings';
 import { refreshAPIPackCache } from 'features/background/api/photoPackAPI';
-import { MdRefresh, MdWarning } from 'react-icons/md';
-
-/**
- * ChipSelect component for multi-select options
- */
-const ChipSelect = ({ label, options, defaultValue, name, onChange }) => {
-  const [selected, setSelected] = useState(defaultValue || []);
-
-  const toggleChip = (value) => {
-    const newSelected = selected.includes(value)
-      ? selected.filter((v) => v !== value)
-      : [...selected, value];
-    setSelected(newSelected);
-    onChange(newSelected);
-  };
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-      <label style={{ fontSize: '14px', fontWeight: 500 }}>{label}</label>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-        {options.map((option) => (
-          <button
-            key={option.value}
-            type="button"
-            onClick={() => toggleChip(option.value)}
-            style={{
-              padding: '6px 12px',
-              borderRadius: '16px',
-              border: '1px solid',
-              borderColor: selected.includes(option.value) ? '#4CAF50' : '#ccc',
-              backgroundColor: selected.includes(option.value) ? '#4CAF50' : 'transparent',
-              color: selected.includes(option.value) ? '#fff' : '#333',
-              cursor: 'pointer',
-              fontSize: '13px',
-              transition: 'all 0.2s',
-            }}
-          >
-            {option.label}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-};
+import { MdRefresh, MdWarning, MdExpandMore, MdExpandLess } from 'react-icons/md';
 
 const PhotoPackSettings = ({ pack }) => {
   if (!pack.settings_schema || pack.settings_schema.length === 0) {
@@ -63,6 +21,7 @@ const PhotoPackSettings = ({ pack }) => {
   const [dynamicOptions, setDynamicOptions] = useState({});
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [validationErrors, setValidationErrors] = useState([]);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   // Load dynamic options (e.g., categories from API)
   useEffect(() => {
@@ -85,7 +44,7 @@ const PhotoPackSettings = ({ pack }) => {
         const categories = await response.json();
         setDynamicOptions((prev) => ({
           ...prev,
-          [field.key]: categories.map((cat) => ({ value: cat, label: cat })),
+          [field.key]: categories,
         }));
       } catch (error) {
         console.error('Failed to load categories:', error);
@@ -139,12 +98,16 @@ const PhotoPackSettings = ({ pack }) => {
 
     switch (field.type) {
       case 'dropdown':
+        const dropdownItems = field.options.map((opt) => ({
+          value: opt.value,
+          text: opt.label,
+        }));
         return (
           <Dropdown
             label={field.label}
             name={`${pack.id}_${field.key}`}
             value={value}
-            items={field.options}
+            items={dropdownItems}
             onChange={(newValue) => handleSettingChange(field.key, newValue)}
           />
         );
@@ -155,7 +118,6 @@ const PhotoPackSettings = ({ pack }) => {
           <ChipSelect
             label={field.label}
             options={options}
-            defaultValue={value}
             name={`${pack.id}_${field.key}`}
             onChange={(newValue) => handleSettingChange(field.key, newValue)}
           />
@@ -204,38 +166,60 @@ const PhotoPackSettings = ({ pack }) => {
 
   return (
     <>
-      <Row>
-        <Content
-          title={`${pack.name} Settings`}
-          subtitle={pack.api_provider === 'mue' ? 'MUE API' : 'Unsplash API'}
-        />
-        <Action>
-          <Button
-            onClick={handleManualRefresh}
-            icon={<MdRefresh />}
-            label="Refresh Photos"
-            disabled={isRefreshing || validationErrors.length > 0}
-          />
-        </Action>
-      </Row>
+      <Section
+        title={variables.getMessage(
+          'modals.main.settings.sections.background.photo_pack_settings.title',
+          {
+            name: pack.display_name || pack.name,
+          },
+        )}
+        subtitle={
+          pack.api_provider === 'mue'
+            ? variables.getMessage('modals.main.settings.sections.background.source.api')
+            : variables.getMessage('modals.main.settings.sections.background.unsplash.subtitle')
+        }
+        onClick={() => setIsExpanded(!isExpanded)}
+      >
+        {isExpanded ? <MdExpandLess /> : <MdExpandMore />}
+      </Section>
 
-      {validationErrors.length > 0 && (
-        <Row>
-          <Content>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#f44336' }}>
-              <MdWarning />
-              <span>Configuration incomplete: {validationErrors.join(', ')}</span>
-            </div>
-          </Content>
-        </Row>
+      {isExpanded && (
+        <>
+          <Row>
+            <Content title="" />
+            <Action>
+              <Button
+                onClick={handleManualRefresh}
+                icon={<MdRefresh />}
+                label={variables.getMessage(
+                  'modals.main.settings.sections.background.photo_pack_settings.refresh_photos',
+                )}
+                disabled={isRefreshing || validationErrors.length > 0}
+              />
+            </Action>
+          </Row>
+
+          {validationErrors.length > 0 && (
+            <Row>
+              <Content>
+                <div
+                  style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#f44336' }}
+                >
+                  <MdWarning />
+                  <span>Configuration incomplete: {validationErrors.join(', ')}</span>
+                </div>
+              </Content>
+            </Row>
+          )}
+
+          {pack.settings_schema.map((field, index) => (
+            <Row key={field.key} final={index === pack.settings_schema.length - 1}>
+              <Content title="" />
+              <Action>{renderField(field, index)}</Action>
+            </Row>
+          ))}
+        </>
       )}
-
-      {pack.settings_schema.map((field, index) => (
-        <Row key={field.key} final={index === pack.settings_schema.length - 1}>
-          <Content title="" />
-          <Action>{renderField(field, index)}</Action>
-        </Row>
-      ))}
     </>
   );
 };
