@@ -129,6 +129,14 @@ export function install(type, input, sideload, collection) {
 
   localStorage.setItem('installed', JSON.stringify(installed));
 
+  // Auto-enable pack on install
+  if (isNewInstall) {
+    const packId = input.id || input.name;
+    const enabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
+    enabledPacks[packId] = true;
+    localStorage.setItem('enabledPacks', JSON.stringify(enabledPacks));
+  }
+
   // Track download for new installs (not re-installs)
   if (isNewInstall && input.id) {
     trackDownload(input.id);

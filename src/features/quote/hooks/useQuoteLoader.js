@@ -114,9 +114,7 @@ export function useQuoteLoader(updateQuote) {
       }
 
       // Filter out incomplete quotes (empty quote text)
-      const validQuotes = customQuote?.filter(
-        (q) => q.quote && q.quote.trim() !== ''
-      ) || [];
+      const validQuotes = customQuote?.filter((q) => q.quote && q.quote.trim() !== '') || [];
 
       if (validQuotes.length === 0) {
         return { noQuote: true };
@@ -144,8 +142,14 @@ export function useQuoteLoader(updateQuote) {
     }
 
     const installed = JSON.parse(localStorage.getItem('installed') || '[]');
+    const enabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
     const quotePack = installed
-      .filter((item) => item.type === 'quotes')
+      .filter((item) => {
+        if (item.type !== 'quotes') return false;
+        const packId = item.id || item.name;
+        // Default to enabled if not in enabledPacks object
+        return enabledPacks[packId] !== false;
+      })
       .flatMap((item) =>
         item.quotes.map((quote) => ({
           ...quote,

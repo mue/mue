@@ -65,7 +65,9 @@ const SourceSection = ({
             toggleFunction={onToggle}
             showCreateYourOwn={false}
             onUninstall={onPhotoPackUninstall}
+            onTogglePack={() => {}}
             viewType="grid"
+            showChips={false}
           />
 
           {/* Settings for API packs */}

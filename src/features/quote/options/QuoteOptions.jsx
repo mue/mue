@@ -359,7 +359,9 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
       <>
         <Row final={true}>
           <Content
-            title={variables.getMessage('modals.main.settings.sections.quote.installed_packs_title')}
+            title={variables.getMessage(
+              'modals.main.settings.sections.quote.installed_packs_title',
+            )}
             subtitle={`${installedQuotePacks.length} ${installedQuotePacks.length === 1 ? 'pack' : 'packs'} • ${totalQuotes} ${totalQuotes === 1 ? 'quote' : 'quotes'}`}
           />
           <Action>
@@ -378,7 +380,9 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
           toggleFunction={handleToggle}
           showCreateYourOwn={false}
           onUninstall={handleUninstall}
+          onTogglePack={() => {}}
           viewType="grid"
+          showChips={false}
         />
       </>
     );

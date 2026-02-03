@@ -162,11 +162,16 @@ export async function checkAndRefreshAPIPacks() {
 export function buildPhotoPool() {
   const pool = [];
   const installed = JSON.parse(localStorage.getItem('installed') || '[]');
+  const enabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
   const apiPacksReady = JSON.parse(localStorage.getItem('api_packs_ready') || '[]');
   const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
 
   installed.forEach((pack) => {
     if (pack.type !== 'photos') return;
+
+    // Filter by enabled status - default to enabled if not in enabledPacks object
+    const packId = pack.id || pack.name;
+    if (enabledPacks[packId] === false) return;
 
     if (pack.api_enabled) {
       // API pack - check if configured and ready

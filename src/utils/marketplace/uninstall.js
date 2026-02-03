@@ -119,6 +119,16 @@ export function uninstall(type, name) {
 
   localStorage.setItem('installed', JSON.stringify(installed));
 
+  // Cleanup enabledPacks entry
+  const enabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
+  const installedItems = JSON.parse(localStorage.getItem('installed') || '[]');
+  const packToRemove = installedItems.find((item) => item.name === name);
+  if (packToRemove) {
+    const packId = packToRemove.id || packToRemove.name;
+    delete enabledPacks[packId];
+    localStorage.setItem('enabledPacks', JSON.stringify(enabledPacks));
+  }
+
   // Emit refresh event after all data is saved
   if (refreshEvent) {
     EventBus.emit('refresh', refreshEvent);

@@ -114,6 +114,18 @@
       }
     }
 
+    // Disabled pack styling
+    &.item-disabled {
+      opacity: 0.5;
+
+      .card-title,
+      .card-subtitle {
+        @include themed {
+          color: t($subColor);
+        }
+      }
+    }
+
     .item-uninstall-btn {
       display: flex;
       align-items: center;
