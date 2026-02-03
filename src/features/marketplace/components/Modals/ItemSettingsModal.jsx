@@ -177,15 +177,15 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
       closeTimeoutMS={100}
       onRequestClose={onClose}
       isOpen={isOpen}
-      className="Modal photoPackSettingsModal"
-      overlayClassName="Overlay photoPackSettingsOverlay"
+      className="Modal itemSettingsModal"
+      overlayClassName="Overlay itemSettingsOverlay"
       ariaHideApp={false}
     >
-      <div className="photoPackSettings-header">
-        <div className="photoPackSettings-header-info">
+      <div className="itemSettings-header">
+        <div className="itemSettings-header-info">
           {pack.icon_url ? (
             <img
-              className="photoPackSettings-icon"
+              className="itemSettings-icon"
               alt="icon"
               draggable={false}
               src={getProxiedImageUrl(pack.icon_url)}
@@ -195,47 +195,47 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
               }}
             />
           ) : (
-            <div className="photoPackSettings-icon photoPackSettings-icon-text">
+            <div className="itemSettings-icon itemSettings-icon-text">
               {(pack.display_name || pack.name)?.substring(0, 2).toUpperCase()}
             </div>
           )}
-          <div className="photoPackSettings-header-text">
+          <div className="itemSettings-header-text">
             <h2>{pack.display_name || pack.name}</h2>
-            <span className="photoPackSettings-subtitle">
+            <span className="itemSettings-subtitle">
               {pack.author && `by ${pack.author}`}
-              {pack.version && <span className="photoPackSettings-version">v{pack.version}</span>}
-              <span className={`photoPackSettings-status ${isEnabled ? 'enabled' : 'disabled'}`}>
+              {pack.version && <span className="itemSettings-version">v{pack.version}</span>}
+              <span className={`itemSettings-status ${isEnabled ? 'enabled' : 'disabled'}`}>
                 {isEnabled ? <MdCheckCircle /> : <MdCancel />}
                 {isEnabled ? 'Enabled' : 'Disabled'}
               </span>
             </span>
           </div>
         </div>
-        <button className="photoPackSettings-close" onClick={onClose} aria-label="Close">
+        <button className="itemSettings-close" onClick={onClose} aria-label="Close">
           <MdClose />
         </button>
       </div>
 
-      <div className="photoPackSettings-content">
+      <div className="itemSettings-content">
         {hasSettings && (
           <>
             {validationErrors.length > 0 && (
-              <div className="photoPackSettings-error">
+              <div className="itemSettings-error">
                 <MdWarning />
                 <span>Configuration incomplete: {validationErrors.join(', ')}</span>
               </div>
             )}
 
-            <div className="photoPackSettings-fields">
+            <div className="itemSettings-fields">
               {pack.settings_schema.map((field) => (
-                <div key={field.key} className="photoPackSettings-field">
+                <div key={field.key} className="itemSettings-field">
                   {renderField(field)}
                 </div>
               ))}
             </div>
 
             {isPhotoPack && (
-              <div className="photoPackSettings-actions">
+              <div className="itemSettings-actions">
                 <Button
                   onClick={handleManualRefresh}
                   icon={<MdRefresh />}
@@ -250,8 +250,8 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
         )}
 
         {!hasSettings && (
-          <div className="photoPackSettings-info">
-            <div className="photoPackSettings-info-item">
+          <div className="itemSettings-info">
+            <div className="itemSettings-info-item">
               <span className="label">Type</span>
               <span className="value">
                 {variables.getMessage(
@@ -260,13 +260,13 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
               </span>
             </div>
             {pack.description && (
-              <div className="photoPackSettings-info-item">
+              <div className="itemSettings-info-item">
                 <span className="label">Description</span>
                 <span className="value">{pack.description}</span>
               </div>
             )}
             {pack.sideload && (
-              <div className="photoPackSettings-info-item">
+              <div className="itemSettings-info-item">
                 <span className="label">Source</span>
                 <span className="value">Sideloaded</span>
               </div>

@@ -1,4 +1,4 @@
-.photoPackSettingsModal {
+.itemSettingsModal {
   max-width: 600px;
   width: 90%;
   max-height: 80vh;
@@ -8,11 +8,11 @@
   padding: 0;
 }
 
-.photoPackSettingsOverlay {
+.itemSettingsOverlay {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.photoPackSettings-header {
+.itemSettings-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -20,20 +20,20 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.photoPackSettings-header-info {
+.itemSettings-header-info {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.photoPackSettings-icon {
+.itemSettings-icon {
   width: 56px;
   height: 56px;
   border-radius: 12px;
   object-fit: cover;
 }
 
-.photoPackSettings-icon-text {
+.itemSettings-icon-text {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -43,20 +43,20 @@
   font-size: 20px;
 }
 
-.photoPackSettings-header-text {
+.itemSettings-header-text {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.photoPackSettings-header-text h2 {
+.itemSettings-header-text h2 {
   margin: 0;
   font-size: 20px;
   font-weight: 600;
   color: var(--text-color, #fff);
 }
 
-.photoPackSettings-subtitle {
+.itemSettings-subtitle {
   font-size: 14px;
   color: var(--subtitle-color, rgba(255, 255, 255, 0.6));
   display: flex;
@@ -65,7 +65,7 @@
   flex-wrap: wrap;
 }
 
-.photoPackSettings-version {
+.itemSettings-version {
   padding: 2px 8px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
@@ -73,7 +73,7 @@
   font-weight: 500;
 }
 
-.photoPackSettings-status {
+.itemSettings-status {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -97,7 +97,7 @@
   }
 }
 
-.photoPackSettings-close {
+.itemSettings-close {
   background: transparent;
   border: none;
   color: var(--text-color, #fff);
@@ -111,18 +111,18 @@
   transition: background 0.2s;
 }
 
-.photoPackSettings-close:hover {
+.itemSettings-close:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.photoPackSettings-content {
+.itemSettings-content {
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.photoPackSettings-error {
+.itemSettings-error {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -134,35 +134,35 @@
   font-size: 14px;
 }
 
-.photoPackSettings-error svg {
+.itemSettings-error svg {
   font-size: 20px;
   flex-shrink: 0;
 }
 
-.photoPackSettings-fields {
+.itemSettings-fields {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.photoPackSettings-field {
+.itemSettings-field {
   width: 100%;
 }
 
-.photoPackSettings-actions {
+.itemSettings-actions {
   display: flex;
   justify-content: flex-end;
   padding-top: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.photoPackSettings-info {
+.itemSettings-info {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.photoPackSettings-info-item {
+.itemSettings-info-item {
   display: flex;
   flex-direction: column;
   gap: 4px;
