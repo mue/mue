@@ -1,6 +1,6 @@
 import variables from 'config/variables';
 import React, { memo, useState, useMemo } from 'react';
-import { MdCheckCircle, MdOutlineUploadFile, MdClose } from 'react-icons/md';
+import { MdCheckCircle, MdOutlineUploadFile, MdClose, MdSettings } from 'react-icons/md';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 
 import { Tooltip } from 'components/Elements';
@@ -9,6 +9,7 @@ import Switch from 'components/Form/Settings/Switch/Switch';
 import Dropdown from '../../../../components/Form/Settings/Dropdown/Dropdown';
 import EventBus from 'utils/eventbus';
 import { getProxiedImageUrl } from 'utils/marketplace';
+import ItemSettingsModal from '../Modals/ItemSettingsModal';
 
 function filterItems(item, filter, categoryFilter) {
   const lowerCaseFilter = filter.toLowerCase();
@@ -68,12 +69,23 @@ function ItemCard({
 }) {
   const isSideloaded = item.sideload === true;
   const packId = item.id || item.name;
+  const isPhotoPack = item.type === 'photos' || item.type === 'photo_packs';
+  const hasSettings = isPhotoPack && item.settings_schema && item.settings_schema.length > 0;
 
   // Use React state to manage enabled status for immediate UI updates
   const [isEnabled, setIsEnabled] = useState(() => {
     const enabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
     return enabledPacks[packId] !== false; // Default to enabled if not set
   });
+
+  const [showSettingsModal, setShowSettingsModal] = useState(false);
+
+  const handleCardClick = () => {
+    if (isSideloaded || showSettingsModal) {
+      return;
+    }
+    toggleFunction(item);
+  };
 
   const handleTogglePack = (e) => {
     e.stopPropagation();
@@ -100,7 +112,7 @@ function ItemCard({
   return (
     <div
       className={`item ${isSideloaded ? 'item-sideloaded' : ''} ${!isEnabled && isAdded ? 'item-disabled' : ''}`}
-      onClick={isSideloaded ? undefined : () => toggleFunction(item)}
+      onClick={handleCardClick}
       key={item.name}
     >
       {isAdded && onTogglePack && (
@@ -207,18 +219,38 @@ function ItemCard({
         )}
 
         {isAdded && onUninstall && (
-          <Button
-            type="settings"
-            onClick={(e) => {
-              e.stopPropagation();
-              onUninstall(item.type, item.name);
-            }}
-            icon={<MdClose />}
-            label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
-            style={{ marginTop: '10px', width: '100%' }}
-          />
+          <div style={{ display: 'flex', gap: '8px', marginTop: '10px', width: '100%' }}>
+            <Button
+              type="settings"
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowSettingsModal(true);
+              }}
+              icon={<MdSettings />}
+              label={variables.getMessage('modals.main.marketplace.product.buttons.settings')}
+              style={{ flex: 1 }}
+            />
+            <Button
+              type="settings"
+              onClick={(e) => {
+                e.stopPropagation();
+                onUninstall(item.type, item.name);
+              }}
+              icon={<MdClose />}
+              label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+              style={{ flex: 1 }}
+            />
+          </div>
         )}
       </div>
+      {isAdded && (
+        <ItemSettingsModal
+          pack={item}
+          isOpen={showSettingsModal}
+          onClose={() => setShowSettingsModal(false)}
+          isEnabled={isEnabled}
+        />
+      )}
     </div>
   );
 }
