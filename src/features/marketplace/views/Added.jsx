@@ -63,7 +63,7 @@ const Added = memo(() => {
     toast(variables.getMessage('toasts.installed'));
     variables.stats.postEvent('marketplace', 'Sideload');
     setInstalled(JSON.parse(localStorage.getItem('installed')));
-    window.dispatchEvent(new Event('installedAddonsChanged'));
+    window.dispatchEvent(new window.Event('installedAddonsChanged'));
   }, []);
 
   const getSideloadButton = useCallback(() => {
@@ -158,14 +158,21 @@ const Added = memo(() => {
     localStorage.setItem('installed', JSON.stringify([]));
     toast(variables.getMessage('toasts.uninstalled_all'));
     setInstalled([]);
-    window.dispatchEvent(new Event('installedAddonsChanged'));
+    window.dispatchEvent(new window.Event('installedAddonsChanged'));
   }, [installed]);
 
   const handleUninstall = useCallback((type, name) => {
     uninstall(type, name);
     toast(variables.getMessage('toasts.uninstalled'));
     setInstalled(JSON.parse(localStorage.getItem('installed')));
-    window.dispatchEvent(new Event('installedAddonsChanged'));
+    window.dispatchEvent(new window.Event('installedAddonsChanged'));
+  }, []);
+
+  const handleTogglePack = useCallback((packId, newState) => {
+    const message = newState
+      ? variables.getMessage('toasts.enabled')
+      : variables.getMessage('toasts.disabled');
+    toast(message);
   }, []);
 
   useEffect(() => {
@@ -294,6 +301,7 @@ const Added = memo(() => {
         toggleFunction={(input) => toggle('item', input)}
         showCreateYourOwn={false}
         onUninstall={handleUninstall}
+        onTogglePack={handleTogglePack}
         viewType={viewType}
       />
     </>

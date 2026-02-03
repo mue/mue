@@ -66,8 +66,6 @@ function ItemCard({
   onTogglePack,
   showChips = true,
 }) {
-  item._onCollection = onCollection;
-
   const isSideloaded = item.sideload === true;
   const packId = item.id || item.name;
 

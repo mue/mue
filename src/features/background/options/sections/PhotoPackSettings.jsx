@@ -42,6 +42,21 @@ const PhotoPackSettings = ({ pack }) => {
     }
   }, [pack.id, pack.settings_schema, settings]);
 
+  const loadDynamicOptions = async (field) => {
+    if (field.options_source === 'api:categories') {
+      try {
+        const response = await fetch(`${variables.constants.API_URL}/images/categories`);
+        const categories = await response.json();
+        setDynamicOptions((prev) => ({
+          ...prev,
+          [field.key]: categories,
+        }));
+      } catch (error) {
+        console.error('Failed to load categories:', error);
+      }
+    }
+  };
+
   // Load dynamic options (e.g., categories from API)
   useEffect(() => {
     if (!pack.settings_schema || pack.settings_schema.length === 0) {
@@ -61,21 +76,6 @@ const PhotoPackSettings = ({ pack }) => {
     }
     validateSettings();
   }, [settings, validateSettings, pack.settings_schema]);
-
-  const loadDynamicOptions = async (field) => {
-    if (field.options_source === 'api:categories') {
-      try {
-        const response = await fetch(`${variables.constants.API_URL}/images/categories`);
-        const categories = await response.json();
-        setDynamicOptions((prev) => ({
-          ...prev,
-          [field.key]: categories,
-        }));
-      } catch (error) {
-        console.error('Failed to load categories:', error);
-      }
-    }
-  };
 
   const handleSettingChange = (key, value, secure = false) => {
     const processedValue = secure ? btoa(value) : value;
