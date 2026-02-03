@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import Modal from 'react-modal';
 import variables from 'config/variables';
 import EventBus from 'utils/eventbus';
-import { Dropdown, Text, Switch, Slider, ChipSelect } from 'components/Form/Settings';
+import { Dropdown, Switch, Slider, ChipSelect } from 'components/Form/Settings';
 import { Button } from 'components/Elements';
 import { refreshAPIPackCache } from 'features/background/api/photoPackAPI';
 import { MdRefresh, MdWarning, MdClose, MdCheckCircle, MdCancel } from 'react-icons/md';
@@ -78,11 +78,24 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
     validateSettings();
   }, [settings, validateSettings, pack.settings_schema]);
 
-  const handleSettingChange = (key, value, secure = false) => {
+  const handleSettingChange = async (key, value, secure = false) => {
     const processedValue = secure ? btoa(value) : value;
     const newSettings = { ...settings, [key]: processedValue };
     setSettings(newSettings);
     localStorage.setItem(`photopack_settings_${pack.id}`, JSON.stringify(newSettings));
+
+    // Clear cache and immediately refresh when settings change
+    const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
+    if (apiPackCache[pack.id]) {
+      delete apiPackCache[pack.id];
+      localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
+    }
+
+    // Trigger immediate refresh with new settings
+    setIsRefreshing(true);
+    await refreshAPIPackCache(pack.id);
+    setIsRefreshing(false);
+    EventBus.emit('refresh', 'background');
   };
 
   const handleManualRefresh = async () => {
@@ -130,15 +143,19 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
 
       case 'text':
         return (
-          <Text
-            title={field.label}
-            placeholder={field.placeholder}
-            value={value}
-            name={`${pack.id}_${field.key}`}
-            type={field.secure ? 'password' : 'text'}
-            onChange={(e) => handleSettingChange(field.key, e.target.value, field.secure)}
-            subtitle={field.help_text}
-          />
+          <div className="itemSettings-field-group">
+            <label className="itemSettings-field-label">{field.label}</label>
+            <input
+              type={field.secure ? 'password' : 'text'}
+              value={value}
+              onChange={(e) => handleSettingChange(field.key, e.target.value, field.secure)}
+              placeholder={field.placeholder || ''}
+              className="itemSettings-field-input"
+            />
+                        {field.help_text && (
+              <p className="itemSettings-field-description">{field.help_text}</p>
+            )}
+          </div>
         );
 
       case 'switch':

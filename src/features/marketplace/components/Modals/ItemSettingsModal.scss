@@ -1,3 +1,5 @@
+@use 'scss/variables' as *;
+
 .itemSettingsModal {
   max-width: 600px;
   width: 90%;
@@ -147,6 +149,51 @@
 
 .itemSettings-field {
   width: 100%;
+}
+
+.itemSettings-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.itemSettings-field-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--subtitle-color, rgba(255, 255, 255, 0.5));
+  font-weight: 600;
+}
+
+.itemSettings-field-description {
+  font-size: 0.7rem;
+  color: var(--subtitle-color, rgba(255, 255, 255, 0.4));
+  margin: 0;
+  line-height: 1.4;
+}
+
+.itemSettings-field-input {
+  height: 56px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-size: 1rem;
+
+  @include themed() {
+    background: t($modal-sidebar);
+    border: 1px solid t($modal-sidebarActive);
+    border-radius: t($borderRadius);
+    color: t($color);
+    &:hover,
+      &:focus {
+        border-color: t($color);
+      }
+
+      &::placeholder {
+        color: t($subColor);
+      }
+  }
 }
 
 .itemSettings-actions {

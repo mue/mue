@@ -44,13 +44,14 @@ export async function fetchFromMUE(packId, settings) {
  */
 export async function fetchFromUnsplash(packId, settings) {
   const { collections } = settings;
+  const trimmedCollections = collections?.trim();
 
   const params = new URLSearchParams({
     quality: 'high',
   });
 
-  if (collections) {
-    params.append('collections', collections);
+  if (trimmedCollections) {
+    params.append('collections', trimmedCollections);
   }
 
   try {
