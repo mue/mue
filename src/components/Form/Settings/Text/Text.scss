@@ -20,7 +20,7 @@
   }
 
   .text-field-label {
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -35,7 +35,7 @@
     align-items: center;
     gap: 5px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -49,14 +49,14 @@
     }
 
     svg {
-      font-size: 12px;
+      font-size: 0.75rem;
     }
   }
 
   .text-field-input {
     height: 56px;
     padding: 0 16px;
-    font-size: 16px;
+    font-size: 1rem;
     outline: none;
     transition: 0.2s ease;
 
@@ -83,7 +83,7 @@
 
   .text-field-textarea {
     padding: 16px;
-    font-size: 16px;
+    font-size: 1rem;
     outline: none;
     resize: vertical;
     min-height: 100px;

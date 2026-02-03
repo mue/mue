@@ -12,7 +12,7 @@
   }
 
   .slider-value {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 600;
 
     @include themed {
@@ -25,7 +25,7 @@
     align-items: center;
     gap: 5px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -41,7 +41,7 @@
     }
 
     svg {
-      font-size: 12px;
+      font-size: 0.75rem;
       transition: transform 0.2s ease;
     }
 
@@ -180,7 +180,7 @@
     .slider-mark {
       position: absolute;
       transform: translateX(-50%);
-      font-size: 12px;
+      font-size: 0.75rem;
 
       @include themed {
         color: t($subColor);
@@ -211,7 +211,7 @@
     transform: translateX(-50%);
     padding: 4px 8px;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 600;
     white-space: nowrap;
     pointer-events: none;

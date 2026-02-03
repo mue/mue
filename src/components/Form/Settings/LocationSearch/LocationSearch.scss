@@ -79,7 +79,7 @@
   }
 
   .location-search-label {
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -94,7 +94,7 @@
     align-items: center;
     gap: 5px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -108,7 +108,7 @@
     }
 
     svg {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
   }
 
@@ -148,7 +148,7 @@
     border: none;
     outline: none;
     height: 100%;
-    font-size: 14px;
+    font-size: 0.875rem;
     padding: 0;
     min-width: 0;
 
@@ -164,7 +164,7 @@
 
   .location-search-clear {
     flex-shrink: 0;
-    font-size: 20px;
+    font-size: 1.25rem;
     cursor: pointer;
     transition: all 0.2s ease;
     padding: 4px;
@@ -195,7 +195,7 @@
 
   .location-search-arrow {
     flex-shrink: 0;
-    font-size: 24px;
+    font-size: 1.5rem;
     transition: all 0.2s ease;
     cursor: pointer;
     padding: 4px;
@@ -308,7 +308,7 @@
   }
 
   .location-search-option-detail {
-    font-size: 12px;
+    font-size: 0.75rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -320,7 +320,7 @@
 
   .location-search-option-check {
     flex-shrink: 0;
-    font-size: 14px;
+    font-size: 0.875rem;
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -343,7 +343,7 @@
 .location-search-empty {
   padding: 16px;
   text-align: center;
-  font-size: 14px;
+  font-size: 0.875rem;
 
   @include themed {
     color: t($subColor);

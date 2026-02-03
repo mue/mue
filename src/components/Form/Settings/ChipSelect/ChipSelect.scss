@@ -58,7 +58,7 @@
   flex-flow: column;
 
   .chipSelect-label {
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -113,7 +113,7 @@
     align-items: center;
     gap: 6px;
     padding: 6px 10px;
-    font-size: 13px;
+    font-size: 0.8125rem;
     text-transform: capitalize;
     transition: all 0.15s ease;
 
@@ -147,14 +147,14 @@
       }
 
       svg {
-        font-size: 12px;
+        font-size: 0.75rem;
       }
     }
   }
 
   .chipSelect-arrow {
     flex-shrink: 0;
-    font-size: 24px;
+    font-size: 1.5rem;
     transition: transform 0.2s ease;
 
     @include themed {
@@ -254,7 +254,7 @@
     }
 
     svg {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
   }
 

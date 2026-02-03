@@ -55,6 +55,7 @@
   gap: 8px;
   display: flex;
   flex-flow: column;
+  font-size: 1rem;
 
   &.disabled {
     opacity: 0.5;
@@ -70,7 +71,7 @@
   }
 
   .dropdown-label {
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -85,7 +86,7 @@
     align-items: center;
     gap: 5px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -99,7 +100,7 @@
     }
 
     svg {
-      font-size: 12px;
+      font-size: 0.75rem;
     }
   }
 
@@ -149,7 +150,7 @@
 
   .dropdown-arrow {
     flex-shrink: 0;
-    font-size: 24px;
+    font-size: 1.5rem;
     transition: all 0.2s ease;
     cursor: pointer;
     padding: 4px;
@@ -176,7 +177,7 @@
     border: none;
     outline: none;
     height: 100%;
-    font-size: 14px;
+    font-size: 0.875rem;
     padding: 0;
     min-width: 0;
 
@@ -192,7 +193,7 @@
 
   .dropdown-clear {
     flex-shrink: 0;
-    font-size: 20px;
+    font-size: 1.25rem;
     cursor: pointer;
     transition: all 0.2s ease;
     padding: 4px;
@@ -305,7 +306,7 @@
 
   .dropdown-option-check {
     flex-shrink: 0;
-    font-size: 14px;
+    font-size: 0.875rem;
     width: 20px;
     height: 20px;
     border-radius: 50%;

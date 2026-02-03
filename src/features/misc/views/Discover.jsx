@@ -22,92 +22,6 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
   const previewParam = isPreviewMode ? '&preview=true' : '';
   const isOffline = navigator.onLine === false || offlineMode;
 
-  // Helper function to update iframe based on hash
-  const updateIframeFromHash = useRef(() => {
-    if (!iframeRef.current) return;
-
-    const hash = window.location.hash;
-    if (!hash || !hash.startsWith('#discover')) return;
-
-    const parts = hash.slice(1).split('/');
-    if (parts.length < 2) return;
-
-    const theme = getResolvedTheme();
-    const themeParam = `&theme=${theme}`;
-    let targetUrl = '';
-
-    if (parts[1] === 'collections') {
-      targetUrl = `${MARKETPLACE_URL}/collections?embed=true${previewParam}${themeParam}`;
-    } else if (parts[1] === 'collection' && parts[2]) {
-      targetUrl = `${MARKETPLACE_URL}/collection/${parts[2]}?embed=true${previewParam}${themeParam}`;
-    } else if (parts[2]) {
-      // Item view - map category to path
-      const pathMap = {
-        photo_packs: 'packs',
-        quote_packs: 'packs',
-        preset_settings: 'presets',
-      };
-      const pathSegment = pathMap[parts[1]] || 'packs';
-      targetUrl = `${MARKETPLACE_URL}/${pathSegment}/${parts[2]}?embed=true${previewParam}${themeParam}`;
-    } else if (parts[1] === 'all') {
-      // All items
-      targetUrl = `${MARKETPLACE_URL}?embed=true${previewParam}${themeParam}`;
-    } else {
-      // Category filter (photo_packs, quote_packs, preset_settings)
-      targetUrl = `${MARKETPLACE_URL}?embed=true&type=${parts[1]}${previewParam}${themeParam}`;
-    }
-
-    // Update iframe src directly
-    if (targetUrl && iframeRef.current.src !== targetUrl) {
-      setIsLoading(true);
-      iframeRef.current.src = targetUrl;
-    }
-  });
-
-  // Update the ref function when previewParam changes
-  useEffect(() => {
-    updateIframeFromHash.current = () => {
-      if (!iframeRef.current) return;
-
-      const hash = window.location.hash;
-      if (!hash || !hash.startsWith('#discover')) return;
-
-      const parts = hash.slice(1).split('/');
-      if (parts.length < 2) return;
-
-      const theme = getResolvedTheme();
-      const themeParam = `&theme=${theme}`;
-      let targetUrl = '';
-
-      if (parts[1] === 'collections') {
-        targetUrl = `${MARKETPLACE_URL}/collections?embed=true${previewParam}${themeParam}`;
-      } else if (parts[1] === 'collection' && parts[2]) {
-        targetUrl = `${MARKETPLACE_URL}/collection/${parts[2]}?embed=true${previewParam}${themeParam}`;
-      } else if (parts[2]) {
-        // Item view - map category to path
-        const pathMap = {
-          photo_packs: 'packs',
-          quote_packs: 'packs',
-          preset_settings: 'presets',
-        };
-        const pathSegment = pathMap[parts[1]] || 'packs';
-        targetUrl = `${MARKETPLACE_URL}/${pathSegment}/${parts[2]}?embed=true${previewParam}${themeParam}`;
-      } else if (parts[1] === 'all') {
-        // All items
-        targetUrl = `${MARKETPLACE_URL}?embed=true${previewParam}${themeParam}`;
-      } else {
-        // Category filter (photo_packs, quote_packs, preset_settings)
-        targetUrl = `${MARKETPLACE_URL}?embed=true&type=${parts[1]}${previewParam}${themeParam}`;
-      }
-
-      // Update iframe src directly
-      if (targetUrl && iframeRef.current.src !== targetUrl) {
-        setIsLoading(true);
-        iframeRef.current.src = targetUrl;
-      }
-    };
-  }, [previewParam]);
-
   // Clear breadcrumbs when component unmounts (navigating away from discover)
   useEffect(() => {
     return () => {
@@ -228,31 +142,6 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
     }
   }, [deepLinkData, previewParam]);
 
-  // Send navigation commands to iframe when hash changes externally (e.g., browser back/forward, breadcrumb clicks)
-  useEffect(() => {
-    const handleHashChange = () => {
-      updateIframeFromHash.current();
-    };
-
-    const handlePopState = () => {
-      updateIframeFromHash.current();
-    };
-
-    // Listen for hash changes from browser navigation
-    window.addEventListener('hashchange', handleHashChange);
-    window.addEventListener('popstate', handlePopState);
-
-    // Also trigger immediately if hash exists
-    if (window.location.hash.startsWith('#discover')) {
-      updateIframeFromHash.current();
-    }
-
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-      window.removeEventListener('popstate', handlePopState);
-    };
-  }, []);
-
   useEffect(() => {
     // Listen for postMessage events from the iframe
     const handleMessage = (event) => {
@@ -352,44 +241,12 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
           }
           break;
 
-        case 'marketplace:navigation':
+        case 'marketplace:navigate':
           // Update parent URL when iframe navigates
-          if (payload?.path) {
-            // Parse the path to extract relevant info
-            // e.g., /marketplace/packs/123 -> #discover/photo_packs/123
-            // e.g., /marketplace/presets/456 -> #discover/preset_settings/456
-            // e.g., /marketplace/collections -> #discover/collections
-            // e.g., /marketplace/collection/featured -> #discover/collection/featured
-
-            const path = payload.path;
-
-            if (path.includes('/packs/')) {
-              const itemId = path.split('/packs/')[1]?.split('?')[0];
-              if (itemId) {
-                // Determine type from installed items or default to photo_packs
-                const installed = JSON.parse(localStorage.getItem('installed')) || [];
-                const item = installed.find((i) => i.id === itemId);
-                const category = item?.type || 'photo_packs';
-                updateHash(`#discover/${category}/${itemId}`);
-              }
-            } else if (path.includes('/presets/')) {
-              const itemId = path.split('/presets/')[1]?.split('?')[0];
-              if (itemId) {
-                updateHash(`#discover/preset_settings/${itemId}`);
-              }
-            } else if (path.includes('/collection/')) {
-              const collectionId = path.split('/collection/')[1]?.split('?')[0];
-              if (collectionId) {
-                updateHash(`#discover/collection/${collectionId}`);
-              }
-            } else if (path.includes('/collections')) {
-              updateHash('#discover/collections');
-            } else if (path === '/marketplace' || path === '/marketplace/') {
-              // Extract type from search params if present
-              const searchParams = new URLSearchParams(payload.search || '');
-              const type = searchParams.get('type') || 'all';
-              updateHash(`#discover/${type}`);
-            }
+          if (payload?.itemId) {
+            updateHash(`#discover/${payload.itemId}`);
+          } else if (payload?.category) {
+            updateHash(`#discover/${payload.category}`);
           }
           break;
 
