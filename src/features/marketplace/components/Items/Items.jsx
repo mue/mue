@@ -103,9 +103,21 @@ function ItemCard({
       onTogglePack(packId, newState);
     }
 
-    // Emit refresh event for quotes only (background will update on next interval)
+    // Clear queue when toggling pack state to prevent stale content
     if (item.type === 'quotes') {
+      // Clear quote queue
+      localStorage.removeItem('quoteQueue');
+      localStorage.removeItem('currentQuote');
       EventBus.emit('refresh', 'quote');
+    } else if (item.type === 'photos') {
+      // Clear photo pack queue
+      localStorage.removeItem('photoPackQueue');
+      localStorage.removeItem('currentPhoto');
+      // Only refresh if background is currently blank/black to avoid jarring changes
+      const backgroundImage = document.getElementById('backgroundImage');
+      if (!backgroundImage || !backgroundImage.style.backgroundImage) {
+        EventBus.emit('refresh', 'background');
+      }
     }
   };
 
