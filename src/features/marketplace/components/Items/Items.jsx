@@ -109,7 +109,7 @@ function ItemCard({
         <div
           className="item-toggle-switch"
           onClick={(e) => e.stopPropagation()}
-          style={{ position: 'absolute', top: '12px', right: '12px', zIndex: 3 }}
+          style={{ position: 'absolute', top: '20px', right: '20px', zIndex: 3 }}
         >
           <label className="switch-track" style={{ cursor: 'pointer' }}>
             <input
@@ -125,7 +125,7 @@ function ItemCard({
                 height: '32px',
                 borderRadius: '16px',
                 backgroundColor: isEnabled
-                  ? 'var(--linkColor, #5298ff)'
+                  ? 'var(--linkColor, #ff5c25)'
                   : 'rgba(128, 128, 128, 0.3)',
                 position: 'relative',
                 transition: 'background-color 0.2s',
