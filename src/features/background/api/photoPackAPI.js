@@ -16,7 +16,7 @@ const responseParser = {
       photographer_page: photo.photographer_url,
     };
   },
-  
+
   pixabay: (data, query) => {
     const hits = data.hits || [];
     if (hits.length === 0) return null;
@@ -31,12 +31,12 @@ const responseParser = {
       photographer_page: `https://pixabay.com/users/${photo.user}-${photo.user_id}/`,
     };
   },
-  
+
   flickr: async (data, query, apiKey) => {
     const photos = data.photos?.photo || [];
     if (photos.length === 0) return null;
     const photo = photos[Math.floor(Math.random() * photos.length)];
-    
+
     // Get photo details
     const infoParams = new URLSearchParams({
       method: 'flickr.photos.getInfo',
@@ -47,7 +47,7 @@ const responseParser = {
     });
     const infoResp = await fetch(`https://api.flickr.com/services/rest/?${infoParams}`);
     const info = await infoResp.json();
-    
+
     return {
       photographer: info.photo?.owner?.realname || info.photo?.owner?.username || 'Unknown',
       location: info.photo?.title?._content || photo.title || 'Unknown',
@@ -58,7 +58,7 @@ const responseParser = {
       photographer_page: `https://www.flickr.com/photos/${photo.owner}/`,
     };
   },
-  
+
   // Default parser for Mue backend (already returns correct format)
   default: (data) => ({
     photographer: data.photographer,
@@ -104,7 +104,7 @@ export async function fetchFromProvider(packId, pack, settings) {
           params.append('per_page', '80');
           params.append('page', Math.floor(Math.random() * 5) + 1);
           break;
-          
+
         case 'pixabay':
           apiKey = settings[`photoPack_${packId}_api_key`];
           if (apiKey) params.append('key', atob(apiKey));
@@ -118,7 +118,7 @@ export async function fetchFromProvider(packId, pack, settings) {
           params.append('per_page', '200');
           params.append('page', Math.floor(Math.random() * 3) + 1);
           break;
-          
+
         case 'flickr':
           apiKey = settings[`photoPack_${packId}_api_key`];
           if (apiKey) params.append('api_key', atob(apiKey));
@@ -171,7 +171,7 @@ export async function fetchFromProvider(packId, pack, settings) {
     // Parse response using provider-specific parser
     const parser = responseParser[pack.api_provider] || responseParser.default;
     return await parser(data, params, apiKey ? atob(apiKey) : null);
-    
+
   } catch (error) {
     console.error(`Fetch from ${pack.api_provider} failed:`, error);
     return null;
