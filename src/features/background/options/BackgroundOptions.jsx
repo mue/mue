@@ -27,9 +27,12 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
   const [backgroundFilter, setBackgroundFilter] = useState(
     localStorage.getItem('backgroundFilter') || 'none',
   );
-  const [backgroundCategories, setBackgroundCategories] = useState([
-    variables.getMessage('modals.main.loading'),
-  ]);
+  const [backgroundCategories, setBackgroundCategories] = useState(() => {
+    if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
+      return [variables.getMessage('modals.update.offline.title')];
+    }
+    return [variables.getMessage('modals.main.loading')];
+  });
   const [backgroundCategoriesOG, setBackgroundCategoriesOG] = useState([]);
   const [backgroundAPI, setBackgroundAPI] = useState(
     localStorage.getItem('backgroundAPI') || 'mue',
@@ -109,7 +112,6 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
     controllerRef.current = new AbortController();
 
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
-      setBackgroundCategories([variables.getMessage('modals.update.offline.title')]);
       return;
     }
 

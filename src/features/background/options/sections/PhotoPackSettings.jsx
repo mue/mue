@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import variables from 'config/variables';
 import EventBus from 'utils/eventbus';
 import { Dropdown, Text, Switch, Slider, ChipSelect } from 'components/Form/Settings';
@@ -9,10 +9,6 @@ import { refreshAPIPackCache } from 'features/background/api/photoPackAPI';
 import { MdRefresh, MdWarning, MdExpandMore, MdExpandLess } from 'react-icons/md';
 
 const PhotoPackSettings = ({ pack }) => {
-  if (!pack.settings_schema || pack.settings_schema.length === 0) {
-    return null;
-  }
-
   const [settings, setSettings] = useState(() => {
     const saved = localStorage.getItem(`photopack_settings_${pack.id}`);
     return saved ? JSON.parse(saved) : {};
@@ -23,36 +19,7 @@ const PhotoPackSettings = ({ pack }) => {
   const [validationErrors, setValidationErrors] = useState([]);
   const [isExpanded, setIsExpanded] = useState(false);
 
-  // Load dynamic options (e.g., categories from API)
-  useEffect(() => {
-    pack.settings_schema.forEach((field) => {
-      if (field.dynamic && field.options_source) {
-        loadDynamicOptions(field);
-      }
-    });
-  }, [pack.id]);
-
-  // Validate settings
-  useEffect(() => {
-    validateSettings();
-  }, [settings]);
-
-  const loadDynamicOptions = async (field) => {
-    if (field.options_source === 'api:categories') {
-      try {
-        const response = await fetch(`${variables.constants.API_URL}/images/categories`);
-        const categories = await response.json();
-        setDynamicOptions((prev) => ({
-          ...prev,
-          [field.key]: categories,
-        }));
-      } catch (error) {
-        console.error('Failed to load categories:', error);
-      }
-    }
-  };
-
-  const validateSettings = () => {
+  const validateSettings = useCallback(() => {
     const errors = [];
     pack.settings_schema.forEach((field) => {
       if (field.required && !settings[field.key]) {
@@ -73,6 +40,41 @@ const PhotoPackSettings = ({ pack }) => {
       const filtered = apiPacksReady.filter((id) => id !== pack.id);
       localStorage.setItem('api_packs_ready', JSON.stringify(filtered));
     }
+  }, [pack.id, pack.settings_schema, settings]);
+
+  // Load dynamic options (e.g., categories from API)
+  useEffect(() => {
+    if (!pack.settings_schema || pack.settings_schema.length === 0) {
+      return;
+    }
+    pack.settings_schema.forEach((field) => {
+      if (field.dynamic && field.options_source) {
+        loadDynamicOptions(field);
+      }
+    });
+  }, [pack.id, pack.settings_schema]);
+
+  // Validate settings
+  useEffect(() => {
+    if (!pack.settings_schema || pack.settings_schema.length === 0) {
+      return;
+    }
+    validateSettings();
+  }, [settings, validateSettings, pack.settings_schema]);
+
+  const loadDynamicOptions = async (field) => {
+    if (field.options_source === 'api:categories') {
+      try {
+        const response = await fetch(`${variables.constants.API_URL}/images/categories`);
+        const categories = await response.json();
+        setDynamicOptions((prev) => ({
+          ...prev,
+          [field.key]: categories,
+        }));
+      } catch (error) {
+        console.error('Failed to load categories:', error);
+      }
+    }
   };
 
   const handleSettingChange = (key, value, secure = false) => {
@@ -90,14 +92,14 @@ const PhotoPackSettings = ({ pack }) => {
     EventBus.emit('refresh', 'background');
   };
 
-  const renderField = (field, index) => {
+  const renderField = (field) => {
     const value =
       field.secure && settings[field.key]
         ? atob(settings[field.key])
         : settings[field.key] || field.default;
 
     switch (field.type) {
-      case 'dropdown':
+      case 'dropdown': {
         const dropdownItems = field.options.map((opt) => ({
           value: opt.value,
           text: opt.label,
@@ -111,8 +113,9 @@ const PhotoPackSettings = ({ pack }) => {
             onChange={(newValue) => handleSettingChange(field.key, newValue)}
           />
         );
+      }
 
-      case 'chipselect':
+      case 'chipselect': {
         const options = field.dynamic ? dynamicOptions[field.key] || [] : field.options;
         return (
           <ChipSelect
@@ -122,6 +125,7 @@ const PhotoPackSettings = ({ pack }) => {
             onChange={(newValue) => handleSettingChange(field.key, newValue)}
           />
         );
+      }
 
       case 'text':
         return (
@@ -163,6 +167,10 @@ const PhotoPackSettings = ({ pack }) => {
         return null;
     }
   };
+
+  if (!pack.settings_schema || pack.settings_schema.length === 0) {
+    return null;
+  }
 
   return (
     <>
@@ -215,7 +223,7 @@ const PhotoPackSettings = ({ pack }) => {
           {pack.settings_schema.map((field, index) => (
             <Row key={field.key} final={index === pack.settings_schema.length - 1}>
               <Content title="" />
-              <Action>{renderField(field, index)}</Action>
+              <Action>{renderField(field)}</Action>
             </Row>
           ))}
         </>
