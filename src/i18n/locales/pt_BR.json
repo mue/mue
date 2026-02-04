@@ -316,7 +316,16 @@
                 "name_desc": "Name (Z-A)",
                 "size_small": "File Size (Smallest)",
                 "size_large": "File Size (Largest)"
-              }
+              },
+              "pack_count": {
+                "singular": "pack",
+                "plural": "packs"
+              },
+              "photo_count": {
+                "singular": "photo",
+                "plural": "photos"
+              },
+              "get_more": "Get more"
             },
             "display": "Tela",
             "display_subtitle": "Alterar como as informações de plano de fundo e foto são carregadas",
@@ -335,16 +344,7 @@
             "photo_pack_settings": {
               "title": "{name} Settings",
               "refresh_photos": "Refresh Photos"
-            },
-            "pack_count": {
-              "singular": "pack",
-              "plural": "packs"
-            },
-            "photo_count": {
-              "singular": "photo",
-              "plural": "photos"
-            },
-            "get_more": "Get more"
+            }
           },
           "search": {
             "title": "Pesquisar",

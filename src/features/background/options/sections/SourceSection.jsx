@@ -54,7 +54,7 @@ const SourceSection = ({
               subtitle={`${installedPhotoPacks.length} ${installedPhotoPacks.length === 1 ? variables.getMessage('modals.main.settings.sections.background.source.pack_count.singular') : variables.getMessage('modals.main.settings.sections.background.source.pack_count.plural')} • ${totalPhotoCount} ${totalPhotoCount === 1 ? variables.getMessage('modals.main.settings.sections.background.source.photo_count.singular') : variables.getMessage('modals.main.settings.sections.background.source.photo_count.plural')}`}
             />
             <Action>
-              <Button onClick={onGoToPhotoPacks} icon={<MdExplore />} label={variables.getMessage('modals.main.settings.sections.background.source.get_more')} />
+              <Button type="settings" onClick={onGoToPhotoPacks} icon={<MdExplore />} label={variables.getMessage('modals.main.settings.sections.background.source.get_more')} />
             </Action>
           </Row>
           <Items
