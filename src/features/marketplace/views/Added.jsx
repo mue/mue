@@ -225,7 +225,7 @@ const Added = memo(() => {
               type="collection"
               onClick={goToDiscover}
               icon={<MdExplore />}
-              label="Get Some"
+              label={variables.getMessage('modals.main.marketplace.addons.get_some')}
             />
           </div>
         </div>
@@ -249,7 +249,7 @@ const Added = memo(() => {
             type="settings"
             onClick={removeAll}
             icon={<MdOutlineExtensionOff />}
-            label="Remove all addons"
+            label={variables.getMessage('modals.main.marketplace.addons.remove_all')}
           />
         </CustomActions>
       </Header>
@@ -269,21 +269,21 @@ const Added = memo(() => {
           items={[
             { value: 'newest', text: variables.getMessage('modals.main.addons.sort.newest') },
             { value: 'a-z', text: variables.getMessage('modals.main.addons.sort.a_z') },
-            { value: 'recently-updated', text: 'Recently Updated' },
+            { value: 'recently-updated', text: variables.getMessage('modals.main.marketplace.addons.recently_updated') },
           ]}
         />
         <div className="view-toggle-buttons">
           <button
             className={`view-toggle-btn ${viewType === 'grid' ? 'active' : ''}`}
             onClick={() => toggleViewType('grid')}
-            aria-label="Grid view"
+            aria-label={variables.getMessage('common.view_mode.grid')}
           >
             <MdViewModule />
           </button>
           <button
             className={`view-toggle-btn ${viewType === 'list' ? 'active' : ''}`}
             onClick={() => toggleViewType('list')}
-            aria-label="List view"
+            aria-label={variables.getMessage('common.view_mode.list')}
           >
             <MdViewList />
           </button>

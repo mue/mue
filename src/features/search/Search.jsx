@@ -62,7 +62,7 @@ function Search() {
           className="navbarButton"
           onClick={startSpeechRecognition}
           ref={micIcon}
-          aria-label="Microphone Search"
+          aria-label={t('common.microphone_search')}
         >
           <MdMic className="micIcon" />
         </button>,
@@ -119,7 +119,7 @@ function Search() {
         <form onSubmit={searchButton} className="searchBar">
           <div className={classList}>
             <Tooltip title={t('widgets.search')}>
-              <button className="navbarButton" onClick={searchButton} aria-label="Search">
+              <button className="navbarButton" onClick={searchButton} aria-label={t('common.search_label')}>
                 <MdSearch />
               </button>
             </Tooltip>

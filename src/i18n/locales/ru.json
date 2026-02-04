@@ -65,7 +65,8 @@
       "share": "Поделиться",
       "copy": "Копировать",
       "favourite": "Избранное",
-      "unfavourite": "Не нравится"
+      "unfavourite": "Не нравится",
+      "author_info_aria": "Learn about the author of the quote."
     },
     "navbar": {
       "tooltips": {
@@ -269,6 +270,10 @@
               "title": "Source",
               "subtitle": "Выберите, откуда брать фоновые изображения",
               "api": "API для фона",
+              "api_title": "API",
+              "api_mue": "Mue",
+              "api_unsplash": "Unsplash",
+              "collection_placeholder": "e.g. 123456, 654321",
               "custom_background": "Пользовательский фон",
               "custom_colour": "Пользовательский цвет фон",
               "upload": "Загрузить",
@@ -281,6 +286,9 @@
               "disabled": "Выключен",
               "loop_video": "Зацикленное видео",
               "mute_video": "Отключить звук видео",
+              "persistent_storage_tooltip": "Request persistent storage to prevent browser from automatically clearing your images",
+              "persistent_storage_granted": "Persistent storage granted - your images are protected from eviction",
+              "persistent_storage_denied": "Persistent storage denied - images may be cleared if storage is low",
               "quality": {
                 "title": "Качество",
                 "original": "Original",
@@ -402,8 +410,16 @@
             "layout_grid": "Grid",
             "layout_flex": "Flexible",
             "layout_compact": "Compact",
+            "layout_card": "Card",
             "grid_columns": "Grid Columns",
             "grid_rows": "Grid Rows",
+            "grid_columns_auto": "Auto",
+            "appearance_title": "Appearance",
+            "appearance_subtitle": "Customize style and layout of quick links",
+            "display_title": "Display",
+            "display_subtitle": "Configure tooltips and tab behavior",
+            "organization_title": "Organization",
+            "organization_subtitle": "Organize links into groups",
             "grouping": "Groups",
             "grouping_description": "Organize quick links into groups",
             "enable_grouping": "Enable Grouping",
@@ -412,11 +428,22 @@
             "manage_groups": "Manage Groups",
             "bookmark_sync": "Bookmark Sync",
             "bookmark_sync_description": "Import and sync browser bookmarks",
+            "bookmark_sync_title": "Bookmark Sync",
+            "bookmark_sync_subtitle": "Automatically sync browser bookmarks to quick links",
+            "bookmark_sync_section_title": "Bookmark Sync",
+            "bookmark_sync_section_subtitle": "Import and sync browser bookmarks",
             "enable_bookmark_sync": "Enable Bookmark Sync",
             "sync_direction": "Sync Direction",
             "import_only": "Import Only",
             "two_way": "Two-Way Sync",
             "sync_now": "Sync Now",
+            "manual_sync_title": "Manual Sync",
+            "manual_sync_subtitle": "Manually sync bookmarks now",
+            "sync_bookmarks_button": "Sync Bookmarks",
+            "syncing": "Syncing...",
+            "permission_denied": "Permission denied",
+            "sync_success": "Synced: {imported} imported, {updated} updated, {removed} removed",
+            "sync_error": "Error: {message}",
             "icon_settings": "Icon Settings",
             "icon_settings_description": "Configure icon behavior and fallbacks",
             "custom_icons_enabled": "Allow Custom Icon Uploads",
@@ -585,7 +612,17 @@
           "experimental": {
             "title": "Экспериментальные настройки",
             "warning": "Данные настройки не были полностью протестированы/реализованы и могут работать некорректно!",
-            "developer": "Developer"
+            "developer": "Developer",
+            "debug_hotkey": "Debug hotkey (Ctrl + #)",
+            "debug_timeout": "Debug timeout",
+            "send_event": "Send Event",
+            "event_type": "Type",
+            "event_name": "Name",
+            "normal_toast": "Normal Toast",
+            "achievement_toast": "Achievement Unlocked Toast",
+            "toast_success": "Toasted successfully",
+            "clear_localstorage": "Clear LocalStorage",
+            "data_section": "Data"
           },
           "language": {
             "title": "Язык",
@@ -597,7 +634,8 @@
           },
           "changelog": {
             "title": "Журнал изменений",
-            "by": "By {author}"
+            "by": "By {author}",
+            "iframe_title": "Changelog"
           },
           "about": {
             "title": "О программе",
@@ -625,7 +663,15 @@
             "supporters": "Поддержка",
             "no_supporters": "В настоящее время нет поддержки Mue",
             "photographers": "Фотографы",
-            "curators": "Add-on creators"
+            "curators": "Add-on creators",
+            "social": {
+              "email": "Email",
+              "twitter": "X (Twitter)",
+              "discord": "Discord"
+            },
+            "license": "Licensed under the BSD-3-Clause License",
+            "copyright": "Copyright {startYear}-{currentYear}",
+            "image_count": "{count} images"
           }
         },
         "buttons": {
@@ -660,6 +706,9 @@
           "title": "Здесь пусто",
           "description": "Зайдите в магазин, чтобы найти что-то интересное"
         },
+        "get_some": "Get Some",
+        "remove_all": "Remove all addons",
+        "recently_updated": "Recently Updated",
         "sideload": {
           "title": "Загрузить",
           "description": "Установить аддон Mue, не представленную на торговой площадке, со своего компьютера",
@@ -770,19 +819,36 @@
       "forward": "Forward",
       "navigate_back": "Navigate back",
       "navigate_forward": "Navigate forward",
-      "navigate_to": "Navigate to {item}"
+      "navigate_to": "Navigate to {item}",
+      "breadcrumb_navigation": "Breadcrumb navigation"
     },
     "actions": {
       "edit": "Edit",
-      "remove": "Remove"
+      "remove": "Remove",
+      "close": "Close",
+      "send": "Send"
     },
     "alt_text": {
       "preview": "Preview",
       "location": "Location",
-      "screenshot": "Screenshot"
+      "screenshot": "Screenshot",
+      "logo": "Logo"
     },
     "add_translation": "Add translation",
-    "above_widgets": "Above widgets"
+    "above_widgets": "Above widgets",
+    "view_mode": {
+      "grid": "Grid view",
+      "list": "List view"
+    },
+    "search_label": "Search",
+    "microphone_search": "Microphone Search"
+  },
+  "error_boundary": {
+    "title": "A critical error has occurred",
+    "message": "The new tab page could not be loaded. Please uninstall the extension and try again.",
+    "report_button": "Report Issue",
+    "sent_successfully": "Sent Successfully",
+    "support_discord": "Support Discord"
   },
   "toasts": {
     "quote": "Цитата скопирована",

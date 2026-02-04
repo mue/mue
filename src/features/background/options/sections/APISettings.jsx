@@ -52,14 +52,14 @@ const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
             }}
           />
           <Radio
-            title="API"
+            title={variables.getMessage('modals.main.settings.sections.background.source.api_title')}
             options={[
               {
-                name: 'Mue',
+                name: variables.getMessage('modals.main.settings.sections.background.source.api_mue'),
                 value: 'mue',
               },
               {
-                name: 'Unsplash',
+                name: variables.getMessage('modals.main.settings.sections.background.source.api_unsplash'),
                 value: 'unsplash',
               },
             ]}
@@ -84,7 +84,7 @@ const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
               subtitle={variables.getMessage(
                 'modals.main.settings.sections.background.unsplash.id_subtitle',
               )}
-              placeholder="e.g. 123456, 654321"
+              placeholder={variables.getMessage('modals.main.settings.sections.background.source.collection_placeholder')}
               name="unsplashCollections"
               category="background"
               element="#backgroundImage"

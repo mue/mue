@@ -222,7 +222,7 @@ function ModalTopBar({
         </div>
         <img src={mueAboutIcon} alt="Mue" className="topBarLogo" draggable={false} />
         {breadcrumbPath.length > 0 && (
-          <nav className="breadcrumbs" aria-label="Breadcrumb navigation">
+          <nav className="breadcrumbs" aria-label={t('common.navigation.breadcrumb_navigation')}>
             {breadcrumbPath.map((item, index) => {
               const isLast = index === breadcrumbPath.length - 1;
               const isClickable = item.onClick !== null;

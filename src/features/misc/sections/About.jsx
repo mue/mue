@@ -141,7 +141,7 @@ class About extends PureComponent {
               draggable={false}
               className="aboutLogo"
               src={'src/assets/icons/mue_about.png'}
-              alt="Logo"
+              alt={variables.getMessage('common.alt_text.logo')}
             />
             <div className="aboutText">
               <span className="title">{variables.getMessage('branding.name')}</span>
@@ -153,8 +153,10 @@ class About extends PureComponent {
             </div>
             <div>
               <span className="subtitle">
-                Copyright 2018-
-                {new Date().getFullYear()}{' '}
+                {variables.getMessage('modals.main.settings.sections.about.copyright', {
+                  startYear: 2018,
+                  currentYear: new Date().getFullYear()
+                })}{' '}
                 <a
                   className="link"
                   href={
@@ -171,7 +173,7 @@ class About extends PureComponent {
                 </a>
               </span>
             </div>
-            <span className="subtitle">Licensed under the BSD-3-Clause License</span>
+            <span className="subtitle">{variables.getMessage('modals.main.settings.sections.about.license')}</span>
             <span className="subtitle">
               <a
                 href={variables.constants.PRIVACY_URL}
@@ -200,19 +202,19 @@ class About extends PureComponent {
               type="linkIconButton"
               href={'mailto:' + variables.constants.EMAIL}
               icon={<MdEmail />}
-              tooltipTitle="Email"
+              tooltipTitle={variables.getMessage('modals.main.settings.sections.about.social.email')}
             />
             <Button
               type="linkIconButton"
               href={'https://x.com/' + variables.constants.TWITTER_HANDLE}
               icon={<SiX />}
-              tooltipTitle="X (Twitter)"
+              tooltipTitle={variables.getMessage('modals.main.settings.sections.about.social.twitter')}
             />
             <Button
               type="linkIconButton"
               href={'https://discord.gg/' + variables.constants.DISCORD_SERVER}
               icon={<FaDiscord />}
-              tooltipTitle="Discord"
+              tooltipTitle={variables.getMessage('modals.main.settings.sections.about.social.discord')}
             />
           </div>
         </div>
@@ -332,7 +334,7 @@ class About extends PureComponent {
             {this.state.photographers.map(({ name, count }) => (
               <li key={name} className="subtitle-photographers">
                 {name}
-                <span> ({count} images)</span>
+                <span> ({variables.getMessage('modals.main.settings.sections.about.image_count', { count })})</span>
               </li>
             ))}
           </ul>

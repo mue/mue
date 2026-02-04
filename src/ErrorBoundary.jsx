@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 
 import { captureException } from '@sentry/react';
+import variables from 'config/variables';
 
 class ErrorBoundary extends PureComponent {
   constructor(props) {
@@ -29,18 +30,18 @@ class ErrorBoundary extends PureComponent {
       return (
         <div className="criticalError">
           <div className="criticalError-message">
-            <h1>A critical error has occurred</h1>
-            <p>
-              The new tab page could not be loaded. Please uninstall the extension and try again.
-            </p>
+            <h1>{variables.getMessage('error_boundary.title')}</h1>
+            <p>{variables.getMessage('error_boundary.message')}</p>
             <div className="criticalError-actions">
               {this.state.showReport ? (
-                <button onClick={() => this.reportError()}>Report Issue</button>
+                <button onClick={() => this.reportError()}>
+                  {variables.getMessage('error_boundary.report_button')}
+                </button>
               ) : (
-                <p>Sent Successfully</p>
+                <p>{variables.getMessage('error_boundary.sent_successfully')}</p>
               )}
               <a href="https://discord.gg/zv8C9F8" target="_blank" rel="noreferrer">
-                Support Discord
+                {variables.getMessage('error_boundary.support_discord')}
               </a>
             </div>
           </div>

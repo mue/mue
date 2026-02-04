@@ -26,9 +26,9 @@ function ExperimentalOptions() {
           title={variables.getMessage('modals.main.settings.sections.experimental.developer')}
         />
         <Action>
-          <Checkbox name="debug" text="Debug hotkey (Ctrl + #)" element=".other" />
+          <Checkbox name="debug" text={variables.getMessage('modals.main.settings.sections.experimental.debug_hotkey')} element=".other" />
           <Slider
-            title="Debug timeout"
+            title={variables.getMessage('modals.main.settings.sections.experimental.debug_timeout')}
             name="debugtimeout"
             min="0"
             max="5000"
@@ -37,9 +37,9 @@ function ExperimentalOptions() {
             marks={values.experimental}
             element=".other"
           />
-          <p style={{ textAlign: 'left', width: '100%' }}>Send Event</p>
+          <p style={{ textAlign: 'left', width: '100%' }}>{variables.getMessage('modals.main.settings.sections.experimental.send_event')}</p>
           <div className="text-field">
-            <label className="text-field-label">Type</label>
+            <label className="text-field-label">{variables.getMessage('modals.main.settings.sections.experimental.event_type')}</label>
             <input
               type="text"
               className="text-field-input"
@@ -49,7 +49,7 @@ function ExperimentalOptions() {
             />
           </div>
           <div className="text-field">
-            <label className="text-field-label">Name</label>
+            <label className="text-field-label">{variables.getMessage('modals.main.settings.sections.experimental.event_name')}</label>
             <input
               type="text"
               className="text-field-input"
@@ -61,24 +61,24 @@ function ExperimentalOptions() {
           <Button
             type="settings"
             onClick={() => EventBus.emit(eventType, eventName)}
-            label="Send"
+            label={variables.getMessage('common.actions.send')}
           />
           <Button
             type="settings"
-            onClick={() => toast('Toasted successfully')}
-            label="Normal Toast"
+            onClick={() => toast(variables.getMessage('modals.main.settings.sections.experimental.toast_success'))}
+            label={variables.getMessage('modals.main.settings.sections.experimental.normal_toast')}
           />
           <Button
             type="settings"
-            onClick={() => toast.success('Toasted successfully')}
-            label="Achievement Unlocked Toast"
+            onClick={() => toast.success(variables.getMessage('modals.main.settings.sections.experimental.toast_success'))}
+            label={variables.getMessage('modals.main.settings.sections.experimental.achievement_toast')}
           />
         </Action>
       </Row>
       <Row final={true}>
-        <Content title="Data" />
+        <Content title={variables.getMessage('modals.main.settings.sections.experimental.data_section')} />
         <Action>
-          <Button type="settings" onClick={() => localStorage.clear()} label="Clear LocalStorage" />
+          <Button type="settings" onClick={() => localStorage.clear()} label={variables.getMessage('modals.main.settings.sections.experimental.clear_localstorage')} />
         </Action>
       </Row>
     </>

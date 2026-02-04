@@ -1,7 +1,4 @@
 import {
-  MdSettings,
-  MdWidgets,
-  MdShoppingBasket,
   MdTune,
   MdBookmarks,
   MdExplore,

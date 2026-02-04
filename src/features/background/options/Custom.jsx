@@ -593,7 +593,7 @@ const CustomSettings = memo(() => {
                 {' '}
                 · {formatBytes(storageUsed)} / {formatBytes(availableStorageLimit)}
                 {storagePercent > 80 && navigator.storage && navigator.storage.persist && (
-                  <Tooltip title="Request persistent storage to prevent browser from automatically clearing your images">
+                  <Tooltip title={variables.getMessage('modals.main.settings.sections.background.source.persistent_storage_tooltip')}>
                     <button
                       className="request-storage-link"
                       onClick={async () => {
@@ -601,11 +601,11 @@ const CustomSettings = memo(() => {
                           const isPersisted = await navigator.storage.persist();
                           if (isPersisted) {
                             toast(
-                              'Persistent storage granted - your images are protected from eviction',
+                              variables.getMessage('modals.main.settings.sections.background.source.persistent_storage_granted'),
                             );
                           } else {
                             toast(
-                              'Persistent storage denied - images may be cleared if storage is low',
+                              variables.getMessage('modals.main.settings.sections.background.source.persistent_storage_denied'),
                             );
                           }
                         } catch (error) {

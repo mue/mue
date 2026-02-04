@@ -59,7 +59,7 @@ export default function AuthorInfo({
                 className="quoteAuthorLink"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Learn about the author of the quote."
+                aria-label={t('widgets.quote.author_info_aria')}
               >
                 <MdOpenInNew />
               </a>

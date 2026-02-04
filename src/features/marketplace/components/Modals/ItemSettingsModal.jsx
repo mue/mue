@@ -222,7 +222,7 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
             </span>
           </div>
         </div>
-        <button className="itemSettings-close" onClick={onClose} aria-label="Close">
+        <button className="itemSettings-close" onClick={onClose} aria-label={variables.getMessage('common.actions.close')}>
           <MdClose />
         </button>
       </div>

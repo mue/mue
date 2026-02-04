@@ -80,7 +80,7 @@ const Changelog = () => {
           opacity: loading ? 0 : 1,
           transition: 'opacity 0.2s ease-in-out',
         }}
-        title="Changelog"
+        title={variables.getMessage('modals.main.settings.sections.changelog.iframe_title')}
       />
     </div>
   );
