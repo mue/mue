@@ -22,7 +22,7 @@ const useAppSetup = () => {
     loadSettings();
 
     const refreshHandler = (data) => {
-      if (data === 'other') {
+      if (data === 'other' || data === 'greeting' || data === 'clock' || data === 'quote') {
         loadSettings(true);
       }
     };

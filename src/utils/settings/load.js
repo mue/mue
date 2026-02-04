@@ -143,113 +143,104 @@ export function loadSettings(hotreload) {
 
   // Per-widget fonts (override global widget font)
   const greetingFont = localStorage.getItem('greetingFont');
-  if (greetingFont) {
-    const greetingFontWeight = localStorage.getItem('greetingFontWeight') || '400';
-    const greetingFontStyle = localStorage.getItem('greetingFontStyle') || 'normal';
-    const greetingColor = localStorage.getItem('greetingColor') || '#ffffff';
+  const greetingFontWeight = localStorage.getItem('greetingFontWeight');
+  const greetingFontStyle = localStorage.getItem('greetingFontStyle');
+  const greetingColor = localStorage.getItem('greetingColor');
 
-    const fontFamily = greetingFont.replace(/ /g, '+');
-    const googleFontUrl = `@import url('https://fonts.googleapis.com/css2?family=${fontFamily}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');`;
+  if (greetingFont || greetingFontWeight || greetingFontStyle || greetingColor) {
+    let styleContent = '';
+
+    if (greetingFont) {
+      const fontFamily = greetingFont.replace(/ /g, '+');
+      styleContent += `@import url('https://fonts.googleapis.com/css2?family=${fontFamily}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');\n`;
+    }
+
+    styleContent += '.greeting {';
+    if (greetingFont) {
+      styleContent += `font-family: '${greetingFont}', 'Lexend Deca', 'Inter', sans-serif !important;`;
+    }
+    if (greetingFontWeight) {
+      styleContent += `font-weight: ${greetingFontWeight} !important;`;
+    }
+    if (greetingFontStyle) {
+      styleContent += `font-style: ${greetingFontStyle} !important;`;
+    }
+    if (greetingColor) {
+      styleContent += `color: ${greetingColor} !important;`;
+    }
+    styleContent += '}';
 
     document.head.insertAdjacentHTML(
       'beforeend',
-      `
-        <style id='customgreetingfont'>
-          ${googleFontUrl}
-          .greeting {
-            font-family: '${greetingFont}', 'Lexend Deca', 'Inter', sans-serif !important;
-            font-weight: ${greetingFontWeight};
-            font-style: ${greetingFontStyle};
-            color: ${greetingColor} !important;
-          }
-        </style>
-      `,
-    );
-  } else if (localStorage.getItem('greetingColor')) {
-    const greetingColor = localStorage.getItem('greetingColor');
-    document.head.insertAdjacentHTML(
-      'beforeend',
-      `
-        <style id='customgreetingfont'>
-          .greeting {
-            color: ${greetingColor} !important;
-          }
-        </style>
-      `,
+      `<style id='customgreetingfont'>${styleContent}</style>`,
     );
   }
 
   const clockFont = localStorage.getItem('clockFont');
-  if (clockFont) {
-    const clockFontWeight = localStorage.getItem('clockFontWeight') || '400';
-    const clockFontStyle = localStorage.getItem('clockFontStyle') || 'normal';
-    const clockColor = localStorage.getItem('clockColor') || '#ffffff';
+  const clockFontWeight = localStorage.getItem('clockFontWeight');
+  const clockFontStyle = localStorage.getItem('clockFontStyle');
+  const clockColor = localStorage.getItem('clockColor');
 
-    const fontFamily = clockFont.replace(/ /g, '+');
-    const googleFontUrl = `@import url('https://fonts.googleapis.com/css2?family=${fontFamily}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');`;
+  if (clockFont || clockFontWeight || clockFontStyle || clockColor) {
+    let styleContent = '';
+
+    if (clockFont) {
+      const fontFamily = clockFont.replace(/ /g, '+');
+      styleContent += `@import url('https://fonts.googleapis.com/css2?family=${fontFamily}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');\n`;
+    }
+
+    styleContent += '.clock, .date {';
+    if (clockFont) {
+      styleContent += `font-family: '${clockFont}', 'Lexend Deca', 'Inter', sans-serif !important;`;
+    }
+    if (clockFontWeight) {
+      styleContent += `font-weight: ${clockFontWeight} !important;`;
+    }
+    if (clockFontStyle) {
+      styleContent += `font-style: ${clockFontStyle} !important;`;
+    }
+    if (clockColor) {
+      styleContent += `color: ${clockColor} !important;`;
+    }
+    styleContent += '}';
 
     document.head.insertAdjacentHTML(
       'beforeend',
-      `
-        <style id='customclockfont'>
-          ${googleFontUrl}
-          .clock, .date {
-            font-family: '${clockFont}', 'Lexend Deca', 'Inter', sans-serif !important;
-            font-weight: ${clockFontWeight};
-            font-style: ${clockFontStyle};
-            color: ${clockColor} !important;
-          }
-        </style>
-      `,
-    );
-  } else if (localStorage.getItem('clockColor')) {
-    const clockColor = localStorage.getItem('clockColor');
-    document.head.insertAdjacentHTML(
-      'beforeend',
-      `
-        <style id='customclockfont'>
-          .clock, .date {
-            color: ${clockColor} !important;
-          }
-        </style>
-      `,
+      `<style id='customclockfont'>${styleContent}</style>`,
     );
   }
 
   const quoteFont = localStorage.getItem('quoteFont');
-  if (quoteFont) {
-    const quoteFontWeight = localStorage.getItem('quoteFontWeight') || '400';
-    const quoteFontStyle = localStorage.getItem('quoteFontStyle') || 'normal';
-    const quoteColor = localStorage.getItem('quoteColor') || '#ffffff';
+  const quoteFontWeight = localStorage.getItem('quoteFontWeight');
+  const quoteFontStyle = localStorage.getItem('quoteFontStyle');
+  const quoteColor = localStorage.getItem('quoteColor');
 
-    const fontFamily = quoteFont.replace(/ /g, '+');
-    const googleFontUrl = `@import url('https://fonts.googleapis.com/css2?family=${fontFamily}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');`;
+  if (quoteFont || quoteFontWeight || quoteFontStyle || quoteColor) {
+    let styleContent = '';
+
+    if (quoteFont) {
+      const fontFamily = quoteFont.replace(/ /g, '+');
+      styleContent += `@import url('https://fonts.googleapis.com/css2?family=${fontFamily}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');\n`;
+    }
+
+    styleContent += '.quote, .quoteauthor {';
+    if (quoteFont) {
+      styleContent += `font-family: '${quoteFont}', 'Lexend Deca', 'Inter', sans-serif !important;`;
+    }
+    if (quoteFontWeight) {
+      styleContent += `font-weight: ${quoteFontWeight} !important;`;
+    }
+    if (quoteFontStyle) {
+      styleContent += `font-style: ${quoteFontStyle} !important;`;
+    }
+    if (quoteColor) {
+      styleContent += `color: ${quoteColor} !important;`;
+    }
+    styleContent += '}';
 
     document.head.insertAdjacentHTML(
       'beforeend',
-      `
-        <style id='customquotefont'>
-          ${googleFontUrl}
-          .quote, .quoteauthor {
-            font-family: '${quoteFont}', 'Lexend Deca', 'Inter', sans-serif !important;
-            font-weight: ${quoteFontWeight};
-            font-style: ${quoteFontStyle};
-            color: ${quoteColor} !important;
-          }
-        </style>
-      `,
-    );
-  } else if (localStorage.getItem('quoteColor')) {
-    const quoteColor = localStorage.getItem('quoteColor');
-    document.head.insertAdjacentHTML(
-      'beforeend',
-      `
-        <style id='customquotefont'>
-          .quote, .quoteauthor {
-            color: ${quoteColor} !important;
-          }
-        </style>
-      `,
+      `<style id='customquotefont'>${styleContent}</style>`,
     );
   }
 
@@ -272,15 +263,15 @@ export function loadSettings(hotreload) {
 
   // easter egg
   console.log(`
-  █████████████████████████████████████████████████████████████                                                                        
+  █████████████████████████████████████████████████████████████
   ██                                                         ██
-  ██               ███    ███ ██    ██ ███████               ██  
-  ██               ████  ████ ██    ██ ██                    ██ 
-  ██               ██ ████ ██ ██    ██ █████                 ██ 
-  ██               ██  ██  ██ ██    ██ ██                    ██ 
-  ██               ██      ██  ██████  ███████               ██ 
-  ██                                                         ██ 
-  ██                                                         ██                                                                                                 
+  ██               ███    ███ ██    ██ ███████               ██
+  ██               ████  ████ ██    ██ ██                    ██
+  ██               ██ ████ ██ ██    ██ █████                 ██
+  ██               ██  ██  ██ ██    ██ ██                    ██
+  ██               ██      ██  ██████  ███████               ██
+  ██                                                         ██
+  ██                                                         ██
   ██           Copyright 2018-${new Date().getFullYear()} The Mue Authors           ██
   ██           GitHub: https://github.com/mue/mue            ██
   ██                                                         ██

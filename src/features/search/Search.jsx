@@ -81,11 +81,16 @@ function Search() {
       }
     }
 
-    EventBus.on('refresh', (data) => {
+    const handleRefresh = (data) => {
       if (data === 'search') {
         init();
       }
-    });
+    };
+
+    EventBus.on('refresh', handleRefresh);
+    return () => {
+      EventBus.off('refresh', handleRefresh);
+    };
   }, [init]);
 
   function searchButton(e) {

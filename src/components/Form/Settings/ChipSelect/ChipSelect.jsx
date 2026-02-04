@@ -29,6 +29,26 @@ function ChipSelect({ label, options, onChange, name }) {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
+      // Ignore clicks on color inputs to prevent closing when native color picker opens
+      if (event.target.type === 'color') {
+        return;
+      }
+
+      // Also ignore clicks on color input labels and wrappers
+      const target = event.target;
+      if (target.tagName === 'LABEL' && target.htmlFor) {
+        const associatedInput = document.getElementById(target.htmlFor) || document.querySelector(`input[name="${target.htmlFor}"]`);
+        if (associatedInput && associatedInput.type === 'color') {
+          return;
+        }
+      }
+
+      // Check if clicking within a color input wrapper
+      const colorInputWrapper = target.closest('.colourInput');
+      if (colorInputWrapper && colorInputWrapper.querySelector('input[type="color"]')) {
+        return;
+      }
+
       if (
         containerRef.current &&
         !containerRef.current.contains(event.target) &&

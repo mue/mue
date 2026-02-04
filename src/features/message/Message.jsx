@@ -26,7 +26,7 @@ const Message = () => {
 
     EventBus.on('refresh', handleRefresh);
     return () => {
-      EventBus.off('refresh');
+      EventBus.off('refresh', handleRefresh);
     };
   }, []);
 

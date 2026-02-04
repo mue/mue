@@ -273,12 +273,12 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
               name="greetingFontWeight"
               category="greeting"
               items={[
-                { value: '400', text: t(fontWeight + '.normal') },
+                { value: '600', text: t(fontWeight + '.semi_bold') },
                 { value: '100', text: t(fontWeight + '.thin') },
                 { value: '200', text: t(fontWeight + '.extra_light') },
                 { value: '300', text: t(fontWeight + '.light') },
+                { value: '400', text: t(fontWeight + '.normal') },
                 { value: '500', text: t(fontWeight + '.medium') },
-                { value: '600', text: t(fontWeight + '.semi_bold') },
                 { value: '700', text: t(fontWeight + '.bold') },
                 { value: '800', text: t(fontWeight + '.extra_bold') },
               ]}
