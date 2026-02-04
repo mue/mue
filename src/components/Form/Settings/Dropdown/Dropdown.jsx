@@ -10,6 +10,7 @@ import EventBus from 'utils/eventbus';
 import './Dropdown.scss';
 
 const Dropdown = memo((props) => {
+  const t = useT();
   const [value, setValue] = useState(localStorage.getItem(props.name) || props.items[0]?.value);
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
@@ -34,7 +35,6 @@ const Dropdown = memo((props) => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      const t = useT();
       if (
         containerRef.current &&
         !containerRef.current.contains(event.target) &&
