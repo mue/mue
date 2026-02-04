@@ -5,7 +5,7 @@
   font-size: 0.8em;
   text-shadow: 0 0 10px rgb(0 0 0 / 30%);
   cursor: initial;
-  -webkit-user-select: none;
+  user-select: none;
   user-select: none;
 
   --shadow-shift: 0.125rem;
@@ -13,7 +13,7 @@
   color: #fff;
   font-weight: 600;
   max-width: 45vw;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -21,7 +21,7 @@
 .quoteauthor {
   font-size: 0.9em;
   letter-spacing: 0.5px;
-  -webkit-user-select: none;
+  user-select: none;
   user-select: none;
 
   --shadow-shift: 0.125rem;
@@ -40,7 +40,7 @@ h1.quoteauthor {
 .quoteAuthorLink {
   text-decoration: none;
   color: white;
-  -webkit-user-select: none;
+  user-select: none;
   user-select: none;
 }
 

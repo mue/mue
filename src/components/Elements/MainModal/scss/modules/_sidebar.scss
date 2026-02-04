@@ -6,9 +6,11 @@
     margin: 0;
     padding: 0.75rem 0.5rem;
     background: t($modal-sidebar);
-    border-radius: 12px 0 0 12px;
-    overflow-y: auto;
-    overflow-x: hidden;
+    border-start-start-radius: 12px;
+    border-end-start-radius: 12px;
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+    overflow: hidden auto;
     height: 100%;
     min-width: 250px;
     flex-shrink: 0;
@@ -29,7 +31,8 @@
         .search-input-field {
           height: 38px;
           font-size: 14px;
-          padding: 0 14px 0 42px;
+          padding-inline: 42px 14px;
+          padding-block: 0;
           border-radius: 10px;
 
           &::placeholder {
@@ -38,7 +41,7 @@
         }
 
         .search-input-icon {
-          left: 16px;
+          inset-inline-start: 16px;
           font-size: 18px;
         }
       }
@@ -80,7 +83,7 @@
       border: none;
       background: none;
       width: calc(100% - 0.5rem);
-      text-align: left;
+      text-align: start;
       position: relative;
 
       &:last-child {
@@ -130,13 +133,20 @@
       &::before {
         content: '';
         position: absolute;
-        left: 0;
+        inset-inline-start: 0;
         top: 50%;
         transform: translateY(-50%);
         width: 3px;
         height: 60%;
         background: t($color);
-        border-radius: 0 2px 2px 0;
+
+        [dir='ltr'] & {
+          border-radius: 0 2px 2px 0;
+        }
+
+        [dir='rtl'] & {
+          border-radius: 2px 0 0 2px;
+        }
       }
     }
 
@@ -162,7 +172,7 @@
       }
 
       .tab-list-active::before {
-        left: 50%;
+        inset-inline-start: 50%;
         transform: translate(-50%, -50%);
         width: 60%;
         height: 3px;
@@ -271,8 +281,7 @@
       width: 17px;
       height: 17px;
       border-radius: 6px;
-      margin-left: 20px;
-      margin-right: 20px;
+      margin-inline: 20px;
       flex-shrink: 0;
 
       @include themed {

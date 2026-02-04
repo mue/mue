@@ -9,6 +9,7 @@
 @use 'modules/scrollbars' as *;
 @use 'settings/main' as *;
 @use 'marketplace/main' as *;
+
 /* Fixed: Added sass:map module */
 
 .Overlay {
@@ -48,7 +49,7 @@
 .closePositioning {
   position: absolute;
   top: 3rem;
-  right: 3rem;
+  inset-inline-end: 3rem;
 }
 
 .closeModal {
@@ -96,7 +97,7 @@
 #modal {
   height: 80vh;
   width: clamp(60vw, 1400px, 90vw);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
   backdrop-filter: blur(16px) saturate(180%);
   overflow: hidden;
   border-radius: 12px;

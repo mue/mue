@@ -11,6 +11,9 @@ import { initTranslations, translations } from 'lib/translations';
 import variables from 'config/variables';
 import EventBus from 'utils/eventbus';
 
+const RTL_LANGUAGES = ['ar', 'arz', 'azb', 'fa', 'peo'];
+const isRTLLanguage = (lang) => RTL_LANGUAGES.includes(lang.split('_')[0]);
+
 const TranslationContext = createContext();
 
 export function TranslationProvider({ children, initialLanguage }) {
@@ -24,6 +27,7 @@ export function TranslationProvider({ children, initialLanguage }) {
     variables.language = i18nInstance.current;
     variables.languagecode = currentLanguage;
     document.documentElement.lang = currentLanguage.replace('_', '-');
+    document.documentElement.dir = isRTLLanguage(currentLanguage) ? 'rtl' : 'ltr';
   }, [currentLanguage, initialLanguage]);
 
   const changeLanguage = useCallback(
@@ -32,6 +36,7 @@ export function TranslationProvider({ children, initialLanguage }) {
       variables.language = i18nInstance.current;
       variables.languagecode = newLanguage;
       document.documentElement.lang = newLanguage.replace('_', '-');
+      document.documentElement.dir = isRTLLanguage(newLanguage) ? 'rtl' : 'ltr';
 
       const currentTabName = localStorage.getItem('tabName');
       const oldDefaultTabName = i18nInstance.current?.getMessage(currentLanguage, 'tabname');

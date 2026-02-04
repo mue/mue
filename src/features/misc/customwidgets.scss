@@ -5,11 +5,11 @@
   z-index: -1;
   width: 300px;
   height: 400px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgb(0 0 0 / 50%);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 30%);
+  border: 1px solid rgb(255 255 255 / 10%);
   pointer-events: auto;
 
   &.custom-widget-top-left {
@@ -45,11 +45,11 @@
   max-width: 800px;
   height: 400px;
   margin: 20px auto;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgb(0 0 0 / 30%);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 20%);
+  border: 1px solid rgb(255 255 255 / 10%);
 
   iframe {
     width: 100%;
@@ -61,8 +61,8 @@
 
 .custom-widget-overlay {
   z-index: 100 !important;
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 48px rgb(0 0 0 / 50%);
+  border: 2px solid rgb(255 255 255 / 15%);
 }
 
 .widgets-container {
@@ -82,8 +82,8 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgb(255 255 255 / 3%);
+  border: 1px solid rgb(255 255 255 / 8%);
   border-radius: 12px;
   padding: 16px 20px;
   transition: all 0.01s ease;
@@ -91,12 +91,12 @@
   user-select: none;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.12);
+    background: rgb(255 255 255 / 6%);
+    border-color: rgb(255 255 255 / 12%);
 
     .widget-drag-handle {
       opacity: 1;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgb(255 255 255 / 70%);
     }
   }
 
@@ -109,7 +109,7 @@
     align-items: center;
     justify-content: center;
     cursor: grab;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgb(255 255 255 / 40%);
     font-size: 24px;
     padding: 4px;
     opacity: 0.3;
@@ -122,7 +122,7 @@
     }
 
     &:hover {
-      color: rgba(255, 255, 255, 0.9);
+      color: rgb(255 255 255 / 90%);
     }
   }
 
@@ -130,18 +130,18 @@
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgb(255 255 255 / 8%);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgb(255 255 255 / 10%);
 
     svg {
       width: 28px;
       height: 28px;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgb(255 255 255 / 70%);
     }
   }
 
@@ -164,7 +164,7 @@
 
     .widget-url {
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgb(255 255 255 / 50%);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -173,7 +173,7 @@
 
     .widget-position {
       font-size: 11px;
-      color: rgba(255, 255, 255, 0.4);
+      color: rgb(255 255 255 / 40%);
       font-style: italic;
       line-height: 1.3;
     }
@@ -190,8 +190,8 @@
       gap: 6px;
       padding: 8px 16px;
       border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgb(255 255 255 / 15%);
+      background: rgb(255 255 255 / 5%);
       color: #fff;
       font-size: 14px;
       cursor: pointer;
@@ -204,8 +204,8 @@
       }
 
       &:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.25);
+        background: rgb(255 255 255 / 10%);
+        border-color: rgb(255 255 255 / 25%);
       }
 
       &:active {
@@ -214,8 +214,8 @@
 
       &.widget-remove-btn {
         &:hover {
-          background: rgba(239, 68, 68, 0.15);
-          border-color: rgba(239, 68, 68, 0.4);
+          background: rgb(239 68 68 / 15%);
+          border-color: rgb(239 68 68 / 40%);
           color: #ef4444;
         }
       }
@@ -227,17 +227,17 @@
   transform: scale(1.02);
   z-index: 9999 !important;
   opacity: 0.5 !important;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 12px 40px rgb(0 0 0 / 50%) !important;
   cursor: grabbing !important;
 
   &.widget-item {
-    background: rgba(255, 255, 255, 0.1) !important;
-    border-color: rgba(255, 255, 255, 0.2) !important;
+    background: rgb(255 255 255 / 10%) !important;
+    border-color: rgb(255 255 255 / 20%) !important;
   }
 
   .widget-drag-handle {
     opacity: 1 !important;
-    color: rgba(255, 255, 255, 0.9) !important;
+    color: rgb(255 255 255 / 90%) !important;
   }
 
   .widget-icon,
@@ -256,6 +256,6 @@
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: rgb(255 255 255 / 10%) !important;
   transition: none !important;
 }

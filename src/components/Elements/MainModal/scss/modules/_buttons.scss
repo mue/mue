@@ -71,15 +71,15 @@
 
   &:hover {
     @include themed {
-      background: rgba(0, 0, 0, 0.04) !important;
+      background: rgb(0 0 0 / 4%) !important;
     }
 
     .light & {
-      background: rgba(0, 0, 0, 0.04) !important;
+      background: rgb(0 0 0 / 4%) !important;
     }
 
     .dark & {
-      background: rgba(255, 255, 255, 0.06) !important;
+      background: rgb(255 255 255 / 6%) !important;
     }
   }
 
@@ -101,7 +101,7 @@
   }
 
   .btn-badge {
-    margin-left: 3px;
+    margin-inline-start: 3px;
     padding: 5px 7px;
     border-radius: 6px;
     font-size: 0.75em !important;
@@ -118,30 +118,30 @@
     }
 
     .light & {
-      background-color: rgba(0, 0, 0, 0.08);
-      color: rgba(0, 0, 0, 0.8);
+      background-color: rgb(0 0 0 / 8%);
+      color: rgb(0 0 0 / 80%);
     }
 
     .dark & {
-      background-color: rgba(255, 255, 255, 0.12);
-      color: rgba(255, 255, 255, 0.9);
+      background-color: rgb(255 255 255 / 12%);
+      color: rgb(255 255 255 / 90%);
     }
   }
 
   &.btn-navigation-active .btn-badge {
     @include themed {
-      background-color: rgba(0, 0, 0, 0.08);
-      color: rgba(0, 0, 0, 0.8);
+      background-color: rgb(0 0 0 / 8%);
+      color: rgb(0 0 0 / 80%);
     }
 
     .light & {
-      background-color: rgba(0, 0, 0, 0.1);
-      color: rgba(0, 0, 0, 0.85);
+      background-color: rgb(0 0 0 / 10%);
+      color: rgb(0 0 0 / 85%);
     }
 
     .dark & {
-      background-color: rgba(255, 255, 255, 0.15);
-      color: rgba(255, 255, 255, 1);
+      background-color: rgb(255 255 255 / 15%);
+      color: rgb(255 255 255 / 100%);
     }
   }
 }
@@ -155,17 +155,17 @@
 
 .btn-navigation-active {
   @include themed {
-    background: rgba(0, 0, 0, 0.06) !important;
+    background: rgb(0 0 0 / 6%) !important;
     box-shadow: none !important;
   }
 
   .light & {
-    background: rgba(0, 0, 0, 0.06) !important;
+    background: rgb(0 0 0 / 6%) !important;
     border: none !important;
   }
 
   .dark & {
-    background: rgba(255, 255, 255, 0.1) !important;
+    background: rgb(255 255 255 / 10%) !important;
     border: none !important;
   }
 }

@@ -53,6 +53,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -185,6 +186,7 @@
     height: 20px;
     border: 2px solid transparent;
     border-radius: 50%;
+
     @include animation(locationSearchSpin 0.8s linear infinite);
 
     @include themed {
@@ -219,17 +221,18 @@
 
 .location-search-menu {
   max-height: 250px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden auto;
   z-index: 9999;
+
   @include animation(locationSearchSlideIn 0.2s ease-out);
+
   will-change: transform, opacity;
 
   @include themed {
     background: t($modal-background);
     border: 1px solid t($modal-sidebarActive);
     border-radius: t($borderRadius);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
   }
 
   &.flipped {

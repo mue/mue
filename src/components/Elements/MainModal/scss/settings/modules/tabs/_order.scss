@@ -48,7 +48,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   padding: 20px;
-  grid-gap: 20px;
+  gap: 20px;
 
   @include themed {
     div {
@@ -104,6 +104,7 @@
       opacity: 1;
     }
   }
+
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
 
@@ -124,6 +125,7 @@
 
       &:hover {
         transform: translateY(-4px);
+
         // box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 
         .image-nav-buttons {
@@ -154,11 +156,11 @@
           appearance: none;
           border: 2px solid #fff;
           border-radius: 4px;
-          background: rgba(0, 0, 0, 0.6);
-          -webkit-backdrop-filter: blur(4px);
+          background: rgb(0 0 0 / 60%);
+          backdrop-filter: blur(4px);
           backdrop-filter: blur(4px);
           transition: all 0.2s;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 2px 8px rgb(0 0 0 / 30%);
           position: relative;
 
           &:checked {
@@ -241,8 +243,8 @@
             height: 36px;
             border-radius: 50%;
             border: none;
-            background: rgba(0, 0, 0, 0.6);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgb(0 0 0 / 60%);
+            backdrop-filter: blur(8px);
             backdrop-filter: blur(8px);
             color: #fff;
             display: flex;
@@ -256,7 +258,7 @@
             }
 
             &:hover:not(:disabled) {
-              background: rgba(0, 0, 0, 0.8);
+              background: rgb(0 0 0 / 80%);
               transform: scale(1.1);
             }
 
@@ -311,7 +313,7 @@
         height: 32px;
         border-radius: 50%;
         border: none;
-        background: rgba(255, 71, 87, 0.9);
+        background: rgb(255 71 87 / 90%);
         color: #fff;
         display: flex;
         align-items: center;
@@ -320,7 +322,7 @@
         opacity: 0;
         transition: all 0.2s;
         z-index: 11;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 2px 8px rgb(0 0 0 / 30%);
 
         svg {
           font-size: 20px;
@@ -445,7 +447,7 @@
 
         &:focus {
           border-color: #ff5c25;
-          box-shadow: 0 0 0 3px rgba(255, 92, 37, 0.1);
+          box-shadow: 0 0 0 3px rgb(255 92 37 / 10%);
         }
       }
     }
@@ -499,7 +501,7 @@
 .overviewGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 30px;
+  gap: 30px;
 }
 
 .tabPreview {

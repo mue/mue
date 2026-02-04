@@ -95,7 +95,7 @@ h4 {
   position: sticky;
   top: -20px;
   z-index: 90;
-  padding: 25px 0 15px 0;
+  padding: 25px 0 15px;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
@@ -211,7 +211,7 @@ h4 {
       background: none;
       border: none;
       padding: 0;
-      margin-left: 5px;
+      margin-inline-start: 5px;
       cursor: pointer;
       text-decoration: underline;
       font-size: 14px;
@@ -230,7 +230,7 @@ h4 {
       background: none;
       border: none;
       padding: 0;
-      margin-left: 5px;
+      margin-inline-start: 5px;
       cursor: pointer;
       text-decoration: underline;
       font-size: 14px;

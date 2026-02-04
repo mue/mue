@@ -56,7 +56,7 @@
   }
 
   .slider-input {
-    -webkit-appearance: none;
+    appearance: none;
     appearance: none;
     width: 100%;
     height: 6px;
@@ -81,14 +81,14 @@
     }
 
     &::-webkit-slider-thumb {
-      -webkit-appearance: none;
+      appearance: none;
       appearance: none;
       width: 20px;
       height: 20px;
       border-radius: 50%;
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 6px rgb(0 0 0 / 20%);
 
       @include themed {
         background: t($color);
@@ -97,7 +97,7 @@
 
       &:hover {
         transform: scale(1.1);
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 3px 8px rgb(0 0 0 / 30%);
       }
     }
 
@@ -107,7 +107,7 @@
       border-radius: 50%;
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 2px 6px rgb(0 0 0 / 20%);
       border: none;
 
       @include themed {
@@ -117,7 +117,7 @@
 
       &:hover {
         transform: scale(1.1);
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 3px 8px rgb(0 0 0 / 30%);
       }
     }
 
@@ -127,7 +127,7 @@
       &::-webkit-slider-thumb {
         @include themed {
           box-shadow:
-            0 2px 6px rgba(0, 0, 0, 0.2),
+            0 2px 6px rgb(0 0 0 / 20%),
             0 0 0 3px t($link);
         }
 
@@ -137,7 +137,7 @@
       &::-moz-range-thumb {
         @include themed {
           box-shadow:
-            0 2px 6px rgba(0, 0, 0, 0.2),
+            0 2px 6px rgb(0 0 0 / 20%),
             0 0 0 3px t($link);
         }
 
@@ -220,7 +220,7 @@
     @include themed {
       background: t($link);
       color: t($background);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
     }
 
     &::after {

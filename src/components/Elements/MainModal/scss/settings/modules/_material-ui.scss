@@ -18,7 +18,7 @@ legend {
 }
 
 .MuiFormControlLabel-labelPlacementStart {
-  margin-left: 0 !important;
+  margin-inline-start: 0 !important;
 }
 
 .MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track {
@@ -152,11 +152,10 @@ legend,
 .settingsRow {
   .MuiFormControlLabel-root {
     flex-direction: row-reverse;
-    margin-right: 0;
+    margin-inline: 0;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-left: 0;
   }
 
   .MuiFormControlLabel-root {

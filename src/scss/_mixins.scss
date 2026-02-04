@@ -12,7 +12,7 @@
     }
   }
 
-  animation: $animations;
+  animation: #{$animations};
 }
 
 @mixin keyframes($animationName) {
@@ -26,5 +26,59 @@
 
   @keyframes #{$animationName} {
     @content;
+  }
+}
+
+@mixin padding-inline($start, $end) {
+  padding-left: $start;
+  padding-right: $end;
+
+  [dir='rtl'] & {
+    padding-left: $end;
+    padding-right: $start;
+  }
+}
+
+@mixin margin-inline($start, $end) {
+  margin-left: $start;
+  margin-right: $end;
+
+  [dir='rtl'] & {
+    margin-left: $end;
+    margin-right: $start;
+  }
+}
+
+@mixin position-inline-start($value) {
+  left: $value;
+
+  [dir='rtl'] & {
+    left: auto;
+    right: $value;
+  }
+}
+
+@mixin position-inline-end($value) {
+  right: $value;
+
+  [dir='rtl'] & {
+    right: auto;
+    left: $value;
+  }
+}
+
+@mixin text-align-start() {
+  text-align: left;
+
+  [dir='rtl'] & {
+    text-align: right;
+  }
+}
+
+@mixin border-radius-inline($topStart, $topEnd, $bottomEnd, $bottomStart) {
+  border-radius: $topStart $topEnd $bottomEnd $bottomStart;
+
+  [dir='rtl'] & {
+    border-radius: $topEnd $topStart $bottomStart $bottomEnd;
   }
 }

@@ -56,11 +56,11 @@ div[style*='background: rgb(32, 32, 32)'] {
 
     @include themed {
       .light & {
-        background: rgba(0, 0, 0, 0.08) !important;
+        background: rgb(0 0 0 / 8%) !important;
       }
 
       .dark & {
-        background: rgba(0, 0, 0, 0.3) !important;
+        background: rgb(0 0 0 / 30%) !important;
       }
     }
   }
@@ -89,7 +89,7 @@ input[id*='rbgcp'],
   @include themed {
     background: t($btn-background) !important;
     color: t($color) !important;
-    border: 1px solid rgba(128, 128, 128, 0.2) !important;
+    border: 1px solid rgb(128 128 128 / 20%) !important;
   }
 }
 
