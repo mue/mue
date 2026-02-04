@@ -131,8 +131,7 @@ function ModalTopBar({
                     if (typeParam) {
                       updateHash(`#discover/${typeParam}`);
                     }
-                  }
-                  else if (href.includes('/collections')) {
+                  } else if (href.includes('/collections')) {
                     updateHash('#discover/collections');
                   } else if (href.includes('/collection/')) {
                     const collectionId = href.split('/collection/')[1]?.split('?')[0];
@@ -143,8 +142,7 @@ function ModalTopBar({
                     updateHash(`#discover/${categoryKey}`);
                   } else if (href === '/marketplace' || href === '/marketplace/') {
                     updateHash('#discover/all');
-                  }
-                  else {
+                  } else {
                     const stepsBack = relevantCrumbs.length - index - 1;
                     for (let i = 0; i < stepsBack; i++) {
                       window.history.back();

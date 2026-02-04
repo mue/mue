@@ -42,8 +42,7 @@ export const parseDeepLink = (hash = window.location.hash) => {
   if (result.tab === 'settings') {
     if (result.subSection && !result.itemId) {
       result.itemId = null;
-    }
-    else if (!result.subSection) {
+    } else if (!result.subSection) {
       result.subSection = null;
     }
   }
@@ -56,15 +55,13 @@ export const parseDeepLink = (hash = window.location.hash) => {
       } else {
         result.itemId = null;
       }
-    }
-    else if (['preset_settings', 'photo_packs', 'quote_packs', 'all'].includes(result.section)) {
+    } else if (['preset_settings', 'photo_packs', 'quote_packs', 'all'].includes(result.section)) {
       result.category = result.section;
       if (result.subSection) {
         result.itemId = result.subSection;
         result.subSection = null;
       }
-    }
-    else if (result.section && !result.subSection) {
+    } else if (result.section && !result.subSection) {
       result.itemId = result.section;
       result.section = null;
     }
@@ -91,17 +88,13 @@ export const createDeepLink = (tab, options = {}) => {
   if (tab === 'discover') {
     if (options.collection && options.itemId && options.fromCollection) {
       hash += `/collection/${options.collection}/${options.itemId}`;
-    }
-    else if (options.collection) {
+    } else if (options.collection) {
       hash += `/collection/${options.collection}`;
-    }
-    else if (options.itemId && options.category) {
+    } else if (options.itemId && options.category) {
       hash += `/${options.category}/${options.itemId}`;
-    }
-    else if (options.itemId) {
+    } else if (options.itemId) {
       hash += `/${options.itemId}`;
-    }
-    else if (options.category) {
+    } else if (options.category) {
       hash += `/${options.category}`;
     }
   } else if (options.section) {

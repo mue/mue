@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { memo, useState, useCallback, useRef } from 'react';
 import { toast } from 'react-toastify';
 import { MdRefresh } from 'react-icons/md';
@@ -53,6 +53,7 @@ const SliderComponent = memo((props) => {
     const startTime = performance.now();
 
     const animate = (currentTime) => {
+      const t = useT();
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
 
@@ -75,7 +76,7 @@ const SliderComponent = memo((props) => {
     };
 
     animationRef.current = requestAnimationFrame(animate);
-    toast(variables.getMessage('toasts.reset'));
+    toast(t('toasts.reset'));
   }, [value, props]);
 
   const handleMouseMove = useCallback(
@@ -111,7 +112,7 @@ const SliderComponent = memo((props) => {
         <span className="slider-value">{Number(value)}</span>
         <span className="slider-reset" onClick={resetItem}>
           <MdRefresh />
-          {variables.getMessage('modals.main.settings.buttons.reset')}
+          {t('modals.main.settings.buttons.reset')}
         </span>
       </div>
       <div className="slider-wrapper" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>

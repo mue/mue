@@ -245,8 +245,7 @@ export function useQuoteLoader(updateQuote) {
           const cachedQuote = JSON.parse(cached);
           updateQuote(cachedQuote);
           return;
-        } catch {
-        }
+        } catch {}
       }
     }
 

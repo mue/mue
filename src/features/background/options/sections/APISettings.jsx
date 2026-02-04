@@ -1,38 +1,39 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { Dropdown, Radio, Text, ChipSelect } from 'components/Form/Settings';
 import { Row, Content, Action } from 'components/Layout/Settings/Item';
 import { APIQualityOptions } from '../optionTypes';
 import { clearQueuesOnSettingChange } from 'utils/queueOperations';
 
 const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
+  const t = useT();
   return (
     <>
       <Row final={backgroundAPI === 'mue'}>
         <Content
-          title={variables.getMessage('modals.main.settings.sections.background.api')}
-          subtitle={variables.getMessage('modals.main.settings.sections.background.api_subtitle')}
+          title={t('modals.main.settings.sections.background.api')}
+          subtitle={t('modals.main.settings.sections.background.api_subtitle')}
         />
         <Action>
-          {backgroundCategories[0] === variables.getMessage('modals.main.loading') ? (
+          {backgroundCategories[0] === t('modals.main.loading') ? (
             <>
               <Dropdown
-                label={variables.getMessage('modals.main.settings.sections.background.category')}
+                label={t('modals.main.settings.sections.background.category')}
                 name="apiCategories"
                 items={[
                   {
                     value: 'loading',
-                    text: variables.getMessage('modals.main.loading'),
+                    text: t('modals.main.loading'),
                   },
                   {
                     value: 'loading',
-                    text: variables.getMessage('modals.main.loading'),
+                    text: t('modals.main.loading'),
                   },
                 ]}
               />
             </>
           ) : (
             <ChipSelect
-              label={variables.getMessage('modals.main.settings.sections.background.categories')}
+              label={t('modals.main.settings.sections.background.categories')}
               options={backgroundCategories}
               name="apiCategories"
               onChange={() => {
@@ -41,9 +42,7 @@ const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
             />
           )}
           <Dropdown
-            label={variables.getMessage(
-              'modals.main.settings.sections.background.source.quality.title',
-            )}
+            label={t('modals.main.settings.sections.background.source.quality.title')}
             name="apiQuality"
             element=".other"
             items={APIQualityOptions}
@@ -52,14 +51,14 @@ const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
             }}
           />
           <Radio
-            title={variables.getMessage('modals.main.settings.sections.background.source.api_title')}
+            title={t('modals.main.settings.sections.background.source.api_title')}
             options={[
               {
-                name: variables.getMessage('modals.main.settings.sections.background.source.api_mue'),
+                name: t('modals.main.settings.sections.background.source.api_mue'),
                 value: 'mue',
               },
               {
-                name: variables.getMessage('modals.main.settings.sections.background.source.api_unsplash'),
+                name: t('modals.main.settings.sections.background.source.api_unsplash'),
                 value: 'unsplash',
               },
             ]}
@@ -73,18 +72,16 @@ const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
       {backgroundAPI === 'unsplash' && (
         <Row final={true}>
           <Content
-            title={variables.getMessage('modals.main.settings.sections.background.unsplash.title')}
-            subtitle={variables.getMessage(
-              'modals.main.settings.sections.background.unsplash.subtitle',
-            )}
+            title={t('modals.main.settings.sections.background.unsplash.title')}
+            subtitle={t('modals.main.settings.sections.background.unsplash.subtitle')}
           />
           <Action>
             <Text
-              title={variables.getMessage('modals.main.settings.sections.background.unsplash.id')}
-              subtitle={variables.getMessage(
-                'modals.main.settings.sections.background.unsplash.id_subtitle',
+              title={t('modals.main.settings.sections.background.unsplash.id')}
+              subtitle={t('modals.main.settings.sections.background.unsplash.id_subtitle')}
+              placeholder={t(
+                'modals.main.settings.sections.background.source.collection_placeholder',
               )}
-              placeholder={variables.getMessage('modals.main.settings.sections.background.source.collection_placeholder')}
               name="unsplashCollections"
               category="background"
               element="#backgroundImage"

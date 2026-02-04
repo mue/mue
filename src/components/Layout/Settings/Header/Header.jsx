@@ -1,3 +1,4 @@
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { useState, useEffect } from 'react';
 import {
@@ -14,6 +15,7 @@ export const CustomActions = ({ children }) => {
 };
 
 function Header(props) {
+  const t = useT();
   const [setting, setSetting] = useState(localStorage.getItem(props.setting) === 'true');
 
   useEffect(() => {
@@ -62,7 +64,7 @@ function Header(props) {
           window.open(variables.constants.BUG_REPORT + props.title.split(' ').join('+'), '_blank')
         }
         icon={<MdFlag />}
-        label={variables.getMessage('modals.main.settings.sections.header.report_issue')}
+        label={t('modals.main.settings.sections.header.report_issue')}
       />
     );
   };

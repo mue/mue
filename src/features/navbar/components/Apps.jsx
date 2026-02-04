@@ -1,3 +1,4 @@
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { memo, useState, useEffect } from 'react';
 
@@ -29,8 +30,7 @@ const Apps = ({ appsRef, floatRef, position, xPosition, yPosition }) => {
         setApps(JSON.parse(localStorage.getItem('applinks')));
         try {
           setZoom();
-        } catch {
-        }
+        } catch {}
       }
     };
 
@@ -77,7 +77,7 @@ const Apps = ({ appsRef, floatRef, position, xPosition, yPosition }) => {
           <div className="flexTodo">
             <div className="topBarNotes" style={{ display: 'flex' }}>
               <MdOutlineApps />
-              <span>{variables.getMessage('widgets.navbar.apps.title')}</span>
+              <span>{t('widgets.navbar.apps.title')}</span>
             </div>
           </div>
           {appsInfo.length > 0 ? (
@@ -115,6 +115,7 @@ const Apps = ({ appsRef, floatRef, position, xPosition, yPosition }) => {
 };
 
 function AppsWrapper() {
+  const t = useT();
   const [reference, setReference] = useState(null);
 
   const { x, y, refs, strategy } = useFloating({

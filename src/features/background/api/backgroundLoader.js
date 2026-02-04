@@ -89,7 +89,9 @@ async function getAPIBackground(isOffline) {
     data = await fetchAPIImageData();
   }
 
-  if (!data) {return getOfflineImage('api');}
+  if (!data) {
+    return getOfflineImage('api');
+  }
 
   try {
     localStorage.setItem('currentBackground', JSON.stringify(data));

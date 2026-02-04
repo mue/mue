@@ -32,8 +32,7 @@ export function loadSettings(hotreload) {
     custom.forEach((element) => {
       try {
         document.head.removeChild(document.getElementById(element));
-      } catch (e) {
-      }
+      } catch (e) {}
     });
   }
 
@@ -52,16 +51,14 @@ export function loadSettings(hotreload) {
     elements.forEach((element) => {
       try {
         document.querySelector('.' + element).classList.add('textBorder');
-      } catch (e) {
-      }
+      } catch (e) {}
     });
   } else {
     const elements = ['greeting', 'clock', 'quote', 'quoteauthor', 'date'];
     elements.forEach((element) => {
       try {
         document.querySelector('.' + element).classList.remove('textBorder');
-      } catch (e) {
-      }
+      } catch (e) {}
     });
   }
 

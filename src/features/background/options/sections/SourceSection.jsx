@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { MdExplore } from 'react-icons/md';
 import { Dropdown } from 'components/Form/Settings';
 import { Row, Content, Action } from 'components/Layout/Settings/Item';
@@ -16,6 +16,7 @@ const SourceSection = ({
   onGoToPhotoPacks,
   onToggle,
 }) => {
+  const t = useT();
   const showInstalledPhotoPacks =
     backgroundType === 'photo_pack' && marketplaceEnabled && installedPhotoPacks.length > 0;
 
@@ -28,14 +29,12 @@ const SourceSection = ({
         }
       >
         <Content
-          title={variables.getMessage('modals.main.settings.sections.background.source.title')}
-          subtitle={variables.getMessage(
-            'modals.main.settings.sections.background.source.subtitle',
-          )}
+          title={t('modals.main.settings.sections.background.source.title')}
+          subtitle={t('modals.main.settings.sections.background.source.subtitle')}
         />
         <Action>
           <Dropdown
-            label={variables.getMessage('modals.main.settings.sections.background.type.title')}
+            label={t('modals.main.settings.sections.background.type.title')}
             name="backgroundType"
             onChange={onTypeChange}
             category="background"
@@ -48,13 +47,16 @@ const SourceSection = ({
         <>
           <Row final={true}>
             <Content
-              title={variables.getMessage(
-                'modals.main.settings.sections.background.installed_packs_title',
-              )}
-              subtitle={`${installedPhotoPacks.length} ${installedPhotoPacks.length === 1 ? variables.getMessage('modals.main.settings.sections.background.source.pack_count.singular') : variables.getMessage('modals.main.settings.sections.background.source.pack_count.plural')} • ${totalPhotoCount} ${totalPhotoCount === 1 ? variables.getMessage('modals.main.settings.sections.background.source.photo_count.singular') : variables.getMessage('modals.main.settings.sections.background.source.photo_count.plural')}`}
+              title={t('modals.main.settings.sections.background.installed_packs_title')}
+              subtitle={`${installedPhotoPacks.length} ${installedPhotoPacks.length === 1 ? t('modals.main.settings.sections.background.source.pack_count.singular') : t('modals.main.settings.sections.background.source.pack_count.plural')} • ${totalPhotoCount} ${totalPhotoCount === 1 ? t('modals.main.settings.sections.background.source.photo_count.singular') : t('modals.main.settings.sections.background.source.photo_count.plural')}`}
             />
             <Action>
-              <Button type="settings" onClick={onGoToPhotoPacks} icon={<MdExplore />} label={variables.getMessage('modals.main.settings.sections.background.source.get_more')} />
+              <Button
+                type="settings"
+                onClick={onGoToPhotoPacks}
+                icon={<MdExplore />}
+                label={t('modals.main.settings.sections.background.source.get_more')}
+              />
             </Action>
           </Row>
           <Items

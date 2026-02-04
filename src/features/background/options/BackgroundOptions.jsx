@@ -1,4 +1,5 @@
 import variables from 'config/variables';
+import { useT } from 'contexts';
 import { memo, useState, useEffect, useCallback, useRef } from 'react';
 import { MdSource, MdOutlineAutoAwesome } from 'react-icons/md';
 import { toast } from 'react-toastify';
@@ -21,6 +22,7 @@ import NavigationCard from './sections/NavigationCard';
 import { getBackgroundOptionItems } from './optionTypes';
 
 const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, sectionName }) => {
+  const t = useT();
   const [backgroundType, setBackgroundType] = useState(
     localStorage.getItem('backgroundType') || 'api',
   );
@@ -29,9 +31,9 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
   );
   const [backgroundCategories, setBackgroundCategories] = useState(() => {
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
-      return [variables.getMessage('modals.update.offline.title')];
+      return [t('modals.update.offline.title')];
     }
-    return [variables.getMessage('modals.main.loading')];
+    return [t('modals.main.loading')];
   });
   const [backgroundCategoriesOG, setBackgroundCategoriesOG] = useState([]);
   const [backgroundAPI, setBackgroundAPI] = useState(
@@ -134,7 +136,7 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
 
   const handlePhotoPackUninstall = (type, name) => {
     uninstall(type, name);
-    toast(variables.getMessage('toasts.uninstalled'));
+    toast(t('toasts.uninstalled'));
     variables.stats.postEvent('marketplace-item', `${name} uninstalled`);
     setInstalledPhotoPacks(getInstalledPhotoPacks());
     window.dispatchEvent(new window.Event('installedAddonsChanged'));
@@ -204,10 +206,8 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
     if (currentSubSection === 'effects') {
       return (
         <Header
-          title={variables.getMessage('modals.main.settings.sections.background.title')}
-          secondaryTitle={variables.getMessage(
-            'modals.main.settings.sections.background.effects.title',
-          )}
+          title={t('modals.main.settings.sections.background.title')}
+          secondaryTitle={t('modals.main.settings.sections.background.effects.title')}
           goBack={() => onSubSectionChange(null, sectionName)}
         />
       );
@@ -216,10 +216,8 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
     if (currentSubSection === 'source') {
       return (
         <Header
-          title={variables.getMessage('modals.main.settings.sections.background.title')}
-          secondaryTitle={variables.getMessage(
-            'modals.main.settings.sections.background.source.title',
-          )}
+          title={t('modals.main.settings.sections.background.title')}
+          secondaryTitle={t('modals.main.settings.sections.background.source.title')}
           goBack={() => onSubSectionChange(null, sectionName)}
         />
       );
@@ -227,7 +225,7 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
 
     return (
       <Header
-        title={variables.getMessage('modals.main.settings.sections.background.title')}
+        title={t('modals.main.settings.sections.background.title')}
         setting="background"
         category="background"
         element="#backgroundImage"
@@ -243,14 +241,12 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
         <>
           <NavigationCard
             icon={MdSource}
-            title={variables.getMessage('modals.main.settings.sections.background.source.title')}
-            subtitle={variables.getMessage(
-              'modals.main.settings.sections.background.source.subtitle',
-            )}
+            title={t('modals.main.settings.sections.background.source.title')}
+            subtitle={t('modals.main.settings.sections.background.source.subtitle')}
             onClick={() => onSubSectionChange('source', sectionName)}
             action={
               <Dropdown
-                label={variables.getMessage('modals.main.settings.sections.background.type.title')}
+                label={t('modals.main.settings.sections.background.type.title')}
                 name="backgroundType"
                 onChange={(value) => {
                   clearQueuesOnSettingChange('backgroundType');
@@ -268,10 +264,8 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
           {showEffects && (
             <NavigationCard
               icon={MdOutlineAutoAwesome}
-              title={variables.getMessage('modals.main.settings.sections.background.effects.title')}
-              subtitle={variables.getMessage(
-                'modals.main.settings.sections.background.effects.subtitle',
-              )}
+              title={t('modals.main.settings.sections.background.effects.title')}
+              subtitle={t('modals.main.settings.sections.background.effects.subtitle')}
               onClick={() => onSubSectionChange('effects', sectionName)}
             />
           )}

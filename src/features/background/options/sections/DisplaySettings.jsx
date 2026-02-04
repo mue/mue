@@ -1,23 +1,22 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { Checkbox, Dropdown } from 'components/Form/Settings';
 import { Row, Content, Action } from 'components/Layout/Settings/Item';
 import { FREQUENCY_OPTIONS } from 'utils/frequencyManager';
 import { clearQueuesOnSettingChange } from 'utils/queueOperations';
 
 const DisplaySettings = ({ usingImage }) => {
+  const t = useT();
   return (
     <>
       <Row>
         <Content
-          title={variables.getMessage('modals.main.settings.sections.background.frequency.title')}
-          subtitle={variables.getMessage(
-            'modals.main.settings.sections.background.frequency.subtitle',
-          )}
+          title={t('modals.main.settings.sections.background.frequency.title')}
+          subtitle={t('modals.main.settings.sections.background.frequency.subtitle')}
         />
         <Action>
           <Dropdown
             name="backgroundFrequency"
-            label={variables.getMessage('modals.main.settings.sections.background.frequency.title')}
+            label={t('modals.main.settings.sections.background.frequency.title')}
             onChange={(value) => {
               localStorage.setItem('backgroundStartTime', Date.now());
               const oldValue = localStorage.getItem('backgroundFrequency');
@@ -32,35 +31,31 @@ const DisplaySettings = ({ usingImage }) => {
             }}
             items={FREQUENCY_OPTIONS.map((opt) => ({
               value: opt.value,
-              text: variables.getMessage(opt.text),
+              text: t(opt.text),
             }))}
           />
         </Action>
       </Row>
       <Row final={true}>
         <Content
-          title={variables.getMessage('modals.main.settings.sections.background.display')}
-          subtitle={variables.getMessage(
-            'modals.main.settings.sections.background.display_subtitle',
-          )}
+          title={t('modals.main.settings.sections.background.display')}
+          subtitle={t('modals.main.settings.sections.background.display_subtitle')}
         />
         <Action>
           <Checkbox
             name="bgtransition"
-            text={variables.getMessage('modals.main.settings.sections.background.transition')}
+            text={t('modals.main.settings.sections.background.transition')}
             element=".other"
             disabled={!usingImage}
           />
           <Checkbox
             name="photoInformation"
-            text={variables.getMessage(
-              'modals.main.settings.sections.background.photo_information',
-            )}
+            text={t('modals.main.settings.sections.background.photo_information')}
             element=".other"
           />
           <Checkbox
             name="photoMap"
-            text={variables.getMessage('modals.main.settings.sections.background.show_map')}
+            text={t('modals.main.settings.sections.background.show_map')}
             element=".other"
             disabled={!usingImage}
           />

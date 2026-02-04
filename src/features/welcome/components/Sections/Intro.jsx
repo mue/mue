@@ -1,3 +1,4 @@
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { useState, useEffect, useCallback } from 'react';
 
@@ -10,6 +11,7 @@ const GITHUB_LINK =
   'https://github.com/' + variables.constants.ORG_NAME + '/' + variables.constants.REPO_NAME;
 
 function WelcomeNotice({ config }) {
+  const t = useT();
   const { icon: Icon, title, subtitle, link } = config;
   return (
     <div className="welcomeNotice">
@@ -23,7 +25,7 @@ function WelcomeNotice({ config }) {
       {link && (
         <a href={link} target="_blank" rel="noopener noreferrer">
           <MdOpenInNew />
-          {variables.getMessage('modals.welcome.sections.intro.notices.github_open')}
+          {t('modals.welcome.sections.intro.notices.github_open')}
         </a>
       )}
     </div>
@@ -55,32 +57,28 @@ function Intro() {
 
   return (
     <Content>
-      <Header title={variables.getMessage('modals.welcome.sections.intro.title')} />
+      <Header title={t('modals.welcome.sections.intro.title')} />
       {ShareYourMue}
       <WelcomeNotice
         config={{
           icon: MdOutlineWavingHand,
-          title: variables.getMessage('modals.welcome.sections.intro.title'),
-          subtitle: variables.getMessage('modals.welcome.sections.intro.description'),
+          title: t('modals.welcome.sections.intro.title'),
+          subtitle: t('modals.welcome.sections.intro.description'),
         }}
       />
       <WelcomeNotice
         config={{
           icon: FaDiscord,
-          title: variables.getMessage('modals.welcome.sections.intro.notices.discord_title'),
-          subtitle: variables.getMessage(
-            'modals.welcome.sections.intro.notices.discord_description',
-          ),
+          title: t('modals.welcome.sections.intro.notices.discord_title'),
+          subtitle: t('modals.welcome.sections.intro.notices.discord_description'),
           link: DISCORD_LINK,
         }}
       />
       <WelcomeNotice
         config={{
           icon: FaGithub,
-          title: variables.getMessage('modals.welcome.sections.intro.notices.github_title'),
-          subtitle: variables.getMessage(
-            'modals.welcome.sections.intro.notices.github_description',
-          ),
+          title: t('modals.welcome.sections.intro.notices.github_title'),
+          subtitle: t('modals.welcome.sections.intro.notices.github_description'),
           link: GITHUB_LINK,
         }}
       />

@@ -1,4 +1,5 @@
 import variables from 'config/variables';
+import { useT } from 'contexts';
 import { memo, useRef, useState, useEffect, useCallback } from 'react';
 import { toast } from 'react-toastify';
 import {
@@ -46,6 +47,7 @@ import CustomURLModal from './CustomURLModal';
 import FolderTaggingModal from './FolderTaggingModal';
 
 const CustomSettings = memo(() => {
+  const t = useT();
   const [customBackground, setCustomBackground] = useState([]);
   const [customURLModal, setCustomURLModal] = useState(false);
   const [folderTaggingModal, setFolderTaggingModal] = useState(false);
@@ -107,7 +109,7 @@ const CustomSettings = memo(() => {
         });
       } catch (error) {
         console.error('Error loading backgrounds:', error);
-        toast(variables.getMessage('toasts.error'));
+        toast(t('toasts.error'));
       } finally {
         setLoading(false);
       }
@@ -147,7 +149,7 @@ const CustomSettings = memo(() => {
         }
       } catch (error) {
         console.error('Error saving background:', error);
-        toast(variables.getMessage('toasts.error'));
+        toast(t('toasts.error'));
       }
     },
     [],
@@ -258,7 +260,7 @@ const CustomSettings = memo(() => {
         setUploadProgress({ current: i + 1, total: files.length });
       } catch (error) {
         if (error.message === 'no_storage') {
-          toast(variables.getMessage('toasts.no_storage'));
+          toast(t('toasts.no_storage'));
           break;
         }
         errors.push(files[i].name);
@@ -266,7 +268,7 @@ const CustomSettings = memo(() => {
     }
 
     if (errors.length > 0) {
-      toast(variables.getMessage('toasts.error') + `: ${errors.join(', ')}`);
+      toast(t('toasts.error') + `: ${errors.join(', ')}`);
     }
 
     EventBus.emit('refresh', 'background');
@@ -302,7 +304,7 @@ const CustomSettings = memo(() => {
       EventBus.emit('refresh', 'background');
     } catch (error) {
       console.error('Error modifying background:', error);
-      toast(variables.getMessage('toasts.error'));
+      toast(t('toasts.error'));
     }
   }, []);
 
@@ -326,10 +328,10 @@ const CustomSettings = memo(() => {
       }
 
       EventBus.emit('refresh', 'background');
-      toast(variables.getMessage('toasts.deleted'));
+      toast(t('toasts.deleted'));
     } catch (error) {
       console.error('Error batch deleting:', error);
-      toast(variables.getMessage('toasts.error'));
+      toast(t('toasts.error'));
     }
   };
 
@@ -358,7 +360,7 @@ const CustomSettings = memo(() => {
       const urlRegex =
         /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,63}\b([-a-zA-Z0-9()!@:%_.~#?&=]*)/;
       if (urlRegex.test(e) === false) {
-        return setUrlError(variables.getMessage('widgets.quicklinks.url_error'));
+        return setUrlError(t('widgets.quicklinks.url_error'));
       }
 
       setCustomURLModal(false);
@@ -391,14 +393,11 @@ const CustomSettings = memo(() => {
         setCustomBackground(backgrounds);
       } catch (error) {
         console.error('Error adding URL:', error);
-        toast(variables.getMessage('toasts.error'));
+        toast(t('toasts.error'));
       }
 
       try {
-        localStorage.setItem(
-          'customBackground',
-          JSON.stringify(backgrounds.map((bg) => bg.url)),
-        );
+        localStorage.setItem('customBackground', JSON.stringify(backgrounds.map((bg) => bg.url)));
       } catch (_quotaError) {
         localStorage.setItem('customBackgroundCount', backgrounds.length.toString());
       }
@@ -518,7 +517,7 @@ const CustomSettings = memo(() => {
       <div className="photosEmpty">
         <div className="loaderHolder">
           <div id="loader"></div>
-          <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
+          <span className="subtitle">{t('modals.main.loading')}</span>
         </div>
       </div>
     );
@@ -530,7 +529,7 @@ const CustomSettings = memo(() => {
         <div className="loaderHolder">
           <div id="loader"></div>
           <span className="subtitle">
-            {variables.getMessage('modals.main.settings.sections.background.source.uploading', {
+            {t('modals.main.settings.sections.background.source.uploading', {
               current: uploadProgress.current,
               total: uploadProgress.total,
             })}
@@ -564,14 +563,10 @@ const CustomSettings = memo(() => {
             <MdAddPhotoAlternate />
             <div>
               <span className="title">
-                {variables.getMessage(
-                  'modals.main.settings.sections.background.source.custom_title',
-                )}
+                {t('modals.main.settings.sections.background.source.custom_title')}
               </span>
               <span className="subtitle">
-                {variables.getMessage(
-                  'modals.main.settings.sections.background.source.custom_description',
-                )}
+                {t('modals.main.settings.sections.background.source.custom_description')}
               </span>
             </div>
           </div>
@@ -580,7 +575,7 @@ const CustomSettings = memo(() => {
               type="settings"
               onClick={uploadCustomBackground}
               icon={<MdOutlineFileUpload />}
-              label={variables.getMessage('modals.main.settings.sections.background.source.upload')}
+              label={t('modals.main.settings.sections.background.source.upload')}
             />
           </div>
         </div>
@@ -593,7 +588,11 @@ const CustomSettings = memo(() => {
                 {' '}
                 · {formatBytes(storageUsed)} / {formatBytes(availableStorageLimit)}
                 {storagePercent > 80 && navigator.storage && navigator.storage.persist && (
-                  <Tooltip title={variables.getMessage('modals.main.settings.sections.background.source.persistent_storage_tooltip')}>
+                  <Tooltip
+                    title={t(
+                      'modals.main.settings.sections.background.source.persistent_storage_tooltip',
+                    )}
+                  >
                     <button
                       className="request-storage-link"
                       onClick={async () => {
@@ -601,11 +600,15 @@ const CustomSettings = memo(() => {
                           const isPersisted = await navigator.storage.persist();
                           if (isPersisted) {
                             toast(
-                              variables.getMessage('modals.main.settings.sections.background.source.persistent_storage_granted'),
+                              t(
+                                'modals.main.settings.sections.background.source.persistent_storage_granted',
+                              ),
                             );
                           } else {
                             toast(
-                              variables.getMessage('modals.main.settings.sections.background.source.persistent_storage_denied'),
+                              t(
+                                'modals.main.settings.sections.background.source.persistent_storage_denied',
+                              ),
                             );
                           }
                         } catch (error) {
@@ -666,39 +669,27 @@ const CustomSettings = memo(() => {
               items={[
                 {
                   value: 'date_desc',
-                  text: variables.getMessage(
-                    'modals.main.settings.sections.background.source.sort.date_newest',
-                  ),
+                  text: t('modals.main.settings.sections.background.source.sort.date_newest'),
                 },
                 {
                   value: 'date_asc',
-                  text: variables.getMessage(
-                    'modals.main.settings.sections.background.source.sort.date_oldest',
-                  ),
+                  text: t('modals.main.settings.sections.background.source.sort.date_oldest'),
                 },
                 {
                   value: 'name_asc',
-                  text: variables.getMessage(
-                    'modals.main.settings.sections.background.source.sort.name_asc',
-                  ),
+                  text: t('modals.main.settings.sections.background.source.sort.name_asc'),
                 },
                 {
                   value: 'name_desc',
-                  text: variables.getMessage(
-                    'modals.main.settings.sections.background.source.sort.name_desc',
-                  ),
+                  text: t('modals.main.settings.sections.background.source.sort.name_desc'),
                 },
                 {
                   value: 'size_asc',
-                  text: variables.getMessage(
-                    'modals.main.settings.sections.background.source.sort.size_small',
-                  ),
+                  text: t('modals.main.settings.sections.background.source.sort.size_small'),
                 },
                 {
                   value: 'size_desc',
-                  text: variables.getMessage(
-                    'modals.main.settings.sections.background.source.sort.size_large',
-                  ),
+                  text: t('modals.main.settings.sections.background.source.sort.size_large'),
                 },
               ]}
             />
@@ -850,11 +841,7 @@ const CustomSettings = memo(() => {
                         {bg.folder && <span className="detail folder-tag">{bg.folder}</span>}
                       </div>
                     </div>
-                    <Tooltip
-                      title={variables.getMessage(
-                        'modals.main.settings.sections.background.source.remove',
-                      )}
-                    >
+                    <Tooltip title={t('modals.main.settings.sections.background.source.remove')}>
                       <button
                         className="delete-button"
                         onClick={() => modifyCustomBackground('remove', originalIndex)}
@@ -871,12 +858,10 @@ const CustomSettings = memo(() => {
               <div className="emptyNewMessage">
                 <MdAddPhotoAlternate />
                 <span className="title">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.background.source.drop_to_upload',
-                  )}
+                  {t('modals.main.settings.sections.background.source.drop_to_upload')}
                 </span>
                 <span className="subtitle">
-                  {variables.getMessage('modals.main.settings.sections.background.source.formats', {
+                  {t('modals.main.settings.sections.background.source.formats', {
                     list: 'jpeg, png, webp, webm, gif, mp4, webm, ogg',
                   })}
                 </span>
@@ -884,9 +869,7 @@ const CustomSettings = memo(() => {
                   type="settings"
                   onClick={uploadCustomBackground}
                   icon={<MdFolder />}
-                  label={variables.getMessage(
-                    'modals.main.settings.sections.background.source.select',
-                  )}
+                  label={t('modals.main.settings.sections.background.source.select')}
                 />
               </div>
             </div>
@@ -907,15 +890,11 @@ const CustomSettings = memo(() => {
         <>
           <Checkbox
             name="backgroundVideoLoop"
-            text={variables.getMessage(
-              'modals.main.settings.sections.background.source.loop_video',
-            )}
+            text={t('modals.main.settings.sections.background.source.loop_video')}
           />
           <Checkbox
             name="backgroundVideoMute"
-            text={variables.getMessage(
-              'modals.main.settings.sections.background.source.mute_video',
-            )}
+            text={t('modals.main.settings.sections.background.source.mute_video')}
           />
         </>
       )}
@@ -967,7 +946,7 @@ const CustomSettings = memo(() => {
         <div className="smallModal">
           <div className="shareHeader">
             <span className="title">
-              {variables.getMessage('modals.main.settings.sections.background.source.storage_info')}
+              {t('modals.main.settings.sections.background.source.storage_info')}
             </span>
             <button className="closeModal" onClick={() => setStorageQuotaModal(false)}>
               <MdCancel />
@@ -975,9 +954,7 @@ const CustomSettings = memo(() => {
           </div>
           <div style={{ padding: '20px' }}>
             <p className="subtitle">
-              {variables.getMessage(
-                'modals.main.settings.sections.background.source.storage_description',
-              )}
+              {t('modals.main.settings.sections.background.source.storage_description')}
             </p>
             <div style={{ marginTop: '20px' }}>
               <p className="subtitle" style={{ fontWeight: '600', marginBottom: '8px' }}>
@@ -1005,7 +982,7 @@ const CustomSettings = memo(() => {
             <Button
               type="settings"
               onClick={() => setStorageQuotaModal(false)}
-              label={variables.getMessage('modals.main.settings.buttons.close')}
+              label={t('modals.main.settings.buttons.close')}
             />
           </div>
         </div>

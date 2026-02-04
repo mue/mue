@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { useState } from 'react';
 import ColorPicker from 'react-best-gradient-color-picker';
 import { toast } from 'react-toastify';
@@ -9,6 +9,7 @@ import EventBus from 'utils/eventbus';
 import '../scss/_colourpicker.scss';
 
 const ColourOptions = () => {
+  const t = useT();
   const [colour, setColour] = useState(
     localStorage.getItem('customBackgroundColour') || 'rgba(0, 0, 0, 100)',
   );
@@ -22,17 +23,13 @@ const ColourOptions = () => {
   const resetColour = () => {
     setColour('rgba(0, 0, 0, 0)');
     localStorage.setItem('customBackgroundColour', 'rgba(0, 0, 0, 100)');
-    toast(variables.getMessage('toasts.reset'));
+    toast(t('toasts.reset'));
     EventBus.emit('refresh', 'background');
   };
 
   return (
     <Row final={true}>
-      <Content
-        title={variables.getMessage(
-          'modals.main.settings.sections.background.source.custom_colour',
-        )}
-      />
+      <Content title={t('modals.main.settings.sections.background.source.custom_colour')} />
       <Action>
         <ColorPicker
           value={colour}
@@ -48,7 +45,7 @@ const ColourOptions = () => {
         <div className="colourReset">
           <span className="link" onClick={() => resetColour()}>
             <MdRefresh />
-            {variables.getMessage('modals.main.settings.buttons.reset')}
+            {t('modals.main.settings.buttons.reset')}
           </span>
         </div>
       </Action>

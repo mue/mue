@@ -1,3 +1,4 @@
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { useState, useEffect, useRef } from 'react';
 import {
@@ -9,7 +10,14 @@ import {
   MdOutlineFolderOpen,
 } from 'react-icons/md';
 import { arrayMove } from '@dnd-kit/sortable';
-import { Header, Row, Content, Action, PreferencesWrapper, Section } from 'components/Layout/Settings';
+import {
+  Header,
+  Row,
+  Content,
+  Action,
+  PreferencesWrapper,
+  Section,
+} from 'components/Layout/Settings';
 import { Checkbox, Dropdown } from 'components/Form/Settings';
 import { Button } from 'components/Elements';
 import Modal from 'react-modal';
@@ -23,6 +31,7 @@ import EventBus from 'utils/eventbus';
 import { getTitleFromUrl, isValidUrl } from 'utils/links';
 
 const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => {
+  const t = useT();
   const [items, setItems] = useState(readQuicklinks());
   const [showAddModal, setShowAddModal] = useState(false);
   const [urlError, setUrlError] = useState('');
@@ -35,7 +44,9 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
   const silenceEventRef = useRef(false);
 
   const setContainerDisplay = (enabled) => {
-    if (!quicklinksContainer || !quicklinksContainer.current) {return;}
+    if (!quicklinksContainer || !quicklinksContainer.current) {
+      return;
+    }
     const el = quicklinksContainer.current;
     el.classList.toggle('disabled', !enabled);
     if (!enabled) {
@@ -68,12 +79,12 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
     }
 
     if (url.length <= 0 || isValidUrl(url) === false) {
-      setUrlError(variables.getMessage('widgets.quicklinks.url_error'));
+      setUrlError(t('widgets.quicklinks.url_error'));
       return;
     }
 
     if (iconType === 'custom_url' && icon.length > 0 && isValidUrl(icon) === false) {
-      setIconError(variables.getMessage('widgets.quicklinks.url_error'));
+      setIconError(t('widgets.quicklinks.url_error'));
       return;
     }
 
@@ -219,24 +230,24 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
       <>
         <Row>
           <Content
-            title={variables.getMessage(`${QUICKLINKS_SECTION}.styling`)}
-            subtitle={variables.getMessage(`${QUICKLINKS_SECTION}.styling_description`)}
+            title={t(`${QUICKLINKS_SECTION}.styling`)}
+            subtitle={t(`${QUICKLINKS_SECTION}.styling_description`)}
           />
           <Action>
             <Dropdown
-              label={variables.getMessage(`${QUICKLINKS_SECTION}.style`)}
+              label={t(`${QUICKLINKS_SECTION}.style`)}
               name="quickLinksStyle"
               category="quicklinks"
               items={[
-                { value: 'card', text: variables.getMessage(`${QUICKLINKS_SECTION}.layout_card`) },
-                { value: 'icon', text: variables.getMessage(`${QUICKLINKS_SECTION}.options.icon`) },
+                { value: 'card', text: t(`${QUICKLINKS_SECTION}.layout_card`) },
+                { value: 'icon', text: t(`${QUICKLINKS_SECTION}.options.icon`) },
                 {
                   value: 'text_only',
-                  text: variables.getMessage(`${QUICKLINKS_SECTION}.options.text_only`),
+                  text: t(`${QUICKLINKS_SECTION}.options.text_only`),
                 },
                 {
                   value: 'metro',
-                  text: variables.getMessage(`${QUICKLINKS_SECTION}.options.metro`),
+                  text: t(`${QUICKLINKS_SECTION}.options.metro`),
                 },
               ]}
             />
@@ -244,26 +255,29 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
         </Row>
 
         <Row>
-          <Content title={variables.getMessage(`${QUICKLINKS_SECTION}.layout`)} subtitle={variables.getMessage(`${QUICKLINKS_SECTION}.layout_description`)} />
+          <Content
+            title={t(`${QUICKLINKS_SECTION}.layout`)}
+            subtitle={t(`${QUICKLINKS_SECTION}.layout_description`)}
+          />
           <Action>
             <Dropdown
-              label={variables.getMessage(`${QUICKLINKS_SECTION}.layout_mode`)}
+              label={t(`${QUICKLINKS_SECTION}.layout_mode`)}
               name="quicklinks_layoutMode"
               category="quicklinks"
               onChange={(value) => handleLayoutChange('layoutMode', value)}
               items={[
-                { value: 'flex', text: variables.getMessage(`${QUICKLINKS_SECTION}.layout_flex`) },
-                { value: 'grid', text: variables.getMessage(`${QUICKLINKS_SECTION}.layout_grid`) },
-                { value: 'compact', text: variables.getMessage(`${QUICKLINKS_SECTION}.layout_compact`) },
+                { value: 'flex', text: t(`${QUICKLINKS_SECTION}.layout_flex`) },
+                { value: 'grid', text: t(`${QUICKLINKS_SECTION}.layout_grid`) },
+                { value: 'compact', text: t(`${QUICKLINKS_SECTION}.layout_compact`) },
               ]}
             />
             <Dropdown
-              label={variables.getMessage(`${QUICKLINKS_SECTION}.grid_columns`)}
+              label={t(`${QUICKLINKS_SECTION}.grid_columns`)}
               name="quicklinks_gridColumns"
               category="quicklinks"
               onChange={(value) => handleLayoutChange('gridColumns', value)}
               items={[
-                { value: 'auto', text: variables.getMessage(`${QUICKLINKS_SECTION}.grid_columns_auto`) },
+                { value: 'auto', text: t(`${QUICKLINKS_SECTION}.grid_columns_auto`) },
                 { value: '2', text: '2' },
                 { value: '3', text: '3' },
                 { value: '4', text: '4' },
@@ -272,12 +286,12 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
               ]}
             />
             <Dropdown
-              label={variables.getMessage(`${QUICKLINKS_SECTION}.grid_rows`)}
+              label={t(`${QUICKLINKS_SECTION}.grid_rows`)}
               name="quicklinks_gridRows"
               category="quicklinks"
               onChange={(value) => handleLayoutChange('gridRows', value)}
               items={[
-                { value: 'auto', text: variables.getMessage(`${QUICKLINKS_SECTION}.grid_columns_auto`) },
+                { value: 'auto', text: t(`${QUICKLINKS_SECTION}.grid_columns_auto`) },
                 { value: '2', text: '2' },
                 { value: '3', text: '3' },
                 { value: '4', text: '4' },
@@ -292,18 +306,18 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
   const DisplaySection = () => (
     <Row>
       <Content
-        title={variables.getMessage('modals.main.settings.additional_settings')}
-        subtitle={variables.getMessage(`${QUICKLINKS_SECTION}.additional`)}
+        title={t('modals.main.settings.additional_settings')}
+        subtitle={t(`${QUICKLINKS_SECTION}.additional`)}
       />
       <Action>
         <Checkbox
           name="quicklinksnewtab"
-          text={variables.getMessage(`${QUICKLINKS_SECTION}.open_new`)}
+          text={t(`${QUICKLINKS_SECTION}.open_new`)}
           category="quicklinks"
         />
         <Checkbox
           name="quicklinkstooltip"
-          text={variables.getMessage(`${QUICKLINKS_SECTION}.tooltip`)}
+          text={t(`${QUICKLINKS_SECTION}.tooltip`)}
           category="quicklinks"
         />
       </Action>
@@ -321,11 +335,14 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
 
     return (
       <Row>
-        <Content title={variables.getMessage(`${QUICKLINKS_SECTION}.grouping`)} subtitle={variables.getMessage(`${QUICKLINKS_SECTION}.grouping_description`)} />
+        <Content
+          title={t(`${QUICKLINKS_SECTION}.grouping`)}
+          subtitle={t(`${QUICKLINKS_SECTION}.grouping_description`)}
+        />
         <Action>
           <Checkbox
             name="quicklinks_groupingEnabled"
-            text={variables.getMessage(`${QUICKLINKS_SECTION}.enable_grouping`)}
+            text={t(`${QUICKLINKS_SECTION}.enable_grouping`)}
             category="quicklinks"
             onChange={handleGroupingToggle}
           />
@@ -346,7 +363,7 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
 
     const handleSync = async () => {
       setSyncing(true);
-      setSyncStatus(variables.getMessage(`${QUICKLINKS_SECTION}.syncing`));
+      setSyncStatus(t(`${QUICKLINKS_SECTION}.syncing`));
       try {
         const config = JSON.parse(localStorage.getItem('quicklinks_config') || '{}');
         if (!config.bookmarkSyncEnabled) {
@@ -358,7 +375,7 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
         if (!hasPermission) {
           const granted = await BookmarkService.requestPermissions();
           if (!granted) {
-            setSyncStatus(variables.getMessage(`${QUICKLINKS_SECTION}.permission_denied`));
+            setSyncStatus(t(`${QUICKLINKS_SECTION}.permission_denied`));
             setSyncing(false);
             return;
           }
@@ -366,15 +383,15 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
 
         const result = await BookmarkService.syncBookmarks();
         setSyncStatus(
-          variables.getMessage(`${QUICKLINKS_SECTION}.sync_success`, {
+          t(`${QUICKLINKS_SECTION}.sync_success`, {
             imported: result.imported,
             updated: result.updated,
-            removed: result.removed
+            removed: result.removed,
           }),
         );
         EventBus.emit('refresh', 'quicklinks');
       } catch (e) {
-        setSyncStatus(variables.getMessage(`${QUICKLINKS_SECTION}.sync_error`, { message: e.message }));
+        setSyncStatus(t(`${QUICKLINKS_SECTION}.sync_error`, { message: e.message }));
       }
       setSyncing(false);
     };
@@ -383,13 +400,13 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
       <>
         <Row>
           <Content
-            title={variables.getMessage(`${QUICKLINKS_SECTION}.bookmark_sync_title`)}
-            subtitle={variables.getMessage(`${QUICKLINKS_SECTION}.bookmark_sync_subtitle`)}
+            title={t(`${QUICKLINKS_SECTION}.bookmark_sync_title`)}
+            subtitle={t(`${QUICKLINKS_SECTION}.bookmark_sync_subtitle`)}
           />
           <Action>
             <Checkbox
               name="quicklinks_bookmarkSyncEnabled"
-              text={variables.getMessage(`${QUICKLINKS_SECTION}.enable_bookmark_sync`)}
+              text={t(`${QUICKLINKS_SECTION}.enable_bookmark_sync`)}
               category="quicklinks"
               onChange={handleSyncToggle}
             />
@@ -397,15 +414,15 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
         </Row>
         <Row>
           <Content
-            title={variables.getMessage(`${QUICKLINKS_SECTION}.manual_sync_title`)}
-            subtitle={variables.getMessage(`${QUICKLINKS_SECTION}.manual_sync_subtitle`)}
+            title={t(`${QUICKLINKS_SECTION}.manual_sync_title`)}
+            subtitle={t(`${QUICKLINKS_SECTION}.manual_sync_subtitle`)}
           />
           <Action>
             <Button
               type="settings"
               onClick={handleSync}
               icon={<MdSync />}
-              label={variables.getMessage(`${QUICKLINKS_SECTION}.sync_bookmarks_button`)}
+              label={t(`${QUICKLINKS_SECTION}.sync_bookmarks_button`)}
               disabled={syncing}
             />
             {syncStatus && <p style={{ marginTop: '8px', fontSize: '14px' }}>{syncStatus}</p>}
@@ -419,7 +436,7 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
     if (currentSubSection === 'appearance') {
       return (
         <Header
-          title={variables.getMessage(`${QUICKLINKS_SECTION}.title`)}
+          title={t(`${QUICKLINKS_SECTION}.title`)}
           secondaryTitle="Appearance"
           goBack={() => onSubSectionChange(null, sectionName)}
           zoomSetting="zoomQuicklinks"
@@ -430,7 +447,7 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
     if (currentSubSection === 'display') {
       return (
         <Header
-          title={variables.getMessage(`${QUICKLINKS_SECTION}.title`)}
+          title={t(`${QUICKLINKS_SECTION}.title`)}
           secondaryTitle="Display"
           goBack={() => onSubSectionChange(null, sectionName)}
         />
@@ -440,7 +457,7 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
     if (currentSubSection === 'organization') {
       return (
         <Header
-          title={variables.getMessage(`${QUICKLINKS_SECTION}.title`)}
+          title={t(`${QUICKLINKS_SECTION}.title`)}
           secondaryTitle="Organization"
           goBack={() => onSubSectionChange(null, sectionName)}
         />
@@ -450,7 +467,7 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
     if (currentSubSection === 'sync') {
       return (
         <Header
-          title={variables.getMessage(`${QUICKLINKS_SECTION}.title`)}
+          title={t(`${QUICKLINKS_SECTION}.title`)}
           secondaryTitle="Bookmark Sync"
           goBack={() => onSubSectionChange(null, sectionName)}
         />
@@ -459,7 +476,7 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
 
     return (
       <Header
-        title={variables.getMessage(`${QUICKLINKS_SECTION}.title`)}
+        title={t(`${QUICKLINKS_SECTION}.title`)}
         setting="quicklinksenabled"
         category="quicklinks"
         element=".quicklinks-container"
@@ -480,29 +497,29 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
             visibilityToggle={true}
           >
             <Section
-              title={variables.getMessage(`${QUICKLINKS_SECTION}.appearance_title`)}
-              subtitle={variables.getMessage(`${QUICKLINKS_SECTION}.appearance_subtitle`)}
+              title={t(`${QUICKLINKS_SECTION}.appearance_title`)}
+              subtitle={t(`${QUICKLINKS_SECTION}.appearance_subtitle`)}
               icon={<MdOutlineStyle />}
               onClick={() => onSubSectionChange('appearance', sectionName)}
             />
 
             <Section
-              title={variables.getMessage(`${QUICKLINKS_SECTION}.display_title`)}
-              subtitle={variables.getMessage(`${QUICKLINKS_SECTION}.display_subtitle`)}
+              title={t(`${QUICKLINKS_SECTION}.display_title`)}
+              subtitle={t(`${QUICKLINKS_SECTION}.display_subtitle`)}
               icon={<MdOutlineVisibility />}
               onClick={() => onSubSectionChange('display', sectionName)}
             />
 
             <Section
-              title={variables.getMessage(`${QUICKLINKS_SECTION}.organization_title`)}
-              subtitle={variables.getMessage(`${QUICKLINKS_SECTION}.organization_subtitle`)}
+              title={t(`${QUICKLINKS_SECTION}.organization_title`)}
+              subtitle={t(`${QUICKLINKS_SECTION}.organization_subtitle`)}
               icon={<MdOutlineFolderOpen />}
               onClick={() => onSubSectionChange('organization', sectionName)}
             />
 
             <Section
-              title={variables.getMessage(`${QUICKLINKS_SECTION}.bookmark_sync_section_title`)}
-              subtitle={variables.getMessage(`${QUICKLINKS_SECTION}.bookmark_sync_section_subtitle`)}
+              title={t(`${QUICKLINKS_SECTION}.bookmark_sync_section_title`)}
+              subtitle={t(`${QUICKLINKS_SECTION}.bookmark_sync_section_subtitle`)}
               icon={<MdSync />}
               onClick={() => onSubSectionChange('sync', sectionName)}
             />
@@ -559,13 +576,13 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
             visibilityToggle={false}
           >
             <Row final={true}>
-              <Content title={variables.getMessage(`${QUICKLINKS_SECTION}.title`)} />
+              <Content title={t(`${QUICKLINKS_SECTION}.title`)} />
               <Action>
                 <Button
                   type="settings"
                   onClick={() => enabled && setShowAddModal(true)}
                   icon={<MdAddLink />}
-                  label={variables.getMessage(`${QUICKLINKS_SECTION}.add_link`)}
+                  label={t(`${QUICKLINKS_SECTION}.add_link`)}
                   disabled={!enabled}
                 />
               </Action>
@@ -575,17 +592,15 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
               <div className="photosEmpty">
                 <div className="emptyNewMessage">
                   <MdLinkOff />
-                  <span className="title">
-                    {variables.getMessage(`${QUICKLINKS_SECTION}.no_quicklinks`)}
-                  </span>
+                  <span className="title">{t(`${QUICKLINKS_SECTION}.no_quicklinks`)}</span>
                   <span className="subtitle">
-                    {variables.getMessage('modals.main.settings.sections.message.add_some')}
+                    {t('modals.main.settings.sections.message.add_some')}
                   </span>
                   <Button
                     type="settings"
                     onClick={() => setShowAddModal(true)}
                     icon={<MdAddLink />}
-                    label={variables.getMessage(`${QUICKLINKS_SECTION}.add_link`)}
+                    label={t(`${QUICKLINKS_SECTION}.add_link`)}
                   />
                 </div>
               </div>

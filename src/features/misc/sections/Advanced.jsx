@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { useState } from 'react';
 import Modal from 'react-modal';
 import {
@@ -28,6 +28,7 @@ import { isValidUrl } from 'utils/links';
 import EventBus from 'utils/eventbus';
 
 function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName }) {
+  const t = useT();
   const [resetModal, setResetModal] = useState(false);
   const [widgets, setWidgets] = useState(JSON.parse(localStorage.getItem('customWidgets') || '[]'));
   const [showAddWidgetModal, setShowAddWidgetModal] = useState(false);
@@ -40,24 +41,24 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
     return localStorage.getItem('welcomePreview') !== 'true' ? (
       <Row final={true}>
         <Content
-          title={variables.getMessage('modals.main.settings.sections.advanced.data')}
-          subtitle={variables.getMessage('modals.main.settings.sections.advanced.data_description')}
+          title={t('modals.main.settings.sections.advanced.data')}
+          subtitle={t('modals.main.settings.sections.advanced.data_description')}
         />
         <div className="resetDataButtonsLayout">
           <Button
             onClick={() => setResetModal(true)}
             icon={<ResetIcon />}
-            label={variables.getMessage('modals.main.settings.buttons.reset')}
+            label={t('modals.main.settings.buttons.reset')}
           />
           <Button
             onClick={() => exportSettings()}
             icon={<ExportIcon />}
-            label={variables.getMessage('modals.main.settings.buttons.export')}
+            label={t('modals.main.settings.buttons.export')}
           />
           <Button
             onClick={() => document.getElementById('file-input').click()}
             icon={<ImportIcon />}
-            label={variables.getMessage('modals.main.settings.buttons.import')}
+            label={t('modals.main.settings.buttons.import')}
           />
         </div>
         <FileUpload
@@ -74,14 +75,10 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
             <MdError />
 
             <span className="title">
-              {variables.getMessage(
-                'modals.main.settings.sections.advanced.preview_data_disabled.title',
-              )}
+              {t('modals.main.settings.sections.advanced.preview_data_disabled.title')}
             </span>
             <span className="subtitle">
-              {variables.getMessage(
-                'modals.main.settings.sections.advanced.preview_data_disabled.description',
-              )}
+              {t('modals.main.settings.sections.advanced.preview_data_disabled.description')}
             </span>
           </div>
         </div>
@@ -93,10 +90,8 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
     return (
       <Row final={true}>
         <Content
-          title={variables.getMessage('modals.main.settings.sections.advanced.custom_css')}
-          subtitle={variables.getMessage(
-            'modals.main.settings.sections.advanced.custom_css_subtitle',
-          )}
+          title={t('modals.main.settings.sections.advanced.custom_css')}
+          subtitle={t('modals.main.settings.sections.advanced.custom_css_subtitle')}
         />
         <Action>
           <Text name="customcss" textarea={true} category="other" customcss={true} />
@@ -134,7 +129,7 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
     }
 
     if (url.length <= 0 || isValidUrl(url) === false) {
-      setWidgetUrlError(variables.getMessage('widgets.quicklinks.url_error'));
+      setWidgetUrlError(t('widgets.quicklinks.url_error'));
       return;
     }
 
@@ -211,21 +206,15 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
       <>
         <Row>
           <Content
-            title={variables.getMessage(
-              'modals.main.settings.sections.advanced.custom_widget.title',
-            )}
-            subtitle={variables.getMessage(
-              'modals.main.settings.sections.advanced.custom_widget.subtitle',
-            )}
+            title={t('modals.main.settings.sections.advanced.custom_widget.title')}
+            subtitle={t('modals.main.settings.sections.advanced.custom_widget.subtitle')}
           />
           <Action>
             <Button
               type="settings"
               onClick={() => setShowAddWidgetModal(true)}
               icon={<MdWidgets />}
-              label={variables.getMessage(
-                'modals.main.settings.sections.advanced.custom_widget.add',
-              )}
+              label={t('modals.main.settings.sections.advanced.custom_widget.add')}
             />
           </Action>
         </Row>
@@ -234,22 +223,16 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
             <div className="emptyNewMessage">
               <MdWidgets />
               <span className="title">
-                {variables.getMessage(
-                  'modals.main.settings.sections.advanced.custom_widget.no_widgets',
-                )}
+                {t('modals.main.settings.sections.advanced.custom_widget.no_widgets')}
               </span>
               <span className="subtitle">
-                {variables.getMessage(
-                  'modals.main.settings.sections.advanced.custom_widget.add_some',
-                )}
+                {t('modals.main.settings.sections.advanced.custom_widget.add_some')}
               </span>
               <Button
                 type="settings"
                 onClick={() => setShowAddWidgetModal(true)}
                 icon={<MdWidgets />}
-                label={variables.getMessage(
-                  'modals.main.settings.sections.advanced.custom_widget.add',
-                )}
+                label={t('modals.main.settings.sections.advanced.custom_widget.add')}
               />
             </div>
           </div>
@@ -277,8 +260,8 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
   if (isDataSection) {
     header = (
       <Header
-        title={variables.getMessage(`${ADVANCED_SECTION}.title`)}
-        secondaryTitle={variables.getMessage(`${ADVANCED_SECTION}.data`)}
+        title={t(`${ADVANCED_SECTION}.title`)}
+        secondaryTitle={t(`${ADVANCED_SECTION}.data`)}
         goBack={() => onSubSectionChange(null, sectionName)}
         report={false}
       />
@@ -286,8 +269,8 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
   } else if (isCustomCSSSection) {
     header = (
       <Header
-        title={variables.getMessage(`${ADVANCED_SECTION}.title`)}
-        secondaryTitle={variables.getMessage(`${ADVANCED_SECTION}.custom_css`)}
+        title={t(`${ADVANCED_SECTION}.title`)}
+        secondaryTitle={t(`${ADVANCED_SECTION}.custom_css`)}
         goBack={() => onSubSectionChange(null, sectionName)}
         report={false}
       />
@@ -295,14 +278,14 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
   } else if (isCustomWidgetSection) {
     header = (
       <Header
-        title={variables.getMessage(`${ADVANCED_SECTION}.title`)}
-        secondaryTitle={variables.getMessage(`${ADVANCED_SECTION}.custom_widget.title`)}
+        title={t(`${ADVANCED_SECTION}.title`)}
+        secondaryTitle={t(`${ADVANCED_SECTION}.custom_widget.title`)}
         goBack={() => onSubSectionChange(null, sectionName)}
         report={false}
       />
     );
   } else {
-    header = <Header title={variables.getMessage(`${ADVANCED_SECTION}.title`)} report={false} />;
+    header = <Header title={t(`${ADVANCED_SECTION}.title`)} report={false} />;
   }
 
   return (
@@ -355,29 +338,27 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
       ) : (
         <>
           <Section
-            title={variables.getMessage(`${ADVANCED_SECTION}.data`)}
-            subtitle={variables.getMessage(`${ADVANCED_SECTION}.data_subtitle`)}
+            title={t(`${ADVANCED_SECTION}.data`)}
+            subtitle={t(`${ADVANCED_SECTION}.data_subtitle`)}
             onClick={() => onSubSectionChange('data', sectionName)}
             icon={<MdDataUsage />}
           />
           <Section
-            title={variables.getMessage(`${ADVANCED_SECTION}.custom_css`)}
-            subtitle={variables.getMessage(`${ADVANCED_SECTION}.custom_css_subtitle`)}
+            title={t(`${ADVANCED_SECTION}.custom_css`)}
+            subtitle={t(`${ADVANCED_SECTION}.custom_css_subtitle`)}
             onClick={() => onSubSectionChange('customcss', sectionName)}
             icon={<MdCode />}
           />
           <Section
-            title={variables.getMessage(`${ADVANCED_SECTION}.custom_widget.title`)}
-            subtitle={variables.getMessage(`${ADVANCED_SECTION}.custom_widget.subtitle`)}
+            title={t(`${ADVANCED_SECTION}.custom_widget.title`)}
+            subtitle={t(`${ADVANCED_SECTION}.custom_widget.subtitle`)}
             onClick={() => onSubSectionChange('customwidget', sectionName)}
             icon={<MdWidgets />}
           />
           <Row>
             <Content
-              title={variables.getMessage('modals.main.settings.sections.advanced.offline_mode')}
-              subtitle={variables.getMessage(
-                'modals.main.settings.sections.advanced.offline_subtitle',
-              )}
+              title={t('modals.main.settings.sections.advanced.offline_mode')}
+              subtitle={t('modals.main.settings.sections.advanced.offline_subtitle')}
             />
             <Action>
               <Switch name="offlineMode" element=".other" />
@@ -386,12 +367,8 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
 
           <Row>
             <Content
-              title={variables.getMessage(
-                'modals.main.settings.sections.advanced.marketplace_img_proxy',
-              )}
-              subtitle={variables.getMessage(
-                'modals.main.settings.sections.advanced.marketplace_img_proxy_subtitle',
-              )}
+              title={t('modals.main.settings.sections.advanced.marketplace_img_proxy')}
+              subtitle={t('modals.main.settings.sections.advanced.marketplace_img_proxy_subtitle')}
             />
             <Action>
               <Switch
@@ -407,10 +384,8 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
 
           <Row>
             <Content
-              title={variables.getMessage('modals.main.settings.sections.advanced.timezone.title')}
-              subtitle={variables.getMessage(
-                'modals.main.settings.sections.advanced.timezone.subtitle',
-              )}
+              title={t('modals.main.settings.sections.advanced.timezone.title')}
+              subtitle={t('modals.main.settings.sections.advanced.timezone.subtitle')}
             />
             <Action>
               <Dropdown
@@ -420,9 +395,7 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
                 items={[
                   {
                     value: 'auto',
-                    text: variables.getMessage(
-                      'modals.main.settings.sections.advanced.timezone.automatic',
-                    ),
+                    text: t('modals.main.settings.sections.advanced.timezone.automatic'),
                   },
                   ...time_zones.map((timezone) => ({ value: timezone, text: timezone })),
                 ]}
@@ -431,26 +404,22 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
           </Row>
           <Row>
             <Content
-              title={variables.getMessage('modals.main.settings.sections.advanced.tab_name')}
-              subtitle={variables.getMessage(
-                'modals.main.settings.sections.advanced.tab_name_subtitle',
-              )}
+              title={t('modals.main.settings.sections.advanced.tab_name')}
+              subtitle={t('modals.main.settings.sections.advanced.tab_name_subtitle')}
             />
             <Action>
-              <Text name="tabName" default={variables.getMessage('tabname')} category="other" />
+              <Text name="tabName" default={t('tabname')} category="other" />
             </Action>
           </Row>
           <Row final={true}>
             <Content
-              title={variables.getMessage('modals.main.settings.sections.experimental.title')}
-              subtitle={variables.getMessage(
-                'modals.main.settings.sections.advanced.experimental_warning',
-              )}
+              title={t('modals.main.settings.sections.experimental.title')}
+              subtitle={t('modals.main.settings.sections.advanced.experimental_warning')}
             />
             <Action>
               <Switch
                 name="experimental"
-                text={variables.getMessage('modals.main.settings.enabled')}
+                text={t('modals.main.settings.enabled')}
                 element=".other"
               />
             </Action>

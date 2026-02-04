@@ -1,11 +1,13 @@
 import { useState, useRef } from 'react';
 import { toast } from 'react-toastify';
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { install, uninstall } from 'utils/marketplace';
 
 const API_V2_BASE = `${variables.constants.API_URL}/marketplace`;
 
 export const useMarketplaceInstall = () => {
+  const t = useT();
   const [busy, setBusy] = useState(false);
   const controllerRef = useRef(new AbortController());
 
@@ -14,7 +16,7 @@ export const useMarketplaceInstall = () => {
     const isNewInstall = !installed.some((item) => item.id === data.id || item.name === data.name);
 
     install(type, data);
-    toast(variables.getMessage('toasts.installed'));
+    toast(t('toasts.installed'));
     variables.stats.postEvent('marketplace-item', `${data.display_name || data.name} installed`);
     variables.stats.postEvent('marketplace', 'Install');
     window.dispatchEvent(new Event('installedAddonsChanged'));
@@ -22,7 +24,7 @@ export const useMarketplaceInstall = () => {
 
   const uninstallItem = (type, name) => {
     uninstall(type, name);
-    toast(variables.getMessage('toasts.uninstalled'));
+    toast(t('toasts.uninstalled'));
     variables.stats.postEvent('marketplace-item', `${name} uninstalled`);
     variables.stats.postEvent('marketplace', 'Uninstall');
     window.dispatchEvent(new Event('installedAddonsChanged'));
@@ -52,13 +54,13 @@ export const useMarketplaceInstall = () => {
         variables.stats.postEvent('marketplace', 'Install');
       }
 
-      toast(variables.getMessage('toasts.installed'));
+      toast(t('toasts.installed'));
       window.dispatchEvent(new Event('installedAddonsChanged'));
       window.location.reload();
     } catch (error) {
       if (!controllerRef.current.signal.aborted) {
         console.error('Failed to install collection:', error);
-        toast(variables.getMessage('toasts.error'));
+        toast(t('toasts.error'));
       }
     } finally {
       setBusy(false);

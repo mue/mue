@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 
 import { useState, memo, useEffect } from 'react';
 import { MdAddLink, MdClose } from 'react-icons/md';
@@ -10,6 +10,7 @@ import { IconService } from 'utils/quicklinks';
 import './AddModal.scss';
 
 function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, editLink }) {
+  const t = useT();
   const [name, setName] = useState(edit ? editData.name : '');
   const [url, setUrl] = useState(edit ? editData.url : '');
   const [icon, setIcon] = useState(edit ? editData.icon : '');
@@ -102,11 +103,9 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
     <div className="addLinkModal" onKeyDown={handleKeyDown}>
       <div className="shareHeader">
         <span className="title">
-          {edit
-            ? variables.getMessage('widgets.quicklinks.edit')
-            : variables.getMessage('widgets.quicklinks.new')}
+          {edit ? t('widgets.quicklinks.edit') : t('widgets.quicklinks.new')}
         </span>
-        <Tooltip title={variables.getMessage('modals.welcome.buttons.close')}>
+        <Tooltip title={t('modals.welcome.buttons.close')}>
           <div className="close" onClick={() => closeModal()}>
             <MdClose />
           </div>
@@ -116,12 +115,10 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
         <div className="addLinkModal-row">
           <div className="addLinkModal-field">
             <div className="addLinkModal-labelRow">
-              <label className="addLinkModal-label">
-                {variables.getMessage('widgets.quicklinks.name')}
-              </label>
+              <label className="addLinkModal-label">{t('widgets.quicklinks.name')}</label>
               {suggestedName && !name && (
                 <span className="addLinkModal-suggestedText">
-                  {variables.getMessage('widgets.quicklinks.suggested', { name: suggestedName })}
+                  {t('widgets.quicklinks.suggested', { name: suggestedName })}
                 </span>
               )}
             </div>
@@ -130,12 +127,12 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
               name="quicklink_modal_name"
               noSetting={true}
               onChange={(value) => setName(value)}
-              placeholder={suggestedName || variables.getMessage('widgets.quicklinks.name_placeholder')}
+              placeholder={suggestedName || t('widgets.quicklinks.name_placeholder')}
             />
           </div>
           <div className="addLinkModal-field">
             <label className="addLinkModal-label">
-              {variables.getMessage('widgets.quicklinks.url')}
+              {t('widgets.quicklinks.url')}
               <span className="addLinkModal-required">*</span>
             </label>
             <Text
@@ -149,23 +146,23 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
                 }
                 setUrl(finalValue);
               }}
-              placeholder={variables.getMessage('widgets.quicklinks.url_placeholder')}
+              placeholder={t('widgets.quicklinks.url_placeholder')}
             />
           </div>
         </div>
 
         <div className="addLinkModal-dropdownWrapper">
           <Dropdown
-            label={variables.getMessage('widgets.quicklinks.icon_type_label')}
+            label={t('widgets.quicklinks.icon_type_label')}
             name="quicklink_modal_iconType"
             noSetting={true}
             onChange={(value) => setIconType(value)}
             items={[
-              { value: 'auto', text: variables.getMessage('widgets.quicklinks.icon_type_auto') },
-              { value: 'custom_url', text: variables.getMessage('widgets.quicklinks.icon_type_custom_url') },
-              { value: 'custom_upload', text: variables.getMessage('widgets.quicklinks.icon_type_upload') },
-              { value: 'emoji', text: variables.getMessage('widgets.quicklinks.icon_type_emoji') },
-              { value: 'letter', text: variables.getMessage('widgets.quicklinks.icon_type_letter') },
+              { value: 'auto', text: t('widgets.quicklinks.icon_type_auto') },
+              { value: 'custom_url', text: t('widgets.quicklinks.icon_type_custom_url') },
+              { value: 'custom_upload', text: t('widgets.quicklinks.icon_type_upload') },
+              { value: 'emoji', text: t('widgets.quicklinks.icon_type_emoji') },
+              { value: 'letter', text: t('widgets.quicklinks.icon_type_letter') },
             ]}
           />
         </div>
@@ -177,7 +174,7 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
               name="quicklink_modal_icon_url"
               noSetting={true}
               onChange={(value) => setIcon(value)}
-              placeholder={variables.getMessage('widgets.quicklinks.icon_url_placeholder')}
+              placeholder={t('widgets.quicklinks.icon_url_placeholder')}
             />
           </div>
         )}
@@ -192,7 +189,7 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
             {iconPreview && (
               <img
                 src={iconPreview}
-                alt={variables.getMessage('common.alt_text.preview')}
+                alt={t('common.alt_text.preview')}
                 style={{ width: '40px', height: '40px', marginTop: '8px', borderRadius: '4px' }}
               />
             )}
@@ -224,9 +221,7 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
           onClick={handleSubmit}
           icon={<MdAddLink />}
           label={
-            edit
-              ? variables.getMessage('modals.main.settings.sections.quicklinks.edit')
-              : variables.getMessage('widgets.quicklinks.add')
+            edit ? t('modals.main.settings.sections.quicklinks.edit') : t('widgets.quicklinks.add')
           }
         />
       </div>

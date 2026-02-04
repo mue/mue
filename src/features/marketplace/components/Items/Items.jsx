@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import React, { memo, useState, useMemo } from 'react';
 import { MdCheckCircle, MdOutlineUploadFile, MdClose, MdSettings } from 'react-icons/md';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
@@ -12,6 +12,7 @@ import { getProxiedImageUrl } from 'utils/marketplace';
 import ItemSettingsModal from '../Modals/ItemSettingsModal';
 
 function filterItems(item, filter, categoryFilter) {
+  const t = useT();
   const lowerCaseFilter = filter.toLowerCase();
   const textMatch =
     item.name?.toLowerCase().includes(lowerCaseFilter) ||
@@ -140,9 +141,7 @@ function ItemCard({
                 width: '52px',
                 height: '32px',
                 borderRadius: '16px',
-                backgroundColor: enabled
-                  ? 'var(--linkColor, #ff5c25)'
-                  : 'rgba(128, 128, 128, 0.3)',
+                backgroundColor: enabled ? 'var(--linkColor, #ff5c25)' : 'rgba(128, 128, 128, 0.3)',
                 position: 'relative',
                 transition: 'background-color 0.2s',
                 cursor: 'pointer',
@@ -168,7 +167,7 @@ function ItemCard({
       )}
       {isSideloaded && (
         <Tooltip
-          title={variables.getMessage('modals.main.addons.sideload.title')}
+          title={t('modals.main.addons.sideload.title')}
           style={{ position: 'absolute', top: '12px', right: isAdded ? '48px' : '12px', zIndex: 2 }}
         >
           <div className="item-sideload-badge">
@@ -201,7 +200,7 @@ function ItemCard({
         <span className="card-title">{item.display_name || item.name}</span>
         {!isCurator ? (
           <span className="card-subtitle">
-            {variables.getMessage('modals.main.marketplace.by', { author: item.author })}
+            {t('modals.main.marketplace.by', { author: item.author })}
           </span>
         ) : (
           ''
@@ -211,9 +210,7 @@ function ItemCard({
           <div className="card-chips">
             {item.type && (
               <span className="card-type">
-                {variables.getMessage(
-                  'modals.main.marketplace.' + getTypeTranslationKey(item.type),
-                )}
+                {t('modals.main.marketplace.' + getTypeTranslationKey(item.type))}
               </span>
             )}
             {item.in_collections && item.in_collections.length > 0 && !onCollection && !isAdded && (
@@ -316,12 +313,12 @@ function Items({
             ))}
           </div>
           <Dropdown
-            label={variables.getMessage('modals.main.addons.sort.title')}
+            label={t('modals.main.addons.sort.title')}
             name="sortMarketplace"
             onChange={(value) => handleSortChange(value)}
             items={[
-              { value: 'a-z', text: variables.getMessage('modals.main.addons.sort.a_z') },
-              { value: 'z-a', text: variables.getMessage('modals.main.addons.sort.z_a') },
+              { value: 'a-z', text: t('modals.main.addons.sort.a_z') },
+              { value: 'z-a', text: t('modals.main.addons.sort.z_a') },
             ]}
           />
         </div>

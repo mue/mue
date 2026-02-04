@@ -1,20 +1,19 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { useState, memo } from 'react';
 import { MdClose, MdOutlineAddLink } from 'react-icons/md';
 import { Tooltip, Button } from 'components/Elements';
 
 function CustomURLModal({ modalClose, urlError, modalCloseOnly }) {
+  const t = useT();
   const [url, setURL] = useState();
 
   return (
     <div className="smallModal">
       <div className="shareHeader">
         <span className="title">
-          {variables.getMessage('modals.main.settings.sections.background.source.add_url')}
+          {t('modals.main.settings.sections.background.source.add_url')}
         </span>
-        <Tooltip
-          title={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
-        >
+        <Tooltip title={t('modals.main.settings.sections.advanced.reset_modal.cancel')}>
           <div className="close" onClick={modalCloseOnly}>
             <MdClose />
           </div>
@@ -31,13 +30,13 @@ function CustomURLModal({ modalClose, urlError, modalCloseOnly }) {
           type="secondary"
           onClick={modalCloseOnly}
           icon={<MdClose />}
-          label={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
+          label={t('modals.main.settings.sections.advanced.reset_modal.cancel')}
         />
         <Button
           type="settings"
           onClick={() => modalClose(url)}
           icon={<MdOutlineAddLink />}
-          label={variables.getMessage('modals.main.settings.sections.background.source.add_url')}
+          label={t('modals.main.settings.sections.background.source.add_url')}
         />
       </div>
     </div>

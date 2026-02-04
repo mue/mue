@@ -16,7 +16,9 @@ const QuickLinks = memo(() => {
 
   // widget zoom
   const setZoom = useCallback((element) => {
-    if (!element) {return;}
+    if (!element) {
+      return;
+    }
 
     const zoom = localStorage.getItem('zoomQuicklinks') || 100;
     const style = localStorage.getItem('quickLinksStyle') || 'card';

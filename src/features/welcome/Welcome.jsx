@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { MdArrowBackIosNew, MdArrowForwardIos, MdOutlinePreview } from 'react-icons/md';
 
 import EventBus from 'utils/eventbus';
@@ -21,8 +21,9 @@ import {
 } from './components/Sections';
 
 function WelcomeModal({ modalClose, modalSkip }) {
+  const t = useT();
   const [currentTab, setCurrentTab] = useState(0);
-  const [buttonText, setButtonText] = useState(variables.getMessage('modals.welcome.buttons.next'));
+  const [buttonText, setButtonText] = useState(t('modals.welcome.buttons.next'));
   const [importedSettings, setImportedSettings] = useState([]);
   const finalTab = 6;
 
@@ -33,8 +34,8 @@ function WelcomeModal({ modalClose, modalSkip }) {
       setCurrentTab(tab);
       setButtonText(
         tab !== finalTab + 1
-          ? variables.getMessage('modals.welcome.buttons.next')
-          : variables.getMessage('modals.welcome.buttons.finish'),
+          ? t('modals.welcome.buttons.next')
+          : t('modals.welcome.buttons.finish'),
       );
     }
   }, [finalTab]);
@@ -42,9 +43,7 @@ function WelcomeModal({ modalClose, modalSkip }) {
   const updateTabAndButtonText = (newTab) => {
     setCurrentTab(newTab);
     setButtonText(
-      newTab !== finalTab
-        ? variables.getMessage('modals.welcome.buttons.next')
-        : variables.getMessage('modals.welcome.buttons.finish'),
+      newTab !== finalTab ? t('modals.welcome.buttons.next') : t('modals.welcome.buttons.finish'),
     );
 
     localStorage.setItem('bgtransition', true);
@@ -56,7 +55,7 @@ function WelcomeModal({ modalClose, modalSkip }) {
   };
 
   const nextTab = () => {
-    if (buttonText === variables.getMessage('modals.welcome.buttons.finish')) {
+    if (buttonText === t('modals.welcome.buttons.finish')) {
       modalClose();
       return;
     }
@@ -75,14 +74,14 @@ function WelcomeModal({ modalClose, modalSkip }) {
             type="settings"
             onClick={() => prevTab()}
             icon={<MdArrowBackIosNew />}
-            label={variables.getMessage('modals.welcome.buttons.previous')}
+            label={t('modals.welcome.buttons.previous')}
           />
         ) : (
           <Button
             type="settings"
             onClick={() => modalSkip()}
             icon={<MdOutlinePreview />}
-            label={variables.getMessage('modals.welcome.buttons.preview')}
+            label={t('modals.welcome.buttons.preview')}
           />
         )}
         <Button

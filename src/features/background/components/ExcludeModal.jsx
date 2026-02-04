@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { memo } from 'react';
 import EventBus from 'utils/eventbus';
 import { Tooltip, Button } from 'components/Elements';
@@ -6,6 +6,7 @@ import { Tooltip, Button } from 'components/Elements';
 import { MdClose, MdDone } from 'react-icons/md';
 
 function ExcludeModal({ modalClose, info }) {
+  const t = useT();
   const excludeImage = async () => {
     let backgroundExclude = JSON.parse(localStorage.getItem('backgroundExclude'));
     backgroundExclude.push(info.pun);
@@ -19,31 +20,29 @@ function ExcludeModal({ modalClose, info }) {
     <div className="smallModal">
       <div className="shareHeader">
         <span className="title">
-          {variables.getMessage('modals.main.settings.sections.advanced.reset_modal.title')}
+          {t('modals.main.settings.sections.advanced.reset_modal.title')}
         </span>
-        <Tooltip
-          title={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
-        >
+        <Tooltip title={t('modals.main.settings.sections.advanced.reset_modal.cancel')}>
           <div className="close" onClick={modalClose}>
             <MdClose />
           </div>
         </Tooltip>
       </div>
       <span className="subtitle">
-        {variables.getMessage('widgets.background.exclude_confirm', { category: info.category })}
+        {t('widgets.background.exclude_confirm', { category: info.category })}
       </span>
       <div className="resetFooter">
         <Button
           type="secondary"
           onClick={modalClose}
           icon={<MdClose />}
-          label={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
+          label={t('modals.main.settings.sections.advanced.reset_modal.cancel')}
         />
         <Button
           type="settings"
           onClick={() => excludeImage()}
           icon={<MdDone />}
-          label={variables.getMessage('widgets.background.confirm')}
+          label={t('widgets.background.confirm')}
         />
       </div>
     </div>

@@ -184,13 +184,13 @@
     border-radius: t($borderRadius);
     color: t($color);
     &:hover,
-      &:focus {
-        border-color: t($color);
-      }
+    &:focus {
+      border-color: t($color);
+    }
 
-      &::placeholder {
-        color: t($subColor);
-      }
+    &::placeholder {
+      color: t($subColor);
+    }
   }
 }
 

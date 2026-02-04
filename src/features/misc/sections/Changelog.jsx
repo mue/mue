@@ -1,8 +1,10 @@
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { useState, useRef } from 'react';
 import { MdOutlineWifiOff } from 'react-icons/md';
 
 const Changelog = () => {
+  const t = useT();
   const [loading, setLoading] = useState(true);
   const iframeRef = useRef(null);
 
@@ -40,10 +42,8 @@ const Changelog = () => {
       <div className="emptyItems">
         <div className="emptyMessage">
           <MdOutlineWifiOff />
-          <h1>{variables.getMessage('modals.main.marketplace.offline.title')}</h1>
-          <p className="description">
-            {variables.getMessage('modals.main.marketplace.offline.description')}
-          </p>
+          <h1>{t('modals.main.marketplace.offline.title')}</h1>
+          <p className="description">{t('modals.main.marketplace.offline.description')}</p>
         </div>
       </div>
     );
@@ -63,7 +63,7 @@ const Changelog = () => {
           }}
         >
           <div id="loader"></div>
-          <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
+          <span className="subtitle">{t('modals.main.loading')}</span>
         </div>
       )}
       <iframe
@@ -80,7 +80,7 @@ const Changelog = () => {
           opacity: loading ? 0 : 1,
           transition: 'opacity 0.2s ease-in-out',
         }}
-        title={variables.getMessage('modals.main.settings.sections.changelog.iframe_title')}
+        title={t('modals.main.settings.sections.changelog.iframe_title')}
       />
     </div>
   );

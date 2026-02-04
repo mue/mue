@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { useState, memo } from 'react';
 import { MdWidgets, MdClose, MdCheck } from 'react-icons/md';
 import { Tooltip } from 'components/Elements';
@@ -6,6 +6,7 @@ import { Button } from 'components/Elements';
 import 'components/Form/Settings/Checkbox/Checkbox.scss';
 
 function AddWidgetModal({ urlError, addWidget, closeModal, edit, editData, editWidget }) {
+  const t = useT();
   const [name, setName] = useState(edit ? editData.name : '');
   const [url, setUrl] = useState(edit ? editData.url : '');
   const [position, setPosition] = useState(edit ? editData.position : 'center');
@@ -16,10 +17,10 @@ function AddWidgetModal({ urlError, addWidget, closeModal, edit, editData, editW
       <div className="shareHeader">
         <span className="title">
           {edit
-            ? variables.getMessage('modals.main.settings.sections.advanced.custom_widget.edit')
-            : variables.getMessage('modals.main.settings.sections.advanced.custom_widget.new')}
+            ? t('modals.main.settings.sections.advanced.custom_widget.edit')
+            : t('modals.main.settings.sections.advanced.custom_widget.new')}
         </span>
-        <Tooltip title={variables.getMessage('modals.main.settings.buttons.close')}>
+        <Tooltip title={t('modals.main.settings.buttons.close')}>
           <div className="close" onClick={() => closeModal()}>
             <MdClose />
           </div>
@@ -30,9 +31,7 @@ function AddWidgetModal({ urlError, addWidget, closeModal, edit, editData, editW
           <input
             type="text"
             className="text-field-input"
-            placeholder={variables.getMessage(
-              'modals.main.settings.sections.advanced.custom_widget.name',
-            )}
+            placeholder={t('modals.main.settings.sections.advanced.custom_widget.name')}
             value={name}
             onChange={(e) => setName(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
           />
@@ -41,9 +40,7 @@ function AddWidgetModal({ urlError, addWidget, closeModal, edit, editData, editW
           <input
             type="text"
             className="text-field-input"
-            placeholder={variables.getMessage(
-              'modals.main.settings.sections.advanced.custom_widget.url',
-            )}
+            placeholder={t('modals.main.settings.sections.advanced.custom_widget.url')}
             value={url}
             onChange={(e) => setUrl(e.target.value.replace(/(\r\n|\n|\r)/gm, ''))}
           />
@@ -55,38 +52,26 @@ function AddWidgetModal({ urlError, addWidget, closeModal, edit, editData, editW
             onChange={(e) => setPosition(e.target.value)}
           >
             <option value="center">
-              {variables.getMessage(
-                'modals.main.settings.sections.advanced.custom_widget.positions.center',
-              )}
+              {t('modals.main.settings.sections.advanced.custom_widget.positions.center')}
             </option>
             <option value="top-left">
-              {variables.getMessage(
-                'modals.main.settings.sections.advanced.custom_widget.positions.top_left',
-              )}
+              {t('modals.main.settings.sections.advanced.custom_widget.positions.top_left')}
             </option>
             <option value="top-right">
-              {variables.getMessage(
-                'modals.main.settings.sections.advanced.custom_widget.positions.top_right',
-              )}
+              {t('modals.main.settings.sections.advanced.custom_widget.positions.top_right')}
             </option>
             <option value="bottom-left">
-              {variables.getMessage(
-                'modals.main.settings.sections.advanced.custom_widget.positions.bottom_left',
-              )}
+              {t('modals.main.settings.sections.advanced.custom_widget.positions.bottom_left')}
             </option>
             <option value="bottom-right">
-              {variables.getMessage(
-                'modals.main.settings.sections.advanced.custom_widget.positions.bottom_right',
-              )}
+              {t('modals.main.settings.sections.advanced.custom_widget.positions.bottom_right')}
             </option>
           </select>
         </div>
         <div className="text-field" style={{ gridColumn: 'span 2' }}>
           <div className="checkbox-wrapper">
             <span className="checkbox-label">
-              {variables.getMessage(
-                'modals.main.settings.sections.advanced.custom_widget.render_above',
-              )}
+              {t('modals.main.settings.sections.advanced.custom_widget.render_above')}
             </span>
             <input
               type="checkbox"
@@ -94,9 +79,7 @@ function AddWidgetModal({ urlError, addWidget, closeModal, edit, editData, editW
               checked={renderAbove}
               onChange={(e) => setRenderAbove(e.target.checked)}
               className="checkbox-input"
-              aria-label={variables.getMessage(
-                'modals.main.settings.sections.advanced.custom_widget.render_above',
-              )}
+              aria-label={t('modals.main.settings.sections.advanced.custom_widget.render_above')}
             />
             <div className={`checkbox-box ${renderAbove ? 'checked' : ''}`}>
               {renderAbove && <MdCheck />}
@@ -111,16 +94,14 @@ function AddWidgetModal({ urlError, addWidget, closeModal, edit, editData, editW
             type="settings"
             onClick={() => editWidget(editData, name, url, position, renderAbove)}
             icon={<MdWidgets />}
-            label={variables.getMessage(
-              'modals.main.settings.sections.advanced.custom_widget.edit_button',
-            )}
+            label={t('modals.main.settings.sections.advanced.custom_widget.edit_button')}
           />
         ) : (
           <Button
             type="settings"
             onClick={() => addWidget(name, url, position, renderAbove)}
             icon={<MdWidgets />}
-            label={variables.getMessage('modals.main.settings.sections.advanced.custom_widget.add')}
+            label={t('modals.main.settings.sections.advanced.custom_widget.add')}
           />
         )}
       </div>

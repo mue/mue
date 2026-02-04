@@ -1,10 +1,10 @@
 import { createRoot } from 'react-dom/client';
+import variables from 'config/variables';
 
 import * as Sentry from '@sentry/react';
 
 import App from './App';
 import ErrorBoundary from './ErrorBoundary';
-import variables from './config/variables';
 import { migrateAPIUsersToPhotoPacks } from './utils/migrations';
 
 import './scss/index.scss';
@@ -17,8 +17,7 @@ variables.language = initTranslations(languagecode);
 variables.languagecode = languagecode;
 document.documentElement.lang = languagecode.replace('_', '-');
 
-variables.getMessage = (text, optional) =>
-  variables.language.getMessage(variables.languagecode, text, optional || {});
+window.t = (text, optional) => variables.language.getMessage(variables.languagecode, text, optional || {});
 
 migrateAPIUsersToPhotoPacks();
 

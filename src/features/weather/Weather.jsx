@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { memo, useState, useEffect, useCallback } from 'react';
 import { formatNumber } from 'utils/formatNumber';
 
@@ -13,6 +13,7 @@ import { getWeather } from './api/getWeather.js';
 import './weather.scss';
 
 const WeatherWidget = memo(() => {
+  const t = useT();
   const [location, setLocation] = useState(() => {
     const stored = localStorage.getItem('location');
     if (!stored) return 'London';
@@ -22,8 +23,7 @@ const WeatherWidget = memo(() => {
       if (parsed && typeof parsed === 'object') {
         return parsed;
       }
-    } catch {
-    }
+    } catch {}
     return stored;
   });
   const [done, setDone] = useState(false);
@@ -97,7 +97,7 @@ const WeatherWidget = memo(() => {
         {weatherType >= 2 && (
           <div className="extra-info">
             <span>
-              {variables.getMessage('widgets.weather.feels_like', {
+              {t('widgets.weather.feels_like', {
                 amount: `${formatNumber(weatherData.weather.feels_like)}${weatherData.temp_text}`,
               })}
             </span>
@@ -105,9 +105,7 @@ const WeatherWidget = memo(() => {
           </div>
         )}
       </div>
-      {weatherType >= 3 && (
-        <Expanded weatherType={weatherType} state={weatherData} variables={variables} />
-      )}
+      {weatherType >= 3 && <Expanded weatherType={weatherType} state={weatherData} />}
     </div>
   );
 });

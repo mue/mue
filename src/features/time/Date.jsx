@@ -1,3 +1,4 @@
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { useState, useEffect, useRef } from 'react';
 
@@ -7,6 +8,7 @@ import EventBus from 'utils/eventbus';
 import './date.scss';
 
 const DateWidget = () => {
+  const t = useT();
   const [date, setDate] = useState('');
   const [weekNumber, setWeekNumber] = useState(null);
   const [display, setDisplay] = useState('block');
@@ -29,7 +31,7 @@ const DateWidget = () => {
       dateToday.setMonth(0, 1 + ((4 - dateToday.getDay() + 7) % 7));
     }
 
-    const weekLabel = variables.getMessage('widgets.date.week');
+    const weekLabel = t('widgets.date.week');
     const weekNum = 1 + Math.ceil((firstThursday - dateToday) / 604800000);
     const weekText = weekLabel.includes('{number}')
       ? weekLabel.replace('{number}', weekNum)

@@ -1,5 +1,5 @@
 import { Suspense, lazy, useState, memo, useEffect } from 'react';
-import variables from 'config/variables';
+import { useT } from 'contexts';
 
 import './scss/index.scss';
 import ModalLoader from './components/ModalLoader';
@@ -18,6 +18,7 @@ const TAB_COMPONENTS = {
 };
 
 function MainModal({ modalClose, deepLinkData }) {
+  const t = useT();
   const initialTab = deepLinkData?.tab || TAB_TYPES.SETTINGS;
   const [currentTab, setCurrentTab] = useState(initialTab);
   const [currentSection, setCurrentSection] = useState('');
@@ -141,11 +142,11 @@ function MainModal({ modalClose, deepLinkData }) {
     setCurrentSubSection(null);
     if (currentTab === TAB_TYPES.DISCOVER) {
       const sectionMap = {
-        [variables.getMessage('modals.main.marketplace.all')]: 'all',
-        [variables.getMessage('modals.main.marketplace.photo_packs')]: 'photo_packs',
-        [variables.getMessage('modals.main.marketplace.quote_packs')]: 'quote_packs',
-        [variables.getMessage('modals.main.marketplace.preset_settings')]: 'preset_settings',
-        [variables.getMessage('modals.main.marketplace.collections')]: 'collections',
+        [t('modals.main.marketplace.all')]: 'all',
+        [t('modals.main.marketplace.photo_packs')]: 'photo_packs',
+        [t('modals.main.marketplace.quote_packs')]: 'quote_packs',
+        [t('modals.main.marketplace.preset_settings')]: 'preset_settings',
+        [t('modals.main.marketplace.collections')]: 'collections',
       };
       const sectionKey = sectionMap[section];
       if (sectionKey) {

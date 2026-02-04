@@ -28,9 +28,7 @@ export default function Quote() {
   const [authorDetails, setAuthorDetails] = useState(
     localStorage.getItem('authorDetails') === 'true',
   );
-  const [legacyStyle, setLegacyStyle] = useState(
-    localStorage.getItem('widgetStyle') === 'legacy',
-  );
+  const [legacyStyle, setLegacyStyle] = useState(localStorage.getItem('widgetStyle') === 'legacy');
 
   const isFavourited = useMemo(() => {
     const favQuote = localStorage.getItem('favouriteQuote');

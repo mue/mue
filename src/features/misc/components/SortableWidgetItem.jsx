@@ -10,7 +10,10 @@ export const SortableWidgetItem = ({ value, startEditWidget, deleteWidget }) => 
   const getPositionLabel = (position) => {
     const positionKey = position?.replace('-', '_');
     const translationKey = `modals.main.settings.sections.advanced.custom_widget.positions.${positionKey}`;
-    return t(translationKey) || t('modals.main.settings.sections.advanced.custom_widget.positions.top_right');
+    return (
+      t(translationKey) ||
+      t('modals.main.settings.sections.advanced.custom_widget.positions.top_right')
+    );
   };
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: value.key,

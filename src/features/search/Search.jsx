@@ -119,7 +119,11 @@ function Search() {
         <form onSubmit={searchButton} className="searchBar">
           <div className={classList}>
             <Tooltip title={t('widgets.search')}>
-              <button className="navbarButton" onClick={searchButton} aria-label={t('common.search_label')}>
+              <button
+                className="navbarButton"
+                onClick={searchButton}
+                aria-label={t('common.search_label')}
+              >
                 <MdSearch />
               </button>
             </Tooltip>

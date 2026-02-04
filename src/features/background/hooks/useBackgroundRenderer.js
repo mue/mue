@@ -13,10 +13,14 @@ export function useBackgroundRenderer(backgroundData) {
   const abortControllerRef = useRef(null);
 
   useEffect(() => {
-    if (backgroundData.video) {return;}
+    if (backgroundData.video) {
+      return;
+    }
 
     const element = document.getElementById('backgroundImage');
-    if (!element) {return;}
+    if (!element) {
+      return;
+    }
 
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();

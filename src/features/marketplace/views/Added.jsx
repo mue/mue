@@ -1,3 +1,4 @@
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { memo, useState, useEffect, useCallback } from 'react';
 import {
@@ -21,6 +22,7 @@ import { install, uninstall } from 'utils/marketplace';
 import { updateHash } from 'utils/deepLinking';
 
 const Added = memo(() => {
+  const t = useT();
   const [installed, setInstalled] = useState(JSON.parse(localStorage.getItem('installed')));
   const [showFailed, setShowFailed] = useState(false);
   const [failedReason, setFailedReason] = useState('');
@@ -29,13 +31,13 @@ const Added = memo(() => {
   const installAddon = useCallback((input) => {
     let failedReasonText = '';
     if (!input.name) {
-      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.no_name');
+      failedReasonText = t('modals.main.addons.sideload.errors.no_name');
     } else if (!input.author) {
-      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.no_author');
+      failedReasonText = t('modals.main.addons.sideload.errors.no_author');
     } else if (!input.type) {
-      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.no_type');
+      failedReasonText = t('modals.main.addons.sideload.errors.no_type');
     } else if (!input.version) {
-      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.no_version');
+      failedReasonText = t('modals.main.addons.sideload.errors.no_version');
     } else if (
       input.type === 'photos' &&
       (!input.photos ||
@@ -45,12 +47,12 @@ const Added = memo(() => {
         !input.photos[0].photographer ||
         !input.photos[0].location)
     ) {
-      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.invalid_photos');
+      failedReasonText = t('modals.main.addons.sideload.errors.invalid_photos');
     } else if (
       input.type === 'quotes' &&
       (!input.quotes || !input.quotes.length || !input.quotes[0].quote || !input.quotes[0].author)
     ) {
-      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.invalid_quotes');
+      failedReasonText = t('modals.main.addons.sideload.errors.invalid_quotes');
     }
 
     if (failedReasonText !== '') {
@@ -60,7 +62,7 @@ const Added = memo(() => {
     }
 
     install(input.type, input, true, false);
-    toast(variables.getMessage('toasts.installed'));
+    toast(t('toasts.installed'));
     variables.stats.postEvent('marketplace', 'Sideload');
     setInstalled(JSON.parse(localStorage.getItem('installed')));
     window.dispatchEvent(new window.Event('installedAddonsChanged'));
@@ -72,7 +74,7 @@ const Added = memo(() => {
         type="settings"
         onClick={() => document.getElementById('file-input').click()}
         icon={<MdSendTimeExtension />}
-        label={variables.getMessage('modals.main.addons.sideload.title')}
+        label={t('modals.main.addons.sideload.title')}
       />
     );
   }, []);
@@ -138,9 +140,9 @@ const Added = memo(() => {
     });
 
     if (updates > 0) {
-      toast(variables.getMessage('modals.main.addons.updates_available', { amount: updates }));
+      toast(t('modals.main.addons.updates_available', { amount: updates }));
     } else {
-      toast(variables.getMessage('modals.main.addons.no_updates'));
+      toast(t('modals.main.addons.no_updates'));
     }
   }, [installed]);
 
@@ -152,22 +154,20 @@ const Added = memo(() => {
     } catch {}
 
     localStorage.setItem('installed', JSON.stringify([]));
-    toast(variables.getMessage('toasts.uninstalled_all'));
+    toast(t('toasts.uninstalled_all'));
     setInstalled([]);
     window.dispatchEvent(new window.Event('installedAddonsChanged'));
   }, [installed]);
 
   const handleUninstall = useCallback((type, name) => {
     uninstall(type, name);
-    toast(variables.getMessage('toasts.uninstalled'));
+    toast(t('toasts.uninstalled'));
     setInstalled(JSON.parse(localStorage.getItem('installed')));
     window.dispatchEvent(new window.Event('installedAddonsChanged'));
   }, []);
 
   const handleTogglePack = useCallback((packId, newState) => {
-    const message = newState
-      ? variables.getMessage('toasts.enabled')
-      : variables.getMessage('toasts.disabled');
+    const message = newState ? t('toasts.enabled') : t('toasts.disabled');
     toast(message);
   }, []);
 
@@ -210,22 +210,20 @@ const Added = memo(() => {
   if (installed.length === 0) {
     return (
       <>
-        <Header title={variables.getMessage('modals.main.navbar.addons')} report={false}>
+        <Header title={t('modals.main.navbar.addons')} report={false}>
           <CustomActions>{getSideloadButton()}</CustomActions>
         </Header>
         {sideLoadBackendElements()}
         <div className="emptyItems">
           <div className="emptyNewMessage">
             <MdOutlineExtensionOff />
-            <span className="title">{variables.getMessage('modals.main.addons.empty.title')}</span>
-            <span className="subtitle">
-              {variables.getMessage('modals.main.addons.empty.description')}
-            </span>
+            <span className="title">{t('modals.main.addons.empty.title')}</span>
+            <span className="subtitle">{t('modals.main.addons.empty.description')}</span>
             <Button
               type="collection"
               onClick={goToDiscover}
               icon={<MdExplore />}
-              label={variables.getMessage('modals.main.marketplace.addons.get_some')}
+              label={t('modals.main.marketplace.addons.get_some')}
             />
           </div>
         </div>
@@ -235,7 +233,7 @@ const Added = memo(() => {
 
   return (
     <>
-      <Header title={variables.getMessage('modals.main.addons.added')} report={false}>
+      <Header title={t('modals.main.addons.added')} report={false}>
         <CustomActions>
           {getSideloadButton()}
           {sideLoadBackendElements()}
@@ -243,13 +241,13 @@ const Added = memo(() => {
             type="settings"
             onClick={updateCheck}
             icon={<MdUpdate />}
-            label={variables.getMessage('modals.main.addons.check_updates')}
+            label={t('modals.main.addons.check_updates')}
           />
           <Button
             type="settings"
             onClick={removeAll}
             icon={<MdOutlineExtensionOff />}
-            label={variables.getMessage('modals.main.marketplace.addons.remove_all')}
+            label={t('modals.main.marketplace.addons.remove_all')}
           />
         </CustomActions>
       </Header>
@@ -263,27 +261,30 @@ const Added = memo(() => {
         }}
       >
         <Dropdown
-          label={variables.getMessage('modals.main.addons.sort.title')}
+          label={t('modals.main.addons.sort.title')}
           name="sortAddons"
           onChange={(value) => sortAddons(value)}
           items={[
-            { value: 'newest', text: variables.getMessage('modals.main.addons.sort.newest') },
-            { value: 'a-z', text: variables.getMessage('modals.main.addons.sort.a_z') },
-            { value: 'recently-updated', text: variables.getMessage('modals.main.marketplace.addons.recently_updated') },
+            { value: 'newest', text: t('modals.main.addons.sort.newest') },
+            { value: 'a-z', text: t('modals.main.addons.sort.a_z') },
+            {
+              value: 'recently-updated',
+              text: t('modals.main.marketplace.addons.recently_updated'),
+            },
           ]}
         />
         <div className="view-toggle-buttons">
           <button
             className={`view-toggle-btn ${viewType === 'grid' ? 'active' : ''}`}
             onClick={() => toggleViewType('grid')}
-            aria-label={variables.getMessage('common.view_mode.grid')}
+            aria-label={t('common.view_mode.grid')}
           >
             <MdViewModule />
           </button>
           <button
             className={`view-toggle-btn ${viewType === 'list' ? 'active' : ''}`}
             onClick={() => toggleViewType('list')}
-            aria-label={variables.getMessage('common.view_mode.list')}
+            aria-label={t('common.view_mode.list')}
           >
             <MdViewList />
           </button>

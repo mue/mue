@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import Modal from 'react-modal';
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import EventBus from 'utils/eventbus';
 import { Dropdown, Switch, Slider, ChipSelect } from 'components/Form/Settings';
@@ -146,9 +147,7 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
               placeholder={field.placeholder || ''}
               className="itemSettings-field-input"
             />
-                        {field.help_text && (
-              <p className="itemSettings-field-description">{field.help_text}</p>
-            )}
+            {field.help_text && <p className="itemSettings-field-description">{field.help_text}</p>}
           </div>
         );
 
@@ -222,7 +221,11 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
             </span>
           </div>
         </div>
-        <button className="itemSettings-close" onClick={onClose} aria-label={variables.getMessage('common.actions.close')}>
+        <button
+          className="itemSettings-close"
+          onClick={onClose}
+          aria-label={t('common.actions.close')}
+        >
           <MdClose />
         </button>
       </div>
@@ -250,7 +253,7 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
                 <Button
                   onClick={handleManualRefresh}
                   icon={<MdRefresh />}
-                  label={variables.getMessage(
+                  label={t(
                     'modals.main.settings.sections.background.photo_pack_settings.refresh_photos',
                   )}
                   disabled={refreshing || validationErrors.length > 0}
@@ -265,9 +268,7 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
             <div className="itemSettings-info-item">
               <span className="label">Type</span>
               <span className="value">
-                {variables.getMessage(
-                  'modals.main.marketplace.' + getTypeTranslationKey(pack.type),
-                )}
+                {t('modals.main.marketplace.' + getTypeTranslationKey(pack.type))}
               </span>
             </div>
             {pack.description && (
@@ -290,6 +291,7 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
 };
 
 function getTypeTranslationKey(type) {
+  const t = useT();
   const typeMap = {
     photos: 'photo_packs',
     quotes: 'quote_packs',

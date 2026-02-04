@@ -49,7 +49,9 @@ const responseParser = {
     return {
       photographer: info.photo?.owner?.realname || info.photo?.owner?.username || 'Unknown',
       location: info.photo?.title?._content || photo.title || 'Unknown',
-      url: { default: `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg` },
+      url: {
+        default: `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`,
+      },
       blur_hash: null,
       colour: null,
       photo_page: `https://www.flickr.com/photos/${photo.owner}/${photo.id}/`,
@@ -121,12 +123,12 @@ export async function fetchFromProvider(packId, pack, settings) {
           params.append('tags', settings[`photoPack_${packId}_tags`] || 'landscape');
           const license = settings[`photoPack_${packId}_license`] || 'all';
           const licenseMap = {
-            'all': '1,2,3,4,5,6,7,8,9,10',
-            'cc_by': '4',
-            'cc_by_sa': '5',
-            'cc_by_nc': '2',
-            'cc_by_nd': '6',
-            'cc0': '9,10',
+            all: '1,2,3,4,5,6,7,8,9,10',
+            cc_by: '4',
+            cc_by_sa: '5',
+            cc_by_nc: '2',
+            cc_by_nd: '6',
+            cc0: '9,10',
           };
           params.append('license', licenseMap[license] || licenseMap['all']);
           params.append('sort', 'interestingness-desc');
@@ -164,7 +166,6 @@ export async function fetchFromProvider(packId, pack, settings) {
 
     const parser = responseParser[pack.api_provider] || responseParser.default;
     return await parser(data, params, apiKey ? atob(apiKey) : null);
-
   } catch (error) {
     console.error(`Fetch from ${pack.api_provider} failed:`, error);
     return null;
@@ -258,9 +259,7 @@ export async function checkAndRefreshAPIPacks() {
       : DEFAULT_CACHE_REFRESH_INTERVAL;
 
     const needsRefresh =
-      !cached ||
-      Date.now() - cached.last_fetched > refreshInterval ||
-      cached.photos.length < 3;
+      !cached || Date.now() - cached.last_fetched > refreshInterval || cached.photos.length < 3;
 
     if (needsRefresh) {
       refreshAPIPackCache(packId).catch((error) => {

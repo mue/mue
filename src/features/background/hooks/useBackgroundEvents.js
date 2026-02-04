@@ -16,12 +16,16 @@ export function useBackgroundEvents(backgroundData, refreshBackground) {
 
       if (!isEnabled) {
         element?.style.setProperty('display', 'none');
-        if (!backgroundData.photoInfo?.hidden) {photoInfo?.style.setProperty('display', 'none');}
+        if (!backgroundData.photoInfo?.hidden) {
+          photoInfo?.style.setProperty('display', 'none');
+        }
         return;
       }
 
       element?.style.setProperty('display', 'block');
-      if (!backgroundData.photoInfo?.hidden) {photoInfo?.style.setProperty('display', 'flex');}
+      if (!backgroundData.photoInfo?.hidden) {
+        photoInfo?.style.setProperty('display', 'flex');
+      }
 
       const type = localStorage.getItem('backgroundType');
       const needsRefresh =
@@ -35,14 +39,18 @@ export function useBackgroundEvents(backgroundData, refreshBackground) {
             backgroundData.photoInfo.pun,
           ));
 
-      if (needsRefresh) {refreshBackground();}
+      if (needsRefresh) {
+        refreshBackground();
+      }
     };
 
     const applyFilters = () => {
       if (backgroundData.video) {
         const filter = getBackgroundFilterStyle();
         const element = document.getElementById('backgroundVideo');
-        if (element) {element.style.webkitFilter = filter;}
+        if (element) {
+          element.style.webkitFilter = filter;
+        }
       } else {
         const overlayElement = document.getElementById('backgroundFilterOverlay');
         if (overlayElement) {

@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { useState, memo } from 'react';
 import { Checkbox, Slider } from 'components/Form/Settings';
 import { Button } from 'components/Elements';
@@ -10,25 +10,24 @@ import values from 'utils/data/slider_values.json';
 import { Row, Content, Action } from 'components/Layout/Settings/Item';
 
 function ExperimentalOptions() {
+  const t = useT();
   const [eventType, setEventType] = useState();
   const [eventName, setEventName] = useState();
 
   return (
     <>
-      <span className="mainTitle">
-        {variables.getMessage('modals.main.settings.sections.experimental.title')}
-      </span>
-      <span className="subtitle">
-        {variables.getMessage('modals.main.settings.sections.experimental.warning')}
-      </span>
+      <span className="mainTitle">{t('modals.main.settings.sections.experimental.title')}</span>
+      <span className="subtitle">{t('modals.main.settings.sections.experimental.warning')}</span>
       <Row>
-        <Content
-          title={variables.getMessage('modals.main.settings.sections.experimental.developer')}
-        />
+        <Content title={t('modals.main.settings.sections.experimental.developer')} />
         <Action>
-          <Checkbox name="debug" text={variables.getMessage('modals.main.settings.sections.experimental.debug_hotkey')} element=".other" />
+          <Checkbox
+            name="debug"
+            text={t('modals.main.settings.sections.experimental.debug_hotkey')}
+            element=".other"
+          />
           <Slider
-            title={variables.getMessage('modals.main.settings.sections.experimental.debug_timeout')}
+            title={t('modals.main.settings.sections.experimental.debug_timeout')}
             name="debugtimeout"
             min="0"
             max="5000"
@@ -37,9 +36,13 @@ function ExperimentalOptions() {
             marks={values.experimental}
             element=".other"
           />
-          <p style={{ textAlign: 'left', width: '100%' }}>{variables.getMessage('modals.main.settings.sections.experimental.send_event')}</p>
+          <p style={{ textAlign: 'left', width: '100%' }}>
+            {t('modals.main.settings.sections.experimental.send_event')}
+          </p>
           <div className="text-field">
-            <label className="text-field-label">{variables.getMessage('modals.main.settings.sections.experimental.event_type')}</label>
+            <label className="text-field-label">
+              {t('modals.main.settings.sections.experimental.event_type')}
+            </label>
             <input
               type="text"
               className="text-field-input"
@@ -49,7 +52,9 @@ function ExperimentalOptions() {
             />
           </div>
           <div className="text-field">
-            <label className="text-field-label">{variables.getMessage('modals.main.settings.sections.experimental.event_name')}</label>
+            <label className="text-field-label">
+              {t('modals.main.settings.sections.experimental.event_name')}
+            </label>
             <input
               type="text"
               className="text-field-input"
@@ -61,24 +66,30 @@ function ExperimentalOptions() {
           <Button
             type="settings"
             onClick={() => EventBus.emit(eventType, eventName)}
-            label={variables.getMessage('common.actions.send')}
+            label={t('common.actions.send')}
           />
           <Button
             type="settings"
-            onClick={() => toast(variables.getMessage('modals.main.settings.sections.experimental.toast_success'))}
-            label={variables.getMessage('modals.main.settings.sections.experimental.normal_toast')}
+            onClick={() => toast(t('modals.main.settings.sections.experimental.toast_success'))}
+            label={t('modals.main.settings.sections.experimental.normal_toast')}
           />
           <Button
             type="settings"
-            onClick={() => toast.success(variables.getMessage('modals.main.settings.sections.experimental.toast_success'))}
-            label={variables.getMessage('modals.main.settings.sections.experimental.achievement_toast')}
+            onClick={() =>
+              toast.success(t('modals.main.settings.sections.experimental.toast_success'))
+            }
+            label={t('modals.main.settings.sections.experimental.achievement_toast')}
           />
         </Action>
       </Row>
       <Row final={true}>
-        <Content title={variables.getMessage('modals.main.settings.sections.experimental.data_section')} />
+        <Content title={t('modals.main.settings.sections.experimental.data_section')} />
         <Action>
-          <Button type="settings" onClick={() => localStorage.clear()} label={variables.getMessage('modals.main.settings.sections.experimental.clear_localstorage')} />
+          <Button
+            type="settings"
+            onClick={() => localStorage.clear()}
+            label={t('modals.main.settings.sections.experimental.clear_localstorage')}
+          />
         </Action>
       </Row>
     </>

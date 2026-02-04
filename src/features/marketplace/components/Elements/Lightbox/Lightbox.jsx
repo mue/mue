@@ -1,8 +1,10 @@
 import { memo } from 'react';
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { getProxiedImageUrl } from 'utils/marketplace';
 
 function Lightbox({ modalClose, img }) {
+  const t = useT();
   variables.stats.postEvent('modal', 'Opened lightbox');
 
   return (
@@ -14,7 +16,7 @@ function Lightbox({ modalClose, img }) {
         src={getProxiedImageUrl(img)}
         className="lightboximg"
         draggable={false}
-        alt={variables.getMessage('common.alt_text.screenshot')}
+        alt={t('common.alt_text.screenshot')}
       />
     </>
   );

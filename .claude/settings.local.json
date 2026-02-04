@@ -1,8 +1,5 @@
 {
   "permissions": {
-    "allow": [
-      "Bash(perl -i -pe:*)",
-      "Bash(bun run:*)"
-    ]
+    "allow": ["Bash(perl -i -pe:*)", "Bash(bun run:*)"]
   }
 }

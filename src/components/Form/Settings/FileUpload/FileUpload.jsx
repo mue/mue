@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { memo, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { compressAccurately, filetoDataURL } from 'image-conversion';
@@ -12,6 +12,7 @@ const FileUpload = memo(({ id, type, accept, loadFunction, multiple }) => {
     }
 
     const handleChange = (e) => {
+      const t = useT();
       const files = Array.from(e.target.files);
 
       if (type === 'settings') {
@@ -36,7 +37,7 @@ const FileUpload = memo(({ id, type, accept, loadFunction, multiple }) => {
           files.forEach((file, index) => {
             if (videoCheck(file.type) === true) {
               if (settingsSize + file.size > 4850000) {
-                return toast(variables.getMessage('toasts.no_storage'));
+                return toast(t('toasts.no_storage'));
               }
 
               return loadFunction(file, index);
@@ -47,7 +48,7 @@ const FileUpload = memo(({ id, type, accept, loadFunction, multiple }) => {
               accuracy: 0.9,
             }).then(async (res) => {
               if (settingsSize + res.size > 4850000) {
-                return toast(variables.getMessage('toasts.no_storage'));
+                return toast(t('toasts.no_storage'));
               }
 
               loadFunction(

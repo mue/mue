@@ -1,7 +1,7 @@
 import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
 import { useLocalStorageState } from 'utils/useLocalStorageState';
 import { Radio, Dropdown, Checkbox, LocationSearch } from 'components/Form/Settings';
-import variables from 'config/variables';
+import { useT } from 'contexts';
 
 const useWeatherSettings = () => {
   const [windSpeed, setWindSpeed] = useLocalStorageState('windspeed', 'true');
@@ -13,24 +13,25 @@ const useWeatherSettings = () => {
 };
 
 const WeatherOptions = () => {
+  const t = useT();
   const { windSpeed, setWindSpeed } = useWeatherSettings();
   const [weatherType, setWeatherType] = useLocalStorageState('weatherType', '1');
   const WEATHER_SECTION = 'modals.main.settings.sections.weather';
 
   const WidgetType = () => (
     <Row>
-      <Content title={variables.getMessage(`${WEATHER_SECTION}.widget_type`)} />
+      <Content title={t(`${WEATHER_SECTION}.widget_type`)} />
       <Action>
         <Dropdown
-          label={variables.getMessage('modals.main.settings.sections.time.type')}
+          label={t('modals.main.settings.sections.time.type')}
           name="weatherType"
           category="weather"
           onChange={(value) => setWeatherType(value)}
           items={[
-            { value: '1', text: variables.getMessage(`${WEATHER_SECTION}.options.basic`) },
-            { value: '2', text: variables.getMessage(`${WEATHER_SECTION}.options.standard`) },
-            { value: '3', text: variables.getMessage(`${WEATHER_SECTION}.options.expanded`) },
-            { value: '4', text: variables.getMessage(`${WEATHER_SECTION}.options.custom`) },
+            { value: '1', text: t(`${WEATHER_SECTION}.options.basic`) },
+            { value: '2', text: t(`${WEATHER_SECTION}.options.standard`) },
+            { value: '3', text: t(`${WEATHER_SECTION}.options.expanded`) },
+            { value: '4', text: t(`${WEATHER_SECTION}.options.custom`) },
           ]}
         />
       </Action>
@@ -39,10 +40,10 @@ const WeatherOptions = () => {
 
   const LocationSetting = () => (
     <Row>
-      <Content title={variables.getMessage(`${WEATHER_SECTION}.location`)} />
+      <Content title={t(`${WEATHER_SECTION}.location`)} />
       <Action>
         <LocationSearch
-          label={variables.getMessage(`${WEATHER_SECTION}.location`)}
+          label={t(`${WEATHER_SECTION}.location`)}
           name="location"
           category="weather"
           placeholder="London"
@@ -53,21 +54,21 @@ const WeatherOptions = () => {
 
   const TemperatureFormat = () => (
     <Row final={weatherType !== '4'}>
-      <Content title={variables.getMessage(`${WEATHER_SECTION}.temp_format.title`)} />
+      <Content title={t(`${WEATHER_SECTION}.temp_format.title`)} />
       <Action>
         <Radio
           name="tempformat"
           options={[
             {
-              name: `${variables.getMessage(`${WEATHER_SECTION}.temp_format.celsius`)} (°C)`,
+              name: `${t(`${WEATHER_SECTION}.temp_format.celsius`)} (°C)`,
               value: 'celsius',
             },
             {
-              name: `${variables.getMessage(`${WEATHER_SECTION}.temp_format.fahrenheit`)} (°F)`,
+              name: `${t(`${WEATHER_SECTION}.temp_format.fahrenheit`)} (°F)`,
               value: 'fahrenheit',
             },
             {
-              name: `${variables.getMessage(`${WEATHER_SECTION}.temp_format.kelvin`)} (K)`,
+              name: `${t(`${WEATHER_SECTION}.temp_format.kelvin`)} (K)`,
               value: 'kelvin',
             },
           ]}
@@ -110,13 +111,13 @@ const WeatherOptions = () => {
 
     return (
       <Row final={true}>
-        <Content title={variables.getMessage(`${WEATHER_SECTION}.custom_settings`)} />
+        <Content title={t(`${WEATHER_SECTION}.custom_settings`)} />
         <Action>
           {weatherOptions.map((item) => (
             <Checkbox
               key={item.name}
               name={item.name}
-              text={variables.getMessage(item.textKey)}
+              text={t(item.textKey)}
               category="weather"
               onChange={item.onChange}
               disabled={item.disabled}
@@ -130,7 +131,7 @@ const WeatherOptions = () => {
   return (
     <>
       <Header
-        title={variables.getMessage(`${WEATHER_SECTION}.title`)}
+        title={t(`${WEATHER_SECTION}.title`)}
         setting="weatherEnabled"
         category="widgets"
         zoomSetting="zoomWeather"

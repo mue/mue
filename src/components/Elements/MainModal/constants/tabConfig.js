@@ -1,3 +1,4 @@
+import variables from 'config/variables';
 import {
   MdTune,
   MdBookmarks,

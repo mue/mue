@@ -1,3 +1,4 @@
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { memo, useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { createPortal } from 'react-dom';
@@ -51,6 +52,7 @@ const LocationSearch = memo((props) => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
+      const t = useT();
       if (
         containerRef.current &&
         !containerRef.current.contains(event.target) &&
@@ -219,7 +221,7 @@ const LocationSearch = memo((props) => {
   );
 
   const handleAutoLocation = useCallback(() => {
-    setSearchQuery(variables.getMessage('modals.main.loading'));
+    setSearchQuery(t('modals.main.loading'));
     setSuggestions([]);
 
     navigator.geolocation.getCurrentPosition(
@@ -334,7 +336,7 @@ const LocationSearch = memo((props) => {
           <label className="location-search-label">{label}</label>
           <span className="location-search-auto" onClick={handleAutoLocation}>
             <MdMyLocation />
-            {variables.getMessage('modals.main.settings.sections.weather.auto')}
+            {t('modals.main.settings.sections.weather.auto')}
           </span>
         </div>
       )}
@@ -408,12 +410,10 @@ const LocationSearch = memo((props) => {
                 </div>
               ))
             ) : searchQuery.length >= 2 && !loading ? (
-              <div className="location-search-empty">
-                {variables.getMessage('widgets.weather.not_found')}
-              </div>
+              <div className="location-search-empty">{t('widgets.weather.not_found')}</div>
             ) : searchQuery.length < 2 && searchQuery.length > 0 ? (
               <div className="location-search-empty">
-                {variables.getMessage('modals.main.settings.sections.weather.location')}...
+                {t('modals.main.settings.sections.weather.location')}...
               </div>
             ) : null}
           </div>,

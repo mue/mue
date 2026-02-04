@@ -1,3 +1,4 @@
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { memo, useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { createPortal } from 'react-dom';
@@ -33,6 +34,7 @@ const Dropdown = memo((props) => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
+      const t = useT();
       if (
         containerRef.current &&
         !containerRef.current.contains(event.target) &&
@@ -155,7 +157,7 @@ const Dropdown = memo((props) => {
 
   const onChange = useCallback(
     (newValue) => {
-      if (newValue === variables.getMessage('modals.main.loading')) {
+      if (newValue === t('modals.main.loading')) {
         return;
       }
 
@@ -238,7 +240,7 @@ const Dropdown = memo((props) => {
       e?.stopPropagation();
       const defaultValue = props.default || props.items[0]?.value;
       onChange(defaultValue);
-      toast(variables.getMessage('toasts.reset'));
+      toast(t('toasts.reset'));
     },
     [onChange, props.default, props.items],
   );
@@ -281,7 +283,7 @@ const Dropdown = memo((props) => {
           <label className="dropdown-label">{label}</label>
           <span className="dropdown-reset" onClick={resetItem}>
             <MdRefresh />
-            {variables.getMessage('modals.main.settings.buttons.reset')}
+            {t('modals.main.settings.buttons.reset')}
           </span>
         </div>
       )}
@@ -369,7 +371,7 @@ const Dropdown = memo((props) => {
                     {item.value === defaultValue && (
                       <span className="dropdown-option-default">
                         {' '}
-                        ({variables.getMessage('modals.main.settings.buttons.default')})
+                        ({t('modals.main.settings.buttons.default')})
                       </span>
                     )}
                   </span>

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Row, Content, Action } from 'components/Layout/Settings/Item';
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import Slider from '../../../Form/Settings/Slider/Slider';
 
 import values from 'utils/data/slider_values.json';
 import EventBus from 'utils/eventbus';
 
 const PreferencesWrapper = ({ children, ...props }) => {
+  const t = useT();
   const [shown, setShown] = useState(localStorage.getItem(props.setting) === 'true');
 
   EventBus.on('toggle', (setting) => {
@@ -20,10 +21,8 @@ const PreferencesWrapper = ({ children, ...props }) => {
       {props.zoomSetting && (
         <Row>
           <Content
-            title={variables.getMessage(
-              'modals.main.settings.sections.appearance.accessibility.widget_zoom',
-            )}
-            subtitle={variables.getMessage('modals.main.settings.sections.header.size')}
+            title={t('modals.main.settings.sections.appearance.accessibility.widget_zoom')}
+            subtitle={t('modals.main.settings.sections.header.size')}
           />
           <Action>
             <Slider

@@ -1,15 +1,17 @@
 import { useCallback } from 'react';
 import { toast } from 'react-toastify';
+import { useT } from 'contexts';
 import variables from 'config/variables';
 
 /**
  * Custom hook for quote actions (copy, favourite, share)
  */
 export function useQuoteActions(quoteData) {
+  const t = useT();
   const copyQuote = useCallback(() => {
     variables.stats.postEvent('feature', 'Quote copied');
     navigator.clipboard.writeText(`${quoteData.quote} - ${quoteData.author}`);
-    toast(variables.getMessage('toasts.quote'));
+    toast(t('toasts.quote'));
   }, [quoteData.quote, quoteData.author]);
 
   const toggleFavourite = useCallback(() => {

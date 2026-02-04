@@ -126,12 +126,12 @@ async function extractOccupations(claims, language) {
   }
 
   try {
-    const occupations = claims.P106
-      .filter((claim) => claim.mainsnak?.datavalue?.value?.id)
-      .map((claim) => ({
+    const occupations = claims.P106.filter((claim) => claim.mainsnak?.datavalue?.value?.id).map(
+      (claim) => ({
         id: claim.mainsnak.datavalue.value.id,
         rank: claim.rank || 'normal', // 'preferred', 'normal', 'deprecated'
-      }));
+      }),
+    );
 
     if (occupations.length === 0) {
       return null;

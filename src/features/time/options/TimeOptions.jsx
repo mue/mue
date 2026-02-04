@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import React, { useState } from 'react';
 
 import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
@@ -7,6 +7,7 @@ import { Checkbox, Dropdown, Radio } from 'components/Form/Settings';
 import { MdRefresh } from 'react-icons/md';
 
 const TimeOptions = () => {
+  const t = useT();
   const [timeType, setTimeType] = useState(localStorage.getItem('timeType') || 'digital');
   const [hourColour, setHourColour] = useState(localStorage.getItem('hourColour') || '#ffffff');
   const [minuteColour, setMinuteColour] = useState(
@@ -32,25 +33,22 @@ const TimeOptions = () => {
   const WidgetType = () => {
     return (
       <Row final={timeType === 'percentageComplete'}>
-        <Content
-          title={variables.getMessage(`${TIME_SECTION}.type`)}
-          subtitle={variables.getMessage(`${TIME_SECTION}.type_subtitle`)}
-        />
+        <Content title={t(`${TIME_SECTION}.type`)} subtitle={t(`${TIME_SECTION}.type_subtitle`)} />
         <Action>
           <Dropdown
             name="timeType"
             onChange={(value) => setTimeType(value)}
             category="clock"
             items={[
-              { value: 'digital', text: variables.getMessage(`${TIME_SECTION}.digital.title`) },
-              { value: 'analogue', text: variables.getMessage(`${TIME_SECTION}.analogue.title`) },
+              { value: 'digital', text: t(`${TIME_SECTION}.digital.title`) },
+              { value: 'analogue', text: t(`${TIME_SECTION}.analogue.title`) },
               {
                 value: 'percentageComplete',
-                text: variables.getMessage(`${TIME_SECTION}.percentage_complete`),
+                text: t(`${TIME_SECTION}.percentage_complete`),
               },
               {
                 value: 'verticalClock',
-                text: variables.getMessage(`${TIME_SECTION}.vertical_clock.title`),
+                text: t(`${TIME_SECTION}.vertical_clock.title`),
               },
             ]}
           />
@@ -62,35 +60,27 @@ const TimeOptions = () => {
   const digitalSettings = (
     <Row final={true}>
       <Content
-        title={variables.getMessage(`${TIME_SECTION}.digital.title`)}
-        subtitle={variables.getMessage(`${TIME_SECTION}.digital.subtitle`)}
+        title={t(`${TIME_SECTION}.digital.title`)}
+        subtitle={t(`${TIME_SECTION}.digital.subtitle`)}
       />
       <Action>
         <Radio
           name="timeformat"
           options={[
             {
-              name: variables.getMessage(`${TIME_SECTION}.digital.twentyfourhour`),
+              name: t(`${TIME_SECTION}.digital.twentyfourhour`),
               value: 'twentyfourhour',
             },
             {
-              name: variables.getMessage(`${TIME_SECTION}.digital.twelvehour`),
+              name: t(`${TIME_SECTION}.digital.twelvehour`),
               value: 'twelvehour',
             },
           ]}
           smallTitle={true}
           category="clock"
         />
-        <Checkbox
-          name="seconds"
-          text={variables.getMessage(`${TIME_SECTION}.digital.seconds`)}
-          category="clock"
-        />
-        <Checkbox
-          name="zero"
-          text={variables.getMessage(`${TIME_SECTION}.digital.zero`)}
-          category="clock"
-        />
+        <Checkbox name="seconds" text={t(`${TIME_SECTION}.digital.seconds`)} category="clock" />
+        <Checkbox name="zero" text={t(`${TIME_SECTION}.digital.zero`)} category="clock" />
       </Action>
     </Row>
   );
@@ -98,38 +88,34 @@ const TimeOptions = () => {
   const analogSettings = (
     <Row final={true}>
       <Content
-        title={variables.getMessage(`${TIME_SECTION}.analogue.title`)}
-        subtitle={variables.getMessage(`${TIME_SECTION}.analogue.subtitle`)}
+        title={t(`${TIME_SECTION}.analogue.title`)}
+        subtitle={t(`${TIME_SECTION}.analogue.subtitle`)}
       />
       <Action>
         <Checkbox
           name="secondHand"
-          text={variables.getMessage(`${TIME_SECTION}.analogue.second_hand`)}
+          text={t(`${TIME_SECTION}.analogue.second_hand`)}
           category="clock"
         />
         <Checkbox
           name="minuteHand"
-          text={variables.getMessage(`${TIME_SECTION}.analogue.minute_hand`)}
+          text={t(`${TIME_SECTION}.analogue.minute_hand`)}
           category="clock"
         />
-        <Checkbox
-          name="hourHand"
-          text={variables.getMessage(`${TIME_SECTION}.analogue.hour_hand`)}
-          category="clock"
-        />
+        <Checkbox name="hourHand" text={t(`${TIME_SECTION}.analogue.hour_hand`)} category="clock" />
         <Checkbox
           name="hourMarks"
-          text={variables.getMessage(`${TIME_SECTION}.analogue.hour_marks`)}
+          text={t(`${TIME_SECTION}.analogue.hour_marks`)}
           category="clock"
         />
         <Checkbox
           name="minuteMarks"
-          text={variables.getMessage(`${TIME_SECTION}.analogue.minute_marks`)}
+          text={t(`${TIME_SECTION}.analogue.minute_marks`)}
           category="clock"
         />
         <Checkbox
           name="roundClock"
-          text={variables.getMessage(`${TIME_SECTION}.analogue.round_clock`)}
+          text={t(`${TIME_SECTION}.analogue.round_clock`)}
           category="clock"
         />
       </Action>
@@ -140,9 +126,7 @@ const TimeOptions = () => {
     <>
       <Row>
         <Content
-          title={variables.getMessage(
-            'modals.main.settings.sections.time.vertical_clock.change_hour_colour',
-          )}
+          title={t('modals.main.settings.sections.time.vertical_clock.change_hour_colour')}
         />
         <Action>
           <div className="colourInput">
@@ -159,15 +143,13 @@ const TimeOptions = () => {
           </div>
           <span className="link" onClick={() => localStorage.setItem('hourColour', '#ffffff')}>
             <MdRefresh />
-            {variables.getMessage('modals.main.settings.buttons.reset')}
+            {t('modals.main.settings.buttons.reset')}
           </span>
         </Action>
       </Row>
       <Row>
         <Content
-          title={variables.getMessage(
-            'modals.main.settings.sections.time.vertical_clock.change_minute_colour',
-          )}
+          title={t('modals.main.settings.sections.time.vertical_clock.change_minute_colour')}
         />
         <Action>
           <div className="colourInput">
@@ -184,15 +166,13 @@ const TimeOptions = () => {
           </div>
           <span className="link" onClick={() => localStorage.setItem('minuteColour', '#ffffff')}>
             <MdRefresh />
-            {variables.getMessage('modals.main.settings.buttons.reset')}
+            {t('modals.main.settings.buttons.reset')}
           </span>
         </Action>
       </Row>
       <Row>
         <Content
-          title={variables.getMessage(
-            'modals.main.settings.sections.time.vertical_clock.change_second_colour',
-          )}
+          title={t('modals.main.settings.sections.time.vertical_clock.change_second_colour')}
         />
         <Action>
           <div className="colourInput">
@@ -209,7 +189,7 @@ const TimeOptions = () => {
           </div>
           <span className="link" onClick={() => localStorage.setItem('secondColour', '#ffffff')}>
             <MdRefresh />
-            {variables.getMessage('modals.main.settings.buttons.reset')}
+            {t('modals.main.settings.buttons.reset')}
           </span>
         </Action>
       </Row>
@@ -234,7 +214,7 @@ const TimeOptions = () => {
   return (
     <>
       <Header
-        title={variables.getMessage(`${TIME_SECTION}.title`)}
+        title={t(`${TIME_SECTION}.title`)}
         setting="time"
         category="clock"
         element=".clock-container"

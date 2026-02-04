@@ -8,8 +8,6 @@ import { BiDonateHeart } from 'react-icons/bi';
 import { Tooltip, Button } from 'components/Elements';
 import other_contributors from 'utils/data/other_contributors.json';
 
-import { useT } from 'contexts/TranslationContext';
-
 class About extends PureComponent {
   constructor() {
     super();
@@ -19,8 +17,8 @@ class About extends PureComponent {
       other_contributors: [],
       photographers: [],
       curators: [],
-      update: variables.getMessage('modals.main.settings.sections.about.version.checking_update'),
-      loading: variables.getMessage('modals.main.loading'),
+      update: t('modals.main.settings.sections.about.version.checking_update'),
+      loading: t('modals.main.loading'),
     };
     this.controller = new AbortController();
   }
@@ -76,10 +74,8 @@ class About extends PureComponent {
       }
 
       return this.setState({
-        update: variables.getMessage('modals.main.settings.sections.about.version.error.title'),
-        loading: variables.getMessage(
-          'modals.main.settings.sections.about.version.error.description',
-        ),
+        update: t('modals.main.settings.sections.about.version.error.title'),
+        loading: t('modals.main.settings.sections.about.version.error.description'),
       });
     }
 
@@ -93,12 +89,12 @@ class About extends PureComponent {
 
     const newVersion = versionData[0].tag_name;
 
-    let update = variables.getMessage('modals.main.settings.sections.about.version.no_update');
+    let update = t('modals.main.settings.sections.about.version.no_update');
     if (
       Number(variables.constants.VERSION.replaceAll('.', '')) <
       Number(newVersion.replaceAll('.', ''))
     ) {
-      update = `${variables.getMessage(
+      update = `${t(
         'modals.main.settings.sections.about.version.update_available',
       )}: ${newVersion}`;
     }
@@ -118,8 +114,8 @@ class About extends PureComponent {
   componentDidMount() {
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
       this.setState({
-        update: variables.getMessage('modals.main.marketplace.offline.description'),
-        loading: variables.getMessage('modals.main.marketplace.offline.description'),
+        update: t('modals.main.marketplace.offline.description'),
+        loading: t('modals.main.marketplace.offline.description'),
       });
       return;
     }
@@ -141,21 +137,21 @@ class About extends PureComponent {
               draggable={false}
               className="aboutLogo"
               src={'src/assets/icons/mue_about.png'}
-              alt={variables.getMessage('common.alt_text.logo')}
+              alt={t('common.alt_text.logo')}
             />
             <div className="aboutText">
-              <span className="title">{variables.getMessage('branding.name')}</span>
+              <span className="title">{t('branding.name')}</span>
               <span className="subtitle">
-                {variables.getMessage('modals.main.settings.sections.about.version.title')}{' '}
+                {t('modals.main.settings.sections.about.version.title')}{' '}
                 {variables.constants.VERSION}
               </span>
               <span className="subtitle">({this.state.update})</span>
             </div>
             <div>
               <span className="subtitle">
-                {variables.getMessage('modals.main.settings.sections.about.copyright', {
+                {t('modals.main.settings.sections.about.copyright', {
                   startYear: 2018,
-                  currentYear: new Date().getFullYear()
+                  currentYear: new Date().getFullYear(),
                 })}{' '}
                 <a
                   className="link"
@@ -173,7 +169,7 @@ class About extends PureComponent {
                 </a>
               </span>
             </div>
-            <span className="subtitle">{variables.getMessage('modals.main.settings.sections.about.license')}</span>
+            <span className="subtitle">{t('modals.main.settings.sections.about.license')}</span>
             <span className="subtitle">
               <a
                 href={variables.constants.PRIVACY_URL}
@@ -181,7 +177,7 @@ class About extends PureComponent {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {variables.getMessage('modals.welcome.sections.privacy.links.privacy_policy')}
+                {t('modals.welcome.sections.privacy.links.privacy_policy')}
               </a>
             </span>
           </div>
@@ -189,47 +185,45 @@ class About extends PureComponent {
 
         <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
           <span className="title" style={{ marginBottom: '1em' }}>
-            {variables.getMessage('modals.main.settings.sections.about.contact_us')}
+            {t('modals.main.settings.sections.about.contact_us')}
           </span>
           <div className="aboutContact">
             <Button
               type="linkButton"
               href="https://muetab.com/contact"
               icon={<MdContactPage />}
-              label={variables.getMessage('modals.main.settings.sections.about.form_button')}
+              label={t('modals.main.settings.sections.about.form_button')}
             />
             <Button
               type="linkIconButton"
               href={'mailto:' + variables.constants.EMAIL}
               icon={<MdEmail />}
-              tooltipTitle={variables.getMessage('modals.main.settings.sections.about.social.email')}
+              tooltipTitle={t('modals.main.settings.sections.about.social.email')}
             />
             <Button
               type="linkIconButton"
               href={'https://x.com/' + variables.constants.TWITTER_HANDLE}
               icon={<SiX />}
-              tooltipTitle={variables.getMessage('modals.main.settings.sections.about.social.twitter')}
+              tooltipTitle={t('modals.main.settings.sections.about.social.twitter')}
             />
             <Button
               type="linkIconButton"
               href={'https://discord.gg/' + variables.constants.DISCORD_SERVER}
               icon={<FaDiscord />}
-              tooltipTitle={variables.getMessage('modals.main.settings.sections.about.social.discord')}
+              tooltipTitle={t('modals.main.settings.sections.about.social.discord')}
             />
           </div>
         </div>
 
         <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
-          <span className="title">
-            {variables.getMessage('modals.main.settings.sections.about.support_mue')}
-          </span>
-          <p>{variables.getMessage('modals.main.settings.sections.about.support_subtitle')}</p>
+          <span className="title">{t('modals.main.settings.sections.about.support_mue')}</span>
+          <p>{t('modals.main.settings.sections.about.support_subtitle')}</p>
           <div className="aboutContact">
             <Button
               type="linkButton"
               href={'https://github.com/sponsors/' + variables.constants.ORG_NAME}
               icon={<BiDonateHeart />}
-              label={variables.getMessage('modals.main.settings.sections.about.support_donate')}
+              label={t('modals.main.settings.sections.about.support_donate')}
             />
           </div>
         </div>
@@ -239,7 +233,7 @@ class About extends PureComponent {
           style={{ flexFlow: 'column', alignItems: 'flex-start', minHeight: '70px' }}
         >
           <span className="title">
-            {variables.getMessage('modals.main.settings.sections.about.resources_used.title')}
+            {t('modals.main.settings.sections.about.resources_used.title')}
           </span>
           <span className="subtitle">
             <a
@@ -259,14 +253,12 @@ class About extends PureComponent {
             >
               Unsplash
             </a>{' '}
-            ({variables.getMessage('modals.main.settings.sections.about.resources_used.bg_images')})
+            ({t('modals.main.settings.sections.about.resources_used.bg_images')})
           </span>
         </div>
 
         <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
-          <span className="title">
-            {variables.getMessage('modals.main.settings.sections.about.contributors')}
-          </span>
+          <span className="title">{t('modals.main.settings.sections.about.contributors')}</span>
           <p>{this.state.loading}</p>
           <div className="contributorImages">
             {this.state.contributors.map(({ login, id }) => (
@@ -294,18 +286,12 @@ class About extends PureComponent {
         </div>
 
         <div className="settingsRow" style={{ flexFlow: 'column', alignItems: 'flex-start' }}>
-          <span className="title">
-            {variables.getMessage('modals.main.settings.sections.about.supporters')}
-          </span>
+          <span className="title">{t('modals.main.settings.sections.about.supporters')}</span>
           <p>{this.state.loading}</p>
           <div className="contributorImages">
             {this.state.sponsors.map(({ handle, avatar }) => {
               if (handle === 'empty') {
-                return (
-                  <p key="empty">
-                    {variables.getMessage('modals.main.settings.sections.about.no_supporters')}
-                  </p>
-                );
+                return <p key="empty">{t('modals.main.settings.sections.about.no_supporters')}</p>;
               }
 
               return (
@@ -326,15 +312,13 @@ class About extends PureComponent {
           className="settingsRow"
           style={{ flexFlow: 'column', alignItems: 'flex-start', minHeight: '10px' }}
         >
-          <span className="title">
-            {variables.getMessage('modals.main.settings.sections.about.photographers')}
-          </span>
+          <span className="title">{t('modals.main.settings.sections.about.photographers')}</span>
           {this.state.loading ? <p>{this.state.loading}</p> : <></>}
           <ul>
             {this.state.photographers.map(({ name, count }) => (
               <li key={name} className="subtitle-photographers">
                 {name}
-                <span> ({variables.getMessage('modals.main.settings.sections.about.image_count', { count })})</span>
+                <span> ({t('modals.main.settings.sections.about.image_count', { count })})</span>
               </li>
             ))}
           </ul>
@@ -348,9 +332,7 @@ class About extends PureComponent {
             borderBottom: '0',
           }}
         >
-          <span className="title">
-            {variables.getMessage('modals.main.settings.sections.about.curators')}
-          </span>
+          <span className="title">{t('modals.main.settings.sections.about.curators')}</span>
           {this.state.loading ? <p>{this.state.loading}</p> : <></>}
           <ul>
             {this.state.curators.map((name) => (

@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import SidebarSkeleton from './SidebarSkeleton';
 
 const ModalLoader = ({ currentTab }) => (
@@ -11,7 +11,7 @@ const ModalLoader = ({ currentTab }) => (
         <div className="emptyMessage">
           <div className="loaderHolder">
             <div id="loader"></div>
-            <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
+            <span className="subtitle">{t('modals.main.loading')}</span>
           </div>
         </div>
       </div>

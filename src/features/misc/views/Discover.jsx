@@ -1,3 +1,4 @@
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { MARKETPLACE_URL } from 'config/constants';
 import { memo, useEffect, useRef, useState } from 'react';
@@ -9,6 +10,7 @@ import { useMarketplaceInstall } from 'features/marketplace/components/hooks/use
 import Lightbox from 'features/marketplace/components/Elements/Lightbox/Lightbox';
 
 function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
+  const t = useT();
   const iframeRef = useRef(null);
   const [loading, setLoading] = useState(true);
   const [showLightbox, setShowLightbox] = useState(false);
@@ -255,10 +257,8 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
       <div className="emptyItems">
         <div className="emptyMessage">
           <MdOutlineWifiOff />
-          <h1>{variables.getMessage('modals.main.marketplace.offline.title')}</h1>
-          <p className="description">
-            {variables.getMessage('modals.main.marketplace.offline.description')}
-          </p>
+          <h1>{t('modals.main.marketplace.offline.title')}</h1>
+          <p className="description">{t('modals.main.marketplace.offline.description')}</p>
         </div>
       </div>
     );
@@ -288,7 +288,7 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
           }}
         >
           <div id="loader"></div>
-          <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
+          <span className="subtitle">{t('modals.main.loading')}</span>
         </div>
       )}
       <iframe
@@ -321,7 +321,7 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
           opacity: loading ? 0 : 1,
           transition: 'opacity 0.2s ease-in-out',
         }}
-        title={variables.getMessage('modals.main.marketplace.title')}
+        title={t('modals.main.marketplace.title')}
       />
     </div>
   );
@@ -344,7 +344,7 @@ function Discover(props) {
       onSectionChange={props.onSectionChange}
     >
       {sections.map(({ label, name }) => (
-        <div key={name} label={variables.getMessage(label)} name={name}>
+        <div key={name} label={t(label)} name={name}>
           <DiscoverContent
             category={name}
             onBreadcrumbsChange={props.onBreadcrumbsChange}

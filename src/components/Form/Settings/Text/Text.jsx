@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { memo, useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
 import { MdRefresh } from 'react-icons/md';
@@ -8,6 +8,7 @@ import EventBus from 'utils/eventbus';
 import './Text.scss';
 
 const Text = memo((props) => {
+  const t = useT();
   const {
     name,
     upperCaseFirst,
@@ -55,7 +56,7 @@ const Text = memo((props) => {
         value: defaultValue || '',
       },
     });
-    toast(variables.getMessage('toasts.reset'));
+    toast(t('toasts.reset'));
   }, [handleChange, defaultValue]);
 
   return (
@@ -67,7 +68,7 @@ const Text = memo((props) => {
               <label className="text-field-label">{title}</label>
               <span className="text-field-reset" onClick={resetItem}>
                 <MdRefresh />
-                {variables.getMessage('modals.main.settings.buttons.reset')}
+                {t('modals.main.settings.buttons.reset')}
               </span>
             </div>
           )}
@@ -86,7 +87,7 @@ const Text = memo((props) => {
               <label className="text-field-label">{title}</label>
               <span className="text-field-reset" onClick={resetItem}>
                 <MdRefresh />
-                {variables.getMessage('modals.main.settings.buttons.reset')}
+                {t('modals.main.settings.buttons.reset')}
               </span>
             </div>
           )}

@@ -427,7 +427,6 @@ button.quicklinks {
 }
 
 .quickLinksCard {
-
   text-decoration: none;
   display: flex;
   flex-direction: column;
@@ -483,7 +482,6 @@ button.quicklinks {
     -webkit-box-orient: vertical;
 
     text-shadow: 0 0 10px rgb(0 0 0 / 30%);
-
 
     @include themed {
       color: t($color);
