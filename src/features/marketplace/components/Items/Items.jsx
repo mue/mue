@@ -73,7 +73,7 @@ function ItemCard({
   const isPhotoPack = item.type === 'photos' || item.type === 'photo_packs';
   const hasSettings = isPhotoPack && item.settings_schema && item.settings_schema.length > 0;
 
-  const [isEnabled, setIsEnabled] = useState(() => {
+  const [enabled, setEnabled] = useState(() => {
     const enabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
     return enabledPacks[packId] !== false;
   });
@@ -89,9 +89,9 @@ function ItemCard({
 
   const handleTogglePack = (e) => {
     e.stopPropagation();
-    const newState = !isEnabled;
+    const newState = !enabled;
 
-    setIsEnabled(newState);
+    setEnabled(newState);
 
     const enabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
     enabledPacks[packId] = newState;
@@ -117,7 +117,7 @@ function ItemCard({
 
   return (
     <div
-      className={`item ${isSideloaded ? 'item-sideloaded' : ''} ${!isEnabled && isAdded ? 'item-disabled' : ''}`}
+      className={`item ${isSideloaded ? 'item-sideloaded' : ''} ${!enabled && isAdded ? 'item-disabled' : ''}`}
       onClick={handleCardClick}
       key={item.name}
     >
@@ -130,17 +130,17 @@ function ItemCard({
           <label className="switch-track" style={{ cursor: 'pointer' }}>
             <input
               type="checkbox"
-              checked={isEnabled}
+              checked={enabled}
               onChange={handleTogglePack}
               style={{ display: 'none' }}
             />
             <div
-              className={`switch-track ${isEnabled ? 'checked' : ''}`}
+              className={`switch-track ${enabled ? 'checked' : ''}`}
               style={{
                 width: '52px',
                 height: '32px',
                 borderRadius: '16px',
-                backgroundColor: isEnabled
+                backgroundColor: enabled
                   ? 'var(--linkColor, #ff5c25)'
                   : 'rgba(128, 128, 128, 0.3)',
                 position: 'relative',
@@ -157,7 +157,7 @@ function ItemCard({
                   backgroundColor: 'white',
                   position: 'absolute',
                   top: '4px',
-                  left: isEnabled ? '24px' : '4px',
+                  left: enabled ? '24px' : '4px',
                   transition: 'left 0.2s',
                   boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
                 }}
@@ -250,9 +250,9 @@ function ItemCard({
       {isAdded && (
         <ItemSettingsModal
           pack={item}
-          isOpen={showSettingsModal}
+          open={showSettingsModal}
           onClose={() => setShowSettingsModal(false)}
-          isEnabled={isEnabled}
+          enabled={enabled}
         />
       )}
     </div>

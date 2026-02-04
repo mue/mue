@@ -39,7 +39,7 @@ const Tabs = ({
   const initial = getInitialSection();
   const [currentName, setCurrentName] = useState(initial.name);
   const [showReminder, setShowReminder] = useState(localStorage.getItem('showReminder') === 'true');
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(
     localStorage.getItem('sidebarCollapsed') === 'true',
   );
   const [searchQuery, setSearchQuery] = useState('');
@@ -110,8 +110,8 @@ const Tabs = ({
   };
 
   const handleToggleSidebar = () => {
-    const newState = !isSidebarCollapsed;
-    setIsSidebarCollapsed(newState);
+    const newState = !sidebarCollapsed;
+    setSidebarCollapsed(newState);
     localStorage.setItem('sidebarCollapsed', newState.toString());
   };
 
@@ -127,7 +127,7 @@ const Tabs = ({
       if ((e.ctrlKey || e.metaKey) && e.key === 'b') {
         e.preventDefault();
         if (showSidebar) {
-          setIsSidebarCollapsed((prev) => !prev);
+          setSidebarCollapsed((prev) => !prev);
         }
       }
     };
@@ -139,10 +139,10 @@ const Tabs = ({
   return (
     <div style={{ display: 'flex', width: '100%', height: '100%', overflow: 'hidden' }}>
       {showSidebar ? (
-        <div className={`modalSidebar ${isSidebarCollapsed ? 'collapsed' : 'expanded'}`}>
+        <div className={`modalSidebar ${sidebarCollapsed ? 'collapsed' : 'expanded'}`}>
           <div className="sidebarHeader">
-            <SidebarToggle isCollapsed={isSidebarCollapsed} onToggle={handleToggleSidebar} />
-            {!isSidebarCollapsed && activeTab === TAB_TYPES.SETTINGS && (
+            <SidebarToggle isCollapsed={sidebarCollapsed} onToggle={handleToggleSidebar} />
+            {!sidebarCollapsed && activeTab === TAB_TYPES.SETTINGS && (
               <SearchInput
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -158,13 +158,13 @@ const Tabs = ({
               label={tab.props.label}
               onClick={(nextTab) => handleTabClick(nextTab, tab.props.name)}
               navbarTab={navbar}
-              isCollapsed={isSidebarCollapsed}
+              isCollapsed={sidebarCollapsed}
             />
           ))}
           {searchQuery.trim() && filteredChildren.length === 0 && (
             <div className="sidebarEmptyState">{t('widgets.weather.not_found')}</div>
           )}
-          {!isSidebarCollapsed && (
+          {!sidebarCollapsed && (
             <ReminderInfo isVisible={showReminder} onHide={handleHideReminder} />
           )}
         </div>

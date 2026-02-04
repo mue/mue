@@ -28,7 +28,7 @@ export default function Quote() {
   const [authorDetails, setAuthorDetails] = useState(
     localStorage.getItem('authorDetails') === 'true',
   );
-  const [isLegacyStyle, setIsLegacyStyle] = useState(
+  const [legacyStyle, setLegacyStyle] = useState(
     localStorage.getItem('widgetStyle') === 'legacy',
   );
 
@@ -55,7 +55,7 @@ export default function Quote() {
         setDisplay(quoteSetting === 'false' ? 'none' : 'block');
         setFontSize(`${1.2 * Number((zoomQuote || 100) / 100)}em`);
         setAuthorDetails(authorDetailsSetting === 'true');
-        setIsLegacyStyle(widgetStyle === 'legacy');
+        setLegacyStyle(widgetStyle === 'legacy');
       } else if (data === 'marketplacequoteuninstall' || data === 'quoterefresh') {
         localStorage.removeItem('quoteQueue');
         localStorage.removeItem('currentQuote');
@@ -86,7 +86,7 @@ export default function Quote() {
     <div className="quotediv" style={{ display, fontSize }}>
       <Modal
         closeTimeoutMS={300}
-        isOpen={uiState.shareModal}
+        open={uiState.shareModal}
         className="Modal mainModal"
         overlayClassName="Overlay"
         ariaHideApp={false}
@@ -104,7 +104,7 @@ export default function Quote() {
 
       {authorDetails &&
         quoteData.author &&
-        (isLegacyStyle ? (
+        (legacyStyle ? (
           <AuthorInfoLegacy
             author={quoteData.author}
             authorlink={quoteData.authorlink}

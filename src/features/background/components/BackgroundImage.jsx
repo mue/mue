@@ -11,7 +11,7 @@ import { getAllBackgrounds } from 'utils/customBackgroundDB';
 function BackgroundImage({ photoInfo, currentAPI, url }) {
   const isCustomType = localStorage.getItem('backgroundType') === 'custom';
   const [customBackgrounds, setCustomBackgrounds] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadCustomBackgrounds = async () => {
@@ -24,14 +24,14 @@ function BackgroundImage({ photoInfo, currentAPI, url }) {
           setCustomBackgrounds([]);
         }
       }
-      setIsLoading(false);
+      setLoading(false);
     };
 
     loadCustomBackgrounds();
   }, [isCustomType]);
 
   const hasNoCustomImages =
-    isCustomType && !isLoading && (!customBackgrounds || customBackgrounds.length === 0);
+    isCustomType && !loading && (!customBackgrounds || customBackgrounds.length === 0);
 
   const handleOpenSettings = () => {
     updateHash('#settings/background/source');

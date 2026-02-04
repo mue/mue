@@ -12,18 +12,18 @@ function ChipSelect({ label, options, onChange, name }) {
   }
 
   const [optionsSelected, setOptionsSelected] = useState(start);
-  const [isOpen, setIsOpen] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0, width: 0 });
   const containerRef = useRef(null);
   const controlRef = useRef(null);
   const menuRef = useRef(null);
 
   const closeDropdown = useCallback(() => {
-    setIsClosing(true);
+    setClosing(true);
     setTimeout(() => {
-      setIsOpen(false);
-      setIsClosing(false);
+      setOpen(false);
+      setClosing(false);
     }, 200);
   }, []);
 
@@ -70,7 +70,7 @@ function ChipSelect({ label, options, onChange, name }) {
   const openDropdown = useCallback(() => {
     const position = calculatePosition();
     setMenuPosition(position);
-    setIsOpen(true);
+    setOpen(true);
   }, [calculatePosition]);
 
   const handleToggle = (optionName) => {
@@ -102,7 +102,7 @@ function ChipSelect({ label, options, onChange, name }) {
         ref={controlRef}
         className="chipSelect-control"
         onClick={() => {
-          if (isOpen) {
+          if (open) {
             closeDropdown();
           } else {
             openDropdown();
@@ -129,13 +129,13 @@ function ChipSelect({ label, options, onChange, name }) {
             </div>
           )}
         </div>
-        <MdExpandMore className={`chipSelect-arrow ${isOpen ? 'open' : ''}`} />
+        <MdExpandMore className={`chipSelect-arrow ${open ? 'open' : ''}`} />
       </div>
-      {(isOpen || isClosing) &&
+      {(open || closing) &&
         createPortal(
           <div
             ref={menuRef}
-            className={`chipSelect-dropdown ${isClosing ? 'closing' : ''} ${menuPosition.flipped ? 'flipped' : ''}`}
+            className={`chipSelect-dropdown ${closing ? 'closing' : ''} ${menuPosition.flipped ? 'flipped' : ''}`}
             style={{
               position: 'fixed',
               top: `${menuPosition.top}px`,

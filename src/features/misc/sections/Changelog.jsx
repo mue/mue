@@ -3,7 +3,7 @@ import { useState, useRef } from 'react';
 import { MdOutlineWifiOff } from 'react-icons/md';
 
 const Changelog = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const iframeRef = useRef(null);
 
   const offlineMode = localStorage.getItem('offlineMode') === 'true';
@@ -20,7 +20,7 @@ const Changelog = () => {
   };
 
   const handleLoad = () => {
-    setIsLoading(false);
+    setLoading(false);
 
     if (iframeRef.current?.contentWindow) {
       const theme = getResolvedTheme();
@@ -51,7 +51,7 @@ const Changelog = () => {
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-      {isLoading && (
+      {loading && (
         <div
           className="loaderHolder"
           style={{
@@ -77,7 +77,7 @@ const Changelog = () => {
           width: '100%',
           height: '100%',
           border: 'none',
-          opacity: isLoading ? 0 : 1,
+          opacity: loading ? 0 : 1,
           transition: 'opacity 0.2s ease-in-out',
         }}
         title="Changelog"

@@ -51,10 +51,10 @@ const CustomSettings = memo(() => {
   const [folderTaggingModal, setFolderTaggingModal] = useState(false);
   const [pendingFiles, setPendingFiles] = useState([]);
   const [urlError, setUrlError] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
-  const [isUploading, setIsUploading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState({ current: 0, total: 0 });
-  const [isDragging, setIsDragging] = useState(false);
+  const [dragging, setDragging] = useState(false);
   const [selectedImages, setSelectedImages] = useState(new Set());
   const [sortBy, setSortBy] = useState(localStorage.getItem('customImageSort') || 'date_desc');
   const [storageQuotaModal, setStorageQuotaModal] = useState(false);
@@ -109,7 +109,7 @@ const CustomSettings = memo(() => {
         console.error('Error loading backgrounds:', error);
         toast(variables.getMessage('toasts.error'));
       } finally {
-        setIsLoading(false);
+        setLoading(false);
       }
     };
 
@@ -246,7 +246,7 @@ const CustomSettings = memo(() => {
   };
 
   const handleBatchUpload = async (files, folderName = '') => {
-    setIsUploading(true);
+    setUploading(true);
     setUploadProgress({ current: 0, total: files.length });
 
     const errors = [];
@@ -271,7 +271,7 @@ const CustomSettings = memo(() => {
 
     EventBus.emit('refresh', 'background');
 
-    setIsUploading(false);
+    setUploading(false);
     setUploadProgress({ current: 0, total: 0 });
   };
 
@@ -463,7 +463,7 @@ const CustomSettings = memo(() => {
       e.stopPropagation();
       dragCounter.current++;
       if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
-        setIsDragging(true);
+        setDragging(true);
       }
     };
 
@@ -472,14 +472,14 @@ const CustomSettings = memo(() => {
       e.stopPropagation();
       dragCounter.current--;
       if (dragCounter.current === 0) {
-        setIsDragging(false);
+        setDragging(false);
       }
     };
 
     const handleDrop = async (e) => {
       e.preventDefault();
       e.stopPropagation();
-      setIsDragging(false);
+      setDragging(false);
       dragCounter.current = 0;
 
       const files = Array.from(e.dataTransfer.files);
@@ -513,7 +513,7 @@ const CustomSettings = memo(() => {
 
   const hasVideo = sortedBackgrounds.filter((bg) => bg && videoCheck(bg.url)).length > 0;
 
-  if (isLoading) {
+  if (loading) {
     return (
       <div className="photosEmpty">
         <div className="loaderHolder">
@@ -524,7 +524,7 @@ const CustomSettings = memo(() => {
     );
   }
 
-  if (isUploading) {
+  if (uploading) {
     return (
       <div className="photosEmpty">
         <div className="loaderHolder">
@@ -546,10 +546,10 @@ const CustomSettings = memo(() => {
   return (
     <>
       <div
-        className={`dropzone ${isDragging ? 'dragging' : ''}`}
+        className={`dropzone ${dragging ? 'dragging' : ''}`}
         ref={customDnd}
         style={
-          isDragging
+          dragging
             ? {
                 outline: '2px dashed #ff5c25',
                 outlineOffset: '-2px',
@@ -923,7 +923,7 @@ const CustomSettings = memo(() => {
       <Modal
         closeTimeoutMS={100}
         onRequestClose={() => setCustomURLModal(false)}
-        isOpen={customURLModal}
+        open={customURLModal}
         className="Modal resetmodal mainModal"
         overlayClassName="Overlay resetoverlay"
         ariaHideApp={false}
@@ -941,7 +941,7 @@ const CustomSettings = memo(() => {
           setFolderTaggingModal(false);
           setPendingFiles([]);
         }}
-        isOpen={folderTaggingModal}
+        open={folderTaggingModal}
         className="Modal resetmodal mainModal"
         overlayClassName="Overlay resetoverlay"
         ariaHideApp={false}
@@ -959,7 +959,7 @@ const CustomSettings = memo(() => {
       <Modal
         closeTimeoutMS={100}
         onRequestClose={() => setStorageQuotaModal(false)}
-        isOpen={storageQuotaModal}
+        open={storageQuotaModal}
         className="Modal resetmodal mainModal"
         overlayClassName="Overlay resetoverlay"
         ariaHideApp={false}

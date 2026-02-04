@@ -26,11 +26,11 @@ const LocationSearch = memo((props) => {
     return null;
   });
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0, width: 0 });
 
@@ -41,10 +41,10 @@ const LocationSearch = memo((props) => {
   const abortControllerRef = useRef(null);
 
   const closeDropdown = useCallback(() => {
-    setIsClosing(true);
+    setClosing(true);
     setTimeout(() => {
-      setIsOpen(false);
-      setIsClosing(false);
+      setOpen(false);
+      setClosing(false);
       setFocusedIndex(-1);
     }, 200);
   }, []);
@@ -91,11 +91,11 @@ const LocationSearch = memo((props) => {
   const openDropdown = useCallback(() => {
     const position = calculatePosition();
     setMenuPosition(position);
-    setIsOpen(true);
+    setOpen(true);
   }, [calculatePosition]);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!open) return;
 
     let rafId = null;
     const updatePosition = () => {
@@ -129,18 +129,18 @@ const LocationSearch = memo((props) => {
       window.removeEventListener('resize', updatePosition);
       scrollableElements.forEach((el) => el.removeEventListener('scroll', updatePosition));
     };
-  }, [isOpen, calculatePosition]);
+  }, [open, calculatePosition]);
 
   useEffect(() => {
-    if (isOpen && searchInputRef.current) {
+    if (open && searchInputRef.current) {
       setTimeout(() => searchInputRef.current?.focus(), 0);
     }
-  }, [isOpen]);
+  }, [open]);
 
   const debouncedSearch = useDebouncedCallback(async (query) => {
     if (query.length < 2) {
       setSuggestions([]);
-      setIsLoading(false);
+      setLoading(false);
       return;
     }
 
@@ -165,7 +165,7 @@ const LocationSearch = memo((props) => {
         setSuggestions([]);
       }
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   }, 300);
 
@@ -173,23 +173,23 @@ const LocationSearch = memo((props) => {
     (e) => {
       const value = e.target.value;
       setSearchQuery(value);
-      setIsLoading(value.length >= 2);
+      setLoading(value.length >= 2);
       debouncedSearch(value);
-      if (!isOpen && value.length > 0) {
+      if (!open && value.length > 0) {
         openDropdown();
       }
     },
-    [isOpen, debouncedSearch, openDropdown],
+    [open, debouncedSearch, openDropdown],
   );
 
   const handleInputClick = useCallback(
     (e) => {
       e.stopPropagation();
-      if (!isOpen) {
+      if (!open) {
         openDropdown();
       }
     },
-    [isOpen, openDropdown],
+    [open, openDropdown],
   );
 
   const selectLocation = useCallback(
@@ -271,7 +271,7 @@ const LocationSearch = memo((props) => {
       switch (e.key) {
         case 'Enter':
           e.preventDefault();
-          if (isOpen && focusedIndex >= 0 && suggestions[focusedIndex]) {
+          if (open && focusedIndex >= 0 && suggestions[focusedIndex]) {
             selectLocation(suggestions[focusedIndex]);
           }
           break;
@@ -285,7 +285,7 @@ const LocationSearch = memo((props) => {
           break;
         case 'ArrowDown':
           e.preventDefault();
-          if (!isOpen && searchQuery.length >= 2) {
+          if (!open && searchQuery.length >= 2) {
             openDropdown();
           } else {
             setFocusedIndex((prev) => (prev < suggestions.length - 1 ? prev + 1 : prev));
@@ -293,14 +293,14 @@ const LocationSearch = memo((props) => {
           break;
         case 'ArrowUp':
           e.preventDefault();
-          if (isOpen) {
+          if (open) {
             setFocusedIndex((prev) => (prev > 0 ? prev - 1 : prev));
           }
           break;
       }
     },
     [
-      isOpen,
+      open,
       suggestions,
       focusedIndex,
       disabled,
@@ -340,18 +340,18 @@ const LocationSearch = memo((props) => {
       )}
       <div
         ref={controlRef}
-        className={`location-search-control ${isOpen || searchQuery ? 'searching' : ''}`}
+        className={`location-search-control ${open || searchQuery ? 'searching' : ''}`}
         onClick={(e) => {
           e.stopPropagation();
           if (disabled) return;
-          if (!isOpen) {
+          if (!open) {
             openDropdown();
           }
         }}
         onKeyDown={handleKeyDown}
         role="combobox"
         aria-haspopup="listbox"
-        aria-expanded={isOpen}
+        aria-expanded={open}
         aria-label={label || name}
         tabIndex={disabled ? -1 : 0}
       >
@@ -366,17 +366,17 @@ const LocationSearch = memo((props) => {
           onKeyDown={handleKeyDown}
         />
         {searchQuery && <MdClose className="location-search-clear" onClick={clearSearch} />}
-        {isLoading ? (
+        {loading ? (
           <span className="location-search-loading" />
         ) : (
-          <MdExpandMore className={`location-search-arrow ${isOpen ? 'open' : ''}`} />
+          <MdExpandMore className={`location-search-arrow ${open ? 'open' : ''}`} />
         )}
       </div>
-      {(isOpen || isClosing) &&
+      {(open || closing) &&
         createPortal(
           <div
             ref={menuRef}
-            className={`location-search-menu ${isClosing ? 'closing' : ''} ${menuPosition.flipped ? 'flipped' : ''}`}
+            className={`location-search-menu ${closing ? 'closing' : ''} ${menuPosition.flipped ? 'flipped' : ''}`}
             role="listbox"
             style={{
               position: 'fixed',
@@ -407,7 +407,7 @@ const LocationSearch = memo((props) => {
                   <MdCheck className="location-search-option-check" />
                 </div>
               ))
-            ) : searchQuery.length >= 2 && !isLoading ? (
+            ) : searchQuery.length >= 2 && !loading ? (
               <div className="location-search-empty">
                 {variables.getMessage('widgets.weather.not_found')}
               </div>

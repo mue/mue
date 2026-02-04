@@ -4,7 +4,7 @@ import './tooltip.scss';
 
 function Tooltip({ children, title, style, placement, subtitle }) {
   const [showTooltip, setShowTooltip] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
+  const [closing, setClosing] = useState(false);
   const [reference, setReference] = useState(null);
   const tooltipId = useId();
   const closeTimeout = useRef(null);
@@ -30,15 +30,15 @@ function Tooltip({ children, title, style, placement, subtitle }) {
       clearTimeout(closeTimeout.current);
       closeTimeout.current = null;
     }
-    setIsClosing(false);
+    setClosing(false);
     setShowTooltip(true);
   };
 
   const handleMouseLeave = () => {
-    setIsClosing(true);
+    setClosing(true);
     closeTimeout.current = setTimeout(() => {
       setShowTooltip(false);
-      setIsClosing(false);
+      setClosing(false);
     }, 200);
   };
 
@@ -47,23 +47,23 @@ function Tooltip({ children, title, style, placement, subtitle }) {
       clearTimeout(closeTimeout.current);
       closeTimeout.current = null;
     }
-    setIsClosing(false);
+    setClosing(false);
     setShowTooltip(true);
   };
 
   const handleBlur = () => {
-    setIsClosing(true);
+    setClosing(true);
     closeTimeout.current = setTimeout(() => {
       setShowTooltip(false);
-      setIsClosing(false);
+      setClosing(false);
     }, 200);
   };
 
   const getStatus = () => {
-    if (!showTooltip && !isClosing) {
+    if (!showTooltip && !closing) {
       return 'initial';
     }
-    if (isClosing) {
+    if (closing) {
       return 'close';
     }
     return 'open';
@@ -83,7 +83,7 @@ function Tooltip({ children, title, style, placement, subtitle }) {
       >
         {children}
       </div>
-      {(showTooltip || isClosing) && (
+      {(showTooltip || closing) && (
         <span
           ref={setFloating}
           style={{

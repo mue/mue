@@ -94,7 +94,26 @@ bun run pretty      # Format code with Prettier
 ### 5. Commenting
 **Do not add comments to the codebase.** Keep code clean and self-explanatory. Use descriptive variable/function names instead of comments.
 
-### 6. Package Manager
+### 6. Naming Conventions
+**Keep variable and function names concise.** Avoid verbose redundant prefixes like "is" in state variables.
+
+```javascript
+// Good - concise and clear
+const [open, setOpen] = useState(false);
+const [loading, setLoading] = useState(false);
+const [refreshing, setRefreshing] = useState(false);
+
+// Bad - unnecessarily verbose
+const [isOpen, setIsOpen] = useState(false);
+const [isLoading, setIsLoading] = useState(false);
+const [isRefreshing, setIsRefreshing] = useState(false);
+```
+
+**Exceptions:**
+- Use "is" prefix for boolean functions/methods that return a value: `isValid()`, `isAuthenticated()`
+- Use "has" prefix for boolean properties: `hasPermission`, `hasError`
+
+### 7. Package Manager
 **Always use Bun** (not npm or yarn):
 ```bash
 bun install         # Install dependencies
@@ -102,7 +121,7 @@ bun run dev         # Start dev server
 bun run build       # Production build
 ```
 
-### 7. Build Targets
+### 8. Build Targets
 The project builds for **multiple browsers**:
 - Chrome/Edge (Chromium)
 - Firefox
@@ -119,13 +138,13 @@ Build outputs:
 - `build/firefox/` - Firefox extension
 - `safari/Mue Extension/Resources/` - Safari extension
 
-### 8. State Management
+### 9. State Management
 - **Persistent settings** - Use `localStorage` via custom hooks
 - **Shared state** - Use React Context (see `src/contexts/`)
 - **Component state** - Use `useState`, `useReducer` for local state
 - **Custom hooks** - Create hooks for reusable stateful logic
 
-### 9. Styling Conventions
+### 10. Styling Conventions
 SCSS files are organized in `src/scss/`:
 - `_variables.scss` - Color palette, breakpoints, sizes
 - `_mixins.scss` - Reusable style mixins
@@ -133,7 +152,7 @@ SCSS files are organized in `src/scss/`:
 
 **Use existing variables and mixins** for consistency.
 
-### 10. Development Server
+### 11. Development Server
 ```bash
 bun run dev         # Local development with HMR at localhost
 bun run dev:host    # Expose on network for testing on other devices
@@ -141,7 +160,7 @@ bun run dev:host    # Expose on network for testing on other devices
 
 Hot Module Replacement (HMR) is enabled for fast development.
 
-### 11. Path Aliases
+### 12. Path Aliases
 Use configured path aliases instead of relative imports:
 ```javascript
 // Good
@@ -155,13 +174,13 @@ import Button from '../../../components/Button';
 
 Available aliases: `@/`, `components/`, `contexts/`, `hooks/`, `assets/`, `config/`, `features/`, `lib/`, `scss/`, `translations/`, `utils/`
 
-### 12. Error Handling
+### 13. Error Handling
 - Sentry is integrated for error tracking
 - Use `ErrorBoundary` component for React error boundaries
 - Handle async errors gracefully with try/catch
 - Show user-friendly error messages via `react-toastify`
 
-### 13. Browser Extension Best Practices
+### 14. Browser Extension Best Practices
 - Use Manifest V3 APIs (not deprecated V2 APIs)
 - Test extension loading/unloading
 - Handle permissions properly
@@ -169,14 +188,14 @@ Available aliases: `@/`, `components/`, `contexts/`, `hooks/`, `assets/`, `confi
 - Store data in `localStorage` or `IndexedDB`, not sync storage
 - Ensure cross-browser compatibility (check MDN for API support)
 
-### 14. Internationalization (i18n)
+### 15. Internationalization (i18n)
 - Use `@eartharoid/i18n` for translations
 - Access translations via the i18n context
 - Add new keys to `en_GB.json` first
 - Test with multiple locales to ensure proper rendering
 - Support RTL languages where applicable
 
-### 15. Performance
+### 16. Performance
 - Lazy load components where appropriate
 - Optimize images (use modern formats like WebP)
 - Minimize bundle size (check Vite build output)

@@ -5,8 +5,8 @@ import { MdExpandMore, MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import './DatePicker.scss';
 
 const DatePicker = memo((props) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
   const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0, width: 0 });
   const [viewDate, setViewDate] = useState(props.value || new Date());
   const containerRef = useRef(null);
@@ -14,10 +14,10 @@ const DatePicker = memo((props) => {
   const menuRef = useRef(null);
 
   const closeDropdown = useCallback(() => {
-    setIsClosing(true);
+    setClosing(true);
     setTimeout(() => {
-      setIsOpen(false);
-      setIsClosing(false);
+      setOpen(false);
+      setClosing(false);
     }, 200);
   }, []);
 
@@ -61,7 +61,7 @@ const DatePicker = memo((props) => {
   const openDropdown = useCallback(() => {
     const position = calculatePosition();
     setMenuPosition(position);
-    setIsOpen(true);
+    setOpen(true);
   }, [calculatePosition]);
 
   const formatDate = (date) => {
@@ -147,7 +147,7 @@ const DatePicker = memo((props) => {
         ref={controlRef}
         className="datepicker-control"
         onClick={() => {
-          if (isOpen) {
+          if (open) {
             closeDropdown();
           } else {
             openDropdown();
@@ -155,13 +155,13 @@ const DatePicker = memo((props) => {
         }}
       >
         <span className="datepicker-value">{formatDate(props.value)}</span>
-        <MdExpandMore className={`datepicker-arrow ${isOpen ? 'open' : ''}`} />
+        <MdExpandMore className={`datepicker-arrow ${open ? 'open' : ''}`} />
       </div>
-      {(isOpen || isClosing) &&
+      {(open || closing) &&
         createPortal(
           <div
             ref={menuRef}
-            className={`datepicker-menu ${isClosing ? 'closing' : ''} ${menuPosition.flipped ? 'flipped' : ''}`}
+            className={`datepicker-menu ${closing ? 'closing' : ''} ${menuPosition.flipped ? 'flipped' : ''}`}
             style={{
               position: 'fixed',
               top: `${menuPosition.top}px`,

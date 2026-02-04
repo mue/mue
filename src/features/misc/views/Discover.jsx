@@ -10,7 +10,7 @@ import Lightbox from 'features/marketplace/components/Elements/Lightbox/Lightbox
 
 function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
   const iframeRef = useRef(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [showLightbox, setShowLightbox] = useState(false);
   const [lightboxImg, setLightboxImg] = useState(null);
   const { installItem, uninstallItem } = useMarketplaceInstall();
@@ -43,7 +43,7 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
       return;
     }
 
-    setIsLoading(true);
+    setLoading(true);
     if (onBreadcrumbsChange) {
       onBreadcrumbsChange([]);
     }
@@ -67,7 +67,7 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
       const itemId = urlParams.get('item');
 
       if (itemId && iframeRef.current) {
-        setIsLoading(true);
+        setLoading(true);
 
         const theme = getResolvedTheme();
         const themeParam = `&theme=${theme}`;
@@ -105,7 +105,7 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
 
   useEffect(() => {
     if (deepLinkData?.itemId && iframeRef.current) {
-      setIsLoading(true);
+      setLoading(true);
       const theme = getResolvedTheme();
       const themeParam = `&theme=${theme}`;
 
@@ -232,7 +232,7 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
   }, [installItem, uninstallItem, onBreadcrumbsChange]);
 
   const handleLoad = () => {
-    setIsLoading(false);
+    setLoading(false);
 
     if (onBreadcrumbsChange) {
       onBreadcrumbsChange([]);
@@ -269,14 +269,14 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
       <Modal
         closeTimeoutMS={300}
         onRequestClose={() => setShowLightbox(false)}
-        isOpen={showLightbox}
+        open={showLightbox}
         className="Modal lightBoxModal"
         overlayClassName="Overlay"
         ariaHideApp={false}
       >
         <Lightbox modalClose={() => setShowLightbox(false)} img={lightboxImg} />
       </Modal>
-      {isLoading && (
+      {loading && (
         <div
           className="loaderHolder"
           style={{
@@ -318,7 +318,7 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
           height: '1500px',
           minHeight: '100vh',
           border: 'none',
-          opacity: isLoading ? 0 : 1,
+          opacity: loading ? 0 : 1,
           transition: 'opacity 0.2s ease-in-out',
         }}
         title={variables.getMessage('modals.main.marketplace.title')}

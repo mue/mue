@@ -10,8 +10,8 @@ import './Dropdown.scss';
 
 const Dropdown = memo((props) => {
   const [value, setValue] = useState(localStorage.getItem(props.name) || props.items[0]?.value);
-  const [isOpen, setIsOpen] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
   const [focusedIndex, setFocusedIndex] = useState(-1);
   const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0, width: 0 });
   const [searchQuery, setSearchQuery] = useState('');
@@ -22,10 +22,10 @@ const Dropdown = memo((props) => {
   const searchInputRef = useRef(null);
 
   const closeDropdown = useCallback(() => {
-    setIsClosing(true);
+    setClosing(true);
     setTimeout(() => {
-      setIsOpen(false);
-      setIsClosing(false);
+      setOpen(false);
+      setClosing(false);
       setFocusedIndex(-1);
       setSearchQuery('');
     }, 200);
@@ -76,11 +76,11 @@ const Dropdown = memo((props) => {
   const openDropdown = useCallback(() => {
     const position = calculatePosition();
     setMenuPosition(position);
-    setIsOpen(true);
+    setOpen(true);
   }, [calculatePosition]);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!open) return;
 
     let rafId = null;
 
@@ -116,32 +116,32 @@ const Dropdown = memo((props) => {
       window.removeEventListener('resize', updatePosition);
       scrollableElements.forEach((el) => el.removeEventListener('scroll', updatePosition));
     };
-  }, [isOpen, calculatePosition]);
+  }, [open, calculatePosition]);
 
   useEffect(() => {
-    if (isOpen && props.searchable && searchInputRef.current) {
+    if (open && props.searchable && searchInputRef.current) {
       setTimeout(() => searchInputRef.current?.focus(), 0);
     }
-  }, [isOpen, props.searchable]);
+  }, [open, props.searchable]);
 
   const handleSearchChange = useCallback(
     (e) => {
       setSearchQuery(e.target.value);
-      if (!isOpen) {
+      if (!open) {
         openDropdown();
       }
     },
-    [isOpen, openDropdown],
+    [open, openDropdown],
   );
 
   const handleInputClick = useCallback(
     (e) => {
       e.stopPropagation();
-      if (!isOpen) {
+      if (!open) {
         openDropdown();
       }
     },
-    [isOpen, openDropdown],
+    [open, openDropdown],
   );
 
   const handleInputFocus = useCallback(() => {
@@ -193,7 +193,7 @@ const Dropdown = memo((props) => {
         case 'Enter':
         case ' ':
           e.preventDefault();
-          if (isOpen) {
+          if (open) {
             closeDropdown();
           } else {
             openDropdown();
@@ -204,7 +204,7 @@ const Dropdown = memo((props) => {
           break;
         case 'ArrowDown':
           e.preventDefault();
-          if (!isOpen) {
+          if (!open) {
             openDropdown();
           } else {
             setFocusedIndex((prev) =>
@@ -214,13 +214,13 @@ const Dropdown = memo((props) => {
           break;
         case 'ArrowUp':
           e.preventDefault();
-          if (isOpen) {
+          if (open) {
             setFocusedIndex((prev) => (prev > 0 ? prev - 1 : prev));
           }
           break;
       }
     },
-    [isOpen, props.items, props.disabled, openDropdown, closeDropdown],
+    [open, props.items, props.disabled, openDropdown, closeDropdown],
   );
 
   const handleOptionKeyDown = useCallback(
@@ -287,11 +287,11 @@ const Dropdown = memo((props) => {
       )}
       <div
         ref={controlRef}
-        className={`dropdown-control ${props.searchable && (isOpen || searchQuery) ? 'searching' : ''}`}
+        className={`dropdown-control ${props.searchable && (open || searchQuery) ? 'searching' : ''}`}
         onClick={(e) => {
           e.stopPropagation();
           if (props.disabled) return;
-          if (isOpen) {
+          if (open) {
             closeDropdown();
           } else {
             openDropdown();
@@ -300,7 +300,7 @@ const Dropdown = memo((props) => {
         onKeyDown={handleKeyDown}
         role="button"
         aria-haspopup="listbox"
-        aria-expanded={isOpen}
+        aria-expanded={open}
         aria-label={label || props.name}
         tabIndex={props.disabled ? -1 : 0}
       >
@@ -335,13 +335,13 @@ const Dropdown = memo((props) => {
         ) : (
           <span className="dropdown-value">{selectedItem?.text || value}</span>
         )}
-        <MdExpandMore className={`dropdown-arrow ${isOpen ? 'open' : ''}`} />
+        <MdExpandMore className={`dropdown-arrow ${open ? 'open' : ''}`} />
       </div>
-      {(isOpen || isClosing) &&
+      {(open || closing) &&
         createPortal(
           <div
             ref={menuRef}
-            className={`dropdown-menu ${isClosing ? 'closing' : ''} ${menuPosition.flipped ? 'flipped' : ''}`}
+            className={`dropdown-menu ${closing ? 'closing' : ''} ${menuPosition.flipped ? 'flipped' : ''}`}
             role="listbox"
             style={{
               position: 'fixed',

@@ -40,9 +40,9 @@ function NavbarOptions() {
 
   const NavbarOptions = () => {
     const NavbarButton = ({ icon, messageKey, settingName }) => {
-      const [isDisabled, setIsDisabled] = useState(localStorage.getItem(settingName) !== 'true');
+      const [disabled, setDisabled] = useState(localStorage.getItem(settingName) !== 'true');
       const handleClick = () => {
-        localStorage.setItem(settingName, isDisabled);
+        localStorage.setItem(settingName, disabled);
 
         if (settingName === 'refresh') {
           setShowRefreshOptions(!showRefreshOptions);
@@ -50,11 +50,11 @@ function NavbarOptions() {
           setAppsEnabled(!appsEnabled);
         }
 
-        setIsDisabled(!isDisabled);
+        setDisabled(!disabled);
 
         variables.stats.postEvent(
           'setting',
-          `${settingName} ${!isDisabled === true ? 'enabled' : 'disabled'}`,
+          `${settingName} ${!disabled === true ? 'enabled' : 'disabled'}`,
         );
 
         EventBus.emit('refresh', 'navbar');
@@ -63,7 +63,7 @@ function NavbarOptions() {
       return (
         <button
           onClick={handleClick}
-          className={`navbarButtonOption ${isDisabled === true ? 'disabled' : ''}`}
+          className={`navbarButtonOption ${disabled === true ? 'disabled' : ''}`}
         >
           {icon}
           <span className="subtitle">{t(messageKey)}</span>

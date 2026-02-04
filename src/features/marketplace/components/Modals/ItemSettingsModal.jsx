@@ -17,7 +17,7 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
   });
 
   const [dynamicOptions, setDynamicOptions] = useState({});
-  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   const [validationErrors, setValidationErrors] = useState([]);
 
   const validateSettings = useCallback(() => {
@@ -87,16 +87,16 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
       localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
     }
 
-    setIsRefreshing(true);
+    setRefreshing(true);
     await refreshAPIPackCache(pack.id);
-    setIsRefreshing(false);
+    setRefreshing(false);
     EventBus.emit('refresh', 'background');
   };
 
   const handleManualRefresh = async () => {
-    setIsRefreshing(true);
+    setRefreshing(true);
     await refreshAPIPackCache(pack.id);
-    setIsRefreshing(false);
+    setRefreshing(false);
     EventBus.emit('refresh', 'background');
   };
 
@@ -253,7 +253,7 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
                   label={variables.getMessage(
                     'modals.main.settings.sections.background.photo_pack_settings.refresh_photos',
                   )}
-                  disabled={isRefreshing || validationErrors.length > 0}
+                  disabled={refreshing || validationErrors.length > 0}
                 />
               </div>
             )}
