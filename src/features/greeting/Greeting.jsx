@@ -18,11 +18,9 @@ const doEvents = (time, message) => {
     return message;
   }
 
-  // Get current month & day
   const month = time.getMonth();
   const date = time.getDate();
 
-  // Parse the customEvents from localStorage
   const customEvents = JSON.parse(localStorage.getItem('customEvents') || '[]');
 
   const event = customEvents.find((e) => e.month - 1 === month && e.date === date);
@@ -75,7 +73,6 @@ const Greeting = () => {
           break;
       }
 
-      // Events and custom
       const custom = localStorage.getItem('defaultGreetingMessage');
       if (custom === 'false') {
         message = '';
@@ -83,7 +80,6 @@ const Greeting = () => {
         message = doEvents(now, message);
       }
 
-      // Name
       let name = '';
       const data = localStorage.getItem('greetingName');
 
@@ -99,7 +95,6 @@ const Greeting = () => {
         name = name.replace(',', '');
       }
 
-      // Birthday
       if (birthday === 'true') {
         const birth = new Date(localStorage.getItem('birthday'));
 
@@ -114,7 +109,6 @@ const Greeting = () => {
         }
       }
 
-      // Set the state to the greeting string
       setGreeting(`${message}${name}`);
 
       getGreeting();

@@ -30,7 +30,6 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
 
   const [quoteType, setQuoteType] = useState(() => {
     let type = localStorage.getItem('quoteType') || 'quote_pack';
-    // Migrate deprecated 'api' type to 'quote_pack'
     if (type === 'api') {
       type = 'quote_pack';
       localStorage.setItem('quoteType', 'quote_pack');
@@ -38,7 +37,6 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
     return type;
   });
 
-  // Migration: Force authorDetails on for users upgrading from older versions
   useState(() => {
     if (localStorage.getItem('authorDetails') === null) {
       localStorage.setItem('authorDetails', 'true');
@@ -47,7 +45,6 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
 
   const [customQuote, setCustomQuote] = useState(getCustom());
 
-  // Clear quote queue when quote type changes
   useEffect(() => {
     localStorage.removeItem('quoteQueue');
     localStorage.removeItem('currentQuote');
@@ -76,7 +73,6 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
     setCustomQuote(updatedCustomQuote);
 
     localStorage.setItem('customQuote', JSON.stringify(updatedCustomQuote));
-    // Clear quote queue when custom quotes are modified
     localStorage.removeItem('quoteQueue');
     localStorage.removeItem('currentQuote');
   };
@@ -142,12 +138,10 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
             label={variables.getMessage(`${QUOTE_SECTION}.frequency.title`)}
             onChange={(value) => {
               localStorage.setItem('quoteStartTime', Date.now());
-              // Clear queue if switching from refresh to time-based frequency
               const oldValue = localStorage.getItem('quoteFrequency');
               if (oldValue === 'refresh' && value !== 'refresh') {
                 localStorage.removeItem('quoteQueue');
               }
-              // Notify the frequency interval hook that the frequency changed
               window.dispatchEvent(
                 new CustomEvent('frequencyChanged', {
                   detail: { type: 'quote' },
@@ -196,7 +190,6 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
 
   const isSourceSection = currentSubSection === 'source';
 
-  // Get installed quote packs
   const getInstalledQuotePacks = () => {
     try {
       const installed = JSON.parse(localStorage.getItem('installed')) || [];
@@ -208,11 +201,9 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
 
   const [installedQuotePacks, setInstalledQuotePacks] = useState(getInstalledQuotePacks());
 
-  // Listen for changes to installed addons
   useEffect(() => {
     const handleInstalledAddonsChanged = () => {
       setInstalledQuotePacks(getInstalledQuotePacks());
-      // Update quoteType if it changed (e.g., when all packs are uninstalled)
       const currentType = localStorage.getItem('quoteType') || 'api';
       if (currentType !== quoteType) {
         setQuoteType(currentType);
@@ -226,7 +217,6 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
   }, [quoteType]);
 
   const handleUninstall = (type, name) => {
-    // Prevent removing the default pack if it's the only one remaining
     const DEFAULT_PACK_ID = '0c8a5bdebd13';
     if (installedQuotePacks.length === 1) {
       const remainingPack = installedQuotePacks[0];
@@ -251,11 +241,9 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
   };
 
   const handleToggle = (pack) => {
-    // Navigate to discover tab with the item
     const itemId = pack.name;
     updateHash(`#discover/all?item=${itemId}`);
 
-    // Trigger navigation
     const event = new window.Event('popstate');
     window.dispatchEvent(event);
 

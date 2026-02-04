@@ -82,7 +82,6 @@ async function getAPIBackground(isOffline) {
   const queueManager = new BackgroundQueueManager('imageQueue', 3);
   let data;
 
-  // Use cached next image if available
   const cachedQueue = queueManager.getQueue();
   if (cachedQueue.length > 0) {
     data = queueManager.shift();
@@ -98,7 +97,6 @@ async function getAPIBackground(isOffline) {
     console.warn('Could not save currentBackground to localStorage:', e);
   }
 
-  // Pre-fetch next images in the background
   if (queueManager.needsPrefetch()) {
     prefetchAPIImages(queueManager, data, cachedQueue).catch((error) => {
       console.error('Failed to prefetch API images:', error);
@@ -121,7 +119,6 @@ async function prefetchAPIImages(queueManager, currentImage, currentQueue) {
     ...currentQueue.map((img) => img.photoInfo?.pun).filter(Boolean),
   ];
 
-  // Prefetch remaining images asynchronously
   const newImages = await Promise.all(
     Array.from({ length: count }, (_, i) =>
       fetchAPIImageData(excludedPuns[i] || currentImage.photoInfo.pun),
@@ -138,14 +135,11 @@ async function prefetchAPIImages(queueManager, currentImage, currentQueue) {
  * Gets custom background with prefetching
  */
 async function getCustomBackground(isOffline) {
-  // Get full metadata from IndexedDB
   let backgrounds = await getAllBackgroundsWithMetadata();
 
-  // Fallback to localStorage URLs if IndexedDB is empty
   if (!backgrounds || backgrounds.length === 0) {
     const urls = safeParseJSON('customBackground', []);
     if (urls && urls.length > 0) {
-      // Convert old URL format to metadata format
       backgrounds = urls.map((url) => ({ url, photoInfo: { hidden: true } }));
     }
   }
@@ -157,24 +151,18 @@ async function getCustomBackground(isOffline) {
   const queueManager = new BackgroundQueueManager('customQueue', 3);
   let selected;
 
-  // Use cached next background ID if available
   const cachedQueue = queueManager.getQueue();
   if (cachedQueue.length > 0) {
-    // Queue contains IDs only, not full data
     const queuedId = queueManager.shift();
-    // Look up the full background data by ID
     selected = backgrounds.find((bg) => bg.id === queuedId);
 
-    // If not found (maybe deleted), pick random
     if (!selected) {
       selected = backgrounds[Math.floor(Math.random() * backgrounds.length)];
     }
   } else {
-    // Pick random background
     selected = backgrounds[Math.floor(Math.random() * backgrounds.length)];
   }
 
-  // Check if selected is valid before using it
   if (!selected) {
     return null;
   }
@@ -196,8 +184,6 @@ async function getCustomBackground(isOffline) {
     return getOfflineImage('custom');
   }
 
-  // Don't store full image data in localStorage to avoid quota errors
-  // Just store metadata
   try {
     localStorage.setItem(
       'currentBackground',
@@ -208,11 +194,9 @@ async function getCustomBackground(isOffline) {
       }),
     );
   } catch (e) {
-    // Ignore quota errors for currentBackground
     console.warn('Could not save currentBackground to localStorage:', e);
   }
 
-  // Prefetch next backgrounds if needed
   if (queueManager.needsPrefetch()) {
     const count = queueManager.getSpaceNeeded();
     const currentIds = [selected.id, ...cachedQueue];
@@ -245,7 +229,6 @@ export async function getBackgroundData() {
     localStorage.getItem('offlineMode') === 'true' ||
     localStorage.getItem('showWelcome') === 'true';
 
-  // Handle favourited background
   const fav = safeParseJSON('favourite');
   if (fav) {
     if (fav.type === 'random_colour' || fav.type === 'random_gradient') {
@@ -289,21 +272,17 @@ export async function getBackgroundData() {
 async function prefetchCustomBackgrounds(queueManager, allBackgrounds, currentId, currentQueue) {
   const count = queueManager.getSpaceNeeded();
 
-  // Get already used IDs (queue now contains IDs only)
   const usedIds = [currentId, ...currentQueue.filter(Boolean)];
 
-  // Filter available (exclude videos from prefetch and already used)
   const available = allBackgrounds.filter(
     (bg) => bg.id && !usedIds.includes(bg.id) && !videoCheck(bg.url || bg),
   );
 
   if (available.length === 0) return;
 
-  // Shuffle and take N
   const shuffled = available.sort(() => Math.random() - 0.5);
   const selected = shuffled.slice(0, count);
 
-  // Store only IDs to avoid quota issues (custom backgrounds use large data URLs)
   const ids = selected.map((bg) => bg.id).filter(Boolean);
 
   if (ids.length > 0) {
@@ -318,7 +297,6 @@ async function prefetchCustomBackgrounds(queueManager, allBackgrounds, currentId
 function getPhotoPackBackground(isOffline) {
   if (isOffline) return getOfflineImage('photo_pack');
 
-  // Build combined pool from static and API packs
   const pool = buildPhotoPool();
 
   if (pool.length === 0) return null;
@@ -326,12 +304,10 @@ function getPhotoPackBackground(isOffline) {
   const queueManager = new BackgroundQueueManager('photoPackQueue', 3);
   let photoData;
 
-  // Use cached next photo if available
   const cachedQueue = queueManager.getQueue();
   if (cachedQueue.length > 0) {
     photoData = queueManager.shift();
   } else {
-    // Pick random photo from pool
     const selected = pool[Math.floor(Math.random() * pool.length)];
 
     photoData = {
@@ -355,7 +331,6 @@ function getPhotoPackBackground(isOffline) {
     console.warn('Could not save currentBackground to localStorage:', e);
   }
 
-  // Prefetch more photos in the background
   if (queueManager.needsPrefetch()) {
     prefetchPhotoPackImages(queueManager, pool, photoData, cachedQueue).catch((error) => {
       console.error('Failed to prefetch photo pack images:', error);
@@ -376,10 +351,8 @@ function getPhotoPackBackground(isOffline) {
 async function prefetchPhotoPackImages(queueManager, pool, currentPhoto, currentQueue) {
   const count = queueManager.getSpaceNeeded();
 
-  // Get already used URLs
   const usedUrls = [currentPhoto.url, ...currentQueue.map((p) => p.url)];
 
-  // Filter available photos (handle both URL formats)
   const available = pool.filter((p) => {
     const url = p.url.default || p.url;
     return !usedUrls.includes(url) && !usedUrls.includes(getProxiedImageUrl(url));
@@ -387,11 +360,9 @@ async function prefetchPhotoPackImages(queueManager, pool, currentPhoto, current
 
   if (available.length === 0) return;
 
-  // Shuffle and take N
   const shuffled = available.sort(() => Math.random() - 0.5);
   const selected = shuffled.slice(0, count);
 
-  // Normalize metadata
   const normalized = selected.map((photo) => ({
     url: getProxiedImageUrl(photo.url.default || photo.url),
     type: 'photo_pack',
@@ -408,6 +379,5 @@ async function prefetchPhotoPackImages(queueManager, pool, currentPhoto, current
 
   queueManager.push(normalized);
 
-  // Check if any API pack cache needs refresh
   checkAndRefreshAPIPacks();
 }

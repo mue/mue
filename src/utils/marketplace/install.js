@@ -28,7 +28,6 @@ async function trackDownload(itemId) {
 export function install(type, input, sideload, collection) {
   let refreshEvent = null;
 
-  // Check if item is already installed to determine if we should track download
   const installed = JSON.parse(localStorage.getItem('installed') || '[]');
   const isNewInstall = !installed.some((item) => item.id === input.id || item.name === input.name);
 
@@ -53,16 +52,13 @@ export function install(type, input, sideload, collection) {
       const currentPhotos = JSON.parse(localStorage.getItem('photo_packs')) || [];
       const hadPhotoPacks = currentPhotos.length > 0;
 
-      // Handle API packs differently
       if (input.api_enabled) {
-        // Initialize default settings
         const defaultSettings = {};
         input.settings_schema?.forEach((field) => {
           defaultSettings[field.key] = field.default || '';
         });
         localStorage.setItem(`photopack_settings_${input.id}`, JSON.stringify(defaultSettings));
 
-        // Initialize empty cache
         const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
         apiPackCache[input.id] = {
           photos: [],
@@ -71,12 +67,10 @@ export function install(type, input, sideload, collection) {
         };
         localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
 
-        // If no API key required, fetch initial photos
         if (!input.requires_api_key) {
           refreshAPIPackCache(input.id);
         }
       } else {
-        // Static pack - add photos to pool
         input.photos.forEach((photo) => {
           currentPhotos.push(photo);
         });
@@ -88,10 +82,7 @@ export function install(type, input, sideload, collection) {
       }
       localStorage.setItem('backgroundType', 'photo_pack');
       localStorage.removeItem('backgroundchange');
-      // Clear image queue to ensure fresh background loads
       clearQueuesOnSettingChange('packInstall');
-      // Only refresh background if this is the first photo pack being installed
-      // Otherwise just update the queue without jarring the user with an immediate refresh
       if (!hadPhotoPacks) {
         refreshEvent = 'backgroundrefresh';
       }
@@ -110,7 +101,6 @@ export function install(type, input, sideload, collection) {
       }
       localStorage.setItem('quoteType', 'quote_pack');
       localStorage.removeItem('quotechange');
-      // Clear quote queue and cache when installing new quote packs
       localStorage.removeItem('quoteQueue');
       localStorage.removeItem('currentQuote');
       refreshEvent = 'quote';
@@ -129,7 +119,6 @@ export function install(type, input, sideload, collection) {
 
   localStorage.setItem('installed', JSON.stringify(installed));
 
-  // Auto-enable pack on install
   if (isNewInstall) {
     const packId = input.id || input.name;
     const enabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
@@ -137,12 +126,10 @@ export function install(type, input, sideload, collection) {
     localStorage.setItem('enabledPacks', JSON.stringify(enabledPacks));
   }
 
-  // Track download for new installs (not re-installs)
   if (isNewInstall && input.id) {
     trackDownload(input.id);
   }
 
-  // Emit refresh event after all data is saved
   if (refreshEvent) {
     EventBus.emit('refresh', refreshEvent);
   }

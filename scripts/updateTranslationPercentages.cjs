@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
-// Language code mappings between Weblate and Mue
 const CODE_MAPPINGS = {
   de: 'de_DE',
   id: 'id_ID',

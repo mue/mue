@@ -20,12 +20,10 @@ const DisplaySettings = ({ usingImage }) => {
             label={variables.getMessage('modals.main.settings.sections.background.frequency.title')}
             onChange={(value) => {
               localStorage.setItem('backgroundStartTime', Date.now());
-              // Clear queue if switching from refresh to time-based frequency
               const oldValue = localStorage.getItem('backgroundFrequency');
               if (oldValue === 'refresh' && value !== 'refresh') {
                 clearQueuesOnSettingChange('backgroundFrequency');
               }
-              // Notify the frequency interval hook that the frequency changed
               window.dispatchEvent(
                 new CustomEvent('frequencyChanged', {
                   detail: { type: 'background' },

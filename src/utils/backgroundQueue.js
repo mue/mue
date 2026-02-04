@@ -1,11 +1,6 @@
 import { safeParseJSON } from './jsonStorage';
 
 /**
- * Queue Manager
- * Manages prefetch queues for content across features (backgrounds, quotes, etc.)
- */
-
-/**
  * Manages a prefetch queue for content items
  *
  * @class QueueManager
@@ -49,7 +44,6 @@ export class QueueManager {
       localStorage.setItem(this.storageKey, JSON.stringify(queue));
     } catch (error) {
       console.error(`Failed to save queue to ${this.storageKey}:`, error);
-      // If quota exceeded, clear the queue and try again with empty array
       if (error.name === 'QuotaExceededError') {
         try {
           localStorage.removeItem(this.storageKey);
@@ -132,7 +126,6 @@ export class QueueManager {
   }
 }
 
-// Backwards compatibility export
 export const BackgroundQueueManager = QueueManager;
 
 export default QueueManager;

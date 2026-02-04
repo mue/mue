@@ -5,7 +5,6 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 import prettier from 'eslint-config-prettier';
 
 export default [
-  // Ignore patterns
   {
     ignores: [
       '**/node_modules/**',
@@ -18,7 +17,6 @@ export default [
     ],
   },
 
-  // Base config for all JS/JSX files
   {
     files: ['**/*.{js,jsx,mjs}'],
     languageOptions: {
@@ -26,7 +24,6 @@ export default [
       sourceType: 'module',
       parserOptions: { ecmaFeatures: { jsx: true } },
       globals: {
-        // Browser globals
         window: 'readonly',
         document: 'readonly',
         navigator: 'readonly',
@@ -48,7 +45,6 @@ export default [
         AbortController: 'readonly',
         btoa: 'readonly',
         atob: 'readonly',
-        // Node globals for scripts
         process: 'readonly',
         __dirname: 'readonly',
         __filename: 'readonly',
@@ -64,21 +60,17 @@ export default [
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
 
-      // React specific rules
-      'react/prop-types': 'off', // Using PropTypes is optional
-      'react/react-in-jsx-scope': 'off', // Not needed with React 17+
-      'react/jsx-uses-react': 'off', // Not needed with React 17+
+      'react/prop-types': 'off',
+      'react/react-in-jsx-scope': 'off',
+      'react/jsx-uses-react': 'off',
 
-      // General rules
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
       'no-console': ['warn', { allow: ['warn', 'error'] }],
 
-      // Modern JS
       'prefer-const': 'warn',
       'no-var': 'error',
     },
   },
 
-  // Prettier config (must be last to override other formatting rules)
   prettier,
 ];

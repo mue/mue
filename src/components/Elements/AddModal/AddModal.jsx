@@ -20,17 +20,14 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
   const [suggestedName, setSuggestedName] = useState('');
   const [resetKey, setResetKey] = useState(Date.now());
 
-  // Reset form when modal opens for adding new link
   useEffect(() => {
     if (!edit) {
-      // Clear localStorage for the form fields
       localStorage.removeItem('quicklink_modal_name');
       localStorage.removeItem('quicklink_modal_url');
       localStorage.removeItem('quicklink_modal_iconType');
       localStorage.removeItem('quicklink_modal_icon_url');
       localStorage.removeItem('quicklink_modal_emoji');
 
-      // Reset all state
       setName('');
       setUrl('');
       setIcon('');
@@ -40,12 +37,10 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
       setUploadError('');
       setSuggestedName('');
 
-      // Change the key to force remount
       setResetKey(Date.now());
     }
   }, [edit]);
 
-  // Extract domain name from URL as suggestion
   useEffect(() => {
     if (name || !url) {
       setSuggestedName('');
@@ -60,10 +55,8 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
 
       const domain = new URL(urlToTest).hostname;
       if (domain) {
-        // Extract first part of domain (e.g., "google" from "google.com", "bbc" from "bbc.co.uk")
         const parts = domain.split('.');
         let name = parts[0];
-        // Handle cases like "co.uk" where we want "bbc" not "co"
         if (parts.length > 2 && parts[parts.length - 2] === 'co') {
           name = parts[parts.length - 3];
         }
@@ -89,7 +82,6 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
   };
 
   const handleSubmit = () => {
-    // Use suggested name if no name was entered
     const finalName = name || suggestedName || '';
 
     if (edit) {
@@ -151,7 +143,6 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
               name="quicklink_modal_url"
               noSetting={true}
               onChange={(value) => {
-                // Auto-add https:// if no protocol specified
                 let finalValue = value;
                 if (value && !value.startsWith('http://') && !value.startsWith('https://')) {
                   finalValue = 'https://' + value;

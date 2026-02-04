@@ -26,7 +26,6 @@ const CustomWidgets = () => {
     };
   }, []);
 
-  // Only render corner-positioned widgets (not center)
   const cornerWidgets = widgets.filter((w) => w.position !== 'center');
 
   if (cornerWidgets.length === 0) {

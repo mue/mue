@@ -39,7 +39,6 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
   );
   const [marketplaceEnabled] = useState(localStorage.getItem('photo_packs'));
 
-  // Helper function to get installed photo packs
   const getInstalledPhotoPacks = () => {
     try {
       const installed = JSON.parse(localStorage.getItem('installed')) || [];
@@ -51,14 +50,12 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
 
   const [installedPhotoPacks, setInstalledPhotoPacks] = useState(getInstalledPhotoPacks());
 
-  // Auto-show source section for types without effects/display settings
   const shouldShowSourceByDefault = ['colour', 'random_colour', 'random_gradient'].includes(
     backgroundType,
   );
 
   const controllerRef = useRef(null);
 
-  // Auto-navigate to source section when switching to colour/random types
   useEffect(() => {
     if (shouldShowSourceByDefault && currentSubSection !== 'source') {
       onSubSectionChange('source', sectionName);
@@ -90,7 +87,6 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
   const updateAPI = useCallback(
     (e) => {
       localStorage.setItem('nextImage', null);
-      // Clear prefetch queue when API changes to prevent showing cached images from old API
       clearQueuesOnSettingChange('backgroundAPI');
       if (e === 'mue') {
         setBackgroundCategories(backgroundCategoriesOG);
@@ -123,11 +119,9 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
     };
   }, [getBackgroundCategories]);
 
-  // Listen for installed addons changes
   useEffect(() => {
     const handleInstalledAddonsChanged = () => {
       setInstalledPhotoPacks(getInstalledPhotoPacks());
-      // Update backgroundType if it changed (e.g., when all packs are uninstalled)
       const currentType = localStorage.getItem('backgroundType') || 'api';
       if (currentType !== backgroundType) {
         setBackgroundType(currentType);
@@ -138,7 +132,6 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
     return () => window.removeEventListener('installedAddonsChanged', handleInstalledAddonsChanged);
   }, [backgroundType]);
 
-  // Handle photo pack uninstall
   const handlePhotoPackUninstall = (type, name) => {
     uninstall(type, name);
     toast(variables.getMessage('toasts.uninstalled'));
@@ -147,7 +140,6 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
     window.dispatchEvent(new window.Event('installedAddonsChanged'));
   };
 
-  // Navigate to photo packs marketplace
   const goToPhotoPacks = () => {
     updateHash('#discover/photo_packs');
     const event = new window.Event('popstate');
@@ -155,18 +147,15 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
   };
 
   const handleToggle = (pack) => {
-    // Navigate to discover tab with the item
     const itemId = pack.name;
     updateHash(`#discover/all?item=${itemId}`);
 
-    // Trigger navigation
     const event = new window.Event('popstate');
     window.dispatchEvent(event);
 
     variables.stats.postEvent('marketplace', 'ItemPage viewed');
   };
 
-  // Get total count of photos across all installed packs
   const getTotalPhotoCount = () => {
     return installedPhotoPacks.reduce((total, pack) => {
       return total + (pack.photos?.length || 0);
@@ -264,10 +253,8 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
                 label={variables.getMessage('modals.main.settings.sections.background.type.title')}
                 name="backgroundType"
                 onChange={(value) => {
-                  // Clear prefetch queue when changing background type
                   clearQueuesOnSettingChange('backgroundType');
                   setBackgroundType(value);
-                  // Automatically refresh background when switching to custom images
                   if (value === 'custom') {
                     EventBus.emit('refresh', 'background');
                   }
@@ -301,7 +288,6 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
             installedPhotoPacks={installedPhotoPacks}
             totalPhotoCount={getTotalPhotoCount()}
             onTypeChange={(value) => {
-              // Clear prefetch queue when changing background type
               clearQueuesOnSettingChange('backgroundType');
               setBackgroundType(value);
             }}

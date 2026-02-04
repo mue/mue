@@ -79,11 +79,9 @@ const Added = memo(() => {
 
   const toggle = useCallback((type, data) => {
     if (type === 'item') {
-      // Navigate to discover tab with the item
       const itemId = data.name;
       updateHash(`#discover/all?item=${itemId}`);
 
-      // Trigger navigation
       const event = new window.Event('popstate');
       window.dispatchEvent(event);
 
@@ -151,9 +149,7 @@ const Added = memo(() => {
       installed.forEach((item) => {
         uninstall(item.type, item.name);
       });
-    } catch {
-      // Ignore errors during bulk uninstall
-    }
+    } catch {}
 
     localStorage.setItem('installed', JSON.stringify([]));
     toast(variables.getMessage('toasts.uninstalled_all'));
@@ -202,7 +198,6 @@ const Added = memo(() => {
 
   const goToDiscover = useCallback(() => {
     updateHash('#discover/all');
-    // Trigger a popstate event to update the UI
     const event = new window.Event('popstate');
     window.dispatchEvent(event);
   }, []);

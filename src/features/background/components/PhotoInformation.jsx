@@ -251,11 +251,9 @@ function PhotoInformation({ info, url, api }) {
         setPhotoMap(true);
         setMapIcon(false);
       } catch {
-        // Ignore errors
       }
     };
   } catch {
-    // Element not found
   }
 
   const widgetStyle = localStorage.getItem('widgetStyle');

@@ -207,7 +207,6 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
 
   const QUICKLINKS_SECTION = 'modals.main.settings.sections.quicklinks';
 
-  // Subsection: Appearance (Style + Layout)
   const AppearanceSection = () => {
     const handleLayoutChange = (key, value) => {
       const config = JSON.parse(localStorage.getItem('quicklinks_config') || '{}');
@@ -290,7 +289,6 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
     );
   };
 
-  // Subsection: Display
   const DisplaySection = () => (
     <Row>
       <Content
@@ -312,7 +310,6 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
     </Row>
   );
 
-  // Subsection: Organization
   const OrganizationSection = () => {
     const handleGroupingToggle = (value) => {
       const config = JSON.parse(localStorage.getItem('quicklinks_config') || '{}');
@@ -337,7 +334,6 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
     );
   };
 
-  // Subsection: Sync
   const SyncSection = () => {
     const [syncStatus, setSyncStatus] = useState('');
     const [syncing, setSyncing] = useState(false);
@@ -352,7 +348,6 @@ const QuickLinksOptions = ({ currentSubSection, onSubSectionChange, sectionName 
       setSyncing(true);
       setSyncStatus('Syncing...');
       try {
-        // Enable sync first if not already enabled
         const config = JSON.parse(localStorage.getItem('quicklinks_config') || '{}');
         if (!config.bookmarkSyncEnabled) {
           config.bookmarkSyncEnabled = true;

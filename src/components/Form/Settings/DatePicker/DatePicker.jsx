@@ -118,12 +118,10 @@ const DatePicker = memo((props) => {
     const today = new Date();
     const selectedDate = props.value;
 
-    // Empty cells for days before the first day of the month
     for (let i = 0; i < firstDay; i++) {
       days.push(<div key={`empty-${i}`} className="calendar-day empty" />);
     }
 
-    // Days of the month
     for (let day = 1; day <= daysInMonth; day++) {
       const date = new Date(viewDate.getFullYear(), viewDate.getMonth(), day);
       const isToday = date.toDateString() === today.toDateString();

@@ -1,6 +1,5 @@
 @use 'scss/variables' as *;
 
-// Iframe widgets positioned on the page
 .custom-widget-iframe {
   position: fixed;
   z-index: -1;
@@ -41,7 +40,6 @@
   }
 }
 
-// Centered widgets (rendered in main content area)
 .custom-widget-centered {
   width: 100%;
   max-width: 800px;
@@ -61,7 +59,6 @@
   }
 }
 
-// Overlay mode - renders above other widgets
 .custom-widget-overlay {
   z-index: 100 !important;
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);

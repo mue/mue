@@ -37,7 +37,7 @@ const Widgets = () => {
       quicklinks: enabled('quicklinksenabled') && <QuickLinks />,
       message: enabled('message') && <Message />,
     }),
-    [order], // Re-create widgets when order changes
+    [order],
   );
 
   useEffect(() => {

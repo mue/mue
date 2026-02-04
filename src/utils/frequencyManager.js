@@ -1,14 +1,9 @@
-/**
- * Frequency Manager
- * Manages time-based update frequencies for backgrounds and quotes
- */
-
 export const FREQUENCY_INTERVALS = {
-  refresh: 0, // Every tab refresh (immediate)
-  minute: 60 * 1000, // 1 minute
-  thirty: 30 * 60 * 1000, // 30 minutes
-  hour: 60 * 60 * 1000, // 1 hour
-  day: 24 * 60 * 60 * 1000, // 24 hours
+  refresh: 0,
+  minute: 60 * 1000,
+  thirty: 30 * 60 * 1000,
+  hour: 60 * 60 * 1000,
+  day: 24 * 60 * 60 * 1000,
 };
 
 export const FREQUENCY_OPTIONS = [
@@ -27,7 +22,6 @@ export const FREQUENCY_OPTIONS = [
 export function shouldUpdateByFrequency(type) {
   const frequency = localStorage.getItem(`${type}Frequency`) || 'refresh';
 
-  // Always update on 'refresh' mode
   if (frequency === 'refresh') {
     return true;
   }
@@ -35,7 +29,6 @@ export function shouldUpdateByFrequency(type) {
   const startTimeKey = `${type}StartTime`;
   const startTime = localStorage.getItem(startTimeKey);
 
-  // If no start time, update and set it
   if (!startTime) {
     localStorage.setItem(startTimeKey, Date.now());
     return true;
@@ -43,14 +36,12 @@ export function shouldUpdateByFrequency(type) {
 
   const elapsed = Date.now() - parseInt(startTime, 10);
 
-  // Handle clock changes - if time went backwards, reset
   if (elapsed < 0) {
     localStorage.setItem(startTimeKey, Date.now());
     return true;
   }
 
-  // Handle clock changes - if elapsed is unreasonably large (>7 days), reset
-  const MAX_ELAPSED = 7 * 24 * 60 * 60 * 1000; // 7 days
+  const MAX_ELAPSED = 7 * 24 * 60 * 60 * 1000;
   if (elapsed > MAX_ELAPSED) {
     localStorage.setItem(startTimeKey, Date.now());
     return true;

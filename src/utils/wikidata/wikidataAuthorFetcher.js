@@ -1,15 +1,10 @@
-/**
- * Wikidata API integration for fetching author information
- * Provides author images, occupations, and metadata with multilingual support
- */
-
 /* global URLSearchParams */
 
 import { safeParseJSON } from '../jsonStorage';
 
 const WIKIDATA_API = 'https://www.wikidata.org/w/api.php';
 const CACHE_EXPIRY = 7 * 24 * 60 * 60 * 1000; // 7 days
-const MAX_CACHE_ENTRIES = 50; // Maximum number of cached authors
+const MAX_CACHE_ENTRIES = 50;
 
 /**
  * Get all Wikidata cache keys from localStorage
@@ -26,7 +21,7 @@ function getWikidataCacheEntries() {
         timestamp: cached?.timestamp || 0,
       };
     })
-    .sort((a, b) => a.timestamp - b.timestamp); // Oldest first
+    .sort((a, b) => a.timestamp - b.timestamp);
 }
 
 /**
@@ -57,7 +52,6 @@ function getCachedAuthorData(authorName, language) {
     return null;
   }
 
-  // Check if cache has expired
   const now = Date.now();
   if (cached.timestamp && now - cached.timestamp > CACHE_EXPIRY) {
     localStorage.removeItem(cacheKey);
@@ -84,7 +78,6 @@ function cacheAuthorData(authorName, language, data) {
     }),
   );
 
-  // Prune cache if it exceeds the limit
   pruneCache();
 }
 
@@ -133,7 +126,6 @@ async function extractOccupations(claims, language) {
   }
 
   try {
-    // Get all occupations with their ranks
     const occupations = claims.P106
       .filter((claim) => claim.mainsnak?.datavalue?.value?.id)
       .map((claim) => ({
@@ -145,14 +137,11 @@ async function extractOccupations(claims, language) {
       return null;
     }
 
-    // Sort by rank: preferred > normal > deprecated
     const rankOrder = { preferred: 0, normal: 1, deprecated: 2 };
     occupations.sort((a, b) => rankOrder[a.rank] - rankOrder[b.rank]);
 
-    // Take only the top-ranked occupation
     const topOccupation = occupations[0];
 
-    // Fetch occupation label
     const params = new URLSearchParams({
       action: 'wbgetentities',
       ids: topOccupation.id,
@@ -168,7 +157,6 @@ async function extractOccupations(claims, language) {
     const entity = data.entities?.[topOccupation.id];
     if (!entity?.labels) return null;
 
-    // Try preferred language first, then English
     const label = entity.labels[language]?.value || entity.labels['en']?.value;
     return label || null;
   } catch (error) {
@@ -221,13 +209,11 @@ function extractWikipediaLink(sitelinks, language) {
     return null;
   }
 
-  // Try preferred language wiki first
   const preferredSite = `${language}wiki`;
   if (sitelinks[preferredSite]) {
     return sitelinks[preferredSite].url;
   }
 
-  // Fall back to English Wikipedia
   if (sitelinks.enwiki) {
     return sitelinks.enwiki.url;
   }
@@ -246,22 +232,18 @@ export async function fetchAuthorFromWikidata(authorName, language = 'en') {
     return null;
   }
 
-  // Check cache first
   const cached = getCachedAuthorData(authorName, language);
   if (cached) {
     return cached;
   }
 
   try {
-    // Step 1: Search for author entity
     const entityId = await searchAuthorEntity(authorName, language);
     if (!entityId) {
-      // Cache negative result to avoid repeated lookups
       cacheAuthorData(authorName, language, null);
       return null;
     }
 
-    // Step 2: Fetch entity data
     const params = new URLSearchParams({
       action: 'wbgetentities',
       ids: entityId,
@@ -280,14 +262,11 @@ export async function fetchAuthorFromWikidata(authorName, language = 'en') {
       return null;
     }
 
-    // Step 3: Extract data
     const claims = entity.claims;
     const sitelinks = entity.sitelinks;
 
-    // Get occupation
     const occupation = await extractOccupations(claims, language);
 
-    // Get image
     let imageUrl = null;
     if (claims.P18 && claims.P18.length > 0) {
       const filename = claims.P18[0].mainsnak?.datavalue?.value;
@@ -296,10 +275,8 @@ export async function fetchAuthorFromWikidata(authorName, language = 'en') {
       }
     }
 
-    // Get Wikipedia link
     const wikipediaLink = extractWikipediaLink(sitelinks, language);
 
-    // Get description
     const description =
       entity.descriptions?.[language]?.value || entity.descriptions?.['en']?.value;
 
@@ -312,7 +289,6 @@ export async function fetchAuthorFromWikidata(authorName, language = 'en') {
       imageLicense: imageUrl ? 'Wikimedia Commons' : null,
     };
 
-    // Cache result
     cacheAuthorData(authorName, language, authorData);
 
     return authorData;

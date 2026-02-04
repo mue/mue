@@ -28,14 +28,12 @@ export function getBackgroundOverlayStyle() {
   const backgroundFilter = localStorage.getItem('backgroundFilter');
   const backgroundFilterAmount = localStorage.getItem('backgroundFilterAmount') || '100';
 
-  // Build backdrop-filter string for blur and other effects
   let backdropFilterString = `blur(${blur}px)`;
 
   if (backgroundFilter && backgroundFilter !== 'none') {
     backdropFilterString += ` ${backgroundFilter}(${backgroundFilterAmount}%)`;
   }
 
-  // Calculate brightness overlay (black overlay for darkening)
   // brightness 100% = no overlay (opacity 0)
   // brightness 0% = full black overlay (opacity 1)
   const brightnessValue = parseInt(brightness, 10);
@@ -43,7 +41,7 @@ export function getBackgroundOverlayStyle() {
 
   return {
     backdropFilter: backdropFilterString,
-    WebkitBackdropFilter: backdropFilterString, // Safari support
+    WebkitBackdropFilter: backdropFilterString,
     backgroundColor: `rgba(0, 0, 0, ${overlayOpacity})`,
   };
 }

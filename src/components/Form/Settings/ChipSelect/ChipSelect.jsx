@@ -24,7 +24,7 @@ function ChipSelect({ label, options, onChange, name }) {
     setTimeout(() => {
       setIsOpen(false);
       setIsClosing(false);
-    }, 200); // Match animation duration
+    }, 200);
   }, []);
 
   useEffect(() => {
@@ -49,14 +49,11 @@ function ChipSelect({ label, options, onChange, name }) {
       const gap = 4;
       const viewportHeight = window.innerHeight;
 
-      // Estimate menu height
       const estimatedMenuHeight = Math.min(options.length * 44, 250);
 
-      // Calculate if dropdown would overflow bottom of viewport
       const spaceBelow = viewportHeight - rect.bottom - gap;
       const spaceAbove = rect.top - gap;
 
-      // If not enough space below but more space above, flip to top
       const shouldFlipUp = spaceBelow < estimatedMenuHeight && spaceAbove > spaceBelow;
 
       return {

@@ -31,7 +31,6 @@ const DateWidget = () => {
 
     const weekLabel = variables.getMessage('widgets.date.week');
     const weekNum = 1 + Math.ceil((firstThursday - dateToday) / 604800000);
-    // Support {number} placeholder for locales that need different word order (e.g., Turkish: "{number}. Hafta")
     const weekText = weekLabel.includes('{number}')
       ? weekLabel.replace('{number}', weekNum)
       : `${weekLabel} ${weekNum}`;
@@ -71,7 +70,6 @@ const DateWidget = () => {
           day = dateYear;
           year = dateDay;
           break;
-        // DMY
         default:
           break;
       }
@@ -96,7 +94,6 @@ const DateWidget = () => {
 
       setDate(format);
     } else {
-      // Long date
       const lang = variables.languagecode.split('_')[0];
       const datenth =
         localStorage.getItem('datenth') === 'true' ? nth(date.getDate(), lang) : date.getDate();
@@ -116,7 +113,6 @@ const DateWidget = () => {
         case 'YMD':
           formattedDate = `${dateYear} ${dateMonth} ${datenth}${dateDay ? `, ${dateDay}` : ''}`;
           break;
-        // DMY
         default:
           formattedDate = `${datenth} ${dateMonth} ${dateYear}${dateDay ? `, ${dateDay}` : ''}`;
           break;

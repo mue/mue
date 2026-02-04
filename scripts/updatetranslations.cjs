@@ -18,12 +18,10 @@ const localesDir = path.join(__dirname, '../src/i18n/locales');
 const achievementsDir = path.join(localesDir, 'achievements');
 const manifestLocalesDir = path.join(__dirname, '../manifest/_locales');
 
-// Check if the locales directory exists, if not, create it
 if (!fs.existsSync(localesDir)) {
   fs.mkdirSync(localesDir, { recursive: true });
 }
 
-// Check if the achievements directory exists, if not, create it
 if (!fs.existsSync(achievementsDir)) {
   fs.mkdirSync(achievementsDir, { recursive: true });
 }
@@ -74,7 +72,6 @@ fs.readdirSync(achievementsDir).forEach((file) => {
   const locales = fs.readdirSync(localesDir);
   locales.forEach((locale) => {
     if (!fs.existsSync(path.join(achievementsDir, locale))) {
-      // ignore directories
       if (fs.lstatSync(path.join(localesDir, locale)).isDirectory()) {
         return;
       }
@@ -85,29 +82,23 @@ fs.readdirSync(achievementsDir).forEach((file) => {
   });
 });
 
-// Sync manifest locales with src/i18n/locales
 console.log('Syncing manifest/_locales with src/i18n/locales...');
 const enManifestPath = path.join(manifestLocalesDir, 'en', 'messages.json');
 
-// Check if the English manifest exists
 if (!fs.existsSync(enManifestPath)) {
   console.error(`English manifest file does not exist at '${enManifestPath}'`);
 } else {
   const enManifest = fs.readFileSync(enManifestPath, 'utf8');
 
-  // Get all locales from src/i18n/locales
   const localeFiles = fs.readdirSync(localesDir).filter((file) => {
-    // Only include JSON files, not directories
     return !fs.lstatSync(path.join(localesDir, file)).isDirectory() && file.endsWith('.json');
   });
 
   localeFiles.forEach((localeFile) => {
-    // Extract locale code (e.g., "en_GB.json" -> "en_GB")
     const localeCode = localeFile.replace('.json', '');
     const manifestLocalePath = path.join(manifestLocalesDir, localeCode);
     const manifestMessagesPath = path.join(manifestLocalePath, 'messages.json');
 
-    // Check if this locale exists in manifest/_locales
     if (!fs.existsSync(manifestLocalePath)) {
       console.log(`Creating missing locale: ${localeCode}`);
       fs.mkdirSync(manifestLocalePath, { recursive: true });

@@ -23,7 +23,6 @@ function Header(props) {
   const changeSetting = () => {
     const toggle = localStorage.getItem(props.setting) === 'true';
 
-    // Small delay to let the button click animation complete
     setTimeout(() => {
       localStorage.setItem(props.setting, !toggle);
       setSetting(!toggle);

@@ -25,7 +25,6 @@ const isDefaultPackUninstalled = () => {
 };
 
 const tryInstallDefaultPack = async () => {
-  // Don't install if offline mode, already installed, or explicitly uninstalled
   if (
     localStorage.getItem('offlineMode') === 'true' ||
     isDefaultPackInstalled() ||
@@ -57,7 +56,6 @@ const Modals = () => {
   const [deepLinkData, setDeepLinkData] = useState(null);
 
   useEffect(() => {
-    // Check for preview mode - block deep links and redirect to /
     const isPreviewMode = localStorage.getItem('showWelcome') === 'true';
     if (isPreviewMode && shouldAutoOpenModal()) {
       window.history.replaceState(null, null, '/');
@@ -66,7 +64,6 @@ const Modals = () => {
       return;
     }
 
-    // Check for deep link first (has priority)
     if (shouldAutoOpenModal()) {
       const linkData = parseDeepLink();
       setMainModal(true);
@@ -91,13 +88,10 @@ const Modals = () => {
       }
     }
 
-    // Only hide refresh reminder if user navigated naturally (not via deep link or forced intro skip)
-    // This ensures the reminder shows after user refreshes when they've made changes
     if (!shouldAutoOpenModal() && window.location.search !== '?nointro=true') {
       localStorage.setItem('showReminder', false);
     }
 
-    // Try to install default pack if it wasn't installed during welcome (e.g., no internet)
     if (localStorage.getItem('showWelcome') !== 'true') {
       tryInstallDefaultPack().then((installed) => {
         if (installed) {
@@ -106,7 +100,6 @@ const Modals = () => {
       });
     }
 
-    // Listen for EventBus modal open requests
     const handleModalOpen = (data) => {
       if (data === 'openMainModal') {
         const linkData = parseDeepLink();
@@ -155,7 +148,6 @@ const Modals = () => {
 
     if (action !== false) {
       variables.stats.postEvent('modal', `Opened ${type.replace('Modal', '')}`);
-      // Set initial hash when opening main modal
       if (type === 'mainModal') {
         updateHash('#settings');
       }

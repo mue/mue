@@ -23,7 +23,6 @@ export function useBackgroundEvents(backgroundData, refreshBackground) {
       element?.style.setProperty('display', 'block');
       if (!backgroundData.photoInfo?.hidden) {photoInfo?.style.setProperty('display', 'flex');}
 
-      // Check if refresh needed
       const type = localStorage.getItem('backgroundType');
       const needsRefresh =
         (type !== backgroundData.type &&
@@ -40,13 +39,11 @@ export function useBackgroundEvents(backgroundData, refreshBackground) {
     };
 
     const applyFilters = () => {
-      // For video backgrounds, apply filters directly to the video element
       if (backgroundData.video) {
         const filter = getBackgroundFilterStyle();
         const element = document.getElementById('backgroundVideo');
         if (element) {element.style.webkitFilter = filter;}
       } else {
-        // For image backgrounds, apply filters to the overlay element
         const overlayElement = document.getElementById('backgroundFilterOverlay');
         if (overlayElement) {
           const overlayStyle = getBackgroundOverlayStyle();

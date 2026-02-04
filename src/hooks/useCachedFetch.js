@@ -10,7 +10,6 @@ import { safeParseJSON } from 'utils/jsonStorage';
  * @returns {Object} - Cache utilities
  */
 export function useCachedFetch({ cacheKey, timestampKey, expiryDays = 7 }) {
-  // Check if cache is still valid
   const isCacheValid = useCallback(() => {
     const timestamp = localStorage.getItem(timestampKey);
     if (!timestamp) return false;
@@ -18,7 +17,6 @@ export function useCachedFetch({ cacheKey, timestampKey, expiryDays = 7 }) {
     return Date.now() - Number(timestamp) < expiryMs;
   }, [timestampKey, expiryDays]);
 
-  // Get cached data for a specific key
   const getCached = useCallback(
     (key) => {
       const cache = safeParseJSON(cacheKey, {});
@@ -30,19 +28,15 @@ export function useCachedFetch({ cacheKey, timestampKey, expiryDays = 7 }) {
     [cacheKey, isCacheValid],
   );
 
-  // Fetch with caching
   const fetchWithCache = useCallback(
     async (key, fetchFn) => {
-      // Check cache first
       const cached = getCached(key);
       if (cached) {
         return cached;
       }
 
-      // Fetch from source
       const result = await fetchFn(key);
 
-      // Cache the result (even if null/empty, to avoid re-fetching)
       if (result !== null && result !== undefined) {
         const cache = safeParseJSON(cacheKey, {});
         cache[key] = {
@@ -62,7 +56,6 @@ export function useCachedFetch({ cacheKey, timestampKey, expiryDays = 7 }) {
     [cacheKey, timestampKey, getCached],
   );
 
-  // Clear cache
   const clearCache = useCallback(() => {
     localStorage.removeItem(cacheKey);
     localStorage.removeItem(timestampKey);

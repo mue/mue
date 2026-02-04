@@ -42,7 +42,7 @@ export function useQuoteLoader(updateQuote) {
             authorimg: null,
             authorimglicense: null,
             authorOccupation: null,
-            authorlink: getAuthorLink(author), // Fallback to Wikipedia link
+            authorlink: getAuthorLink(author),
           };
         }
 
@@ -70,7 +70,6 @@ export function useQuoteLoader(updateQuote) {
     return tmpdoc.body.textContent || '';
   }, []);
 
-  // Get cached author data or fetch from Wikidata and cache it
   const getCachedAuthorData = useCallback(
     async (author) => {
       if (localStorage.getItem('authorImg') === 'false' || author === 'Unknown') {
@@ -82,24 +81,20 @@ export function useQuoteLoader(updateQuote) {
         };
       }
 
-      // Wikidata fetcher has its own caching mechanism
       return await getAuthorDataFromWikidata(author);
     },
     [getAuthorDataFromWikidata],
   );
 
-  // Select raw quote data without author images (non-blocking)
   const selectQuoteData = useCallback(() => {
     const offline = localStorage.getItem('offlineMode') === 'true';
     let type = localStorage.getItem('quoteType') || 'quote_pack';
 
-    // Migrate deprecated 'api' type
     if (type === 'api') {
       type = 'quote_pack';
       localStorage.setItem('quoteType', 'quote_pack');
     }
 
-    // Custom quotes
     if (type === 'custom') {
       let customQuote;
       try {
@@ -113,7 +108,6 @@ export function useQuoteLoader(updateQuote) {
         ];
       }
 
-      // Filter out incomplete quotes (empty quote text)
       const validQuotes = customQuote?.filter((q) => q.quote && q.quote.trim() !== '') || [];
 
       if (validQuotes.length === 0) {
@@ -130,14 +124,13 @@ export function useQuoteLoader(updateQuote) {
       };
     }
 
-    // Quote packs or offline
     if (offline) {
       const quote = offline_quotes[Math.floor(Math.random() * offline_quotes.length)];
       return {
         quote: '"' + quote.quote + '"',
         author: quote.author,
         authorlink: getAuthorLink(quote.author),
-        needsAuthorData: false, // Offline quotes don't get author data
+        needsAuthorData: false,
       };
     }
 
@@ -149,7 +142,6 @@ export function useQuoteLoader(updateQuote) {
           return false;
         }
         const packId = item.id || item.name;
-        // Default to enabled if not in enabledPacks object
         return enabledPacks[packId] !== false;
       })
       .flatMap((item) =>
@@ -178,25 +170,22 @@ export function useQuoteLoader(updateQuote) {
     return {
       quote: `"${data.quote}"`,
       author: displayAuthor,
-      realAuthor: hasAuthor ? data.author : null, // For Wikidata lookup
+      realAuthor: hasAuthor ? data.author : null,
       authorlink: hasAuthor ? getAuthorLink(data.author) : null,
       fallbackauthorimg: data.fallbackauthorimg,
       needsAuthorData: hasAuthor && !data.noAuthorImg,
     };
   }, [getAuthorLink]);
 
-  // Fetch complete quote data including author data (for prefetching)
   const fetchCompleteQuote = useCallback(
     async (quoteData) => {
       if (!quoteData || quoteData.noQuote) return quoteData;
 
-      // If author data is needed, fetch it
       if (quoteData.needsAuthorData) {
         const authorToLookup = quoteData.realAuthor || quoteData.author;
         try {
           const authorData = await getCachedAuthorData(authorToLookup);
 
-          // For quote packs, use fallback if Wikidata fails
           if (!authorData.authorimg && quoteData.fallbackauthorimg) {
             return {
               ...quoteData,
@@ -213,7 +202,6 @@ export function useQuoteLoader(updateQuote) {
           };
         } catch (e) {
           console.error('Failed to fetch author data:', e);
-          // Return quote data with fallback or no data
           return {
             ...quoteData,
             authorimg: quoteData.fallbackauthorimg || null,
@@ -243,7 +231,6 @@ export function useQuoteLoader(updateQuote) {
   const getQuote = useCallback(async () => {
     const offline = localStorage.getItem('offlineMode') === 'true';
 
-    // Initialize prefetch storage on first access
     if (localStorage.getItem('quoteQueue') === null) {
       localStorage.setItem('quoteQueue', JSON.stringify([]));
     }
@@ -251,9 +238,7 @@ export function useQuoteLoader(updateQuote) {
       localStorage.setItem('quotePrefetchEnabled', 'true');
     }
 
-    // Check if we should update based on frequency
     if (!shouldUpdateByFrequency('quote')) {
-      // Load cached quote without fetching new one
       const cached = localStorage.getItem('currentQuote');
       if (cached) {
         try {
@@ -261,27 +246,23 @@ export function useQuoteLoader(updateQuote) {
           updateQuote(cachedQuote);
           return;
         } catch {
-          // If cache invalid, continue to fetch new
         }
       }
     }
 
-    // SPECIAL CASE: Favourite quote (highest priority, no queue)
     const favouriteQuote = localStorage.getItem('favouriteQuote');
     if (favouriteQuote) {
       const [quote, author] = favouriteQuote.split(' - ');
 
-      // Display quote immediately
       updateQuote({
         quote,
         author,
         authorlink: getAuthorLink(author),
-        authorimg: null, // Will be updated asynchronously
+        authorimg: null,
         authorimglicense: null,
         authorOccupation: null,
       });
 
-      // Fetch author data asynchronously (non-blocking)
       getCachedAuthorData(author).then((authorData) => {
         updateQuote({
           quote,
@@ -291,27 +272,22 @@ export function useQuoteLoader(updateQuote) {
         });
       });
 
-      return; // Don't use queue for favourite quotes
+      return;
     }
 
-    // MAIN FLOW: Use queue system
     const queueManager = new QueueManager('quoteQueue', 3);
     const cachedQueue = queueManager.getQueue();
     let quoteData;
 
-    // Step 1: Try to get from queue
     if (cachedQueue.length > 0) {
       quoteData = queueManager.shift();
     } else {
-      // Step 2: No queue, fetch new quote immediately
       const rawQuote = selectQuoteData();
       if (rawQuote.noQuote) {
         return updateQuote({ noQuote: true });
       }
 
-      // For non-queue fetch, display immediately then enhance with author data
       if (rawQuote.needsAuthorData) {
-        // Display quote text immediately
         updateQuote({
           ...rawQuote,
           authorimg: rawQuote.fallbackauthorimg || null,
@@ -319,7 +295,6 @@ export function useQuoteLoader(updateQuote) {
           authorOccupation: null,
         });
 
-        // Fetch author data asynchronously (after a brief delay to ensure snappy initial render)
         setTimeout(() => {
           const authorToLookup = rawQuote.realAuthor || rawQuote.author;
           getCachedAuthorData(authorToLookup).then((authorData) => {
@@ -337,31 +312,27 @@ export function useQuoteLoader(updateQuote) {
           });
         }, 0);
 
-        quoteData = rawQuote; // Use for prefetch reference
+        quoteData = rawQuote;
       } else {
         quoteData = rawQuote;
         updateQuote(quoteData);
       }
     }
 
-    // Step 3: Display current quote (if from queue, it's already complete)
     if (cachedQueue.length > 0 || !quoteData.needsAuthorData) {
       updateQuote(quoteData);
     }
 
-    // Step 4: Store current quote and reset timestamp
     try {
       localStorage.setItem('currentQuote', JSON.stringify(quoteData));
-      resetStartTime('quote'); // Reset timestamp after successfully updating quote
+      resetStartTime('quote');
     } catch (e) {
       console.warn('Could not save currentQuote to localStorage:', e);
     }
 
-    // Step 5: Prefetch next 3 quotes asynchronously (non-blocking, deferred)
     if (queueManager.needsPrefetch() && !offline) {
       const spaceNeeded = queueManager.getSpaceNeeded();
 
-      // Defer prefetch to avoid blocking initial quote display
       setTimeout(() => {
         Promise.all(
           Array.from({ length: spaceNeeded }, async () => {
@@ -379,7 +350,7 @@ export function useQuoteLoader(updateQuote) {
           .catch((error) => {
             console.error('Failed to prefetch quotes:', error);
           });
-      }, 100); // Small delay to ensure current quote renders first
+      }, 100);
     }
   }, [updateQuote, getAuthorLink, getCachedAuthorData, selectQuoteData, fetchCompleteQuote]);
 

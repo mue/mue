@@ -95,12 +95,10 @@
   }
 }
 
-// Enhanced custom images grid
 .images-grid {
   display: grid;
   padding: 1px;
 
-  // Show all checkboxes when in selection mode (any image selected)
   &.selection-mode {
     .image-checkbox {
       opacity: 1;
@@ -187,7 +185,6 @@
           }
         }
 
-        // Keep checkbox visible when checked
         &:has(input:checked) {
           opacity: 1;
         }
@@ -335,7 +332,6 @@
         }
       }
 
-      // Show delete button when card is hovered or has checkbox visible
       &:hover .delete-button,
       .image-checkbox:has(input:checked) ~ * .delete-button {
         opacity: 1;
@@ -344,7 +340,6 @@
   }
 }
 
-// Storage quota display
 .storage-quota {
   padding: 15px 20px;
   margin-top: 10px;
@@ -413,7 +408,6 @@
   }
 }
 
-// Folder tagging modal styles
 .taggingModalContent {
   padding: 20px;
 

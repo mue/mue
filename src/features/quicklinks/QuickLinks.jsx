@@ -136,7 +136,6 @@ const QuickLinks = memo(() => {
       );
     }
 
-    // Default icon style
     const link = (
       <a
         key={`quicklink-${item.key}-${index}`}

@@ -7,7 +7,6 @@
  * @returns The number, optionally with an English ordinal suffix.
  */
 export function nth(d, lang) {
-  // Only apply English ordinal suffixes for English locales
   if (lang && !lang.startsWith('en')) {
     return d;
   }

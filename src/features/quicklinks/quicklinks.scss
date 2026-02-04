@@ -24,7 +24,6 @@
   overflow-x: visible;
   box-sizing: border-box;
 
-  // Grid layout (NEW)
   &.layout-grid {
     display: grid;
     gap: 16px;
@@ -68,7 +67,6 @@
     }
   }
 
-  // Flex layout (EXISTING - backward compatibility)
   &.layout-flex {
     display: flex;
     place-content: center center;
@@ -76,7 +74,6 @@
     gap: 12px;
   }
 
-  // Compact layout (NEW)
   &.layout-compact {
     display: flex;
     flex-direction: column;
@@ -85,7 +82,6 @@
     margin: 0 auto;
   }
 
-  // Default to flex if no layout class specified
   &:not(.layout-grid):not(.layout-flex):not(.layout-compact) {
     display: flex;
     place-content: center center;
@@ -111,7 +107,6 @@
   }
 }
 
-// Group headers (NEW)
 .quicklinks-group {
   grid-column: 1 / -1;
   margin-top: 16px;

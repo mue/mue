@@ -29,7 +29,6 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
     });
     setValidationErrors(errors);
 
-    // Update api_packs_ready list
     const apiPacksReady = JSON.parse(localStorage.getItem('api_packs_ready') || '[]');
     const isReady = errors.length === 0;
     const isInList = apiPacksReady.includes(pack.id);
@@ -58,7 +57,6 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
     }
   };
 
-  // Load dynamic options (e.g., categories from API)
   useEffect(() => {
     if (!pack.settings_schema || pack.settings_schema.length === 0) {
       return;
@@ -70,7 +68,6 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
     });
   }, [pack.id, pack.settings_schema]);
 
-  // Validate settings
   useEffect(() => {
     if (!pack.settings_schema || pack.settings_schema.length === 0) {
       return;
@@ -84,14 +81,12 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
     setSettings(newSettings);
     localStorage.setItem(`photopack_settings_${pack.id}`, JSON.stringify(newSettings));
 
-    // Clear cache and immediately refresh when settings change
     const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
     if (apiPackCache[pack.id]) {
       delete apiPackCache[pack.id];
       localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
     }
 
-    // Trigger immediate refresh with new settings
     setIsRefreshing(true);
     await refreshAPIPackCache(pack.id);
     setIsRefreshing(false);
@@ -102,7 +97,6 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
     setIsRefreshing(true);
     await refreshAPIPackCache(pack.id);
     setIsRefreshing(false);
-    // Trigger background refresh
     EventBus.emit('refresh', 'background');
   };
 

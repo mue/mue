@@ -1,4 +1,3 @@
-// Importing necessary libraries and components
 import { useState, useEffect } from 'react';
 import variables from 'config/variables';
 import { MdArrowBackIosNew, MdArrowForwardIos, MdOutlinePreview } from 'react-icons/md';
@@ -21,17 +20,13 @@ import {
   Final,
 } from './components/Sections';
 
-// WelcomeModal component
 function WelcomeModal({ modalClose, modalSkip }) {
-  // State variables
   const [currentTab, setCurrentTab] = useState(0);
   const [buttonText, setButtonText] = useState(variables.getMessage('modals.welcome.buttons.next'));
   const [importedSettings, setImportedSettings] = useState([]);
   const finalTab = 6;
 
-  // useEffect hook to handle tab changes
   useEffect(() => {
-    // Get the current welcome tab from local storage
     const welcomeTab = localStorage.getItem('welcomeTab');
     if (welcomeTab) {
       const tab = Number(welcomeTab);
@@ -44,7 +39,6 @@ function WelcomeModal({ modalClose, modalSkip }) {
     }
   }, [finalTab]);
 
-  // Function to update the current tab and button text
   const updateTabAndButtonText = (newTab) => {
     setCurrentTab(newTab);
     setButtonText(
@@ -57,7 +51,6 @@ function WelcomeModal({ modalClose, modalSkip }) {
     localStorage.removeItem('welcomeTab');
   };
 
-  // Functions to navigate to the previous and next tabs
   const prevTab = () => {
     updateTabAndButtonText(currentTab - 1);
   };
@@ -70,12 +63,10 @@ function WelcomeModal({ modalClose, modalSkip }) {
     updateTabAndButtonText(currentTab + 1);
   };
 
-  // Function to switch to a specific tab
   const switchToTab = (tab) => {
     updateTabAndButtonText(tab);
   };
 
-  // Navigation component
   const Navigation = () => {
     return (
       <div className="welcomeButtons">
@@ -105,7 +96,6 @@ function WelcomeModal({ modalClose, modalSkip }) {
     );
   };
 
-  // Mapping of tab numbers to components
   const tabComponents = {
     0: <Intro />,
     1: <ChooseLanguage />,
@@ -118,10 +108,8 @@ function WelcomeModal({ modalClose, modalSkip }) {
     ),
   };
 
-  // Current tab component
   const CurrentTab = tabComponents[currentTab] || <Intro />;
 
-  // Render the WelcomeModal component
   return (
     <Wrapper>
       <Panel type="aside">
@@ -141,5 +129,4 @@ function WelcomeModal({ modalClose, modalSkip }) {
   );
 }
 
-// Export the WelcomeModal component
 export default WelcomeModal;

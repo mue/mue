@@ -1,6 +1,5 @@
 @use 'scss/variables' as *;
 
-// Default button behavior for all modal buttons
 .btn-default {
   @include modal-button(standard);
 

@@ -58,11 +58,9 @@ function ChooseLanguage() {
       };
     });
 
-    // Sort alphabetically by native name
     return mappedLanguages.sort((a, b) => a.nativeName.localeCompare(b.nativeName));
   }, [currentLanguage]);
 
-  // Filter languages based on search query
   const filteredLanguages = useMemo(() => {
     if (!searchQuery.trim()) {
       return languageOptions;
@@ -71,7 +69,6 @@ function ChooseLanguage() {
     return languageOptions.filter((lang) => lang.searchText.includes(query));
   }, [languageOptions, searchQuery]);
 
-  // Detect system language
   const systemLanguage = useMemo(() => {
     const browserLang = navigator.language.replace('-', '_');
     return (

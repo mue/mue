@@ -166,7 +166,6 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
     const widgetName = name || 'Widget';
     const data = widgets.map((item) => {
       if (item.key === og.key) {
-        // Only regenerate ID if name changed
         const newId =
           item.name !== widgetName
             ? generateUniqueId(widgetName)
@@ -399,7 +398,6 @@ function AdvancedOptions({ currentSubSection, onSubSectionChange, sectionName })
                 name="marketplaceDDGProxy"
                 element=".other"
                 onChange={() => {
-                  // Clear all prefetch queues when proxy setting changes
                   // so new images are fetched with correct proxy state
                   clearBackgroundQueues('all');
                 }}

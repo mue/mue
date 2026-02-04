@@ -32,7 +32,6 @@ export default function Quote() {
     localStorage.getItem('widgetStyle') === 'legacy',
   );
 
-  // Compute if current quote is favorited
   const isFavourited = useMemo(() => {
     const favQuote = localStorage.getItem('favouriteQuote');
     return !!favQuote && favQuote === `${quoteData.quote} - ${quoteData.author}`;
@@ -43,7 +42,6 @@ export default function Quote() {
     setLocalIsFavourited(!localIsFavourited);
   };
 
-  // Set up frequency-based interval for automatic quote updates
   useFrequencyInterval('quote', getQuote);
 
   useEffect(() => {
@@ -59,7 +57,6 @@ export default function Quote() {
         setAuthorDetails(authorDetailsSetting === 'true');
         setIsLegacyStyle(widgetStyle === 'legacy');
       } else if (data === 'marketplacequoteuninstall' || data === 'quoterefresh') {
-        // Clear queue when quote packs change
         localStorage.removeItem('quoteQueue');
         localStorage.removeItem('currentQuote');
         getQuote();

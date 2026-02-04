@@ -22,11 +22,9 @@ const FileUpload = memo(({ id, type, accept, loadFunction, multiple }) => {
           return loadFunction(e.target.result);
         };
       } else {
-        // Pass files directly to loadFunction if it's a newer implementation
         if (typeof loadFunction === 'function' && loadFunction.length === 1) {
           loadFunction(files);
         } else {
-          // Legacy background upload - handle multiple files
           const settings = {};
 
           Object.keys(localStorage).forEach((key) => {
@@ -35,7 +33,6 @@ const FileUpload = memo(({ id, type, accept, loadFunction, multiple }) => {
 
           const settingsSize = new TextEncoder().encode(JSON.stringify(settings)).length;
 
-          // Process each file
           files.forEach((file, index) => {
             if (videoCheck(file.type) === true) {
               if (settingsSize + file.size > 4850000) {

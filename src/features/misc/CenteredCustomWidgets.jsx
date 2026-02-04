@@ -26,7 +26,6 @@ const CenteredCustomWidgets = () => {
     };
   }, []);
 
-  // Only render center-positioned widgets
   const centerWidgets = widgets.filter((w) => w.position === 'center');
 
   if (centerWidgets.length === 0) {

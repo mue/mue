@@ -14,7 +14,6 @@ export async function getImageDimensions(source) {
         width: img.width,
         height: img.height,
       });
-      // Clean up object URL if created
       if (typeof source !== 'string') {
         URL.revokeObjectURL(img.src);
       }
@@ -43,11 +42,9 @@ export async function generateBlurHash(source, componentX = 4, componentY = 3) {
 
     img.onload = () => {
       try {
-        // Create canvas to get pixel data
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
 
-        // Use smaller dimensions for faster processing
         const maxSize = 64;
         const scale = Math.min(maxSize / img.width, maxSize / img.height);
         canvas.width = Math.floor(img.width * scale);
@@ -64,7 +61,6 @@ export async function generateBlurHash(source, componentX = 4, componentY = 3) {
           componentY,
         );
 
-        // Clean up
         if (typeof source !== 'string') {
           URL.revokeObjectURL(img.src);
         }
@@ -91,14 +87,11 @@ export async function generateBlurHash(source, componentX = 4, componentY = 3) {
  * @returns {number} File size in bytes
  */
 export function getDataUrlSize(dataUrl) {
-  // Remove data URL prefix to get just the base64 string
   const base64String = dataUrl.split(',')[1];
   if (!base64String) {
     return 0;
   }
 
-  // Base64 encoding adds ~33% overhead
-  // Actual size = (base64 length * 3) / 4
   const padding = (base64String.match(/=/g) || []).length;
   return Math.floor((base64String.length * 3) / 4 - padding);
 }
@@ -122,9 +115,7 @@ export function getFileName(file, index) {
  * @returns {number} Storage size in bytes (estimate)
  */
 export function calculateStorageSize() {
-  // This is now just an estimate - actual storage is in IndexedDB
-  // We'll calculate it properly from the actual background data
-  return 0; // Will be calculated from actual backgrounds in the component
+  return 0;
 }
 
 /**
@@ -173,25 +164,21 @@ export async function extractVideoThumbnail(videoDataUrl, maxWidth = 320) {
     video.playsInline = true;
 
     video.onloadedmetadata = () => {
-      // Seek to 0.1 seconds to get a better frame than the first black frame
       video.currentTime = 0.1;
     };
 
     video.onseeked = () => {
       try {
-        // Calculate thumbnail dimensions maintaining aspect ratio
         const scale = maxWidth / video.videoWidth;
         const thumbnailWidth = Math.floor(video.videoWidth * scale);
         const thumbnailHeight = Math.floor(video.videoHeight * scale);
 
-        // Create canvas and draw the video frame
         const canvas = document.createElement('canvas');
         canvas.width = thumbnailWidth;
         canvas.height = thumbnailHeight;
         const ctx = canvas.getContext('2d');
         ctx.drawImage(video, 0, 0, thumbnailWidth, thumbnailHeight);
 
-        // Convert to data URL (JPEG for better compression)
         const thumbnail = canvas.toDataURL('image/jpeg', 0.8);
 
         resolve({

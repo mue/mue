@@ -19,7 +19,6 @@ function filterItems(item, filter, categoryFilter) {
     item.author?.toLowerCase().includes(lowerCaseFilter) ||
     item.type?.toLowerCase().includes(lowerCaseFilter);
 
-  // Apply category filter
   if (categoryFilter === 'all') {
     return textMatch;
   }
@@ -74,10 +73,9 @@ function ItemCard({
   const isPhotoPack = item.type === 'photos' || item.type === 'photo_packs';
   const hasSettings = isPhotoPack && item.settings_schema && item.settings_schema.length > 0;
 
-  // Use React state to manage enabled status for immediate UI updates
   const [isEnabled, setIsEnabled] = useState(() => {
     const enabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
-    return enabledPacks[packId] !== false; // Default to enabled if not set
+    return enabledPacks[packId] !== false;
   });
 
   const [showSettingsModal, setShowSettingsModal] = useState(false);
@@ -93,10 +91,8 @@ function ItemCard({
     e.stopPropagation();
     const newState = !isEnabled;
 
-    // Update local state immediately for UI responsiveness
     setIsEnabled(newState);
 
-    // Update localStorage
     const enabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
     enabledPacks[packId] = newState;
     localStorage.setItem('enabledPacks', JSON.stringify(enabledPacks));
@@ -105,17 +101,13 @@ function ItemCard({
       onTogglePack(packId, newState);
     }
 
-    // Clear queue when toggling pack state to prevent stale content
     if (item.type === 'quotes') {
-      // Clear quote queue
       localStorage.removeItem('quoteQueue');
       localStorage.removeItem('currentQuote');
       EventBus.emit('refresh', 'quote');
     } else if (item.type === 'photos') {
-      // Clear photo pack queue
       localStorage.removeItem('photoPackQueue');
       localStorage.removeItem('currentPhoto');
-      // Only refresh if background is currently blank/black to avoid jarring changes
       const backgroundImage = document.getElementById('backgroundImage');
       if (!backgroundImage || !backgroundImage.style.backgroundImage) {
         EventBus.emit('refresh', 'background');
@@ -285,7 +277,6 @@ function Items({
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortType, setSortType] = useState(localStorage.getItem('sortMarketplace') || 'a-z');
 
-  // Cache installed items lookup - only parse localStorage once
   const installedNames = useMemo(() => {
     const installed = JSON.parse(localStorage.getItem('installed')) || [];
     return new Set(installed.map((item) => item.name));

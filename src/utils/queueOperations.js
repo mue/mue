@@ -17,21 +17,19 @@ const QUEUE_KEYS = {
  * @param {string} type - Queue type to clear: 'all', 'api', 'photo_pack', or 'custom'
  *
  * @example
- * // Clear all queues
+ *
  * clearBackgroundQueues('all');
  *
- * // Clear only API queue
+ *
  * clearBackgroundQueues('api');
  */
 export function clearBackgroundQueues(type = 'all') {
   try {
     if (type === 'all') {
-      // Clear all queue types
       Object.values(QUEUE_KEYS).forEach((key) => {
         localStorage.removeItem(key);
       });
     } else if (QUEUE_KEYS[type]) {
-      // Clear specific queue type
       localStorage.removeItem(QUEUE_KEYS[type]);
     } else {
       console.warn(`Unknown queue type: ${type}`);
@@ -48,34 +46,30 @@ export function clearBackgroundQueues(type = 'all') {
  * @param {string} settingName - The name of the setting that changed
  *
  * @example
- * // User changed background type
+ *
  * clearQueuesOnSettingChange('backgroundType');
  *
- * // User changed API categories
+ *
  * clearQueuesOnSettingChange('apiCategories');
  *
- * // User installed a photo pack
+ *
  * clearQueuesOnSettingChange('packInstall');
  */
 export function clearQueuesOnSettingChange(settingName) {
   const clearTriggers = {
-    // Clear all queues
-    backgroundType: 'all', // Background type changed
+    backgroundType: 'all',
 
-    // Clear API queue only
-    backgroundAPI: 'api', // API provider changed (Mue <-> Unsplash)
-    apiCategories: 'api', // Categories changed
-    apiQuality: 'api', // Quality changed
-    unsplashCollections: 'api', // Unsplash collections changed
-    backgroundExclude: 'api', // Exclude list changed
+    backgroundAPI: 'api',
+    apiCategories: 'api',
+    apiQuality: 'api',
+    unsplashCollections: 'api',
+    backgroundExclude: 'api',
 
-    // Clear photo pack queue only
-    packInstall: 'photo_pack', // Photo pack installed
-    packUninstall: 'photo_pack', // Photo pack uninstalled
+    packInstall: 'photo_pack',
+    packUninstall: 'photo_pack',
 
-    // Clear custom queue only
-    customModified: 'custom', // Custom background modified
-    customDeleted: 'custom', // Custom background deleted
+    customModified: 'custom',
+    customDeleted: 'custom',
   };
 
   const queueType = clearTriggers[settingName];

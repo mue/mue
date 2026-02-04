@@ -14,7 +14,6 @@ export function safeParseJSON(key, fallback = null, reinitialize = false) {
     const parsed = JSON.parse(item);
     return parsed !== null ? parsed : fallback;
   } catch (error) {
-    // Corrupt data - optionally reinitialize
     if (reinitialize && fallback !== null) {
       localStorage.setItem(key, JSON.stringify(fallback));
     }

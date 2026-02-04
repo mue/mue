@@ -28,7 +28,7 @@ const Dropdown = memo((props) => {
       setIsClosing(false);
       setFocusedIndex(-1);
       setSearchQuery('');
-    }, 200); // Match animation duration
+    }, 200);
   }, []);
 
   useEffect(() => {
@@ -47,7 +47,6 @@ const Dropdown = memo((props) => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [closeDropdown]);
 
-  // Memoize items count to avoid unnecessary recalculations
   const itemsCount = useMemo(() => props.items.filter((i) => i !== null).length, [props.items]);
 
   const calculatePosition = useCallback(() => {
@@ -56,14 +55,11 @@ const Dropdown = memo((props) => {
       const gap = 4;
       const viewportHeight = window.innerHeight;
 
-      // Estimate menu height (will be more accurate after first render)
       const estimatedMenuHeight = Math.min(itemsCount * 44, 250);
 
-      // Calculate if dropdown would overflow bottom of viewport
       const spaceBelow = viewportHeight - rect.bottom - gap;
       const spaceAbove = rect.top - gap;
 
-      // If not enough space below but more space above, flip to top
       const shouldFlipUp = spaceBelow < estimatedMenuHeight && spaceAbove > spaceBelow;
 
       return {
@@ -83,7 +79,6 @@ const Dropdown = memo((props) => {
     setIsOpen(true);
   }, [calculatePosition]);
 
-  // Update dropdown position on scroll or resize
   useEffect(() => {
     if (!isOpen) return;
 
@@ -98,11 +93,9 @@ const Dropdown = memo((props) => {
       });
     };
 
-    // Listen to window scroll and resize
     window.addEventListener('scroll', updatePosition, { passive: true });
     window.addEventListener('resize', updatePosition, { passive: true });
 
-    // Find and listen to scrollable ancestors
     let element = controlRef.current?.parentElement;
     const scrollableElements = [];
     while (element) {
@@ -127,7 +120,6 @@ const Dropdown = memo((props) => {
 
   useEffect(() => {
     if (isOpen && props.searchable && searchInputRef.current) {
-      // Focus the search input when dropdown opens
       setTimeout(() => searchInputRef.current?.focus(), 0);
     }
   }, [isOpen, props.searchable]);
@@ -153,7 +145,6 @@ const Dropdown = memo((props) => {
   );
 
   const handleInputFocus = useCallback(() => {
-    // When focusing, if not default value, pre-fill with current value for editing
     const defaultValue = props.default || props.items[0]?.value;
     if (value !== defaultValue && !searchQuery) {
       const currentItem = props.items.find((item) => item?.value === value);
@@ -257,7 +248,6 @@ const Dropdown = memo((props) => {
       e.stopPropagation();
       setSearchQuery('');
       if (props.searchable) {
-        // Reset to default value (first item, usually "Automatic")
         const defaultValue = props.default || props.items[0]?.value;
         onChange(defaultValue);
       }
@@ -273,7 +263,6 @@ const Dropdown = memo((props) => {
   const selectedItem = props.items.find((item) => item?.value === value);
   const defaultValue = props.default || props.items[0]?.value;
 
-  // Filter items based on search query
   const filteredItems =
     props.searchable && searchQuery
       ? props.items.filter(

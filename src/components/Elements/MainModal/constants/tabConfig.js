@@ -28,14 +28,12 @@ import {
   MdCollectionsBookmark,
 } from 'react-icons/md';
 
-// Tab type constants
 export const TAB_TYPES = {
   SETTINGS: 'settings',
   LIBRARY: 'library',
   DISCOVER: 'discover',
 };
 
-// Icon component mapping - using component references instead of elements
 export const ICON_COMPONENTS = {
   SETTINGS: MdTune,
   LIBRARY: MdBookmarks,
@@ -63,7 +61,6 @@ export const ICON_COMPONENTS = {
   COLLECTIONS: MdCollectionsBookmark,
 };
 
-// Message keys for icon mapping
 export const MESSAGE_KEYS = {
   OVERVIEW: 'modals.main.settings.sections.order.title',
   SETTINGS: 'modals.main.navbar.settings',
@@ -95,8 +92,6 @@ export const MESSAGE_KEYS = {
   COLLECTIONS: 'modals.main.marketplace.collections',
 };
 
-// Helper to get icon component by translated label
-// This function builds a map at runtime using variables.getMessage
 export const getIconComponent = (label, variables) => {
   const iconMap = {
     [variables.getMessage(MESSAGE_KEYS.OVERVIEW)]: ICON_COMPONENTS.OVERVIEW,
@@ -132,7 +127,6 @@ export const getIconComponent = (label, variables) => {
   return iconMap[label];
 };
 
-// Navbar configuration
 export const NAVBAR_BUTTONS = [
   {
     tab: TAB_TYPES.SETTINGS,
@@ -151,7 +145,6 @@ export const NAVBAR_BUTTONS = [
   },
 ];
 
-// Labels that should have dividers after them
 export const DIVIDER_LABELS = [
   'modals.main.settings.sections.weather.title',
   'modals.main.settings.sections.language.title',

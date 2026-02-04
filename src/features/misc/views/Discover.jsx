@@ -15,14 +15,11 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
   const [lightboxImg, setLightboxImg] = useState(null);
   const { installItem, uninstallItem } = useMarketplaceInstall();
 
-  // Check for offline mode
   const offlineMode = localStorage.getItem('offlineMode') === 'true';
-  // Check for preview mode
   const isPreviewMode = localStorage.getItem('showWelcome') === 'true';
   const previewParam = isPreviewMode ? '&preview=true' : '';
   const isOffline = navigator.onLine === false || offlineMode;
 
-  // Clear breadcrumbs when component unmounts (navigating away from discover)
   useEffect(() => {
     return () => {
       if (onBreadcrumbsChange) {
@@ -31,7 +28,6 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
     };
   }, [onBreadcrumbsChange]);
 
-  // Helper function to resolve auto theme
   const getResolvedTheme = () => {
     const theme = localStorage.getItem('theme') || 'auto';
     if (theme === 'auto') {
@@ -43,25 +39,19 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
   };
 
   useEffect(() => {
-    // Skip category navigation if we have a deep link item to navigate to
     if (deepLinkData?.itemId) {
       return;
     }
 
-    // Show loader when category changes
     setIsLoading(true);
-    // Clear breadcrumbs when navigating to a new category
     if (onBreadcrumbsChange) {
       onBreadcrumbsChange([]);
     }
 
-    // Get current theme
     const theme = getResolvedTheme();
     const themeParam = `&theme=${theme}`;
 
-    // Update iframe src with category
     if (iframeRef.current) {
-      // Collections use path-based routing, others use query params
       if (category === 'collections') {
         iframeRef.current.src = `${MARKETPLACE_URL}/collections?embed=true${previewParam}${themeParam}`;
       } else {
@@ -71,7 +61,6 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
   }, [category, onBreadcrumbsChange, previewParam, deepLinkData]);
 
   useEffect(() => {
-    // Check for item parameter in URL and update iframe
     const checkAndLoadItem = () => {
       const hash = window.location.hash;
       const urlParams = new URLSearchParams(hash.split('?')[1]);
@@ -80,16 +69,13 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
       if (itemId && iframeRef.current) {
         setIsLoading(true);
 
-        // Get current theme
         const theme = getResolvedTheme();
         const themeParam = `&theme=${theme}`;
 
-        // Get item from localStorage to determine type
         const installed = JSON.parse(localStorage.getItem('installed')) || [];
         const item = installed.find((i) => i.name === itemId);
 
         if (item) {
-          // Map item type to URL path
           const pathMap = {
             photo_packs: 'packs',
             quote_packs: 'packs',
@@ -99,19 +85,15 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
           const pathSegment = pathMap[item.type] || 'packs';
           const itemIdToUse = item.id || itemId;
 
-          // Navigate to /packs/{id} or /presets/{id}
           iframeRef.current.src = `${MARKETPLACE_URL}/${pathSegment}/${itemIdToUse}?embed=true${previewParam}${themeParam}`;
         } else {
-          // Fallback if item not found in localStorage
           iframeRef.current.src = `${MARKETPLACE_URL}/packs/${itemId}?embed=true${previewParam}${themeParam}`;
         }
       }
     };
 
-    // Check on mount and when category changes
     checkAndLoadItem();
 
-    // Listen for hash changes and popstate (from history.pushState)
     window.addEventListener('hashchange', checkAndLoadItem);
     window.addEventListener('popstate', checkAndLoadItem);
 
@@ -121,14 +103,12 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
     };
   }, [category, previewParam]);
 
-  // Handle deep link item navigation on mount
   useEffect(() => {
     if (deepLinkData?.itemId && iframeRef.current) {
       setIsLoading(true);
       const theme = getResolvedTheme();
       const themeParam = `&theme=${theme}`;
 
-      // Map category to URL path segment
       const pathMap = {
         photo_packs: 'packs',
         quote_packs: 'packs',
@@ -143,9 +123,7 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
   }, [deepLinkData, previewParam]);
 
   useEffect(() => {
-    // Listen for postMessage events from the iframe
     const handleMessage = (event) => {
-      // Verify the origin if needed
       const marketplaceOrigin = new URL(MARKETPLACE_URL).origin;
       if (event.origin !== marketplaceOrigin) {
         return;
@@ -156,23 +134,19 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
       switch (type) {
         case 'marketplace:item:install':
           if (payload?.item) {
-            // Fetch fresh data from API to ensure we get latest version with blur_hash
             const itemId = payload.item.id || payload.item.name;
             const itemType = payload.item.type;
 
             fetch(`${variables.constants.API_URL}/marketplace/item/${itemId}`)
               .then((res) => res.json())
               .then(({ data }) => {
-                // Install with fresh data from API
                 installItem(data.type, data);
               })
               .catch((error) => {
                 console.error('Failed to fetch item from API, using iframe data:', error);
-                // Fallback to iframe data if API fetch fails
                 installItem(itemType, payload.item);
               })
               .finally(() => {
-                // Send confirmation back to iframe
                 if (iframeRef.current?.contentWindow) {
                   iframeRef.current.contentWindow.postMessage(
                     {
@@ -189,7 +163,6 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
         case 'marketplace:item:uninstall':
           if (payload?.item) {
             uninstallItem(payload.item.type, payload.item.name || payload.item.display_name);
-            // Send confirmation back to iframe
             if (iframeRef.current?.contentWindow) {
               iframeRef.current.contentWindow.postMessage(
                 {
@@ -204,11 +177,9 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
 
         case 'marketplace:item:check-installed':
           if (payload?.id) {
-            // Check if item is installed
             const installed = JSON.parse(localStorage.getItem('installed')) || [];
             const isInstalled = installed.some((item) => item.id === payload.id);
 
-            // Send status back to iframe
             if (iframeRef.current?.contentWindow) {
               iframeRef.current.contentWindow.postMessage(
                 {
@@ -224,7 +195,6 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
         case 'marketplace:breadcrumbs':
           if (payload?.breadcrumbs && onBreadcrumbsChange) {
             onBreadcrumbsChange(payload.breadcrumbs);
-            // Scroll modal content to top when navigating to an item
             if (payload.breadcrumbs.length > 0) {
               const modalContent = document.querySelector('.modalTabContent');
               if (modalContent) {
@@ -242,7 +212,6 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
           break;
 
         case 'marketplace:navigate':
-          // Update parent URL when iframe navigates
           if (payload?.itemId) {
             updateHash(`#discover/${payload.itemId}`);
           } else if (payload?.category) {
@@ -265,12 +234,10 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
   const handleLoad = () => {
     setIsLoading(false);
 
-    // Clear breadcrumbs when iframe loads - if on an item page, iframe will send new breadcrumbs
     if (onBreadcrumbsChange) {
       onBreadcrumbsChange([]);
     }
 
-    // Send theme to iframe after it loads
     if (iframeRef.current?.contentWindow) {
       const theme = getResolvedTheme();
       iframeRef.current.contentWindow.postMessage(
@@ -283,7 +250,6 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
     }
   };
 
-  // Show offline error message if offline
   if (isOffline) {
     return (
       <div className="emptyItems">
@@ -330,7 +296,6 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
         src={(() => {
           const theme = getResolvedTheme();
           const themeParam = `&theme=${theme}`;
-          // If we have a deep link item ID, navigate directly to the item
           if (deepLinkData?.itemId) {
             const pathMap = {
               photo_packs: 'packs',

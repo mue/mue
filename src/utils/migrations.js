@@ -3,7 +3,6 @@
  * Run once on extension load after update
  */
 export function migrateAPIUsersToPhotoPacks() {
-  // Check if migration already completed
   if (localStorage.getItem('api_migration_completed') === 'true') {
     return;
   }
@@ -11,15 +10,12 @@ export function migrateAPIUsersToPhotoPacks() {
   const backgroundType = localStorage.getItem('backgroundType');
   const backgroundAPI = localStorage.getItem('backgroundAPI');
 
-  // Only migrate if user is currently using API backgrounds
   if (backgroundType !== 'api') {
     localStorage.setItem('api_migration_completed', 'true');
     return;
   }
 
   let packToInstall = null;
-
-  // Determine which API pack to install
   if (backgroundAPI === 'mue') {
     packToInstall = {
       id: 'mue_photos',
@@ -58,7 +54,6 @@ export function migrateAPIUsersToPhotoPacks() {
       icon_url: 'https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png',
     };
 
-    // Port existing settings
     const existingQuality = localStorage.getItem('apiQuality') || 'high';
     const existingCategories = JSON.parse(localStorage.getItem('apiCategories') || '["nature"]');
 
@@ -93,7 +88,6 @@ export function migrateAPIUsersToPhotoPacks() {
       icon_url: 'https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png',
     };
 
-    // Port existing Unsplash settings (collection IDs)
     const existingCollections = localStorage.getItem('unsplashCollections') || '';
 
     const migratedSettings = {
@@ -106,16 +100,13 @@ export function migrateAPIUsersToPhotoPacks() {
   }
 
   if (packToInstall) {
-    // Install the pack
     const installed = JSON.parse(localStorage.getItem('installed') || '[]');
 
-    // Check if not already installed
     if (!installed.some((item) => item.id === packToInstall.id)) {
       installed.push(packToInstall);
       localStorage.setItem('installed', JSON.stringify(installed));
     }
 
-    // Initialize cache
     const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
     if (!apiPackCache[packToInstall.id]) {
       apiPackCache[packToInstall.id] = {
@@ -126,7 +117,6 @@ export function migrateAPIUsersToPhotoPacks() {
       localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
     }
 
-    // Add to ready list if MUE (no API key required)
     if (packToInstall.api_provider === 'mue') {
       const apiPacksReady = JSON.parse(localStorage.getItem('api_packs_ready') || '[]');
       if (!apiPacksReady.includes(packToInstall.id)) {
@@ -135,13 +125,10 @@ export function migrateAPIUsersToPhotoPacks() {
       }
     }
 
-    // Change background type to photo_pack
     localStorage.setItem('backgroundType', 'photo_pack');
 
-    // Clear old queue
     localStorage.removeItem('imageQueue');
 
-    // Fetch initial photos for MUE
     if (packToInstall.api_provider === 'mue') {
       import('../features/background/api/photoPackAPI').then((module) => {
         module.refreshAPIPackCache(packToInstall.id);
@@ -153,6 +140,5 @@ export function migrateAPIUsersToPhotoPacks() {
     );
   }
 
-  // Mark migration as completed
   localStorage.setItem('api_migration_completed', 'true');
 }

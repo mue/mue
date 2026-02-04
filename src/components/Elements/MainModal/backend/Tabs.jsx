@@ -20,7 +20,6 @@ const Tabs = ({
 }) => {
   const t = useT();
 
-  // Find initial section from deep link if available
   const getInitialSection = () => {
     if (deepLinkData?.section && sections) {
       const section = sections.find((s) => s.name === deepLinkData.section);
@@ -46,7 +45,6 @@ const Tabs = ({
   const [searchQuery, setSearchQuery] = useState('');
   const contentRef = useRef(null);
 
-  // Derive currentTab label from currentName - avoids setState in effects
   const currentTab = (() => {
     if (sections && currentName) {
       const section = sections.find((s) => s.name === currentName);
@@ -54,7 +52,6 @@ const Tabs = ({
         return t(section.label);
       }
     }
-    // Fallback: find label from children
     const child = children.find((c) => c.props.name === currentName);
     return child?.props.label || children[0]?.props.label;
   })();
@@ -66,32 +63,27 @@ const Tabs = ({
 
     setCurrentName(name);
 
-    // Scroll content to top when changing tabs
     if (contentRef.current) {
       contentRef.current.scrollTop = 0;
     }
 
-    // Notify parent of section change with both label and name
     if (onSectionChange) {
       onSectionChange(tab, name);
     }
   };
 
-  // Notify parent of initial section on mount
   useEffect(() => {
     if (onSectionChange && currentTab) {
       onSectionChange(currentTab, currentName);
     }
   }, []);
 
-  // Handle navigation trigger for settings sections (popstate)
   // useLayoutEffect is appropriate here for synchronous state updates before paint
   useLayoutEffect(() => {
     if (navigationTrigger?.type === 'settings-section' && sections) {
       const section = sections.find((s) => s.name === navigationTrigger.data);
       if (section) {
         setCurrentName(section.name);
-        // Scroll content to top when navigating via browser history
         if (contentRef.current) {
           contentRef.current.scrollTop = 0;
         }
@@ -99,12 +91,10 @@ const Tabs = ({
     }
   }, [navigationTrigger, sections]);
 
-  // Reset to first tab when requested
   // useLayoutEffect is appropriate here for synchronous state updates before paint
   useLayoutEffect(() => {
     if (resetToFirst) {
       setCurrentName(children[0]?.props.name);
-      // Scroll content to top when resetting to first tab
       if (contentRef.current) {
         contentRef.current.scrollTop = 0;
       }
@@ -125,16 +115,13 @@ const Tabs = ({
     localStorage.setItem('sidebarCollapsed', newState.toString());
   };
 
-  // Show sidebar for Settings and Discover tabs
   const showSidebar = activeTab === TAB_TYPES.SETTINGS || activeTab === TAB_TYPES.DISCOVER;
 
-  // Filter tabs based on search query
   const filteredChildren = children.filter((tab) => {
     if (!searchQuery.trim()) return true;
     return tab.props.label.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
-  // Keyboard shortcut for sidebar toggle (Ctrl/Cmd + B)
   useEffect(() => {
     const handleKeyPress = (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key === 'b') {

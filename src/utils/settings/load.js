@@ -33,7 +33,6 @@ export function loadSettings(hotreload) {
       try {
         document.head.removeChild(document.getElementById(element));
       } catch (e) {
-        // Disregard exception if custom stuff doesn't exist
       }
     });
   }
@@ -54,7 +53,6 @@ export function loadSettings(hotreload) {
       try {
         document.querySelector('.' + element).classList.add('textBorder');
       } catch (e) {
-        // Disregard exception
       }
     });
   } else {
@@ -63,7 +61,6 @@ export function loadSettings(hotreload) {
       try {
         document.querySelector('.' + element).classList.remove('textBorder');
       } catch (e) {
-        // Disregard exception
       }
     });
   }
@@ -103,7 +100,6 @@ export function loadSettings(hotreload) {
     );
   }
 
-  // If the extension got updated and the new app links default settings
   // were not set, set them
   if (localStorage.getItem('applinks') === null) {
     localStorage.setItem('applinks', JSON.stringify([]));

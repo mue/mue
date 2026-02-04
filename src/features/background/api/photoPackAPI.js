@@ -1,6 +1,5 @@
 import variables from 'config/variables';
 
-// Provider-specific response parsers
 const responseParser = {
   pexels: (data, query) => {
     const photos = data.photos || [];
@@ -37,7 +36,6 @@ const responseParser = {
     if (photos.length === 0) return null;
     const photo = photos[Math.floor(Math.random() * photos.length)];
 
-    // Get photo details
     const infoParams = new URLSearchParams({
       method: 'flickr.photos.getInfo',
       api_key: apiKey,
@@ -59,7 +57,6 @@ const responseParser = {
     };
   },
 
-  // Default parser for Mue backend (already returns correct format)
   default: (data) => ({
     photographer: data.photographer,
     location: data.location?.name || data.location || 'Unknown',
@@ -92,9 +89,7 @@ export async function fetchFromProvider(packId, pack, settings) {
     const headers = {};
     let apiKey = null;
 
-    // Build query params and headers based on provider
     if (pack.direct_api) {
-      // Direct API calls - provider-specific logic
       switch (pack.api_provider) {
         case 'pexels':
           apiKey = settings[`photoPack_${packId}_api_key`];
@@ -144,7 +139,6 @@ export async function fetchFromProvider(packId, pack, settings) {
           break;
       }
     } else {
-      // Backend proxy - send settings as params (backend handles the rest)
       pack.settings_schema?.forEach((setting) => {
         let value = settings[`photoPack_${packId}_${setting.id}`];
         if (setting.secure && value) {
@@ -168,7 +162,6 @@ export async function fetchFromProvider(packId, pack, settings) {
 
     const data = await response.json();
 
-    // Parse response using provider-specific parser
     const parser = responseParser[pack.api_provider] || responseParser.default;
     return await parser(data, params, apiKey ? atob(apiKey) : null);
 
@@ -217,7 +210,6 @@ export async function refreshAPIPackCache(packId) {
 
   const settings = JSON.parse(localStorage.getItem(`photopack_settings_${packId}`) || '{}');
 
-  // Use generic provider function that works for any API
   const promises = Array.from({ length: 8 }, () => fetchFromProvider(packId, pack, settings));
   const results = await Promise.all(promises);
   const validPhotos = results.filter(Boolean);
@@ -227,7 +219,6 @@ export async function refreshAPIPackCache(packId) {
     return false;
   }
 
-  // Update cache
   const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
   apiPackCache[packId] = {
     photos: validPhotos,
@@ -240,7 +231,6 @@ export async function refreshAPIPackCache(packId) {
     return true;
   } catch (error) {
     if (error.name === 'QuotaExceededError') {
-      // Keep only 5 most recent photos
       apiPackCache[packId].photos = validPhotos.slice(0, 5);
       localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
     }
@@ -257,14 +247,12 @@ export async function checkAndRefreshAPIPacks() {
   const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
   const installed = JSON.parse(localStorage.getItem('installed') || '[]');
 
-  // Default 1 hour refresh interval
   const DEFAULT_CACHE_REFRESH_INTERVAL = 3600 * 1000; // 1 hour in milliseconds
 
   for (const packId of apiPacksReady) {
     const pack = installed.find((p) => p.id === packId);
     const cached = apiPackCache[packId];
 
-    // Use pack-specific interval or default
     const refreshInterval = pack?.cache_refresh_interval
       ? pack.cache_refresh_interval * 1000
       : DEFAULT_CACHE_REFRESH_INTERVAL;
@@ -275,7 +263,6 @@ export async function checkAndRefreshAPIPacks() {
       cached.photos.length < 3;
 
     if (needsRefresh) {
-      // Don't block - refresh in background
       refreshAPIPackCache(packId).catch((error) => {
         console.error(`Failed to refresh ${packId}:`, error);
       });
@@ -297,16 +284,13 @@ export function buildPhotoPool() {
   installed.forEach((pack) => {
     if (pack.type !== 'photos') return;
 
-    // Filter by enabled status - default to enabled if not in enabledPacks object
     const packId = pack.id || pack.name;
     if (enabledPacks[packId] === false) return;
 
     if (pack.api_enabled) {
-      // API pack - check if configured and ready
       if (apiPacksReady.includes(pack.id)) {
         const cached = apiPackCache[pack.id];
         if (cached && cached.photos.length > 0) {
-          // Add cached photos with source metadata
           cached.photos.forEach((photo) => {
             pool.push({
               ...photo,
@@ -317,7 +301,6 @@ export function buildPhotoPool() {
         }
       }
     } else {
-      // Static pack - add all photos
       pack.photos.forEach((photo) => {
         pool.push({
           photographer: photo.photographer,

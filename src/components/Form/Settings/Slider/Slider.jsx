@@ -56,7 +56,6 @@ const SliderComponent = memo((props) => {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
 
-      // Easing function for smooth animation
       const easeOutCubic = 1 - Math.pow(1 - progress, 3);
 
       const currentValue = startValue + (endValue - startValue) * easeOutCubic;
@@ -69,7 +68,6 @@ const SliderComponent = memo((props) => {
       if (progress < 1) {
         animationRef.current = requestAnimationFrame(animate);
       } else {
-        // Ensure we end exactly at the target value
         localStorage.setItem(props.name, endValue);
         setValue(endValue);
         EventBus.emit('refresh', props.category);

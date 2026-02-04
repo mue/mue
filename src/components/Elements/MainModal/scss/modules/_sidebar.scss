@@ -14,7 +14,6 @@
     flex-shrink: 0;
     transition: min-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
-    // Container for search bar and toggle button
     .sidebarHeader {
       display: flex;
       flex-direction: row-reverse;
@@ -128,7 +127,6 @@
         color: t($color);
       }
 
-      // Active indicator line
       &::before {
         content: '';
         position: absolute;
@@ -142,7 +140,6 @@
       }
     }
 
-    // Collapsed state
     &.collapsed {
       min-width: 64px;
       padding: 0.75rem 0.25rem;
@@ -230,7 +227,6 @@
   margin-right: 0 !important;
 }
 
-// Sidebar skeleton loader
 .sidebarSkeleton {
   padding: 0.5rem 0.2rem;
 

@@ -4,7 +4,6 @@ import variables from 'config/variables';
 
 export default class Stats {
   static async achievementTrigger(stats) {
-    // Disable achievements in preview mode
     if (localStorage.getItem('showWelcome') === 'true') {
       return;
     }

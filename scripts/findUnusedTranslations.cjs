@@ -65,27 +65,19 @@ function isKeyUsed(key, files, fileContentsCache) {
   const keySegments = key.split('.');
   const patterns = [];
 
-  // Pattern 1: Full key match
-  // Example: 'modals.main.settings.sections.greeting.event_name'
   const escapedFullKey = key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   patterns.push(new RegExp(`['"\`]${escapedFullKey}['"\`]`, 'g'));
 
-  // Pattern 2: Last 2 segments (catches most template literal cases)
-  // Example: 'greeting.event_name' for dynamic construction like `${PREFIX}.event_name`
   if (keySegments.length >= 2) {
     const lastTwo = keySegments.slice(-2).map(s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('\\.');
     patterns.push(new RegExp(`['"\`]${lastTwo}['"\`]`, 'g'));
   }
 
-  // Pattern 3: Last 3 segments (more specific than 2, less than full)
-  // Example: 'sections.greeting.event_name'
   if (keySegments.length >= 3) {
     const lastThree = keySegments.slice(-3).map(s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('\\.');
     patterns.push(new RegExp(`['"\`]${lastThree}['"\`]`, 'g'));
   }
 
-  // Pattern 4: Final segment after a dot (for deeply nested template literals)
-  // Example: .event_name' in template literal like `${SECTION}.${SUBSECTION}.event_name`
   if (keySegments.length >= 3) {
     const finalSegment = keySegments[keySegments.length - 1].replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     patterns.push(new RegExp(`\\.${finalSegment}['"\`]`, 'g'));

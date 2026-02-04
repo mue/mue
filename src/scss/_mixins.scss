@@ -1,6 +1,5 @@
 @use 'sass:list';
 
-// Source https://joshbroton.com/quick-fix-sass-mixins-for-css-keyframe-animations/
 @mixin animation($animate...) {
   $max: list.length($animate);
   $animations: '';

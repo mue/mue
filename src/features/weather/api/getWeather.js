@@ -13,28 +13,25 @@ const getLocalizedTempSymbol = (format) => {
   const language = localStorage.getItem('language') || 'en_GB';
   const baseLang = language.split('_')[0];
 
-  // Temperature symbols for different languages
   const localizedSymbols = {
     ar: {
-      celsius: '°س', // Arabic: Celsius (سيلزيوس)
-      fahrenheit: '°ف', // Arabic: Fahrenheit (فهرنهايت)
-      kelvin: 'ك', // Arabic: Kelvin (كلفن)
+      celsius: '°س',
+      fahrenheit: '°ف',
+      kelvin: 'ك',
     },
     fa: {
-      celsius: '°س', // Persian: Celsius
-      fahrenheit: '°ف', // Persian: Fahrenheit
-      kelvin: 'ک', // Persian: Kelvin
+      celsius: '°س',
+      fahrenheit: '°ف',
+      kelvin: 'ک',
     },
   };
 
-  // Default Western symbols
   const defaultSymbols = {
     celsius: '°C',
     fahrenheit: '°F',
     kelvin: 'K',
   };
 
-  // Return localized symbol if available, otherwise default
   return localizedSymbols[baseLang]?.[format] || defaultSymbols[format] || 'K';
 };
 
@@ -49,13 +46,10 @@ export const getWeather = async (location) => {
   }
 
   try {
-    // Build URL based on location type
     let url;
     if (typeof location === 'object' && location.lat && location.lon) {
-      // New format: use coordinates (preferred)
       url = `${variables.constants.API_URL}/weather?lat=${location.lat}&lon=${location.lon}`;
     } else {
-      // Legacy format: use city name string
       const cityName =
         typeof location === 'object' ? location.displayName || location.name : location;
       url = `${variables.constants.API_URL}/weather?city=${encodeURIComponent(cityName)}`;
@@ -69,7 +63,6 @@ export const getWeather = async (location) => {
     }
 
     const data = await response.json();
-    console.log('Weather API response:', data);
 
     if (data.status === 404) {
       return {

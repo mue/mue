@@ -38,7 +38,6 @@ function Search() {
 
       setTimeout(() => {
         variables.stats.postEvent('feature', 'Voice search');
-        // Use Chrome Search API - respects user's default search engine
         if (chrome && chrome.search && chrome.search.query) {
           chrome.search
             .query({
@@ -47,11 +46,9 @@ function Search() {
             })
             .catch((error) => {
               console.error('Search API error:', error);
-              // Fallback to Google search if API fails
               window.location.href = `https://www.google.com/search?q=${encodeURIComponent(searchText.value)}`;
             });
         } else {
-          // Fallback for browsers without chrome.search API
           window.location.href = `https://www.google.com/search?q=${encodeURIComponent(searchText.value)}`;
         }
       }, 1000);
@@ -96,7 +93,6 @@ function Search() {
     const value = e.target.value || document.getElementById('searchtext').value || 'mue fast';
     variables.stats.postEvent('feature', 'Search');
 
-    // Use Chrome Search API - respects user's default search engine
     if (chrome && chrome.search && chrome.search.query) {
       chrome.search
         .query({
@@ -105,11 +101,9 @@ function Search() {
         })
         .catch((error) => {
           console.error('Search API error:', error);
-          // Fallback to Google search if API fails
           window.location.href = `https://www.google.com/search?q=${encodeURIComponent(value)}`;
         });
     } else {
-      // Fallback for browsers without chrome.search API
       window.location.href = `https://www.google.com/search?q=${encodeURIComponent(value)}`;
     }
   }

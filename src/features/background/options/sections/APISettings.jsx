@@ -36,7 +36,6 @@ const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
               options={backgroundCategories}
               name="apiCategories"
               onChange={() => {
-                // Clear prefetch queue when categories change
                 clearQueuesOnSettingChange('apiCategories');
               }}
             />
@@ -49,7 +48,6 @@ const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
             element=".other"
             items={APIQualityOptions}
             onChange={() => {
-              // Clear prefetch queue when quality changes
               clearQueuesOnSettingChange('apiQuality');
             }}
           />
@@ -91,7 +89,6 @@ const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
               category="background"
               element="#backgroundImage"
               onChange={() => {
-                // Clear prefetch queue when Unsplash collections change
                 clearQueuesOnSettingChange('unsplashCollections');
               }}
             />

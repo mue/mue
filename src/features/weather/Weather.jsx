@@ -17,14 +17,12 @@ const WeatherWidget = memo(() => {
     const stored = localStorage.getItem('location');
     if (!stored) return 'London';
 
-    // Try parsing as new JSON format
     try {
       const parsed = JSON.parse(stored);
       if (parsed && typeof parsed === 'object') {
         return parsed;
       }
     } catch {
-      // Legacy string format
     }
     return stored;
   });
@@ -38,7 +36,6 @@ const WeatherWidget = memo(() => {
       setWeatherData(data);
       setDone(data.done);
     } else {
-      // Fallback if data is undefined
       setWeatherData({ done: true });
       setDone(true);
     }
@@ -71,7 +68,6 @@ const WeatherWidget = memo(() => {
     return <WeatherSkeleton weatherType={weatherType} />;
   }
 
-  // Get display name from location (handles both object and string formats)
   const locationDisplay =
     typeof location === 'object' ? location.displayName || location.name : location;
 

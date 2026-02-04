@@ -10,7 +10,6 @@ export const useMarketplaceInstall = () => {
   const controllerRef = useRef(new AbortController());
 
   const installItem = (type, data) => {
-    // Check if item is already installed before calling install
     const installed = JSON.parse(localStorage.getItem('installed') || '[]');
     const isNewInstall = !installed.some((item) => item.id === data.id || item.name === data.name);
 
@@ -35,12 +34,10 @@ export const useMarketplaceInstall = () => {
       const installed = JSON.parse(localStorage.getItem('installed')) || [];
 
       for (const item of items) {
-        // Skip if already installed
         if (installed.some((i) => i.name === item.display_name)) {
           continue;
         }
 
-        // Fetch full item data
         const itemEndpoint = item.id
           ? `${API_V2_BASE}/item/${item.id}`
           : `${API_V2_BASE}/item/${item.type}/${item.name}`;
@@ -50,7 +47,6 @@ export const useMarketplaceInstall = () => {
         });
         const { data } = await response.json();
 
-        // Install item
         install(data.type, data, false, true);
         variables.stats.postEvent('marketplace-item', `${item.display_name} installed`);
         variables.stats.postEvent('marketplace', 'Install');

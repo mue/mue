@@ -8,10 +8,8 @@ import EventBus from 'utils/eventbus';
 
 import './clock.scss';
 
-// Helper function to format padded time values while preserving padding
 const formatPaddedDigits = (value) => {
   const str = String(value);
-  // Format each digit individually to preserve padding with locale numerals
   return str
     .split('')
     .map((digit) => formatDigits(digit))
@@ -54,7 +52,6 @@ const Clock = () => {
           setTime(now);
           break;
         default: {
-          // Default clock
           let time,
             sec = '';
           const zero = localStorage.getItem('zero');

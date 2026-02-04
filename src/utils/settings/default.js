@@ -10,7 +10,6 @@ export function setDefaultSettings(reset) {
   localStorage.clear();
   defaultSettings.forEach((element) => localStorage.setItem(element.name, element.value));
 
-  // Languages
   const languageCodes = languages.map(({ value }) => value);
   const browserLanguage =
     (navigator.languages &&

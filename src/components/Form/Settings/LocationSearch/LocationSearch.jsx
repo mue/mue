@@ -11,7 +11,6 @@ import './LocationSearch.scss';
 const LocationSearch = memo((props) => {
   const { label, name, category, placeholder, disabled } = props;
 
-  // Load location data from localStorage (new JSON format or legacy string)
   const [locationData, setLocationData] = useState(() => {
     const stored = localStorage.getItem(name);
     if (!stored) return null;
@@ -22,7 +21,6 @@ const LocationSearch = memo((props) => {
         return parsed;
       }
     } catch {
-      // Legacy format: plain string city name
       return { displayName: stored, legacy: true };
     }
     return null;
@@ -139,7 +137,6 @@ const LocationSearch = memo((props) => {
     }
   }, [isOpen]);
 
-  // Debounced search function
   const debouncedSearch = useDebouncedCallback(async (query) => {
     if (query.length < 2) {
       setSuggestions([]);
@@ -147,7 +144,6 @@ const LocationSearch = memo((props) => {
       return;
     }
 
-    // Cancel previous request
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
     }

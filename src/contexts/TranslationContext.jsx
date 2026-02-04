@@ -17,7 +17,6 @@ export function TranslationProvider({ children, initialLanguage }) {
   const [currentLanguage, setCurrentLanguage] = useState(initialLanguage);
   const i18nInstance = useRef(initTranslations(initialLanguage));
 
-  // Update i18n instance when language changes
   useEffect(() => {
     if (currentLanguage !== initialLanguage) {
       i18nInstance.current = initTranslations(currentLanguage);
@@ -27,16 +26,13 @@ export function TranslationProvider({ children, initialLanguage }) {
     document.documentElement.lang = currentLanguage.replace('_', '-');
   }, [currentLanguage, initialLanguage]);
 
-  // Change language function
   const changeLanguage = useCallback(
     (newLanguage) => {
-      // Update the i18n instance
       i18nInstance.current = initTranslations(newLanguage);
       variables.language = i18nInstance.current;
       variables.languagecode = newLanguage;
       document.documentElement.lang = newLanguage.replace('_', '-');
 
-      // Update tab name if it's still the default
       const currentTabName = localStorage.getItem('tabName');
       const oldDefaultTabName = i18nInstance.current?.getMessage(currentLanguage, 'tabname');
 
@@ -49,19 +45,15 @@ export function TranslationProvider({ children, initialLanguage }) {
         document.title = newTabName;
       }
 
-      // Update language in localStorage
       localStorage.setItem('language', newLanguage);
 
-      // Clear weather cache so it refreshes with the new language
       localStorage.removeItem('currentWeather');
 
-      // Update state to trigger re-render
       setCurrentLanguage(newLanguage);
     },
     [currentLanguage],
   );
 
-  // Single translation function - the main API
   const t = useCallback(
     (key, optional = {}) => {
       if (!i18nInstance.current) {
@@ -72,7 +64,6 @@ export function TranslationProvider({ children, initialLanguage }) {
     [currentLanguage],
   );
 
-  // Listen for EventBus language change events (for backward compatibility)
   useEffect(() => {
     const handleLanguageChange = (data) => {
       if (data?.language) {
@@ -87,7 +78,6 @@ export function TranslationProvider({ children, initialLanguage }) {
     };
   }, [changeLanguage]);
 
-  // Update variables.getMessage for backward compatibility
   useEffect(() => {
     variables.getMessage = (key, optional = {}) => t(key, optional);
   }, [t]);
@@ -95,7 +85,7 @@ export function TranslationProvider({ children, initialLanguage }) {
   const value = useMemo(
     () => ({
       language: currentLanguage,
-      languagecode: currentLanguage, // Alias for backward compatibility
+      languagecode: currentLanguage,
       changeLanguage,
       t,
     }),
@@ -113,7 +103,6 @@ export function useTranslation() {
   return context;
 }
 
-// Convenience hook - just returns the t function
 export function useT() {
   const { t } = useTranslation();
   return t;

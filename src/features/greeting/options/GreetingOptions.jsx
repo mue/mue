@@ -45,53 +45,41 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
   const GREETING_SECTION = 'modals.main.settings.sections.greeting';
 
   const addEvent = () => {
-    // Retrieve the current array of events from localStorage
     const customEvents = JSON.parse(localStorage.getItem('customEvents')) || [];
 
-    // Create a new event
     const newEvent = { id: 'widgets.greeting.halloween', name: '', month: 1, date: 1 };
 
-    // Add the new event to the array
     const updatedEvents = [...customEvents, newEvent];
 
-    // Add the new event to the array
     customEvents.push(newEvent);
 
-    // Store the updated array back in localStorage
     localStorage.setItem('customEvents', JSON.stringify(customEvents));
 
     setCustomEvents(updatedEvents);
   };
 
   const removeEvent = (index) => {
-    // Remove the event at the given index
     const updatedEvents = customEvents.filter((_, i) => i !== index);
 
-    // Store the updated array back in localStorage
     localStorage.setItem('customEvents', JSON.stringify(updatedEvents));
 
-    // Update the state
     setCustomEvents(updatedEvents);
   };
 
   const resetEvents = () => {
-    // Reset the events array in localStorage
     localStorage.setItem('customEvents', JSON.stringify(defaultEvents));
 
-    // Update the state
     setCustomEvents(defaultEvents);
     toast(variables.getMessage('toasts.reset'));
   };
 
   const updateEvent = (index, updatedEvent) => {
-    // Update the event in your state
     setCustomEvents((prevEvents) => {
       const newEvents = [...prevEvents];
       newEvents[index] = updatedEvent;
       return newEvents;
     });
 
-    // Update the event in localStorage
     const customEvents = JSON.parse(localStorage.getItem('customEvents') || '[]');
     customEvents[index] = updatedEvent;
     localStorage.setItem('customEvents', JSON.stringify(customEvents));

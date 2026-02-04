@@ -13,7 +13,6 @@ export function useBackgroundLoader(updateBackground, resetBackground) {
     isLoadingRef.current = true;
 
     try {
-      // Check for welcome tab first
       const welcomeTab = localStorage.getItem('welcomeTab');
       if (welcomeTab) {
         const welcomeImage = localStorage.getItem('welcomeImage');
@@ -26,7 +25,7 @@ export function useBackgroundLoader(updateBackground, resetBackground) {
       const data = await getBackgroundData();
       if (data) {
         updateBackground(data);
-        resetStartTime('background'); // Reset timestamp after successful load
+        resetStartTime('background');
       }
     } catch (error) {
       console.error('Failed to load background:', error);
@@ -36,24 +35,20 @@ export function useBackgroundLoader(updateBackground, resetBackground) {
   }, [updateBackground]);
 
   const refreshBackground = useCallback(() => {
-    resetStartTime('background'); // Reset timer on manual refresh
+    resetStartTime('background');
     resetBackground();
     loadBackground();
   }, [loadBackground, resetBackground]);
 
-  // Initial load - check frequency before loading
   useEffect(() => {
-    // Check if we should update based on frequency
     if (shouldUpdateByFrequency('background')) {
       loadBackground();
     } else {
-      // Load cached background without fetching new one
       const cached = localStorage.getItem('currentBackground');
       if (cached) {
         try {
           updateBackground(JSON.parse(cached));
         } catch {
-          // If cache invalid, load new
           loadBackground();
         }
       } else {
