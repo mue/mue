@@ -226,15 +226,17 @@ function ItemCard({
 
         {isAdded && onUninstall && (
           <div className="item-card-actions">
-            <Button
-              type="settings"
-              onClick={(e) => {
-                e.stopPropagation();
-                setShowSettingsModal(true);
-              }}
-              icon={<MdSettings />}
-              style={{ flex: 1 }}
-            />
+            {hasSettings && (
+              <Button
+                type="settings"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowSettingsModal(true);
+                }}
+                icon={<MdSettings />}
+                style={{ flex: 1 }}
+              />
+            )}
             <Button
               type="settings"
               onClick={(e) => {
@@ -247,12 +249,12 @@ function ItemCard({
           </div>
         )}
       </div>
-      {isAdded && (
+      {isAdded && hasSettings && (
         <ItemSettingsModal
           pack={item}
-          open={showSettingsModal}
+          isOpen={showSettingsModal}
           onClose={() => setShowSettingsModal(false)}
-          enabled={enabled}
+          isEnabled={enabled}
         />
       )}
     </div>
