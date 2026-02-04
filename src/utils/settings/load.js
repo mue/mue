@@ -6,6 +6,20 @@ import ExperimentalInit from 'utils/experimental';
  * @param hotreload - boolean
  */
 export function loadSettings(hotreload) {
+  // Migrate old font settings to new widgetFont settings for backwards compatibility
+  if (localStorage.getItem('font') && !localStorage.getItem('widgetFont')) {
+    localStorage.setItem('widgetFont', localStorage.getItem('font'));
+    localStorage.removeItem('font');
+  }
+  if (localStorage.getItem('fontweight') && !localStorage.getItem('widgetFontWeight')) {
+    localStorage.setItem('widgetFontWeight', localStorage.getItem('fontweight'));
+    localStorage.removeItem('fontweight');
+  }
+  if (localStorage.getItem('fontstyle') && !localStorage.getItem('widgetFontStyle')) {
+    localStorage.setItem('widgetFontStyle', localStorage.getItem('fontstyle'));
+    localStorage.removeItem('fontstyle');
+  }
+
   switch (localStorage.getItem('theme')) {
     case 'dark':
       document.body.classList.add('dark');
@@ -28,7 +42,14 @@ export function loadSettings(hotreload) {
 
   if (hotreload === true) {
     // remove old custom stuff and add new
-    const custom = ['customcss', 'customfont'];
+    const custom = [
+      'customcss',
+      'customwidgetfont',
+      'customsettingsfont',
+      'customgreetingfont',
+      'customclockfont',
+      'customquotefont',
+    ];
     custom.forEach((element) => {
       try {
         document.head.removeChild(document.getElementById(element));
@@ -74,23 +95,158 @@ export function loadSettings(hotreload) {
     document.head.insertAdjacentHTML('beforeend', '<style id="customcss">' + css + '</style>');
   }
 
-  const font = localStorage.getItem('font');
-  if (font) {
-    const fontWeight = localStorage.getItem('fontweight') || '400';
-    const fontStyle = localStorage.getItem('fontstyle') || 'normal';
+  const widgetFont = localStorage.getItem('widgetFont');
+  if (widgetFont) {
+    const widgetFontWeight = localStorage.getItem('widgetFontWeight') || '400';
+    const widgetFontStyle = localStorage.getItem('widgetFontStyle') || 'normal';
 
-    const fontFamily = font.replace(/ /g, '+');
+    const fontFamily = widgetFont.replace(/ /g, '+');
     const googleFontUrl = `@import url('https://fonts.googleapis.com/css2?family=${fontFamily}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');`;
 
     document.head.insertAdjacentHTML(
       'beforeend',
       `
-        <style id='customfont'>
+        <style id='customwidgetfont'>
           ${googleFontUrl}
-          * {
-            font-family: '${font}', 'Lexend Deca', 'Inter', sans-serif !important;
-            font-weight: ${fontWeight};
-            font-style: ${fontStyle};
+          .greeting, .clock, .quote, .quoteauthor, .date, .weather, .navbar, #center {
+            font-family: '${widgetFont}', 'Lexend Deca', 'Inter', sans-serif !important;
+            font-weight: ${widgetFontWeight};
+            font-style: ${widgetFontStyle};
+          }
+        </style>
+      `,
+    );
+  }
+
+  const settingsFont = localStorage.getItem('settingsFont');
+  if (settingsFont) {
+    const settingsFontWeight = localStorage.getItem('settingsFontWeight') || '400';
+    const settingsFontStyle = localStorage.getItem('settingsFontStyle') || 'normal';
+
+    const fontFamily = settingsFont.replace(/ /g, '+');
+    const googleFontUrl = `@import url('https://fonts.googleapis.com/css2?family=${fontFamily}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');`;
+
+    document.head.insertAdjacentHTML(
+      'beforeend',
+      `
+        <style id='customsettingsfont'>
+          ${googleFontUrl}
+          .modal-content, .settings, .preferences, .marketplace, .welcome {
+            font-family: '${settingsFont}', 'Lexend Deca', 'Inter', sans-serif !important;
+            font-weight: ${settingsFontWeight};
+            font-style: ${settingsFontStyle};
+          }
+        </style>
+      `,
+    );
+  }
+
+  // Per-widget fonts (override global widget font)
+  const greetingFont = localStorage.getItem('greetingFont');
+  if (greetingFont) {
+    const greetingFontWeight = localStorage.getItem('greetingFontWeight') || '400';
+    const greetingFontStyle = localStorage.getItem('greetingFontStyle') || 'normal';
+    const greetingColor = localStorage.getItem('greetingColor') || '#ffffff';
+
+    const fontFamily = greetingFont.replace(/ /g, '+');
+    const googleFontUrl = `@import url('https://fonts.googleapis.com/css2?family=${fontFamily}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');`;
+
+    document.head.insertAdjacentHTML(
+      'beforeend',
+      `
+        <style id='customgreetingfont'>
+          ${googleFontUrl}
+          .greeting {
+            font-family: '${greetingFont}', 'Lexend Deca', 'Inter', sans-serif !important;
+            font-weight: ${greetingFontWeight};
+            font-style: ${greetingFontStyle};
+            color: ${greetingColor} !important;
+          }
+        </style>
+      `,
+    );
+  } else if (localStorage.getItem('greetingColor')) {
+    const greetingColor = localStorage.getItem('greetingColor');
+    document.head.insertAdjacentHTML(
+      'beforeend',
+      `
+        <style id='customgreetingfont'>
+          .greeting {
+            color: ${greetingColor} !important;
+          }
+        </style>
+      `,
+    );
+  }
+
+  const clockFont = localStorage.getItem('clockFont');
+  if (clockFont) {
+    const clockFontWeight = localStorage.getItem('clockFontWeight') || '400';
+    const clockFontStyle = localStorage.getItem('clockFontStyle') || 'normal';
+    const clockColor = localStorage.getItem('clockColor') || '#ffffff';
+
+    const fontFamily = clockFont.replace(/ /g, '+');
+    const googleFontUrl = `@import url('https://fonts.googleapis.com/css2?family=${fontFamily}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');`;
+
+    document.head.insertAdjacentHTML(
+      'beforeend',
+      `
+        <style id='customclockfont'>
+          ${googleFontUrl}
+          .clock, .date {
+            font-family: '${clockFont}', 'Lexend Deca', 'Inter', sans-serif !important;
+            font-weight: ${clockFontWeight};
+            font-style: ${clockFontStyle};
+            color: ${clockColor} !important;
+          }
+        </style>
+      `,
+    );
+  } else if (localStorage.getItem('clockColor')) {
+    const clockColor = localStorage.getItem('clockColor');
+    document.head.insertAdjacentHTML(
+      'beforeend',
+      `
+        <style id='customclockfont'>
+          .clock, .date {
+            color: ${clockColor} !important;
+          }
+        </style>
+      `,
+    );
+  }
+
+  const quoteFont = localStorage.getItem('quoteFont');
+  if (quoteFont) {
+    const quoteFontWeight = localStorage.getItem('quoteFontWeight') || '400';
+    const quoteFontStyle = localStorage.getItem('quoteFontStyle') || 'normal';
+    const quoteColor = localStorage.getItem('quoteColor') || '#ffffff';
+
+    const fontFamily = quoteFont.replace(/ /g, '+');
+    const googleFontUrl = `@import url('https://fonts.googleapis.com/css2?family=${fontFamily}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');`;
+
+    document.head.insertAdjacentHTML(
+      'beforeend',
+      `
+        <style id='customquotefont'>
+          ${googleFontUrl}
+          .quote, .quoteauthor {
+            font-family: '${quoteFont}', 'Lexend Deca', 'Inter', sans-serif !important;
+            font-weight: ${quoteFontWeight};
+            font-style: ${quoteFontStyle};
+            color: ${quoteColor} !important;
+          }
+        </style>
+      `,
+    );
+  } else if (localStorage.getItem('quoteColor')) {
+    const quoteColor = localStorage.getItem('quoteColor');
+    document.head.insertAdjacentHTML(
+      'beforeend',
+      `
+        <style id='customquotefont'>
+          .quote, .quoteauthor {
+            color: ${quoteColor} !important;
           }
         </style>
       `,

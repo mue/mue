@@ -153,6 +153,38 @@
               "change_hour_colour": "மணிநேர உரை நிறத்தை மாற்றவும்",
               "change_minute_colour": "நிமிட உரை நிறத்தை மாற்றவும்",
               "change_second_colour": "இரண்டாவது உரை நிறத்தை மாற்றவும்"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the time looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the time",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the time text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the time text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the time text"
+              }
             }
           },
           "date": {
@@ -203,6 +235,38 @@
             "frequency": {
               "title": "Update Frequency",
               "subtitle": "How often the quote changes"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the quote looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the quote",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the quote text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the quote text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the quote text"
+              }
             }
           },
           "greeting": {
@@ -223,7 +287,39 @@
             "month": "மாதம்",
             "no_events": "நிகழ்வுகள் இல்லை",
             "no_events_description": "சில நிகழ்வுகளைச் சேர்க்கவும்",
-            "add_event": "நிகழ்வைச் சேர்க்கவும்"
+            "add_event": "நிகழ்வைச் சேர்க்கவும்",
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the greeting looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the greeting",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the greeting text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the greeting text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the greeting text"
+              }
+            }
           },
           "background": {
             "title": "பின்னணி",
@@ -496,27 +592,50 @@
               },
               "apps_subtitle": "நீங்கள் பொதுவாகப் பயன்படுத்தப்படும் பிற வலைத்தளங்களின் குறுக்குவழியை உருவாக்கவும்."
             },
-            "font": {
-              "title": "எழுத்துரு",
-              "description": "பயன்படுத்தப்படும் எழுத்துருவை மியூவில் மாற்றவும்",
-              "custom": "தனிப்பயன் எழுத்துரு",
-              "google": "Google எழுத்துருக்களிலிருந்து இறக்குமதி செய்யுங்கள்",
+            "widget_font": {
+              "title": "Widget Font",
+              "description": "Change the font used for widgets on the new tab page",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
               "weight": {
-                "title": "எழுத்துரு எடை",
-                "thin": "மெல்லிய",
-                "extra_light": "கூடுதல் ஒளி",
-                "light": "ஒளி",
-                "normal": "சாதாரண",
-                "medium": "சராசரி",
-                "semi_bold": "அரை-பிணைப்பு",
-                "bold": "தடிமான",
-                "extra_bold": "கூடுதல்"
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
               },
               "style": {
-                "title": "எழுத்துரு நடை",
-                "normal": "சாதாரண",
-                "italic": "சாய்வு",
-                "oblique": "சாய்வான"
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              }
+            },
+            "settings_font": {
+              "title": "Settings Font",
+              "description": "Change the font used for the settings modal",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
+              "weight": {
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "style": {
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
               }
             },
             "accessibility": {

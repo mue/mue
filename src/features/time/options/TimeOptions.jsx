@@ -1,12 +1,13 @@
 import { useT } from 'contexts';
 import React, { useState } from 'react';
 
-import { Header, Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
+import { Header, Row, Content, Action, PreferencesWrapper, Section } from 'components/Layout/Settings';
 import { Checkbox, Dropdown, Radio } from 'components/Form/Settings';
+import googleFonts from 'config/googleFonts.json';
 
-import { MdRefresh } from 'react-icons/md';
+import { MdRefresh, MdPalette } from 'react-icons/md';
 
-const TimeOptions = () => {
+const TimeOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => {
   const t = useT();
   const [timeType, setTimeType] = useState(localStorage.getItem('timeType') || 'digital');
   const [hourColour, setHourColour] = useState(localStorage.getItem('hourColour') || '#ffffff');
@@ -16,6 +17,7 @@ const TimeOptions = () => {
   const [secondColour, setSecondColour] = useState(
     localStorage.getItem('secondColour') || '#ffffff',
   );
+  const [clockColor, setClockColor] = useState(localStorage.getItem('clockColor') || '#ffffff');
   const TIME_SECTION = 'modals.main.settings.sections.time';
 
   const updateColour = (type, event) => {
@@ -211,8 +213,118 @@ const TimeOptions = () => {
     }
   };
 
-  return (
-    <>
+  const AppearanceSection = () => {
+    const fontWeight = `${TIME_SECTION}.appearance.font_weight`;
+
+    const updateClockColor = (event) => {
+      const color = event.target.value;
+      setClockColor(color);
+      localStorage.setItem('clockColor', color);
+    };
+
+    return (
+      <>
+        <Row>
+          <Content
+            title={t(`${TIME_SECTION}.appearance.font.title`)}
+            subtitle={t(`${TIME_SECTION}.appearance.font.description`)}
+          />
+          <Action>
+            <Dropdown
+              label={t(`${TIME_SECTION}.appearance.font.custom`)}
+              name="clockFont"
+              category="clock"
+              searchable={true}
+              items={googleFonts.map((font) => ({
+                value: font,
+                text: font,
+              }))}
+            />
+          </Action>
+        </Row>
+        <Row>
+          <Content
+            title={t(`${TIME_SECTION}.appearance.font_weight.title`)}
+            subtitle={t(`${TIME_SECTION}.appearance.font_weight.description`)}
+          />
+          <Action>
+            <Dropdown
+              label={t(`${TIME_SECTION}.appearance.font_weight.title`)}
+              name="clockFontWeight"
+              category="clock"
+              items={[
+                { value: '400', text: t(fontWeight + '.normal') },
+                { value: '100', text: t(fontWeight + '.thin') },
+                { value: '200', text: t(fontWeight + '.extra_light') },
+                { value: '300', text: t(fontWeight + '.light') },
+                { value: '500', text: t(fontWeight + '.medium') },
+                { value: '600', text: t(fontWeight + '.semi_bold') },
+                { value: '700', text: t(fontWeight + '.bold') },
+                { value: '800', text: t(fontWeight + '.extra_bold') },
+              ]}
+            />
+          </Action>
+        </Row>
+        <Row>
+          <Content
+            title={t(`${TIME_SECTION}.appearance.font_style.title`)}
+            subtitle={t(`${TIME_SECTION}.appearance.font_style.description`)}
+          />
+          <Action>
+            <Dropdown
+              label={t(`${TIME_SECTION}.appearance.font_style.title`)}
+              name="clockFontStyle"
+              category="clock"
+              items={[
+                { value: 'normal', text: t(`${TIME_SECTION}.appearance.font_style.normal`) },
+                { value: 'italic', text: t(`${TIME_SECTION}.appearance.font_style.italic`) },
+                { value: 'oblique', text: t(`${TIME_SECTION}.appearance.font_style.oblique`) },
+              ]}
+            />
+          </Action>
+        </Row>
+        <Row final={true}>
+          <Content
+            title={t(`${TIME_SECTION}.appearance.color.title`)}
+            subtitle={t(`${TIME_SECTION}.appearance.color.description`)}
+          />
+          <Action>
+            <div className="colourInput">
+              <input type="color" name="clockColor" onChange={updateClockColor} value={clockColor} />
+              <label htmlFor="clockColor" className="customBackgroundHex">
+                {clockColor}
+              </label>
+            </div>
+            <span
+              className="link"
+              onClick={() => {
+                localStorage.setItem('clockColor', '#ffffff');
+                setClockColor('#ffffff');
+              }}
+            >
+              <MdRefresh />
+              {t('modals.main.settings.buttons.reset')}
+            </span>
+          </Action>
+        </Row>
+      </>
+    );
+  };
+
+  const isAppearanceSection = currentSubSection === 'appearance';
+
+  let header;
+  if (isAppearanceSection) {
+    header = (
+      <Header
+        title={t(`${TIME_SECTION}.title`)}
+        secondaryTitle={t(`${TIME_SECTION}.appearance.title`)}
+        goBack={() => onSubSectionChange(null, sectionName)}
+        report={false}
+      />
+    );
+  } else {
+    header = (
       <Header
         title={t(`${TIME_SECTION}.title`)}
         setting="time"
@@ -221,15 +333,31 @@ const TimeOptions = () => {
         zoomSetting="zoomClock"
         visibilityToggle={true}
       />
-      <PreferencesWrapper
-        setting="time"
-        zoomSetting="zoomClock"
-        category="clock"
-        visibilityToggle={true}
-      >
-        <WidgetType />
-        {getTimeSettings()}
-      </PreferencesWrapper>
+    );
+  }
+
+  return (
+    <>
+      {header}
+      {isAppearanceSection ? (
+        <AppearanceSection />
+      ) : (
+        <PreferencesWrapper
+          setting="time"
+          zoomSetting="zoomClock"
+          category="clock"
+          visibilityToggle={true}
+        >
+          <Section
+            title={t(`${TIME_SECTION}.appearance.title`)}
+            subtitle={t(`${TIME_SECTION}.appearance.description`)}
+            onClick={() => onSubSectionChange('appearance', sectionName)}
+            icon={<MdPalette />}
+          />
+          <WidgetType />
+          {getTimeSettings()}
+        </PreferencesWrapper>
+      )}
     </>
   );
 };

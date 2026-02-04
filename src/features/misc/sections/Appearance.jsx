@@ -43,18 +43,18 @@ function AppearanceOptions({ currentSubSection, onSubSectionChange, sectionName 
     );
   };
 
-  const FontOptions = () => {
-    const fontWeight = 'modals.main.settings.sections.appearance.font.weight';
+  const WidgetFontOptions = () => {
+    const fontWeight = 'modals.main.settings.sections.appearance.widget_font.weight';
     return (
       <Row>
         <Content
-          title={t('modals.main.settings.sections.appearance.font.title')}
-          subtitle={t('modals.main.settings.sections.appearance.font.description')}
+          title={t('modals.main.settings.sections.appearance.widget_font.title')}
+          subtitle={t('modals.main.settings.sections.appearance.widget_font.description')}
         />
         <Action>
           <Dropdown
-            label={t('modals.main.settings.sections.appearance.font.custom')}
-            name="font"
+            label={t('modals.main.settings.sections.appearance.widget_font.custom')}
+            name="widgetFont"
             category="other"
             searchable={true}
             items={googleFonts.map((font) => ({
@@ -62,10 +62,9 @@ function AppearanceOptions({ currentSubSection, onSubSectionChange, sectionName 
               text: font,
             }))}
           />
-          {/* names are taken from https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */}
           <Dropdown
-            label={t('modals.main.settings.sections.appearance.font.weight.title')}
-            name="fontweight"
+            label={t('modals.main.settings.sections.appearance.widget_font.weight.title')}
+            name="widgetFontWeight"
             category="other"
             items={[
               {
@@ -103,21 +102,103 @@ function AppearanceOptions({ currentSubSection, onSubSectionChange, sectionName 
             ]}
           />
           <Dropdown
-            label={t('modals.main.settings.sections.appearance.font.style.title')}
-            name="fontstyle"
+            label={t('modals.main.settings.sections.appearance.widget_font.style.title')}
+            name="widgetFontStyle"
             category="other"
             items={[
               {
                 value: 'normal',
-                text: t('modals.main.settings.sections.appearance.font.style.normal'),
+                text: t('modals.main.settings.sections.appearance.widget_font.style.normal'),
               },
               {
                 value: 'italic',
-                text: t('modals.main.settings.sections.appearance.font.style.italic'),
+                text: t('modals.main.settings.sections.appearance.widget_font.style.italic'),
               },
               {
                 value: 'oblique',
-                text: t('modals.main.settings.sections.appearance.font.style.oblique'),
+                text: t('modals.main.settings.sections.appearance.widget_font.style.oblique'),
+              },
+            ]}
+          />
+        </Action>
+      </Row>
+    );
+  };
+
+  const SettingsFontOptions = () => {
+    const fontWeight = 'modals.main.settings.sections.appearance.settings_font.weight';
+    return (
+      <Row>
+        <Content
+          title={t('modals.main.settings.sections.appearance.settings_font.title')}
+          subtitle={t('modals.main.settings.sections.appearance.settings_font.description')}
+        />
+        <Action>
+          <Dropdown
+            label={t('modals.main.settings.sections.appearance.settings_font.custom')}
+            name="settingsFont"
+            category="other"
+            searchable={true}
+            items={googleFonts.map((font) => ({
+              value: font,
+              text: font,
+            }))}
+          />
+          <Dropdown
+            label={t('modals.main.settings.sections.appearance.settings_font.weight.title')}
+            name="settingsFontWeight"
+            category="other"
+            items={[
+              {
+                value: '400',
+                text: t(fontWeight + '.normal'),
+              },
+              {
+                value: '100',
+                text: t(fontWeight + '.thin'),
+              },
+              {
+                value: '200',
+                text: t(fontWeight + '.extra_light'),
+              },
+              {
+                value: '300',
+                text: t(fontWeight + '.light'),
+              },
+              {
+                value: '500',
+                text: t(fontWeight + '.medium'),
+              },
+              {
+                value: '600',
+                text: t(fontWeight + '.semi_bold'),
+              },
+              {
+                value: '700',
+                text: t(fontWeight + '.bold'),
+              },
+              {
+                value: '800',
+                text: t(fontWeight + '.extra_bold'),
+              },
+            ]}
+          />
+          <Dropdown
+            label={t('modals.main.settings.sections.appearance.settings_font.style.title')}
+            name="settingsFontStyle"
+            category="other"
+            items={[
+              {
+                value: 'normal',
+                text: t('modals.main.settings.sections.appearance.settings_font.style.normal'),
+              },
+              {
+                value: 'italic',
+                text: t('modals.main.settings.sections.appearance.settings_font.style.italic'),
+              },
+              {
+                value: 'oblique',
+                text: t('modals.main.settings.sections.appearance.settings_font.style.oblique'),
               },
             ]}
           />
@@ -230,7 +311,8 @@ function AppearanceOptions({ currentSubSection, onSubSectionChange, sectionName 
             onClick={() => onSubSectionChange('accessibility', sectionName)}
           />
           <ThemeSelection />
-          <FontOptions />
+          <WidgetFontOptions />
+          <SettingsFontOptions />
           <WidgetStyle />
         </>
       )}

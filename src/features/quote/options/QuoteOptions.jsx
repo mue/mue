@@ -1,7 +1,16 @@
 import { useT } from 'contexts';
 import variables from 'config/variables';
 import React, { useState, useEffect } from 'react';
-import { MdCancel, MdAdd, MdSource, MdOutlineFormatQuote, MdExplore } from 'react-icons/md';
+import {
+  MdCancel,
+  MdAdd,
+  MdSource,
+  MdOutlineFormatQuote,
+  MdExplore,
+  MdPalette,
+  MdRefresh,
+} from 'react-icons/md';
+import googleFonts from 'config/googleFonts.json';
 import { toast } from 'react-toastify';
 
 import {
@@ -182,7 +191,107 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
     );
   };
 
+  const AppearanceSection = () => {
+    const [quoteColor, setQuoteColor] = useState(localStorage.getItem('quoteColor') || '#ffffff');
+    const fontWeight = `${QUOTE_SECTION}.appearance.font_weight`;
+
+    const updateColor = (event) => {
+      const color = event.target.value;
+      setQuoteColor(color);
+      localStorage.setItem('quoteColor', color);
+    };
+
+    return (
+      <>
+        <Row>
+          <Content
+            title={t(`${QUOTE_SECTION}.appearance.font.title`)}
+            subtitle={t(`${QUOTE_SECTION}.appearance.font.description`)}
+          />
+          <Action>
+            <Dropdown
+              label={t(`${QUOTE_SECTION}.appearance.font.custom`)}
+              name="quoteFont"
+              category="quote"
+              searchable={true}
+              items={googleFonts.map((font) => ({
+                value: font,
+                text: font,
+              }))}
+            />
+          </Action>
+        </Row>
+        <Row>
+          <Content
+            title={t(`${QUOTE_SECTION}.appearance.font_weight.title`)}
+            subtitle={t(`${QUOTE_SECTION}.appearance.font_weight.description`)}
+          />
+          <Action>
+            <Dropdown
+              label={t(`${QUOTE_SECTION}.appearance.font_weight.title`)}
+              name="quoteFontWeight"
+              category="quote"
+              items={[
+                { value: '400', text: t(fontWeight + '.normal') },
+                { value: '100', text: t(fontWeight + '.thin') },
+                { value: '200', text: t(fontWeight + '.extra_light') },
+                { value: '300', text: t(fontWeight + '.light') },
+                { value: '500', text: t(fontWeight + '.medium') },
+                { value: '600', text: t(fontWeight + '.semi_bold') },
+                { value: '700', text: t(fontWeight + '.bold') },
+                { value: '800', text: t(fontWeight + '.extra_bold') },
+              ]}
+            />
+          </Action>
+        </Row>
+        <Row>
+          <Content
+            title={t(`${QUOTE_SECTION}.appearance.font_style.title`)}
+            subtitle={t(`${QUOTE_SECTION}.appearance.font_style.description`)}
+          />
+          <Action>
+            <Dropdown
+              label={t(`${QUOTE_SECTION}.appearance.font_style.title`)}
+              name="quoteFontStyle"
+              category="quote"
+              items={[
+                { value: 'normal', text: t(`${QUOTE_SECTION}.appearance.font_style.normal`) },
+                { value: 'italic', text: t(`${QUOTE_SECTION}.appearance.font_style.italic`) },
+                { value: 'oblique', text: t(`${QUOTE_SECTION}.appearance.font_style.oblique`) },
+              ]}
+            />
+          </Action>
+        </Row>
+        <Row final={true}>
+          <Content
+            title={t(`${QUOTE_SECTION}.appearance.color.title`)}
+            subtitle={t(`${QUOTE_SECTION}.appearance.color.description`)}
+          />
+          <Action>
+            <div className="colourInput">
+              <input type="color" name="quoteColor" onChange={updateColor} value={quoteColor} />
+              <label htmlFor="quoteColor" className="customBackgroundHex">
+                {quoteColor}
+              </label>
+            </div>
+            <span
+              className="link"
+              onClick={() => {
+                localStorage.setItem('quoteColor', '#ffffff');
+                setQuoteColor('#ffffff');
+              }}
+            >
+              <MdRefresh />
+              {t('modals.main.settings.buttons.reset')}
+            </span>
+          </Action>
+        </Row>
+      </>
+    );
+  };
+
   const isSourceSection = currentSubSection === 'source';
+  const isAppearanceSection = currentSubSection === 'appearance';
 
   const getInstalledQuotePacks = () => {
     try {
@@ -365,43 +474,69 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
     customSettings = <></>;
   }
 
+  let header;
+  if (isSourceSection) {
+    header = (
+      <Header
+        title={t(`${QUOTE_SECTION}.title`)}
+        secondaryTitle={t('modals.main.settings.sections.background.source.title')}
+        goBack={() => onSubSectionChange(null, sectionName)}
+        report={false}
+      />
+    );
+  } else if (isAppearanceSection) {
+    header = (
+      <Header
+        title={t(`${QUOTE_SECTION}.title`)}
+        secondaryTitle={t(`${QUOTE_SECTION}.appearance.title`)}
+        goBack={() => onSubSectionChange(null, sectionName)}
+        report={false}
+      />
+    );
+  } else {
+    header = (
+      <Header
+        title={t(`${QUOTE_SECTION}.title`)}
+        setting="quote"
+        category="quote"
+        element=".quotediv"
+        zoomSetting="zoomQuote"
+        visibilityToggle={true}
+      />
+    );
+  }
+
   return (
     <>
-      {isSourceSection ? (
-        <Header
-          title={t(`${QUOTE_SECTION}.title`)}
-          secondaryTitle={t('modals.main.settings.sections.background.source.title')}
-          goBack={() => onSubSectionChange(null, sectionName)}
-          report={false}
-        />
-      ) : (
-        <Header
-          title={t(`${QUOTE_SECTION}.title`)}
-          setting="quote"
-          category="quote"
-          element=".quotediv"
-          zoomSetting="zoomQuote"
-          visibilityToggle={true}
-        />
-      )}
+      {header}
       {isSourceSection && (
-        <Row final={true}>
-          <Content
-            title={t('modals.main.settings.sections.background.source.title')}
-            subtitle={t(`${QUOTE_SECTION}.source_subtitle`)}
-          />
-          <Action>
-            <SourceDropdown />
-          </Action>
-        </Row>
+        <>
+          <Row final={true}>
+            <Content
+              title={t('modals.main.settings.sections.background.source.title')}
+              subtitle={t(`${QUOTE_SECTION}.source_subtitle`)}
+            />
+            <Action>
+              <SourceDropdown />
+            </Action>
+          </Row>
+          {customSettings}
+        </>
       )}
-      {!isSourceSection && (
+      {isAppearanceSection && <AppearanceSection />}
+      {!isSourceSection && !isAppearanceSection && (
         <PreferencesWrapper
           setting="quote"
           zoomSetting="zoomQuote"
           category="quote"
           visibilityToggle={true}
         >
+          <Section
+            icon={<MdPalette />}
+            title={t(`${QUOTE_SECTION}.appearance.title`)}
+            subtitle={t(`${QUOTE_SECTION}.appearance.description`)}
+            onClick={() => onSubSectionChange('appearance', sectionName)}
+          />
           <Section
             icon={<MdSource />}
             title={t('modals.main.settings.sections.background.source.title')}
@@ -415,7 +550,6 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
           <AdditionalOptions />
         </PreferencesWrapper>
       )}
-      {customSettings}
     </>
   );
 };

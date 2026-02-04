@@ -9,14 +9,15 @@ import {
   PreferencesWrapper,
   Section,
 } from 'components/Layout/Settings';
-import { Checkbox, Switch, Text } from 'components/Form/Settings';
+import { Checkbox, Switch, Text, Dropdown } from 'components/Form/Settings';
 import { DatePicker } from 'components/Form/Settings/DatePicker';
 import { Button } from 'components/Elements';
 import { toast } from 'react-toastify';
 
 import defaultEvents from '../events.json';
+import googleFonts from 'config/googleFonts.json';
 
-import { MdEventNote, MdAdd, MdCancel, MdRefresh } from 'react-icons/md';
+import { MdEventNote, MdAdd, MdCancel, MdRefresh, MdPalette } from 'react-icons/md';
 
 const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => {
   const t = useT();
@@ -228,7 +229,115 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
     );
   };
 
+  const AppearanceSection = () => {
+    const [greetingColor, setGreetingColor] = useState(
+      localStorage.getItem('greetingColor') || '#ffffff',
+    );
+
+    const fontWeight = `${GREETING_SECTION}.appearance.font_weight`;
+
+    const updateColor = (event) => {
+      const color = event.target.value;
+      setGreetingColor(color);
+      localStorage.setItem('greetingColor', color);
+    };
+
+    return (
+      <>
+        <Row>
+          <Content
+            title={t(`${GREETING_SECTION}.appearance.font.title`)}
+            subtitle={t(`${GREETING_SECTION}.appearance.font.description`)}
+          />
+          <Action>
+            <Dropdown
+              label={t(`${GREETING_SECTION}.appearance.font.custom`)}
+              name="greetingFont"
+              category="greeting"
+              searchable={true}
+              items={googleFonts.map((font) => ({
+                value: font,
+                text: font,
+              }))}
+            />
+          </Action>
+        </Row>
+        <Row>
+          <Content
+            title={t(`${GREETING_SECTION}.appearance.font_weight.title`)}
+            subtitle={t(`${GREETING_SECTION}.appearance.font_weight.description`)}
+          />
+          <Action>
+            <Dropdown
+              label={t(`${GREETING_SECTION}.appearance.font_weight.title`)}
+              name="greetingFontWeight"
+              category="greeting"
+              items={[
+                { value: '400', text: t(fontWeight + '.normal') },
+                { value: '100', text: t(fontWeight + '.thin') },
+                { value: '200', text: t(fontWeight + '.extra_light') },
+                { value: '300', text: t(fontWeight + '.light') },
+                { value: '500', text: t(fontWeight + '.medium') },
+                { value: '600', text: t(fontWeight + '.semi_bold') },
+                { value: '700', text: t(fontWeight + '.bold') },
+                { value: '800', text: t(fontWeight + '.extra_bold') },
+              ]}
+            />
+          </Action>
+        </Row>
+        <Row>
+          <Content
+            title={t(`${GREETING_SECTION}.appearance.font_style.title`)}
+            subtitle={t(`${GREETING_SECTION}.appearance.font_style.description`)}
+          />
+          <Action>
+            <Dropdown
+              label={t(`${GREETING_SECTION}.appearance.font_style.title`)}
+              name="greetingFontStyle"
+              category="greeting"
+              items={[
+                { value: 'normal', text: t(`${GREETING_SECTION}.appearance.font_style.normal`) },
+                { value: 'italic', text: t(`${GREETING_SECTION}.appearance.font_style.italic`) },
+                { value: 'oblique', text: t(`${GREETING_SECTION}.appearance.font_style.oblique`) },
+              ]}
+            />
+          </Action>
+        </Row>
+        <Row final={true}>
+          <Content
+            title={t(`${GREETING_SECTION}.appearance.color.title`)}
+            subtitle={t(`${GREETING_SECTION}.appearance.color.description`)}
+          />
+          <Action>
+            <div className="colourInput">
+              <input
+                type="color"
+                name="greetingColor"
+                onChange={updateColor}
+                value={greetingColor}
+              />
+              <label htmlFor="greetingColor" className="customBackgroundHex">
+                {greetingColor}
+              </label>
+            </div>
+            <span
+              className="link"
+              onClick={() => {
+                localStorage.setItem('greetingColor', '#ffffff');
+                setGreetingColor('#ffffff');
+              }}
+            >
+              <MdRefresh />
+              {t('modals.main.settings.buttons.reset')}
+            </span>
+          </Action>
+        </Row>
+      </>
+    );
+  };
+
   const isEventsSection = currentSubSection === 'events';
+  const isAppearanceSection = currentSubSection === 'appearance';
 
   let header;
   if (isEventsSection) {
@@ -236,6 +345,15 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
       <Header
         title={t(`${GREETING_SECTION}.title`)}
         secondaryTitle={t(`${GREETING_SECTION}.events.title`)}
+        goBack={() => onSubSectionChange(null, sectionName)}
+        report={false}
+      />
+    );
+  } else if (isAppearanceSection) {
+    header = (
+      <Header
+        title={t(`${GREETING_SECTION}.title`)}
+        secondaryTitle={t(`${GREETING_SECTION}.appearance.title`)}
         goBack={() => onSubSectionChange(null, sectionName)}
         report={false}
       />
@@ -277,6 +395,8 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
           {BirthdayOptions()}
           {CustomEventsSection()}
         </>
+      ) : isAppearanceSection ? (
+        <AppearanceSection />
       ) : (
         <PreferencesWrapper
           setting="greeting"
@@ -285,6 +405,12 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
           visibilityToggle={true}
         >
           <AdditionalOptions />
+          <Section
+            title={t(`${GREETING_SECTION}.appearance.title`)}
+            subtitle={t(`${GREETING_SECTION}.appearance.description`)}
+            onClick={() => onSubSectionChange('appearance', sectionName)}
+            icon={<MdPalette />}
+          />
           <Section
             title={t(`${GREETING_SECTION}.events`)}
             subtitle={t(`${GREETING_SECTION}.events_description`)}
