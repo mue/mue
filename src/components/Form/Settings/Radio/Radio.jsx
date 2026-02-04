@@ -7,8 +7,10 @@ import EventBus from 'utils/eventbus';
 import './Radio.scss';
 
 const Radio = memo((props) => {
-  const { changeLanguage } = useTranslation();
-  const [value, setValue] = useState(localStorage.getItem(props.name));
+  const { changeLanguage, language } = useTranslation();
+  const [localValue, setLocalValue] = useState(localStorage.getItem(props.name));
+
+  const value = props.name === 'language' ? language : localValue;
 
   const handleChange = useCallback(
     async (newValue) => {
@@ -18,7 +20,7 @@ const Radio = memo((props) => {
 
       if (props.name === 'language') {
         changeLanguage(newValue);
-        setValue(newValue);
+        setLocalValue(newValue);
 
         variables.stats.postEvent('setting', `${props.name} from ${value} to ${newValue}`);
 
@@ -31,7 +33,7 @@ const Radio = memo((props) => {
       }
 
       localStorage.setItem(props.name, newValue);
-      setValue(newValue);
+      setLocalValue(newValue);
 
       if (props.onChange) {
         props.onChange(newValue);
