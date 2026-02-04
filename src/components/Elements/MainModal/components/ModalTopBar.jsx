@@ -199,22 +199,22 @@ function ModalTopBar({
     <div className="modalTopBar">
       <div className="topBarLeft">
         <div className="navigationButtons">
-          <Tooltip title="Back" key="backTooltip">
+          <Tooltip title={t('common.navigation.back')} key="backTooltip">
             <button
               className="navButton"
               onClick={onBack}
               disabled={!canGoBack}
-              aria-label="Navigate back"
+              aria-label={t('common.navigation.navigate_back')}
             >
               <MdArrowBack />
             </button>
           </Tooltip>
-          <Tooltip title="Forward" key="forwardTooltip">
+          <Tooltip title={t('common.navigation.forward')} key="forwardTooltip">
             <button
               className="navButton"
               onClick={onForward}
               disabled={!canGoForward}
-              aria-label="Navigate forward"
+              aria-label={t('common.navigation.navigate_forward')}
             >
               <MdArrowForward />
             </button>
@@ -241,7 +241,7 @@ function ModalTopBar({
                       }}
                       role="button"
                       tabIndex={0}
-                      aria-label={`Navigate to ${item.label}`}
+                      aria-label={t('common.navigation.navigate_to', { item: item.label })}
                     >
                       {item.label}
                     </span>

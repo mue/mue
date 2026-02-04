@@ -68,7 +68,7 @@ async function updateTranslationPercentages() {
     fs.writeFileSync(outputPath, JSON.stringify(percentages, null, 2));
     fs.appendFileSync(outputPath, '\n');
 
-    console.log(`✓ Translation percentages updated successfully!`);
+    console.log(`Translation percentages updated successfully!`);
     console.log(`  Total languages: ${Object.keys(percentages).length}`);
     console.log(`  Output: ${outputPath}`);
 

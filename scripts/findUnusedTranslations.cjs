@@ -107,7 +107,7 @@ function isKeyUsed(key, files, fileContentsCache) {
 
 
 function main() {
-  console.log('🔍 Finding unused translation keys...\n');
+  console.log('Finding unused translation keys...\n');
 
   let translationKeys = [];
 
@@ -115,9 +115,9 @@ function main() {
     const localeContent = fs.readFileSync(LOCALE_FILE, 'utf-8');
     const localeData = JSON.parse(localeContent);
     translationKeys = flattenKeys(localeData);
-    console.log(`📝 Found ${translationKeys.length} translation keys in en_GB.json`);
+    console.log(`Found ${translationKeys.length} translation keys in en_GB.json`);
   } catch (error) {
-    console.error(`❌ Error reading locale file: ${error.message}`);
+    console.error(`Error reading locale file: ${error.message}`);
     process.exit(1);
   }
 
@@ -127,24 +127,24 @@ function main() {
       const achievementsData = JSON.parse(achievementsContent);
       const achievementKeys = flattenKeys(achievementsData, 'achievements');
       translationKeys.push(...achievementKeys);
-      console.log(`📝 Found ${achievementKeys.length} achievement keys in achievements/en_GB.json`);
+      console.log(`Found ${achievementKeys.length} achievement keys in achievements/en_GB.json`);
     }
   } catch (error) {
-    console.warn(`⚠️  Warning: Could not read achievements file: ${error.message}`);
+    console.warn(`Warning: Could not read achievements file: ${error.message}`);
   }
 
-  console.log(`\n📊 Total keys to check: ${translationKeys.length}`);
+  console.log(`\nTotal keys to check: ${translationKeys.length}`);
 
-  console.log('📂 Scanning source files...');
+  console.log('Scanning source files...');
   const files = getAllFiles(SEARCH_DIR);
-  console.log(`📄 Found ${files.length} files to search\n`);
+  console.log(`Found ${files.length} files to search\n`);
 
   const fileContentsCache = new Map();
 
   const unusedKeys = [];
   const usedKeys = [];
 
-  console.log('🔎 Searching for key usage (including template literals)...');
+  console.log('Searching for key usage (including template literals)...');
 
   let processed = 0;
   const totalKeys = translationKeys.length;
@@ -170,15 +170,15 @@ function main() {
   console.log(`\r   Progress: ${totalKeys}/${totalKeys} (100%) - ${totalTime}s total   \n`);
 
   console.log('\n' + '='.repeat(70));
-  console.log('📋 RESULTS');
+  console.log('RESULTS');
   console.log('='.repeat(70) + '\n');
 
-  console.log(`✅ Used keys: ${usedKeys.length}`);
-  console.log(`❌ Unused keys: ${unusedKeys.length}`);
-  console.log(`📊 Usage rate: ${((usedKeys.length / totalKeys) * 100).toFixed(2)}%\n`);
+  console.log(`Used keys: ${usedKeys.length}`);
+  console.log(`Unused keys: ${unusedKeys.length}`);
+  console.log(`Usage rate: ${((usedKeys.length / totalKeys) * 100).toFixed(2)}%\n`);
 
   if (unusedKeys.length > 0) {
-    console.log('🗑️  Unused translation keys:\n');
+    console.log('Unused translation keys:\n');
 
     const grouped = {};
     unusedKeys.forEach(key => {
@@ -208,16 +208,16 @@ function main() {
     ].join('\n');
 
     fs.writeFileSync(outputFile, outputContent, 'utf-8');
-    console.log(`\n💾 Full list saved to: ${path.relative(process.cwd(), outputFile)}`);
+    console.log(`\nFull list saved to: ${path.relative(process.cwd(), outputFile)}`);
   } else {
-    console.log('🎉 No unused translation keys found!');
+    console.log('No unused translation keys found!');
   }
 
   console.log('\n' + '='.repeat(70) + '\n');
 
   if (unusedKeys.length > 0) {
-    console.log('💡 Tip: You can safely remove these keys from your translation files to reduce bundle size.');
-    console.log('⚠️  Note: Some keys might be used dynamically - review before removing!');
+    console.log('Tip: You can safely remove these keys from your translation files to reduce bundle size.');
+    console.log('Note: Some keys might be used dynamically - review before removing!');
   }
 }
 

@@ -1,9 +1,17 @@
 import { MdEdit, MdDelete, MdWidgets } from 'react-icons/md';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { useT } from 'contexts/TranslationContext';
 import { DragHandle } from './DragHandle';
 
 export const SortableWidgetItem = ({ value, startEditWidget, deleteWidget }) => {
+  const t = useT();
+
+  const getPositionLabel = (position) => {
+    const positionKey = position?.replace('-', '_');
+    const translationKey = `modals.main.settings.sections.advanced.custom_widget.positions.${positionKey}`;
+    return t(translationKey) || t('modals.main.settings.sections.advanced.custom_widget.positions.top_right');
+  };
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: value.key,
   });
@@ -33,10 +41,8 @@ export const SortableWidgetItem = ({ value, startEditWidget, deleteWidget }) => 
         </div>
         <div className="widget-url">{value.url}</div>
         <div className="widget-position">
-          {value.position
-            ? value.position.replace('-', ' ').replace(/\b\w/g, (l) => l.toUpperCase())
-            : 'Top Right'}
-          {value.renderAbove ? ' • Above widgets' : ''}
+          {getPositionLabel(value.position)}
+          {value.renderAbove ? ` • ${t('common.above_widgets')}` : ''}
         </div>
       </div>
       <div className="widget-actions">
@@ -46,10 +52,10 @@ export const SortableWidgetItem = ({ value, startEditWidget, deleteWidget }) => 
             e.stopPropagation();
             startEditWidget(value);
           }}
-          title="Edit"
+          title={t('common.actions.edit')}
         >
           <MdEdit />
-          <span>Edit</span>
+          <span>{t('common.actions.edit')}</span>
         </button>
         <button
           className="widget-action-btn widget-remove-btn"
@@ -57,10 +63,10 @@ export const SortableWidgetItem = ({ value, startEditWidget, deleteWidget }) => 
             e.stopPropagation();
             deleteWidget(value.key, e);
           }}
-          title="Remove"
+          title={t('common.actions.remove')}
         >
           <MdDelete />
-          <span>Remove</span>
+          <span>{t('common.actions.remove')}</span>
         </button>
       </div>
     </div>

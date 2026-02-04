@@ -39,7 +39,17 @@
       "icon": "İkon (İsteğe Bağlı)",
       "add": "Ekle",
       "name_error": "İsim belirtilmelidir",
-      "url_error": "URL sağlanmalıdır"
+      "url_error": "URL sağlanmalıdır",
+      "suggested": "Suggested: {name}",
+      "name_placeholder": "Enter link name (optional)",
+      "url_placeholder": "example.com",
+      "icon_url_placeholder": "https://example.com/icon.png",
+      "icon_type_label": "Icon Type",
+      "icon_type_auto": "Auto-detect Icon",
+      "icon_type_custom_url": "Custom Icon URL",
+      "icon_type_upload": "Upload Icon",
+      "icon_type_emoji": "Emoji",
+      "icon_type_letter": "Letter Avatar"
     },
     "date": {
       "week": "{number}. Hafta"
@@ -63,7 +73,8 @@
       },
       "notes": {
         "title": "Notlar",
-        "placeholder": "Buraya yaz"
+        "placeholder": "Buraya yaz",
+        "export_filename": "mue-notes.txt"
       },
       "todo": {
         "title": "Yapılacaklar",
@@ -316,7 +327,16 @@
             "photo_pack_settings": {
               "title": "{name} Settings",
               "refresh_photos": "Refresh Photos"
-            }
+            },
+            "pack_count": {
+              "singular": "pack",
+              "plural": "packs"
+            },
+            "photo_count": {
+              "singular": "photo",
+              "plural": "photos"
+            },
+            "get_more": "Get more"
           },
           "search": {
             "title": "Arama",
@@ -726,8 +746,43 @@
       }
     },
     "share": {
-      "copy_link": "Bağlantıyı kopyala"
+      "copy_link": "Bağlantıyı kopyala",
+      "item_type": {
+        "image": "this image",
+        "quote": "this quote",
+        "marketplace_item": "this marketplace item"
+      },
+      "social": {
+        "twitter": "X (Twitter)",
+        "facebook": "Facebook",
+        "email": "Email",
+        "wechat": "WeChat",
+        "qq": "Tencent QQ"
+      },
+      "twitter_message": "Check out {name} on @getmue",
+      "email_subject": "Check out this on Mue!",
+      "email_body": "{name} on Mue: {url}"
     }
+  },
+  "common": {
+    "navigation": {
+      "back": "Back",
+      "forward": "Forward",
+      "navigate_back": "Navigate back",
+      "navigate_forward": "Navigate forward",
+      "navigate_to": "Navigate to {item}"
+    },
+    "actions": {
+      "edit": "Edit",
+      "remove": "Remove"
+    },
+    "alt_text": {
+      "preview": "Preview",
+      "location": "Location",
+      "screenshot": "Screenshot"
+    },
+    "add_translation": "Add translation",
+    "above_widgets": "Above widgets"
   },
   "toasts": {
     "quote": "Alıntı kopyalandı",

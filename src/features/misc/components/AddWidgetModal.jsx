@@ -94,7 +94,9 @@ function AddWidgetModal({ urlError, addWidget, closeModal, edit, editData, editW
               checked={renderAbove}
               onChange={(e) => setRenderAbove(e.target.checked)}
               className="checkbox-input"
-              aria-label="Render above other widgets"
+              aria-label={variables.getMessage(
+                'modals.main.settings.sections.advanced.custom_widget.render_above',
+              )}
             />
             <div className={`checkbox-box ${renderAbove ? 'checked' : ''}`}>
               {renderAbove && <MdCheck />}

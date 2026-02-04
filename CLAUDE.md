@@ -94,7 +94,25 @@ bun run pretty      # Format code with Prettier
 ### 5. Commenting
 **Do not add comments to the codebase.** Keep code clean and self-explanatory. Use descriptive variable/function names instead of comments.
 
-### 6. Naming Conventions
+### 6. Emojis
+**Do not use emojis in code strings.** Avoid text emojis in console logs, placeholders, or any code strings.
+
+**Exception:** User-facing toast notifications may include emojis for visual feedback.
+
+```javascript
+// Bad - emojis in console logs
+console.log('🔨 Building Chrome extension...');
+console.log('✅ Build complete!');
+
+// Good - no emojis
+console.log('Building Chrome extension...');
+console.log('Build complete!');
+
+// Exception - toast notifications are allowed
+toast(`🏆 ${getMessage('achievement_unlocked', { name })}`);
+```
+
+### 7. Naming Conventions
 **Keep variable and function names concise.** Avoid verbose redundant prefixes like "is" in state variables.
 
 ```javascript
@@ -113,7 +131,7 @@ const [isRefreshing, setIsRefreshing] = useState(false);
 - Use "is" prefix for boolean functions/methods that return a value: `isValid()`, `isAuthenticated()`
 - Use "has" prefix for boolean properties: `hasPermission`, `hasError`
 
-### 7. Package Manager
+### 8. Package Manager
 **Always use Bun** (not npm or yarn):
 ```bash
 bun install         # Install dependencies
@@ -121,7 +139,7 @@ bun run dev         # Start dev server
 bun run build       # Production build
 ```
 
-### 8. Build Targets
+### 9. Build Targets
 The project builds for **multiple browsers**:
 - Chrome/Edge (Chromium)
 - Firefox
@@ -138,13 +156,13 @@ Build outputs:
 - `build/firefox/` - Firefox extension
 - `safari/Mue Extension/Resources/` - Safari extension
 
-### 9. State Management
+### 10. State Management
 - **Persistent settings** - Use `localStorage` via custom hooks
 - **Shared state** - Use React Context (see `src/contexts/`)
 - **Component state** - Use `useState`, `useReducer` for local state
 - **Custom hooks** - Create hooks for reusable stateful logic
 
-### 10. Styling Conventions
+### 11. Styling Conventions
 SCSS files are organized in `src/scss/`:
 - `_variables.scss` - Color palette, breakpoints, sizes
 - `_mixins.scss` - Reusable style mixins
@@ -152,7 +170,7 @@ SCSS files are organized in `src/scss/`:
 
 **Use existing variables and mixins** for consistency.
 
-### 11. Development Server
+### 12. Development Server
 ```bash
 bun run dev         # Local development with HMR at localhost
 bun run dev:host    # Expose on network for testing on other devices
@@ -160,7 +178,7 @@ bun run dev:host    # Expose on network for testing on other devices
 
 Hot Module Replacement (HMR) is enabled for fast development.
 
-### 12. Path Aliases
+### 13. Path Aliases
 Use configured path aliases instead of relative imports:
 ```javascript
 // Good
@@ -174,13 +192,13 @@ import Button from '../../../components/Button';
 
 Available aliases: `@/`, `components/`, `contexts/`, `hooks/`, `assets/`, `config/`, `features/`, `lib/`, `scss/`, `translations/`, `utils/`
 
-### 13. Error Handling
+### 14. Error Handling
 - Sentry is integrated for error tracking
 - Use `ErrorBoundary` component for React error boundaries
 - Handle async errors gracefully with try/catch
 - Show user-friendly error messages via `react-toastify`
 
-### 14. Browser Extension Best Practices
+### 15. Browser Extension Best Practices
 - Use Manifest V3 APIs (not deprecated V2 APIs)
 - Test extension loading/unloading
 - Handle permissions properly
@@ -188,14 +206,29 @@ Available aliases: `@/`, `components/`, `contexts/`, `hooks/`, `assets/`, `confi
 - Store data in `localStorage` or `IndexedDB`, not sync storage
 - Ensure cross-browser compatibility (check MDN for API support)
 
-### 15. Internationalization (i18n)
-- Use `@eartharoid/i18n` for translations
+### 16. Internationalization (i18n)
+**All user-visible strings MUST be integrated with i18n.** Never hardcode user-facing text.
+
+```javascript
+// Bad - hardcoded strings
+<button>Save Settings</button>
+toast('Settings saved successfully!');
+placeholder="Enter your name"
+
+// Good - using i18n
+<button>{getMessage('settings.save')}</button>
+toast(getMessage('settings.saved_successfully'));
+placeholder={getMessage('user.name_placeholder')}
+```
+
+- Use `@eartharoid/i18n` for all translations
 - Access translations via the i18n context
-- Add new keys to `en_GB.json` first
+- Add new keys to `en_GB.json` first, then run `bun run translations`
 - Test with multiple locales to ensure proper rendering
 - Support RTL languages where applicable
+- Console logs and developer-facing messages do not need i18n
 
-### 16. Performance
+### 17. Performance
 - Lazy load components where appropriate
 - Optimize images (use modern formats like WebP)
 - Minimize bundle size (check Vite build output)

@@ -14,7 +14,7 @@ function Lightbox({ modalClose, img }) {
         src={getProxiedImageUrl(img)}
         className="lightboximg"
         draggable={false}
-        alt="ItemPage screenshot"
+        alt={variables.getMessage('common.alt_text.screenshot')}
       />
     </>
   );

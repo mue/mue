@@ -121,7 +121,7 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
               </label>
               {suggestedName && !name && (
                 <span className="addLinkModal-suggestedText">
-                  Suggested: {suggestedName}
+                  {variables.getMessage('widgets.quicklinks.suggested', { name: suggestedName })}
                 </span>
               )}
             </div>
@@ -130,7 +130,7 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
               name="quicklink_modal_name"
               noSetting={true}
               onChange={(value) => setName(value)}
-              placeholder={suggestedName || 'Enter link name (optional)'}
+              placeholder={suggestedName || variables.getMessage('widgets.quicklinks.name_placeholder')}
             />
           </div>
           <div className="addLinkModal-field">
@@ -149,23 +149,23 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
                 }
                 setUrl(finalValue);
               }}
-              placeholder="example.com"
+              placeholder={variables.getMessage('widgets.quicklinks.url_placeholder')}
             />
           </div>
         </div>
 
         <div className="addLinkModal-dropdownWrapper">
           <Dropdown
-            label="Icon Type"
+            label={variables.getMessage('widgets.quicklinks.icon_type_label')}
             name="quicklink_modal_iconType"
             noSetting={true}
             onChange={(value) => setIconType(value)}
             items={[
-              { value: 'auto', text: 'Auto-detect Icon' },
-              { value: 'custom_url', text: 'Custom Icon URL' },
-              { value: 'custom_upload', text: 'Upload Icon' },
-              { value: 'emoji', text: 'Emoji' },
-              { value: 'letter', text: 'Letter Avatar' },
+              { value: 'auto', text: variables.getMessage('widgets.quicklinks.icon_type_auto') },
+              { value: 'custom_url', text: variables.getMessage('widgets.quicklinks.icon_type_custom_url') },
+              { value: 'custom_upload', text: variables.getMessage('widgets.quicklinks.icon_type_upload') },
+              { value: 'emoji', text: variables.getMessage('widgets.quicklinks.icon_type_emoji') },
+              { value: 'letter', text: variables.getMessage('widgets.quicklinks.icon_type_letter') },
             ]}
           />
         </div>
@@ -177,7 +177,7 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
               name="quicklink_modal_icon_url"
               noSetting={true}
               onChange={(value) => setIcon(value)}
-              placeholder="https://example.com/icon.png"
+              placeholder={variables.getMessage('widgets.quicklinks.icon_url_placeholder')}
             />
           </div>
         )}
@@ -192,7 +192,7 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
             {iconPreview && (
               <img
                 src={iconPreview}
-                alt="Preview"
+                alt={variables.getMessage('common.alt_text.preview')}
                 style={{ width: '40px', height: '40px', marginTop: '8px', borderRadius: '4px' }}
               />
             )}
@@ -210,7 +210,7 @@ function AddModal({ urlError, iconError, addLink, closeModal, edit, editData, ed
               name="quicklink_modal_emoji"
               noSetting={true}
               onChange={(value) => setIcon(value)}
-              placeholder="🚀"
+              placeholder=""
             />
           </div>
         )}

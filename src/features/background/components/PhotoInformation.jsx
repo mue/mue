@@ -134,7 +134,7 @@ function PhotoInformation({ info, url, api }) {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img className="locationMap" src={tile} alt="location" draggable={false} />
+        <img className="locationMap" src={tile} alt={t('common.alt_text.location')} draggable={false} />
       </a>
     );
   };

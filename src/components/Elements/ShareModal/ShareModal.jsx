@@ -15,17 +15,17 @@ function ShareModal({ modalClose, data }) {
   if (data.startsWith('https://cdn.')) {
     data = {
       url: data,
-      name: 'this image',
+      name: variables.getMessage('modals.share.item_type.image'),
     };
   } else if (data.startsWith('"')) {
     data = {
       url: data,
-      name: 'this quote',
+      name: variables.getMessage('modals.share.item_type.quote'),
     };
   } else {
     data = {
       url: data,
-      name: 'this marketplace item',
+      name: variables.getMessage('modals.share.item_type.marketplace_item'),
     };
   }
 
@@ -53,13 +53,13 @@ function ShareModal({ modalClose, data }) {
           onClick={() =>
             window
               .open(
-                `https://x.com/intent/tweet?text=Check out ${data.name} on @getmue: ${data.url}`,
+                `https://x.com/intent/tweet?text=${variables.getMessage('modals.share.twitter_message', { name: data.name })}: ${data.url}`,
                 '_blank',
               )
               .focus()
           }
           icon={<SiX />}
-          tooltipTitle="X (Twitter)"
+          tooltipTitle={variables.getMessage('modals.share.social.twitter')}
           type="icon"
         />
         <Button
@@ -69,23 +69,20 @@ function ShareModal({ modalClose, data }) {
               .focus()
           }
           icon={<FaFacebookF />}
-          tooltipTitle="Facebook"
+          tooltipTitle={variables.getMessage('modals.share.social.facebook')}
           type="icon"
         />
         <Button
           onClick={() =>
             window
               .open(
-                'mailto:email@example.com?subject=Check%20out%20this%20%on%20%Mue!&body=' +
-                  data.name +
-                  'on Mue: ' +
-                  data.url,
+                `mailto:email@example.com?subject=${encodeURIComponent(variables.getMessage('modals.share.email_subject'))}&body=${encodeURIComponent(variables.getMessage('modals.share.email_body', { name: data.name, url: data.url }))}`,
                 '_blank',
               )
               .focus()
           }
           icon={<MdEmail />}
-          tooltipTitle="Email"
+          tooltipTitle={variables.getMessage('modals.share.social.email')}
           type="icon"
         />
         <Button
@@ -98,7 +95,7 @@ function ShareModal({ modalClose, data }) {
               .focus()
           }
           icon={<AiFillWechat />}
-          tooltipTitle="WeChat"
+          tooltipTitle={variables.getMessage('modals.share.social.wechat')}
           type="icon"
         />
         <Button
@@ -108,7 +105,7 @@ function ShareModal({ modalClose, data }) {
               .focus()
           }
           icon={<SiTencentqq />}
-          tooltipTitle="Tencent QQ"
+          tooltipTitle={variables.getMessage('modals.share.social.qq')}
           type="icon"
         />
       </div>

@@ -12,7 +12,7 @@ const prepareBuilds = () => ({
   name: 'prepareBuilds',
   closeBundle() {
     if (isProd) {
-      console.log('📦 Building extension packages...');
+      console.log('Building extension packages...');
 
       fs.mkdirSync(path.resolve(__dirname, './build'), { recursive: true });
       fs.mkdirSync(path.resolve(__dirname, './dist'), { recursive: true });
@@ -21,7 +21,7 @@ const prepareBuilds = () => ({
       fs.mkdirSync(distAssetsPath, { recursive: true });
       fs.cpSync(path.resolve(__dirname, './src/assets'), distAssetsPath, { recursive: true });
 
-      console.log('🔨 Building Chrome extension...');
+      console.log('Building Chrome extension...');
       const chromeBuildPath = path.resolve(__dirname, './build/chrome');
       fs.mkdirSync(chromeBuildPath, { recursive: true });
 
@@ -48,7 +48,7 @@ const prepareBuilds = () => ({
         { recursive: true },
       );
 
-      console.log('🦊 Building Firefox extension...');
+      console.log('Building Firefox extension...');
       const firefoxBuildPath = path.resolve(__dirname, './build/firefox');
       fs.mkdirSync(firefoxBuildPath, { recursive: true });
 
@@ -69,7 +69,7 @@ const prepareBuilds = () => ({
         { recursive: true },
       );
 
-      console.log('🧭 Building Safari extension...');
+      console.log('Building Safari extension...');
       const safariResourcesPath = path.resolve(__dirname, './safari/Mue Extension/Resources');
       fs.mkdirSync(safariResourcesPath, { recursive: true });
 
@@ -95,18 +95,18 @@ const prepareBuilds = () => ({
         { recursive: true },
       );
 
-      console.log('📦 Creating distribution packages...');
+      console.log('Creating distribution packages...');
       const chromeZip = new ADMZip();
       chromeZip.addLocalFolder(chromeBuildPath);
       chromeZip.writeZip(path.resolve(__dirname, `./build/chrome-${pkg.version}.zip`));
-      console.log(`✅ Chrome: chrome-${pkg.version}.zip`);
+      console.log(`Chrome: chrome-${pkg.version}.zip`);
 
       const firefoxZip = new ADMZip();
       firefoxZip.addLocalFolder(firefoxBuildPath);
       firefoxZip.writeZip(path.resolve(__dirname, `./build/firefox-${pkg.version}.zip`));
-      console.log(`✅ Firefox: firefox-${pkg.version}.zip`);
+      console.log(`Firefox: firefox-${pkg.version}.zip`);
 
-      console.log('✨ Build complete!');
+      console.log('Build complete!');
     }
   },
 });

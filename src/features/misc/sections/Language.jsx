@@ -91,7 +91,7 @@ const LanguageOptions = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Add translation
+            {t('common.add_translation')}
             <MdOutlineOpenInNew />
           </a>
         </div>
