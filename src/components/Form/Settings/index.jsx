@@ -1,5 +1,6 @@
 export * from './Checkbox';
 export * from './ChipSelect';
+export * from './ColourPicker';
 export * from './Dropdown';
 export * from './FileUpload';
 export * from './LocationSearch';

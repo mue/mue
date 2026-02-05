@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import EventBus from 'utils/eventbus';
 
 import { Header, Row, Content, Action, PreferencesWrapper, Section } from 'components/Layout/Settings';
-import { Checkbox, Dropdown, Radio } from 'components/Form/Settings';
+import { Checkbox, ColourPicker, Dropdown, Radio } from 'components/Form/Settings';
 import googleFonts from 'config/googleFonts.json';
 
 import { MdRefresh, MdPalette } from 'react-icons/md';
@@ -135,22 +135,14 @@ const TimeOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => 
           title={t('modals.main.settings.sections.time.vertical_clock.change_hour_colour')}
         />
         <Action>
-          <div className="colourInput">
-            <input
-              type="color"
-              name="hourColour"
-              className="minuteColour"
-              onChange={(event) => updateColour('hourColour', event)}
-              value={hourColour}
-            ></input>
-            <label htmlFor={'hourColour'} className="customBackgroundHex">
-              {hourColour}
-            </label>
-          </div>
-          <span className="link" onClick={() => localStorage.setItem('hourColour', '#ffffff')}>
-            <MdRefresh />
-            {t('modals.main.settings.buttons.reset')}
-          </span>
+          <ColourPicker
+            name="hourColour"
+            label={t('modals.main.settings.sections.time.vertical_clock.change_hour_colour')}
+            category="clock"
+            defaultValue="#ffffff"
+            value={hourColour}
+            onChange={(e) => updateColour('hourColour', e)}
+          />
         </Action>
       </Row>
       <Row>
@@ -158,22 +150,14 @@ const TimeOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => 
           title={t('modals.main.settings.sections.time.vertical_clock.change_minute_colour')}
         />
         <Action>
-          <div className="colourInput">
-            <input
-              type="color"
-              name="minuteColour"
-              className="minuteColour"
-              onChange={(event) => updateColour('minuteColour', event)}
-              value={minuteColour}
-            ></input>
-            <label htmlFor={'minuteColour'} className="customBackgroundHex">
-              {minuteColour}
-            </label>
-          </div>
-          <span className="link" onClick={() => localStorage.setItem('minuteColour', '#ffffff')}>
-            <MdRefresh />
-            {t('modals.main.settings.buttons.reset')}
-          </span>
+          <ColourPicker
+            name="minuteColour"
+            label={t('modals.main.settings.sections.time.vertical_clock.change_minute_colour')}
+            category="clock"
+            defaultValue="#ffffff"
+            value={minuteColour}
+            onChange={(e) => updateColour('minuteColour', e)}
+          />
         </Action>
       </Row>
       <Row>
@@ -181,22 +165,14 @@ const TimeOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => 
           title={t('modals.main.settings.sections.time.vertical_clock.change_second_colour')}
         />
         <Action>
-          <div className="colourInput">
-            <input
-              type="color"
-              name="secondColour"
-              className="secondColour"
-              onChange={(event) => updateColour('secondColour', event)}
-              value={secondColour}
-            ></input>
-            <label htmlFor={'secondColour'} className="customBackgroundHex">
-              {secondColour}
-            </label>
-          </div>
-          <span className="link" onClick={() => localStorage.setItem('secondColour', '#ffffff')}>
-            <MdRefresh />
-            {t('modals.main.settings.buttons.reset')}
-          </span>
+          <ColourPicker
+            name="secondColour"
+            label={t('modals.main.settings.sections.time.vertical_clock.change_second_colour')}
+            category="clock"
+            defaultValue="#ffffff"
+            value={secondColour}
+            onChange={(e) => updateColour('secondColour', e)}
+          />
         </Action>
       </Row>
 
@@ -294,22 +270,14 @@ const TimeOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => 
             subtitle={t(`${TIME_SECTION}.appearance.color.description`)}
           />
           <Action>
-            <div className="colourInput">
-              <input type="color" name="clockColor" onChange={updateClockColor} value={clockColor} />
-              <label htmlFor="clockColor" className="customBackgroundHex">
-                {clockColor}
-              </label>
-            </div>
-            <span
-              className="link"
-              onClick={() => {
-                localStorage.setItem('clockColor', '#ffffff');
-                setClockColor('#ffffff');
-              }}
-            >
-              <MdRefresh />
-              {t('modals.main.settings.buttons.reset')}
-            </span>
+            <ColourPicker
+              name="clockColor"
+              label={t(`${TIME_SECTION}.appearance.color.title`)}
+              category="clock"
+              defaultValue="#ffffff"
+              value={clockColor}
+              onChange={updateClockColor}
+            />
           </Action>
         </Row>
       </>

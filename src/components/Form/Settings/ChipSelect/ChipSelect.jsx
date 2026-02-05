@@ -44,7 +44,7 @@ function ChipSelect({ label, options, onChange, name }) {
       }
 
       // Check if clicking within a color input wrapper
-      const colorInputWrapper = target.closest('.colourInput');
+      const colorInputWrapper = target.closest('.colour-picker');
       if (colorInputWrapper && colorInputWrapper.querySelector('input[type="color"]')) {
         return;
       }

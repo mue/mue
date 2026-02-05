@@ -10,7 +10,7 @@ import {
   PreferencesWrapper,
   Section,
 } from 'components/Layout/Settings';
-import { Checkbox, Switch, Text, Dropdown } from 'components/Form/Settings';
+import { Checkbox, ColourPicker, Switch, Text, Dropdown } from 'components/Form/Settings';
 import { DatePicker } from 'components/Form/Settings/DatePicker';
 import { Button } from 'components/Elements';
 import { toast } from 'react-toastify';
@@ -311,27 +311,14 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
             subtitle={t(`${GREETING_SECTION}.appearance.color.description`)}
           />
           <Action>
-            <div className="colourInput">
-              <input
-                type="color"
-                name="greetingColor"
-                onChange={updateColor}
-                value={greetingColor}
-              />
-              <label htmlFor="greetingColor" className="customBackgroundHex">
-                {greetingColor}
-              </label>
-            </div>
-            <span
-              className="link"
-              onClick={() => {
-                localStorage.setItem('greetingColor', '#ffffff');
-                setGreetingColor('#ffffff');
-              }}
-            >
-              <MdRefresh />
-              {t('modals.main.settings.buttons.reset')}
-            </span>
+            <ColourPicker
+              name="greetingColor"
+              label={t(`${GREETING_SECTION}.appearance.color.title`)}
+              category="greeting"
+              defaultValue="#ffffff"
+              value={greetingColor}
+              onChange={updateColor}
+            />
           </Action>
         </Row>
       </>

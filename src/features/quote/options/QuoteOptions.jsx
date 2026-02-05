@@ -22,7 +22,7 @@ import {
   Section,
   PreferencesWrapper,
 } from 'components/Layout/Settings';
-import { Checkbox, Dropdown, Textarea } from 'components/Form/Settings';
+import { Checkbox, ColourPicker, Dropdown, Textarea } from 'components/Form/Settings';
 import { Button } from 'components/Elements';
 import { FREQUENCY_OPTIONS } from 'utils/frequencyManager';
 import Items from 'features/marketplace/components/Items/Items';
@@ -270,22 +270,14 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
             subtitle={t(`${QUOTE_SECTION}.appearance.color.description`)}
           />
           <Action>
-            <div className="colourInput">
-              <input type="color" name="quoteColor" onChange={updateColor} value={quoteColor} />
-              <label htmlFor="quoteColor" className="customBackgroundHex">
-                {quoteColor}
-              </label>
-            </div>
-            <span
-              className="link"
-              onClick={() => {
-                localStorage.setItem('quoteColor', '#ffffff');
-                setQuoteColor('#ffffff');
-              }}
-            >
-              <MdRefresh />
-              {t('modals.main.settings.buttons.reset')}
-            </span>
+            <ColourPicker
+              name="quoteColor"
+              label={t(`${QUOTE_SECTION}.appearance.color.title`)}
+              category="quote"
+              defaultValue="#ffffff"
+              value={quoteColor}
+              onChange={updateColor}
+            />
           </Action>
         </Row>
       </>
