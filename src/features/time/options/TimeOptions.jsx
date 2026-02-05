@@ -1,5 +1,6 @@
 import { useT } from 'contexts';
 import React, { useState } from 'react';
+import EventBus from 'utils/eventbus';
 
 import { Header, Row, Content, Action, PreferencesWrapper, Section } from 'components/Layout/Settings';
 import { Checkbox, Dropdown, Radio } from 'components/Form/Settings';
@@ -30,6 +31,7 @@ const TimeOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => 
       setSecondColour(colour);
     }
     localStorage.setItem(type, colour);
+    EventBus.emit('refresh', 'clock');
   };
 
   const WidgetType = () => {
@@ -220,6 +222,7 @@ const TimeOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => 
       const color = event.target.value;
       setClockColor(color);
       localStorage.setItem('clockColor', color);
+      EventBus.emit('refresh', 'clock');
     };
 
     return (

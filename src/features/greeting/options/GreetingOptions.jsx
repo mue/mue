@@ -1,5 +1,6 @@
 import { useT } from 'contexts';
 import { useState } from 'react';
+import EventBus from 'utils/eventbus';
 
 import {
   Header,
@@ -240,6 +241,7 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
       const color = event.target.value;
       setGreetingColor(color);
       localStorage.setItem('greetingColor', color);
+      EventBus.emit('refresh', 'greeting');
     };
 
     return (

@@ -1,6 +1,7 @@
 import { useT } from 'contexts';
 import variables from 'config/variables';
 import React, { useState, useEffect } from 'react';
+import EventBus from 'utils/eventbus';
 import {
   MdCancel,
   MdAdd,
@@ -199,6 +200,7 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
       const color = event.target.value;
       setQuoteColor(color);
       localStorage.setItem('quoteColor', color);
+      EventBus.emit('refresh', 'quote');
     };
 
     return (
