@@ -493,7 +493,21 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
         secondaryTitle={t(`${QUOTE_SECTION}.appearance.title`)}
         goBack={() => onSubSectionChange(null, sectionName)}
         report={false}
-      />
+      >
+        <Button
+          type="settings"
+          onClick={() => {
+            localStorage.removeItem('quoteFont');
+            localStorage.removeItem('quoteFontWeight');
+            localStorage.removeItem('quoteFontStyle');
+            localStorage.setItem('quoteColor', '#ffffff');
+            EventBus.emit('refresh', 'quote');
+            toast(t('toasts.reset'));
+          }}
+          icon={<MdRefresh />}
+          label={t('modals.main.settings.buttons.reset')}
+        />
+      </Header>
     );
   } else {
     header = (
@@ -538,7 +552,22 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
             title={t(`${QUOTE_SECTION}.appearance.title`)}
             subtitle={t(`${QUOTE_SECTION}.appearance.description`)}
             onClick={() => onSubSectionChange('appearance', sectionName)}
-          />
+          >
+            <Button
+              type="settings"
+              onClick={(e) => {
+                e.stopPropagation();
+                localStorage.removeItem('quoteFont');
+                localStorage.removeItem('quoteFontWeight');
+                localStorage.removeItem('quoteFontStyle');
+                localStorage.setItem('quoteColor', '#ffffff');
+                EventBus.emit('refresh', 'quote');
+                toast(t('toasts.reset'));
+              }}
+              icon={<MdRefresh />}
+              label={t('modals.main.settings.buttons.reset')}
+            />
+          </Section>
           <Section
             icon={<MdSource />}
             title={t('modals.main.settings.sections.background.source.title')}

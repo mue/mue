@@ -7,6 +7,8 @@ import { Checkbox, Dropdown, Radio } from 'components/Form/Settings';
 import googleFonts from 'config/googleFonts.json';
 
 import { MdRefresh, MdPalette } from 'react-icons/md';
+import { toast } from 'react-toastify';
+import { Button } from 'components/Elements';
 
 const TimeOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => {
   const t = useT();
@@ -324,7 +326,24 @@ const TimeOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => 
         secondaryTitle={t(`${TIME_SECTION}.appearance.title`)}
         goBack={() => onSubSectionChange(null, sectionName)}
         report={false}
-      />
+      >
+        <Button
+          type="settings"
+          onClick={() => {
+            localStorage.removeItem('clockFont');
+            localStorage.removeItem('clockFontWeight');
+            localStorage.removeItem('clockFontStyle');
+            localStorage.setItem('clockColor', '#ffffff');
+            localStorage.setItem('hourColour', '#ffffff');
+            localStorage.setItem('minuteColour', '#ffffff');
+            localStorage.setItem('secondColour', '#ffffff');
+            EventBus.emit('refresh', 'clock');
+            toast(t('toasts.reset'));
+          }}
+          icon={<MdRefresh />}
+          label={t('modals.main.settings.buttons.reset')}
+        />
+      </Header>
     );
   } else {
     header = (
@@ -356,7 +375,25 @@ const TimeOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => 
             subtitle={t(`${TIME_SECTION}.appearance.description`)}
             onClick={() => onSubSectionChange('appearance', sectionName)}
             icon={<MdPalette />}
-          />
+          >
+            <Button
+              type="settings"
+              onClick={(e) => {
+                e.stopPropagation();
+                localStorage.removeItem('clockFont');
+                localStorage.removeItem('clockFontWeight');
+                localStorage.removeItem('clockFontStyle');
+                localStorage.setItem('clockColor', '#ffffff');
+                localStorage.setItem('hourColour', '#ffffff');
+                localStorage.setItem('minuteColour', '#ffffff');
+                localStorage.setItem('secondColour', '#ffffff');
+                EventBus.emit('refresh', 'clock');
+                toast(t('toasts.reset'));
+              }}
+              icon={<MdRefresh />}
+              label={t('modals.main.settings.buttons.reset')}
+            />
+          </Section>
           <WidgetType />
           {getTimeSettings()}
         </PreferencesWrapper>

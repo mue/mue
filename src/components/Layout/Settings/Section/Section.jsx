@@ -12,7 +12,8 @@ function Section({ title, subtitle, icon, onClick, children }) {
         </div>
       </div>
       <div className="action">
-        {React.Children.count(children) === 0 ? <MdOutlineKeyboardArrowRight /> : children}
+        {children}
+        <MdOutlineKeyboardArrowRight />
       </div>
     </div>
   );

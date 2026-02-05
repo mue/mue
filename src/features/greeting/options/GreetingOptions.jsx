@@ -358,7 +358,21 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
         secondaryTitle={t(`${GREETING_SECTION}.appearance.title`)}
         goBack={() => onSubSectionChange(null, sectionName)}
         report={false}
-      />
+      >
+        <Button
+          type="settings"
+          onClick={() => {
+            localStorage.removeItem('greetingFont');
+            localStorage.removeItem('greetingFontWeight');
+            localStorage.removeItem('greetingFontStyle');
+            localStorage.setItem('greetingColor', '#ffffff');
+            EventBus.emit('refresh', 'greeting');
+            toast(t('toasts.reset'));
+          }}
+          icon={<MdRefresh />}
+          label={t('modals.main.settings.buttons.reset')}
+        />
+      </Header>
     );
   } else {
     header = (
@@ -412,7 +426,22 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
             subtitle={t(`${GREETING_SECTION}.appearance.description`)}
             onClick={() => onSubSectionChange('appearance', sectionName)}
             icon={<MdPalette />}
-          />
+          >
+            <Button
+              type="settings"
+              onClick={(e) => {
+                e.stopPropagation();
+                localStorage.removeItem('greetingFont');
+                localStorage.removeItem('greetingFontWeight');
+                localStorage.removeItem('greetingFontStyle');
+                localStorage.setItem('greetingColor', '#ffffff');
+                EventBus.emit('refresh', 'greeting');
+                toast(t('toasts.reset'));
+              }}
+              icon={<MdRefresh />}
+              label={t('modals.main.settings.buttons.reset')}
+            />
+          </Section>
           <Section
             title={t(`${GREETING_SECTION}.events`)}
             subtitle={t(`${GREETING_SECTION}.events_description`)}
