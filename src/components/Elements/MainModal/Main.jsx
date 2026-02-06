@@ -47,6 +47,10 @@ function MainModal({ modalClose, deepLinkData }) {
         });
         if (deepLinkData.subSection) {
           setCurrentSubSection(deepLinkData.subSection);
+          updateHash(
+            `#${deepLinkData.tab}/${deepLinkData.section}/${deepLinkData.subSection}`,
+            false,
+          );
         }
       }
     }

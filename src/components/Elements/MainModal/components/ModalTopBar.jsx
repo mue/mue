@@ -181,7 +181,9 @@ function ModalTopBar({
     } else if (currentSection) {
       breadcrumbPath.push({
         label: currentSection,
-        onClick: currentSubSection ? () => onSubSectionChange(null) : null,
+        onClick: currentSubSection
+          ? () => onSubSectionChange(null, currentSectionName)
+          : null,
       });
 
       if (currentSubSection) {
