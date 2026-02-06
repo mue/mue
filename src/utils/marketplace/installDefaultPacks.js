@@ -1,64 +1,56 @@
 import variables from 'config/variables';
+import defaultPacks from 'config/defaultPacks.json';
+import { install } from './install';
 import { refreshAPIPackCache } from 'features/background/api/photoPackAPI';
 
-const DEFAULT_PHOTO_PACKS = [
-  { id: 'd58909e759ec', enabled: true },
-  { id: 'c0094361594f', enabled: false },
-];
-
-export async function installDefaultPhotoPacks() {
+export async function installDefaultPacks() {
   if (localStorage.getItem('defaultPacksNeedInstall') !== 'true') {
+    console.log('[Default Packs] Already installed, skipping');
     return;
   }
+
+  console.log('[Default Packs] Installing default packs...', defaultPacks);
 
   const installed = [];
   const enabledPacks = {};
 
-  for (const pack of DEFAULT_PHOTO_PACKS) {
-    try {
-      const response = await fetch(`${variables.constants.API_URL}/marketplace/item/${pack.id}`);
-      const { data } = await response.json();
+  for (const [type, packs] of Object.entries(defaultPacks)) {
+    console.log(`[Default Packs] Processing ${type} packs:`, packs);
 
-      if (data && data.type === 'photos') {
-        installed.push(data);
-        enabledPacks[data.id] = pack.enabled;
+    for (const pack of packs) {
+      try {
+        console.log(`[Default Packs] Fetching pack ${pack.id}, enabled: ${pack.enabled}`);
+        const response = await fetch(`${variables.constants.API_URL}/marketplace/item/${pack.id}`);
+        const { data } = await response.json();
 
-        if (data.api_enabled) {
-          const defaultSettings = {};
-          data.settings_schema?.forEach((field) => {
-            defaultSettings[field.key] = field.default || '';
-          });
-          localStorage.setItem(`photopack_settings_${data.id}`, JSON.stringify(defaultSettings));
+        if (data && data.type === type) {
+          console.log(`[Default Packs] Installing ${data.display_name || data.name}`, data);
+          installed.push(data);
+          enabledPacks[data.id] = pack.enabled;
 
-          const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
-          apiPackCache[data.id] = {
-            photos: [],
-            last_fetched: 0,
-            last_refresh_attempt: 0,
-          };
-          localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
+          install(type, data, false, true);
 
-          if (pack.enabled && !data.requires_api_key) {
+          if (type === 'photos' && data.api_enabled && pack.enabled && !data.requires_api_key) {
+            console.log(`[Default Packs] Refreshing API cache for enabled pack: ${data.id}`);
             refreshAPIPackCache(data.id);
           }
         }
+      } catch (error) {
+        console.error(`[Default Packs] Failed to install default ${type} pack ${pack.id}:`, error);
       }
-    } catch (error) {
-      console.error(`Failed to install default pack ${pack.id}:`, error);
     }
   }
 
   if (installed.length > 0) {
-    const existingInstalled = JSON.parse(localStorage.getItem('installed') || '[]');
-    localStorage.setItem('installed', JSON.stringify([...existingInstalled, ...installed]));
-
     const existingEnabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
     localStorage.setItem(
       'enabledPacks',
       JSON.stringify({ ...existingEnabledPacks, ...enabledPacks }),
     );
+    console.log('[Default Packs] Set enabledPacks:', enabledPacks);
 
     localStorage.removeItem('defaultPacksNeedInstall');
     window.dispatchEvent(new Event('installedAddonsChanged'));
+    console.log('[Default Packs] Installation complete');
   }
 }

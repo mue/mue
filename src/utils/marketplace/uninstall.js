@@ -1,5 +1,6 @@
 import EventBus from 'utils/eventbus';
 import { clearQueuesOnSettingChange } from 'utils/queueOperations';
+import { getHandler } from './handlerRegistry';
 
 // todo: relocate this function
 function showReminder() {
@@ -8,10 +9,20 @@ function showReminder() {
 }
 
 export function uninstall(type, name) {
-  let installedContents, packContents;
   let refreshEvent = null;
 
-  switch (type) {
+  const handler = getHandler(type);
+  if (handler) {
+    const installed = JSON.parse(localStorage.getItem('installed'));
+    const packData = installed.find((item) => item.name === name);
+    if (packData) {
+      const result = handler.uninstall(packData, { name, installed });
+      refreshEvent = result.refreshEvent;
+    }
+  } else {
+    let installedContents, packContents;
+
+    switch (type) {
     case 'settings': {
       const oldSettings = JSON.parse(localStorage.getItem('backup_settings'));
       localStorage.clear();
@@ -83,11 +94,12 @@ export function uninstall(type, name) {
 
       localStorage.removeItem('backgroundchange');
       clearQueuesOnSettingChange('packUninstall');
-      refreshEvent = 'marketplacebackgrounduninstall';
+      refreshEvent = null;
       break;
 
     default:
       break;
+    }
   }
 
   const installed = JSON.parse(localStorage.getItem('installed'));

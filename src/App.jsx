@@ -8,10 +8,13 @@ import { loadSettings, moveSettings } from 'utils/settings';
 import EventBus from 'utils/eventbus';
 import variables from 'config/variables';
 import { TranslationProvider } from 'contexts/TranslationContext';
-import { installDefaultPhotoPacks } from 'utils/marketplace/installDefaultPacks';
+import { registerAllHandlers } from 'utils/marketplace/registerHandlers';
+import { installDefaultPacks } from 'utils/marketplace/installDefaultPacks';
 
 const useAppSetup = () => {
   useEffect(() => {
+    registerAllHandlers();
+
     const firstRun = localStorage.getItem('firstRun');
     const stats = localStorage.getItem('stats');
 
@@ -22,7 +25,7 @@ const useAppSetup = () => {
 
     loadSettings();
 
-    installDefaultPhotoPacks();
+    installDefaultPacks();
 
     const refreshHandler = (data) => {
       if (data === 'other' || data === 'greeting' || data === 'clock' || data === 'quote') {

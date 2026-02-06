@@ -293,16 +293,37 @@ export function buildPhotoPool() {
   const apiPacksReady = JSON.parse(localStorage.getItem('api_packs_ready') || '[]');
   const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
 
+  console.log('[Build Pool] Building photo pool', {
+    installed_count: installed.filter((p) => p.type === 'photos').length,
+    enabledPacks,
+    apiPacksReady,
+  });
+
   installed.forEach((pack) => {
     if (pack.type !== 'photos') return;
 
     const packId = pack.id || pack.name;
-    if (enabledPacks[packId] === false) return;
+    const isEnabled = enabledPacks[packId] !== false;
+
+    console.log(`[Build Pool] Processing pack: ${pack.display_name || pack.name}`, {
+      packId,
+      enabled: isEnabled,
+      enabledPacksValue: enabledPacks[packId],
+      api_enabled: pack.api_enabled,
+      api_ready: apiPacksReady.includes(pack.id),
+      cached_photos: pack.api_enabled ? apiPackCache[pack.id]?.photos?.length || 0 : pack.photos?.length || 0,
+    });
+
+    if (enabledPacks[packId] === false) {
+      console.log(`[Build Pool] Skipping disabled pack: ${pack.display_name || pack.name}`);
+      return;
+    }
 
     if (pack.api_enabled) {
       if (apiPacksReady.includes(pack.id)) {
         const cached = apiPackCache[pack.id];
         if (cached && cached.photos.length > 0) {
+          console.log(`[Build Pool] Adding ${cached.photos.length} API photos from ${pack.display_name || pack.name}`);
           cached.photos.forEach((photo) => {
             pool.push({
               ...photo,
@@ -310,9 +331,14 @@ export function buildPhotoPool() {
               pack_id: pack.id,
             });
           });
+        } else {
+          console.log(`[Build Pool] API pack ${pack.display_name || pack.name} has no cached photos`);
         }
+      } else {
+        console.log(`[Build Pool] API pack ${pack.display_name || pack.name} is not ready yet`);
       }
     } else {
+      console.log(`[Build Pool] Adding ${pack.photos.length} static photos from ${pack.display_name || pack.name}`);
       pack.photos.forEach((photo) => {
         pool.push({
           photographer: photo.photographer,
@@ -326,5 +352,6 @@ export function buildPhotoPool() {
     }
   });
 
+  console.log(`[Build Pool] Final pool size: ${pool.length} photos`);
   return pool;
 }

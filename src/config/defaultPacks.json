@@ -1,0 +1,9 @@
+{
+  "photos": [
+    { "id": "d58909e759ec", "enabled": true },
+    { "id": "c0094361594f", "enabled": false }
+  ],
+  "quotes": [
+    { "id": "0c8a5bdebd13", "enabled": true }
+  ]
+}

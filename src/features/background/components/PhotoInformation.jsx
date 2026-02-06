@@ -48,7 +48,8 @@ const formatText = (text) => {
 const downloadImage = async (info) => {
   const link = document.createElement('a');
   link.href = await toDataURL(getProxiedImageUrl(info.url));
-  link.download = `mue-${formatText(info.credit)}-${formatText(info.location)}.jpg`; // image is more likely to be webp or avif btw
+  const locationText = typeof info.location === 'string' ? info.location : info.location?.name || 'unknown';
+  link.download = `mue-${formatText(info.credit)}-${formatText(locationText)}.jpg`;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -341,14 +342,20 @@ function PhotoInformation({ info, url, api }) {
               <span
                 className="title"
                 title={
-                  (showExtraInfo || other) && info.description ? info.description : info.location
+                  (showExtraInfo || other) && info.description
+                    ? info.description
+                    : typeof info.location === 'string'
+                      ? info.location
+                      : info.location?.name || ''
                 }
               >
                 {(showExtraInfo || other) && info.description
                   ? info.description.length > 40
                     ? info.description.substring(0, 40) + '...'
                     : info.description
-                  : info.location?.split(',').slice(-2).join(', ').trim()}
+                  : typeof info.location === 'string'
+                    ? info.location.split(',').slice(-2).join(', ').trim()
+                    : info.location?.name || ''}
               </span>
               <span className="subtitle" id="credit">
                 {photo} {credit}
