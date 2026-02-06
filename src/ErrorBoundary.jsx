@@ -27,21 +27,35 @@ class ErrorBoundary extends PureComponent {
 
   render() {
     if (this.state.error) {
+      const title = variables.getMessage
+        ? variables.getMessage('error_boundary.title')
+        : 'An error occurred';
+      const message = variables.getMessage
+        ? variables.getMessage('error_boundary.message')
+        : 'Something went wrong. Please try refreshing the page.';
+      const reportButton = variables.getMessage
+        ? variables.getMessage('error_boundary.report_button')
+        : 'Report Error';
+      const sentSuccessfully = variables.getMessage
+        ? variables.getMessage('error_boundary.sent_successfully')
+        : 'Report sent successfully';
+      const supportDiscord = variables.getMessage
+        ? variables.getMessage('error_boundary.support_discord')
+        : 'Get Support on Discord';
+
       return (
         <div className="criticalError">
           <div className="criticalError-message">
-            <h1>{variables.getMessage('error_boundary.title')}</h1>
-            <p>{variables.getMessage('error_boundary.message')}</p>
+            <h1>{title}</h1>
+            <p>{message}</p>
             <div className="criticalError-actions">
               {this.state.showReport ? (
-                <button onClick={() => this.reportError()}>
-                  {variables.getMessage('error_boundary.report_button')}
-                </button>
+                <button onClick={() => this.reportError()}>{reportButton}</button>
               ) : (
-                <p>{variables.getMessage('error_boundary.sent_successfully')}</p>
+                <p>{sentSuccessfully}</p>
               )}
               <a href="https://discord.gg/zv8C9F8" target="_blank" rel="noreferrer">
-                {variables.getMessage('error_boundary.support_discord')}
+                {supportDiscord}
               </a>
             </div>
           </div>

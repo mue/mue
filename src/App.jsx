@@ -56,10 +56,13 @@ const App = () => {
 
   useAppSetup();
 
-  const languagecode = localStorage.getItem('language') || 'en_GB';
+  const languagecode = variables.languagecode || localStorage.getItem('language') || 'en_GB';
 
   return (
-    <TranslationProvider initialLanguage={languagecode}>
+    <TranslationProvider
+      initialLanguage={languagecode}
+      initialTranslations={variables.language?.messages || {}}
+    >
       {showBackground && <Background />}
       <CustomWidgets />
       <ToastContainer

@@ -10,27 +10,39 @@ import { migrateAPIUsersToPhotoPacks } from './utils/migrations';
 import './scss/index.scss';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { initTranslations } from 'lib/translations';
-
-const languagecode = localStorage.getItem('language') || 'en_GB';
-variables.language = initTranslations(languagecode);
-variables.languagecode = languagecode;
-document.documentElement.lang = languagecode.replace('_', '-');
-
-window.t = (text, optional) => variables.language.getMessage(variables.languagecode, text, optional || {});
-
-migrateAPIUsersToPhotoPacks();
-
-Sentry.init({
-  dsn: variables.constants.SENTRY_DSN,
-  defaultIntegrations: false,
-  autoSessionTracking: false,
-});
+import { initTranslations, loadTranslationWithFallback } from 'lib/translations';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
-root.render(
-  <ErrorBoundary>
-    <App />
-  </ErrorBoundary>,
-);
+
+(async () => {
+  try {
+    const languagecode = localStorage.getItem('language') || 'en_GB';
+
+    const translations = await loadTranslationWithFallback(languagecode);
+    variables.language = initTranslations(languagecode, translations);
+    variables.languagecode = languagecode;
+
+    document.documentElement.lang = languagecode.replace('_', '-');
+
+    window.t = (text, optional) =>
+      variables.language.getMessage(variables.languagecode, text, optional || {});
+
+    migrateAPIUsersToPhotoPacks();
+
+    Sentry.init({
+      dsn: variables.constants.SENTRY_DSN,
+      defaultIntegrations: false,
+      autoSessionTracking: false,
+    });
+
+    root.render(
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>,
+    );
+  } catch (error) {
+    console.error('Failed to initialize translations:', error);
+    root.render(<div>Failed to load application. Please refresh.</div>);
+  }
+})();
