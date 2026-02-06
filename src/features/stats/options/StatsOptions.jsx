@@ -62,7 +62,13 @@ const Stats = () => {
   };
 
   const AchievementElement = ({ id, achieved, timestamp }) => {
-    const { name, description } = getLocalisedAchievementData(id);
+    const [achievementData, setAchievementData] = useState({ name: '', description: '' });
+
+    useEffect(() => {
+      getLocalisedAchievementData(id).then((data) => {
+        setAchievementData(data);
+      });
+    }, [id]);
 
     return (
       <div className="achievement">
@@ -73,8 +79,8 @@ const Stats = () => {
               <MdAccessTime /> {new Date(timestamp).toLocaleDateString()}
             </span>
           )}
-          <span className="achievementTitle">{name}</span>
-          <span className="subtitle">{achieved ? description : '?????'}</span>
+          <span className="achievementTitle">{achievementData.name}</span>
+          <span className="subtitle">{achieved ? achievementData.description : '?????'}</span>
         </div>
       </div>
     );

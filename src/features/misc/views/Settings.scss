@@ -1,0 +1,13 @@
+@keyframes settingsFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.settings-content-wrapper {
+  animation: settingsFadeIn 0.3s ease-out;
+  animation-fill-mode: both;
+}

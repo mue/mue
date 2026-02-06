@@ -123,7 +123,13 @@ export default defineConfig(({ command, mode }) => {
       sourcemap: !isProd,
       rollupOptions: {
         output: {
-          manualChunks: undefined,
+          manualChunks: {
+            'vendor-react': ['react', 'react-dom', 'react-modal'],
+            'vendor-icons': ['react-icons'],
+            'vendor-dnd': ['@dnd-kit/core', '@dnd-kit/sortable', '@dnd-kit/utilities'],
+            'vendor-ui': ['react-toastify', '@floating-ui/react-dom'],
+            'i18n': ['@eartharoid/i18n'],
+          },
         },
       },
     },

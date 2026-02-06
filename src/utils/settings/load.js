@@ -1,6 +1,21 @@
 import variables from 'config/variables';
 import ExperimentalInit from 'utils/experimental';
 
+function loadGoogleFontAsync(fontFamily, id) {
+  const fontUrl = `https://fonts.googleapis.com/css2?family=${fontFamily.replace(/ /g, '+')}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap`;
+
+  const existingLink = document.getElementById(id);
+  if (existingLink) {
+    existingLink.remove();
+  }
+
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = fontUrl;
+  link.id = id;
+  document.head.appendChild(link);
+}
+
 /**
  * It loads the settings from localStorage and applies them to the page.
  * @param hotreload - boolean
@@ -100,14 +115,17 @@ export function loadSettings(hotreload) {
     const widgetFontWeight = localStorage.getItem('widgetFontWeight') || '400';
     const widgetFontStyle = localStorage.getItem('widgetFontStyle') || 'normal';
 
-    const fontFamily = widgetFont.replace(/ /g, '+');
-    const googleFontUrl = `@import url('https://fonts.googleapis.com/css2?family=${fontFamily}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');`;
+    loadGoogleFontAsync(widgetFont, 'customwidgetfont-link');
+
+    const existingStyle = document.getElementById('customwidgetfont');
+    if (existingStyle) {
+      existingStyle.remove();
+    }
 
     document.head.insertAdjacentHTML(
       'beforeend',
       `
         <style id='customwidgetfont'>
-          ${googleFontUrl}
           .greeting, .clock, .quote, .quoteauthor, .date, .weather, .navbar, #center {
             font-family: '${widgetFont}', 'Lexend Deca', 'Inter', sans-serif !important;
             font-weight: ${widgetFontWeight};
@@ -123,14 +141,17 @@ export function loadSettings(hotreload) {
     const settingsFontWeight = localStorage.getItem('settingsFontWeight') || '400';
     const settingsFontStyle = localStorage.getItem('settingsFontStyle') || 'normal';
 
-    const fontFamily = settingsFont.replace(/ /g, '+');
-    const googleFontUrl = `@import url('https://fonts.googleapis.com/css2?family=${fontFamily}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');`;
+    loadGoogleFontAsync(settingsFont, 'customsettingsfont-link');
+
+    const existingStyle = document.getElementById('customsettingsfont');
+    if (existingStyle) {
+      existingStyle.remove();
+    }
 
     document.head.insertAdjacentHTML(
       'beforeend',
       `
         <style id='customsettingsfont'>
-          ${googleFontUrl}
           .modal-content, .settings, .preferences, .marketplace, .welcome {
             font-family: '${settingsFont}', 'Lexend Deca', 'Inter', sans-serif !important;
             font-weight: ${settingsFontWeight};
@@ -148,14 +169,11 @@ export function loadSettings(hotreload) {
   const greetingColor = localStorage.getItem('greetingColor');
 
   if (greetingFont || greetingFontWeight || greetingFontStyle || greetingColor) {
-    let styleContent = '';
-
     if (greetingFont) {
-      const fontFamily = greetingFont.replace(/ /g, '+');
-      styleContent += `@import url('https://fonts.googleapis.com/css2?family=${fontFamily}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');\n`;
+      loadGoogleFontAsync(greetingFont, 'customgreetingfont-link');
     }
 
-    styleContent += '.greeting {';
+    let styleContent = '.greeting {';
     if (greetingFont) {
       styleContent += `font-family: '${greetingFont}', 'Lexend Deca', 'Inter', sans-serif !important;`;
     }
@@ -170,6 +188,11 @@ export function loadSettings(hotreload) {
     }
     styleContent += '}';
 
+    const existingStyle = document.getElementById('customgreetingfont');
+    if (existingStyle) {
+      existingStyle.remove();
+    }
+
     document.head.insertAdjacentHTML(
       'beforeend',
       `<style id='customgreetingfont'>${styleContent}</style>`,
@@ -182,14 +205,11 @@ export function loadSettings(hotreload) {
   const clockColor = localStorage.getItem('clockColor');
 
   if (clockFont || clockFontWeight || clockFontStyle || clockColor) {
-    let styleContent = '';
-
     if (clockFont) {
-      const fontFamily = clockFont.replace(/ /g, '+');
-      styleContent += `@import url('https://fonts.googleapis.com/css2?family=${fontFamily}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');\n`;
+      loadGoogleFontAsync(clockFont, 'customclockfont-link');
     }
 
-    styleContent += '.clock, .date {';
+    let styleContent = '.clock, .date {';
     if (clockFont) {
       styleContent += `font-family: '${clockFont}', 'Lexend Deca', 'Inter', sans-serif !important;`;
     }
@@ -204,6 +224,11 @@ export function loadSettings(hotreload) {
     }
     styleContent += '}';
 
+    const existingStyle = document.getElementById('customclockfont');
+    if (existingStyle) {
+      existingStyle.remove();
+    }
+
     document.head.insertAdjacentHTML(
       'beforeend',
       `<style id='customclockfont'>${styleContent}</style>`,
@@ -216,14 +241,11 @@ export function loadSettings(hotreload) {
   const quoteColor = localStorage.getItem('quoteColor');
 
   if (quoteFont || quoteFontWeight || quoteFontStyle || quoteColor) {
-    let styleContent = '';
-
     if (quoteFont) {
-      const fontFamily = quoteFont.replace(/ /g, '+');
-      styleContent += `@import url('https://fonts.googleapis.com/css2?family=${fontFamily}:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');\n`;
+      loadGoogleFontAsync(quoteFont, 'customquotefont-link');
     }
 
-    styleContent += '.quote, .quoteauthor {';
+    let styleContent = '.quote, .quoteauthor {';
     if (quoteFont) {
       styleContent += `font-family: '${quoteFont}', 'Lexend Deca', 'Inter', sans-serif !important;`;
     }
@@ -237,6 +259,11 @@ export function loadSettings(hotreload) {
       styleContent += `color: ${quoteColor} !important;`;
     }
     styleContent += '}';
+
+    const existingStyle = document.getElementById('customquotefont');
+    if (existingStyle) {
+      existingStyle.remove();
+    }
 
     document.head.insertAdjacentHTML(
       'beforeend',

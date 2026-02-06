@@ -1,0 +1,158 @@
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.settings-loader {
+  padding: 0;
+  width: 100%;
+  animation: fadeIn 0.3s ease-in;
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .shimmer {
+    position: relative;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 6px;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.08) 50%,
+        transparent 100%
+      );
+      animation: shimmer 2s ease-in-out infinite;
+    }
+  }
+
+  .loader-header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 20px;
+
+    .loader-header-left {
+      .loader-title {
+        width: 180px;
+        height: 32px;
+      }
+    }
+
+    .loader-header-right {
+      display: flex;
+      gap: 10px;
+
+      .loader-button {
+        width: 110px;
+        height: 36px;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  .loader-section {
+    padding: 20px 30px;
+    margin-bottom: 25px;
+
+    .loader-section-title {
+      width: 220px;
+      height: 22px;
+      margin-bottom: 8px;
+    }
+
+    .loader-section-subtitle {
+      width: 420px;
+      height: 16px;
+      opacity: 0.7;
+    }
+  }
+
+  .loader-options {
+    padding: 0 30px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+
+    .loader-option-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 44px;
+
+      .loader-option-left {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        max-width: 65%;
+
+        .loader-option-label {
+          width: 160px;
+          height: 18px;
+        }
+
+        .loader-option-desc {
+          width: 320px;
+          height: 14px;
+          opacity: 0.6;
+        }
+      }
+
+      .loader-toggle {
+        width: 44px;
+        height: 24px;
+        border-radius: 12px;
+      }
+
+      .loader-select {
+        width: 200px;
+        height: 40px;
+        border-radius: 6px;
+      }
+
+      .loader-slider {
+        width: 280px;
+        height: 6px;
+        border-radius: 3px;
+      }
+    }
+  }
+}
+
+body.light {
+  .settings-loader {
+    .shimmer {
+      background: rgba(0, 0, 0, 0.04);
+
+      &::after {
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(0, 0, 0, 0.08) 50%,
+          transparent 100%
+        );
+      }
+    }
+
+    .loader-header-section {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+  }
+}

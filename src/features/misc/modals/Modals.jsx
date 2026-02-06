@@ -1,16 +1,17 @@
 import variables from 'config/variables';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import Modal from 'react-modal';
 
 import { MainModal } from 'components/Elements';
 import Navbar from '../../navbar/Navbar';
 import Preview from '../../helpers/preview/Preview';
+import WelcomeLoader from '../components/WelcomeLoader';
 
 import EventBus from 'utils/eventbus';
 import { parseDeepLink, shouldAutoOpenModal, updateHash } from 'utils/deepLinking';
 import { install } from 'utils/marketplace';
 
-import Welcome from 'features/welcome/Welcome';
+const Welcome = lazy(() => import('features/welcome/Welcome'));
 
 const DEFAULT_PACK_ID = '0c8a5bdebd13';
 
@@ -177,7 +178,9 @@ const Modals = () => {
         shouldCloseOnOverlayClick={false}
         ariaHideApp={false}
       >
-        <Welcome modalClose={() => closeWelcome()} modalSkip={() => previewWelcome()} />
+        <Suspense fallback={<WelcomeLoader />}>
+          <Welcome modalClose={() => closeWelcome()} modalSkip={() => previewWelcome()} />
+        </Suspense>
       </Modal>
       {preview && <Preview setup={() => window.location.reload()} />}
     </>

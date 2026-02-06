@@ -1,27 +1,28 @@
-import { memo, useMemo } from 'react';
+import { memo, useMemo, lazy, Suspense } from 'react';
 import { useT } from 'contexts/TranslationContext';
 
 import Tabs from 'components/Elements/MainModal/backend/Tabs';
+import SettingsLoader from '../components/SettingsLoader';
+import './Settings.scss';
 
-import { NavbarOptions } from 'features/navbar';
-import { GreetingOptions } from 'features/greeting';
-import { TimeOptions, DateOptions } from 'features/time';
-import { QuickLinksOptions } from 'features/quicklinks';
-import { QuoteOptions } from 'features/quote';
-import { MessageOptions } from 'features/message';
-import { BackgroundOptions } from 'features/background';
-import { SearchOptions } from 'features/search';
-import { WeatherOptions } from 'features/weather';
-import { Stats } from 'features/stats';
-import {
-  About,
-  AdvancedOptions,
-  AppearanceOptions,
-  Changelog,
-  ExperimentalOptions,
-  LanguageOptions,
-  Overview,
-} from '../sections';
+const NavbarOptions = lazy(() => import('features/navbar').then((m) => ({ default: m.NavbarOptions })));
+const GreetingOptions = lazy(() => import('features/greeting').then((m) => ({ default: m.GreetingOptions })));
+const TimeOptions = lazy(() => import('features/time').then((m) => ({ default: m.TimeOptions })));
+const DateOptions = lazy(() => import('features/time').then((m) => ({ default: m.DateOptions })));
+const QuickLinksOptions = lazy(() => import('features/quicklinks').then((m) => ({ default: m.QuickLinksOptions })));
+const QuoteOptions = lazy(() => import('features/quote').then((m) => ({ default: m.QuoteOptions })));
+const MessageOptions = lazy(() => import('features/message').then((m) => ({ default: m.MessageOptions })));
+const BackgroundOptions = lazy(() => import('features/background').then((m) => ({ default: m.BackgroundOptions })));
+const SearchOptions = lazy(() => import('features/search').then((m) => ({ default: m.SearchOptions })));
+const WeatherOptions = lazy(() => import('features/weather').then((m) => ({ default: m.WeatherOptions })));
+const Stats = lazy(() => import('features/stats').then((m) => ({ default: m.Stats })));
+const About = lazy(() => import('../sections').then((m) => ({ default: m.About })));
+const AdvancedOptions = lazy(() => import('../sections').then((m) => ({ default: m.AdvancedOptions })));
+const AppearanceOptions = lazy(() => import('../sections').then((m) => ({ default: m.AppearanceOptions })));
+const Changelog = lazy(() => import('../sections').then((m) => ({ default: m.Changelog })));
+const ExperimentalOptions = lazy(() => import('../sections').then((m) => ({ default: m.ExperimentalOptions })));
+const LanguageOptions = lazy(() => import('../sections').then((m) => ({ default: m.LanguageOptions })));
+const Overview = lazy(() => import('../sections').then((m) => ({ default: m.Overview })));
 
 const sections = [
   { label: 'modals.main.settings.sections.order.title', name: 'order', component: Overview },
@@ -114,11 +115,15 @@ function Settings(props) {
     >
       {translatedSections.map(({ label, name, component: Component, translatedLabel }) => (
         <div key={name} label={translatedLabel} name={name}>
-          <Component
-            currentSubSection={props.currentSubSection}
-            onSubSectionChange={props.onSubSectionChange}
-            sectionName={name}
-          />
+          <Suspense fallback={<SettingsLoader />}>
+            <div className="settings-content-wrapper">
+              <Component
+                currentSubSection={props.currentSubSection}
+                onSubSectionChange={props.onSubSectionChange}
+                sectionName={name}
+              />
+            </div>
+          </Suspense>
         </div>
       ))}
     </Tabs>
