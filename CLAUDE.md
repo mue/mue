@@ -1,264 +1,113 @@
-# Mue Development Guide
+# CLAUDE.md
 
-Mue is a fast, open-source new tab page browser extension for Chrome, Firefox, and Safari.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Tech Stack
+## What is Mue?
 
-### Core Technologies
-- **React 19** - Modern hooks and functional components only
-- **Vite 7** - Build tool with SWC for fast compilation
-- **Bun** - Package manager and JavaScript runtime (>= 1.3.0)
-- **SCSS** - Styling with modern compiler API
-- **Browser Extension (Manifest V3)** - Multi-browser support (Chrome, Firefox, Safari)
+Mue is a browser extension (Chrome, Firefox, Safari) that replaces the new tab page with a customizable dashboard featuring widgets like clock, weather, quotes, greetings, quick links, and backgrounds. Built with React 19, Vite 7, and Manifest V3.
 
-### Key Libraries
-- **@dnd-kit** - Drag and drop functionality for widgets
-- **@eartharoid/i18n** - Internationalization with multiple locales
-- **@sentry/react** - Error tracking and monitoring
-- **react-modal** - Accessible modal dialogs
-- **react-toastify** - Toast notifications
-- **IndexedDB & localStorage** - Client-side data persistence
-- **Vite path aliases** - Imports use `@/`, `components/`, `hooks/`, `utils/`, etc.
+## Commands
 
-### Development Tools
-- **ESLint** - JavaScript/JSX linting with React plugin
-- **Stylelint** - SCSS/CSS linting
-- **Prettier** - Code formatting
-- **Commitlint** - Conventional commit enforcement
-- **Husky** - Git hooks for pre-commit checks
-
-## Project Structure
-
-```
-src/
-├── components/     # Reusable UI components
-├── features/       # Feature-specific components (quote, greeting, weather, etc.)
-├── contexts/       # React Context providers for shared state
-├── hooks/          # Custom React hooks
-├── utils/          # Utility functions and helpers
-├── lib/            # Third-party library wrappers
-├── i18n/           # Internationalization and locale files
-├── scss/           # Global styles, variables, and mixins
-├── config/         # Configuration files
-└── assets/         # Static assets (icons, images)
-```
-
-## Development Rules
-
-### 1. Translation Files
-**en_GB.json is the base translation file.**
-
-When updating translations:
-1. Edit `src/i18n/locales/en_GB.json` first
-2. Run `bun run translations` to sync changes to all locales
-3. This ensures formatting remains consistent across all language files
-
-Available translation scripts:
-- `bun run translations` - Sync all locale files with en_GB
-- `bun run translations:percentages` - Update completion percentages
-- `bun run translations:unused` - Find unused translation keys
-
-### 2. Branch Strategy
-Use the **three-branch workflow**:
-- `dev` - Active development (target for all PRs)
-- `beta` - Release candidates for testing
-- `main` - Production/stable releases
-
-**Always create PRs targeting the `dev` branch.**
-
-### 3. Commit Messages
-Follow **conventional commits** format:
-- `feat:` - New features
-- `fix:` - Bug fixes
-- `chore:` - Maintenance tasks
-- `docs:` - Documentation changes
-- `refactor:` - Code refactoring
-- `test:` - Test-related changes
-- `style:` - Code style changes (formatting, etc.)
-
-Commitlint will enforce this in pre-commit hooks.
-
-### 4. Code Style & Quality
-
-**Before committing:**
 ```bash
-bun run lint:fix    # Auto-fix ESLint and Stylelint issues
-bun run pretty      # Format code with Prettier
+bun install              # Install dependencies (always use bun, never npm/yarn)
+bun run dev              # Dev server with HMR (opens browser automatically)
+bun run dev:host         # Dev server exposed on network
+bun run build            # Production build for all browsers (Chrome, Firefox, Safari)
+bun run lint             # Run ESLint + Stylelint
+bun run lint:fix         # Auto-fix lint issues
+bun run pretty           # Format with Prettier
+bun run translations     # Sync all locale files from en_GB.json base
+bun run translations:percentages  # Update translation completion stats
+bun run translations:unused       # Find unused translation keys
 ```
 
-**Linting rules:**
-- Follow ESLint configuration in `eslint.config.js`
-- SCSS follows Stylelint standard SCSS rules
-- Husky pre-commit hooks will block commits with linting errors
+Build outputs: `build/chrome/`, `build/firefox/`, `safari/Mue Extension/Resources/`. Vite's `prepareBuilds` plugin (in `vite.config.mjs`) copies dist + manifests + icons into each browser folder and creates versioned zips.
 
-### 5. Commenting
-**Do not add comments to the codebase.** Keep code clean and self-explanatory. Use descriptive variable/function names instead of comments.
+There are no tests in this project.
 
-### 6. Emojis
-**Do not use emojis in code strings.** Avoid text emojis in console logs, placeholders, or any code strings.
+## Architecture
 
-**Exception:** User-facing toast notifications may include emojis for visual feedback.
+### Bootstrap Flow
 
-```javascript
-// Bad - emojis in console logs
-console.log('🔨 Building Chrome extension...');
-console.log('✅ Build complete!');
+1. `src/index.jsx` - Initializes i18n from localStorage language, sets up Sentry, runs data migrations, exposes global `window.t()`, renders `<ErrorBoundary><App/></ErrorBoundary>`
+2. `src/App.jsx` - `useAppSetup()` checks first-run state, calls `loadSettings()` (which applies theme, fonts, custom CSS to the DOM), listens for EventBus `'refresh'` events. Renders: `<TranslationProvider>` → `<Background>` + `<CustomWidgets>` + `<Widgets>` + `<Modals>`
 
-// Good - no emojis
-console.log('Building Chrome extension...');
-console.log('Build complete!');
+### State Management (no Redux/Zustand)
 
-// Exception - toast notifications are allowed
-toast(`🏆 ${getMessage('achievement_unlocked', { name })}`);
+All persistent state lives in **localStorage**. Components read from localStorage on mount and re-read when they receive EventBus refresh events. The only React Context is `TranslationContext` for i18n.
+
+- `localStorage.getItem('key') === 'true'` is the standard boolean check pattern
+- Settings changes write to localStorage, then emit `EventBus.emit('refresh', 'category')` to notify widgets
+- `src/utils/settings/load.js` applies localStorage settings to the DOM (theme classes, injected style elements for custom fonts/CSS)
+
+### EventBus (`src/utils/eventbus.js`)
+
+Static class wrapping DOM CustomEvents. Primary communication mechanism between settings UI and widgets.
+
+Key events:
+
+- `'refresh'` with payload: `'quote'`, `'greeting'`, `'background'`, `'widgets'`, `'clock'`, `'other'` - triggers widget reload
+- `'languageChange'` with `{language: 'en_GB'}` - switches locale
+- `'modal'` with `'openMainModal'` - opens settings modal
+
+Pattern: register in `useEffect`, clean up with `EventBus.off()` on unmount.
+
+### Feature Organization (`src/features/`)
+
+Each feature (background, time, quote, greeting, weather, search, quicklinks, message, navbar, stats, marketplace, welcome) follows this structure:
+
+```
+feature/
+├── index.jsx           # Main component
+├── options/index.jsx   # Settings panel UI
+├── hooks/              # Feature-specific hooks (useQuoteState, useQuoteLoader, etc.)
+├── components/         # Subcomponents
+├── api/                # Data fetching/processing
+└── scss/               # Styles
 ```
 
-### 7. Naming Conventions
-**Keep variable and function names concise.** Avoid verbose redundant prefixes like "is" in state variables.
+The `misc` feature is special - it contains the modal system (`modals/Modals.jsx`), widget layout (`CustomWidgets.jsx`, `views/Widgets.jsx`), and the settings view (`views/Settings.jsx`).
 
-```javascript
-// Good - concise and clear
-const [open, setOpen] = useState(false);
-const [loading, setLoading] = useState(false);
-const [refreshing, setRefreshing] = useState(false);
+### Modal & Settings System
 
-// Bad - unnecessarily verbose
-const [isOpen, setIsOpen] = useState(false);
-const [isLoading, setIsLoading] = useState(false);
-const [isRefreshing, setIsRefreshing] = useState(false);
-```
+`Modals.jsx` orchestrates four modals (main, welcome, update, apps). The main modal has three tabs: Settings, Discover (marketplace), Library. Deep-linking via URL hash: `#settings/appearance/fonts`, `#discover/quote_packs`.
 
-**Exceptions:**
-- Use "is" prefix for boolean functions/methods that return a value: `isValid()`, `isAuthenticated()`
-- Use "has" prefix for boolean properties: `hasPermission`, `hasError`
+### Global Variables (`src/config/variables.js`)
 
-### 8. Package Manager
-**Always use Bun** (not npm or yarn):
-```bash
-bun install         # Install dependencies
-bun run dev         # Start dev server
-bun run build       # Production build
-```
+Singleton object holding `language` (i18n instance), `languagecode`, `stats`, and `constants`. Mutated during initialization. `variables.getMessage()` is dynamically set by TranslationContext.
 
-### 9. Build Targets
-The project builds for **multiple browsers**:
-- Chrome/Edge (Chromium)
-- Firefox
-- Safari (via Xcode)
+### Hooks
 
-**Test changes across all targets** when modifying:
-- Core functionality
-- Manifest files (`manifest/chrome.json`, `manifest/firefox.json`)
-- Browser-specific APIs
+- `useFrequencyInterval()` - configurable update intervals with visibility-aware pause/resume
+- `useCachedFetch()` - fetch with localStorage caching and TTL
+- `useT()` / `useTranslation()` - access translation function from context
 
-Build outputs:
-- `dist/` - Vite bundled output
-- `build/chrome/` - Chrome extension
-- `build/firefox/` - Firefox extension
-- `safari/Mue Extension/Resources/` - Safari extension
+### Path Aliases (configured in `vite.config.mjs`)
 
-### 10. State Management
-- **Persistent settings** - Use `localStorage` via custom hooks
-- **Shared state** - Use React Context (see `src/contexts/`)
-- **Component state** - Use `useState`, `useReducer` for local state
-- **Custom hooks** - Create hooks for reusable stateful logic
+Use these instead of relative imports: `@/`, `components/`, `contexts/`, `hooks/`, `assets/`, `config/`, `features/`, `lib/`, `scss/`, `translations/`, `utils/`, `i18n/`
 
-### 11. Styling Conventions
-SCSS files are organized in `src/scss/`:
-- `_variables.scss` - Color palette, breakpoints, sizes
-- `_mixins.scss` - Reusable style mixins
-- Component styles - Co-located in feature/component folders
+## Code Rules
 
-**Use existing variables and mixins** for consistency.
+### Do not add comments
 
-### 12. Development Server
-```bash
-bun run dev         # Local development with HMR at localhost
-bun run dev:host    # Expose on network for testing on other devices
-```
+Keep code self-explanatory. Use descriptive names instead of comments.
 
-Hot Module Replacement (HMR) is enabled for fast development.
+### Do not use emojis in code strings
 
-### 13. Path Aliases
-Use configured path aliases instead of relative imports:
-```javascript
-// Good
-import Button from 'components/Button';
-import { useLocalStorageState } from 'hooks/useLocalStorageState';
-import { getWeather } from 'utils/api';
+No emojis in console logs, placeholders, or code strings. Exception: user-facing toast notifications may include emojis.
 
-// Avoid
-import Button from '../../../components/Button';
-```
+### All user-visible strings must use i18n
 
-Available aliases: `@/`, `components/`, `contexts/`, `hooks/`, `assets/`, `config/`, `features/`, `lib/`, `scss/`, `translations/`, `utils/`
+Never hardcode user-facing text. Use `const t = useT(); t('widgets.greeting.morning')` or `getMessage('key')`. Console logs don't need i18n.
 
-### 14. Error Handling
-- Sentry is integrated for error tracking
-- Use `ErrorBoundary` component for React error boundaries
-- Handle async errors gracefully with try/catch
-- Show user-friendly error messages via `react-toastify`
+### Translation workflow
+Edit `src/i18n/locales/en_GB.json` first (it's the base file), then run `bun run translations` to sync all other locales.
 
-### 15. Browser Extension Best Practices
-- Use Manifest V3 APIs (not deprecated V2 APIs)
-- Test extension loading/unloading
-- Handle permissions properly
-- Use `background.js` for background tasks
-- Store data in `localStorage` or `IndexedDB`, not sync storage
-- Ensure cross-browser compatibility (check MDN for API support)
+### Naming conventions
+Concise names without redundant prefixes. `const [open, setOpen] = useState(false)` not `const [isOpen, setIsOpen]`. Exception: `is` prefix is fine for boolean-returning functions (`isValid()`), `has` prefix for boolean properties.
 
-### 16. Internationalization (i18n)
-**All user-visible strings MUST be integrated with i18n.** Never hardcode user-facing text.
+### Branch strategy
+Three branches: `dev` (all PRs target here) → `beta` → `main`. Hotfix branches (`hotfix/*`) branch from `main`.
 
-```javascript
-// Bad - hardcoded strings
-<button>Save Settings</button>
-toast('Settings saved successfully!');
-placeholder="Enter your name"
-
-// Good - using i18n
-<button>{getMessage('settings.save')}</button>
-toast(getMessage('settings.saved_successfully'));
-placeholder={getMessage('user.name_placeholder')}
-```
-
-- Use `@eartharoid/i18n` for all translations
-- Access translations via the i18n context
-- Add new keys to `en_GB.json` first, then run `bun run translations`
-- Test with multiple locales to ensure proper rendering
-- Support RTL languages where applicable
-- Console logs and developer-facing messages do not need i18n
-
-### 17. Performance
-- Lazy load components where appropriate
-- Optimize images (use modern formats like WebP)
-- Minimize bundle size (check Vite build output)
-- Use `useMemo` and `useCallback` judiciously (only when needed)
-- Profile performance with React DevTools
-
-## Common Tasks
-
-### Adding a New Feature
-1. Create feature folder in `src/features/`
-2. Add components, hooks, and styles
-3. Update translations in `en_GB.json`
-4. Run `bun run translations` to sync locales
-5. Add tests if applicable
-6. Run `bun run lint:fix` and `bun run pretty`
-7. Commit with conventional commit message
-8. Create PR targeting `dev` branch
-
-### Debugging
-- Use React DevTools for component inspection
-- Check browser console for errors
-- Use Sentry for production error tracking
-- Test in all supported browsers
-
-### Testing on Browsers
-1. Run `bun run build`
-2. Load unpacked extension from `build/chrome/` or `build/firefox/`
-3. For Safari, open Xcode project and build from there
-
-## Resources
-- Repository: https://github.com/mue/mue
-- Homepage: https://muetab.com
-- Bug Reports: https://github.com/mue/mue/issues
+### Conventional commits
+Enforced by commitlint: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `test:`, `style:`, `perf:`. Scopes encouraged: `feat(weather): add hourly forecast`.
