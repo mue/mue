@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState, memo, useEffect } from 'react';
+import { Suspense, lazy, useState, memo, useEffect, useRef } from 'react';
 import { useT } from 'contexts';
 
 import './scss/index.scss';
@@ -29,6 +29,16 @@ function MainModal({ modalClose, deepLinkData }) {
   const [navigationTrigger, setNavigationTrigger] = useState(null);
   const [iframeBreadcrumbs, setIframeBreadcrumbs] = useState([]);
 
+  const historyRef = useRef([]);
+  const historyIndexRef = useRef(-1);
+  const [canGoBack, setCanGoBack] = useState(false);
+  const [canGoForward, setCanGoForward] = useState(false);
+
+  const updateNavButtons = () => {
+    setCanGoBack(historyIndexRef.current > 0);
+    setCanGoForward(historyIndexRef.current < historyRef.current.length - 1);
+  };
+
   useEffect(() => {
     setProductView(null);
   }, [currentTab]);
@@ -51,6 +61,12 @@ function MainModal({ modalClose, deepLinkData }) {
             `#${deepLinkData.tab}/${deepLinkData.section}/${deepLinkData.subSection}`,
             false,
           );
+          if (historyIndexRef.current >= 0) {
+            historyRef.current[historyIndexRef.current] = {
+              ...historyRef.current[historyIndexRef.current],
+              subSection: deepLinkData.subSection,
+            };
+          }
         }
       }
     }
@@ -131,6 +147,9 @@ function MainModal({ modalClose, deepLinkData }) {
 
   const handleChangeTab = (newTab) => {
     setCurrentTab(newTab);
+    historyRef.current = [];
+    historyIndexRef.current = -1;
+    updateNavButtons();
     if (newTab === TAB_TYPES.DISCOVER) {
       updateHash(`#${newTab}/all`);
     } else if (newTab === TAB_TYPES.LIBRARY) {
@@ -144,6 +163,13 @@ function MainModal({ modalClose, deepLinkData }) {
     setCurrentSection(section);
     setCurrentSectionName(sectionName);
     setCurrentSubSection(null);
+    const entry = { section, sectionName, subSection: null };
+    const current = historyRef.current[historyIndexRef.current];
+    if (!current || current.sectionName !== sectionName || current.subSection !== null) {
+      historyRef.current = historyRef.current.slice(0, historyIndexRef.current + 1).concat(entry);
+      historyIndexRef.current = historyRef.current.length - 1;
+      updateNavButtons();
+    }
     if (currentTab === TAB_TYPES.DISCOVER) {
       const sectionMap = {
         [t('modals.main.marketplace.all')]: 'all',
@@ -163,6 +189,18 @@ function MainModal({ modalClose, deepLinkData }) {
 
   const handleSubSectionChange = (subSection, sectionName) => {
     setCurrentSubSection(subSection);
+    const effectiveSectionName = sectionName || currentSectionName;
+    const entry = { section: currentSection, sectionName: effectiveSectionName, subSection };
+    const current = historyRef.current[historyIndexRef.current];
+    if (
+      !current ||
+      current.sectionName !== effectiveSectionName ||
+      current.subSection !== subSection
+    ) {
+      historyRef.current = historyRef.current.slice(0, historyIndexRef.current + 1).concat(entry);
+      historyIndexRef.current = historyRef.current.length - 1;
+      updateNavButtons();
+    }
     if (currentTab === TAB_TYPES.SETTINGS && sectionName) {
       if (subSection) {
         updateHash(`#${currentTab}/${sectionName}/${subSection}`);
@@ -181,17 +219,38 @@ function MainModal({ modalClose, deepLinkData }) {
     setTimeout(() => setResetDiscoverToAll(false), 100);
   };
 
+  const restoreHistoryEntry = (entry) => {
+    setCurrentSubSection(entry.subSection);
+    if (entry.sectionName !== currentSectionName) {
+      setCurrentSection(entry.section);
+      setCurrentSectionName(entry.sectionName);
+      setNavigationTrigger({
+        type: 'settings-section',
+        data: entry.sectionName,
+        timestamp: Date.now(),
+      });
+    }
+    if (currentTab === TAB_TYPES.SETTINGS) {
+      const hash = entry.subSection
+        ? `#${currentTab}/${entry.sectionName}/${entry.subSection}`
+        : `#${currentTab}/${entry.sectionName}`;
+      window.history.replaceState(null, null, hash);
+    }
+  };
+
   const handleBack = () => {
-    setIframeBreadcrumbs([]);
-    window.history.back();
+    if (historyIndexRef.current <= 0) return;
+    historyIndexRef.current -= 1;
+    updateNavButtons();
+    restoreHistoryEntry(historyRef.current[historyIndexRef.current]);
   };
 
   const handleForward = () => {
-    window.history.forward();
+    if (historyIndexRef.current >= historyRef.current.length - 1) return;
+    historyIndexRef.current += 1;
+    updateNavButtons();
+    restoreHistoryEntry(historyRef.current[historyIndexRef.current]);
   };
-
-  const canGoBack = true;
-  const canGoForward = true;
 
   const TabComponent = TAB_COMPONENTS[currentTab] || Settings;
 
