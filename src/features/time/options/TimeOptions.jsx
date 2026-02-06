@@ -234,13 +234,13 @@ const TimeOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => 
               name="clockFontWeight"
               category="clock"
               items={[
-                { value: '600', text: t(fontWeight + '.semi_bold') },
+                { value: '700', text: t(fontWeight + '.bold') },
                 { value: '100', text: t(fontWeight + '.thin') },
                 { value: '200', text: t(fontWeight + '.extra_light') },
                 { value: '300', text: t(fontWeight + '.light') },
                 { value: '400', text: t(fontWeight + '.normal') },
                 { value: '500', text: t(fontWeight + '.medium') },
-                { value: '700', text: t(fontWeight + '.bold') },
+                { value: '600', text: t(fontWeight + '.semi_bold') },
                 { value: '800', text: t(fontWeight + '.extra_bold') },
               ]}
             />
@@ -299,8 +299,8 @@ const TimeOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => 
           type="settings"
           onClick={() => {
             localStorage.removeItem('clockFont');
-            localStorage.removeItem('clockFontWeight');
             localStorage.removeItem('clockFontStyle');
+            localStorage.setItem('clockFontWeight', '700');
             localStorage.setItem('clockColor', '#ffffff');
             localStorage.setItem('hourColour', '#ffffff');
             localStorage.setItem('minuteColour', '#ffffff');
@@ -349,8 +349,8 @@ const TimeOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => 
               onClick={(e) => {
                 e.stopPropagation();
                 localStorage.removeItem('clockFont');
-                localStorage.removeItem('clockFontWeight');
                 localStorage.removeItem('clockFontStyle');
+                localStorage.setItem('clockFontWeight', '700');
                 localStorage.setItem('clockColor', '#ffffff');
                 localStorage.setItem('hourColour', '#ffffff');
                 localStorage.setItem('minuteColour', '#ffffff');

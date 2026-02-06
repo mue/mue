@@ -234,13 +234,13 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
               name="quoteFontWeight"
               category="quote"
               items={[
-                { value: '600', text: t(fontWeight + '.semi_bold') },
+                { value: '700', text: t(fontWeight + '.bold') },
                 { value: '100', text: t(fontWeight + '.thin') },
                 { value: '200', text: t(fontWeight + '.extra_light') },
                 { value: '300', text: t(fontWeight + '.light') },
                 { value: '400', text: t(fontWeight + '.normal') },
                 { value: '500', text: t(fontWeight + '.medium') },
-                { value: '700', text: t(fontWeight + '.bold') },
+                { value: '600', text: t(fontWeight + '.semi_bold') },
                 { value: '800', text: t(fontWeight + '.extra_bold') },
               ]}
             />
@@ -490,8 +490,8 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
           type="settings"
           onClick={() => {
             localStorage.removeItem('quoteFont');
-            localStorage.removeItem('quoteFontWeight');
             localStorage.removeItem('quoteFontStyle');
+            localStorage.setItem('quoteFontWeight', '700');
             localStorage.setItem('quoteColor', '#ffffff');
             EventBus.emit('refresh', 'quote');
             toast(t('toasts.reset'));
@@ -550,8 +550,8 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
               onClick={(e) => {
                 e.stopPropagation();
                 localStorage.removeItem('quoteFont');
-                localStorage.removeItem('quoteFontWeight');
                 localStorage.removeItem('quoteFontStyle');
+                localStorage.setItem('quoteFontWeight', '700');
                 localStorage.setItem('quoteColor', '#ffffff');
                 EventBus.emit('refresh', 'quote');
                 toast(t('toasts.reset'));
