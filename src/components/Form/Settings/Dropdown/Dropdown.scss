@@ -214,6 +214,7 @@
   max-height: 250px;
   overflow: hidden auto;
   z-index: 9999;
+  font-size: 1rem;
 
   @include animation(dropdownSlideIn 0.2s ease-out);
 

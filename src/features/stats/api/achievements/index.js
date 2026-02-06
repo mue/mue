@@ -16,6 +16,11 @@ async function loadAchievementTranslation(locale) {
   const loader = achievementLocaleLoaders[path];
 
   if (!loader) {
+    if (locale === 'en_GB') {
+      console.error('Achievement translation en_GB not found, returning empty object');
+      loadedAchievementTranslations[locale] = {};
+      return {};
+    }
     console.warn(`Achievement translation not found for: ${locale}, falling back to en_GB`);
     return loadAchievementTranslation('en_GB');
   }

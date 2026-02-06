@@ -67,6 +67,10 @@ export function install(type, input, sideload, collection) {
         };
         localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
 
+        if (!currentPhotos.length) {
+          localStorage.setItem('photo_packs', JSON.stringify([]));
+        }
+
         if (!input.requires_api_key) {
           refreshAPIPackCache(input.id);
         }

@@ -229,11 +229,24 @@ export async function refreshAPIPackCache(packId) {
 
   try {
     localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
+
+    const apiPacksReady = JSON.parse(localStorage.getItem('api_packs_ready') || '[]');
+    if (!apiPacksReady.includes(packId)) {
+      apiPacksReady.push(packId);
+      localStorage.setItem('api_packs_ready', JSON.stringify(apiPacksReady));
+    }
+
     return true;
   } catch (error) {
     if (error.name === 'QuotaExceededError') {
       apiPackCache[packId].photos = validPhotos.slice(0, 5);
       localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
+
+      const apiPacksReady = JSON.parse(localStorage.getItem('api_packs_ready') || '[]');
+      if (!apiPacksReady.includes(packId)) {
+        apiPacksReady.push(packId);
+        localStorage.setItem('api_packs_ready', JSON.stringify(apiPacksReady));
+      }
     }
     return false;
   }

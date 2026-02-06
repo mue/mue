@@ -301,7 +301,10 @@ function getPhotoPackBackground(isOffline) {
 
   const pool = buildPhotoPool();
 
-  if (pool.length === 0) return null;
+  if (pool.length === 0) {
+    console.warn('Photo pack pool is empty, falling back to API background');
+    return getAPIBackground(isOffline);
+  }
 
   const queueManager = new BackgroundQueueManager('photoPackQueue', 3);
   let photoData;
