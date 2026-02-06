@@ -94,20 +94,20 @@ export async function fetchFromProvider(packId, pack, settings) {
     if (pack.direct_api) {
       switch (pack.api_provider) {
         case 'pexels':
-          apiKey = settings[`photoPack_${packId}_api_key`];
-          if (apiKey) headers['Authorization'] = atob(apiKey);
-          params.append('query', settings[`photoPack_${packId}_query`] || 'nature');
-          params.append('orientation', settings[`photoPack_${packId}_orientation`] || 'landscape');
+          apiKey = settings.api_key;
+          if (apiKey) headers['Authorization'] = `Bearer ${atob(apiKey)}`;
+          params.append('query', settings.query || 'nature');
+          params.append('orientation', settings.orientation || 'landscape');
           params.append('per_page', '80');
           params.append('page', Math.floor(Math.random() * 5) + 1);
           break;
 
         case 'pixabay':
-          apiKey = settings[`photoPack_${packId}_api_key`];
+          apiKey = settings.api_key;
           if (apiKey) params.append('key', atob(apiKey));
-          params.append('q', settings[`photoPack_${packId}_query`] || 'nature');
-          if (settings[`photoPack_${packId}_category`]) {
-            params.append('category', settings[`photoPack_${packId}_category`]);
+          params.append('q', settings.query || 'nature');
+          if (settings.category) {
+            params.append('category', settings.category);
           }
           params.append('image_type', 'photo');
           params.append('orientation', 'horizontal');
@@ -117,11 +117,11 @@ export async function fetchFromProvider(packId, pack, settings) {
           break;
 
         case 'flickr':
-          apiKey = settings[`photoPack_${packId}_api_key`];
+          apiKey = settings.api_key;
           if (apiKey) params.append('api_key', atob(apiKey));
           params.append('method', 'flickr.photos.search');
-          params.append('tags', settings[`photoPack_${packId}_tags`] || 'landscape');
-          const license = settings[`photoPack_${packId}_license`] || 'all';
+          params.append('tags', settings.tags || 'landscape');
+          const license = settings.license || 'all';
           const licenseMap = {
             all: '1,2,3,4,5,6,7,8,9,10',
             cc_by: '4',
@@ -142,7 +142,7 @@ export async function fetchFromProvider(packId, pack, settings) {
       }
     } else {
       pack.settings_schema?.forEach((setting) => {
-        let value = settings[`photoPack_${packId}_${setting.id}`];
+        let value = settings[setting.id];
         if (setting.secure && value) {
           value = atob(value);
         }
@@ -329,6 +329,7 @@ export function buildPhotoPool() {
               ...photo,
               source: `api:${pack.api_provider}`,
               pack_id: pack.id,
+              attribution_config: pack.attribution || null,
             });
           });
         } else {
@@ -347,6 +348,7 @@ export function buildPhotoPool() {
           blur_hash: photo.blur_hash,
           source: 'static',
           pack_id: pack.id,
+          attribution_config: pack.attribution || null,
         });
       });
     }

@@ -17,7 +17,7 @@ export const photoPackHandler = {
       console.log(`[Photo Handler] Setting up API pack ${packData.id}`);
       const defaultSettings = {};
       packData.settings_schema?.forEach((field) => {
-        defaultSettings[field.key] = field.default || '';
+        defaultSettings[field.id] = field.default || '';
       });
       localStorage.setItem(`photopack_settings_${packData.id}`, JSON.stringify(defaultSettings));
 

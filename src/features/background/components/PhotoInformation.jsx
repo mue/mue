@@ -17,6 +17,7 @@ import {
 } from 'react-icons/md';
 import { Tooltip } from 'components/Elements';
 import { getProxiedImageUrl } from 'utils/marketplace';
+import { getAttributionConfig, addUTMParams } from '../utils/attributionHelper';
 
 import Modal from 'react-modal';
 import { ShareModal } from 'components/Elements';
@@ -73,22 +74,49 @@ function PhotoInformation({ info, url, api }) {
     return null;
   }
 
-  let credit = info.credit;
-  let photo = t('widgets.background.credit');
+  // Get attribution config for this photo
+  const attributionConfig = getAttributionConfig(info);
 
-  // unsplash credit
-  if (info.photographerURL && info.photographerURL !== '' && !info.offline && api) {
-    photo = (
-      <a href={info.photoURL} target="_blank" rel="noopener noreferrer">
-        {photo}
+  // Build photographer credit
+  let credit = info.credit;
+  if (attributionConfig.photographer_link && info.photographerURL) {
+    const photographerUrl = addUTMParams(info.photographerURL, attributionConfig);
+    credit = (
+      <a href={photographerUrl} target="_blank" rel="noopener noreferrer">
+        {info.credit}
       </a>
     );
+  }
+
+  // Add source platform credit
+  if (attributionConfig.source_link && attributionConfig.source_name) {
+    const sourceUrl = attributionConfig.source_url
+      ? addUTMParams(attributionConfig.source_url, attributionConfig)
+      : null;
+
     credit = (
       <>
-        <a href={info.photographerURL} target="_blank" rel="noopener noreferrer">
-          {info.credit}
-        </a>
+        {credit}
+        {' on '}
+        {sourceUrl ? (
+          <a href={sourceUrl} target="_blank" rel="noopener noreferrer">
+            {attributionConfig.source_name}
+          </a>
+        ) : (
+          attributionConfig.source_name
+        )}
       </>
+    );
+  }
+
+  // Link "Photo" text to photo page
+  let photo = t('widgets.background.credit');
+  if (attributionConfig.photo_page_link && info.photoURL) {
+    const photoUrl = addUTMParams(info.photoURL, attributionConfig);
+    photo = (
+      <a href={photoUrl} target="_blank" rel="noopener noreferrer">
+        {photo}
+      </a>
     );
   }
 
@@ -151,7 +179,9 @@ function PhotoInformation({ info, url, api }) {
         {info.location && info.location !== 'N/A' ? (
           <div className="row" title={t('widgets.background.location')}>
             <MdLocationOn />
-            <span id="infoLocation">{info.location}</span>
+            <span id="infoLocation">
+              {typeof info.location === 'string' ? info.location : info.location?.name || ''}
+            </span>
           </div>
         ) : null}
         {info.camera && info.camera !== 'N/A' ? (

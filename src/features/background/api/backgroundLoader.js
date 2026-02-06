@@ -326,6 +326,8 @@ function getPhotoPackBackground(isOffline) {
         url: selected.url.default || selected.url,
         source: selected.source,
         pack_id: selected.pack_id,
+        ...(selected.photographer_page && { photographerURL: selected.photographer_page }),
+        ...(selected.photo_page && { photoURL: selected.photo_page }),
       },
     };
   }
@@ -379,6 +381,8 @@ async function prefetchPhotoPackImages(queueManager, pool, currentPhoto, current
       url: photo.url.default || photo.url,
       source: photo.source,
       pack_id: photo.pack_id,
+      ...(photo.photographer_page && { photographerURL: photo.photographer_page }),
+      ...(photo.photo_page && { photoURL: photo.photo_page }),
     },
   }));
 
