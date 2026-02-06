@@ -26,6 +26,9 @@ export function setDefaultSettings(reset) {
 
   if (reset) {
     localStorage.setItem('showWelcome', false);
+  } else {
+    localStorage.setItem('photo_packs', JSON.stringify([]));
+    localStorage.setItem('defaultPacksNeedInstall', 'true');
   }
 
   // finally we set this to true so it doesn't run the function on every load

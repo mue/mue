@@ -8,6 +8,7 @@ import { loadSettings, moveSettings } from 'utils/settings';
 import EventBus from 'utils/eventbus';
 import variables from 'config/variables';
 import { TranslationProvider } from 'contexts/TranslationContext';
+import { installDefaultPhotoPacks } from 'utils/marketplace/installDefaultPacks';
 
 const useAppSetup = () => {
   useEffect(() => {
@@ -20,6 +21,8 @@ const useAppSetup = () => {
     }
 
     loadSettings();
+
+    installDefaultPhotoPacks();
 
     const refreshHandler = (data) => {
       if (data === 'other' || data === 'greeting' || data === 'clock' || data === 'quote') {
