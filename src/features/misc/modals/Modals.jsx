@@ -5,7 +5,6 @@ import Modal from 'react-modal';
 import { MainModal } from 'components/Elements';
 import Navbar from '../../navbar/Navbar';
 import Preview from '../../helpers/preview/Preview';
-import WelcomeLoader from '../components/WelcomeLoader';
 
 import EventBus from 'utils/eventbus';
 import { parseDeepLink, shouldAutoOpenModal, updateHash } from 'utils/deepLinking';
@@ -178,7 +177,7 @@ const Modals = () => {
         shouldCloseOnOverlayClick={false}
         ariaHideApp={false}
       >
-        <Suspense fallback={<WelcomeLoader />}>
+        <Suspense fallback={<div />}>
           <Welcome modalClose={() => closeWelcome()} modalSkip={() => previewWelcome()} />
         </Suspense>
       </Modal>
