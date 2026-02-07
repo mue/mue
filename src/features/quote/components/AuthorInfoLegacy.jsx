@@ -10,6 +10,7 @@ export default function AuthorInfoLegacy({
   onCopy,
   onFavourite,
   onShare,
+  onInfo,
   isFavourited,
 }) {
   const t = useT();

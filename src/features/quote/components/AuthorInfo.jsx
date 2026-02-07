@@ -16,6 +16,7 @@ export default function AuthorInfo({
   onCopy,
   onFavourite,
   onShare,
+  onInfo,
   isFavourited,
 }) {
   const t = useT();

@@ -119,6 +119,9 @@ export function useQuoteLoader(updateQuote) {
         quote: `"${selected.quote}"`,
         author: selected.author || 'Unknown',
         authorlink: getAuthorLink(selected.author),
+        packName: null,
+        packId: null,
+        realAuthor: null,
         needsAuthorData: true,
         noQuote: false,
       };
@@ -130,6 +133,9 @@ export function useQuoteLoader(updateQuote) {
         quote: '"' + quote.quote + '"',
         author: quote.author,
         authorlink: getAuthorLink(quote.author),
+        packName: null,
+        packId: null,
+        realAuthor: null,
         needsAuthorData: false,
       };
     }
@@ -149,6 +155,7 @@ export function useQuoteLoader(updateQuote) {
           ...quote,
           fallbackauthorimg: item.icon_url,
           packName: item.display_name || item.name,
+          packId: item.id,
           noAuthorImg: item.noAuthorImg || quote.noAuthorImg,
         })),
       );
@@ -159,6 +166,9 @@ export function useQuoteLoader(updateQuote) {
         quote: '"' + quote.quote + '"',
         author: quote.author,
         authorlink: getAuthorLink(quote.author),
+        packName: null,
+        packId: null,
+        realAuthor: null,
         needsAuthorData: false,
       };
     }
@@ -173,6 +183,8 @@ export function useQuoteLoader(updateQuote) {
       realAuthor: hasAuthor ? data.author : null,
       authorlink: hasAuthor ? getAuthorLink(data.author) : null,
       fallbackauthorimg: data.fallbackauthorimg,
+      packName: data.packName,
+      packId: data.packId,
       needsAuthorData: hasAuthor && !data.noAuthorImg,
     };
   }, [getAuthorLink]);

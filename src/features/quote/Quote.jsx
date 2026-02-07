@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
 import Modal from 'react-modal';
+import { MdInfoOutline } from 'react-icons/md';
 import { ShareModal } from 'components/Elements';
 
 import { useQuoteState, useQuoteLoader, useQuoteActions } from './hooks';
 import { AuthorInfo, AuthorInfoLegacy } from './components';
+import QuoteInfoModal from './components/QuoteInfoModal';
 import EventBus from 'utils/eventbus';
 import { useFrequencyInterval } from '../../hooks/useFrequencyInterval';
 
@@ -14,7 +16,7 @@ import './scss/index.scss';
  * Supports: API quotes, custom quotes, quote packs, and offline quotes
  */
 export default function Quote() {
-  const { quoteData, uiState, updateQuote, toggleShareModal } = useQuoteState();
+  const { quoteData, uiState, updateQuote, toggleShareModal, toggleInfoModal } = useQuoteState();
   const { getQuote } = useQuoteLoader(updateQuote);
   const { copyQuote, toggleFavourite } = useQuoteActions(quoteData);
 
@@ -90,7 +92,7 @@ export default function Quote() {
     <div className="quotediv" style={{ display, fontSize }}>
       <Modal
         closeTimeoutMS={300}
-        open={uiState.shareModal}
+        isOpen={uiState.shareModal}
         className="Modal mainModal"
         overlayClassName="Overlay"
         ariaHideApp={false}
@@ -100,6 +102,17 @@ export default function Quote() {
           data={`${quoteData.quote} - ${quoteData.author}`}
           modalClose={() => toggleShareModal(false)}
         />
+      </Modal>
+
+      <Modal
+        closeTimeoutMS={300}
+        isOpen={uiState.infoModal}
+        className="Modal mainModal"
+        overlayClassName="Overlay"
+        ariaHideApp={false}
+        onRequestClose={() => toggleInfoModal(false)}
+      >
+        <QuoteInfoModal quoteData={quoteData} modalClose={() => toggleInfoModal(false)} />
       </Modal>
 
       <span className="quote" ref={quoteRef}>
@@ -115,6 +128,7 @@ export default function Quote() {
             onCopy={copyQuote}
             onFavourite={handleFavourite}
             onShare={() => toggleShareModal(true)}
+            onInfo={() => toggleInfoModal(true)}
             isFavourited={isFavourited}
           />
         ) : (
@@ -127,9 +141,15 @@ export default function Quote() {
             onCopy={copyQuote}
             onFavourite={handleFavourite}
             onShare={() => toggleShareModal(true)}
+            onInfo={() => toggleInfoModal(true)}
             isFavourited={isFavourited}
           />
         ))}
+
+      <div className="quote-info-text" onClick={() => toggleInfoModal(true)}>
+        <MdInfoOutline />
+        <span>About this quote</span>
+      </div>
     </div>
   );
 }
