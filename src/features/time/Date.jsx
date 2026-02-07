@@ -126,7 +126,13 @@ const DateWidget = () => {
 
   useEffect(() => {
     const handleRefresh = (data) => {
-      if (data === 'date' || data === 'timezone') {
+      if (
+        data === 'date' ||
+        data === 'timezone' ||
+        data === 'language' ||
+        data === 'other' ||
+        data === 'welcomeLanguage'
+      ) {
         if (localStorage.getItem('date') === 'false') {
           setDisplay('none');
           return;

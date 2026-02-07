@@ -113,7 +113,13 @@ const Clock = () => {
 
   useEffect(() => {
     const handleRefresh = (data) => {
-      if (data === 'clock' || data === 'timezone') {
+      if (
+        data === 'clock' ||
+        data === 'timezone' ||
+        data === 'language' ||
+        data === 'other' ||
+        data === 'welcomeLanguage'
+      ) {
         if (localStorage.getItem('time') === 'false') {
           setDisplay('none');
           return;

@@ -155,7 +155,7 @@ const LanguageOptions = () => {
         </button>
       )}
       <div className="languageSettings">
-        <Radio name="language" options={filteredLanguages} element=".other" />
+        <Radio name="language" options={filteredLanguages} element=".other" category="language" />
       </div>
     </>
   );

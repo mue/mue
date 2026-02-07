@@ -54,7 +54,13 @@ export default function Quote() {
         setFontSize(`${1.2 * Number((zoomQuote || 100) / 100)}em`);
         setAuthorDetails(authorDetailsSetting === 'true');
         setLegacyStyle(widgetStyle === 'legacy');
-      } else if (data === 'marketplacequoteuninstall' || data === 'quoterefresh') {
+      } else if (
+        data === 'marketplacequoteuninstall' ||
+        data === 'quoterefresh' ||
+        data === 'language' ||
+        data === 'other' ||
+        data === 'welcomeLanguage'
+      ) {
         localStorage.removeItem('quoteQueue');
         localStorage.removeItem('currentQuote');
         getQuote();
