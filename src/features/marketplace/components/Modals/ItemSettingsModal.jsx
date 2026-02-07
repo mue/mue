@@ -184,7 +184,7 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
 
   return (
     <Modal
-      closeTimeoutMS={100}
+      closeTimeoutMS={300}
       onRequestClose={onClose}
       isOpen={isOpen}
       className="Modal itemSettingsModal"
