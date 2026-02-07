@@ -1,6 +1,7 @@
 import variables from 'config/variables';
 import { useState, memo } from 'react';
 import { useT } from 'contexts';
+import { useNavigate } from 'react-router';
 import Favourite from './Favourite';
 import {
   MdInfo,
@@ -14,7 +15,9 @@ import {
   MdFavorite as MdFavourite,
   MdCategory as Category,
   MdVisibilityOff as VisibilityOff,
+  MdColorLens,
 } from 'react-icons/md';
+import { HiMiniArrowUpRight } from 'react-icons/hi2';
 import { Tooltip } from 'components/Elements';
 import { getProxiedImageUrl } from 'utils/marketplace';
 import { getAttributionConfig, addUTMParams } from '../utils/attributionHelper';
@@ -57,18 +60,255 @@ const downloadImage = async (info) => {
   variables.stats.postEvent('feature', 'Background download');
 };
 
+/**
+ * MetadataItem - Displays a single metadata field with icon and label
+ */
+function MetadataItem({ icon, label, value }) {
+  return (
+    <div className="metadata-item" title={label}>
+      {icon}
+      <div className="metadata-content">
+        <span className="metadata-label">{label}</span>
+        <span className="metadata-value">{value}</span>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * ColorSwatch - Displays a color preview with hex code
+ */
+function ColorSwatch({ hex }) {
+  if (!hex) return null;
+
+  return (
+    <div className="color-swatch">
+      <div
+        className="swatch-preview"
+        style={{ backgroundColor: hex }}
+        aria-label={`Color: ${hex}`}
+      />
+      <span className="swatch-hex">{hex}</span>
+    </div>
+  );
+}
+
+/**
+ * MetadataGrid - 2-column grid of photo metadata
+ */
+function MetadataGrid({ location, camera, width, height, colour, category, packId, packName, onPackClick }) {
+  const t = useT();
+
+  // Get pack display name from marketplace data
+  const getPackDisplayName = () => {
+    if (packName) return packName;
+    if (!packId) return null;
+
+    // Try to get pack name from installed marketplace items
+    try {
+      const installedItems = JSON.parse(localStorage.getItem('installed') || '[]');
+      const packItem = installedItems.find((item) => item.id === packId);
+
+      if (packItem) {
+        return packItem.display_name || packItem.name;
+      }
+    } catch (e) {
+      console.error('Error looking up pack name:', e);
+    }
+
+    // Fallback: format pack ID (remove underscores, capitalize)
+    return packId
+      .split('_')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
+  const packDisplayName = getPackDisplayName();
+
+  return (
+    <div className="metadata-grid">
+      {location && location !== 'N/A' && (
+        <MetadataItem
+          icon={<MdLocationOn />}
+          label={t('widgets.background.location')}
+          value={typeof location === 'string' ? location : location?.name || ''}
+        />
+      )}
+
+      {camera && camera !== 'N/A' && (
+        <MetadataItem
+          icon={<MdPhotoCamera />}
+          label={t('widgets.background.camera')}
+          value={camera}
+        />
+      )}
+
+      <MetadataItem
+        icon={<Resolution />}
+        label={t('widgets.background.resolution')}
+        value={`${width}x${height}`}
+      />
+
+      {colour && (
+        <MetadataItem
+          icon={<MdColorLens />}
+          label={t('widgets.background.color')}
+          value={<ColorSwatch hex={colour} />}
+        />
+      )}
+
+      {category && (
+        <MetadataItem
+          icon={<Category />}
+          label={t('widgets.background.category')}
+          value={category[0].toUpperCase() + category.slice(1)}
+        />
+      )}
+
+      {packDisplayName && (
+        <MetadataItem
+          icon={<Source />}
+          label={t('widgets.background.source')}
+          value={
+            <span
+              className="link pack-link"
+              onClick={(e) => {
+                e.stopPropagation();
+                onPackClick(packId, packDisplayName);
+              }}
+            >
+              {packDisplayName}
+              <HiMiniArrowUpRight />
+            </span>
+          }
+        />
+      )}
+    </div>
+  );
+}
+
+/**
+ * LocationMap - Displays interactive location map
+ */
+function LocationMap({ latitude, longitude }) {
+  const t = useT();
+  const tileUrl = `${variables.constants.API_URL}/map?latitude=${latitude}&longitude=${longitude}`;
+
+  return (
+    <div className="location-map-section">
+      <a
+        href={`${variables.constants.OPENSTREETMAP_URL}/?mlat=${latitude}&mlon=${longitude}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          className="location-map-image"
+          src={tileUrl}
+          alt={t('common.alt_text.location')}
+          draggable={false}
+        />
+      </a>
+      <div className="map-copyright">
+        <a href="https://www.mapbox.com/about/maps/" target="_blank" rel="noopener noreferrer">
+          © Mapbox
+        </a>
+        {' • '}
+        <a href="https://www.openstreetmap.org/about/" target="_blank" rel="noopener noreferrer">
+          © OpenStreetMap
+        </a>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * UnsplashStats - Displays Unsplash statistics (views, downloads, likes)
+ */
+function UnsplashStats({ views, downloads, likes }) {
+  const t = useT();
+
+  return (
+    <div className="unsplashStats">
+      <div className="stat-item" title={t('widgets.background.views')}>
+        <Views />
+        <span>{views.toLocaleString()}</span>
+      </div>
+      <div className="stat-item" title={t('widgets.background.downloads')}>
+        <Download />
+        <span>{downloads.toLocaleString()}</span>
+      </div>
+      {likes && (
+        <div className="stat-item" title={t('widgets.background.likes')}>
+          <MdFavourite />
+          <span>{likes.toLocaleString()}</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/**
+ * ActionButtons - Photo action buttons (share, favorite, download, exclude)
+ */
+function ActionButtons({ info, onShare, onExclude, onDownload, favouriteTooltipText, setFavouriteTooltipText }) {
+  const t = useT();
+
+  return (
+    <div className="buttons">
+      {!info.offline && (
+        <Tooltip title={t('widgets.quote.share')} key="share" placement="top">
+          <Share onClick={onShare} />
+        </Tooltip>
+      )}
+      <Tooltip title={favouriteTooltipText} key="favourite" placement="top">
+        <Favourite
+          pun={info.pun}
+          offline={info.offline}
+          credit={info.credit}
+          photoURL={info.url}
+          tooltipText={(text) => setFavouriteTooltipText(text)}
+        />
+      </Tooltip>
+      {!info.offline && (
+        <Tooltip title={t('widgets.background.download')} key="download" placement="top">
+          <Download onClick={onDownload} />
+        </Tooltip>
+      )}
+      {info.pun && info.category && (
+        <Tooltip title={t('widgets.background.exclude')} key="exclude" placement="top">
+          <VisibilityOff onClick={onExclude} />
+        </Tooltip>
+      )}
+    </div>
+  );
+}
+
 function PhotoInformation({ info, url, api }) {
   const t = useT();
+  const navigate = useNavigate();
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
-  const [usePhotoMap, setPhotoMap] = useState(false);
-  const [useMapIcon, setMapIcon] = useState(true);
-  const [showExtraInfo, setshowExtraInfo] = useState(false);
-  //const [showOld, setShowOld] = useState(true);
-  const [other, setOther] = useState(false);
   const [shareModal, openShareModal] = useState(false);
   const [excludeModal, openExcludeModal] = useState(false);
   const [favouriteTooltipText, setFavouriteTooltipText] = useState(t('widgets.quote.favourite'));
+
+  // Handle pack link click
+  const handlePackClick = (packId) => {
+    navigate(`/discover/item/${packId}`);
+  };
+
+  // Helper to get primary text (description or location)
+  const getPrimaryText = () => {
+    if (info.description) {
+      return info.description.length > 50
+        ? info.description.substring(0, 50) + '...'
+        : info.description;
+    }
+    if (typeof info.location === 'string') {
+      return info.location.split(',').slice(-2).join(', ').trim();
+    }
+    return info.location?.name || 'Unknown Location';
+  };
 
   if (info.hidden === true || !info.credit) {
     return null;
@@ -142,162 +382,11 @@ function PhotoInformation({ info, url, api }) {
     );
   }
 
-  let showingPhotoMap = false;
-  const photoMap = () => {
-    if (
-      localStorage.getItem('photoMap') !== 'true' ||
-      !info.latitude ||
-      !info.longitude ||
-      usePhotoMap === false
-    ) {
-      return null;
-    }
-
-    const tile =
-      variables.constants.API_URL + `/map?latitude=${info.latitude}&longitude=${info.longitude}`;
-    showingPhotoMap = true;
-
-    return (
-      <a
-        href={`${variables.constants.OPENSTREETMAP_URL}/?mlat=${info.latitude}&mlon=${info.longitude}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          className="locationMap"
-          src={tile}
-          alt={t('common.alt_text.location')}
-          draggable={false}
-        />
-      </a>
-    );
-  };
-
-  const InformationItems = () => {
-    return (
-      <div className="extra-content">
-        {info.location && info.location !== 'N/A' ? (
-          <div className="row" title={t('widgets.background.location')}>
-            <MdLocationOn />
-            <span id="infoLocation">
-              {typeof info.location === 'string' ? info.location : info.location?.name || ''}
-            </span>
-          </div>
-        ) : null}
-        {info.camera && info.camera !== 'N/A' ? (
-          <div className="row" title={t('widgets.background.camera')}>
-            <MdPhotoCamera />
-            <span id="infoCamera">{info.camera}</span>
-          </div>
-        ) : null}
-        <div className="row" title={t('widgets.background.resolution')}>
-          <Resolution />
-          <span id="infoResolution">
-            {width}x{height}
-          </span>
-        </div>
-        {info.category && (
-          <div className="row" title={t('widgets.background.category')}>
-            <Category />
-            <span id="infoCategory">{info.category[0].toUpperCase() + info.category.slice(1)}</span>
-          </div>
-        )}
-        {api && (
-          <div className="row" title={t('widgets.background.source')}>
-            <Source />
-            <span id="infoSource">
-              {info.photoURL ? (
-                <a href={info.photoURL} target="_blank" rel="noopener noreferrer" className="link">
-                  {api.charAt(0).toUpperCase() + api.slice(1)}
-                </a>
-              ) : (
-                <a href={info.url} target="_blank" rel="noopener noreferrer" className="link">
-                  {api.charAt(0).toUpperCase() + api.slice(1)}
-                </a>
-              )}
-            </span>
-          </div>
-        )}
-      </div>
-    );
-  };
-
-  const ActionButtons = () => {
-    return (
-      <div className="buttons">
-        {!info.offline && (
-          <Tooltip title={t('widgets.quote.share')} key="share" placement="top">
-            <Share onClick={() => openShareModal(true)} />
-          </Tooltip>
-        )}
-        <Tooltip title={favouriteTooltipText} key="favourite" placement="top">
-          <Favourite
-            pun={info.pun}
-            offline={info.offline}
-            credit={info.credit}
-            photoURL={info.url}
-            tooltipText={(text) => setFavouriteTooltipText(text)}
-          />
-        </Tooltip>
-        {!info.offline && (
-          <Tooltip title={t('widgets.background.download')} key="download" placement="top">
-            <Download onClick={() => downloadImage(info)} />
-          </Tooltip>
-        )}
-        {info.pun && info.category && (
-          <Tooltip title={t('widgets.background.exclude')} key="exclude" placement="top">
-            <VisibilityOff onClick={() => openExcludeModal(true)} />
-          </Tooltip>
-        )}
-      </div>
-    );
-  };
-
-  const UnsplashStats = () => {
-    return (
-      <div className="unsplashStats">
-        <div title={t('widgets.background.views')}>
-          <Views />
-          <span>{info.views.toLocaleString()}</span>
-        </div>
-        <div title={t('widgets.background.downloads')}>
-          <Download />
-          <span>{info.downloads.toLocaleString()}</span>
-        </div>
-        {info.likes ? (
-          <div title={t('widgets.background.likes')}>
-            <MdFavourite />
-            <span>{info.likes.toLocaleString()}</span>
-          </div>
-        ) : null}
-      </div>
-    );
-  };
-
-  let photoMapClassList = 'map-concept';
-  if (photoMap() !== null) {
-    photoMapClassList += ' photoMap';
-  }
-
-  // only request map image if the user looks at the photo information
-  // this is to reduce requests to the api
-  try {
-    document.getElementsByClassName('photoInformation')[0].onmouseover = () => {
-      try {
-        setPhotoMap(true);
-        setMapIcon(false);
-      } catch {}
-    };
-  } catch {}
 
   const widgetStyle = localStorage.getItem('widgetStyle');
 
   return (
-    <div
-      className="photoInformationHolder"
-      onMouseEnter={() => setOther(true)}
-      onMouseLeave={() => setOther(false)}
-    >
+    <div className="photoInformationHolder">
       <Modal
         closeTimeoutMS={300}
         isOpen={shareModal}
@@ -326,83 +415,63 @@ function PhotoInformation({ info, url, api }) {
           </span>
         </div>
       )}
-      {widgetStyle !== 'legacy' || other ? (
-        <div
-          className="photoInformation orHover"
-          style={{ padding: widgetStyle === 'legacy' && '20px' }}
-          onMouseEnter={() => setshowExtraInfo(true)}
-          onMouseLeave={() => setshowExtraInfo(false)}
-        >
-          <div className={photoMapClassList}>
-            {useMapIcon || photoMap() === null ? <MdLocationOn /> : ''}
-            {photoMap()}
-          </div>
-          {showingPhotoMap && (
-            <div className="copyright">
-              <a
-                href="https://www.mapbox.com/about/maps/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {' '}
-                © Mapbox{' '}
-              </a>{' '}
-              •{' '}
-              <a
-                href="https://www.openstreetmap.org/about/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {' '}
-                © OpenStreetMap{' '}
-              </a>{' '}
-              •{' '}
-              <a
-                href="https://www.mapbox.com/map-feedback/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {' '}
-                Improve this map{' '}
-              </a>
-            </div>
-          )}
-          <div className="photoInformation-content">
+      {widgetStyle !== 'legacy' && (
+        <div className="photoInformation">
+          {/* PRIMARY SECTION - Always Visible */}
+          <div className="primary-content">
             <div className="photoInformation-text">
-              <span
-                className="title"
-                title={
-                  (showExtraInfo || other) && info.description
-                    ? info.description
-                    : typeof info.location === 'string'
-                      ? info.location
-                      : info.location?.name || ''
-                }
-              >
-                {(showExtraInfo || other) && info.description
-                  ? info.description.length > 40
-                    ? info.description.substring(0, 40) + '...'
-                    : info.description
-                  : typeof info.location === 'string'
-                    ? info.location.split(',').slice(-2).join(', ').trim()
-                    : info.location?.name || ''}
+              <span className="title" title={info.description || ''}>
+                {getPrimaryText()}
               </span>
-              <span className="subtitle" id="credit">
+              <span className="subtitle attribution" id="credit">
                 {photo} {credit}
               </span>
             </div>
-            {info.views && info.downloads !== null ? <UnsplashStats /> : null}
+            {info.views && info.downloads !== null && (
+              <UnsplashStats
+                views={info.views}
+                downloads={info.downloads}
+                likes={info.likes}
+              />
+            )}
           </div>
 
-          {(showExtraInfo || other) && excludeModal === false ? (
-            <>
-              <span className="subtitle">{t('widgets.background.information')}</span>
-              <InformationItems />
-              <ActionButtons />
-            </>
-          ) : null}
+          {/* EXPANDED SECTION - CSS :hover controlled */}
+          <div className="extra-content">
+            <MetadataGrid
+              location={info.location}
+              camera={info.camera}
+              width={width}
+              height={height}
+              colour={info.colour}
+              category={info.category}
+              packId={info.pack_id}
+              packName={info.pack_name}
+              onPackClick={handlePackClick}
+            />
+
+            {localStorage.getItem('photoMap') === 'true' &&
+              info.latitude &&
+              info.longitude && (
+                <>
+                  <div className="section-divider" />
+                  <LocationMap latitude={info.latitude} longitude={info.longitude} />
+                </>
+              )}
+
+            <div className="section-divider" />
+
+            <ActionButtons
+              info={info}
+              onShare={() => openShareModal(true)}
+              onExclude={() => openExcludeModal(true)}
+              onDownload={() => downloadImage(info)}
+              favouriteTooltipText={favouriteTooltipText}
+              setFavouriteTooltipText={setFavouriteTooltipText}
+            />
+          </div>
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

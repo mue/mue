@@ -65,10 +65,6 @@
       .photoInformation-content {
         padding: 20px 20px 20px 0;
       }
-
-      .map-concept {
-        width: 100%;
-      }
     }
   }
 }
@@ -219,17 +215,17 @@
   @extend %basic;
 
   animation: fadeIn 2s;
-  min-width: 300px;
+  min-width: 320px;
+  max-width: 400px;
   font-size: 0.8em;
   font-weight: 300;
   z-index: 99;
   display: flex;
   flex-flow: row;
   align-items: center;
-  transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: height 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-  //   width: 300px;
-  padding: 10px;
+  padding: 20px;
 
   .link {
     text-decoration: none;
@@ -245,7 +241,6 @@
   }
 
   &:hover {
-    padding: 20px;
     height: auto;
     align-items: flex-start;
     flex-flow: column;
@@ -299,37 +294,6 @@
 
     .photoInformation-content {
       padding-left: 0;
-    }
-
-    .map-concept {
-      width: 100%;
-    }
-  }
-
-  .map-concept {
-    @extend %basic;
-
-    height: 50px;
-    width: 50px;
-    flex-grow: 0;
-    flex-shrink: 0;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none !important;
-
-    svg {
-      font-size: 24px;
-    }
-
-    img {
-      width: 100%;
-      height: 100%;
-      background-repeat: no-repeat;
-      background-size: cover;
-      object-fit: cover;
-      border-radius: 12px;
     }
   }
 
@@ -455,18 +419,276 @@
 
 .unsplashStats {
   display: flex;
-  flex-flow: column;
-  justify-content: space-between;
+  flex-direction: row;
+  gap: 15px;
+  margin-top: 8px;
 
-  div {
+  .stat-item {
     display: flex;
-    flex-flow: row;
-    gap: 10px;
     align-items: center;
+    gap: 5px;
+    font-size: 13px;
+
+    @include themed {
+      color: t($subColor);
+    }
+
+    svg {
+      font-size: 16px;
+    }
   }
 }
 
 .photoInformation-text {
   display: flex;
   flex-flow: column;
+  gap: 4px;
+
+  .title {
+    font-size: 18px;
+    font-weight: 500;
+
+    @include themed {
+      color: t($color);
+    }
+  }
+
+  .subtitle {
+    font-size: 14px;
+
+    @include themed {
+      color: t($subColor);
+    }
+  }
+
+  .attribution {
+    a {
+      @include themed {
+        color: t($link);
+      }
+
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.pack-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+
+  @include themed {
+    color: t($link);
+  }
+
+  svg {
+    font-size: 14px;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// NEW STYLES FOR REDESIGN
+
+.metadata-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+
+  .metadata-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    svg {
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+
+      @include themed {
+        color: t($subColor);
+      }
+    }
+
+    .metadata-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+
+      .metadata-label {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+
+        @include themed {
+          color: t($subColor);
+          opacity: 0.7;
+        }
+      }
+
+      .metadata-value {
+        font-size: 13px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        @include themed {
+          color: t($color);
+        }
+      }
+    }
+  }
+
+  // Last item spans full width if odd count
+  .metadata-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+.color-swatch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .swatch-preview {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+  }
+
+  .swatch-hex {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+
+    @include themed {
+      color: t($subColor);
+    }
+  }
+}
+
+.section-divider {
+  margin: 15px 0;
+  height: 1px;
+
+  @include themed {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      t($subColor) 20%,
+      t($subColor) 80%,
+      transparent
+    );
+    opacity: 0.2;
+  }
+}
+
+.location-map-section {
+  width: 100%;
+
+  a {
+    display: block;
+  }
+
+  .location-map-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+  }
+
+  .map-copyright {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 8px;
+    font-size: 0.75em;
+
+    a {
+      text-decoration: none;
+      display: inline;
+
+      @include themed {
+        color: t($subColor);
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Smooth expansion animations
+.extra-content {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.6s ease 0.1s,
+    transform 0.6s cubic-bezier(0.075, 0.82, 0.165, 1) 0.1s;
+
+  > * {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+}
+
+.photoInformation:hover .extra-content {
+  opacity: 1;
+  transform: translateY(0);
+
+  > * {
+    animation: fadeInUp 0.4s ease forwards;
+  }
+
+  // Stagger delays
+  > *:nth-child(1) {
+    animation-delay: 0.05s;
+  }
+  > *:nth-child(2) {
+    animation-delay: 0.10s;
+  }
+  > *:nth-child(3) {
+    animation-delay: 0.15s;
+  }
+  > *:nth-child(4) {
+    animation-delay: 0.20s;
+  }
+  > *:nth-child(5) {
+    animation-delay: 0.25s;
+  }
+  > *:nth-child(6) {
+    animation-delay: 0.30s;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .photoInformation,
+  .extra-content,
+  .extra-content > * {
+    transition: none !important;
+    animation: none !important;
+  }
 }

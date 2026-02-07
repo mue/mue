@@ -10,6 +10,14 @@ import variables from 'config/variables';
  */
 function QuoteInfoModal({ modalClose, quoteData }) {
   const navigate = useNavigate();
+
+  const handleNavigateToItem = (packId) => {
+    modalClose();
+    setTimeout(() => {
+      navigate(`/discover/item/${packId}`);
+    }, 300);
+  };
+
   const getQuoteSource = () => {
     const type = localStorage.getItem('quoteType') || 'quote_pack';
     const offline = localStorage.getItem('offlineMode') === 'true';
@@ -118,7 +126,7 @@ function QuoteInfoModal({ modalClose, quoteData }) {
                 {quoteData.packId ? (
                   <span
                     className="quoteInfoLink"
-                    onClick={() => navigate(`/discover/item/${quoteData.packId}`)}
+                    onClick={() => handleNavigateToItem(quoteData.packId)}
                   >
                     {getQuoteSource()}
                     <HiMiniArrowUpRight />

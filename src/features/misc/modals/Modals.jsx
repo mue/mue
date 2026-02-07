@@ -59,19 +59,29 @@ const Modals = () => {
   const [welcomeModal, setWelcomeModal] = useState(false);
   const [appsModal, setAppsModal] = useState(false);
   const [preview, setPreview] = useState(false);
+  const [isModalClosing, setIsModalClosing] = useState(false);
 
   // Sync modal open state with router location
   useEffect(() => {
     const hasRoute = location.pathname !== '/';
-    if (hasRoute && !mainModal) {
-      setMainModal(true);
-      if (deepLinkData?.tab) {
-        variables.stats.postEvent('modal', `Opened via deep link: ${deepLinkData.tab}`);
-      }
-    } else if (!hasRoute && mainModal) {
-      setMainModal(false);
+    // Skip sync if modal is in the middle of closing to avoid race conditions
+    if (isModalClosing) {
+      return;
     }
-  }, [location.pathname, mainModal, deepLinkData]);
+
+    const timer = setTimeout(() => {
+      if (hasRoute && !mainModal) {
+        setMainModal(true);
+        if (deepLinkData?.tab) {
+          variables.stats.postEvent('modal', `Opened via deep link: ${deepLinkData.tab}`);
+        }
+      } else if (!hasRoute && mainModal && !isModalClosing) {
+        setMainModal(false);
+      }
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, [location.pathname, mainModal, deepLinkData, isModalClosing]);
 
   useEffect(() => {
     const isPreviewMode = localStorage.getItem('showWelcome') === 'true';
@@ -161,8 +171,16 @@ const Modals = () => {
         navigate('/settings');
       }
     } else if (action === false && type === 'mainModal') {
-      // When closing modal, navigate to root
-      navigate('/');
+      // Mark modal as closing to prevent sync logic from interfering
+      setIsModalClosing(true);
+      // Wait for close animation and cleanup to complete, then navigate
+      setTimeout(() => {
+        navigate('/');
+        // Reset the closing flag after navigation
+        setTimeout(() => {
+          setIsModalClosing(false);
+        }, 100);
+      }, 350);
     }
   };
 
