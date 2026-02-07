@@ -302,7 +302,8 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
 
   useEffect(() => {
     const handleInstalledAddonsChanged = () => {
-      setInstalledQuotePacks(getInstalledQuotePacks());
+      const newPacks = getInstalledQuotePacks();
+      setInstalledQuotePacks(newPacks);
       const currentType = localStorage.getItem('quoteType') || 'api';
       if (currentType !== quoteType) {
         setQuoteType(currentType);

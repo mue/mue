@@ -54,7 +54,9 @@ export function useSuggestedPacks(category, limit = 4, minToShow = 2) {
       }
 
       // Fetch from API - request more than we need to account for filtering
-      const response = await fetch(`${API_URL}/marketplace/trending?limit=${limit + 4}&category=${category}`);
+      const response = await fetch(
+        `${API_URL}/marketplace/trending?limit=${limit + 4}&category=${category}`,
+      );
 
       if (!response.ok) {
         throw new Error(`API responded with status ${response.status}`);
@@ -86,21 +88,31 @@ export function useSuggestedPacks(category, limit = 4, minToShow = 2) {
     } catch (err) {
       console.error('Failed to fetch suggested packs:', err);
       setError(err);
-      setSuggestions(null);
+      // Don't clear suggestions on error - keep showing what we have
       setLoading(false);
     }
   }, [category, limit, minToShow, cacheKey, timestampKey, isCacheValid, getInstalledPackIds]);
 
   const refresh = useCallback(() => {
-    // Clear cache and refetch
-    localStorage.removeItem(cacheKey);
-    localStorage.removeItem(timestampKey);
+    // Don't clear cache - just refetch to re-filter with updated installed packs
     fetchSuggestions();
-  }, [cacheKey, timestampKey, fetchSuggestions]);
+  }, [fetchSuggestions]);
 
   useEffect(() => {
     fetchSuggestions();
   }, [fetchSuggestions]);
+
+  useEffect(() => {
+    const handleInstalledAddonsChanged = () => {
+      // Refresh suggestions when packs are installed/uninstalled
+      refresh();
+    };
+
+    window.addEventListener('installedAddonsChanged', handleInstalledAddonsChanged);
+    return () => {
+      window.removeEventListener('installedAddonsChanged', handleInstalledAddonsChanged);
+    };
+  }, [refresh]);
 
   return {
     suggestions,

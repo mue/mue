@@ -1,6 +1,6 @@
 import { useT } from 'contexts';
 import React, { memo, useState, useMemo } from 'react';
-import { MdCheckCircle, MdOutlineUploadFile, MdClose, MdSettings } from 'react-icons/md';
+import { MdCheckCircle, MdOutlineUploadFile, MdClose, MdSettings, MdAdd } from 'react-icons/md';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 
 import { Tooltip } from 'components/Elements';
@@ -68,6 +68,7 @@ function ItemCard({
   isAdded,
   onUninstall,
   onTogglePack,
+  onInstall,
   showChips = true,
 }) {
   const isSideloaded = item.sideload === true;
@@ -87,6 +88,13 @@ function ItemCard({
       return;
     }
     toggleFunction(item);
+  };
+
+  const handleInstallClick = (e) => {
+    e.stopPropagation();
+    if (onInstall) {
+      onInstall(item);
+    }
   };
 
   const handleTogglePack = async (e) => {
@@ -186,6 +194,40 @@ function ItemCard({
           <MdCheckCircle />
         </div>
       )}
+      {!isInstalled && onInstall && !isAdded && (
+        <button
+          className="item-install-button"
+          onClick={handleInstallClick}
+          style={{
+            position: 'absolute',
+            top: '12px',
+            right: '12px',
+            zIndex: 2,
+            width: '32px',
+            height: '32px',
+            borderRadius: '50%',
+            border: 'none',
+            backgroundColor: 'var(--linkColor, #ff5c25)',
+            color: 'white',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            transition: 'transform 0.2s, opacity 0.2s',
+            opacity: 0.9,
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.opacity = '1';
+            e.currentTarget.style.transform = 'scale(1.1)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.opacity = '0.9';
+            e.currentTarget.style.transform = 'scale(1)';
+          }}
+        >
+          <MdAdd size={20} />
+        </button>
+      )}
       {item.icon_url ? (
         <img
           className="item-icon"
@@ -276,6 +318,7 @@ function Items({
   isAdded = false,
   onUninstall,
   onTogglePack,
+  onInstall,
   viewType = 'grid',
   showChips = true,
   style,
@@ -344,6 +387,7 @@ function Items({
               isAdded={isAdded}
               onUninstall={onUninstall}
               onTogglePack={onTogglePack}
+              onInstall={onInstall}
               showChips={showChips}
               key={index}
             />

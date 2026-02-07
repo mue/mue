@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { MdExplore } from 'react-icons/md';
 import { useT } from 'contexts';
+import variables from 'config/variables';
 import { Row, Content, Action } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 import Items from 'features/marketplace/components/Items/Items';
 import { useSuggestedPacks } from './useSuggestedPacks';
+import { useMarketplaceInstall } from '../hooks/useMarketplaceInstall';
 
 /**
  * Component that displays suggested packs from the marketplace
@@ -17,7 +19,9 @@ import { useSuggestedPacks } from './useSuggestedPacks';
 const SuggestedPacks = ({ category, limit = 4, minToShow = 2 }) => {
   const t = useT();
   const navigate = useNavigate();
-  const { suggestions, loading, error } = useSuggestedPacks(category, limit, minToShow);
+  const { suggestions, loading, error, refresh } = useSuggestedPacks(category, limit, minToShow);
+  const { installItem } = useMarketplaceInstall();
+  const [installing, setInstalling] = useState(new Set());
 
   // Don't render anything while loading, on error, or if no suggestions
   if (loading || error || !suggestions || suggestions.length === 0) {
@@ -36,6 +40,38 @@ const SuggestedPacks = ({ category, limit = 4, minToShow = 2 }) => {
   const navigateToItem = (item) => {
     const itemId = item.id || item.name;
     navigate(`/discover/item/${itemId}`);
+  };
+
+  // Handle quick install from suggested packs
+  const handleInstall = async (item) => {
+    const itemId = item.id || item.name;
+
+    // Prevent double-clicking
+    if (installing.has(itemId)) {
+      return;
+    }
+
+    setInstalling((prev) => new Set(prev).add(itemId));
+
+    try {
+      // Fetch full item details from API before installing
+      const response = await fetch(`${variables.constants.API_URL}/marketplace/item/${itemId}`);
+      const { data } = await response.json();
+
+      // Install with full data
+      installItem(data.type, data);
+      // No need to manually refresh - the hook listens to installedAddonsChanged
+    } catch (error) {
+      console.error('Failed to fetch full item details, installing with trending data:', error);
+      // Fallback to installing with trending data
+      installItem(item.type, item);
+    } finally {
+      setInstalling((prev) => {
+        const next = new Set(prev);
+        next.delete(itemId);
+        return next;
+      });
+    }
   };
 
   return (
@@ -59,6 +95,7 @@ const SuggestedPacks = ({ category, limit = 4, minToShow = 2 }) => {
         isAdded={false}
         filter=""
         toggleFunction={navigateToItem}
+        onInstall={handleInstall}
         showCreateYourOwn={false}
         viewType="grid"
         showChips={false}

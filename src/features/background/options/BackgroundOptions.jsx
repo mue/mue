@@ -124,7 +124,8 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
 
   useEffect(() => {
     const handleInstalledAddonsChanged = () => {
-      setInstalledPhotoPacks(getInstalledPhotoPacks());
+      const newPacks = getInstalledPhotoPacks();
+      setInstalledPhotoPacks(newPacks);
       const currentType = localStorage.getItem('backgroundType') || 'api';
       if (currentType !== backgroundType) {
         setBackgroundType(currentType);
