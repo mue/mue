@@ -108,10 +108,17 @@ const Modals = () => {
       }
     };
 
+    const handleHashChange = () => {
+      const linkData = parseDeepLink();
+      setDeepLinkData(linkData);
+    };
+
     EventBus.on('modal', handleModalOpen);
+    window.addEventListener('popstate', handleHashChange);
 
     return () => {
       EventBus.off('modal', handleModalOpen);
+      window.removeEventListener('popstate', handleHashChange);
     };
   }, []);
 

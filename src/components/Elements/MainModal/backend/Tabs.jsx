@@ -30,6 +30,15 @@ const Tabs = ({
         };
       }
     }
+    if (deepLinkData?.category && sections) {
+      const section = sections.find((s) => s.name === deepLinkData.category);
+      if (section) {
+        return {
+          label: t(section.label),
+          name: section.name,
+        };
+      }
+    }
     return {
       label: children[0]?.props.label,
       name: children[0]?.props.name,
@@ -77,6 +86,22 @@ const Tabs = ({
       onSectionChange(currentTab, currentName);
     }
   }, []);
+
+  // React to deep link changes (e.g., when navigating to a suggested pack from settings)
+  useEffect(() => {
+    if (deepLinkData && sections) {
+      const targetSection = deepLinkData.section || deepLinkData.category;
+      if (targetSection) {
+        const section = sections.find((s) => s.name === targetSection);
+        if (section && section.name !== currentName) {
+          setCurrentName(section.name);
+          if (contentRef.current) {
+            contentRef.current.scrollTop = 0;
+          }
+        }
+      }
+    }
+  }, [deepLinkData, sections, currentName]);
 
   // useLayoutEffect is appropriate here for synchronous state updates before paint
   useLayoutEffect(() => {

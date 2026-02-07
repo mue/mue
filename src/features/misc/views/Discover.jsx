@@ -342,6 +342,8 @@ function Discover(props) {
       current="discover"
       currentTab={props.currentTab}
       onSectionChange={props.onSectionChange}
+      sections={sections}
+      deepLinkData={props.deepLinkData}
     >
       {sections.map(({ label, name }) => (
         <div key={name} label={t(label)} name={name}>

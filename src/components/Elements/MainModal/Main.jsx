@@ -151,7 +151,9 @@ function MainModal({ modalClose, deepLinkData }) {
     historyIndexRef.current = -1;
     updateNavButtons();
     if (newTab === TAB_TYPES.DISCOVER) {
-      updateHash(`#${newTab}/all`);
+      const section = deepLinkData?.category || deepLinkData?.section || 'all';
+      const itemId = deepLinkData?.itemId ? `/${deepLinkData.itemId}` : '';
+      updateHash(`#${newTab}/${section}${itemId}`);
     } else if (newTab === TAB_TYPES.LIBRARY) {
       updateHash(`#${newTab}/added`);
     } else {
