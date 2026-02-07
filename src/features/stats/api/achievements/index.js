@@ -4,7 +4,7 @@ import achievements from 'utils/data/achievements.json';
 
 import { checkAchievements, newAchievements } from './condition';
 
-const achievementLocaleLoaders = import.meta.glob('../../../i18n/locales/achievements/*.json');
+const achievementLocaleLoaders = import.meta.glob('../../../../i18n/locales/achievements/*.json');
 const loadedAchievementTranslations = {};
 
 async function loadAchievementTranslation(locale) {
@@ -12,8 +12,12 @@ async function loadAchievementTranslation(locale) {
     return loadedAchievementTranslations[locale];
   }
 
-  const path = `../../../i18n/locales/achievements/${locale}.json`;
-  const loader = achievementLocaleLoaders[path];
+  // Find the loader by matching the locale in the path
+  const loaderKey = Object.keys(achievementLocaleLoaders).find(
+    (path) => path.endsWith(`${locale}.json`)
+  );
+
+  const loader = loaderKey ? achievementLocaleLoaders[loaderKey] : null;
 
   if (!loader) {
     if (locale === 'en_GB') {
@@ -25,15 +29,19 @@ async function loadAchievementTranslation(locale) {
     return loadAchievementTranslation('en_GB');
   }
 
-  const module = await loader();
-  const data = module.default;
-  loadedAchievementTranslations[locale] = data;
-
-  return data;
+  try {
+    const module = await loader();
+    const data = module.default;
+    loadedAchievementTranslations[locale] = data;
+    return data;
+  } catch (error) {
+    console.error(`Error loading achievement translation for ${locale}:`, error);
+    return {};
+  }
 }
 
 async function getLocalisedAchievementData(id) {
-  const locale = variables.languagecode;
+  let locale = variables.languagecode || localStorage.getItem('language') || 'en_GB';
 
   let translations = loadedAchievementTranslations[locale];
   if (!translations) {
