@@ -9,6 +9,7 @@ import Switch from 'components/Form/Settings/Switch/Switch';
 import Dropdown from '../../../../components/Form/Settings/Dropdown/Dropdown';
 import EventBus from 'utils/eventbus';
 import { getProxiedImageUrl } from 'utils/marketplace';
+import { refreshAPIPackCache } from 'features/background/api/photoPackAPI';
 import ItemSettingsModal from '../Modals/ItemSettingsModal';
 
 function filterItems(item, filter, categoryFilter) {
@@ -88,7 +89,7 @@ function ItemCard({
     toggleFunction(item);
   };
 
-  const handleTogglePack = (e) => {
+  const handleTogglePack = async (e) => {
     e.stopPropagation();
     const newState = !enabled;
 
@@ -109,6 +110,11 @@ function ItemCard({
     } else if (item.type === 'photos') {
       localStorage.removeItem('photoPackQueue');
       localStorage.removeItem('currentPhoto');
+
+      if (newState && item.api_enabled) {
+        await refreshAPIPackCache(item.id);
+      }
+
       const backgroundImage = document.getElementById('backgroundImage');
       if (!backgroundImage || !backgroundImage.style.backgroundImage) {
         EventBus.emit('refresh', 'background');
