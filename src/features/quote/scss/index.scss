@@ -113,6 +113,29 @@ h1.quoteauthor {
   }
 }
 
+.author-name-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  .author-arrow {
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover .author-arrow {
+    transform: translateX(3px);
+  }
+}
+
 .author-holder {
   display: flex;
   align-items: center;

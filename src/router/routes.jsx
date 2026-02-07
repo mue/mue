@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import { Navigate } from 'react-router';
 import App from '../App';
+import ErrorElement from './ErrorElement';
 
 // Lazy load tab components
 const Settings = lazy(() => import('../features/misc/views/Settings'));
@@ -19,6 +20,7 @@ export const routes = [
   {
     path: '/',
     element: <App />,
+    errorElement: <ErrorElement />,
     children: [
       {
         index: true,

@@ -1,4 +1,5 @@
-import { MdPerson, MdOpenInNew } from 'react-icons/md';
+import { MdPerson } from 'react-icons/md';
+import { HiMiniArrowUpRight } from 'react-icons/hi2';
 import { Tooltip } from 'components/Elements';
 import { useT } from 'contexts';
 import QuoteButtons from './QuoteButtons';
@@ -39,7 +40,20 @@ export default function AuthorInfo({
 
         {author ? (
           <div className="author-content">
-            <span className="title">{author}</span>
+            {hasLink ? (
+              <a
+                href={authorlink}
+                className="author-name-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={t('widgets.quote.author_info_aria')}
+              >
+                <span className="title">{author}</span>
+                <HiMiniArrowUpRight className="author-arrow" />
+              </a>
+            ) : (
+              <span className="title">{author}</span>
+            )}
             {authorOccupation && authorOccupation !== 'Unknown' && (
               <span className="subtitle">{authorOccupation}</span>
             )}
@@ -52,19 +66,6 @@ export default function AuthorInfo({
         )}
 
         <div className="quote-buttons">
-          {hasLink && (
-            <Tooltip title={t('widgets.quote.link_tooltip')}>
-              <a
-                href={authorlink}
-                className="quoteAuthorLink"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={t('widgets.quote.author_info_aria')}
-              >
-                <MdOpenInNew />
-              </a>
-            </Tooltip>
-          )}
           <QuoteButtons
             onCopy={onCopy}
             onFavourite={onFavourite}
