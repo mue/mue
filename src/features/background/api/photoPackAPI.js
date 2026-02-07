@@ -142,12 +142,12 @@ export async function fetchFromProvider(packId, pack, settings) {
       }
     } else {
       pack.settings_schema?.forEach((setting) => {
-        let value = settings[setting.id];
+        let value = settings[setting.key];
         if (setting.secure && value) {
           value = atob(value);
         }
         if (value !== undefined && value !== null && value !== '') {
-          params.append(setting.id, value);
+          params.append(setting.key, value);
         }
       });
     }
