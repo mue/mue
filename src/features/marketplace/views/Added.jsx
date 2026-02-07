@@ -80,14 +80,17 @@ const Added = memo(() => {
     );
   }, []);
 
-  const toggle = useCallback((type, data) => {
-    if (type === 'item') {
-      const itemId = data.name;
-      navigate(`/discover/item/${itemId}`);
+  const toggle = useCallback(
+    (type, data) => {
+      if (type === 'item') {
+        const itemId = data.id || data.name;
+        navigate(`/discover/item/${itemId}`);
 
-      variables.stats.postEvent('marketplace', 'ItemPage viewed');
-    }
-  }, [navigate]);
+        variables.stats.postEvent('marketplace', 'ItemPage viewed');
+      }
+    },
+    [navigate],
+  );
 
   const sortAddons = useCallback((value, sendEvent) => {
     const installedItems = JSON.parse(localStorage.getItem('installed'));
