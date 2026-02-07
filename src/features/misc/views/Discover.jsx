@@ -42,7 +42,7 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
   };
 
   useEffect(() => {
-    if (deepLinkData?.itemId) {
+    if (deepLinkData?.itemId || deepLinkData?.collection) {
       return;
     }
 
@@ -64,10 +64,28 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
   }, [category, onBreadcrumbsChange, previewParam, deepLinkData]);
 
   useEffect(() => {
-    if (deepLinkData?.itemId && iframeRef.current) {
+    if (!iframeRef.current) {
+      return;
+    }
+
+    const theme = getResolvedTheme();
+    const themeParam = `&theme=${theme}`;
+
+    // Handle collection deep link
+    if (deepLinkData?.collection && !deepLinkData?.itemId) {
       setLoading(true);
-      const theme = getResolvedTheme();
-      const themeParam = `&theme=${theme}`;
+      const url = `${MARKETPLACE_URL}/collection/${encodeURIComponent(deepLinkData.collection)}?embed=true${previewParam}${themeParam}`;
+      console.log('[Discover] Loading collection iframe:', {
+        collection: deepLinkData.collection,
+        url,
+      });
+      iframeRef.current.src = url;
+      return;
+    }
+
+    // Handle item deep link (with or without collection context)
+    if (deepLinkData?.itemId) {
+      setLoading(true);
 
       const pathMap = {
         photo_packs: 'packs',
@@ -202,12 +220,33 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
         case 'marketplace:navigation':
           // Handle navigation from the iframe (website sends this when URL changes)
           if (payload?.path) {
-            // Parse the path: /marketplace/packs/abc123 or /marketplace/presets/xyz789
+            // Parse the path: /marketplace/packs/abc123 or /marketplace/presets/xyz789 or /marketplace/collection/collection-name
             const pathParts = payload.path.split('/').filter(Boolean);
 
             if (pathParts.length >= 3 && pathParts[0] === 'marketplace') {
-              const itemId = pathParts[2];
-              navigate(`/discover/item/${itemId}`);
+              const secondSegment = pathParts[1];
+              const thirdSegment = pathParts[2];
+
+              if (secondSegment === 'collection') {
+                // Collection path: /marketplace/collection/collection-name
+                const collectionId = thirdSegment;
+                console.log('[Discover] Collection navigation:', {
+                  collectionId,
+                  fullPath: payload.path,
+                });
+                if (pathParts.length >= 4) {
+                  // Collection item path: /marketplace/collection/collection-name/item-id
+                  const itemId = pathParts[3];
+                  navigate(`/discover/collection/${collectionId}/${itemId}`);
+                } else {
+                  // Just collection
+                  navigate(`/discover/collection/${collectionId}`);
+                }
+              } else {
+                // Item path: /marketplace/packs/abc123 or /marketplace/presets/xyz789
+                const itemId = thirdSegment;
+                navigate(`/discover/item/${itemId}`);
+              }
             } else if (pathParts.length === 2 && pathParts[0] === 'marketplace') {
               // Category page like /marketplace?type=photo_packs
               // Already on the category, no need to navigate
@@ -290,6 +329,13 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
         src={(() => {
           const theme = getResolvedTheme();
           const themeParam = `&theme=${theme}`;
+
+          // Handle collection deep link
+          if (deepLinkData?.collection && !deepLinkData?.itemId) {
+            return `${MARKETPLACE_URL}/collection/${encodeURIComponent(deepLinkData.collection)}?embed=true${previewParam}${themeParam}`;
+          }
+
+          // Handle item deep link
           if (deepLinkData?.itemId) {
             const pathMap = {
               photo_packs: 'packs',
@@ -301,6 +347,8 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
               : 'packs';
             return `${MARKETPLACE_URL}/${pathSegment}/${deepLinkData.itemId}?embed=true${previewParam}${themeParam}`;
           }
+
+          // Handle category view
           return category === 'collections'
             ? `${MARKETPLACE_URL}/collections?embed=true${previewParam}${themeParam}`
             : `${MARKETPLACE_URL}?embed=true&type=${category}${previewParam}${themeParam}`;

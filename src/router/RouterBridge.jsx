@@ -28,13 +28,12 @@ export function useRouterBridge() {
     const tab = pathParts[0]; // settings, discover, or library
     const section = pathParts[1]; // section name or category
     const subSection = pathParts[2]; // subsection or item ID
-    const itemId = pathParts[2]; // for discover items
 
     const result = {
       tab,
       section: section || null,
       subSection: subSection || null,
-      itemId: itemId || null,
+      itemId: null,
     };
 
     // Special handling for discover routes
@@ -45,6 +44,7 @@ export function useRouterBridge() {
       if (section === 'collection') {
         result.collection = subSection;
         result.fromCollection = !!pathParts[3];
+        result.category = 'collections'; // Map to the plural section name
         if (pathParts[3]) {
           result.itemId = pathParts[3];
         }
