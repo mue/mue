@@ -48,90 +48,90 @@ export function install(type, input, sideload, collection) {
   } else {
     console.log(`[Install] No handler found, using fallback switch for type: ${type}`);
     switch (type) {
-    case 'settings': {
-      localStorage.removeItem('backup_settings');
+      case 'settings': {
+        localStorage.removeItem('backup_settings');
 
-      const oldSettings = [];
-      Object.keys(localStorage).forEach((key) => {
-        oldSettings.push({ name: key, value: localStorage.getItem(key) });
-      });
-
-      localStorage.setItem('backup_settings', JSON.stringify(oldSettings));
-      Object.keys(input.settings).forEach((key) => {
-        localStorage.setItem(key, input.settings[key]);
-      });
-      showReminder();
-      break;
-    }
-
-    case 'photos': {
-      const currentPhotos = JSON.parse(localStorage.getItem('photo_packs')) || [];
-      const hadPhotoPacks = currentPhotos.length > 0;
-
-      if (input.api_enabled) {
-        const defaultSettings = {};
-        input.settings_schema?.forEach((field) => {
-          defaultSettings[field.key] = field.default || '';
+        const oldSettings = [];
+        Object.keys(localStorage).forEach((key) => {
+          oldSettings.push({ name: key, value: localStorage.getItem(key) });
         });
-        localStorage.setItem(`photopack_settings_${input.id}`, JSON.stringify(defaultSettings));
 
-        const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
-        apiPackCache[input.id] = {
-          photos: [],
-          last_fetched: 0,
-          last_refresh_attempt: 0,
-        };
-        localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
+        localStorage.setItem('backup_settings', JSON.stringify(oldSettings));
+        Object.keys(input.settings).forEach((key) => {
+          localStorage.setItem(key, input.settings[key]);
+        });
+        showReminder();
+        break;
+      }
 
-        if (!currentPhotos.length) {
-          localStorage.setItem('photo_packs', JSON.stringify([]));
+      case 'photos': {
+        const currentPhotos = JSON.parse(localStorage.getItem('photo_packs')) || [];
+        const hadPhotoPacks = currentPhotos.length > 0;
+
+        if (input.api_enabled) {
+          const defaultSettings = {};
+          input.settings_schema?.forEach((field) => {
+            defaultSettings[field.key] = field.default || '';
+          });
+          localStorage.setItem(`photopack_settings_${input.id}`, JSON.stringify(defaultSettings));
+
+          const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
+          apiPackCache[input.id] = {
+            photos: [],
+            last_fetched: 0,
+            last_refresh_attempt: 0,
+          };
+          localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
+
+          if (!currentPhotos.length) {
+            localStorage.setItem('photo_packs', JSON.stringify([]));
+          }
+
+          if (!input.requires_api_key) {
+            refreshAPIPackCache(input.id);
+          }
+        } else {
+          input.photos.forEach((photo) => {
+            currentPhotos.push(photo);
+          });
+          localStorage.setItem('photo_packs', JSON.stringify(currentPhotos));
         }
 
-        if (!input.requires_api_key) {
-          refreshAPIPackCache(input.id);
+        if (localStorage.getItem('backgroundType') !== 'photo_pack') {
+          localStorage.setItem('oldBackgroundType', localStorage.getItem('backgroundType'));
         }
-      } else {
-        input.photos.forEach((photo) => {
-          currentPhotos.push(photo);
+        localStorage.setItem('backgroundType', 'photo_pack');
+        localStorage.removeItem('backgroundchange');
+        clearQueuesOnSettingChange('packInstall');
+
+        const backgroundElement = document.getElementById('backgroundImage');
+        const hasBackground = backgroundElement && backgroundElement.style.backgroundImage;
+        if (!hasBackground) {
+          refreshEvent = 'backgroundrefresh';
+        }
+        break;
+      }
+
+      case 'quotes': {
+        const currentQuotes = JSON.parse(localStorage.getItem('quote_packs')) || [];
+        input.quotes.forEach((quote) => {
+          currentQuotes.push(quote);
         });
-        localStorage.setItem('photo_packs', JSON.stringify(currentPhotos));
+        localStorage.setItem('quote_packs', JSON.stringify(currentQuotes));
+
+        if (localStorage.getItem('quoteType') !== 'quote_pack') {
+          localStorage.setItem('oldQuoteType', localStorage.getItem('quoteType'));
+        }
+        localStorage.setItem('quoteType', 'quote_pack');
+        localStorage.removeItem('quotechange');
+        localStorage.removeItem('quoteQueue');
+        localStorage.removeItem('currentQuote');
+        refreshEvent = 'quote';
+        break;
       }
 
-      if (localStorage.getItem('backgroundType') !== 'photo_pack') {
-        localStorage.setItem('oldBackgroundType', localStorage.getItem('backgroundType'));
-      }
-      localStorage.setItem('backgroundType', 'photo_pack');
-      localStorage.removeItem('backgroundchange');
-      clearQueuesOnSettingChange('packInstall');
-
-      const backgroundElement = document.getElementById('backgroundImage');
-      const hasBackground = backgroundElement && backgroundElement.style.backgroundImage;
-      if (!hasBackground) {
-        refreshEvent = 'backgroundrefresh';
-      }
-      break;
-    }
-
-    case 'quotes': {
-      const currentQuotes = JSON.parse(localStorage.getItem('quote_packs')) || [];
-      input.quotes.forEach((quote) => {
-        currentQuotes.push(quote);
-      });
-      localStorage.setItem('quote_packs', JSON.stringify(currentQuotes));
-
-      if (localStorage.getItem('quoteType') !== 'quote_pack') {
-        localStorage.setItem('oldQuoteType', localStorage.getItem('quoteType'));
-      }
-      localStorage.setItem('quoteType', 'quote_pack');
-      localStorage.removeItem('quotechange');
-      localStorage.removeItem('quoteQueue');
-      localStorage.removeItem('currentQuote');
-      refreshEvent = 'quote';
-      break;
-    }
-
-    default:
-      break;
+      default:
+        break;
     }
   }
 
@@ -152,7 +152,9 @@ export function install(type, input, sideload, collection) {
     console.log(`[Install] Set pack ${packId} as enabled`);
   }
 
-  if (isNewInstall && input.id) {
+  // Track download regardless of whether it's a new install or reinstall
+  // This ensures download counts are accurate even after architectural changes
+  if (input.id) {
     trackDownload(input.id);
   }
 
