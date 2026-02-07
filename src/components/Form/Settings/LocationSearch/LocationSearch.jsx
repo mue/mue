@@ -60,7 +60,9 @@ const LocationSearch = memo((props) => {
       // Also ignore clicks on color input labels and wrappers
       const target = event.target;
       if (target.tagName === 'LABEL' && target.htmlFor) {
-        const associatedInput = document.getElementById(target.htmlFor) || document.querySelector(`input[name="${target.htmlFor}"]`);
+        const associatedInput =
+          document.getElementById(target.htmlFor) ||
+          document.querySelector(`input[name="${target.htmlFor}"]`);
         if (associatedInput && associatedInput.type === 'color') {
           return;
         }

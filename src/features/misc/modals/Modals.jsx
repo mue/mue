@@ -176,13 +176,11 @@ const Modals = () => {
     } else if (action === false && type === 'mainModal') {
       // Mark modal as closing to prevent sync logic from interfering
       setIsModalClosing(true);
-      // Wait for close animation and cleanup to complete, then navigate
+      // Navigate immediately to avoid URL flash
+      navigate('/');
+      // Wait for close animation to complete, then reset closing flag
       setTimeout(() => {
-        navigate('/');
-        // Reset the closing flag after navigation
-        setTimeout(() => {
-          setIsModalClosing(false);
-        }, 100);
+        setIsModalClosing(false);
       }, 350);
     }
   };

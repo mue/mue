@@ -45,7 +45,7 @@ const WeatherWidget = memo(() => {
   const updateWeather = useCallback(async () => {
     const currentLocation = getLocationFromStorage();
     setLocation(currentLocation);
-    
+
     const data = await getWeather(currentLocation);
     console.log('Weather data received:', data);
     if (data) {
