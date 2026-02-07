@@ -179,30 +179,44 @@ h1.quoteauthor {
   button {
     @include basicIconButton(11px, 1.3rem, ui);
   }
+
+  &.hidden {
+    display: none;
+  }
 }
 
 .quote-info-text {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  font-size: 0.75rem;
+  gap: 5px;
+  font-size: 0.8rem;
+  padding: 5px 10px;
   margin-top: -5px;
   cursor: pointer;
-  transition: opacity 0.2s ease;
+  transition: all 0.2s ease;
+  -webkit-user-select: none;
   user-select: none;
   align-self: center;
-
-  @include themed {
-    color: t($subColor);
-  }
+  width: fit-content;
+  border-radius: 12px;
+  background: rgb(0 0 0 / 25%);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: #fff;
 
   svg {
-    font-size: 0.8rem;
+    font-size: 0.95rem;
+    transition: transform 0.2s ease;
   }
 
   &:hover {
-    opacity: 0.7;
+    background: rgb(0 0 0 / 35%);
+    transform: translateY(-1px);
+
+    svg {
+      transform: scale(1.1);
+    }
   }
 }
 
@@ -356,6 +370,7 @@ h1.quoteauthor {
 
     .quoteInfoValue {
       font-size: 0.95rem;
+      text-transform: capitalize;
 
       @include themed {
         color: t($color);

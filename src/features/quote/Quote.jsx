@@ -89,7 +89,7 @@ export default function Quote() {
   }
 
   return (
-    <div className="quotediv" style={{ display, fontSize }}>
+    <div className={`quotediv ${display === 'none' ? 'hidden' : ''}`} style={{ fontSize }}>
       <Modal
         closeTimeoutMS={300}
         isOpen={uiState.shareModal}
