@@ -14,7 +14,6 @@
       flex-flow: column;
 
       .buttons {
-        padding: 30px 0 0;
         display: flex;
       }
 
@@ -246,7 +245,6 @@
     flex-flow: column;
 
     .buttons {
-      padding: 30px 0 0;
       display: flex;
     }
 
@@ -369,10 +367,14 @@
   display: none;
 }
 
+.buttons-wrapper {
+  grid-column: 1 / -1;
+  padding-top: 20px;
+}
+
 .buttons {
   align-items: center;
   gap: 20px;
-  padding: 20px 20px 0 0;
   display: none;
 
   svg {
@@ -559,9 +561,9 @@
   gap: 8px;
 
   .swatch-preview {
-    width: 24px;
-    height: 24px;
-    border-radius: 6px;
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
   }
@@ -656,19 +658,19 @@
     animation-delay: 0.05s;
   }
   > *:nth-child(2) {
-    animation-delay: 0.10s;
+    animation-delay: 0.1s;
   }
   > *:nth-child(3) {
     animation-delay: 0.15s;
   }
   > *:nth-child(4) {
-    animation-delay: 0.20s;
+    animation-delay: 0.2s;
   }
   > *:nth-child(5) {
     animation-delay: 0.25s;
   }
   > *:nth-child(6) {
-    animation-delay: 0.30s;
+    animation-delay: 0.3s;
   }
 }
 

@@ -311,7 +311,9 @@ export function buildPhotoPool() {
       enabledPacksValue: enabledPacks[packId],
       api_enabled: pack.api_enabled,
       api_ready: apiPacksReady.includes(pack.id),
-      cached_photos: pack.api_enabled ? apiPackCache[pack.id]?.photos?.length || 0 : pack.photos?.length || 0,
+      cached_photos: pack.api_enabled
+        ? apiPackCache[pack.id]?.photos?.length || 0
+        : pack.photos?.length || 0,
     });
 
     if (enabledPacks[packId] === false) {
@@ -323,23 +325,30 @@ export function buildPhotoPool() {
       if (apiPacksReady.includes(pack.id)) {
         const cached = apiPackCache[pack.id];
         if (cached && cached.photos.length > 0) {
-          console.log(`[Build Pool] Adding ${cached.photos.length} API photos from ${pack.display_name || pack.name}`);
+          console.log(
+            `[Build Pool] Adding ${cached.photos.length} API photos from ${pack.display_name || pack.name}`,
+          );
           cached.photos.forEach((photo) => {
             pool.push({
               ...photo,
               source: `api:${pack.api_provider}`,
               pack_id: pack.id,
+              pack_name: pack.display_name || pack.name,
               attribution_config: pack.attribution || null,
             });
           });
         } else {
-          console.log(`[Build Pool] API pack ${pack.display_name || pack.name} has no cached photos`);
+          console.log(
+            `[Build Pool] API pack ${pack.display_name || pack.name} has no cached photos`,
+          );
         }
       } else {
         console.log(`[Build Pool] API pack ${pack.display_name || pack.name} is not ready yet`);
       }
     } else {
-      console.log(`[Build Pool] Adding ${pack.photos.length} static photos from ${pack.display_name || pack.name}`);
+      console.log(
+        `[Build Pool] Adding ${pack.photos.length} static photos from ${pack.display_name || pack.name}`,
+      );
       pack.photos.forEach((photo) => {
         pool.push({
           photographer: photo.photographer,
@@ -348,6 +357,7 @@ export function buildPhotoPool() {
           blur_hash: photo.blur_hash,
           source: 'static',
           pack_id: pack.id,
+          pack_name: pack.display_name || pack.name,
           attribution_config: pack.attribution || null,
         });
       });

@@ -52,7 +52,8 @@ const formatText = (text) => {
 const downloadImage = async (info) => {
   const link = document.createElement('a');
   link.href = await toDataURL(getProxiedImageUrl(info.url));
-  const locationText = typeof info.location === 'string' ? info.location : info.location?.name || 'unknown';
+  const locationText =
+    typeof info.location === 'string' ? info.location : info.location?.name || 'unknown';
   link.download = `mue-${formatText(info.credit)}-${formatText(locationText)}.jpg`;
   document.body.appendChild(link);
   link.click();
@@ -96,7 +97,17 @@ function ColorSwatch({ hex }) {
 /**
  * MetadataGrid - 2-column grid of photo metadata
  */
-function MetadataGrid({ location, camera, width, height, colour, category, packId, packName, onPackClick }) {
+function MetadataGrid({
+  location,
+  camera,
+  width,
+  height,
+  colour,
+  category,
+  packId,
+  packName,
+  onPackClick,
+}) {
   const t = useT();
 
   // Get pack display name from marketplace data
@@ -250,7 +261,14 @@ function UnsplashStats({ views, downloads, likes }) {
 /**
  * ActionButtons - Photo action buttons (share, favorite, download, exclude)
  */
-function ActionButtons({ info, onShare, onExclude, onDownload, favouriteTooltipText, setFavouriteTooltipText }) {
+function ActionButtons({
+  info,
+  onShare,
+  onExclude,
+  onDownload,
+  favouriteTooltipText,
+  setFavouriteTooltipText,
+}) {
   const t = useT();
 
   return (
@@ -382,7 +400,6 @@ function PhotoInformation({ info, url, api }) {
     );
   }
 
-
   const widgetStyle = localStorage.getItem('widgetStyle');
 
   return (
@@ -428,11 +445,7 @@ function PhotoInformation({ info, url, api }) {
               </span>
             </div>
             {info.views && info.downloads !== null && (
-              <UnsplashStats
-                views={info.views}
-                downloads={info.downloads}
-                likes={info.likes}
-              />
+              <UnsplashStats views={info.views} downloads={info.downloads} likes={info.likes} />
             )}
           </div>
 
@@ -450,25 +463,23 @@ function PhotoInformation({ info, url, api }) {
               onPackClick={handlePackClick}
             />
 
-            {localStorage.getItem('photoMap') === 'true' &&
-              info.latitude &&
-              info.longitude && (
-                <>
-                  <div className="section-divider" />
-                  <LocationMap latitude={info.latitude} longitude={info.longitude} />
-                </>
-              )}
+            {localStorage.getItem('photoMap') === 'true' && info.latitude && info.longitude && (
+              <>
+                <div className="section-divider" />
+                <LocationMap latitude={info.latitude} longitude={info.longitude} />
+              </>
+            )}
 
-            <div className="section-divider" />
-
-            <ActionButtons
-              info={info}
-              onShare={() => openShareModal(true)}
-              onExclude={() => openExcludeModal(true)}
-              onDownload={() => downloadImage(info)}
-              favouriteTooltipText={favouriteTooltipText}
-              setFavouriteTooltipText={setFavouriteTooltipText}
-            />
+            <div className="buttons-wrapper">
+              <ActionButtons
+                info={info}
+                onShare={() => openShareModal(true)}
+                onExclude={() => openExcludeModal(true)}
+                onDownload={() => downloadImage(info)}
+                favouriteTooltipText={favouriteTooltipText}
+                setFavouriteTooltipText={setFavouriteTooltipText}
+              />
+            </div>
           </div>
         </div>
       )}

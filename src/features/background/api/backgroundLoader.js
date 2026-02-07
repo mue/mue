@@ -326,6 +326,15 @@ function getPhotoPackBackground(isOffline) {
         url: selected.url.default || selected.url,
         source: selected.source,
         pack_id: selected.pack_id,
+        pack_name: selected.pack_name || null,
+        ...(selected.colour && { colour: selected.colour }),
+        ...(selected.camera && { camera: selected.camera }),
+        ...(selected.category && { category: selected.category }),
+        ...(selected.latitude &&
+          selected.longitude && {
+            latitude: selected.latitude,
+            longitude: selected.longitude,
+          }),
         ...(selected.photographer_page && { photographerURL: selected.photographer_page }),
         ...(selected.photo_page && { photoURL: selected.photo_page }),
       },
@@ -381,6 +390,15 @@ async function prefetchPhotoPackImages(queueManager, pool, currentPhoto, current
       url: photo.url.default || photo.url,
       source: photo.source,
       pack_id: photo.pack_id,
+      pack_name: photo.pack_name || null,
+      ...(photo.colour && { colour: photo.colour }),
+      ...(photo.camera && { camera: photo.camera }),
+      ...(photo.category && { category: photo.category }),
+      ...(photo.latitude &&
+        photo.longitude && {
+          latitude: photo.latitude,
+          longitude: photo.longitude,
+        }),
       ...(photo.photographer_page && { photographerURL: photo.photographer_page }),
       ...(photo.photo_page && { photoURL: photo.photo_page }),
     },
