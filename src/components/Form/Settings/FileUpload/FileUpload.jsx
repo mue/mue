@@ -5,6 +5,8 @@ import { compressAccurately, filetoDataURL } from 'image-conversion';
 import videoCheck from 'features/background/api/videoCheck';
 
 const FileUpload = memo(({ id, type, accept, loadFunction, multiple }) => {
+  const t = useT();
+
   useEffect(() => {
     const fileInput = document.getElementById(id);
     if (!fileInput) {
@@ -12,7 +14,6 @@ const FileUpload = memo(({ id, type, accept, loadFunction, multiple }) => {
     }
 
     const handleChange = (e) => {
-      const t = useT();
       const files = Array.from(e.target.files);
 
       if (type === 'settings') {
@@ -20,11 +21,13 @@ const FileUpload = memo(({ id, type, accept, loadFunction, multiple }) => {
         const file = files[0];
         reader.readAsText(file, 'UTF-8');
         reader.onload = (e) => {
+          e.target.value = '';
           return loadFunction(e.target.result);
         };
       } else {
         if (typeof loadFunction === 'function' && loadFunction.length === 1) {
           loadFunction(files);
+          e.target.value = '';
         } else {
           const settings = {};
 
@@ -61,6 +64,8 @@ const FileUpload = memo(({ id, type, accept, loadFunction, multiple }) => {
               );
             });
           });
+          // Clear the input value so subsequent uploads work
+          e.target.value = '';
         }
       }
     };

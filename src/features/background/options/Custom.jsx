@@ -902,7 +902,7 @@ const CustomSettings = memo(() => {
       <Modal
         closeTimeoutMS={100}
         onRequestClose={() => setCustomURLModal(false)}
-        open={customURLModal}
+        isOpen={customURLModal}
         className="Modal resetmodal mainModal"
         overlayClassName="Overlay resetoverlay"
         ariaHideApp={false}
@@ -920,7 +920,7 @@ const CustomSettings = memo(() => {
           setFolderTaggingModal(false);
           setPendingFiles([]);
         }}
-        open={folderTaggingModal}
+        isOpen={folderTaggingModal}
         className="Modal resetmodal mainModal"
         overlayClassName="Overlay resetoverlay"
         ariaHideApp={false}
@@ -938,7 +938,7 @@ const CustomSettings = memo(() => {
       <Modal
         closeTimeoutMS={100}
         onRequestClose={() => setStorageQuotaModal(false)}
-        open={storageQuotaModal}
+        isOpen={storageQuotaModal}
         className="Modal resetmodal mainModal"
         overlayClassName="Overlay resetoverlay"
         ariaHideApp={false}
