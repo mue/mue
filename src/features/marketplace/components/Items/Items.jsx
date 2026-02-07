@@ -13,7 +13,6 @@ import { refreshAPIPackCache } from 'features/background/api/photoPackAPI';
 import ItemSettingsModal from '../Modals/ItemSettingsModal';
 
 function filterItems(item, filter, categoryFilter) {
-  const t = useT();
   const lowerCaseFilter = filter.toLowerCase();
   const textMatch =
     item.name?.toLowerCase().includes(lowerCaseFilter) ||
@@ -71,6 +70,7 @@ function ItemCard({
   onInstall,
   showChips = true,
 }) {
+  const t = useT();
   const isSideloaded = item.sideload === true;
   const packId = item.id || item.name;
   const isPhotoPack = item.type === 'photos' || item.type === 'photo_packs';
@@ -330,6 +330,7 @@ function Items({
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortType, setSortType] = useState(localStorage.getItem('sortMarketplace') || 'a-z');
   const [installCounter, setInstallCounter] = useState(0);
+  const t = useT();
 
   useEffect(() => {
     const handleInstalledAddonsChanged = () => {
