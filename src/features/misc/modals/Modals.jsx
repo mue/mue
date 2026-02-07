@@ -65,7 +65,8 @@ const Modals = () => {
   useEffect(() => {
     const hasRoute = location.pathname !== '/';
     // Skip sync if modal is in the middle of closing to avoid race conditions
-    if (isModalClosing) {
+    // Also skip if welcome modal is open to prevent main modal from appearing on top
+    if (isModalClosing || welcomeModal) {
       return;
     }
 
@@ -81,12 +82,13 @@ const Modals = () => {
     }, 50);
 
     return () => clearTimeout(timer);
-  }, [location.pathname, mainModal, deepLinkData, isModalClosing]);
+  }, [location.pathname, mainModal, deepLinkData, isModalClosing, welcomeModal]);
 
   useEffect(() => {
     const isPreviewMode = localStorage.getItem('showWelcome') === 'true';
     if (isPreviewMode && shouldAutoOpenModal()) {
       navigate('/');
+      setMainModal(false);
       setWelcomeModal(true);
       setPreview(false);
       return;
@@ -96,6 +98,7 @@ const Modals = () => {
       localStorage.getItem('showWelcome') === 'true' &&
       window.location.search !== '?nointro=true'
     ) {
+      setMainModal(false);
       setWelcomeModal(true);
       variables.stats.postEvent('modal', 'Opened welcome');
     }
