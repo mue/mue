@@ -30,7 +30,7 @@ function MainModal({ modalClose, deepLinkData }) {
   // Memoize to prevent infinite loops in useEffect
   const effectiveDeepLinkData = useMemo(
     () => routerDeepLinkData || deepLinkData,
-    [location.pathname, deepLinkData]
+    [location.pathname, deepLinkData],
   );
 
   // Derive currentTab from router location instead of state
@@ -38,7 +38,9 @@ function MainModal({ modalClose, deepLinkData }) {
 
   const [currentSection, setCurrentSection] = useState('');
   const [currentSectionName, setCurrentSectionName] = useState('');
-  const [currentSubSection, setCurrentSubSection] = useState(effectiveDeepLinkData?.subSection || null);
+  const [currentSubSection, setCurrentSubSection] = useState(
+    effectiveDeepLinkData?.subSection || null,
+  );
   const [productView, setProductView] = useState(null);
   const [resetDiscoverToAll, setResetDiscoverToAll] = useState(false);
   const [navigationTrigger, setNavigationTrigger] = useState(null);
@@ -100,7 +102,11 @@ function MainModal({ modalClose, deepLinkData }) {
         return;
       }
 
-      if (effectiveDeepLinkData.itemId && effectiveDeepLinkData.collection && effectiveDeepLinkData.fromCollection) {
+      if (
+        effectiveDeepLinkData.itemId &&
+        effectiveDeepLinkData.collection &&
+        effectiveDeepLinkData.fromCollection
+      ) {
         setNavigationTrigger({
           type: 'collection',
           data: effectiveDeepLinkData.collection,
@@ -165,14 +171,27 @@ function MainModal({ modalClose, deepLinkData }) {
     if (currentSectionName !== '' && currentSectionName !== sectionName) {
       setCurrentSubSection(null);
     }
-    const entry = { section, sectionName, subSection: (currentSectionName === '' || currentSectionName === sectionName) ? currentSubSection : null };
+    const entry = {
+      section,
+      sectionName,
+      subSection:
+        currentSectionName === '' || currentSectionName === sectionName ? currentSubSection : null,
+    };
     const current = historyRef.current[historyIndexRef.current];
-    if (!current || current.sectionName !== sectionName || current.subSection !== entry.subSection) {
+    if (
+      !current ||
+      current.sectionName !== sectionName ||
+      current.subSection !== entry.subSection
+    ) {
       historyRef.current = historyRef.current.slice(0, historyIndexRef.current + 1).concat(entry);
       historyIndexRef.current = historyRef.current.length - 1;
       updateNavButtons();
     }
     if (currentTab === TAB_TYPES.DISCOVER) {
+      // Don't navigate away if we're viewing a specific item
+      if (effectiveDeepLinkData?.itemId) {
+        return;
+      }
       const sectionMap = {
         [t('modals.main.marketplace.all')]: 'all',
         [t('modals.main.marketplace.photo_packs')]: 'photo_packs',
@@ -186,9 +205,10 @@ function MainModal({ modalClose, deepLinkData }) {
       }
     } else if (currentTab === TAB_TYPES.SETTINGS && sectionName) {
       // Include subsection in hash if it exists and we're not changing sections
-      const path = currentSubSection && (currentSectionName === '' || currentSectionName === sectionName)
-        ? `/${currentTab}/${sectionName}/${currentSubSection}`
-        : `/${currentTab}/${sectionName}`;
+      const path =
+        currentSubSection && (currentSectionName === '' || currentSectionName === sectionName)
+          ? `/${currentTab}/${sectionName}/${currentSubSection}`
+          : `/${currentTab}/${sectionName}`;
       navigate(path, { replace: true });
     }
   };
@@ -282,7 +302,7 @@ function MainModal({ modalClose, deepLinkData }) {
           <TabComponent
             key={currentTab}
             changeTab={handleChangeTab}
-            deepLinkData={deepLinkData}
+            deepLinkData={effectiveDeepLinkData}
             currentTab={currentTab}
             onSectionChange={handleSectionChange}
             onSubSectionChange={handleSubSectionChange}

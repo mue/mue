@@ -35,7 +35,7 @@ const SuggestedPacks = ({ category, limit = 4, minToShow = 2 }) => {
   // Navigate to specific item detail page
   const navigateToItem = (item) => {
     const itemId = item.id || item.name;
-    navigate(`/discover/${category}/${itemId}`);
+    navigate(`/discover/item/${itemId}`);
   };
 
   return (

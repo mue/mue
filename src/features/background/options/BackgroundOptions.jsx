@@ -148,7 +148,7 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
   };
 
   const handleToggle = (pack) => {
-    const itemId = pack.name;
+    const itemId = pack.id || pack.name;
     navigate(`/discover/item/${itemId}`);
 
     variables.stats.postEvent('marketplace', 'ItemPage viewed');

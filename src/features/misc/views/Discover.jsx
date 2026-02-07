@@ -83,13 +83,15 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
       } else {
         // Look up the item to determine its type
         const installed = JSON.parse(localStorage.getItem('installed')) || [];
-        const item = installed.find((i) => i.name === deepLinkData.itemId || i.id === deepLinkData.itemId);
+        const item = installed.find(
+          (i) => i.name === deepLinkData.itemId || i.id === deepLinkData.itemId,
+        );
 
         if (item) {
           const typeMap = {
-            'photos': 'packs',
-            'quotes': 'packs',
-            'settings': 'presets',
+            photos: 'packs',
+            quotes: 'packs',
+            settings: 'presets',
           };
           pathSegment = typeMap[item.type] || 'packs';
         }
@@ -194,6 +196,22 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
             navigate(`/discover/item/${payload.itemId}`);
           } else if (payload?.category) {
             navigate(`/discover/${payload.category}`);
+          }
+          break;
+
+        case 'marketplace:navigation':
+          // Handle navigation from the iframe (website sends this when URL changes)
+          if (payload?.path) {
+            // Parse the path: /marketplace/packs/abc123 or /marketplace/presets/xyz789
+            const pathParts = payload.path.split('/').filter(Boolean);
+
+            if (pathParts.length >= 3 && pathParts[0] === 'marketplace') {
+              const itemId = pathParts[2];
+              navigate(`/discover/item/${itemId}`);
+            } else if (pathParts.length === 2 && pathParts[0] === 'marketplace') {
+              // Category page like /marketplace?type=photo_packs
+              // Already on the category, no need to navigate
+            }
           }
           break;
 

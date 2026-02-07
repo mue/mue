@@ -46,10 +46,6 @@ export const routes = [
         element: <div style={{ display: 'none' }} />,
       },
       {
-        path: 'discover/:category/:itemId',
-        element: <div style={{ display: 'none' }} />,
-      },
-      {
         path: 'discover/item/:itemId',
         element: <div style={{ display: 'none' }} />,
       },
@@ -59,6 +55,10 @@ export const routes = [
       },
       {
         path: 'discover/collection/:collectionId/:itemId',
+        element: <div style={{ display: 'none' }} />,
+      },
+      {
+        path: 'discover/:category/:itemId',
         element: <div style={{ display: 'none' }} />,
       },
       {
