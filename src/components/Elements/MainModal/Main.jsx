@@ -162,10 +162,14 @@ function MainModal({ modalClose, deepLinkData }) {
   const handleSectionChange = (section, sectionName) => {
     setCurrentSection(section);
     setCurrentSectionName(sectionName);
-    setCurrentSubSection(null);
-    const entry = { section, sectionName, subSection: null };
+    // Only reset subsection if we're actually changing to a different section
+    // Don't reset on initial section set (when currentSectionName is empty)
+    if (currentSectionName !== '' && currentSectionName !== sectionName) {
+      setCurrentSubSection(null);
+    }
+    const entry = { section, sectionName, subSection: (currentSectionName === '' || currentSectionName === sectionName) ? currentSubSection : null };
     const current = historyRef.current[historyIndexRef.current];
-    if (!current || current.sectionName !== sectionName || current.subSection !== null) {
+    if (!current || current.sectionName !== sectionName || current.subSection !== entry.subSection) {
       historyRef.current = historyRef.current.slice(0, historyIndexRef.current + 1).concat(entry);
       historyIndexRef.current = historyRef.current.length - 1;
       updateNavButtons();
@@ -183,7 +187,11 @@ function MainModal({ modalClose, deepLinkData }) {
         updateHash(`#${currentTab}/${sectionKey}`);
       }
     } else if (currentTab === TAB_TYPES.SETTINGS && sectionName) {
-      updateHash(`#${currentTab}/${sectionName}`, false);
+      // Include subsection in hash if it exists and we're not changing sections
+      const hash = currentSubSection && (currentSectionName === '' || currentSectionName === sectionName)
+        ? `#${currentTab}/${sectionName}/${currentSubSection}`
+        : `#${currentTab}/${sectionName}`;
+      updateHash(hash, false);
     }
   };
 

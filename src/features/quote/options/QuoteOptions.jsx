@@ -26,6 +26,7 @@ import { Checkbox, ColourPicker, Dropdown, Textarea } from 'components/Form/Sett
 import { Button } from 'components/Elements';
 import { FREQUENCY_OPTIONS } from 'utils/frequencyManager';
 import Items from 'features/marketplace/components/Items/Items';
+import SuggestedPacks from 'features/marketplace/components/SuggestedPacks';
 import { uninstall } from 'utils/marketplace';
 import { updateHash } from 'utils/deepLinking';
 import './QuoteOptions.scss';
@@ -461,6 +462,7 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
           viewType="grid"
           showChips={false}
         />
+        <SuggestedPacks category="quote_packs" />
       </>
     );
   } else {

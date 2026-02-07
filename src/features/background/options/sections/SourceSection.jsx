@@ -4,6 +4,7 @@ import { Dropdown } from 'components/Form/Settings';
 import { Row, Content, Action } from 'components/Layout/Settings/Item';
 import { Button } from 'components/Elements';
 import Items from 'features/marketplace/components/Items/Items';
+import SuggestedPacks from 'features/marketplace/components/SuggestedPacks';
 import { getBackgroundOptionItems } from '../optionTypes';
 
 const SourceSection = ({
@@ -70,6 +71,7 @@ const SourceSection = ({
             viewType="grid"
             showChips={false}
           />
+          <SuggestedPacks category="photo_packs" />
         </>
       )}
     </>

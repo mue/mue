@@ -13,10 +13,11 @@
 
   // height: 100%;
   overflow-y: auto;
+  margin-bottom: 0;
+  padding-bottom: 2rem;
 
   @include themed {
     background: t($modal-background);
-    margin: 0;
     border-radius: t($borderRadius);
   }
 

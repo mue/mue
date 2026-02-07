@@ -218,6 +218,9 @@
             "custom_subtitle": "Legen Sie Ihre eigenen Zitate fest",
             "installed_packs_title": "Installed Quote Packs",
             "get_more": "Get More",
+            "suggested_packs_title": "Suggested Quote Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
             "no_quotes": "Keine Zitate",
             "author": "Autor",
             "custom_buttons": "Schaltflächen",
@@ -437,6 +440,9 @@
               "day": "Once a day"
             },
             "installed_packs_title": "Installed Photo Packs",
+            "suggested_packs_title": "Suggested Photo Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
             "photo_pack_settings": {
               "title": "{name} Settings",
               "refresh_photos": "Refresh Photos"

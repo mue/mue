@@ -278,6 +278,7 @@ function Items({
   onTogglePack,
   viewType = 'grid',
   showChips = true,
+  style,
 }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortType, setSortType] = useState(localStorage.getItem('sortMarketplace') || 'a-z');
@@ -329,7 +330,7 @@ function Items({
           />
         </div>
       )}
-      <div className={`items ${viewType === 'list' ? 'items-list' : 'items-grid'}`}>
+      <div className={`items ${viewType === 'list' ? 'items-list' : 'items-grid'}`} style={style}>
         {items
           ?.filter((item) => filterItems(item, filter, filterOptions ? selectedCategory : 'all'))
           .map((item, index) => (
