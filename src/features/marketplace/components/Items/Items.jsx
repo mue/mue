@@ -1,5 +1,5 @@
 import { useT } from 'contexts';
-import React, { memo, useState, useMemo } from 'react';
+import React, { memo, useState, useMemo, useEffect } from 'react';
 import { MdCheckCircle, MdOutlineUploadFile, MdClose, MdSettings, MdAdd } from 'react-icons/md';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 
@@ -200,32 +200,36 @@ function ItemCard({
           onClick={handleInstallClick}
           style={{
             position: 'absolute',
-            top: '12px',
-            right: '12px',
+            top: '20px',
+            right: '20px',
             zIndex: 2,
-            width: '32px',
-            height: '32px',
+            width: '36px',
+            height: '36px',
             borderRadius: '50%',
-            border: 'none',
-            backgroundColor: 'var(--linkColor, #ff5c25)',
+            border: '1px solid rgba(255, 255, 255, 0.18)',
+            background:
+              'linear-gradient(135deg, rgba(255, 92, 37, 0.95) 0%, rgba(255, 130, 67, 0.85) 100%)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
             color: 'white',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
-            transition: 'transform 0.2s, opacity 0.2s',
-            opacity: 0.9,
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.opacity = '1';
-            e.currentTarget.style.transform = 'scale(1.1)';
+            e.currentTarget.style.transform = 'scale(1.15)';
+            e.currentTarget.style.background =
+              'linear-gradient(135deg, rgba(255, 92, 37, 1) 0%, rgba(255, 130, 67, 0.95) 100%)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.opacity = '0.9';
             e.currentTarget.style.transform = 'scale(1)';
+            e.currentTarget.style.background =
+              'linear-gradient(135deg, rgba(255, 92, 37, 0.95) 0%, rgba(255, 130, 67, 0.85) 100%)';
           }}
         >
-          <MdAdd size={20} />
+          <MdAdd size={22} />
         </button>
       )}
       {item.icon_url ? (
@@ -325,11 +329,23 @@ function Items({
 }) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortType, setSortType] = useState(localStorage.getItem('sortMarketplace') || 'a-z');
+  const [installCounter, setInstallCounter] = useState(0);
+
+  useEffect(() => {
+    const handleInstalledAddonsChanged = () => {
+      setInstallCounter((prev) => prev + 1);
+    };
+
+    window.addEventListener('installedAddonsChanged', handleInstalledAddonsChanged);
+    return () => {
+      window.removeEventListener('installedAddonsChanged', handleInstalledAddonsChanged);
+    };
+  }, []);
 
   const installedNames = useMemo(() => {
     const installed = JSON.parse(localStorage.getItem('installed')) || [];
     return new Set(installed.map((item) => item.name));
-  }, []);
+  }, [installCounter]);
 
   const filterCategories = [
     { id: 'all', label: 'All' },
