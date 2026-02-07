@@ -293,8 +293,10 @@ const LocationSearch = memo((props) => {
       switch (e.key) {
         case 'Enter':
           e.preventDefault();
-          if (open && focusedIndex >= 0 && suggestions[focusedIndex]) {
-            selectLocation(suggestions[focusedIndex]);
+          if (open && suggestions.length > 0) {
+            // Select focused item, or first item if nothing is focused
+            const indexToSelect = focusedIndex >= 0 ? focusedIndex : 0;
+            selectLocation(suggestions[indexToSelect]);
           }
           break;
         case 'Escape':

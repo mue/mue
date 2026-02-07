@@ -29,8 +29,24 @@ const WeatherWidget = memo(() => {
   const [done, setDone] = useState(false);
   const [weatherData, setWeatherData] = useState({});
 
+  const getLocationFromStorage = useCallback(() => {
+    const stored = localStorage.getItem('location');
+    if (!stored) return 'London';
+
+    try {
+      const parsed = JSON.parse(stored);
+      if (parsed && typeof parsed === 'object') {
+        return parsed;
+      }
+    } catch {}
+    return stored;
+  }, []);
+
   const updateWeather = useCallback(async () => {
-    const data = await getWeather(location);
+    const currentLocation = getLocationFromStorage();
+    setLocation(currentLocation);
+    
+    const data = await getWeather(currentLocation);
     console.log('Weather data received:', data);
     if (data) {
       setWeatherData(data);
@@ -45,7 +61,7 @@ const WeatherWidget = memo(() => {
     if (weatherElement) {
       weatherElement.style.fontSize = zoomWeather;
     }
-  }, [location]);
+  }, [getLocationFromStorage]);
 
   useEffect(() => {
     const handleRefresh = async (data) => {
@@ -68,8 +84,9 @@ const WeatherWidget = memo(() => {
     return <WeatherSkeleton weatherType={weatherType} />;
   }
 
-  const locationDisplay =
-    typeof location === 'object' ? location.displayName || location.name : location;
+  const locationDisplay = (
+    typeof location === 'object' ? location.displayName || location.name : location
+  ).split(',')[0];
 
   if (!weatherData.weather) {
     return (
