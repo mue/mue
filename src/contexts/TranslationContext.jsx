@@ -74,7 +74,16 @@ export function TranslationProvider({ children, initialLanguage, initialTranslat
       if (!i18nInstance.current) {
         return key;
       }
-      return i18nInstance.current.getMessage(currentLanguage, key, optional);
+      try {
+        return i18nInstance.current.getMessage(currentLanguage, key, optional);
+      } catch (error) {
+        // Fallback to en_GB if the current language is not loaded yet
+        try {
+          return i18nInstance.current.getMessage('en_GB', key, optional);
+        } catch {
+          return key;
+        }
+      }
     },
     [currentLanguage],
   );
