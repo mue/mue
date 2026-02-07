@@ -72,7 +72,7 @@ function QuoteInfoModal({ modalClose, quoteData }) {
             <div className="warningText">
               <p>
                 {variables.getMessage('widgets.quote.info.warning') ||
-                  'Author image and occupation are automatically fetched and may be incorrect.'}
+                  "The author's image, occupation and wikipedia page are automatically sourced from Wikipedia and Wikidata and may not always be accurate."}
               </p>
             </div>
           </div>
