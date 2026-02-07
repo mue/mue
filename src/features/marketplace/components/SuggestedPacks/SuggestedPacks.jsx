@@ -1,10 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import { MdExplore } from 'react-icons/md';
 import { useT } from 'contexts';
 import { Row, Content, Action } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 import Items from 'features/marketplace/components/Items/Items';
-import { updateHash } from 'utils/deepLinking';
 import { useSuggestedPacks } from './useSuggestedPacks';
 
 /**
@@ -16,6 +16,7 @@ import { useSuggestedPacks } from './useSuggestedPacks';
  */
 const SuggestedPacks = ({ category, limit = 4, minToShow = 2 }) => {
   const t = useT();
+  const navigate = useNavigate();
   const { suggestions, loading, error } = useSuggestedPacks(category, limit, minToShow);
 
   // Don't render anything while loading, on error, or if no suggestions
@@ -28,17 +29,13 @@ const SuggestedPacks = ({ category, limit = 4, minToShow = 2 }) => {
 
   // Navigate to marketplace category page
   const goToMarketplace = () => {
-    updateHash(`#discover/${category}`);
-    const event = new window.Event('popstate');
-    window.dispatchEvent(event);
+    navigate(`/discover/${category}`);
   };
 
   // Navigate to specific item detail page
   const navigateToItem = (item) => {
     const itemId = item.id || item.name;
-    updateHash(`#discover/${category}/${itemId}`);
-    const event = new window.Event('popstate');
-    window.dispatchEvent(event);
+    navigate(`/discover/${category}/${itemId}`);
   };
 
   return (

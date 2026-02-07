@@ -1,6 +1,7 @@
 import { useT } from 'contexts';
 import variables from 'config/variables';
 import { memo, useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router';
 import {
   MdUpdate,
   MdOutlineExtensionOff,
@@ -19,10 +20,10 @@ import { Header, CustomActions } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
 import { install, uninstall } from 'utils/marketplace';
-import { updateHash } from 'utils/deepLinking';
 
 const Added = memo(() => {
   const t = useT();
+  const navigate = useNavigate();
   const [installed, setInstalled] = useState(JSON.parse(localStorage.getItem('installed')));
   const [showFailed, setShowFailed] = useState(false);
   const [failedReason, setFailedReason] = useState('');
@@ -82,14 +83,11 @@ const Added = memo(() => {
   const toggle = useCallback((type, data) => {
     if (type === 'item') {
       const itemId = data.name;
-      updateHash(`#discover/all?item=${itemId}`);
-
-      const event = new window.Event('popstate');
-      window.dispatchEvent(event);
+      navigate(`/discover/item/${itemId}`);
 
       variables.stats.postEvent('marketplace', 'ItemPage viewed');
     }
-  }, []);
+  }, [navigate]);
 
   const sortAddons = useCallback((value, sendEvent) => {
     const installedItems = JSON.parse(localStorage.getItem('installed'));
@@ -197,10 +195,8 @@ const Added = memo(() => {
   );
 
   const goToDiscover = useCallback(() => {
-    updateHash('#discover/all');
-    const event = new window.Event('popstate');
-    window.dispatchEvent(event);
-  }, []);
+    navigate('/discover/all');
+  }, [navigate]);
 
   const toggleViewType = useCallback((type) => {
     setViewType(type);

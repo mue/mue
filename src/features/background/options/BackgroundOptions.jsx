@@ -1,12 +1,12 @@
 import variables from 'config/variables';
 import { useT } from 'contexts';
 import { memo, useState, useEffect, useCallback, useRef } from 'react';
+import { useNavigate } from 'react-router';
 import { MdSource, MdOutlineAutoAwesome } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import EventBus from 'utils/eventbus';
 import { clearQueuesOnSettingChange } from 'utils/queueOperations';
 import { uninstall } from 'utils/marketplace';
-import { updateHash } from 'utils/deepLinking';
 
 import { Header } from 'components/Layout/Settings';
 import { Dropdown } from 'components/Form/Settings';
@@ -23,6 +23,7 @@ import { getBackgroundOptionItems } from './optionTypes';
 
 const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, sectionName }) => {
   const t = useT();
+  const navigate = useNavigate();
   const [backgroundType, setBackgroundType] = useState(
     localStorage.getItem('backgroundType') || 'api',
   );
@@ -143,17 +144,12 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
   };
 
   const goToPhotoPacks = () => {
-    updateHash('#discover/photo_packs');
-    const event = new window.Event('popstate');
-    window.dispatchEvent(event);
+    navigate('/discover/photo_packs');
   };
 
   const handleToggle = (pack) => {
     const itemId = pack.name;
-    updateHash(`#discover/all?item=${itemId}`);
-
-    const event = new window.Event('popstate');
-    window.dispatchEvent(event);
+    navigate(`/discover/item/${itemId}`);
 
     variables.stats.postEvent('marketplace', 'ItemPage viewed');
   };

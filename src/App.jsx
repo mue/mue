@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Outlet } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 import Background from 'features/background/Background';
 import Widgets from 'features/misc/views/Widgets';
@@ -82,6 +83,7 @@ const App = () => {
         <Widgets />
         <Modals />
       </div>
+      <Outlet />
     </TranslationProvider>
   );
 };

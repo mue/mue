@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client';
+import { RouterProvider } from 'react-router';
 import variables from 'config/variables';
 
 import * as Sentry from '@sentry/react';
@@ -6,6 +7,7 @@ import * as Sentry from '@sentry/react';
 import App from './App';
 import ErrorBoundary from './ErrorBoundary';
 import { migrateAPIUsersToPhotoPacks } from './utils/migrations';
+import { router } from './router';
 
 import './scss/index.scss';
 import 'react-toastify/dist/ReactToastify.css';
@@ -38,7 +40,7 @@ const root = createRoot(container);
 
     root.render(
       <ErrorBoundary>
-        <App />
+        <RouterProvider router={router} />
       </ErrorBoundary>,
     );
   } catch (error) {

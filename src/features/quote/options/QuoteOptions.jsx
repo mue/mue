@@ -1,6 +1,7 @@
 import { useT } from 'contexts';
 import variables from 'config/variables';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import EventBus from 'utils/eventbus';
 import {
   MdCancel,
@@ -28,11 +29,11 @@ import { FREQUENCY_OPTIONS } from 'utils/frequencyManager';
 import Items from 'features/marketplace/components/Items/Items';
 import SuggestedPacks from 'features/marketplace/components/SuggestedPacks';
 import { uninstall } from 'utils/marketplace';
-import { updateHash } from 'utils/deepLinking';
 import './QuoteOptions.scss';
 
 const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => {
   const t = useT();
+  const navigate = useNavigate();
   const getCustom = () => {
     let data = JSON.parse(localStorage.getItem('customQuote'));
     if (data === null) {
@@ -333,17 +334,12 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
   };
 
   const goToQuotePacks = () => {
-    updateHash('#discover/quote_packs');
-    const event = new window.Event('popstate');
-    window.dispatchEvent(event);
+    navigate('/discover/quote_packs');
   };
 
   const handleToggle = (pack) => {
     const itemId = pack.name;
-    updateHash(`#discover/all?item=${itemId}`);
-
-    const event = new window.Event('popstate');
-    window.dispatchEvent(event);
+    navigate(`/discover/item/${itemId}`);
 
     variables.stats.postEvent('marketplace', 'ItemPage viewed');
   };

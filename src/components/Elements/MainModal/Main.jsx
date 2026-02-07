@@ -1,4 +1,5 @@
-import { Suspense, lazy, useState, memo, useEffect, useRef } from 'react';
+import { Suspense, lazy, useState, memo, useEffect, useRef, useMemo } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router';
 import { useT } from 'contexts';
 
 import './scss/index.scss';
@@ -6,6 +7,7 @@ import ModalLoader from './components/ModalLoader';
 import ModalTopBar from './components/ModalTopBar';
 import { TAB_TYPES } from './constants/tabConfig';
 import { updateHash, parseDeepLink } from 'utils/deepLinking';
+import { useRouterBridge } from '../../../router/RouterBridge';
 
 const Settings = lazy(() => import('../../../features/misc/views/Settings'));
 const Library = lazy(() => import('../../../features/misc/views/Library'));
@@ -19,11 +21,24 @@ const TAB_COMPONENTS = {
 
 function MainModal({ modalClose, deepLinkData }) {
   const t = useT();
-  const initialTab = deepLinkData?.tab || TAB_TYPES.SETTINGS;
-  const [currentTab, setCurrentTab] = useState(initialTab);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const params = useParams();
+  const { deepLinkData: routerDeepLinkData } = useRouterBridge();
+
+  // Use router-based deepLinkData if available, fallback to prop
+  // Memoize to prevent infinite loops in useEffect
+  const effectiveDeepLinkData = useMemo(
+    () => routerDeepLinkData || deepLinkData,
+    [location.pathname, deepLinkData]
+  );
+
+  // Derive currentTab from router location instead of state
+  const currentTab = effectiveDeepLinkData?.tab || TAB_TYPES.SETTINGS;
+
   const [currentSection, setCurrentSection] = useState('');
   const [currentSectionName, setCurrentSectionName] = useState('');
-  const [currentSubSection, setCurrentSubSection] = useState(deepLinkData?.subSection || null);
+  const [currentSubSection, setCurrentSubSection] = useState(effectiveDeepLinkData?.subSection || null);
   const [productView, setProductView] = useState(null);
   const [resetDiscoverToAll, setResetDiscoverToAll] = useState(false);
   const [navigationTrigger, setNavigationTrigger] = useState(null);
@@ -44,33 +59,25 @@ function MainModal({ modalClose, deepLinkData }) {
   }, [currentTab]);
 
   useEffect(() => {
-    if (deepLinkData) {
-      if (deepLinkData.tab && deepLinkData.tab !== currentTab) {
-        setCurrentTab(deepLinkData.tab);
-      }
-
-      if (deepLinkData.tab === TAB_TYPES.SETTINGS && deepLinkData.section) {
+    if (effectiveDeepLinkData) {
+      if (effectiveDeepLinkData.tab === TAB_TYPES.SETTINGS && effectiveDeepLinkData.section) {
         setNavigationTrigger({
           type: 'settings-section',
-          data: deepLinkData.section,
+          data: effectiveDeepLinkData.section,
           timestamp: Date.now(),
         });
-        if (deepLinkData.subSection) {
-          setCurrentSubSection(deepLinkData.subSection);
-          updateHash(
-            `#${deepLinkData.tab}/${deepLinkData.section}/${deepLinkData.subSection}`,
-            false,
-          );
+        if (effectiveDeepLinkData.subSection) {
+          setCurrentSubSection(effectiveDeepLinkData.subSection);
           if (historyIndexRef.current >= 0) {
             historyRef.current[historyIndexRef.current] = {
               ...historyRef.current[historyIndexRef.current],
-              subSection: deepLinkData.subSection,
+              subSection: effectiveDeepLinkData.subSection,
             };
           }
         }
       }
     }
-  }, [deepLinkData]);
+  }, [effectiveDeepLinkData]);
 
   useEffect(() => {
     return () => {
@@ -80,84 +87,73 @@ function MainModal({ modalClose, deepLinkData }) {
     };
   }, []);
 
+  // React to router location changes
   useEffect(() => {
-    const handlePopState = () => {
-      const linkData = window.location.hash ? parseDeepLink(window.location.hash) : null;
+    if (effectiveDeepLinkData) {
+      if (effectiveDeepLinkData.tab === TAB_TYPES.SETTINGS && effectiveDeepLinkData.section) {
+        setNavigationTrigger({
+          type: 'settings-section',
+          data: effectiveDeepLinkData.section,
+          timestamp: Date.now(),
+        });
+        setCurrentSubSection(effectiveDeepLinkData.subSection || null);
+        return;
+      }
 
-      if (linkData) {
-        if (linkData.tab && linkData.tab !== currentTab) {
-          setCurrentTab(linkData.tab);
-        }
-
-        if (linkData.tab === TAB_TYPES.SETTINGS && linkData.section) {
-          setNavigationTrigger({
-            type: 'settings-section',
-            data: linkData.section,
-            timestamp: Date.now(),
-          });
-          setCurrentSubSection(linkData.subSection || null);
-          return;
-        }
-
-        if (linkData.itemId && linkData.collection && linkData.fromCollection) {
-          setNavigationTrigger({
-            type: 'collection',
-            data: linkData.collection,
-            timestamp: Date.now(),
-          });
-          setTimeout(() => {
-            setNavigationTrigger({
-              type: 'product',
-              data: {
-                id: linkData.itemId,
-                type: linkData.category,
-              },
-              timestamp: Date.now(),
-            });
-          }, 100);
-        } else if (linkData.itemId) {
+      if (effectiveDeepLinkData.itemId && effectiveDeepLinkData.collection && effectiveDeepLinkData.fromCollection) {
+        setNavigationTrigger({
+          type: 'collection',
+          data: effectiveDeepLinkData.collection,
+          timestamp: Date.now(),
+        });
+        setTimeout(() => {
           setNavigationTrigger({
             type: 'product',
             data: {
-              id: linkData.itemId,
-              type: linkData.category,
+              id: effectiveDeepLinkData.itemId,
+              type: effectiveDeepLinkData.category,
             },
             timestamp: Date.now(),
           });
-        } else if (linkData.collection) {
-          setNavigationTrigger({
-            type: 'collection',
-            data: linkData.collection,
-            timestamp: Date.now(),
-          });
-        } else {
-          setProductView(null);
-          setNavigationTrigger({
-            type: 'main',
-            data: { clearCollection: true },
-            timestamp: Date.now(),
-          });
-        }
+        }, 100);
+      } else if (effectiveDeepLinkData.itemId) {
+        setNavigationTrigger({
+          type: 'product',
+          data: {
+            id: effectiveDeepLinkData.itemId,
+            type: effectiveDeepLinkData.category,
+          },
+          timestamp: Date.now(),
+        });
+      } else if (effectiveDeepLinkData.collection) {
+        setNavigationTrigger({
+          type: 'collection',
+          data: effectiveDeepLinkData.collection,
+          timestamp: Date.now(),
+        });
+      } else {
+        setProductView(null);
+        setNavigationTrigger({
+          type: 'main',
+          data: { clearCollection: true },
+          timestamp: Date.now(),
+        });
       }
-    };
-
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
-  }, [currentTab]);
+    }
+  }, [effectiveDeepLinkData, currentTab]);
 
   const handleChangeTab = (newTab) => {
-    setCurrentTab(newTab);
     historyRef.current = [];
     historyIndexRef.current = -1;
     updateNavButtons();
     if (newTab === TAB_TYPES.DISCOVER) {
-      const section = deepLinkData?.category || deepLinkData?.section || 'all';
-      const itemId = deepLinkData?.itemId ? `/${deepLinkData.itemId}` : '';
-      updateHash(`#${newTab}/${section}${itemId}`);
+      const section = effectiveDeepLinkData?.category || effectiveDeepLinkData?.section || 'all';
+      const itemId = effectiveDeepLinkData?.itemId ? `/${effectiveDeepLinkData.itemId}` : '';
+      navigate(`/${newTab}/${section}${itemId}`);
     } else if (newTab === TAB_TYPES.LIBRARY) {
-      updateHash(`#${newTab}/added`);
+      navigate(`/${newTab}/added`);
     } else {
-      updateHash(`#${newTab}`);
+      navigate(`/${newTab}`);
     }
   };
 
@@ -186,14 +182,14 @@ function MainModal({ modalClose, deepLinkData }) {
       };
       const sectionKey = sectionMap[section];
       if (sectionKey) {
-        updateHash(`#${currentTab}/${sectionKey}`);
+        navigate(`/${currentTab}/${sectionKey}`);
       }
     } else if (currentTab === TAB_TYPES.SETTINGS && sectionName) {
       // Include subsection in hash if it exists and we're not changing sections
-      const hash = currentSubSection && (currentSectionName === '' || currentSectionName === sectionName)
-        ? `#${currentTab}/${sectionName}/${currentSubSection}`
-        : `#${currentTab}/${sectionName}`;
-      updateHash(hash, false);
+      const path = currentSubSection && (currentSectionName === '' || currentSectionName === sectionName)
+        ? `/${currentTab}/${sectionName}/${currentSubSection}`
+        : `/${currentTab}/${sectionName}`;
+      navigate(path, { replace: true });
     }
   };
 
@@ -213,9 +209,9 @@ function MainModal({ modalClose, deepLinkData }) {
     }
     if (currentTab === TAB_TYPES.SETTINGS && sectionName) {
       if (subSection) {
-        updateHash(`#${currentTab}/${sectionName}/${subSection}`);
+        navigate(`/${currentTab}/${sectionName}/${subSection}`);
       } else {
-        updateHash(`#${currentTab}/${sectionName}`);
+        navigate(`/${currentTab}/${sectionName}`);
       }
     }
   };

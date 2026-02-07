@@ -111,6 +111,10 @@ export const createDeepLink = (tab, options = {}) => {
  * Update URL hash without triggering page reload
  * @param {string} hash - The hash to set
  * @param {boolean} pushToHistory - If true, adds to browser history (default: true)
+ *
+ * NOTE: During React Router migration, we don't dispatch popstate events
+ * because React Router's HashRouter already handles hash changes automatically.
+ * Dispatching extra events causes infinite navigation loops.
  */
 export const updateHash = (hash, pushToHistory = true) => {
   if (window.history.pushState) {
@@ -119,7 +123,9 @@ export const updateHash = (hash, pushToHistory = true) => {
     } else {
       window.history.replaceState(null, null, hash);
     }
-    window.dispatchEvent(new PopStateEvent('popstate'));
+    // Commented out to prevent infinite loops with React Router
+    // React Router's HashRouter automatically detects hash changes
+    // window.dispatchEvent(new PopStateEvent('popstate'));
   } else {
     window.location.hash = hash;
   }

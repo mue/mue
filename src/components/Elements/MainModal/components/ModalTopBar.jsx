@@ -1,9 +1,9 @@
 import { useT } from 'contexts/TranslationContext';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import { MdClose, MdChevronRight, MdArrowBack, MdArrowForward } from 'react-icons/md';
 import { Tooltip, Button } from 'components/Elements';
 import { NAVBAR_BUTTONS, TAB_TYPES } from '../constants/tabConfig';
-import { updateHash } from 'utils/deepLinking';
 import mueAboutIcon from 'assets/icons/mue_about.png';
 
 const MARKETPLACE_TYPE_TO_KEY = {
@@ -45,6 +45,7 @@ function ModalTopBar({
   canGoForward,
 }) {
   const t = useT();
+  const navigate = useNavigate();
 
   const [installedCount, setInstalledCount] = useState(() => {
     try {
@@ -101,7 +102,7 @@ function ModalTopBar({
       onClick:
         (iframeBreadcrumbs && iframeBreadcrumbs.length > 0) || productView
           ? () => {
-              updateHash('#discover/all');
+              navigate('/discover/all');
             }
           : null,
     });
@@ -129,19 +130,19 @@ function ModalTopBar({
                     const urlParams = new URLSearchParams(href.split('?')[1]);
                     const typeParam = urlParams.get('type');
                     if (typeParam) {
-                      updateHash(`#discover/${typeParam}`);
+                      navigate(`/discover/${typeParam}`);
                     }
                   } else if (href.includes('/collections')) {
-                    updateHash('#discover/collections');
+                    navigate('/discover/collections');
                   } else if (href.includes('/collection/')) {
                     const collectionId = href.split('/collection/')[1]?.split('?')[0];
                     if (collectionId) {
-                      updateHash(`#discover/collection/${collectionId}`);
+                      navigate(`/discover/collection/${collectionId}`);
                     }
                   } else if (categoryKey) {
-                    updateHash(`#discover/${categoryKey}`);
+                    navigate(`/discover/${categoryKey}`);
                   } else if (href === '/marketplace' || href === '/marketplace/') {
-                    updateHash('#discover/all');
+                    navigate('/discover/all');
                   } else {
                     const stepsBack = relevantCrumbs.length - index - 1;
                     for (let i = 0; i < stepsBack; i++) {

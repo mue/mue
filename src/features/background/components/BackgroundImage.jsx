@@ -1,8 +1,7 @@
 import { memo, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import { useT } from 'contexts';
 import PhotoInformation from './PhotoInformation';
-import { updateHash } from 'utils/deepLinking';
-import EventBus from 'utils/eventbus';
 import { getAllBackgrounds } from 'utils/customBackgroundDB';
 
 /**
@@ -10,6 +9,7 @@ import { getAllBackgrounds } from 'utils/customBackgroundDB';
  */
 function BackgroundImage({ photoInfo, currentAPI, url }) {
   const t = useT();
+  const navigate = useNavigate();
   const isCustomType = localStorage.getItem('backgroundType') === 'custom';
   const [customBackgrounds, setCustomBackgrounds] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -35,8 +35,7 @@ function BackgroundImage({ photoInfo, currentAPI, url }) {
     isCustomType && !loading && (!customBackgrounds || customBackgrounds.length === 0);
 
   const handleOpenSettings = () => {
-    updateHash('#settings/background/source');
-    EventBus.emit('modal', 'openMainModal');
+    navigate('/settings/background/source');
   };
 
   return (

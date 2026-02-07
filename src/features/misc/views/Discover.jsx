@@ -2,7 +2,7 @@ import { useT } from 'contexts';
 import variables from 'config/variables';
 import { MARKETPLACE_URL } from 'config/constants';
 import { memo, useEffect, useRef, useState } from 'react';
-import { updateHash } from 'utils/deepLinking';
+import { useNavigate } from 'react-router';
 import { MdOutlineWifiOff } from 'react-icons/md';
 import Modal from 'react-modal';
 import Tabs from 'components/Elements/MainModal/backend/Tabs';
@@ -11,6 +11,7 @@ import Lightbox from 'features/marketplace/components/Elements/Lightbox/Lightbox
 
 function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
   const t = useT();
+  const navigate = useNavigate();
   const iframeRef = useRef(null);
   const [loading, setLoading] = useState(true);
   const [showLightbox, setShowLightbox] = useState(false);
@@ -63,49 +64,6 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
   }, [category, onBreadcrumbsChange, previewParam, deepLinkData]);
 
   useEffect(() => {
-    const checkAndLoadItem = () => {
-      const hash = window.location.hash;
-      const urlParams = new URLSearchParams(hash.split('?')[1]);
-      const itemId = urlParams.get('item');
-
-      if (itemId && iframeRef.current) {
-        setLoading(true);
-
-        const theme = getResolvedTheme();
-        const themeParam = `&theme=${theme}`;
-
-        const installed = JSON.parse(localStorage.getItem('installed')) || [];
-        const item = installed.find((i) => i.name === itemId);
-
-        if (item) {
-          const pathMap = {
-            photo_packs: 'packs',
-            quote_packs: 'packs',
-            preset_settings: 'presets',
-          };
-
-          const pathSegment = pathMap[item.type] || 'packs';
-          const itemIdToUse = item.id || itemId;
-
-          iframeRef.current.src = `${MARKETPLACE_URL}/${pathSegment}/${itemIdToUse}?embed=true${previewParam}${themeParam}`;
-        } else {
-          iframeRef.current.src = `${MARKETPLACE_URL}/packs/${itemId}?embed=true${previewParam}${themeParam}`;
-        }
-      }
-    };
-
-    checkAndLoadItem();
-
-    window.addEventListener('hashchange', checkAndLoadItem);
-    window.addEventListener('popstate', checkAndLoadItem);
-
-    return () => {
-      window.removeEventListener('hashchange', checkAndLoadItem);
-      window.removeEventListener('popstate', checkAndLoadItem);
-    };
-  }, [category, previewParam]);
-
-  useEffect(() => {
     if (deepLinkData?.itemId && iframeRef.current) {
       setLoading(true);
       const theme = getResolvedTheme();
@@ -117,9 +75,26 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
         preset_settings: 'presets',
       };
 
-      const pathSegment = deepLinkData.category
-        ? pathMap[deepLinkData.category] || 'packs'
-        : 'packs';
+      let pathSegment = 'packs'; // default
+
+      // If category is known and not 'all', use it
+      if (deepLinkData.category && deepLinkData.category !== 'all') {
+        pathSegment = pathMap[deepLinkData.category] || 'packs';
+      } else {
+        // Look up the item to determine its type
+        const installed = JSON.parse(localStorage.getItem('installed')) || [];
+        const item = installed.find((i) => i.name === deepLinkData.itemId || i.id === deepLinkData.itemId);
+
+        if (item) {
+          const typeMap = {
+            'photos': 'packs',
+            'quotes': 'packs',
+            'settings': 'presets',
+          };
+          pathSegment = typeMap[item.type] || 'packs';
+        }
+      }
+
       iframeRef.current.src = `${MARKETPLACE_URL}/${pathSegment}/${deepLinkData.itemId}?embed=true${previewParam}${themeParam}`;
     }
   }, [deepLinkData, previewParam]);
@@ -215,9 +190,10 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
 
         case 'marketplace:navigate':
           if (payload?.itemId) {
-            updateHash(`#discover/${payload.itemId}`);
+            // Use the simpler item route
+            navigate(`/discover/item/${payload.itemId}`);
           } else if (payload?.category) {
-            updateHash(`#discover/${payload.category}`);
+            navigate(`/discover/${payload.category}`);
           }
           break;
 
@@ -231,7 +207,7 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
     return () => {
       window.removeEventListener('message', handleMessage);
     };
-  }, [installItem, uninstallItem, onBreadcrumbsChange]);
+  }, [installItem, uninstallItem, onBreadcrumbsChange, navigate]);
 
   const handleLoad = () => {
     setLoading(false);

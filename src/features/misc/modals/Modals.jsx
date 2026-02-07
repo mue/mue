@@ -1,5 +1,6 @@
 import variables from 'config/variables';
 import { useState, useEffect, lazy, Suspense } from 'react';
+import { useLocation, useNavigate } from 'react-router';
 import Modal from 'react-modal';
 
 import { MainModal } from 'components/Elements';
@@ -9,6 +10,7 @@ import Preview from '../../helpers/preview/Preview';
 import EventBus from 'utils/eventbus';
 import { parseDeepLink, shouldAutoOpenModal, updateHash } from 'utils/deepLinking';
 import { install } from 'utils/marketplace';
+import { useRouterBridge } from '../../../router/RouterBridge';
 
 const Welcome = lazy(() => import('features/welcome/Welcome'));
 
@@ -48,27 +50,35 @@ const tryInstallDefaultPack = async () => {
 };
 
 const Modals = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { deepLinkData } = useRouterBridge();
+
   const [mainModal, setMainModal] = useState(false);
   const [updateModal, setUpdateModal] = useState(false);
   const [welcomeModal, setWelcomeModal] = useState(false);
   const [appsModal, setAppsModal] = useState(false);
   const [preview, setPreview] = useState(false);
-  const [deepLinkData, setDeepLinkData] = useState(null);
+
+  // Sync modal open state with router location
+  useEffect(() => {
+    const hasRoute = location.pathname !== '/';
+    if (hasRoute && !mainModal) {
+      setMainModal(true);
+      if (deepLinkData?.tab) {
+        variables.stats.postEvent('modal', `Opened via deep link: ${deepLinkData.tab}`);
+      }
+    } else if (!hasRoute && mainModal) {
+      setMainModal(false);
+    }
+  }, [location.pathname, mainModal, deepLinkData]);
 
   useEffect(() => {
     const isPreviewMode = localStorage.getItem('showWelcome') === 'true';
     if (isPreviewMode && shouldAutoOpenModal()) {
-      window.history.replaceState(null, null, '/');
+      navigate('/');
       setWelcomeModal(true);
       setPreview(false);
-      return;
-    }
-
-    if (shouldAutoOpenModal()) {
-      const linkData = parseDeepLink();
-      setMainModal(true);
-      setDeepLinkData(linkData);
-      variables.stats.postEvent('modal', `Opened via deep link: ${linkData.tab}`);
       return;
     }
 
@@ -102,25 +112,17 @@ const Modals = () => {
 
     const handleModalOpen = (data) => {
       if (data === 'openMainModal') {
-        const linkData = parseDeepLink();
-        setDeepLinkData(linkData);
+        navigate('/settings');
         setMainModal(true);
       }
     };
 
-    const handleHashChange = () => {
-      const linkData = parseDeepLink();
-      setDeepLinkData(linkData);
-    };
-
     EventBus.on('modal', handleModalOpen);
-    window.addEventListener('popstate', handleHashChange);
 
     return () => {
       EventBus.off('modal', handleModalOpen);
-      window.removeEventListener('popstate', handleHashChange);
     };
-  }, []);
+  }, [navigate]);
 
   const closeWelcome = async () => {
     localStorage.setItem('showWelcome', false);
@@ -156,8 +158,11 @@ const Modals = () => {
     if (action !== false) {
       variables.stats.postEvent('modal', `Opened ${type.replace('Modal', '')}`);
       if (type === 'mainModal') {
-        updateHash('#settings');
+        navigate('/settings');
       }
+    } else if (action === false && type === 'mainModal') {
+      // When closing modal, navigate to root
+      navigate('/');
     }
   };
 
