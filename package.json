@@ -46,6 +46,7 @@
     "@eslint/js": "^9.39.2",
     "@vitejs/plugin-react-swc": "^4.2.2",
     "adm-zip": "0.5.16",
+    "cypress": "^15.10.0",
     "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsx-a11y": "^6.10.2",
@@ -63,6 +64,8 @@
   "scripts": {
     "dev": "vite",
     "dev:host": "vite --host",
+    "test:e2e": "cypress open",
+    "test:e2e:headless": "cypress run",
     "translations": "cd scripts && node updatetranslations.cjs",
     "translations:percentages": "node scripts/updateTranslationPercentages.cjs",
     "translations:unused": "node scripts/findUnusedTranslations.cjs",
