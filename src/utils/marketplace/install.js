@@ -38,6 +38,12 @@ export function install(type, input, sideload, collection) {
 
   console.log(`[Install] isNewInstall: ${isNewInstall}`);
 
+  // Prevent duplicate installations - if pack already exists, skip
+  if (!isNewInstall) {
+    console.log(`[Install] Pack ${input.display_name || input.name} already installed, skipping`);
+    return;
+  }
+
   let refreshEvent = null;
 
   const handler = getHandler(type);
