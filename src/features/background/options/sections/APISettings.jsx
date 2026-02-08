@@ -4,6 +4,8 @@ import { Row, Content, Action } from 'components/Layout/Settings/Item';
 import { APIQualityOptions } from '../optionTypes';
 import { clearQueuesOnSettingChange } from 'utils/queueOperations';
 
+const SHOW_API_PROVIDER_SELECTION = false;
+
 const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
   const t = useT();
   return (
@@ -50,23 +52,25 @@ const APISettings = ({ backgroundAPI, backgroundCategories, onUpdateAPI }) => {
               clearQueuesOnSettingChange('apiQuality');
             }}
           />
-          <Radio
-            title={t('modals.main.settings.sections.background.source.api_title')}
-            options={[
-              {
-                name: t('modals.main.settings.sections.background.source.api_mue'),
-                value: 'mue',
-              },
-              {
-                name: t('modals.main.settings.sections.background.source.api_unsplash'),
-                value: 'unsplash',
-              },
-            ]}
-            name="backgroundAPI"
-            category="background"
-            element="#backgroundImage"
-            onChange={onUpdateAPI}
-          />
+          {SHOW_API_PROVIDER_SELECTION && (
+            <Radio
+              title={t('modals.main.settings.sections.background.source.api_title')}
+              options={[
+                {
+                  name: t('modals.main.settings.sections.background.source.api_mue'),
+                  value: 'mue',
+                },
+                {
+                  name: t('modals.main.settings.sections.background.source.api_unsplash'),
+                  value: 'unsplash',
+                },
+              ]}
+              name="backgroundAPI"
+              category="background"
+              element="#backgroundImage"
+              onChange={onUpdateAPI}
+            />
+          )}
         </Action>
       </Row>
       {backgroundAPI === 'unsplash' && (

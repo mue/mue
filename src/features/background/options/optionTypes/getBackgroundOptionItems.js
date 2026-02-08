@@ -7,10 +7,6 @@ export function getBackgroundOptionItems(marketplaceEnabled) {
       text: variables.getMessage('modals.main.marketplace.title'),
     },
     {
-      value: 'api',
-      text: variables.getMessage('modals.main.settings.sections.background.type.api'),
-    },
-    {
       value: 'custom',
       text: variables.getMessage('modals.main.settings.sections.background.type.custom_image'),
     },

@@ -1,144 +1,150 @@
 /**
- * Migrate existing API users to API photo packs
+ * Migrate all users to marketplace pack system
+ * - Installs default photo packs (Mue + Unsplash) and quote pack for everyone
+ * - For API users: migrates settings and enables correct packs
+ * - For non-API users: installs with default enabled states
  * Run once on extension load after update
  */
-export function migrateAPIUsersToPhotoPacks() {
+export async function migrateAPIUsersToPhotoPacks() {
   if (localStorage.getItem('api_migration_completed') === 'true') {
     return;
   }
 
   const backgroundType = localStorage.getItem('backgroundType');
-  const backgroundAPI = localStorage.getItem('backgroundAPI');
+  const installed = JSON.parse(localStorage.getItem('installed') || '[]');
 
-  if (backgroundType !== 'api') {
+  // Skip migration for fresh installs (no backgroundType and no installed packs)
+  // Fresh installs will use installDefaultPacks.js instead
+  if (!backgroundType && installed.length === 0) {
     localStorage.setItem('api_migration_completed', 'true');
     return;
   }
 
-  let packToInstall = null;
-  if (backgroundAPI === 'mue') {
-    packToInstall = {
-      id: 'mue_photos',
-      name: 'MUE Daily Photos',
-      type: 'photos',
-      api_enabled: true,
-      api_provider: 'mue',
-      requires_api_key: false,
-      photos: [],
-      settings_schema: [
-        {
-          key: 'quality',
-          type: 'dropdown',
-          label: 'Image Quality',
-          default: 'high',
-          required: true,
-          options: [
-            { value: 'low', label: 'Low (Faster)' },
-            { value: 'medium', label: 'Medium' },
-            { value: 'high', label: 'High (Best Quality)' },
-          ],
-        },
-        {
-          key: 'categories',
-          type: 'chipselect',
-          label: 'Categories',
-          default: ['nature'],
-          required: true,
-          dynamic: true,
-          options_source: 'api:categories',
-        },
-      ],
-      version: '1.0.0',
-      author: 'MUE Team',
-      description: 'Fresh photos from MUE API',
-      icon_url: 'https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png',
-    };
+  const backgroundAPI = localStorage.getItem('backgroundAPI') || 'mue';
+  const quoteType = localStorage.getItem('quoteType');
+  const wasUsingAPIBackgrounds = backgroundType === 'api';
+  const wasUsingAPIQuotes = quoteType === 'api';
 
+  const { default: variables } = await import('config/variables');
+  const { default: defaultPacks } = await import('config/defaultPacks.json');
+  const { install } = await import('./marketplace/install');
+  const { refreshAPIPackCache } = await import('../features/background/api/photoPackAPI');
+
+  // Get existing installed packs to check for duplicates
+  const installedIds = installed.map((p) => p.id || p.name);
+
+  const photoPacks = defaultPacks.photos || [];
+  const quotePacks = defaultPacks.quotes || [];
+  const enabledPacks = {};
+
+  // Photo Pack Migration (ALL users)
+  if (wasUsingAPIBackgrounds) {
+    // Preserve existing settings for API users
     const existingQuality = localStorage.getItem('apiQuality') || 'high';
     const existingCategories = JSON.parse(localStorage.getItem('apiCategories') || '["nature"]');
-
-    const migratedSettings = {
-      quality: existingQuality,
-      categories: existingCategories,
-    };
-
-    localStorage.setItem('photopack_settings_mue_photos', JSON.stringify(migratedSettings));
-  } else if (backgroundAPI === 'unsplash') {
-    packToInstall = {
-      id: 'unsplash_photos',
-      name: 'Unsplash Photos',
-      type: 'photos',
-      api_enabled: true,
-      api_provider: 'unsplash',
-      requires_api_key: false,
-      photos: [],
-      settings_schema: [
-        {
-          key: 'collections',
-          type: 'text',
-          label: 'Collection IDs',
-          placeholder: 'e.g. 123456, 654321',
-          default: '',
-          required: false,
-        },
-      ],
-      version: '1.0.0',
-      author: 'MUE Team',
-      description: 'Photos from Unsplash collections',
-      icon_url: 'https://raw.githubusercontent.com/mue/branding/main/logo/logo_square.png',
-    };
-
     const existingCollections = localStorage.getItem('unsplashCollections') || '';
 
-    const migratedSettings = {
-      collections: existingCollections,
-    };
+    for (const pack of photoPacks) {
+      try {
+        if (installedIds.includes(pack.id)) {
+          const data = installed.find((p) => p.id === pack.id);
+          if (data) {
+            enabledPacks[pack.id] = data.api_provider === backgroundAPI;
+          }
+          continue;
+        }
 
-    localStorage.setItem('photopack_settings_unsplash_photos', JSON.stringify(migratedSettings));
+        const response = await fetch(`${variables.constants.API_URL}/marketplace/item/${pack.id}`);
+        const { data } = await response.json();
 
-    console.log('Unsplash migration: Migrated collection settings');
-  }
+        if (data && data.type === 'photos') {
+          // Migrate settings based on which API provider they were using
+          if (data.api_provider === 'mue') {
+            localStorage.setItem(
+              `photopack_settings_${data.id}`,
+              JSON.stringify({
+                quality: existingQuality,
+                categories: existingCategories,
+              }),
+            );
+          } else if (data.api_provider === 'unsplash') {
+            localStorage.setItem(
+              `photopack_settings_${data.id}`,
+              JSON.stringify({
+                collections: existingCollections,
+              }),
+            );
+          }
 
-  if (packToInstall) {
-    const installed = JSON.parse(localStorage.getItem('installed') || '[]');
+          // Install the pack
+          install('photos', data, false, false);
 
-    if (!installed.some((item) => item.id === packToInstall.id)) {
-      installed.push(packToInstall);
-      localStorage.setItem('installed', JSON.stringify(installed));
-    }
+          // Enable only the pack matching their current backgroundAPI
+          enabledPacks[data.id] = data.api_provider === backgroundAPI;
 
-    const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
-    if (!apiPackCache[packToInstall.id]) {
-      apiPackCache[packToInstall.id] = {
-        photos: [],
-        last_fetched: 0,
-        last_refresh_attempt: 0,
-      };
-      localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
-    }
+          // Refresh cache if this is the active pack
+          if (data.api_provider === backgroundAPI && data.api_enabled && !data.requires_api_key) {
+            refreshAPIPackCache(data.id);
+          }
 
-    if (packToInstall.api_provider === 'mue') {
-      const apiPacksReady = JSON.parse(localStorage.getItem('api_packs_ready') || '[]');
-      if (!apiPacksReady.includes(packToInstall.id)) {
-        apiPacksReady.push(packToInstall.id);
-        localStorage.setItem('api_packs_ready', JSON.stringify(apiPacksReady));
+        }
+      } catch (error) {
+        console.error(`[Migration] Failed to install photo pack ${pack.id}:`, error);
       }
     }
 
+    // Update background type for API users
     localStorage.setItem('backgroundType', 'photo_pack');
-
     localStorage.removeItem('imageQueue');
+  } else {
+    // Install both packs with default enabled states for non-API users
+    for (const pack of photoPacks) {
+      try {
+        if (installedIds.includes(pack.id)) {
+          continue;
+        }
 
-    if (packToInstall.api_provider === 'mue') {
-      import('../features/background/api/photoPackAPI').then((module) => {
-        module.refreshAPIPackCache(packToInstall.id);
-      });
+        const response = await fetch(`${variables.constants.API_URL}/marketplace/item/${pack.id}`);
+        const { data } = await response.json();
+
+        if (data && data.type === 'photos') {
+          install('photos', data, false, false);
+          enabledPacks[data.id] = pack.enabled;
+        }
+      } catch (error) {
+        console.error(`[Migration] Failed to install photo pack ${pack.id}:`, error);
+      }
     }
-
-    console.log(
-      `Migrated from API background (${backgroundAPI}) to ${packToInstall.name} photo pack`,
-    );
   }
+
+  // Quote Pack Migration (ALL users)
+  for (const pack of quotePacks) {
+    try {
+      if (installedIds.includes(pack.id)) {
+        enabledPacks[pack.id] = true;
+        continue;
+      }
+
+      const response = await fetch(`${variables.constants.API_URL}/marketplace/item/${pack.id}`);
+      const { data } = await response.json();
+
+      if (data && data.type === 'quotes') {
+        install('quotes', data, false, false);
+        enabledPacks[data.id] = true;
+      }
+    } catch (error) {
+      console.error(`[Migration] Failed to install quote pack ${pack.id}:`, error);
+    }
+  }
+
+  // Update quoteType for API quote users
+  if (wasUsingAPIQuotes) {
+    localStorage.setItem('quoteType', 'quote_pack');
+  }
+
+  // Update enabled packs
+  const existingEnabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
+  localStorage.setItem('enabledPacks', JSON.stringify({ ...existingEnabledPacks, ...enabledPacks }));
 
   localStorage.setItem('api_migration_completed', 'true');
 }
