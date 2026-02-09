@@ -50,6 +50,7 @@ widgets:
     copy: Kopieren
     favourite: Favorit
     link_tooltip: Auf Wikipedia öffnen
+    unfavourite: Aus Favoriten entfernen
   navbar:
     tooltips:
       refresh: Neuladen
@@ -60,7 +61,7 @@ widgets:
       pin: Pinn
       add: Hinzufügen
       no_todos: Keine Todos
-      title: Aufgabe
+      title: Aufgaben
     apps:
       title: Apps
       no_apps: Keine App-Links gefunden
