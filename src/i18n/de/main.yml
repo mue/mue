@@ -34,7 +34,7 @@ widgets:
     add: Hinzufügen
     name_error: Muss einen Namen angeben
     url_error: Muss eine URL angeben
-    icon: Icon (optional)
+    icon: Symbol (optional)
     name: Name
     url: URL
     edit: Link bearbeiten
