@@ -1,1 +1,10 @@
 enabled: Aktiverad
+reminder:
+  title: NOTERA
+  message: För att alla ändringar ska ske måste sidan uppdateras.
+sections:
+  header:
+    more_info: Mer info
+    report_issue: Rapportera fel
+    enabled: Välj om du vill visa denna widget
+    size: Slider för att kontrollera hur stor widgeten är
