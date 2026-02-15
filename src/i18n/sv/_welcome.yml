@@ -1,1 +1,11 @@
-{}
+tip: Snabbtips
+sections:
+  intro:
+    title: Välkommen till Mue Tab
+    notices:
+      discord_title: Gå med i vår Discord
+      discord_description: Prata med Muegemenskapen och utvecklare
+      discord_join: Gå med
+      github_title: Bidra på GitHub
+      github_description: Rapportera buggar, lägga till funktioner eller donera
+      github_open: Öppen
