@@ -1,1 +1,10 @@
-{}
+added: Tillagd
+no_updates: Inga uppdateringar tillgängliga
+updates_available: Uppdateringar tillgängliga {amount}
+empty:
+  title: Tomma
+  description: Inga tillägg installeras
+sideload:
+  title: Sidoladda
+  description: Installera ett Muetillägg ifrån din dator
+  failed: Misslyckades med att sidoladda tillägg
