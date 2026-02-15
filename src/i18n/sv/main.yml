@@ -1,1 +1,11 @@
 tabname: Ny flik
+widgets:
+  greeting:
+    morning: God morgon
+    evening: God kväll
+    christmas: God Jul
+    newyear: Gott nytt år
+    halloween: Glad Halloween
+    birthday: Grattis på födelsedagen
+  background:
+    credit: Foto av
