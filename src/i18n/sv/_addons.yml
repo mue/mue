@@ -8,3 +8,4 @@ sideload:
   title: Sidoladda
   description: Installera ett Muetillägg ifrån din dator
   failed: Misslyckades med att sidoladda tillägg
+check_updates: Kontrollera uppdateringar
