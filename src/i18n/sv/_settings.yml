@@ -8,3 +8,5 @@ sections:
     report_issue: Rapportera fel
     enabled: Välj om du vill visa denna widget
     size: Slider för att kontrollera hur stor widgeten är
+open_knowledgebase: Öppen kunskapsbank
+additional_settings: Ytterligare inställningar
