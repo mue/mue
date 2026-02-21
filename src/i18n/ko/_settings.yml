@@ -208,6 +208,7 @@ sections:
     options:
       icon: 아이콘
       metro: Metro
+      text_only: 텍스트 만
     styling: 디자인
     styling_description: 바로가기 의 디자인
   message:
