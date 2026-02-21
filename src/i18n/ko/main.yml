@@ -13,6 +13,11 @@ widgets:
     exclude: 다시 보지 않기
     information: 정보
     confirm: 확인
+    exclude_confirm: |-
+      이 이미지를 다시 보고 싶지 않으신가요?
+      알림: "{category}" 와 관련된 이미지를 선호하지 않는다면 이미지 소스에서 해당 카테고리를 제거할 수 있습니다.
+    credit: 촬영
+    unsplash: 출처 Unsplash
   search: 검색
   quicklinks:
     new: 새로운 링크
@@ -29,6 +34,7 @@ widgets:
     not_found: 찾을 수 없음
     meters: '{amount} 미터'
     extra_information: 추가 정보
+    feels_like: 비슷함 {amount}
   quote:
     link_tooltip: 위키피디아에서 열기
     share: 공유
@@ -49,6 +55,14 @@ widgets:
     apps:
       title: 앱 목록
       no_apps: 앱 링크 찾을 수 없음
+  greeting:
+    morning: 좋은 아침
+    afternoon: 좋은 오후
+    evening: 좋은 저녁
+    christmas: 메리 크리스마스
+    newyear: 해피 뉴 이어
+    halloween: 해피 할로윈
+    birthday: 생일 축하합니다
 modals:
   main:
     title: 설정
@@ -60,3 +74,28 @@ modals:
       marketplace: 탐색
     error_boundary:
       title: 오류
+      message: Mue 추가 프로그램 로드 실패
+      report_error: 오류 보고서 보내기
+      sent: 전송됨!
+      refresh: 새로고침
+  update:
+    title: 업데이트
+    offline:
+      title: 오프라인
+    error:
+      title: 오류
+  share:
+    copy_link: 링크 복사
+    email: Email
+toasts:
+  notes: 메모 복사 됨
+  reset: 초기화 완료
+  installed: 설치 완료
+  uninstalled: 제거 완료
+  updated: 업데이트 완료
+  error: 알 수 없는 오류 발생
+  imported: 불러오기 완료
+  no_storage: 저장 공간이 부족함
+  link_copied: 링크 복사됨
+  stats_reset: 통계 초기화
+  quote: 인용 복사 됨
