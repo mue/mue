@@ -1,1 +1,28 @@
-{}
+added: 추가됨
+check_updates: 업데이트 확인
+no_updates: 사용 가능한 업데이트 없음
+updates_available: 업데이트 {amount}
+empty:
+  title: 비어있음
+  description: 설치된 확장 프로그램 없음
+sideload:
+  title: 업로드
+  description: Mue 확장 프로그램을 PC 에서 업로드하기
+  failed: 확장 프로그램 설치 실패
+  errors:
+    no_name: 이름이 설정되지 않음
+    no_author: 제작자 제공되지 않음
+    no_type: 유형 제공되지 않음
+    invalid_photos: 잘못된 이미지 유형
+    invalid_quotes: 잘못된 명언 유형
+sort:
+  title: 정렬
+  newest: 설치됨 (최신순)
+  oldest: 설치됨 (오래된 순)
+  a_z: 이름 (A-Z)
+  z_a: 이름 (Z-A)
+create:
+  title: 생성됨
+  moved_title: 확장 프로그램 생성 기능 이동함!
+  moved_description: 7.1 버전 업데이트 부터 확장 프로그램 생성 기능은 웹UI 로 이동 되었습니다
+  moved_button: 곧 돌아오겠습니다...
