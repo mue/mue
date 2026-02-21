@@ -82,8 +82,10 @@ modals:
     title: 업데이트
     offline:
       title: 오프라인
+      description: 오프라인 모드에서 업데이트 로그를 얻을 수 없습니다
     error:
       title: 오류
+      description: 서버에 연결할 수 없습니다
   share:
     copy_link: 링크 복사
     email: Email
