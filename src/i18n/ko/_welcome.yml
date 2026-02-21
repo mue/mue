@@ -21,6 +21,7 @@ sections:
     description: Mue는 현재 레거시 스타일과 모던 스타일을 지원합니다.
     legacy: 레거시
     modern: 모던
+    title: 스타일 선택
   settings:
     title: 설정 불러오기
     description: 새로운 장치에 Mue 를 설치하셨나요? 기존 장치에서 설정을 불러올 수 있습니다!
