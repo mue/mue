@@ -1,1 +1,52 @@
-{}
+tip: 팁
+sections:
+  intro:
+    notices:
+      discord_title: Discord 에 참여하세요
+      github_title: GitHub 에서 기여해주세요
+      discord_description: Mue 커뮤니티 개발자들과 대화하기
+      discord_join: 가입
+      github_description: 버그 신고, 기능 제안 및 기부
+      github_open: 열기
+    title: Mue Tab 이 당신을 환영합니다
+    description: Mue 를 설치해주셔서 감사합니다. Mue 와 함께 즐거운 시간 되시길 바랍니다.
+  language:
+    title: 선호하는 언어를 선택하세요
+    description: Mue 는 아래의 언어를 지원합니다. 새로운 언어를 원하신다면 번역에 도움을 주세요
+  theme:
+    title: 테마 선택
+    description: Mue 는 라이트모드 와 다크모드 를 모두 지원합니다. 또는 시스템 테마에 동기화 시킬 수도 있습니다.
+    tip: 자동을 선택하면 시스템 테마와 동기화 됩니다. 이 설정은 화면 표시 뿐 아니라 날씨, 메모 등 위젯 에도 적용됩니다.
+  style:
+    description: Mue는 현재 레거시 스타일과 모던 스타일을 지원합니다.
+    legacy: 레거시
+    modern: 모던
+  settings:
+    title: 설정 불러오기
+    description: 새로운 장치에 Mue 를 설치하셨나요? 기존 장치에서 설정을 불러올 수 있습니다!
+    tip: 기존 장치의 Mue 고급 설정 탭에서 설정을 내보낼 수 있습니다. 다운 받은 JSON 파일을 새로운 장치에 업로드 하면 기존 
+      장치의 설정을 모두 불러올 수 있습니다.
+  privacy:
+    title: 프라이버시 옵션
+    description: 아래 설정들을 적용하여 개인정보를 보호하세요.
+    offline_mode_description: 오프라인 모드를 활성화하면 모든 서비스로의 요청이 비활성화 됩니다. 이로 인해 온라인 
+      배경, 온라인 명언, 확장 프로그램 마켓, 날씨, 빠른 링크, 변경 로그 및 일부 정보 탭의 정보가 비활성화 됩니다.
+    links:
+      title: 링크
+      privacy_policy: 개인정보 정책
+      source_code: 소스코드
+  final:
+    title: 마지막 단계
+    description: Mue 의 설정이 곧 완료됩니다.
+    changes: 변경사항
+    changes_description: 설정을 변경하려면 화면 오른쪽 상단의 설정 아이콘을 클릭하세요.
+    imported: '{amount} 설정 불러옴'
+buttons:
+  next: 다음
+  preview: 미리보기
+  previous: 이전
+  close: 닫기
+  finish: 마침
+preview:
+  description: 현재 미리보기 모드 로 실행중입니다. 이 탭을 닫으면 설정이 저장되지 않습니다.
+  continue: 설치 계속
