@@ -1,4 +1,370 @@
 sections:
   greeting:
-    birthday_age: 생년월일
+    birthday_age: 나이
     birthday_date: 생일 날짜
+    title: 인사
+    events: 이벤트
+    events_description: Mue 에 생일 같은 이벤트를 설정할 수 있습니다.
+    enable_events: 특별한 날에 표시 할 메세지
+    default: 기본 인사말
+    name: 인사말 이름
+    birthday: 생일
+    birthday_subtitle: 당신의 생일에 생일축하 메세지를 표시합니다
+    additional: 인사말 관련 설정
+    custom: 커스텀 이벤트
+    event_name: 이벤트 이름
+    day: 일
+    month: 월
+    no_events: 이벤트 없음
+    no_events_description: 이벤트 추가
+    add_event: 이벤트 추가
+  header:
+    report_issue: 오류 신고하기
+    more_info: 추가 정보
+    size: 슬라이더를 이동하여 위젯 크기 조절
+    enabled: 이 위젯의 표시 여부를 선택하세요.
+  time:
+    title: 시간
+    format: 포맷
+    type: 유형
+    type_subtitle: 시계의 유형. 디지털, 아날로그 또는 오늘의 몇%가 지났는지 등 유형을 선택
+    digital:
+      title: 디지털
+      subtitle: 디지털 시계의 표시방법
+      seconds: 초
+      twentyfourhour: 24시간제
+      twelvehour: 12 시간제
+      zero: 2자리 채움
+    analogue:
+      title: 아날로그
+      subtitle: 아날로그 시계의 표시방법
+      second_hand: 초침
+      minute_hand: 분침
+      hour_hand: 시침
+      hour_marks: 시간 눈끔
+      minute_marks: 분 눈끔
+      round_clock: 둥근 배경
+    percentage_complete: 지나간 시간 %
+    vertical_clock:
+      title: 수직 시계
+      change_hour_colour: 시간 문자 색상
+      change_minute_colour: 분 문자 색상
+      change_second_colour: 초 문자 색상
+  date:
+    title: 날짜
+    week_number: 올해의 몇번째 주
+    day_of_week: 요일
+    datenth: 날짜
+    type:
+      short: 짧게
+      long: 길게
+      subtitle: 날짜 표시 형식
+    type_settings: 날짜의 포맷 과 표시내용
+    short_format: 짧은 포맷
+    long_format: 긴 포맷
+    short_separator:
+      title: 분리 부호
+      dots: 점
+      dash: 대시
+      gaps: 띄어쓰기
+      slashes: 슬래시
+    short_date: 짧은 날짜
+  quote:
+    title: 명언
+    additional: 명언 위젯의 스타일
+    author_link: 명언 링크
+    custom: 커스텀 명언
+    custom_subtitle: 당신의 커스텀 명언을 설정하세요
+    no_quotes: 명언 없음
+    author: 제작자
+    custom_buttons: 버튼
+    custom_author: 커스텀 제작자
+    author_img: 명언 이미지 표시
+    add: 명언 추가
+    source_subtitle: 명언을 불러오는 방법
+    buttons:
+      title: 버튼
+      subtitle: 명언에 표시할 버튼 선택
+      copy: 복사
+      tweet: 트윗
+      favourite: 즐겨찾기
+  background:
+    title: 배경
+    transition: 페이드인 전환효과
+    photo_information: 사진 정보 표시
+    show_map: 가능한 경우 사진 정보에 위치 표시
+    categories: 카테고리
+    category: 카테고리
+    buttons:
+      title: 버튼
+      view: 배경만 표시
+      favourite: 즐겨찾기
+      download: 다운로드
+    effects:
+      title: 효과
+      subtitle: 배경이미지에 효과 적용
+      blur: 블러
+      brightness: 밝기
+      filters:
+        title: 필터
+        amount: 필터 강도
+        grayscale: 흑백
+        sepia: 세피아
+        invert: 반전
+        saturate: 채도
+        contrast: 대비
+    type:
+      title: 유형
+      api: API
+      custom_image: 커스텀 이미지
+      custom_colour: 커스텀 색상/그래디언트
+      random_colour: 랜덤 색상
+      random_gradient: 랜덤 그래디언트
+    unsplash:
+      title: Unsplash 컬렉션
+      subtitle: 배경으로 사용할 컬렉션을 선택하세요
+      id: 컬렉션 ID
+      id_subtitle: 여러 컬렉션 ID 를 입력할 경우 쉼표로 구분해주세요
+    source:
+      title: 출처
+      subtitle: 배경 이미지를 가져올 출처를 선택하세요
+      api: 배경 이미지 API
+      custom_background: 커스텀 배경
+      custom_colour: 커스텀 배경 색상
+      upload: 업로드
+      add_colour: 색상 추가
+      add_background: 배경 추가
+      drop_to_upload: 드래그 & 드롭 해 업로드
+      formats: '지원하는 포맷: {list}'
+      select: 또는 선택
+      add_url: URL 추가
+      disabled: 비활성화됨
+      loop_video: 반복재생
+      mute_video: 음소거
+      quality:
+        title: 품질
+        original: 원본
+        high: 높음
+        normal: 보통
+        datasaver: 데이터 절약
+      custom_title: 커스텀 이미지
+      custom_description: 로컬에서 이미지 선택
+      remove: 이미지 제거
+    display: 표시
+    display_subtitle: 배경 이미지와 정보 표시
+    api: API 설정
+    api_subtitle: API 서비스 에서 이미지를 불러오기
+  search:
+    title: 검색
+    additional: 검색 위젯과 기능에 대한 추가설정
+    search_engine: 검색엔진
+    search_engine_subtitle: 검색 바 에서 사용할 검색엔진을 선택
+    custom: 커스텀 검색 URL
+    autocomplete: 자동 채우기
+    autocomplete_provider: 자동 채우기 제공자
+    autocomplete_provider_subtitle: 자동 채우기 목록에 사용할 검색엔진
+    voice_search: 음성검색
+    dropdown: 검색 목록
+    focus: 탭을 열 때 입력창에 포커스
+  weather:
+    title: 날씨
+    location: 위치
+    auto: 자동
+    widget_type: 위젯 유형
+    temp_format:
+      title: 온도 포맷
+      celsius: 섭씨
+      fahrenheit: 화씨
+      kelvin: 캘빈
+    extra_info:
+      title: 추가 정보
+      show_location: 위치 표시
+      show_description: 설명 표시
+      weather_description: 날씨 설명
+      cloudiness: 구름
+      humidity: 습도
+      visibility: 가시거리
+      wind_speed: 풍속
+      wind_direction: 풍향
+      min_temp: 최저기온
+      max_temp: 최고기온
+      atmospheric_pressure: 대기압
+    options:
+      basic: 작게
+      standard: 기본
+      expanded: 확장
+      custom: 커스텀
+    custom_settings: 커스텀 설정
+  quicklinks:
+    title: 바로가기
+    additional: 바로가기 기능의 디자인 과 기능
+    open_new: 새 탭에서 열기
+    tooltip: 툴팁
+    text_only: 제목만 표시
+    add_link: 링크 추가
+    no_quicklinks: 바로가기 없음
+    edit: 편집
+    style: 스타일
+    options:
+      icon: 아이콘
+      metro: Metro
+    styling: 디자인
+    styling_description: 바로가기 의 디자인
+  message:
+    title: 메세지
+    add: 메세지 추가
+    messages: 메세지
+    text: 텍스트
+    no_messages: 메세지 없음
+    add_some: 메세지를 추가 해볼까요?
+    content: 메세지 내용
+  appearance:
+    title: 테마
+    style:
+      title: 위젯 스타일
+      description: 레거시 (7.0 이전 사용자 지원) 스타일과 깔끔한 최신 스타일 중에 선택하세요.
+      legacy: 레거시
+      new: 모던
+    theme:
+      title: 테마
+      description: Mue 와 위젯들의 테마
+      auto: 자동
+      light: 라이트
+      dark: 다크
+    navbar:
+      title: 내비게이션 바
+      widgets: 내비게이션 바 위젯
+      notes: 메모
+      refresh: 새로고침
+      refresh_subtitle: 새로고침 버튼을 클릭했을 때 무엇을 새로고침 할 지 선택하세요
+      hover: 마우스를 올렸을 때 만 표시
+      additional: 내비게이션 바 의 디자인과 표시할 버튼 선택
+      refresh_options:
+        none: 없음
+        page: 페이지
+      apps_subtitle: 자주 방문하는 사이트 의 바로가기를 생성하세요.
+    font:
+      title: 폰트
+      description: Mue 에서 사용할 폰트
+      custom: 커스텀 폰트
+      google: Google Fonts 에서 불러오기
+      weight:
+        title: 폰트 두께
+        thin: Thin
+        extra_light: Extra Light
+        light: Light
+        normal: Normal
+        medium: Medium
+        semi_bold: Semi-Bold
+        bold: Bold
+        extra_bold: Extra-Bold
+      style:
+        title: 폰트 스타일
+        normal: Normal
+        italic: Italic
+        oblique: Oblique
+    accessibility:
+      title: 접근성
+      description: Mue 를 더 편리하게 사용하기
+      animations: 애니메이션
+      text_shadow:
+        title: 위젯 텍스트 그림자
+        new: 모던
+        old: 레거시
+        none: 없음
+      widget_zoom: 위젯 확대
+      milliseconds: 밀리초
+      toast_duration: 토스트 시간
+  order:
+    title: 위젯 순서
+  advanced:
+    title: 고급
+    offline_mode: 오프라인 모드
+    offline_subtitle: 활성화하면 모든 온라인 서비스 요청이 비활성화 됩니다.
+    data: 데이터
+    data_description: Mue 설정을 PC 로 내보내거나, 기존 설정 파일을 가져오거나, 설정을 기본값으로 초기화
+    data_subtitle: Mue 의 데이터 관리.
+    reset_modal:
+      title: 경고
+      question: Mue 의 모든 설정을 초기화 하시겠습니까?
+      information: 모든 데이터가 지워집니다. 유지 하고싶은 데이터 또는 설정 이 있다면 먼저 내보내기 하세요.
+      cancel: 취소
+    customisation: 커스터마이징
+    custom_css: 커스텀 CSS
+    custom_css_subtitle: Cascading Style Sheets(CSS)를 사용하여 Mue의 스타일을 사용자 맞춤형으로 
+      설정하세요.
+    custom_js: 커스텀 JS
+    tab_name: 새 탭 이름
+    tab_name_subtitle: 브라우저에서 표시 할 새 탭의 이름
+    timezone:
+      title: 시간대
+      subtitle: 컴퓨터의 자동 기본값 대신 목록에서 시간대를 선택하세요
+      automatic: 자동
+    experimental_warning: 실험실 기능이 활성화된 경우 Mue 팀의 지원을 받을 수 없으니 유의하시기 바랍니다. 개발자에게 
+      문의하기 전, 먼저 이 기능을 비활성화한 후에도 문제가 계속 발생하는지 확인해 주세요.
+    preview_data_disabled:
+      title: 데이터 설정 비활성화 됨
+      description: 미리보기 모드에서는 데이터 설정이 비활성화 됩니다. 해당 기능을 사용하기 위해서는 미리보기 모드를 
+        종료해주세요.
+  stats:
+    title: 통계
+    sections:
+      tabs_opened: 탭 열림
+      backgrounds_favourited: 즐겨찾기 한 배경
+      backgrounds_downloaded: 다운로드 한 배경
+      quotes_favourited: 즐겨찾기 한 명언
+      quicklinks_added: 추가된 바로가기
+      settings_changed: 변경된 설정
+      addons_installed: 설치 된 확장 프로그램
+    usage: 사용량 통계
+    achievements: 업적
+    achievement_unlocked: '업적 달성: {name}'
+    unlocked: '{count} 달성함'
+    locked: 잠김
+    clear_modal:
+      question: 통계를 초기화 하시겠습니까?
+      information: 모든 업적과 사용 통계가 삭제됩니다.
+  experimental:
+    title: 실험실 기능
+    warning: 이 설정들은 완전히 테스트되거나 구현되지 않았으며 올바르게 작동하지 않을 수 있습니다!
+    developer: 개발자
+  language:
+    title: 언어
+    quote: 명언 언어
+  changelog:
+    title: 변경 내용
+    by: By {author}
+  about:
+    title: About
+    version:
+      title: 버전
+      checking_update: 업데이트 확인 중
+      update_available: 업데이트 사용 가능
+      no_update: 업데이트 없음
+      offline_mode: 오프라인 모드에서 업데이트를 확인 할 수 없습니다
+      error:
+        title: 업데이트 정보를 가져오지 못했습니다
+        description: 오류가 발생했습니다
+    contact_us: 문의하기
+    support_mue: Mue 지원하기
+    support_subtitle: Mue는 완전 무료로 제공됩니다. 서버 비용과 개발 비용은 완전히 기부금에 의존하고 있습니다.
+    support_donate: 기부
+    form_button: 양식
+    resources_used:
+      title: 사용된 리소스
+      bg_images: 오프라인 배경이미지
+    contributors: 기여한 사람들
+    supporters: 후원자
+    no_supporters: 현재 Mue 후원자가 없습니다
+    photographers: 사진 작가들
+    curators: 확장 프로그램 개발자
+enabled: 활성화됨
+reminder:
+  title: 주의
+  message: 변경된 설정을 적용하기 위해서 페이지를 새로고침 해야 합니다.
+open_knowledgebase: 자료실 열기
+additional_settings: 추가설정
+buttons:
+  reset: 초기화
+  import: 불러오기
+  export: 내보내기
