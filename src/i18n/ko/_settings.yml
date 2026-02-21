@@ -1,1 +1,4 @@
-{}
+sections:
+  greeting:
+    birthday_age: 생년월일
+    birthday_date: 생일 날짜
