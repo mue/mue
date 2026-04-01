@@ -1,7 +1,8 @@
 @use 'scss/variables' as *;
 
 .modalTabContent {
-  width: 100% !important;
+  flex: 1;
+  min-width: 0;
 
   /* button {
     @include modal-button(standard);
@@ -11,8 +12,8 @@
   display: flex;
   flex-direction: column;
 
-  // height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
   margin-bottom: 0;
   padding-bottom: 2rem;
 

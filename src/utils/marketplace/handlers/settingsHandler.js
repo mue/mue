@@ -1,6 +1,8 @@
+import EventBus from 'utils/eventbus';
+
 function showReminder() {
-  document.querySelector('.reminder-info').style.display = 'flex';
-  localStorage.setItem('showReminder', true);
+  localStorage.setItem('showReminder', 'true');
+  EventBus.emit('showReminder');
 }
 
 export const settingsHandler = {

@@ -7,6 +7,7 @@ import SidebarToggle from '../components/SidebarToggle';
 import ErrorBoundary from '../../../../features/misc/modals/ErrorBoundary';
 import { TAB_TYPES } from '../constants/tabConfig';
 import { SearchInput } from 'components/Form/Settings';
+import EventBus from 'utils/eventbus';
 
 const Tabs = ({
   children,
@@ -129,6 +130,16 @@ const Tabs = ({
     }
   }, [resetToFirst]);
 
+  useEffect(() => {
+    const handleShowReminder = () => {
+      localStorage.setItem('showReminder', 'true');
+      setShowReminder(true);
+    };
+
+    EventBus.on('showReminder', handleShowReminder);
+    return () => EventBus.off('showReminder', handleShowReminder);
+  }, []);
+
   const handleHideReminder = () => {
     localStorage.setItem('showReminder', 'false');
     setShowReminder(false);
@@ -189,21 +200,21 @@ const Tabs = ({
           {searchQuery.trim() && filteredChildren.length === 0 && (
             <div className="sidebarEmptyState">{t('widgets.weather.not_found')}</div>
           )}
-          {!sidebarCollapsed && (
-            <ReminderInfo isVisible={showReminder} onHide={handleHideReminder} />
-          )}
         </div>
       ) : null}
-      <div className="modalTabContent" ref={contentRef}>
-        {children.map((tab, index) => {
-          if (tab.props.label !== currentTab) {
-            return null;
-          }
+      <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
+        <ReminderInfo isVisible={showReminder} onHide={handleHideReminder} />
+        <div className="modalTabContent" ref={contentRef}>
+          {children.map((tab, index) => {
+            if (tab.props.label !== currentTab) {
+              return null;
+            }
 
-          return (
-            <ErrorBoundary key={`error-boundary-${index}`}>{tab.props.children}</ErrorBoundary>
-          );
-        })}
+            return (
+              <ErrorBoundary key={`error-boundary-${index}`}>{tab.props.children}</ErrorBoundary>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

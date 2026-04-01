@@ -38,8 +38,9 @@ function Header(props) {
 
       if (props.element) {
         if (!document.querySelector(props.element)) {
-          document.querySelector('.reminder-info').style.display = 'flex';
-          return localStorage.setItem('showReminder', true);
+          localStorage.setItem('showReminder', 'true');
+          EventBus.emit('showReminder');
+          return;
         }
       }
 

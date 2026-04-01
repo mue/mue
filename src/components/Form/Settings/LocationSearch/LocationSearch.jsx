@@ -235,9 +235,6 @@ const LocationSearch = memo((props) => {
       closeDropdown();
 
       EventBus.emit('refresh', category);
-
-      document.querySelector('.reminder-info').style.display = 'flex';
-      localStorage.setItem('showReminder', true);
     },
     [name, category, closeDropdown],
   );
@@ -272,8 +269,6 @@ const LocationSearch = memo((props) => {
             setSearchQuery('');
 
             EventBus.emit('refresh', category);
-            document.querySelector('.reminder-info').style.display = 'flex';
-            localStorage.setItem('showReminder', true);
           }
         } catch (err) {
           console.error('Auto location error:', err);

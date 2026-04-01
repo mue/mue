@@ -9,12 +9,8 @@ import { fetchAuthorFromWikidata } from 'utils/wikidata/wikidataAuthorFetcher';
  * Custom hook for loading quote data from various sources
  */
 export function useQuoteLoader(updateQuote) {
-  const getAuthorLink = useCallback((author) => {
-    return localStorage.getItem('authorLink') === 'false' || author === 'Unknown'
-      ? null
-      : `https://${variables.languagecode.split('_')[0]}.wikipedia.org/wiki/${author
-          .split(' ')
-          .join('_')}`;
+  const getAuthorLink = useCallback((_author) => {
+    return null;
   }, []);
 
   /**

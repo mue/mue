@@ -39,8 +39,8 @@ const MessageOptions = () => {
     setMessages(updatedMessages);
 
     localStorage.setItem('messages', JSON.stringify(updatedMessages));
-    document.querySelector('.reminder-info').style.display = 'flex';
-    localStorage.setItem('showReminder', true);
+    localStorage.setItem('showReminder', 'true');
+    EventBus.emit('showReminder');
   };
 
   const MESSAGE_SECTION = 'modals.main.settings.sections.message';

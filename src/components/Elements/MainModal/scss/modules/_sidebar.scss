@@ -110,7 +110,11 @@
 
       span {
         white-space: nowrap;
-        transition: opacity 0.25s ease;
+        max-width: 200px;
+        overflow: hidden;
+        transition:
+          opacity 0.25s ease,
+          max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
     }
 
@@ -165,8 +169,7 @@
 
         span {
           opacity: 0;
-          width: 0;
-          overflow: hidden;
+          max-width: 0;
           margin: 0;
         }
       }

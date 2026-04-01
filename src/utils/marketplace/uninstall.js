@@ -2,10 +2,9 @@ import EventBus from 'utils/eventbus';
 import { clearQueuesOnSettingChange } from 'utils/queueOperations';
 import { getHandler } from './handlerRegistry';
 
-// todo: relocate this function
 function showReminder() {
-  document.querySelector('.reminder-info').style.display = 'flex';
-  localStorage.setItem('showReminder', true);
+  localStorage.setItem('showReminder', 'true');
+  EventBus.emit('showReminder');
 }
 
 export function uninstall(type, name) {

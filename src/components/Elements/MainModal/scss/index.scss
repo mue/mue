@@ -324,27 +324,51 @@ h5 {
 
 .reminder-info {
   display: flex;
-  flex-flow: column;
-  position: absolute;
-  bottom: 0;
-  padding: 15px;
-  gap: 15px;
+  flex-flow: row;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  flex-shrink: 0;
 
   @include themed {
     background-color: t($modal-secondaryColour);
-    border-radius: t($borderRadius);
-    border: 1px solid t($modal-sidebarActive);
+    border-bottom: 1px solid t($modal-sidebarActive);
+  }
+
+  .title {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .subtitle {
+    opacity: 0.7;
+    flex: 1;
   }
 
   button {
-    @include basicIconButton(5px, 5px, modal);
+    @include basicIconButton(8px 14px, 0.875rem, modal);
 
     display: flex;
-    justify-content: center;
-    gap: 15px;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    cursor: pointer;
 
     svg {
       margin: 0 !important;
+      font-size: 1rem;
+    }
+  }
+
+  .closeModal {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 1;
     }
   }
 

@@ -31,6 +31,12 @@ export function useSuggestedPacks(category, limit = 4, minToShow = 2) {
   }, [timestampKey, cacheExpiryMs]);
 
   const fetchSuggestions = useCallback(async () => {
+    if (localStorage.getItem('offlineMode') === 'true') {
+      setSuggestions(null);
+      setLoading(false);
+      return;
+    }
+
     try {
       setLoading(true);
       setError(null);

@@ -40,8 +40,9 @@ const Text = memo((props) => {
 
       if (element) {
         if (!document.querySelector(element)) {
-          document.querySelector('.reminder-info').style.display = 'flex';
-          return localStorage.setItem('showReminder', true);
+          localStorage.setItem('showReminder', 'true');
+          EventBus.emit('showReminder');
+          return;
         }
       }
 

@@ -8,6 +8,7 @@ import EventBus from 'utils/eventbus';
 import './Slider.scss';
 
 const SliderComponent = memo((props) => {
+  const t = useT();
   const [value, setValue] = useState(localStorage.getItem(props.name) || props.default);
   const [hoverValue, setHoverValue] = useState(null);
   const [hoverPosition, setHoverPosition] = useState(0);
@@ -32,8 +33,9 @@ const SliderComponent = memo((props) => {
 
       if (props.element) {
         if (!document.querySelector(props.element)) {
-          document.querySelector('.reminder-info').style.display = 'flex';
-          return localStorage.setItem('showReminder', true);
+          localStorage.setItem('showReminder', 'true');
+          EventBus.emit('showReminder');
+          return;
         }
       }
 
@@ -53,7 +55,6 @@ const SliderComponent = memo((props) => {
     const startTime = performance.now();
 
     const animate = (currentTime) => {
-      const t = useT();
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
 

@@ -9,17 +9,15 @@ const ReminderInfo = ({ isVisible, onHide }) => {
 
   return (
     <div className="reminder-info">
-      <div className="shareHeader">
-        <span className="title">{t('modals.main.settings.reminder.title')}</span>
-        <span className="closeModal" onClick={onHide}>
-          <MdClose />
-        </span>
-      </div>
+      <span className="title">{t('modals.main.settings.reminder.title')}</span>
       <span className="subtitle">{t('modals.main.settings.reminder.message')}</span>
       <button onClick={() => window.location.reload()}>
         <MdRefresh />
         {t('modals.main.error_boundary.refresh')}
       </button>
+      <span className="closeModal" onClick={onHide}>
+        <MdClose />
+      </span>
     </div>
   );
 };

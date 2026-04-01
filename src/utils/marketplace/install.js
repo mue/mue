@@ -4,10 +4,9 @@ import variables from 'config/variables';
 import { refreshAPIPackCache } from 'features/background/api/photoPackAPI';
 import { getHandler } from './handlerRegistry';
 
-// todo: relocate this function
 function showReminder() {
-  document.querySelector('.reminder-info').style.display = 'flex';
-  localStorage.setItem('showReminder', true);
+  localStorage.setItem('showReminder', 'true');
+  EventBus.emit('showReminder');
 }
 
 /**

@@ -72,8 +72,8 @@ const QuoteOptions = ({ currentSubSection, onSubSectionChange, sectionName }) =>
     setCustomQuote(updatedCustomQuote);
 
     localStorage.setItem('customQuote', JSON.stringify(updatedCustomQuote));
-    document.querySelector('.reminder-info').style.display = 'flex';
-    localStorage.setItem('showReminder', true);
+    localStorage.setItem('showReminder', 'true');
+    EventBus.emit('showReminder');
   };
 
   const modifyCustomQuote = (type, index) => {

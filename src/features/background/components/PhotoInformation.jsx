@@ -154,11 +154,13 @@ function MetadataGrid({
         />
       )}
 
-      <MetadataItem
-        icon={<Resolution />}
-        label={t('widgets.background.resolution')}
-        value={`${width}x${height}`}
-      />
+      {width !== null && height !== null && (
+        <MetadataItem
+          icon={<Resolution />}
+          label={t('widgets.background.resolution')}
+          value={`${width}x${height}`}
+        />
+      )}
 
       {colour && (
         <MetadataItem
@@ -304,8 +306,8 @@ function ActionButtons({
 function PhotoInformation({ info, url, api }) {
   const t = useT();
   const navigate = useNavigate();
-  const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
+  const [width, setWidth] = useState(null);
+  const [height, setHeight] = useState(null);
   const [shareModal, openShareModal] = useState(false);
   const [excludeModal, openExcludeModal] = useState(false);
   const [favouriteTooltipText, setFavouriteTooltipText] = useState(t('widgets.quote.favourite'));
@@ -325,7 +327,7 @@ function PhotoInformation({ info, url, api }) {
     if (typeof info.location === 'string') {
       return info.location.split(',').slice(-2).join(', ').trim();
     }
-    return info.location?.name || 'Unknown Location';
+    return info.location?.name || null;
   };
 
   if (info.hidden === true || !info.credit) {
@@ -437,9 +439,11 @@ function PhotoInformation({ info, url, api }) {
           {/* PRIMARY SECTION - Always Visible */}
           <div className="primary-content">
             <div className="photoInformation-text">
-              <span className="title" title={info.description || ''}>
-                {getPrimaryText()}
-              </span>
+              {getPrimaryText() && (
+                <span className="title" title={info.description || ''}>
+                  {getPrimaryText()}
+                </span>
+              )}
               <span className="subtitle attribution" id="credit">
                 {photo} {credit}
               </span>
