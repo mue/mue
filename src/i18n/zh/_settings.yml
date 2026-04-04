@@ -3,7 +3,11 @@ reminder:
   title: 注意
   message: 刷新页面后设置才会生效
 sections:
-  header: {}
+  header:
+    more_info: 更多信息
+    report_issue: 报告问题
+    enabled: 选择是否展示此小部件
+    size: 使用滑块控制小部件大小
   time:
     title: 时间
     format: 格式
@@ -14,6 +18,7 @@ sections:
       twentyfourhour: 使用 24 小时制
       twelvehour: 使用 12 小时制
       zero: 加零补足两位数字
+      subtitle: 改变数字时钟的外观
     analogue:
       title: 模拟时钟
       second_hand: 秒针
@@ -23,6 +28,7 @@ sections:
       minute_marks: 分钟刻度
     percentage_complete: 今天过去了%几
     vertical_clock: {}
+    type_subtitle: 选择以数字格式、模拟格式或当天完成百分比显示时间
   date:
     title: 显示日期
     week_number: 第n周
@@ -192,8 +198,8 @@ sections:
     title: 高级
     offline_mode: 启用离线模式
     data: 数据和设置
-    data_subtitle: Choose whether to export your Mue settings to your computer,
-      import an existing settings file, or reset your settings to their default
+    data_subtitle: Choose whether to export your Mue settings to your computer, 
+      import an existing settings file, or reset your settings to their default 
       values
     reset_modal:
       title: 警告
@@ -253,3 +259,4 @@ buttons:
   reset: 重置
   import: 导入
   export: 导出
+additional_settings: 高级设置
