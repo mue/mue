@@ -4,7 +4,8 @@ empty:
   description: 请访问插件市场来添加插件。
 sideload:
   title: 上传插件
-  errors: {}
+  errors:
+    invalid_photos: 无效的照片对象
 sort:
   title: 排序
   newest: 安装过 (从新到旧)
@@ -14,3 +15,6 @@ sort:
 create:
   title: 创建
   moved_button: Get Started
+check_updates: 检查更新
+no_updates: 没有更新
+updates_available: 有新更新 {amount}
