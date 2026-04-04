@@ -11,6 +11,7 @@ product:
     addtomue: 添加至 Mue
     remove: 卸载
   details: 详情
+  description: 描述
 offline:
   title: 您目前似乎离线
   description: 请连接到互联网。
