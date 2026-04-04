@@ -10,6 +10,14 @@ product:
   buttons:
     addtomue: 添加至 Mue
     remove: 卸载
+  details: 详情
 offline:
   title: 您目前似乎离线
   description: 请连接到互联网。
+all: 全部
+learn_more: 了解更多
+add_all: 增加全部到Mue
+cant_find: 找不到你想要的东西?
+knowledgebase_one: 访问
+knowledgebase_three: 创建你自己的。
+installing: 安装中
