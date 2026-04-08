@@ -64,13 +64,15 @@ const DateWidget = () => {
       let year = dateYear;
 
       switch (localStorage.getItem('dateFormat')) {
-        case 'MDY':
-          day = dateMonth;
-          month = dateDay;
+        case 'MDY': {
+          const temp = day;
+          day = month;
+          month = temp;
           break;
+        }
         case 'YMD':
           day = dateYear;
-          year = dateDay;
+          year = zero ? ('00' + dateDay).slice(-2) : dateDay;
           break;
         default:
           break;
