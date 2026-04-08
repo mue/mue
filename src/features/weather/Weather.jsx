@@ -47,7 +47,6 @@ const WeatherWidget = memo(() => {
     setLocation(currentLocation);
 
     const data = await getWeather(currentLocation);
-    console.log('Weather data received:', data);
     if (data) {
       setWeatherData(data);
       setDone(data.done);

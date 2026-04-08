@@ -2,6 +2,11 @@ import { useT } from 'contexts';
 import variables from 'config/variables';
 import { useState, useEffect, useCallback } from 'react';
 
+import example1 from 'assets/welcome-images/example1.webp';
+import example2 from 'assets/welcome-images/example2.webp';
+import example3 from 'assets/welcome-images/example3.webp';
+import example4 from 'assets/welcome-images/example4.webp';
+
 import { Header, Content } from '../Layout';
 import { MdOutlineWavingHand, MdOpenInNew } from 'react-icons/md';
 import { FaDiscord, FaGithub } from 'react-icons/fa';
@@ -32,6 +37,8 @@ function WelcomeNotice({ config }) {
   );
 }
 
+const welcomeImages = [example1, example2, example3, example4];
+
 function Intro() {
   const [welcomeImage, setWelcomeImage] = useState(0);
 
@@ -42,7 +49,7 @@ function Intro() {
   const ShareYourMue = (
     <div className="examples">
       <img
-        src={`/src/assets/welcome-images/example${welcomeImage + 1}.webp`}
+        src={welcomeImages[welcomeImage]}
         alt="Example Mue setup"
         draggable={false}
       />
