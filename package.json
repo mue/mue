@@ -42,7 +42,7 @@
     "@commitlint/cli": "^20.3.1",
     "@commitlint/config-conventional": "^20.3.1",
     "@eartharoid/deep-merge": "^0.0.2",
-    "@eslint/js": "^9.39.2",
+    "@eslint/js": "^10.0.1",
     "@vitejs/plugin-react-swc": "^4.2.2",
     "adm-zip": "0.5.17",
     "eslint": "^10.2.0",
