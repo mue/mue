@@ -1,21 +1,21 @@
-name: Submit to Browser Stores
+name: Submit to Browser Stores (Beta)
 
 on:
   release:
-    types: [released]
+    types: [prereleased]
   workflow_dispatch:
     inputs:
       tag:
-        description: "Release tag to re-submit (e.g. v7.6.1)"
+        description: "Pre-release tag to re-submit (e.g. v7.6.1-beta.3)"
         required: true
 
 permissions:
   contents: read
 
 jobs:
-  submit:
+  submit-beta:
     runs-on: ubuntu-latest
-    environment: production
+    environment: beta
 
     steps:
       - name: Resolve tag and version
@@ -41,17 +41,17 @@ jobs:
       - name: Verify ZIP
         run: |
           ls -la dist/
-          test -f "dist/chrome-${{ steps.tag.outputs.version }}.zip" || \
-            { echo "chrome ZIP not found"; exit 1; }
+          test -n "$(ls dist/chrome-*.zip 2>/dev/null)" || \
+            { echo "chrome ZIP not found in dist/"; exit 1; }
 
-      - name: Submit to Chrome Web Store
+      - name: Submit to Chrome Web Store (Trusted Testers)
         uses: PlasmoHQ/bpp@v3
         with:
-          keys: ${{ secrets.SUBMIT_KEYS }}
+          keys: ${{ secrets.SUBMIT_KEYS_BETA }}
           chrome-zip: dist/chrome-${{ steps.tag.outputs.version }}.zip
 
       - name: Summary
         if: always()
         run: |
-          echo "## Store Submission: ${{ steps.tag.outputs.tag }}" >> $GITHUB_STEP_SUMMARY
-          echo "- Chrome Web Store (listed)" >> $GITHUB_STEP_SUMMARY
+          echo "## Beta Store Submission: ${{ steps.tag.outputs.tag }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Chrome Web Store (trustedTesters)" >> $GITHUB_STEP_SUMMARY
