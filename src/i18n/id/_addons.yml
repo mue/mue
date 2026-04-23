@@ -1,18 +1,30 @@
-added: Terinstal
+added: Ditambahkan
 check_updates: Periksa pembaruan
-no_updates: Tidak ada pembaruan
-updates_available: Terdapat {amount} pembaruan
+no_updates: Tidak ada pembaruan tersedia
+updates_available: Pembaruan tersedia {amount}
 empty:
   title: Kosong
-  description: Belum ada addons yang terinstal
+  description: Tidak ada add-on yang terpasang
 sideload:
-  errors: {}
+  errors:
+    no_name: Nama tidak disediakan
+    no_author: Penulis tidak disediakan
+    no_type: Jenis tidak disediakan
+    invalid_photos: Objek foto tidak valid
+    invalid_quotes: Objek kutipan tidak valid
+  title: Pemasangan Langsung
+  description: Pasang add-on Mue yang tidak ada di marketplace dari komputer 
+    Anda
+  failed: Gagal memasang add-on secara langsung
 sort:
   title: Urutkan
-  newest: Terinstal (Terbaru)
-  oldest: Terinstal (Terlama)
-  a_z: Abjad (A-Z)
-  z_a: Abjad (Z-A)
+  newest: Terpasang (Terbaru)
+  oldest: Terpasang (Terlama)
+  a_z: Alfabetis (A-Z)
+  z_a: Alfabetis (Z-A)
 create:
   title: Buat
-  moved_button: Get Started
+  moved_button: Segera Hadir....
+  moved_title: Buat add-on telah dipindahkan!
+  moved_description: Setelah pembaruan 7.1, pembuatan add-on kini telah 
+    dipindahkan ke antarmuka web
