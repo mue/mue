@@ -1,51 +1,67 @@
-tip: Tip
+tip: Tips Cepat
 sections:
   intro:
     title: Selamat datang di Mue Tab
-    description: Terima kasih sudah menginstal Mue, kami harap Anda dapat menikmati
-      pengalaman bersama Mue
-    notices: {}
+    description: Terima kasih telah memasang Mue, kami harap Anda menikmati 
+      ekstensi kami.
+    notices:
+      discord_title: Bergabunglah dengan Discord kami
+      discord_description: Ngobrol dengan komunitas dan pengembang Mue
+      discord_join: Bergabung
+      github_title: Berkontribusi di GitHub
+      github_description: Laporkan bug, tambahkan fitur, atau donasi
+      github_open: Buka
   language:
-    title: Pilih bahasa
-    description: Antarmuka Mue dapat ditampilkan dalam ragam bahasa berikut. Kamu
-      juga bisa menambahkan terjemahan baru untuk Mue pada
+    title: Pilih bahasa Anda
+    description: Mue dapat ditampilkan dalam bahasa-bahasa yang tercantum di 
+      bawah ini. Anda juga dapat menambahkan terjemahan baru di
   theme:
     title: Pilih tema
-    description: Mue tersedia dalam tema terang dan gelap, atau kami juga bisa
-      mengaturnya secara otomatis sesuai dengan preferensi sistem Anda.
-    tip: Pengaturan otomatis akan menyesuaikan dengan tema komputer Anda. Pengaturan
-      ini akan mengubah tampilan modal dan beberapa widget, seperti Cuaca dan
-      Catatan.
-  style: {}
+    description: Mue tersedia dalam tema terang dan gelap, atau dapat diatur 
+      secara otomatis sesuai tema sistem Anda.
+    tip: Menggunakan pengaturan Otomatis akan menggunakan tema di komputer Anda.
+      Pengaturan ini akan mempengaruhi modal dan beberapa widget yang 
+      ditampilkan di layar, seperti cuaca dan catatan.
+  style:
+    title: Pilih gaya
+    description: Mue saat ini menawarkan pilihan antara gaya lama dan gaya 
+      modern yang baru dirilis.
+    legacy: Lama
+    modern: Modern
   settings:
     title: Impor Pengaturan
-    description: Sudah pernah menginstal Mue? Yuk coba impor pengaturan lama kamu
-      tanpa perlu mengatur ulang dari awal!
-    tip: Kamu bisa mengekspor pengaturan lama kamu melalui tab lanjutan pada
-      Pengaturan. Klik tombol ekspor untuk mengunduh berkas JSON. Unggah berkas
-      tersebut di sini sehingga kamu dapat menikmati preferensi yang sama pada
-      perangkat yang berbeda!
+    description: Memasang Mue di perangkat baru? Silakan impor pengaturan lama 
+      Anda!
+    tip: Anda dapat mengekspor pengaturan lama dengan membuka tab Lanjutan di 
+      instalasi Mue lama Anda. Kemudian klik tombol ekspor yang akan mengunduh 
+      file JSON. Anda dapat mengunggah file ini di sini untuk membawa pengaturan
+      dan preferensi dari instalasi Mue sebelumnya.
   privacy:
     title: Opsi Privasi
-    description: Aktifkan pegaturan sehingga Mue dapat melindungi privasi Anda.
-    offline_mode_description: Mengaktifkan mode luring akan menghalangi request ke
-      semua layanan, termasuk Background Online, Kutipan Daring, Marketplace,
-      Cuaca, Pranala Cepat, Change Log, dan beberapa informasi tentang tab.
+    description: Aktifkan pengaturan untuk lebih melindungi privasi Anda dengan 
+      Mue.
+    offline_mode_description: Mengaktifkan mode luring akan menonaktifkan semua 
+      permintaan ke layanan apa pun. Ini akan menonaktifkan latar belakang 
+      daring, kutipan daring, marketplace, cuaca, tautan cepat, catatan 
+      perubahan, dan sebagian informasi tab tentang.
     links:
-      title: Pranala
+      title: Tautan
       privacy_policy: Kebijakan Privasi
+      source_code: Kode Sumber
   final:
     title: Langkah terakhir
-    description: Pengalaman Mue Tab Anda akan segera dimulai!
+    description: Pengalaman Mue Tab Anda akan segera dimulai.
     changes: Perubahan
-    changes_description: Untuk mengubah pengaturan lainnya, klik pada ikon
-      pengaturan di pojok kanan atas tab Anda.
-    imported: Berhasil mengimpor {amount} pengaturan
+    changes_description: Untuk mengubah pengaturan nanti, klik ikon pengaturan 
+      di sudut kanan atas tab Anda.
+    imported: '{amount} pengaturan berhasil diimpor'
 buttons:
-  next: Selanjutnya
+  next: Berikutnya
   preview: Pratinjau
-  previous: Kembali
+  previous: Sebelumnya
   close: Tutup
+  finish: Selesai
 preview:
-  description: Kamu dalam mode Pratinjau. Pengaturan akan direset ketika tab ini ditutup.
-  continue: Lanjutkan setup
+  description: Anda saat ini berada dalam mode pratinjau. Pengaturan akan 
+    direset saat tab ini ditutup.
+  continue: Lanjutkan pengaturan
