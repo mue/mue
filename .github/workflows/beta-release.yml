@@ -43,16 +43,9 @@ jobs:
       - name: Generate changelog
         id: changelog
         run: |
-          # Get the latest beta or production tag
-          PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
-
-          if [ -z "$PREVIOUS_TAG" ]; then
-            echo "No previous tag found, using all commits"
-            COMMITS=$(git log --pretty=format:"- %s (%h)" HEAD)
-          else
-            echo "Generating changelog from $PREVIOUS_TAG to HEAD"
-            COMMITS=$(git log --pretty=format:"- %s (%h)" ${PREVIOUS_TAG}..HEAD)
-          fi
+          # Only show commits on beta that are not yet in main (i.e. what's new for this beta)
+          git fetch origin main --depth=100
+          COMMITS=$(git log --pretty=format:"- %s (%h)" origin/main..HEAD)
 
           # Create changelog with categorization
           FEATURES=$(echo "$COMMITS" | grep -i "^- feat" || echo "")
