@@ -1,13 +1,49 @@
-no_items: Tidak ada item pada kategori ini
+no_items: Tidak ada item dalam kategori ini
 product:
   overview: Ikhtisar
   information: Informasi
-  last_updated: Pembaruan Terakhir
+  last_updated: Terakhir Diperbarui
   version: Versi
   buttons:
     addtomue: Tambahkan ke Mue
     remove: Hapus
     update_addon: Perbarui Add-on
+    back: Kembali
+    report: Laporkan
+    not_available_preview: Tidak Tersedia di Pratinjau
+  description: Deskripsi
+  details: Detail
+  more_from_curator: Lebih banyak seperti ini dari {name}
+  show_more: Tampilkan Lebih Banyak
+  show_less: Tampilkan Lebih Sedikit
+  show_all: Tampilkan Semua
+  showing: Menampilkan
+  no_images: Jumlah Gambar
+  no_quotes: Jumlah Kutipan
+  created_by: Dibuat oleh
+  updated_at: Diperbarui pada
+  part_of: Bagian dari
+  explore: Jelajahi
+  not_in_language: Add-on ini tidak tersedia dalam bahasa Anda
+  third_party_api: Add-on ini menggunakan API pihak ketiga
+  sideload_warning: Add-on ini telah dipasang secara langsung.
+  setting: Pengaturan
+  value: Nilai
 offline:
-  title: Sepertinya Anda sedang dalam mode luring
-  description: Harap periksa kembali koneksi Anda dan coba lagi nanti
+  title: Sepertinya Anda sedang luring
+  description: Silakan sambungkan ke internet
+by: oleh {author}
+all: Semua
+learn_more: Pelajari Selengkapnya
+photo_packs: Paket Foto
+quote_packs: Paket Kutipan
+preset_settings: Pengaturan Preset
+collection: Koleksi
+explore_collection: Jelajahi Koleksi
+add_all: Tambahkan Semua ke Mue
+collections: Koleksi-koleksi
+cant_find: Tidak menemukan yang Anda cari?
+knowledgebase_one: Kunjungi
+knowledgebase_two: basis pengetahuan
+knowledgebase_three: untuk membuat milik Anda sendiri.
+installing: Memasang
