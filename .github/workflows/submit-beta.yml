@@ -1,0 +1,57 @@
+name: Submit to Browser Stores (Beta)
+
+on:
+  release:
+    types: [prereleased]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Pre-release tag to re-submit (e.g. v7.6.1-beta.3)"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  submit-beta:
+    runs-on: ubuntu-latest
+    environment: beta
+
+    steps:
+      - name: Resolve tag and version
+        id: tag
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TAG="${{ github.event.inputs.tag }}"
+          else
+            TAG="${{ github.event.release.tag_name }}"
+          fi
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "version=${TAG#v}" >> $GITHUB_OUTPUT
+
+      - name: Download release ZIPs
+        run: |
+          mkdir -p dist
+          gh release download "${{ steps.tag.outputs.tag }}" \
+            --pattern "chrome-*.zip" \
+            --dir ./dist
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Verify ZIP
+        run: |
+          ls -la dist/
+          test -n "$(ls dist/chrome-*.zip 2>/dev/null)" || \
+            { echo "chrome ZIP not found in dist/"; exit 1; }
+
+      - name: Submit to Chrome Web Store (Trusted Testers)
+        uses: PlasmoHQ/bpp@v3
+        with:
+          keys: ${{ secrets.SUBMIT_KEYS_BETA }}
+          chrome-zip: dist/chrome-${{ steps.tag.outputs.version }}.zip
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Beta Store Submission: ${{ steps.tag.outputs.tag }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Chrome Web Store (trustedTesters)" >> $GITHUB_STEP_SUMMARY

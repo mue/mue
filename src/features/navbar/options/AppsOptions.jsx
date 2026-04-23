@@ -117,9 +117,7 @@ function AppsOptions({ appsEnabled }) {
       <Row final={true} inactive={!appsEnabled}>
         <Content
           title={t('widgets.navbar.apps.title')}
-          subtitle={t(
-            'modals.main.settings.sections.appearance.navbar.apps_subtitle',
-          )}
+          subtitle={t('modals.main.settings.sections.appearance.navbar.apps_subtitle')}
         />
         <Action>
           <Button

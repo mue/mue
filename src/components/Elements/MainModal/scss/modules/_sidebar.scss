@@ -4,46 +4,87 @@
   @include themed {
     position: relative;
     margin: 0;
-    // padding: 1rem 1.5rem 4rem 1.5rem;
-    padding: 0.5rem 0 0 0.5rem;
+    padding: 0.75rem 0.5rem;
     background: t($modal-sidebar);
-    border-radius: 12px 0 0 12px;
-    overflow-y: auto;
-    overflow-x: hidden;
+    border-start-start-radius: 12px;
+    border-end-start-radius: 12px;
+    border-start-end-radius: 0;
+    border-end-end-radius: 0;
+    overflow: hidden auto;
     height: 100%;
     min-width: 250px;
     flex-shrink: 0;
+    transition: min-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    .sidebarHeader {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+
+      .search-input-container {
+        flex: 1;
+        width: auto;
+
+        .search-input-field {
+          height: 38px;
+          font-size: 14px;
+          padding-inline: 42px 14px;
+          padding-block: 0;
+          border-radius: 10px;
+
+          &::placeholder {
+            opacity: 0.6;
+          }
+        }
+
+        .search-input-icon {
+          inset-inline-start: 16px;
+          font-size: 18px;
+        }
+      }
+    }
 
     svg {
-      margin-left: 20px;
-      margin-right: 20px;
+      flex-shrink: 0;
+      width: 20px;
       color: t($subColor);
-      font-size: 17px;
+      font-size: 20px;
+      transition: color 0.2s ease;
     }
 
     hr {
       height: 1px;
-      background: #ccc;
-      margin: 0 1.75rem;
+      background: t($modal-sidebarActive);
+      margin: 0.5rem 0.75rem;
       border: none;
+      opacity: 0.5;
+      transition: opacity 0.3s ease;
     }
 
-    button {
+    button:not(.sidebarToggleButton) {
       color: t($color);
-      font-size: 18px;
+      font-size: 16px;
+      font-weight: 500;
       list-style: none;
       cursor: pointer;
-      border-radius: 12px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
-      margin: 0.2rem;
-      padding: 0.5rem;
-      transition: 0.5s;
+      gap: 12px;
+      margin: 0.15rem 0.25rem;
+      padding: 0.65rem 0.75rem;
+      transition:
+        background 0.2s ease,
+        transform 0.1s ease;
       outline: none;
       border: none;
       background: none;
-      min-width: calc(100% - 1.2em);
-      text-align: left;
+      width: calc(100% - 0.5rem);
+      text-align: start;
+      position: relative;
 
       &:last-child {
         margin-bottom: 1rem;
@@ -51,21 +92,145 @@
 
       &:hover {
         background: t($modal-sidebarActive);
+
+        svg {
+          color: t($color);
+        }
       }
 
       &:active {
         background: t($modal-sidebarActive);
-        box-shadow: 0 0 0 0.5px t($color);
+        transform: scale(0.98);
       }
 
-      &:focus {
+      &:focus-visible {
         background: t($modal-sidebarActive);
-        box-shadow: 0 0 0 0.5px t($color);
+        box-shadow: 0 0 0 2px t($color);
       }
+
+      span {
+        white-space: nowrap;
+        max-width: 200px;
+        overflow: hidden;
+        transition:
+          opacity 0.25s ease,
+          max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    }
+
+    .sidebarEmptyState {
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 14px;
+      color: t($color);
+      opacity: 0.6;
     }
 
     .tab-list-active {
       background: t($modal-sidebarActive);
+      position: relative;
+
+      svg {
+        color: t($color);
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset-inline-start: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 60%;
+        background: t($color);
+
+        [dir='ltr'] & {
+          border-radius: 0 2px 2px 0;
+        }
+
+        [dir='rtl'] & {
+          border-radius: 2px 0 0 2px;
+        }
+      }
+    }
+
+    &.collapsed {
+      min-width: 64px;
+      padding: 0.75rem 0.25rem;
+
+      .sidebarHeader {
+        justify-content: center;
+      }
+
+      button:not(.sidebarToggleButton) {
+        justify-content: center;
+        padding: 0.65rem;
+        gap: 0;
+
+        span {
+          opacity: 0;
+          max-width: 0;
+          margin: 0;
+        }
+      }
+
+      .tab-list-active::before {
+        inset-inline-start: 50%;
+        transform: translate(-50%, -50%);
+        width: 60%;
+        height: 3px;
+        top: auto;
+        bottom: 0;
+        border-radius: 2px 2px 0 0;
+      }
+
+      hr {
+        opacity: 0;
+        margin: 0.25rem 0.5rem;
+      }
+    }
+  }
+}
+
+.sidebarToggleButton {
+  @include themed {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: t($subColor);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+    flex-shrink: 0;
+
+    svg {
+      font-size: 18px;
+      transition: color 0.2s ease;
+    }
+
+    &:hover {
+      background: t($modal-sidebarActive);
+      color: t($color);
+
+      svg {
+        color: t($color);
+      }
+    }
+
+    &:active {
+      background: t($modal-sidebarActive);
+      transform: scale(0.95);
+    }
+
+    &:focus-visible {
+      background: t($modal-sidebarActive);
+      box-shadow: 0 0 0 2px t($color);
     }
   }
 }
@@ -75,9 +240,38 @@
   margin-right: 0 !important;
 }
 
-// Sidebar skeleton loader
 .sidebarSkeleton {
   padding: 0.5rem 0.2rem;
+
+  .skeletonHeader {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    .skeletonToggle {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      flex-shrink: 0;
+
+      @include themed {
+        background: t($modal-sidebarActive);
+      }
+    }
+
+    .skeletonSearch {
+      flex: 1;
+      height: 38px;
+      border-radius: 10px;
+
+      @include themed {
+        background: t($modal-sidebarActive);
+      }
+    }
+  }
 
   .skeletonItem {
     display: flex;
@@ -90,8 +284,7 @@
       width: 17px;
       height: 17px;
       border-radius: 6px;
-      margin-left: 20px;
-      margin-right: 20px;
+      margin-inline: 20px;
       flex-shrink: 0;
 
       @include themed {

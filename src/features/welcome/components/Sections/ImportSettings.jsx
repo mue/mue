@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { FileUpload } from 'components/Form/Settings';
 import { MdCloudUpload } from 'react-icons/md';
 import { importSettings as importSettingsFunction } from 'utils/settings';
@@ -6,6 +6,7 @@ import { Header, Content } from '../Layout';
 import default_settings from 'utils/data/default_settings.json';
 
 function ImportSettings(props) {
+  const t = useT();
   const importSettings = (e) => {
     importSettingsFunction(e, true);
 
@@ -42,12 +43,12 @@ function ImportSettings(props) {
   return (
     <Content>
       <Header
-        title={variables.getMessage('modals.welcome.sections.settings.title')}
-        subtitle={variables.getMessage('modals.welcome.sections.settings.description')}
+        title={t('modals.welcome.sections.settings.title')}
+        subtitle={t('modals.welcome.sections.settings.description')}
       />
       <button className="upload" onClick={() => document.getElementById('file-input').click()}>
         <MdCloudUpload />
-        <span>{variables.getMessage('modals.main.settings.buttons.import')}</span>
+        <span>{t('modals.main.settings.buttons.import')}</span>
       </button>
       <FileUpload
         id="file-input"
@@ -55,10 +56,8 @@ function ImportSettings(props) {
         type="settings"
         loadFunction={(e) => importSettings(e)}
       />
-      <span className="title">{variables.getMessage('modals.welcome.tip')}</span>
-      <span className="subtitle">
-        {variables.getMessage('modals.welcome.sections.settings.tip')}
-      </span>
+      <span className="title">{t('modals.welcome.tip')}</span>
+      <span className="subtitle">{t('modals.welcome.sections.settings.tip')}</span>
     </Content>
   );
 }

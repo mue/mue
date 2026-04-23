@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { memo, useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
 import { MdRefresh } from 'react-icons/md';
@@ -8,7 +8,18 @@ import EventBus from 'utils/eventbus';
 import './Text.scss';
 
 const Text = memo((props) => {
-  const { name, upperCaseFirst, element, category, onChange, title, textarea, customcss, placeholder } = props;
+  const t = useT();
+  const {
+    name,
+    upperCaseFirst,
+    element,
+    category,
+    onChange,
+    title,
+    textarea,
+    customcss,
+    placeholder,
+  } = props;
   const defaultValue = props.default;
   const [value, setValue] = useState(localStorage.getItem(name) || '');
 
@@ -29,8 +40,9 @@ const Text = memo((props) => {
 
       if (element) {
         if (!document.querySelector(element)) {
-          document.querySelector('.reminder-info').style.display = 'flex';
-          return localStorage.setItem('showReminder', true);
+          localStorage.setItem('showReminder', 'true');
+          EventBus.emit('showReminder');
+          return;
         }
       }
 
@@ -45,7 +57,7 @@ const Text = memo((props) => {
         value: defaultValue || '',
       },
     });
-    toast(variables.getMessage('toasts.reset'));
+    toast(t('toasts.reset'));
   }, [handleChange, defaultValue]);
 
   return (
@@ -57,7 +69,7 @@ const Text = memo((props) => {
               <label className="text-field-label">{title}</label>
               <span className="text-field-reset" onClick={resetItem}>
                 <MdRefresh />
-                {variables.getMessage('modals.main.settings.buttons.reset')}
+                {t('modals.main.settings.buttons.reset')}
               </span>
             </div>
           )}
@@ -76,7 +88,7 @@ const Text = memo((props) => {
               <label className="text-field-label">{title}</label>
               <span className="text-field-reset" onClick={resetItem}>
                 <MdRefresh />
-                {variables.getMessage('modals.main.settings.buttons.reset')}
+                {t('modals.main.settings.buttons.reset')}
               </span>
             </div>
           )}

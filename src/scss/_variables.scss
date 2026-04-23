@@ -14,6 +14,7 @@ $modal-background: 'modal-background';
 $modal-text: 'modal-text';
 $modal-sidebar: 'modal-sidebar';
 $modal-sidebarActive: 'modal-sidebarActive';
+$modal-border: 'modal-border';
 $link: 'link';
 $weather: 'weather';
 $modal-secondaryColour: 'modal-secondaryColour';
@@ -65,8 +66,9 @@ $themes: (
     'btn-backgroundHover': rgb(247 250 252 / 90%),
     'modal-background': #fff,
     'modal-sidebar': #feffff,
-    'modal-sidebarActive': #f5f5f5,
+    'modal-sidebarActive': #d4d4d4,
     'modal-secondaryColour': #fafafa,
+    'modal-border': rgb(0 0 0 / 10%),
     'link': #ff5c25,
     'slightGradient': linear-gradient(#fff, #ddd),
   ),
@@ -84,11 +86,11 @@ $themes: (
     'modal-sidebar': #151515,
     'modal-sidebarActive': #262626,
     'modal-secondaryColour': #111,
+    'modal-border': rgb(255 255 255 / 10%),
     'link': #ff5c25,
     'slightGradient': linear-gradient(#0e1013, #322a2a),
   ),
 );
-
 $theme-map: null;
 
 @mixin themed() {
@@ -181,7 +183,7 @@ $theme-map: null;
 
   .subtitle {
     font-size: 16px;
-    font-family: 'Inter', sans-serif !important;
+    font-family: Inter, sans-serif !important;
 
     @include themed {
       color: t($subColor);
@@ -235,7 +237,10 @@ $theme-map: null;
     flex-flow: row;
     justify-content: center;
     gap: 20px;
-    transition: 0.5s;
+    transition:
+      background 0.2s ease,
+      transform 0.1s ease,
+      box-shadow 0.2s ease;
     cursor: pointer;
 
     &:hover {
@@ -245,16 +250,19 @@ $theme-map: null;
     &:active {
       background: t($modal-sidebarActive);
       box-shadow: 0 0 0 1px t($color);
+      transform: scale(0.98);
     }
 
-    &:focus {
+    &:focus-visible {
       background: t($modal-sidebarActive);
-      box-shadow: 0 0 0 1px t($color);
+      box-shadow: 0 0 0 2px t($color);
+      outline: none;
     }
 
     &:disabled {
       background: t($modal-sidebarActive);
       cursor: not-allowed;
+      opacity: 0.5;
     }
   }
 }

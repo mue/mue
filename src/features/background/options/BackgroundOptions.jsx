@@ -1,7 +1,12 @@
 import variables from 'config/variables';
+import { useT } from 'contexts';
 import { memo, useState, useEffect, useCallback, useRef } from 'react';
+import { useNavigate } from 'react-router';
 import { MdSource, MdOutlineAutoAwesome } from 'react-icons/md';
+import { toast } from 'react-toastify';
 import EventBus from 'utils/eventbus';
+import { clearQueuesOnSettingChange } from 'utils/queueOperations';
+import { uninstall } from 'utils/marketplace';
 
 import { Header } from 'components/Layout/Settings';
 import { Dropdown } from 'components/Form/Settings';
@@ -17,25 +22,43 @@ import NavigationCard from './sections/NavigationCard';
 import { getBackgroundOptionItems } from './optionTypes';
 
 const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, sectionName }) => {
+  const t = useT();
+  const navigate = useNavigate();
   const [backgroundType, setBackgroundType] = useState(
     localStorage.getItem('backgroundType') || 'api',
   );
   const [backgroundFilter, setBackgroundFilter] = useState(
     localStorage.getItem('backgroundFilter') || 'none',
   );
-  const [backgroundCategories, setBackgroundCategories] = useState([
-    variables.getMessage('modals.main.loading'),
-  ]);
+  const [backgroundCategories, setBackgroundCategories] = useState(() => {
+    if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
+      return [t('modals.update.offline.title')];
+    }
+    return [t('modals.main.loading')];
+  });
   const [backgroundCategoriesOG, setBackgroundCategoriesOG] = useState([]);
-  const [backgroundAPI, setBackgroundAPI] = useState(localStorage.getItem('backgroundAPI') || 'mue');
+  const [backgroundAPI, setBackgroundAPI] = useState(
+    localStorage.getItem('backgroundAPI') || 'mue',
+  );
   const [marketplaceEnabled] = useState(localStorage.getItem('photo_packs'));
 
-  // Auto-show source section for types without effects/display settings
-  const shouldShowSourceByDefault = ['colour', 'random_colour', 'random_gradient'].includes(backgroundType);
+  const getInstalledPhotoPacks = () => {
+    try {
+      const installed = JSON.parse(localStorage.getItem('installed')) || [];
+      return installed.filter((item) => item.type === 'photos');
+    } catch {
+      return [];
+    }
+  };
+
+  const [installedPhotoPacks, setInstalledPhotoPacks] = useState(getInstalledPhotoPacks());
+
+  const shouldShowSourceByDefault = ['colour', 'random_colour', 'random_gradient'].includes(
+    backgroundType,
+  );
 
   const controllerRef = useRef(null);
 
-  // Auto-navigate to source section when switching to colour/random types
   useEffect(() => {
     if (shouldShowSourceByDefault && currentSubSection !== 'source') {
       onSubSectionChange('source', sectionName);
@@ -64,29 +87,30 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
     setBackgroundCategoriesOG(data);
   }, [backgroundAPI]);
 
-  const updateAPI = useCallback((e) => {
-    localStorage.setItem('nextImage', null);
-    // Clear prefetch queue when API changes to prevent showing cached images from old API
-    localStorage.removeItem('imageQueue');
-    if (e === 'mue') {
-      setBackgroundCategories(backgroundCategoriesOG);
-      setBackgroundAPI('mue');
-    } else {
-      const data = [...backgroundCategories];
-      data.forEach((category) => {
-        delete category.count;
-      });
+  const updateAPI = useCallback(
+    (e) => {
+      localStorage.setItem('nextImage', null);
+      clearQueuesOnSettingChange('backgroundAPI');
+      if (e === 'mue') {
+        setBackgroundCategories(backgroundCategoriesOG);
+        setBackgroundAPI('mue');
+      } else {
+        const data = [...backgroundCategories];
+        data.forEach((category) => {
+          delete category.count;
+        });
 
-      setBackgroundAPI('unsplash');
-      setBackgroundCategories(data);
-    }
-  }, [backgroundCategories, backgroundCategoriesOG]);
+        setBackgroundAPI('unsplash');
+        setBackgroundCategories(data);
+      }
+    },
+    [backgroundCategories, backgroundCategoriesOG],
+  );
 
   useEffect(() => {
     controllerRef.current = new AbortController();
 
     if (navigator.onLine === false || localStorage.getItem('offlineMode') === 'true') {
-      setBackgroundCategories([variables.getMessage('modals.update.offline.title')]);
       return;
     }
 
@@ -97,6 +121,45 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
       controllerRef.current.abort();
     };
   }, [getBackgroundCategories]);
+
+  useEffect(() => {
+    const handleInstalledAddonsChanged = () => {
+      const newPacks = getInstalledPhotoPacks();
+      setInstalledPhotoPacks(newPacks);
+      const currentType = localStorage.getItem('backgroundType') || 'api';
+      if (currentType !== backgroundType) {
+        setBackgroundType(currentType);
+      }
+    };
+
+    window.addEventListener('installedAddonsChanged', handleInstalledAddonsChanged);
+    return () => window.removeEventListener('installedAddonsChanged', handleInstalledAddonsChanged);
+  }, [backgroundType]);
+
+  const handlePhotoPackUninstall = (type, name) => {
+    uninstall(type, name);
+    toast(t('toasts.uninstalled'));
+    variables.stats.postEvent('marketplace-item', `${name} uninstalled`);
+    setInstalledPhotoPacks(getInstalledPhotoPacks());
+    window.dispatchEvent(new window.Event('installedAddonsChanged'));
+  };
+
+  const goToPhotoPacks = () => {
+    navigate('/discover/photo_packs');
+  };
+
+  const handleToggle = (pack) => {
+    const itemId = pack.id || pack.name;
+    navigate(`/discover/item/${itemId}`);
+
+    variables.stats.postEvent('marketplace', 'ItemPage viewed');
+  };
+
+  const getTotalPhotoCount = () => {
+    return installedPhotoPacks.reduce((total, pack) => {
+      return total + (pack.photos?.length || 0);
+    }, 0);
+  };
 
   const getBackgroundSettings = () => {
     switch (backgroundType) {
@@ -140,10 +203,8 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
     if (currentSubSection === 'effects') {
       return (
         <Header
-          title={variables.getMessage('modals.main.settings.sections.background.title')}
-          secondaryTitle={variables.getMessage(
-            'modals.main.settings.sections.background.effects.title',
-          )}
+          title={t('modals.main.settings.sections.background.title')}
+          secondaryTitle={t('modals.main.settings.sections.background.effects.title')}
           goBack={() => onSubSectionChange(null, sectionName)}
         />
       );
@@ -152,10 +213,8 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
     if (currentSubSection === 'source') {
       return (
         <Header
-          title={variables.getMessage('modals.main.settings.sections.background.title')}
-          secondaryTitle={variables.getMessage(
-            'modals.main.settings.sections.background.source.title',
-          )}
+          title={t('modals.main.settings.sections.background.title')}
+          secondaryTitle={t('modals.main.settings.sections.background.source.title')}
           goBack={() => onSubSectionChange(null, sectionName)}
         />
       );
@@ -163,7 +222,7 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
 
     return (
       <Header
-        title={variables.getMessage('modals.main.settings.sections.background.title')}
+        title={t('modals.main.settings.sections.background.title')}
         setting="background"
         category="background"
         element="#backgroundImage"
@@ -179,20 +238,16 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
         <>
           <NavigationCard
             icon={MdSource}
-            title={variables.getMessage('modals.main.settings.sections.background.source.title')}
-            subtitle={variables.getMessage(
-              'modals.main.settings.sections.background.source.subtitle',
-            )}
+            title={t('modals.main.settings.sections.background.source.title')}
+            subtitle={t('modals.main.settings.sections.background.source.subtitle')}
             onClick={() => onSubSectionChange('source', sectionName)}
             action={
               <Dropdown
-                label={variables.getMessage('modals.main.settings.sections.background.type.title')}
+                label={t('modals.main.settings.sections.background.type.title')}
                 name="backgroundType"
                 onChange={(value) => {
-                  // Clear prefetch queue when changing background type
-                  localStorage.removeItem('imageQueue');
+                  clearQueuesOnSettingChange('backgroundType');
                   setBackgroundType(value);
-                  // Automatically refresh background when switching to custom images
                   if (value === 'custom') {
                     EventBus.emit('refresh', 'background');
                   }
@@ -206,32 +261,30 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
           {showEffects && (
             <NavigationCard
               icon={MdOutlineAutoAwesome}
-              title={variables.getMessage(
-                'modals.main.settings.sections.background.effects.title',
-              )}
-              subtitle={variables.getMessage(
-                'modals.main.settings.sections.background.effects.subtitle',
-              )}
+              title={t('modals.main.settings.sections.background.effects.title')}
+              subtitle={t('modals.main.settings.sections.background.effects.subtitle')}
               onClick={() => onSubSectionChange('effects', sectionName)}
             />
           )}
         </>
       )}
 
-      {!currentSubSection && showEffects && (
-        <DisplaySettings usingImage={usingImage} />
-      )}
+      {!currentSubSection && showEffects && <DisplaySettings usingImage={usingImage} />}
 
       {currentSubSection === 'source' && (
         <>
           <SourceSection
             backgroundType={backgroundType}
             marketplaceEnabled={marketplaceEnabled}
+            installedPhotoPacks={installedPhotoPacks}
+            totalPhotoCount={getTotalPhotoCount()}
             onTypeChange={(value) => {
-              // Clear prefetch queue when changing background type
-              localStorage.removeItem('imageQueue');
+              clearQueuesOnSettingChange('backgroundType');
               setBackgroundType(value);
             }}
+            onPhotoPackUninstall={handlePhotoPackUninstall}
+            onGoToPhotoPacks={goToPhotoPacks}
+            onToggle={handleToggle}
           />
           {getBackgroundSettings()}
         </>

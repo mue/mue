@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { MdClose } from 'react-icons/md';
 import { Button } from 'components/Elements';
 
 const FolderTaggingModal = ({ files, onConfirm, onCancel }) => {
+  const t = useT();
   const [folderName, setFolderName] = useState('');
 
   const handleConfirm = () => {
@@ -14,7 +15,7 @@ const FolderTaggingModal = ({ files, onConfirm, onCancel }) => {
     <div className="smallModal">
       <div className="shareHeader">
         <span className="title">
-          {variables.getMessage('modals.main.settings.sections.background.source.tag_images')}
+          {t('modals.main.settings.sections.background.source.tag_images')}
         </span>
         <button className="closeModal" onClick={onCancel}>
           <MdClose />
@@ -22,19 +23,15 @@ const FolderTaggingModal = ({ files, onConfirm, onCancel }) => {
       </div>
       <div className="taggingModalContent">
         <p className="subtitle">
-          {variables.getMessage('modals.main.settings.sections.background.source.tag_description', {
+          {t('modals.main.settings.sections.background.source.tag_description', {
             count: files.length,
           })}
         </p>
         <div className="taggingInput">
-          <label>
-            {variables.getMessage('modals.main.settings.sections.background.source.folder_name')}
-          </label>
+          <label>{t('modals.main.settings.sections.background.source.folder_name')}</label>
           <input
             type="text"
-            placeholder={variables.getMessage(
-              'modals.main.settings.sections.background.source.folder_placeholder',
-            )}
+            placeholder={t('modals.main.settings.sections.background.source.folder_placeholder')}
             value={folderName}
             onChange={(e) => setFolderName(e.target.value)}
             onKeyPress={(e) => {
@@ -50,12 +47,12 @@ const FolderTaggingModal = ({ files, onConfirm, onCancel }) => {
         <Button
           type="settings"
           onClick={onCancel}
-          label={variables.getMessage('modals.main.settings.buttons.cancel')}
+          label={t('modals.main.settings.buttons.cancel')}
         />
         <Button
           type="settings"
           onClick={handleConfirm}
-          label={variables.getMessage('modals.main.settings.buttons.continue')}
+          label={t('modals.main.settings.buttons.continue')}
         />
       </div>
     </div>

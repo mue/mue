@@ -1,5 +1,9 @@
 {
   "tabname": "Нова вкладка",
+  "branding": {
+    "name": "Мю",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "Доброго ранку",
@@ -12,7 +16,6 @@
     },
     "background": {
       "credit": "Фотографія зроблена",
-      "unsplash": "на Unsplash",
       "information": "Інформація",
       "download": "Завантажити'",
       "downloads": "Завантаження",
@@ -36,7 +39,17 @@
       "icon": "Іконка (необов'язково)",
       "add": "Додати",
       "name_error": "Необхідно вказати ім'я",
-      "url_error": "Необхідно вказати URL-адресу"
+      "url_error": "Необхідно вказати URL-адресу",
+      "suggested": "Suggested: {name}",
+      "name_placeholder": "Enter link name (optional)",
+      "url_placeholder": "example.com",
+      "icon_url_placeholder": "https://example.com/icon.png",
+      "icon_type_label": "Icon Type",
+      "icon_type_auto": "Auto-detect Icon",
+      "icon_type_custom_url": "Custom Icon URL",
+      "icon_type_upload": "Upload Icon",
+      "icon_type_emoji": "Emoji",
+      "icon_type_letter": "Letter Avatar"
     },
     "date": {
       "week": "Тиждень"
@@ -52,7 +65,8 @@
       "share": "Поділитися",
       "copy": "Скопіювати",
       "favourite": "Улюблене",
-      "unfavourite": "Неулюблене"
+      "unfavourite": "Неулюблене",
+      "author_info_aria": "Learn about the author of the quote."
     },
     "navbar": {
       "tooltips": {
@@ -60,7 +74,8 @@
       },
       "notes": {
         "title": "Примітки",
-        "placeholder": "Введіть тут"
+        "placeholder": "Введіть тут",
+        "export_filename": "mue-notes.txt"
       },
       "todo": {
         "title": "Todo",
@@ -84,6 +99,10 @@
         "library": "Доповнення",
         "discover": "Маркетплейс"
       },
+      "sidebar": {
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar"
+      },
       "error_boundary": {
         "title": "Помилка",
         "message": "Не вдалося завантажити цей компонент Mue",
@@ -93,7 +112,6 @@
       },
       "settings": {
         "enabled": "Увімкнено",
-        "open_knowledgebase": "Відкрита база знань",
         "additional_settings": "Додаткові налаштування",
         "reminder": {
           "title": "ЗАМІТКА",
@@ -135,6 +153,38 @@
               "change_hour_colour": "Змінити колір тексту годинника",
               "change_minute_colour": "Змінити колір хвилинного тексту",
               "change_second_colour": "Змінити другий колір тексту"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the time looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the time",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the time text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the time text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the time text"
+              }
             }
           },
           "date": {
@@ -166,6 +216,11 @@
             "author_details": "Інформація про автора",
             "custom": "Користувацька цитата",
             "custom_subtitle": "Встановіть свої власні користувацьки цитати",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
+            "suggested_packs_title": "Suggested Quote Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
             "no_quotes": "Без лапок",
             "author": "Автор",
             "custom_buttons": "Кнопки",
@@ -179,6 +234,42 @@
               "copy": "Скопіювати",
               "tweet": "Твітнути",
               "favourite": "Улюблене"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the quote looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the quote",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the quote text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the quote text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the quote text"
+              }
             }
           },
           "greeting": {
@@ -199,7 +290,39 @@
             "month": "Місяць",
             "no_events": "Немає подій",
             "no_events_description": "Додати кілька подій",
-            "add_event": "Додати подію"
+            "add_event": "Додати подію",
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the greeting looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the greeting",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the greeting text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the greeting text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the greeting text"
+              }
+            }
           },
           "background": {
             "title": "Фон",
@@ -246,6 +369,10 @@
               "title": "Джерело",
               "subtitle": "Виберіть, звідки взяти фонові зображення",
               "api": "API для фону",
+              "api_title": "API",
+              "api_mue": "Mue",
+              "api_unsplash": "Unsplash",
+              "collection_placeholder": "e.g. 123456, 654321",
               "custom_background": "Користувацький фон",
               "custom_colour": "Користувацький колір фону",
               "upload": "Вавантажити",
@@ -258,6 +385,9 @@
               "disabled": "Вимкнено",
               "loop_video": "Циклічне відео",
               "mute_video": "Вимкнути звук відео",
+              "persistent_storage_tooltip": "Request persistent storage to prevent browser from automatically clearing your images",
+              "persistent_storage_granted": "Persistent storage granted - your images are protected from eviction",
+              "persistent_storage_denied": "Persistent storage denied - images may be cleared if storage is low",
               "quality": {
                 "title": "Якість",
                 "original": "Original",
@@ -285,22 +415,42 @@
                 "name_desc": "Name (Z-A)",
                 "size_small": "File Size (Smallest)",
                 "size_large": "File Size (Largest)"
-              }
+              },
+              "pack_count": {
+                "singular": "pack",
+                "plural": "packs"
+              },
+              "photo_count": {
+                "singular": "photo",
+                "plural": "photos"
+              },
+              "get_more": "Get more"
             },
             "display": "Відображати",
             "display_subtitle": "Зміна способу завантаження фону та інформації про фотографію",
             "api": "Налаштування API",
-            "api_subtitle": "Варіанти отримання зображення із зовнішнього сервісу (API)"
+            "api_subtitle": "Варіанти отримання зображення із зовнішнього сервісу (API)",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            },
+            "installed_packs_title": "Installed Photo Packs",
+            "suggested_packs_title": "Suggested Photo Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
+            "photo_pack_settings": {
+              "title": "{name} Settings",
+              "refresh_photos": "Refresh Photos"
+            }
           },
           "search": {
             "title": "Пошук",
             "additional": "Додаткові параметри відображення та функціональності пошукового віджета",
-            "search_engine": "Пошукова система",
-            "search_engine_subtitle": "Виберіть пошукову систему в рядку пошуку",
-            "custom": "Користувацька URL-адреса пошуку",
-            "autocomplete": "Автозаповнення",
-            "autocomplete_provider": "Провайдер автозаповнення",
-            "autocomplete_provider_subtitle": "Пошукова система для автоматичного заповнення випадаючих результатів",
             "voice_search": "Голосовий пошук",
             "dropdown": "Випадаючий список пошуку",
             "focus": "Фокус на відкритій вкладці",
@@ -355,7 +505,60 @@
               "metro": "Метро"
             },
             "styling": "Стиль швидких посилань",
-            "styling_description": "Налаштувати зовнішній вигляд швидких посилань"
+            "styling_description": "Налаштувати зовнішній вигляд швидких посилань",
+            "layout": "Layout",
+            "layout_description": "Configure grid layout and organization",
+            "layout_mode": "Layout Mode",
+            "layout_grid": "Grid",
+            "layout_flex": "Flexible",
+            "layout_compact": "Compact",
+            "layout_card": "Card",
+            "grid_columns": "Grid Columns",
+            "grid_rows": "Grid Rows",
+            "grid_columns_auto": "Auto",
+            "appearance_title": "Appearance",
+            "appearance_subtitle": "Customize style and layout of quick links",
+            "display_title": "Display",
+            "display_subtitle": "Configure tooltips and tab behavior",
+            "organization_title": "Organization",
+            "organization_subtitle": "Organize links into groups",
+            "grouping": "Groups",
+            "grouping_description": "Organize quick links into groups",
+            "enable_grouping": "Enable Grouping",
+            "show_group_headers": "Show Group Headers",
+            "collapsible_groups": "Collapsible Groups",
+            "manage_groups": "Manage Groups",
+            "bookmark_sync": "Bookmark Sync",
+            "bookmark_sync_description": "Import and sync browser bookmarks",
+            "bookmark_sync_title": "Bookmark Sync",
+            "bookmark_sync_subtitle": "Automatically sync browser bookmarks to quick links",
+            "bookmark_sync_section_title": "Bookmark Sync",
+            "bookmark_sync_section_subtitle": "Import and sync browser bookmarks",
+            "enable_bookmark_sync": "Enable Bookmark Sync",
+            "sync_direction": "Sync Direction",
+            "import_only": "Import Only",
+            "two_way": "Two-Way Sync",
+            "sync_now": "Sync Now",
+            "manual_sync_title": "Manual Sync",
+            "manual_sync_subtitle": "Manually sync bookmarks now",
+            "sync_bookmarks_button": "Sync Bookmarks",
+            "syncing": "Syncing...",
+            "permission_denied": "Permission denied",
+            "sync_success": "Synced: {imported} imported, {updated} updated, {removed} removed",
+            "sync_error": "Error: {message}",
+            "icon_settings": "Icon Settings",
+            "icon_settings_description": "Configure icon behavior and fallbacks",
+            "custom_icons_enabled": "Allow Custom Icon Uploads",
+            "primary_icon_source": "Primary Icon Source",
+            "icon_type": "Icon Type",
+            "icon_auto": "Auto-detect",
+            "icon_custom_url": "Custom URL",
+            "icon_custom_upload": "Upload Image",
+            "icon_emoji": "Emoji",
+            "icon_letter": "Letter Avatar",
+            "upload_icon": "Upload Icon",
+            "group": "Group",
+            "no_group": "No Group"
           },
           "message": {
             "title": "Message",
@@ -395,27 +598,50 @@
               },
               "apps_subtitle": "Створіть ярлик для інших сайтів, які ви часто використовуєте."
             },
-            "font": {
-              "title": "Шрифт",
-              "description": "Змінити шрифт, який використовується у Mue",
-              "custom": "Користувацький шрифт",
-              "google": "Імпорт з Google Fonts",
+            "widget_font": {
+              "title": "Widget Font",
+              "description": "Change the font used for widgets on the new tab page",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
               "weight": {
-                "title": "Товщина шрифту",
-                "thin": "Тонкий",
-                "extra_light": "Дуже тонкий",
-                "light": "Світло",
-                "normal": "Нормальний",
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
                 "medium": "Medium",
-                "semi_bold": "Напівжирний",
-                "bold": "Жирний",
-                "extra_bold": "Дуже жирний"
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
               },
               "style": {
-                "title": "Стиль шрифту",
+                "title": "Font style",
                 "normal": "Normal",
                 "italic": "Italic",
-                "oblique": "Курсив"
+                "oblique": "Oblique"
+              }
+            },
+            "settings_font": {
+              "title": "Settings Font",
+              "description": "Change the font used for the settings modal",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
+              "weight": {
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "style": {
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
               }
             },
             "accessibility": {
@@ -440,6 +666,8 @@
             "title": "Додатково",
             "offline_mode": "Офлайн режим",
             "offline_subtitle": "Якщо ввімкнено, всі запити до онлайн-сервісів будуть вимкнені.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "Data",
             "data_description": "Виберіть, чи потрібно експортувати налаштування Mue на комп'ютер, імпортувати існуючий файл налаштувань або скинути налаштування до значень за замовчуванням",
             "data_subtitle": "Керуйте своїми даними на Mue.",
@@ -452,6 +680,25 @@
             "customisation": "Кастомізація",
             "custom_css": "Користувацький CSS",
             "custom_css_subtitle": "Налаштуйте стиль Mue під себе за допомогою каскадних таблиць стилів (CSS).",
+            "custom_widget": {
+              "title": "Custom Widget",
+              "subtitle": "Embed your favourite sites or tools directly into Mue with iFrames.",
+              "add": "Add Widget",
+              "new": "New Widget",
+              "edit": "Edit Widget",
+              "name": "Widget Name",
+              "url": "Widget URL",
+              "no_widgets": "No custom widgets",
+              "add_some": "Add some",
+              "render_above": "Render above other widgets",
+              "positions": {
+                "center": "Center (with other widgets)",
+                "top_left": "Top Left",
+                "top_right": "Top Right",
+                "bottom_left": "Bottom Left",
+                "bottom_right": "Bottom Right"
+              }
+            },
             "custom_js": "Користувацький JS",
             "tab_name": "Назва вкладки",
             "tab_name_subtitle": "Змініть назву вкладки, яка з'являється у вашому браузері",
@@ -490,7 +737,17 @@
           "experimental": {
             "title": "Експериментальний",
             "warning": "Ці налаштування не були повністю протестовані/реалізовані і можуть працювати некоректно!",
-            "developer": "Developer"
+            "developer": "Developer",
+            "debug_hotkey": "Debug hotkey (Ctrl + #)",
+            "debug_timeout": "Debug timeout",
+            "send_event": "Send Event",
+            "event_type": "Type",
+            "event_name": "Name",
+            "normal_toast": "Normal Toast",
+            "achievement_toast": "Achievement Unlocked Toast",
+            "toast_success": "Toasted successfully",
+            "clear_localstorage": "Clear LocalStorage",
+            "data_section": "Data"
           },
           "language": {
             "title": "Мова",
@@ -502,7 +759,8 @@
           },
           "changelog": {
             "title": "Журнал змін",
-            "by": "Автор {author}"
+            "by": "Автор {author}",
+            "iframe_title": "Changelog"
           },
           "about": {
             "title": "О нас",
@@ -530,11 +788,20 @@
             "supporters": "Підтримка",
             "no_supporters": "Наразі підтримки Муе немає",
             "photographers": "Фотографи",
-            "curators": "Творці доповнень"
+            "curators": "Творці доповнень",
+            "social": {
+              "email": "Email",
+              "twitter": "X (Twitter)",
+              "discord": "Discord"
+            },
+            "license": "Licensed under the BSD-3-Clause License",
+            "copyright": "Copyright {startYear}-{currentYear}",
+            "image_count": "{count} images"
           }
         },
         "buttons": {
           "reset": "Скинути",
+          "default": "Default",
           "import": "Імпорт",
           "export": "Експорт",
           "cancel": "Cancel",
@@ -546,52 +813,10 @@
         "title": "Marketplace",
         "by": "від {author}",
         "all": "Усе",
-        "learn_more": "Дізнатися більше",
         "photo_packs": "Набори фото",
         "quote_packs": "Набори цитат",
         "preset_settings": "Пресети налаштувань",
-        "no_items": "У цій категорії немає елементів",
-        "collection": "Колекція",
-        "explore_collection": "Дослідити колекцію",
-        "add_all": "Додати все до Муе",
         "collections": "Колекції",
-        "cant_find": "Не можете знайти те, що шукаєте?",
-        "knowledgebase_one": "Завітайте на сторінку",
-        "knowledgebase_two": "база знань",
-        "knowledgebase_three": "щоб створити свій власний.",
-        "installing": "Встановлення",
-        "product": {
-          "overview": "Огляд",
-          "information": "Інформація",
-          "last_updated": "Останнє оновлення",
-          "description": "Опис",
-          "details": "Деталі",
-          "more_from_curator": "Більше схоже на це від {name}",
-          "show_more": "Показати більше",
-          "show_less": "Показати менше",
-          "show_all": "Показати всі",
-          "showing": "Показати",
-          "no_images": "Ні. Зображення",
-          "no_quotes": "Ні. Цитати",
-          "version": "Версія",
-          "created_by": "Створено",
-          "updated_at": "Оновлено на",
-          "part_of": "Частина",
-          "explore": "Дослідити",
-          "buttons": {
-            "addtomue": "Додати до",
-            "remove": "Видалити",
-            "update_addon": "Оновлення доповнення",
-            "back": "Назад",
-            "report": "Звіт",
-            "not_available_preview": "Недоступно в режимі попереднього перегляду"
-          },
-          "not_in_language": "Це доповнення недоступне вашою мовою",
-          "third_party_api": "Це доповнення використовує сторонній API",
-          "sideload_warning": "Це доповнення було завантажено збоку.",
-          "setting": "Налаштування'",
-          "value": "Значення"
-        },
         "offline": {
           "title": "Схоже, ти не в мережі",
           "description": "Будь ласка, підключіться до Інтернету"
@@ -606,6 +831,9 @@
           "title": "Порожньо",
           "description": "Аддони не встановлені"
         },
+        "get_some": "Get Some",
+        "remove_all": "Remove all addons",
+        "recently_updated": "Recently Updated",
         "sideload": {
           "title": "Додаткове завантаження",
           "description": "Встановіть аддон Mue, якого немає на маркетплейсі, зі свого комп'ютера",
@@ -623,24 +851,7 @@
           "newest": "Встановлені (найновіші)",
           "a_z": "За алфавітом (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Створити",
-          "moved_title": "Створення доповнення переїхало!",
-          "moved_description": "Після оновлення 7.1 створення аддонів було перенесено у веб-інтерфейс",
-          "moved_button": "Незабаром...."
         }
-      }
-    },
-    "update": {
-      "title": "Оновлення",
-      "offline": {
-        "title": "Офлайн",
-        "description": "Неможливо отримати журнали оновлень в автономному режимі"
-      },
-      "error": {
-        "title": "Помилка",
-        "description": "Не вдалося підключитися до сервера"
       }
     },
     "welcome": {
@@ -710,8 +921,59 @@
     },
     "share": {
       "copy_link": "Скопіювати посилання",
-      "email": "Електронна пошта"
+      "item_type": {
+        "image": "this image",
+        "quote": "this quote",
+        "marketplace_item": "this marketplace item"
+      },
+      "social": {
+        "twitter": "X (Twitter)",
+        "facebook": "Facebook",
+        "email": "Email",
+        "wechat": "WeChat",
+        "qq": "Tencent QQ"
+      },
+      "twitter_message": "Check out {name} on @getmue",
+      "email_subject": "Check out this on Mue!",
+      "email_body": "{name} on Mue: {url}"
     }
+  },
+  "common": {
+    "navigation": {
+      "back": "Back",
+      "forward": "Forward",
+      "navigate_back": "Navigate back",
+      "navigate_forward": "Navigate forward",
+      "navigate_to": "Navigate to {item}",
+      "breadcrumb_navigation": "Breadcrumb navigation"
+    },
+    "actions": {
+      "edit": "Edit",
+      "remove": "Remove",
+      "close": "Close",
+      "send": "Send"
+    },
+    "alt_text": {
+      "preview": "Preview",
+      "location": "Location",
+      "screenshot": "Screenshot",
+      "logo": "Logo"
+    },
+    "add_translation": "Add translation",
+    "above_widgets": "Above widgets",
+    "view_mode": {
+      "grid": "Grid view",
+      "list": "List view"
+    },
+    "search_label": "Search",
+    "microphone_search": "Microphone Search"
+  },
+  "error_boundary": {
+    "title": "A critical error has occurred",
+    "message": "The new tab page could not be loaded. Please uninstall the extension and try again.",
+    "report_button": "Report Issue",
+    "sent_successfully": "Sent Successfully",
+    "support_discord": "Support Discord"
   },
   "toasts": {
     "quote": "Скопійовані квоти",
@@ -723,6 +985,7 @@
     "error": "Щось пішло не так",
     "imported": "Успішно імпортовано",
     "no_storage": "Недостатньо місця для зберігання",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Посилання скопійовано",
     "stats_reset": "Статистику скинуто"
   }

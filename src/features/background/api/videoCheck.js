@@ -1,13 +1,19 @@
 /**
- * If the URL starts with `data:video/` or ends with `.mp4`, `.webm`, or `.ogg`, then it's a video.
- * @param url - The URL of the file to be checked.
- * @returns A function that takes a url and returns a boolean.
+ * Checks if the given URL or MIME type represents a video file.
+ * Supports both URLs (data:video/, .mp4, .webm, .ogg) and MIME types (video/mp4, video/webm, video/ogg).
+ * @param urlOrMimeType - The URL or MIME type to check.
+ * @returns true if it's a video, false otherwise.
  */
-export default function videoCheck(url) {
+export default function videoCheck(urlOrMimeType) {
+  if (!urlOrMimeType) {
+    return false;
+  }
+
   return (
-    url.startsWith('data:video/') ||
-    url.endsWith('.mp4') ||
-    url.endsWith('.webm') ||
-    url.endsWith('.ogg')
+    urlOrMimeType.startsWith('data:video/') ||
+    urlOrMimeType.startsWith('video/') ||
+    urlOrMimeType.endsWith('.mp4') ||
+    urlOrMimeType.endsWith('.webm') ||
+    urlOrMimeType.endsWith('.ogg')
   );
 }

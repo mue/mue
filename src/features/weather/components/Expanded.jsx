@@ -1,4 +1,5 @@
 import { memo, useMemo } from 'react';
+import { useT } from 'contexts';
 
 import { WiHumidity, WiWindy, WiBarometer, WiCloud } from 'react-icons/wi';
 import { MdDisabledVisible } from 'react-icons/md';
@@ -47,7 +48,8 @@ const weatherTypes = {
   },
 };
 
-function Expanded({ state: { weather, icon }, weatherType, variables }) {
+function Expanded({ state: { weather, icon }, weatherType }) {
+  const t = useT();
   const enabled = useMemo(() => {
     return (setting) => {
       return (localStorage.getItem(setting) === 'true' && weatherType >= 3) || weatherType === '3';
@@ -58,7 +60,7 @@ function Expanded({ state: { weather, icon }, weatherType, variables }) {
     const { icon: Icon, key, unit, title, extra } = weatherTypes[type];
     return (
       enabled(type) && (
-        <Tooltip title={variables.getMessage(title)} placement="left">
+        <Tooltip title={t(title)} placement="left">
           <span>
             <Icon className="weatherIcon" name={icon} />
             {`${weather[key]} ${unit || ''}`}
@@ -79,9 +81,7 @@ function Expanded({ state: { weather, icon }, weatherType, variables }) {
     anyTooltipEnabled && (
       <div className="weatherExpandedInfo">
         {weatherType >= 3 && (
-          <span className="subtitle">
-            {variables.getMessage('widgets.weather.extra_information')}
-          </span>
+          <span className="subtitle">{t('widgets.weather.extra_information')}</span>
         )}
         <div className="weatherExpandedInfoItems">
           {Object.keys(weatherTypes).map((type) => (

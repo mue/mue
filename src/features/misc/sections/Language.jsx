@@ -15,35 +15,27 @@ const LanguageOptions = () => {
 
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Create language options with both translated and native names
   const languageOptions = useMemo(() => {
-    // Convert currentLanguage to ISO format (e.g., "de_DE" -> "de-DE")
     const currentLanguageISO = currentLanguage.replace('_', '-');
 
-    // Use Intl.DisplayNames to get language names in the current language
     const displayNames = new Intl.DisplayNames([currentLanguageISO], { type: 'language' });
 
     const mappedLanguages = languages.map((lang) => {
       const nativeName = lang.name;
 
-      // Convert language code to ISO format for Intl.DisplayNames
-      // e.g., "en_GB" -> "en-GB", "zh_CN" -> "zh-CN"
       const isoCode = lang.value.replace('_', '-');
       const percentage = translationPercentages[lang.value]?.percent || 0;
 
       let translatedName;
       try {
         translatedName = displayNames.of(isoCode);
-        // Simplify by removing country suffixes: "German (Germany)" → "German"
         if (translatedName) {
           translatedName = translatedName.split(' (')[0];
         }
       } catch {
-        // Fallback if the code isn't recognized
         translatedName = nativeName;
       }
 
-      // Show native name first, then translated name in brackets (greyed and smaller)
       const displayName =
         !translatedName || translatedName === nativeName ? (
           <>
@@ -67,28 +59,25 @@ const LanguageOptions = () => {
       };
     });
 
-    // Sort alphabetically by native name
     return mappedLanguages.sort((a, b) => a.nativeName.localeCompare(b.nativeName));
   }, [currentLanguage]);
 
-  // Filter languages based on search query
   const filteredLanguages = useMemo(() => {
-    if (!searchQuery.trim()) return languageOptions;
+    if (!searchQuery.trim()) {
+      return languageOptions;
+    }
     const query = searchQuery.toLowerCase();
     return languageOptions.filter((lang) => lang.searchText.includes(query));
   }, [languageOptions, searchQuery]);
 
-  // Detect system language
   const systemLanguage = useMemo(() => {
     const browserLang = navigator.language.replace('-', '_');
-    // Check exact match first, then base language
     return (
       languages.find((l) => l.value === browserLang) ||
       languages.find((l) => l.value.startsWith(browserLang.split('_')[0]))
     );
   }, []);
 
-  // Find current language option for display
   const currentLangOption = languageOptions.find((l) => l.value === currentLanguage);
 
   return (
@@ -102,7 +91,7 @@ const LanguageOptions = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Add translation
+            {t('common.add_translation')}
             <MdOutlineOpenInNew />
           </a>
         </div>
@@ -162,11 +151,11 @@ const LanguageOptions = () => {
         >
           <MdComputer style={{ fontSize: '18px', opacity: 0.8 }} />
           {t('modals.main.settings.sections.language.use_system')}
-          <span style={{ opacity: 0.6 }}>({systemLanguage.name})</span>
+          <span style={{ opacity: 0.6 }}>• {systemLanguage.name}</span>
         </button>
       )}
       <div className="languageSettings">
-        <Radio name="language" options={filteredLanguages} element=".other" />
+        <Radio name="language" options={filteredLanguages} element=".other" category="language" />
       </div>
     </>
   );

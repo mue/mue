@@ -1,3 +1,4 @@
+import { useT } from 'contexts';
 import QuoteButtons from './QuoteButtons';
 
 /**
@@ -9,8 +10,10 @@ export default function AuthorInfoLegacy({
   onCopy,
   onFavourite,
   onShare,
+  onInfo,
   isFavourited,
 }) {
+  const t = useT();
   return (
     <>
       <div>
@@ -21,7 +24,7 @@ export default function AuthorInfoLegacy({
               className="quoteAuthorLink"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Learn about the author of the quote."
+              aria-label={t('widgets.quote.author_info_aria')}
             >
               {author}
             </a>

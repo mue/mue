@@ -5,21 +5,18 @@
 export function getLocaleCode() {
   const language = localStorage.getItem('language')?.replace(/_/g, '-') || 'en-GB';
 
-  // Map language codes to their native numbering systems
   const numberingSystems = {
-    ar: 'arab', // Arabic - Eastern Arabic numerals (٠-٩)
-    fa: 'arabext', // Persian - Extended Arabic-Indic numerals (۰-۹)
-    bn: 'beng', // Bengali - Bengali numerals (০-৯)
-    hi: 'deva', // Hindi - Devanagari numerals (०-९)
-    mr: 'deva', // Marathi - Devanagari numerals
-    ne: 'deva', // Nepali - Devanagari numerals
-    ta: 'tamldec', // Tamil - Tamil numerals (௦-௯)
+    ar: 'arab',
+    fa: 'arabext',
+    bn: 'beng',
+    hi: 'deva',
+    mr: 'deva',
+    ne: 'deva',
+    ta: 'tamldec',
   };
 
-  // Get the base language code (e.g., 'ar' from 'ar-EG')
   const baseLang = language.split('-')[0];
 
-  // If this language has a native numbering system, append it
   if (numberingSystems[baseLang]) {
     return `${language}-u-nu-${numberingSystems[baseLang]}`;
   }
@@ -77,7 +74,9 @@ export function formatDigits(value) {
   }
   try {
     const numValue = typeof value === 'string' ? parseInt(value, 10) : value;
-    if (isNaN(numValue)) return String(value);
+    if (isNaN(numValue)) {
+      return String(value);
+    }
     return new Intl.NumberFormat(getLocaleCode(), {
       useGrouping: false,
     }).format(numValue);

@@ -125,7 +125,7 @@
   },
   {
     "name": "backgroundType",
-    "value": "api"
+    "value": "photo_pack"
   },
   {
     "name": "timeformat",
@@ -212,6 +212,14 @@
     "value": "quote_pack"
   },
   {
+    "name": "backgroundFrequency",
+    "value": "refresh"
+  },
+  {
+    "name": "quoteFrequency",
+    "value": "refresh"
+  },
+  {
     "name": "backgroundFilter",
     "value": "none"
   },
@@ -278,5 +286,9 @@
   {
     "name": "authorDetails",
     "value": true
+  },
+  {
+    "name": "marketplaceDDGProxy",
+    "value": false
   }
 ]

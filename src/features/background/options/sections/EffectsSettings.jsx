@@ -1,21 +1,20 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { Dropdown, Slider } from 'components/Form/Settings';
 import { Row, Content, Action } from 'components/Layout/Settings/Item';
 import values from 'utils/data/slider_values.json';
 import { backgroundImageEffects } from '../optionTypes';
 
 const EffectsSettings = ({ backgroundFilter, onFilterChange }) => {
+  const t = useT();
   return (
     <Row final={true}>
       <Content
-        title={variables.getMessage('modals.main.settings.sections.background.effects.title')}
-        subtitle={variables.getMessage(
-          'modals.main.settings.sections.background.effects.subtitle',
-        )}
+        title={t('modals.main.settings.sections.background.effects.title')}
+        subtitle={t('modals.main.settings.sections.background.effects.subtitle')}
       />
       <Action>
         <Slider
-          title={variables.getMessage('modals.main.settings.sections.background.effects.blur')}
+          title={t('modals.main.settings.sections.background.effects.blur')}
           name="blur"
           min="0"
           max="100"
@@ -26,9 +25,7 @@ const EffectsSettings = ({ backgroundFilter, onFilterChange }) => {
           element="#backgroundImage"
         />
         <Slider
-          title={variables.getMessage(
-            'modals.main.settings.sections.background.effects.brightness',
-          )}
+          title={t('modals.main.settings.sections.background.effects.brightness')}
           name="brightness"
           min="0"
           max="100"
@@ -39,9 +36,7 @@ const EffectsSettings = ({ backgroundFilter, onFilterChange }) => {
           element="#backgroundImage"
         />
         <Dropdown
-          label={variables.getMessage(
-            'modals.main.settings.sections.background.effects.filters.title',
-          )}
+          label={t('modals.main.settings.sections.background.effects.filters.title')}
           name="backgroundFilter"
           onChange={onFilterChange}
           category="backgroundeffect"
@@ -50,9 +45,7 @@ const EffectsSettings = ({ backgroundFilter, onFilterChange }) => {
         />
         {backgroundFilter !== 'none' && (
           <Slider
-            title={variables.getMessage(
-              'modals.main.settings.sections.background.effects.filters.amount',
-            )}
+            title={t('modals.main.settings.sections.background.effects.filters.amount')}
             name="backgroundFilterAmount"
             min="0"
             max="100"

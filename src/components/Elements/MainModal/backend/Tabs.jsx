@@ -1,10 +1,13 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { useT } from 'contexts/TranslationContext';
 import variables from 'config/variables';
 import Tab from './Tab';
 import ReminderInfo from '../components/ReminderInfo';
+import SidebarToggle from '../components/SidebarToggle';
 import ErrorBoundary from '../../../../features/misc/modals/ErrorBoundary';
 import { TAB_TYPES } from '../constants/tabConfig';
+import { SearchInput } from 'components/Form/Settings';
+import EventBus from 'utils/eventbus';
 
 const Tabs = ({
   children,
@@ -18,10 +21,18 @@ const Tabs = ({
 }) => {
   const t = useT();
 
-  // Find initial section from deep link if available
   const getInitialSection = () => {
     if (deepLinkData?.section && sections) {
       const section = sections.find((s) => s.name === deepLinkData.section);
+      if (section) {
+        return {
+          label: t(section.label),
+          name: section.name,
+        };
+      }
+    }
+    if (deepLinkData?.category && sections) {
+      const section = sections.find((s) => s.name === deepLinkData.category);
       if (section) {
         return {
           label: t(section.label),
@@ -36,70 +47,80 @@ const Tabs = ({
   };
 
   const initial = getInitialSection();
-  const [currentTab, setCurrentTab] = useState(initial.label);
   const [currentName, setCurrentName] = useState(initial.name);
   const [showReminder, setShowReminder] = useState(localStorage.getItem('showReminder') === 'true');
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(
+    localStorage.getItem('sidebarCollapsed') === 'true',
+  );
+  const [searchQuery, setSearchQuery] = useState('');
   const contentRef = useRef(null);
+
+  const currentTab = (() => {
+    if (sections && currentName) {
+      const section = sections.find((s) => s.name === currentName);
+      if (section) {
+        return t(section.label);
+      }
+    }
+    const child = children.find((c) => c.props.name === currentName);
+    return child?.props.label || children[0]?.props.label;
+  })();
 
   const handleTabClick = (tab, name) => {
     if (name !== currentName) {
       variables.stats.postEvent('tab', `Opened ${name}`);
     }
 
-    setCurrentTab(tab);
     setCurrentName(name);
 
-    // Scroll content to top when changing tabs
     if (contentRef.current) {
       contentRef.current.scrollTop = 0;
     }
 
-    // Notify parent of section change with both label and name
     if (onSectionChange) {
       onSectionChange(tab, name);
     }
   };
 
-  // Notify parent of initial section on mount
   useEffect(() => {
     if (onSectionChange && currentTab) {
       onSectionChange(currentTab, currentName);
     }
   }, []);
 
-  // Update labels when language changes
+  // React to deep link changes (e.g., when navigating to a suggested pack from settings)
   useEffect(() => {
-    if (sections && currentName) {
-      const section = sections.find((s) => s.name === currentName);
-      if (section) {
-        const newLabel = t(section.label);
-        setCurrentTab(newLabel);
+    if (deepLinkData && sections) {
+      const targetSection = deepLinkData.section || deepLinkData.category;
+      if (targetSection) {
+        const section = sections.find((s) => s.name === targetSection);
+        if (section && section.name !== currentName) {
+          setCurrentName(section.name);
+          if (contentRef.current) {
+            contentRef.current.scrollTop = 0;
+          }
+        }
       }
     }
-  }, [t, sections, currentName]);
+  }, [deepLinkData, sections, currentName]);
 
-  // Handle navigation trigger for settings sections (popstate)
-  useEffect(() => {
+  // useLayoutEffect is appropriate here for synchronous state updates before paint
+  useLayoutEffect(() => {
     if (navigationTrigger?.type === 'settings-section' && sections) {
       const section = sections.find((s) => s.name === navigationTrigger.data);
       if (section) {
-        const label = t(section.label);
-        setCurrentTab(label);
         setCurrentName(section.name);
-        // Scroll content to top when navigating via browser history
         if (contentRef.current) {
           contentRef.current.scrollTop = 0;
         }
       }
     }
-  }, [navigationTrigger, sections, t]);
+  }, [navigationTrigger, sections]);
 
-  // Reset to first tab when requested
-  useEffect(() => {
+  // useLayoutEffect is appropriate here for synchronous state updates before paint
+  useLayoutEffect(() => {
     if (resetToFirst) {
-      setCurrentTab(children[0]?.props.label);
       setCurrentName(children[0]?.props.name);
-      // Scroll content to top when resetting to first tab
       if (contentRef.current) {
         contentRef.current.scrollTop = 0;
       }
@@ -109,40 +130,91 @@ const Tabs = ({
     }
   }, [resetToFirst]);
 
+  useEffect(() => {
+    const handleShowReminder = () => {
+      localStorage.setItem('showReminder', 'true');
+      setShowReminder(true);
+    };
+
+    EventBus.on('showReminder', handleShowReminder);
+    return () => EventBus.off('showReminder', handleShowReminder);
+  }, []);
+
   const handleHideReminder = () => {
     localStorage.setItem('showReminder', 'false');
     setShowReminder(false);
   };
 
-  // Show sidebar for Settings and Discover tabs
+  const handleToggleSidebar = () => {
+    const newState = !sidebarCollapsed;
+    setSidebarCollapsed(newState);
+    localStorage.setItem('sidebarCollapsed', newState.toString());
+  };
+
   const showSidebar = activeTab === TAB_TYPES.SETTINGS || activeTab === TAB_TYPES.DISCOVER;
+
+  const filteredChildren = children.filter((tab) => {
+    if (!searchQuery.trim()) return true;
+    return tab.props.label.toLowerCase().includes(searchQuery.toLowerCase());
+  });
+
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'b') {
+        e.preventDefault();
+        if (showSidebar) {
+          setSidebarCollapsed((prev) => !prev);
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [showSidebar]);
 
   return (
     <div style={{ display: 'flex', width: '100%', height: '100%', overflow: 'hidden' }}>
       {showSidebar ? (
-        <div className="modalSidebar">
-          {children.map((tab, index) => (
+        <div className={`modalSidebar ${sidebarCollapsed ? 'collapsed' : 'expanded'}`}>
+          <div className="sidebarHeader">
+            <SidebarToggle isCollapsed={sidebarCollapsed} onToggle={handleToggleSidebar} />
+            {!sidebarCollapsed && activeTab === TAB_TYPES.SETTINGS && (
+              <SearchInput
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={t('widgets.search')}
+                fullWidth
+              />
+            )}
+          </div>
+          {filteredChildren.map((tab, index) => (
             <Tab
               key={index}
               currentTab={currentTab}
               label={tab.props.label}
               onClick={(nextTab) => handleTabClick(nextTab, tab.props.name)}
               navbarTab={navbar}
+              isCollapsed={sidebarCollapsed}
             />
           ))}
-          <ReminderInfo isVisible={showReminder} onHide={handleHideReminder} />
+          {searchQuery.trim() && filteredChildren.length === 0 && (
+            <div className="sidebarEmptyState">{t('widgets.weather.not_found')}</div>
+          )}
         </div>
       ) : null}
-      <div className="modalTabContent" ref={contentRef}>
-        {children.map((tab, index) => {
-          if (tab.props.label !== currentTab) {
-            return null;
-          }
+      <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
+        <ReminderInfo isVisible={showReminder} onHide={handleHideReminder} />
+        <div className="modalTabContent" ref={contentRef}>
+          {children.map((tab, index) => {
+            if (tab.props.label !== currentTab) {
+              return null;
+            }
 
-          return (
-            <ErrorBoundary key={`error-boundary-${index}`}>{tab.props.children}</ErrorBoundary>
-          );
-        })}
+            return (
+              <ErrorBoundary key={`error-boundary-${index}`}>{tab.props.children}</ErrorBoundary>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

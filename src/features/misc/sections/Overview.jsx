@@ -18,6 +18,7 @@ import {
 import { CSS } from '@dnd-kit/utilities';
 import { toast } from 'react-toastify';
 
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import Greeting from './overview_skeletons/Greeting';
 import Clock from './overview_skeletons/Clock';
@@ -29,15 +30,16 @@ import Message from './overview_skeletons/Message';
 import EventBus from 'utils/eventbus';
 
 const widget_name = {
-  greeting: variables.getMessage('modals.main.settings.sections.greeting.title'),
-  time: variables.getMessage('modals.main.settings.sections.time.title'),
-  quicklinks: variables.getMessage('modals.main.settings.sections.quicklinks.title'),
-  quote: variables.getMessage('modals.main.settings.sections.quote.title'),
-  date: variables.getMessage('modals.main.settings.sections.date.title'),
-  message: variables.getMessage('modals.main.settings.sections.message.title'),
+  greeting: t('modals.main.settings.sections.greeting.title'),
+  time: t('modals.main.settings.sections.time.title'),
+  quicklinks: t('modals.main.settings.sections.quicklinks.title'),
+  quote: t('modals.main.settings.sections.quote.title'),
+  date: t('modals.main.settings.sections.date.title'),
+  message: t('modals.main.settings.sections.message.title'),
 };
 
 const SortableItem = ({ id }) => {
+  const t = useT();
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
 
   const style = { transform: CSS.Transform.toString(transform), transition };
@@ -93,7 +95,7 @@ const Overview = () => {
     const defaultOrder = ['greeting', 'time', 'quicklinks', 'quote', 'date', 'message'];
     localStorage.setItem('order', JSON.stringify(defaultOrder));
     setItems(defaultOrder);
-    toast(variables.getMessage('toasts.reset'));
+    toast(t('toasts.reset'));
   };
 
   const enabled = (setting) => {
@@ -153,12 +155,10 @@ const Overview = () => {
 
   return (
     <>
-      <span className="mainTitle">
-        {variables.getMessage('modals.main.marketplace.product.overview')}
-      </span>
+      <span className="mainTitle">{t('modals.main.settings.sections.order.title')}</span>
       <div className="overviewGrid">
         <div>
-          <span className="title">{variables.getMessage('modals.welcome.buttons.preview')}</span>
+          <span className="title">{t('modals.welcome.buttons.preview')}</span>
           <div className="tabPreview">
             <div className="previewItem" style={{ maxWidth: '50%' }}>
               {items.map((value, index) => {
@@ -175,9 +175,7 @@ const Overview = () => {
           </div>
         </div>
         <div>
-          <span className="title">
-            {variables.getMessage('modals.main.settings.sections.order.title')}
-          </span>
+          <span className="title">{t('modals.main.settings.sections.order.title')}</span>
           <DndContext
             sensors={sensors}
             collisionDetection={closestCenter}

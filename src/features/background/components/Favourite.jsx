@@ -1,8 +1,10 @@
 import variables from 'config/variables';
+import { useT } from 'contexts';
 import { memo, useState, useCallback, useEffect, useRef } from 'react';
 import { MdStar, MdStarBorder } from 'react-icons/md';
 
 const Favourite = memo(({ tooltipText, credit, offline, pun }) => {
+  const t = useT();
   const getInitialButton = () => {
     return localStorage.getItem('favourite') ? 'favourited' : 'unfavourited';
   };
@@ -14,7 +16,7 @@ const Favourite = memo(({ tooltipText, credit, offline, pun }) => {
     if (localStorage.getItem('favourite')) {
       localStorage.removeItem('favourite');
       setFavourited('unfavourited');
-      tooltipText(variables.getMessage('widgets.quote.favourite'));
+      tooltipText(t('widgets.quote.favourite'));
       variables.stats.postEvent('feature', 'Background favourite');
     } else {
       const type = localStorage.getItem('backgroundType');
@@ -78,7 +80,7 @@ const Favourite = memo(({ tooltipText, credit, offline, pun }) => {
       }
 
       setFavourited('favourited');
-      tooltipText(variables.getMessage('widgets.quote.unfavourite'));
+      tooltipText(t('widgets.quote.unfavourite'));
       variables.stats.postEvent('feature', 'Background unfavourite');
     }
   }, [tooltipText, credit, offline, pun]);
@@ -87,8 +89,8 @@ const Favourite = memo(({ tooltipText, credit, offline, pun }) => {
     if (tooltipText) {
       tooltipText(
         localStorage.getItem('favourite')
-          ? variables.getMessage('widgets.quote.unfavourite')
-          : variables.getMessage('widgets.quote.favourite'),
+          ? t('widgets.quote.unfavourite')
+          : t('widgets.quote.favourite'),
       );
     }
   }, [tooltipText]);

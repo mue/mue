@@ -29,16 +29,10 @@ function NavbarOptions() {
       <Row final={false}>
         <Content
           title={t('modals.main.settings.additional_settings')}
-          subtitle={t(
-            'modals.main.settings.sections.appearance.navbar.additional',
-          )}
+          subtitle={t('modals.main.settings.sections.appearance.navbar.additional')}
         />
         <Action>
-          <Checkbox
-            name="navbarHover"
-            text={t(`${NAVBAR_SECTION}.hover`)}
-            category="navbar"
-          />
+          <Checkbox name="navbarHover" text={t(`${NAVBAR_SECTION}.hover`)} category="navbar" />
         </Action>
       </Row>
     );
@@ -46,9 +40,9 @@ function NavbarOptions() {
 
   const NavbarOptions = () => {
     const NavbarButton = ({ icon, messageKey, settingName }) => {
-      const [isDisabled, setIsDisabled] = useState(localStorage.getItem(settingName) !== 'true');
+      const [disabled, setDisabled] = useState(localStorage.getItem(settingName) !== 'true');
       const handleClick = () => {
-        localStorage.setItem(settingName, isDisabled);
+        localStorage.setItem(settingName, disabled);
 
         if (settingName === 'refresh') {
           setShowRefreshOptions(!showRefreshOptions);
@@ -56,11 +50,11 @@ function NavbarOptions() {
           setAppsEnabled(!appsEnabled);
         }
 
-        setIsDisabled(!isDisabled);
+        setDisabled(!disabled);
 
         variables.stats.postEvent(
           'setting',
-          `${settingName} ${!isDisabled === true ? 'enabled' : 'disabled'}`,
+          `${settingName} ${!disabled === true ? 'enabled' : 'disabled'}`,
         );
 
         EventBus.emit('refresh', 'navbar');
@@ -69,7 +63,7 @@ function NavbarOptions() {
       return (
         <button
           onClick={handleClick}
-          className={`navbarButtonOption ${isDisabled === true ? 'disabled' : ''}`}
+          className={`navbarButtonOption ${disabled === true ? 'disabled' : ''}`}
         >
           {icon}
           <span className="subtitle">{t(messageKey)}</span>
@@ -107,9 +101,7 @@ function NavbarOptions() {
 
     return (
       <Row>
-        <Content
-          title={t('modals.main.settings.sections.appearance.navbar.widgets')}
-        />
+        <Content title={t('modals.main.settings.sections.appearance.navbar.widgets')} />
         <Action>
           <div className="navbarButtonOptions">
             {buttons.map((button, index) => (
@@ -126,9 +118,7 @@ function NavbarOptions() {
       <Row final={false} inactive={!showRefreshOptions}>
         <Content
           title={t(`${NAVBAR_SECTION}.refresh`)}
-          subtitle={t(
-            'modals.main.settings.sections.appearance.navbar.refresh_subtitle',
-          )}
+          subtitle={t('modals.main.settings.sections.appearance.navbar.refresh_subtitle')}
         />
         <Action>
           <Dropdown
@@ -137,9 +127,7 @@ function NavbarOptions() {
             items={[
               {
                 value: 'page',
-                text: t(
-                  'modals.main.settings.sections.appearance.navbar.refresh_options.page',
-                ),
+                text: t('modals.main.settings.sections.appearance.navbar.refresh_options.page'),
               },
               {
                 value: 'background',

@@ -22,11 +22,15 @@ class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHan
 
         self.webView.configuration.userContentController.add(self, name: "controller")
 
-        self.webView.loadFileURL(Bundle.main.url(forResource: "Main", withExtension: "html")!, allowingReadAccessTo: Bundle.main.resourceURL!)
+        let mainUrl = Bundle.main.url(forResource: "Main", withExtension: "html")!
+        let resourceUrl = Bundle.main.resourceURL!
+        self.webView.loadFileURL(mainUrl, allowingReadAccessTo: resourceUrl)
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: extensionBundleIdentifier) { (state, error) in
+        SFSafariExtensionManager.getStateOfSafariExtension(
+            withIdentifier: extensionBundleIdentifier
+        ) { (state, error) in
             guard let state = state, error == nil else {
                 // Insert code to inform the user that something went wrong.
                 return
@@ -43,11 +47,11 @@ class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHan
     }
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        if (message.body as! String != "open-preferences") {
-            return;
+        guard let messageBody = message.body as? String, messageBody == "open-preferences" else {
+            return
         }
 
-        SFSafariApplication.showPreferencesForExtension(withIdentifier: extensionBundleIdentifier) { error in
+        SFSafariApplication.showPreferencesForExtension(withIdentifier: extensionBundleIdentifier) { _ in
             DispatchQueue.main.async {
                 NSApplication.shared.terminate(nil)
             }

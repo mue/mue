@@ -1,6 +1,15 @@
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { memo, useState, useEffect, useCallback } from 'react';
-import { MdUpdate, MdOutlineExtensionOff, MdSendTimeExtension, MdExplore } from 'react-icons/md';
+import { useNavigate } from 'react-router';
+import {
+  MdUpdate,
+  MdOutlineExtensionOff,
+  MdSendTimeExtension,
+  MdExplore,
+  MdViewModule,
+  MdViewList,
+} from 'react-icons/md';
 import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 
@@ -11,23 +20,25 @@ import { Header, CustomActions } from 'components/Layout/Settings';
 import { Button } from 'components/Elements';
 
 import { install, uninstall } from 'utils/marketplace';
-import { updateHash } from 'utils/deepLinking';
 
 const Added = memo(() => {
+  const t = useT();
+  const navigate = useNavigate();
   const [installed, setInstalled] = useState(JSON.parse(localStorage.getItem('installed')));
   const [showFailed, setShowFailed] = useState(false);
   const [failedReason, setFailedReason] = useState('');
+  const [viewType, setViewType] = useState(localStorage.getItem('addonsViewType') || 'grid');
 
   const installAddon = useCallback((input) => {
     let failedReasonText = '';
     if (!input.name) {
-      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.no_name');
+      failedReasonText = t('modals.main.addons.sideload.errors.no_name');
     } else if (!input.author) {
-      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.no_author');
+      failedReasonText = t('modals.main.addons.sideload.errors.no_author');
     } else if (!input.type) {
-      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.no_type');
+      failedReasonText = t('modals.main.addons.sideload.errors.no_type');
     } else if (!input.version) {
-      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.no_version');
+      failedReasonText = t('modals.main.addons.sideload.errors.no_version');
     } else if (
       input.type === 'photos' &&
       (!input.photos ||
@@ -37,12 +48,12 @@ const Added = memo(() => {
         !input.photos[0].photographer ||
         !input.photos[0].location)
     ) {
-      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.invalid_photos');
+      failedReasonText = t('modals.main.addons.sideload.errors.invalid_photos');
     } else if (
       input.type === 'quotes' &&
       (!input.quotes || !input.quotes.length || !input.quotes[0].quote || !input.quotes[0].author)
     ) {
-      failedReasonText = variables.getMessage('modals.main.addons.sideload.errors.invalid_quotes');
+      failedReasonText = t('modals.main.addons.sideload.errors.invalid_quotes');
     }
 
     if (failedReasonText !== '') {
@@ -52,9 +63,10 @@ const Added = memo(() => {
     }
 
     install(input.type, input, true, false);
-    toast(variables.getMessage('toasts.installed'));
+    toast(t('toasts.installed'));
     variables.stats.postEvent('marketplace', 'Sideload');
     setInstalled(JSON.parse(localStorage.getItem('installed')));
+    window.dispatchEvent(new window.Event('installedAddonsChanged'));
   }, []);
 
   const getSideloadButton = useCallback(() => {
@@ -63,24 +75,22 @@ const Added = memo(() => {
         type="settings"
         onClick={() => document.getElementById('file-input').click()}
         icon={<MdSendTimeExtension />}
-        label={variables.getMessage('modals.main.addons.sideload.title')}
+        label={t('modals.main.addons.sideload.title')}
       />
     );
   }, []);
 
-  const toggle = useCallback((type, data) => {
-    if (type === 'item') {
-      // Navigate to discover tab with the item
-      const itemId = data.name;
-      updateHash(`#discover/all?item=${itemId}`);
-      
-      // Trigger navigation
-      const event = new window.Event('popstate');
-      window.dispatchEvent(event);
-      
-      variables.stats.postEvent('marketplace', 'ItemPage viewed');
-    }
-  }, []);
+  const toggle = useCallback(
+    (type, data) => {
+      if (type === 'item') {
+        const itemId = data.id || data.name;
+        navigate(`/discover/item/${itemId}`);
+
+        variables.stats.postEvent('marketplace', 'ItemPage viewed');
+      }
+    },
+    [navigate],
+  );
 
   const sortAddons = useCallback((value, sendEvent) => {
     const installedItems = JSON.parse(localStorage.getItem('installed'));
@@ -131,9 +141,9 @@ const Added = memo(() => {
     });
 
     if (updates > 0) {
-      toast(variables.getMessage('modals.main.addons.updates_available', { amount: updates }));
+      toast(t('modals.main.addons.updates_available', { amount: updates }));
     } else {
-      toast(variables.getMessage('modals.main.addons.no_updates'));
+      toast(t('modals.main.addons.no_updates'));
     }
   }, [installed]);
 
@@ -142,19 +152,24 @@ const Added = memo(() => {
       installed.forEach((item) => {
         uninstall(item.type, item.name);
       });
-    } catch {
-      // Ignore errors during bulk uninstall
-    }
+    } catch {}
 
     localStorage.setItem('installed', JSON.stringify([]));
-    toast(variables.getMessage('toasts.uninstalled_all'));
+    toast(t('toasts.uninstalled_all'));
     setInstalled([]);
+    window.dispatchEvent(new window.Event('installedAddonsChanged'));
   }, [installed]);
 
   const handleUninstall = useCallback((type, name) => {
     uninstall(type, name);
-    toast(variables.getMessage('toasts.uninstalled'));
+    toast(t('toasts.uninstalled'));
     setInstalled(JSON.parse(localStorage.getItem('installed')));
+    window.dispatchEvent(new window.Event('installedAddonsChanged'));
+  }, []);
+
+  const handleTogglePack = useCallback((packId, newState) => {
+    const message = newState ? t('toasts.enabled') : t('toasts.disabled');
+    toast(message);
   }, []);
 
   useEffect(() => {
@@ -171,10 +186,7 @@ const Added = memo(() => {
         overlayClassName="Overlay resetoverlay"
         ariaHideApp={false}
       >
-        <SideloadFailedModal
-          modalClose={() => setShowFailed(false)}
-          reason={failedReason}
-        />
+        <SideloadFailedModal modalClose={() => setShowFailed(false)} reason={failedReason} />
       </Modal>
       <FileUpload
         id="file-input"
@@ -186,33 +198,31 @@ const Added = memo(() => {
   );
 
   const goToDiscover = useCallback(() => {
-    updateHash('#discover/all');
-    // Trigger a popstate event to update the UI
-    const event = new window.Event('popstate');
-    window.dispatchEvent(event);
+    navigate('/discover/all');
+  }, [navigate]);
+
+  const toggleViewType = useCallback((type) => {
+    setViewType(type);
+    localStorage.setItem('addonsViewType', type);
   }, []);
 
   if (installed.length === 0) {
     return (
       <>
-        <Header title={variables.getMessage('modals.main.navbar.addons')} report={false}>
+        <Header title={t('modals.main.navbar.addons')} report={false}>
           <CustomActions>{getSideloadButton()}</CustomActions>
         </Header>
         {sideLoadBackendElements()}
         <div className="emptyItems">
           <div className="emptyNewMessage">
             <MdOutlineExtensionOff />
-            <span className="title">
-              {variables.getMessage('modals.main.addons.empty.title')}
-            </span>
-            <span className="subtitle">
-              {variables.getMessage('modals.main.addons.empty.description')}
-            </span>
+            <span className="title">{t('modals.main.addons.empty.title')}</span>
+            <span className="subtitle">{t('modals.main.addons.empty.description')}</span>
             <Button
               type="collection"
               onClick={goToDiscover}
               icon={<MdExplore />}
-              label="Get Some"
+              label={t('modals.main.marketplace.addons.get_some')}
             />
           </div>
         </div>
@@ -222,7 +232,7 @@ const Added = memo(() => {
 
   return (
     <>
-      <Header title={variables.getMessage('modals.main.addons.added')} report={false}>
+      <Header title={t('modals.main.addons.added')} report={false}>
         <CustomActions>
           {getSideloadButton()}
           {sideLoadBackendElements()}
@@ -230,26 +240,55 @@ const Added = memo(() => {
             type="settings"
             onClick={updateCheck}
             icon={<MdUpdate />}
-            label={variables.getMessage('modals.main.addons.check_updates')}
+            label={t('modals.main.addons.check_updates')}
           />
           <Button
             type="settings"
             onClick={removeAll}
             icon={<MdOutlineExtensionOff />}
-            label="Remove all addons"
+            label={t('modals.main.marketplace.addons.remove_all')}
           />
         </CustomActions>
       </Header>
-      <Dropdown
-        label={variables.getMessage('modals.main.addons.sort.title')}
-        name="sortAddons"
-        onChange={(value) => sortAddons(value)}
-        items={[
-          { value: 'newest', text: variables.getMessage('modals.main.addons.sort.newest') },
-          { value: 'a-z', text: variables.getMessage('modals.main.addons.sort.a_z') },
-          { value: 'recently-updated', text: 'Recently Updated' },
-        ]}
-      />
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: '15px',
+          marginBottom: '15px',
+        }}
+      >
+        <Dropdown
+          label={t('modals.main.addons.sort.title')}
+          name="sortAddons"
+          onChange={(value) => sortAddons(value)}
+          items={[
+            { value: 'newest', text: t('modals.main.addons.sort.newest') },
+            { value: 'a-z', text: t('modals.main.addons.sort.a_z') },
+            {
+              value: 'recently-updated',
+              text: t('modals.main.marketplace.addons.recently_updated'),
+            },
+          ]}
+        />
+        <div className="view-toggle-buttons">
+          <button
+            className={`view-toggle-btn ${viewType === 'grid' ? 'active' : ''}`}
+            onClick={() => toggleViewType('grid')}
+            aria-label={t('common.view_mode.grid')}
+          >
+            <MdViewModule />
+          </button>
+          <button
+            className={`view-toggle-btn ${viewType === 'list' ? 'active' : ''}`}
+            onClick={() => toggleViewType('list')}
+            aria-label={t('common.view_mode.list')}
+          >
+            <MdViewList />
+          </button>
+        </div>
+      </div>
       <Items
         items={installed}
         isAdded={true}
@@ -257,6 +296,8 @@ const Added = memo(() => {
         toggleFunction={(input) => toggle('item', input)}
         showCreateYourOwn={false}
         onUninstall={handleUninstall}
+        onTogglePack={handleTogglePack}
+        viewType={viewType}
       />
     </>
   );

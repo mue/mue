@@ -1,74 +1,79 @@
 @use 'scss/variables' as *;
 
 .modalTabContent {
-  width: 100% !important;
+  flex: 1;
+  min-width: 0;
 
   /* button {
     @include modal-button(standard);
   } */
 
+  padding: 1rem 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 0;
+  padding-bottom: 2rem;
+
   @include themed {
-    padding: 1rem 2rem 5rem;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
     background: t($modal-background);
-
-    margin: 0;
     border-radius: t($borderRadius);
+  }
 
-    @extend %tabText;
+  @extend %tabText;
 
-    hr {
-      width: 100%;
-      background: rgb(196 196 196 / 74%);
-      outline: none;
+  hr {
+    width: 100%;
+    background: rgb(196 196 196 / 74%);
+    outline: none;
+  }
+
+  .settingsRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.4s ease-in-out;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    @include themed {
+      border-bottom: 1px solid t($modal-border);
     }
 
-    .settingsRow {
+    &.settingsNoBorder {
+      border-bottom: none;
+    }
+
+    &:last-child {
+      margin-bottom: 2rem;
+    }
+
+    .content {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      transition: 0.4s ease-in-out;
+      flex-flow: column;
+      max-width: 50%;
+      gap: 5px;
+    }
 
-      /* border-top: 1px solid #ccc; */
-      border-bottom: 1px solid #676767;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+    .action {
+      display: flex;
+      flex-flow: column;
+      align-items: flex-end;
+      width: 300px;
+      gap: 10px;
 
-      &.settingsNoBorder {
-        border-bottom: none;
+      button {
+        margin-top: 10px;
       }
 
-      &:last-child {
-        margin-bottom: 2rem;
-      }
-
-      .content {
+      .link {
+        margin-top: 10px;
         display: flex;
-        flex-flow: column;
-        max-width: 50%;
-      }
-
-      .action {
-        display: flex;
-        flex-flow: column;
-        align-items: flex-end;
-        width: 300px;
-
-        button {
-          margin-top: 10px;
-        }
-
-        .link {
-          margin-top: 10px;
-          display: flex;
-          flex-flow: row;
-          gap: 15px;
-          align-items: center;
-        }
+        flex-flow: row;
+        gap: 15px;
+        align-items: center;
       }
     }
   }
@@ -77,7 +82,7 @@
 .resetDataButtonsLayout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
+  gap: 20px;
 
   :nth-child(1) {
     grid-column: span 2;
@@ -246,7 +251,13 @@ table {
   }
 
   .messageAction {
-    float: right;
+    [dir='ltr'] & {
+      float: right;
+    }
+
+    [dir='rtl'] & {
+      float: left;
+    }
   }
 }
 
@@ -270,7 +281,7 @@ table {
 
   hr {
     height: 100%;
-    margin-right: 5px;
+    margin-inline-end: 5px;
 
     @include themed {
       border-color: t($modal-secondaryColour);
@@ -285,8 +296,7 @@ table {
   transition: 0.5s;
   cursor: pointer;
   border: 0;
-  padding-left: 10px;
-  padding-right: 5px;
+  padding-inline: 10px 5px;
 
   input[type='tel'],
   input[type='number'] {

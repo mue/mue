@@ -17,7 +17,6 @@ export async function createBlobUrl(url) {
     const blob = await response.blob();
     return URL.createObjectURL(blob);
   } catch {
-    // Silently fail - we'll use direct URL as fallback
     return null;
   }
 }

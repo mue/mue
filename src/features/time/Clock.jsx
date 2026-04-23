@@ -8,11 +8,12 @@ import EventBus from 'utils/eventbus';
 
 import './clock.scss';
 
-// Helper function to format padded time values while preserving padding
 const formatPaddedDigits = (value) => {
   const str = String(value);
-  // Format each digit individually to preserve padding with locale numerals
-  return str.split('').map(digit => formatDigits(digit)).join('');
+  return str
+    .split('')
+    .map((digit) => formatDigits(digit))
+    .join('');
 };
 
 const Clock = () => {
@@ -51,7 +52,6 @@ const Clock = () => {
           setTime(now);
           break;
         default: {
-          // Default clock
           let time,
             sec = '';
           const zero = localStorage.getItem('zero');
@@ -113,7 +113,13 @@ const Clock = () => {
 
   useEffect(() => {
     const handleRefresh = (data) => {
-      if (data === 'clock' || data === 'timezone') {
+      if (
+        data === 'clock' ||
+        data === 'timezone' ||
+        data === 'language' ||
+        data === 'other' ||
+        data === 'welcomeLanguage'
+      ) {
         if (localStorage.getItem('time') === 'false') {
           setDisplay('none');
           return;
@@ -135,7 +141,7 @@ const Clock = () => {
 
     EventBus.on('refresh', handleRefresh);
     return () => {
-      EventBus.off('refresh');
+      EventBus.off('refresh', handleRefresh);
       if (timerRef.current) {
         clearTimeout(timerRef.current);
       }

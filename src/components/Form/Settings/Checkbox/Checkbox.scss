@@ -41,6 +41,7 @@
     flex: 1;
     transition: color 0.2s ease;
     pointer-events: none;
+    font-size: 1rem;
 
     @include themed {
       color: t($color);
@@ -74,7 +75,7 @@
       transform: scale(0.95);
 
       @include themed {
-        box-shadow: 0 0 0 4px rgba(255, 92, 37, 0.1);
+        box-shadow: 0 0 0 4px rgb(255 92 37 / 10%);
       }
     }
 
@@ -90,7 +91,7 @@
     }
 
     svg {
-      font-size: 18px;
+      font-size: 1.125rem;
       color: white;
     }
   }

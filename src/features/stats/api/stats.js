@@ -4,15 +4,14 @@ import variables from 'config/variables';
 
 export default class Stats {
   static async achievementTrigger(stats) {
-    // Disable achievements in preview mode
     if (localStorage.getItem('showWelcome') === 'true') {
       return;
     }
 
     const newAchievement = newAchievements(stats);
-    newAchievement.forEach((achievement) => {
+    for (const achievement of newAchievement) {
       if (achievement) {
-        const { name } = getLocalisedAchievementData(achievement.id);
+        const { name } = await getLocalisedAchievementData(achievement.id);
         toast.info(
           `🏆 ${variables.getMessage('modals.main.settings.sections.stats.achievement_unlocked', { name: name })}`,
           {
@@ -21,7 +20,7 @@ export default class Stats {
           },
         );
       }
-    });
+    }
   }
 
   /**

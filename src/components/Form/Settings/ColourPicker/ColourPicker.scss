@@ -1,0 +1,101 @@
+@use 'scss/variables' as *;
+
+.colour-picker {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 8px;
+
+  .colour-picker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .colour-picker-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    @include themed {
+      color: t($subColor);
+    }
+  }
+
+  .colour-picker-reset {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+
+    @include themed {
+      color: t($link);
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    svg {
+      font-size: 0.75rem;
+    }
+  }
+
+  .colour-picker-control {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 56px;
+    padding: 0 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+
+    @include themed {
+      background: t($modal-sidebar);
+      border: 1px solid t($modal-sidebarActive);
+      border-radius: t($borderRadius);
+      color: t($color);
+
+      &:hover {
+        border-color: t($color);
+      }
+    }
+  }
+
+  .colour-picker-swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: box-shadow 0.2s ease;
+
+    @include themed {
+      box-shadow: 0 0 0 1px t($modal-sidebarActive);
+    }
+  }
+
+  .colour-picker-value {
+    flex: 1;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+
+  .colour-picker-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: -1;
+  }
+}

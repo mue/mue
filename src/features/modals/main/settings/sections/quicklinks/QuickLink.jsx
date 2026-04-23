@@ -1,9 +1,10 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 
 import { MdEdit, MdCancel } from 'react-icons/md';
 import { Button } from 'components/Elements';
 
 const QuickLink = ({ item, deleteLink, startEditLink }) => {
+  const t = useT();
   let target,
     rel = null;
   if (localStorage.getItem('quicklinksnewtab') === 'true') {
@@ -56,13 +57,13 @@ const QuickLink = ({ item, deleteLink, startEditLink }) => {
             type="settings"
             onClick={() => startEditLink(item)}
             icon={<MdEdit />}
-            label={variables.getMessage('modals.main.settings.sections.quicklinks.edit')}
+            label={t('modals.main.settings.sections.quicklinks.edit')}
           />
           <Button
             type="settings"
             onClick={(e) => deleteLink(item.key, e)}
             icon={<MdCancel />}
-            label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+            label={t('modals.main.marketplace.product.buttons.remove')}
           />
         </div>
       </div>

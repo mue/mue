@@ -7,70 +7,87 @@ import {
   useMemo,
   useRef,
 } from 'react';
-import { initTranslations, translations } from 'lib/translations';
+import {
+  initTranslations,
+  loadTranslationWithFallback,
+  getLoadedTranslation,
+} from 'lib/translations';
 import variables from 'config/variables';
 import EventBus from 'utils/eventbus';
 
+const RTL_LANGUAGES = ['ar', 'arz', 'azb', 'fa', 'peo'];
+const isRTLLanguage = (lang) => RTL_LANGUAGES.includes(lang.split('_')[0]);
+
 const TranslationContext = createContext();
 
-export function TranslationProvider({ children, initialLanguage }) {
+export function TranslationProvider({ children, initialLanguage, initialTranslations }) {
   const [currentLanguage, setCurrentLanguage] = useState(initialLanguage);
-  const i18nInstance = useRef(initTranslations(initialLanguage));
+  const [isLoading, setIsLoading] = useState(false);
+  const i18nInstance = useRef(initTranslations(initialLanguage, initialTranslations));
 
-  // Update i18n instance when language changes
   useEffect(() => {
-    if (currentLanguage !== initialLanguage) {
-      i18nInstance.current = initTranslations(currentLanguage);
-    }
     variables.language = i18nInstance.current;
     variables.languagecode = currentLanguage;
     document.documentElement.lang = currentLanguage.replace('_', '-');
-  }, [currentLanguage, initialLanguage]);
+    document.documentElement.dir = isRTLLanguage(currentLanguage) ? 'rtl' : 'ltr';
+  }, [currentLanguage]);
 
-  // Change language function
   const changeLanguage = useCallback(
-    (newLanguage) => {
-      // Update the i18n instance
-      i18nInstance.current = initTranslations(newLanguage);
-      variables.language = i18nInstance.current;
-      variables.languagecode = newLanguage;
-      document.documentElement.lang = newLanguage.replace('_', '-');
+    async (newLanguage) => {
+      setIsLoading(true);
+      try {
+        const translations = await loadTranslationWithFallback(newLanguage);
+        const newI18n = initTranslations(newLanguage, translations);
 
-      // Update tab name if it's still the default
-      const currentTabName = localStorage.getItem('tabName');
-      const oldDefaultTabName = i18nInstance.current?.getMessage(currentLanguage, 'tabname');
+        const currentTabName = localStorage.getItem('tabName');
+        const oldDefaultTabName = i18nInstance.current?.getMessage(currentLanguage, 'tabname');
 
-      if (currentTabName === oldDefaultTabName || !currentTabName) {
-        const newTabName =
-          translations[newLanguage.replace('-', '_')]?.tabname ||
-          i18nInstance.current?.getMessage(newLanguage, 'tabname') ||
-          'Mue';
-        localStorage.setItem('tabName', newTabName);
-        document.title = newTabName;
+        i18nInstance.current = newI18n;
+        variables.language = newI18n;
+        variables.languagecode = newLanguage;
+        document.documentElement.lang = newLanguage.replace('_', '-');
+        document.documentElement.dir = isRTLLanguage(newLanguage) ? 'rtl' : 'ltr';
+
+        if (currentTabName === oldDefaultTabName || !currentTabName) {
+          const loadedTranslation = getLoadedTranslation(newLanguage);
+          const newTabName =
+            loadedTranslation?.tabname || newI18n.getMessage(newLanguage, 'tabname') || 'Mue';
+          localStorage.setItem('tabName', newTabName);
+          document.title = newTabName;
+        }
+
+        localStorage.setItem('language', newLanguage);
+        localStorage.removeItem('currentWeather');
+
+        setCurrentLanguage(newLanguage);
+      } catch (error) {
+        console.error('Failed to load language:', error);
+      } finally {
+        setIsLoading(false);
       }
-
-      // Update language in localStorage
-      localStorage.setItem('language', newLanguage);
-
-      // Clear weather cache so it refreshes with the new language
-      localStorage.removeItem('currentWeather');
-
-      // Update state to trigger re-render
-      setCurrentLanguage(newLanguage);
     },
     [currentLanguage],
   );
 
-  // Single translation function - the main API
   const t = useCallback(
     (key, optional = {}) => {
-      if (!i18nInstance.current) return key;
-      return i18nInstance.current.getMessage(currentLanguage, key, optional);
+      if (!i18nInstance.current) {
+        return key;
+      }
+      try {
+        return i18nInstance.current.getMessage(currentLanguage, key, optional);
+      } catch (error) {
+        // Fallback to en_GB if the current language is not loaded yet
+        try {
+          return i18nInstance.current.getMessage('en_GB', key, optional);
+        } catch {
+          return key;
+        }
+      }
     },
     [currentLanguage],
   );
 
-  // Listen for EventBus language change events (for backward compatibility)
   useEffect(() => {
     const handleLanguageChange = (data) => {
       if (data?.language) {
@@ -85,7 +102,6 @@ export function TranslationProvider({ children, initialLanguage }) {
     };
   }, [changeLanguage]);
 
-  // Update variables.getMessage for backward compatibility
   useEffect(() => {
     variables.getMessage = (key, optional = {}) => t(key, optional);
   }, [t]);
@@ -93,11 +109,12 @@ export function TranslationProvider({ children, initialLanguage }) {
   const value = useMemo(
     () => ({
       language: currentLanguage,
-      languagecode: currentLanguage, // Alias for backward compatibility
+      languagecode: currentLanguage,
       changeLanguage,
+      isLoading,
       t,
     }),
-    [currentLanguage, changeLanguage, t],
+    [currentLanguage, changeLanguage, isLoading, t],
   );
 
   return <TranslationContext.Provider value={value}>{children}</TranslationContext.Provider>;
@@ -111,7 +128,6 @@ export function useTranslation() {
   return context;
 }
 
-// Convenience hook - just returns the t function
 export function useT() {
   const { t } = useTranslation();
   return t;

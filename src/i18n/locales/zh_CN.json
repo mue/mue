@@ -1,5 +1,9 @@
 {
   "tabname": "新标签页",
+  "branding": {
+    "name": "沐页",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "早上好",
@@ -12,7 +16,6 @@
     },
     "background": {
       "credit": "图像作者：",
-      "unsplash": "@ Unsplash",
       "information": "信息",
       "download": "下载",
       "downloads": "下载",
@@ -36,7 +39,17 @@
       "icon": "图标 (可选)",
       "add": "添加",
       "name_error": "请输入名称",
-      "url_error": "请输入链接"
+      "url_error": "请输入链接",
+      "suggested": "Suggested: {name}",
+      "name_placeholder": "Enter link name (optional)",
+      "url_placeholder": "example.com",
+      "icon_url_placeholder": "https://example.com/icon.png",
+      "icon_type_label": "Icon Type",
+      "icon_type_auto": "Auto-detect Icon",
+      "icon_type_custom_url": "Custom Icon URL",
+      "icon_type_upload": "Upload Icon",
+      "icon_type_emoji": "Emoji",
+      "icon_type_letter": "Letter Avatar"
     },
     "date": {
       "week": "周"
@@ -52,7 +65,8 @@
       "share": "分享",
       "copy": "复制",
       "favourite": "收藏",
-      "unfavourite": "不感兴趣"
+      "unfavourite": "不感兴趣",
+      "author_info_aria": "Learn about the author of the quote."
     },
     "navbar": {
       "tooltips": {
@@ -60,7 +74,8 @@
       },
       "notes": {
         "title": "便签",
-        "placeholder": "请键入内容"
+        "placeholder": "请键入内容",
+        "export_filename": "mue-notes.txt"
       },
       "todo": {
         "title": "计划任务",
@@ -84,6 +99,10 @@
         "library": "我的插件",
         "discover": "插件市场"
       },
+      "sidebar": {
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar"
+      },
       "error_boundary": {
         "title": "错误",
         "message": "无法载入该Mue组件",
@@ -93,7 +112,6 @@
       },
       "settings": {
         "enabled": "已启用",
-        "open_knowledgebase": "打开知识库",
         "additional_settings": "更多设置",
         "reminder": {
           "title": "注意",
@@ -135,6 +153,38 @@
               "change_hour_colour": "选择小时数颜色",
               "change_minute_colour": "选择分钟数颜色",
               "change_second_colour": "选择秒钟数颜色"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the time looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the time",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the time text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the time text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the time text"
+              }
             }
           },
           "date": {
@@ -166,6 +216,11 @@
             "author_details": "作者详情",
             "custom": "自定义名言",
             "custom_subtitle": "自定义名言",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
+            "suggested_packs_title": "Suggested Quote Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
             "no_quotes": "没有名言",
             "author": "作者",
             "custom_buttons": "按钮",
@@ -179,6 +234,42 @@
               "copy": "显示复制按钮",
               "tweet": "显示发推按钮",
               "favourite": "显示收藏按钮"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the quote looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the quote",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the quote text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the quote text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the quote text"
+              }
             }
           },
           "greeting": {
@@ -199,7 +290,39 @@
             "month": "月",
             "no_events": "没有事件",
             "no_events_description": "试着添加一些事件",
-            "add_event": "添加事件"
+            "add_event": "添加事件",
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the greeting looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the greeting",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the greeting text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the greeting text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the greeting text"
+              }
+            }
           },
           "background": {
             "title": "背景",
@@ -246,6 +369,10 @@
               "title": "来源",
               "subtitle": "选择背景图片来与那",
               "api": "背景来源",
+              "api_title": "API",
+              "api_mue": "Mue",
+              "api_unsplash": "Unsplash",
+              "collection_placeholder": "e.g. 123456, 654321",
               "custom_background": "自定义背景 (支持图片/视频)",
               "custom_colour": "自定义背景颜色",
               "upload": "选择",
@@ -258,6 +385,9 @@
               "disabled": "已禁用",
               "loop_video": "循环播放",
               "mute_video": "静音",
+              "persistent_storage_tooltip": "Request persistent storage to prevent browser from automatically clearing your images",
+              "persistent_storage_granted": "Persistent storage granted - your images are protected from eviction",
+              "persistent_storage_denied": "Persistent storage denied - images may be cleared if storage is low",
               "quality": {
                 "title": "画质",
                 "original": "原画",
@@ -285,22 +415,42 @@
                 "name_desc": "Name (Z-A)",
                 "size_small": "File Size (Smallest)",
                 "size_large": "File Size (Largest)"
-              }
+              },
+              "pack_count": {
+                "singular": "pack",
+                "plural": "packs"
+              },
+              "photo_count": {
+                "singular": "photo",
+                "plural": "photos"
+              },
+              "get_more": "Get more"
             },
             "display": "显示",
             "display_subtitle": "Change how background and photo information are loaded",
             "api": "API Settings",
-            "api_subtitle": "Options for getting an image from an external service (API)"
+            "api_subtitle": "Options for getting an image from an external service (API)",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            },
+            "installed_packs_title": "Installed Photo Packs",
+            "suggested_packs_title": "Suggested Photo Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
+            "photo_pack_settings": {
+              "title": "{name} Settings",
+              "refresh_photos": "Refresh Photos"
+            }
           },
           "search": {
             "title": "搜索栏",
             "additional": "Additional options for search widget display and functionality",
-            "search_engine": "搜索引擎",
-            "search_engine_subtitle": "Choose search engine to use in the search bar",
-            "custom": "自定义搜索链接",
-            "autocomplete": "搜索联想",
-            "autocomplete_provider": "联想功能提供引擎",
-            "autocomplete_provider_subtitle": "Search engine to use for autocomplete dropdown results",
             "voice_search": "语音搜索",
             "dropdown": "搜索框左侧显示搜索引擎选择框",
             "focus": "Focus on tab open",
@@ -355,7 +505,60 @@
               "metro": "Metro"
             },
             "styling": "Quick Links Styling",
-            "styling_description": "Customise Quick Links appearance"
+            "styling_description": "Customise Quick Links appearance",
+            "layout": "Layout",
+            "layout_description": "Configure grid layout and organization",
+            "layout_mode": "Layout Mode",
+            "layout_grid": "Grid",
+            "layout_flex": "Flexible",
+            "layout_compact": "Compact",
+            "layout_card": "Card",
+            "grid_columns": "Grid Columns",
+            "grid_rows": "Grid Rows",
+            "grid_columns_auto": "Auto",
+            "appearance_title": "Appearance",
+            "appearance_subtitle": "Customize style and layout of quick links",
+            "display_title": "Display",
+            "display_subtitle": "Configure tooltips and tab behavior",
+            "organization_title": "Organization",
+            "organization_subtitle": "Organize links into groups",
+            "grouping": "Groups",
+            "grouping_description": "Organize quick links into groups",
+            "enable_grouping": "Enable Grouping",
+            "show_group_headers": "Show Group Headers",
+            "collapsible_groups": "Collapsible Groups",
+            "manage_groups": "Manage Groups",
+            "bookmark_sync": "Bookmark Sync",
+            "bookmark_sync_description": "Import and sync browser bookmarks",
+            "bookmark_sync_title": "Bookmark Sync",
+            "bookmark_sync_subtitle": "Automatically sync browser bookmarks to quick links",
+            "bookmark_sync_section_title": "Bookmark Sync",
+            "bookmark_sync_section_subtitle": "Import and sync browser bookmarks",
+            "enable_bookmark_sync": "Enable Bookmark Sync",
+            "sync_direction": "Sync Direction",
+            "import_only": "Import Only",
+            "two_way": "Two-Way Sync",
+            "sync_now": "Sync Now",
+            "manual_sync_title": "Manual Sync",
+            "manual_sync_subtitle": "Manually sync bookmarks now",
+            "sync_bookmarks_button": "Sync Bookmarks",
+            "syncing": "Syncing...",
+            "permission_denied": "Permission denied",
+            "sync_success": "Synced: {imported} imported, {updated} updated, {removed} removed",
+            "sync_error": "Error: {message}",
+            "icon_settings": "Icon Settings",
+            "icon_settings_description": "Configure icon behavior and fallbacks",
+            "custom_icons_enabled": "Allow Custom Icon Uploads",
+            "primary_icon_source": "Primary Icon Source",
+            "icon_type": "Icon Type",
+            "icon_auto": "Auto-detect",
+            "icon_custom_url": "Custom URL",
+            "icon_custom_upload": "Upload Image",
+            "icon_emoji": "Emoji",
+            "icon_letter": "Letter Avatar",
+            "upload_icon": "Upload Icon",
+            "group": "Group",
+            "no_group": "No Group"
           },
           "message": {
             "title": "消息",
@@ -395,27 +598,50 @@
               },
               "apps_subtitle": "Create a shortcut of your other commonly used websites."
             },
-            "font": {
-              "title": "字体",
-              "description": "Change the font used in Mue",
-              "custom": "自定义字体",
-              "google": "从 Google Fonts 导入",
+            "widget_font": {
+              "title": "Widget Font",
+              "description": "Change the font used for widgets on the new tab page",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
               "weight": {
-                "title": "字体粗细",
-                "thin": "极细",
-                "extra_light": "细字",
-                "light": "较细",
-                "normal": "一般",
-                "medium": "中等",
-                "semi_bold": "较粗",
-                "bold": "粗体",
-                "extra_bold": "加粗"
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
               },
               "style": {
-                "title": "字体样式",
-                "normal": "常规",
-                "italic": "意大利斜体",
-                "oblique": "伪斜体"
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              }
+            },
+            "settings_font": {
+              "title": "Settings Font",
+              "description": "Change the font used for the settings modal",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
+              "weight": {
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "style": {
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
               }
             },
             "accessibility": {
@@ -440,6 +666,8 @@
             "title": "高级",
             "offline_mode": "启用离线模式",
             "offline_subtitle": "When enabled, all requests to online services will be disabled.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "数据和设置",
             "data_description": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
             "data_subtitle": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
@@ -452,6 +680,25 @@
             "customisation": "自定义",
             "custom_css": "自定义 CSS",
             "custom_css_subtitle": "Make Mue's styling customised to you with Cascading Style Sheets (CSS).",
+            "custom_widget": {
+              "title": "Custom Widget",
+              "subtitle": "Embed your favourite sites or tools directly into Mue with iFrames.",
+              "add": "Add Widget",
+              "new": "New Widget",
+              "edit": "Edit Widget",
+              "name": "Widget Name",
+              "url": "Widget URL",
+              "no_widgets": "No custom widgets",
+              "add_some": "Add some",
+              "render_above": "Render above other widgets",
+              "positions": {
+                "center": "Center (with other widgets)",
+                "top_left": "Top Left",
+                "top_right": "Top Right",
+                "bottom_left": "Bottom Left",
+                "bottom_right": "Bottom Right"
+              }
+            },
             "custom_js": "自定义 JS",
             "tab_name": "新标签页名称",
             "tab_name_subtitle": "Change the name of the tab that appears in your browser",
@@ -490,7 +737,17 @@
           "experimental": {
             "title": "实验性功能",
             "warning": "以下设置仍未完成编写或测试，可能无法正常运作！",
-            "developer": "开发者"
+            "developer": "开发者",
+            "debug_hotkey": "Debug hotkey (Ctrl + #)",
+            "debug_timeout": "Debug timeout",
+            "send_event": "Send Event",
+            "event_type": "Type",
+            "event_name": "Name",
+            "normal_toast": "Normal Toast",
+            "achievement_toast": "Achievement Unlocked Toast",
+            "toast_success": "Toasted successfully",
+            "clear_localstorage": "Clear LocalStorage",
+            "data_section": "Data"
           },
           "language": {
             "title": "语言",
@@ -502,7 +759,8 @@
           },
           "changelog": {
             "title": "更新日志",
-            "by": "By {author}"
+            "by": "By {author}",
+            "iframe_title": "Changelog"
           },
           "about": {
             "title": "关于",
@@ -530,11 +788,20 @@
             "supporters": "支持者",
             "no_supporters": "There are currently no Mue supporters",
             "photographers": "背景摄影者",
-            "curators": "Add-on creators"
+            "curators": "Add-on creators",
+            "social": {
+              "email": "Email",
+              "twitter": "X (Twitter)",
+              "discord": "Discord"
+            },
+            "license": "Licensed under the BSD-3-Clause License",
+            "copyright": "Copyright {startYear}-{currentYear}",
+            "image_count": "{count} images"
           }
         },
         "buttons": {
           "reset": "重置",
+          "default": "Default",
           "import": "导入",
           "export": "导出",
           "cancel": "Cancel",
@@ -546,52 +813,10 @@
         "title": "Marketplace",
         "by": "by {author}",
         "all": "All",
-        "learn_more": "Learn More",
         "photo_packs": "图片包",
         "quote_packs": "名言包",
         "preset_settings": "预设设定",
-        "no_items": "本类别为空",
-        "collection": "Collection",
-        "explore_collection": "Explore Collection",
-        "add_all": "Add All To Mue",
         "collections": "Collections",
-        "cant_find": "Can't find what you're looking for?",
-        "knowledgebase_one": "Visit the",
-        "knowledgebase_two": "knowledgebase",
-        "knowledgebase_three": "to create your own.",
-        "installing": "Installing",
-        "product": {
-          "overview": "总览",
-          "information": "信息",
-          "last_updated": "更新日期",
-          "description": "Description",
-          "details": "Details",
-          "more_from_curator": "More like this from {name}",
-          "show_more": "Show More",
-          "show_less": "Show Less",
-          "show_all": "Show All",
-          "showing": "Showing",
-          "no_images": "No. Images",
-          "no_quotes": "No. Quotes",
-          "version": "版本",
-          "created_by": "Created by",
-          "updated_at": "Updated on",
-          "part_of": "Part of",
-          "explore": "Explore",
-          "buttons": {
-            "addtomue": "添加至 Mue",
-            "remove": "卸载",
-            "update_addon": "Update Add-on",
-            "back": "Back",
-            "report": "Report",
-            "not_available_preview": "Unavailable on Preview"
-          },
-          "not_in_language": "This add-on is not in your language",
-          "third_party_api": "This add-on uses a third-party API",
-          "sideload_warning": "This add-on has been sideloaded.",
-          "setting": "Setting",
-          "value": "Value"
-        },
         "offline": {
           "title": "您目前似乎离线",
           "description": "请连接到互联网。"
@@ -606,6 +831,9 @@
           "title": "这里空空如也",
           "description": "请访问插件市场来添加插件。"
         },
+        "get_some": "Get Some",
+        "remove_all": "Remove all addons",
+        "recently_updated": "Recently Updated",
         "sideload": {
           "title": "上传插件",
           "description": "Install a Mue addon not on the marketplace from your computer",
@@ -623,24 +851,7 @@
           "newest": "安装过 (从新到旧)",
           "a_z": "首字母 (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "创建",
-          "moved_title": "Create add-on has moved!",
-          "moved_description": "Following the 7.1 update, the creation of addons has now moved to the web UI",
-          "moved_button": "Get Started"
         }
-      }
-    },
-    "update": {
-      "title": "更新日志",
-      "offline": {
-        "title": "离线模式已启用",
-        "description": "不能从官网获取更新日志"
-      },
-      "error": {
-        "title": "错误",
-        "description": "无法连接到服务器"
       }
     },
     "welcome": {
@@ -710,8 +921,59 @@
     },
     "share": {
       "copy_link": "Copy link",
-      "email": "Email"
+      "item_type": {
+        "image": "this image",
+        "quote": "this quote",
+        "marketplace_item": "this marketplace item"
+      },
+      "social": {
+        "twitter": "X (Twitter)",
+        "facebook": "Facebook",
+        "email": "Email",
+        "wechat": "WeChat",
+        "qq": "Tencent QQ"
+      },
+      "twitter_message": "Check out {name} on @getmue",
+      "email_subject": "Check out this on Mue!",
+      "email_body": "{name} on Mue: {url}"
     }
+  },
+  "common": {
+    "navigation": {
+      "back": "Back",
+      "forward": "Forward",
+      "navigate_back": "Navigate back",
+      "navigate_forward": "Navigate forward",
+      "navigate_to": "Navigate to {item}",
+      "breadcrumb_navigation": "Breadcrumb navigation"
+    },
+    "actions": {
+      "edit": "Edit",
+      "remove": "Remove",
+      "close": "Close",
+      "send": "Send"
+    },
+    "alt_text": {
+      "preview": "Preview",
+      "location": "Location",
+      "screenshot": "Screenshot",
+      "logo": "Logo"
+    },
+    "add_translation": "Add translation",
+    "above_widgets": "Above widgets",
+    "view_mode": {
+      "grid": "Grid view",
+      "list": "List view"
+    },
+    "search_label": "Search",
+    "microphone_search": "Microphone Search"
+  },
+  "error_boundary": {
+    "title": "A critical error has occurred",
+    "message": "The new tab page could not be loaded. Please uninstall the extension and try again.",
+    "report_button": "Report Issue",
+    "sent_successfully": "Sent Successfully",
+    "support_discord": "Support Discord"
   },
   "toasts": {
     "quote": "名言已复制",
@@ -723,6 +985,7 @@
     "error": "发生错误",
     "imported": "导入成功",
     "no_storage": "Not enough storage",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Link copied",
     "stats_reset": "Stats reset"
   }

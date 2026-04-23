@@ -1,7 +1,8 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 
 import { MdEdit, MdCancel, MdDragHandle } from 'react-icons/md';
 import { Button } from 'components/Elements';
+import { SmartIcon } from 'components/Elements/SmartIcon';
 
 const QuickLink = ({
   item,
@@ -15,6 +16,7 @@ const QuickLink = ({
   isDragOver = false,
   isDragging = false,
 }) => {
+  const t = useT();
   let target,
     rel = null;
   if (localStorage.getItem('quicklinksnewtab') === 'true') {
@@ -39,11 +41,6 @@ const QuickLink = ({
     );
   }
 
-  const img =
-    item.icon ||
-    'https://icon.horse/icon/ ' + item.url.replace('https://', '').replace('http://', '');
-
-  // Compose classes for drag state
   const rootClass = `messageMap ${isDragging ? 'dragging' : ''} ${isDragOver ? 'drag-over' : ''}`;
 
   return (
@@ -60,12 +57,7 @@ const QuickLink = ({
       </div>
 
       <div className="icon">
-        <img
-          src={img}
-          alt={item.name}
-          draggable={false}
-          style={{ height: '30px', width: '30px' }}
-        />
+        <SmartIcon item={item} size={30} />
       </div>
       <div className="messageText">
         <div className="title">{item.name}</div>
@@ -81,13 +73,13 @@ const QuickLink = ({
             type="settings"
             onClick={() => startEditLink(item)}
             icon={<MdEdit />}
-            label={variables.getMessage('modals.main.settings.sections.quicklinks.edit')}
+            label={t('modals.main.settings.sections.quicklinks.edit')}
           />
           <Button
             type="settings"
             onClick={(e) => deleteLink(item.key, e)}
             icon={<MdCancel />}
-            label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+            label={t('modals.main.marketplace.product.buttons.remove')}
           />
         </div>
       </div>

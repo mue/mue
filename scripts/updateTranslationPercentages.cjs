@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
-// Language code mappings between Weblate and Mue
 const CODE_MAPPINGS = {
   de: 'de_DE',
   id: 'id_ID',
@@ -69,7 +68,7 @@ async function updateTranslationPercentages() {
     fs.writeFileSync(outputPath, JSON.stringify(percentages, null, 2));
     fs.appendFileSync(outputPath, '\n');
 
-    console.log(`✓ Translation percentages updated successfully!`);
+    console.log(`Translation percentages updated successfully!`);
     console.log(`  Total languages: ${Object.keys(percentages).length}`);
     console.log(`  Output: ${outputPath}`);
 

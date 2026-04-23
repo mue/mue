@@ -17,7 +17,7 @@ import { ClearModal } from './ClearModal';
 
 import { saveFile } from 'utils/saveFile';
 import { formatNumber } from 'utils/formatNumber';
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import {
   getLocalisedAchievementData,
   achievements as initialAchievements,
@@ -25,6 +25,7 @@ import {
 } from 'features/stats/api/achievements';
 
 const Stats = () => {
+  const t = useT();
   const isPreviewMode = localStorage.getItem('welcomePreview') === 'true';
   const [stats, setStats] = useState(() => JSON.parse(localStorage.getItem('statsData')) || {});
   const [achievements, setAchievements] = useState(initialAchievements);
@@ -48,10 +49,9 @@ const Stats = () => {
     localStorage.setItem('achievements', JSON.stringify([]));
     localStorage.setItem('achievementTimestamps', JSON.stringify({}));
     setStats(emptyStats);
-    // Update achievements based on the empty stats
     setAchievements(checkAchievements(emptyStats));
     setClearmodal(false);
-    toast(variables.getMessage('toasts.stats_reset'));
+    toast(t('toasts.stats_reset'));
   };
 
   const downloadStats = () => {
@@ -61,11 +61,17 @@ const Stats = () => {
     saveFile(JSON.stringify(stats, null, 2), filename);
   };
 
-  const AchievementElement = ({ key, id, achieved, timestamp }) => {
-    const { name, description } = getLocalisedAchievementData(id);
+  const AchievementElement = ({ id, achieved, timestamp }) => {
+    const [achievementData, setAchievementData] = useState({ name: '', description: '' });
+
+    useEffect(() => {
+      getLocalisedAchievementData(id).then((data) => {
+        setAchievementData(data);
+      });
+    }, [id]);
 
     return (
-      <div className="achievement" key={key}>
+      <div className="achievement">
         {achieved ? <FaTrophy className="trophy" /> : <MdLock className="trophyLocked" />}
         <div className={'achievementContent' + (achieved ? ' achieved' : '')}>
           {achieved && timestamp && (
@@ -73,8 +79,8 @@ const Stats = () => {
               <MdAccessTime /> {new Date(timestamp).toLocaleDateString()}
             </span>
           )}
-          <span className="achievementTitle">{name}</span>
-          <span className="subtitle">{achieved ? description : '?????'}</span>
+          <span className="achievementTitle">{achievementData.name}</span>
+          <span className="subtitle">{achieved ? achievementData.description : '?????'}</span>
         </div>
       </div>
     );
@@ -92,20 +98,16 @@ const Stats = () => {
   if (isPreviewMode) {
     return (
       <>
-        <Header title={variables.getMessage(`${STATS_SECTION}.title`)} report={false} />
+        <Header title={t(`${STATS_SECTION}.title`)} report={false} />
         <div className="emptyItems">
           <div className="emptyMessage">
             <div className="loaderHolder">
               <MdError />
               <span className="title">
-                {variables.getMessage(
-                  'modals.main.settings.sections.advanced.preview_data_disabled.title',
-                )}
+                {t('modals.main.settings.sections.advanced.preview_data_disabled.title')}
               </span>
               <span className="subtitle">
-                {variables.getMessage(
-                  'modals.main.settings.sections.advanced.preview_data_disabled.description',
-                )}
+                {t('modals.main.settings.sections.advanced.preview_data_disabled.description')}
               </span>
             </div>
           </div>
@@ -116,19 +118,19 @@ const Stats = () => {
 
   return (
     <>
-      <Header title={variables.getMessage(`${STATS_SECTION}.title`)} report={false}>
+      <Header title={t(`${STATS_SECTION}.title`)} report={false}>
         <CustomActions>
           <Button
             type="settings"
             onClick={downloadStats}
             icon={<MdDownload />}
-            label={variables.getMessage('widgets.background.download')}
+            label={t('widgets.background.download')}
           />
           <Button
             type="settings"
             onClick={() => setClearmodal(true)}
             icon={<MdRestartAlt />}
-            label={variables.getMessage('modals.main.settings.buttons.reset')}
+            label={t('modals.main.settings.buttons.reset')}
           />
         </CustomActions>
       </Header>
@@ -149,40 +151,40 @@ const Stats = () => {
           </div>
           <div className="statGrid">
             <StatsElement
-              title={variables.getMessage(`${STATS_SECTION}.sections.tabs_opened`)}
+              title={t(`${STATS_SECTION}.sections.tabs_opened`)}
               value={stats['tabs-opened'] || 0}
             />
             <StatsElement
-              title={variables.getMessage(`${STATS_SECTION}.sections.backgrounds_favourited`)}
+              title={t(`${STATS_SECTION}.sections.backgrounds_favourited`)}
               value={stats['background-favourite'] || 0}
             />
             <StatsElement
-              title={variables.getMessage(`${STATS_SECTION}.sections.backgrounds_downloaded`)}
+              title={t(`${STATS_SECTION}.sections.backgrounds_downloaded`)}
               value={stats.feature ? stats.feature['background-download'] || 0 : 0}
             />
             <StatsElement
-              title={variables.getMessage(`${STATS_SECTION}.sections.quotes_favourited`)}
+              title={t(`${STATS_SECTION}.sections.quotes_favourited`)}
               value={stats.feature ? stats.feature['quoted-favourite'] || 0 : 0}
             />
             <StatsElement
-              title={variables.getMessage(`${STATS_SECTION}.sections.quicklinks_added`)}
+              title={t(`${STATS_SECTION}.sections.quicklinks_added`)}
               value={stats.feature ? stats.feature['quicklink-add'] || 0 : 0}
             />
             <StatsElement
-              title={variables.getMessage(`${STATS_SECTION}.sections.settings_changed`)}
+              title={t(`${STATS_SECTION}.sections.settings_changed`)}
               value={stats.setting ? Object.keys(stats.setting).length : 0}
             />
             <StatsElement
-              title={variables.getMessage(`${STATS_SECTION}.sections.addons_installed`)}
+              title={t(`${STATS_SECTION}.sections.addons_installed`)}
               value={stats.marketplace?.install?.length || 0}
             />
           </div>
         </div>
         <div className="statSection leftPanel">
-          <span className="title">{variables.getMessage(`${STATS_SECTION}.achievements`)}</span>
+          <span className="title">{t(`${STATS_SECTION}.achievements`)}</span>
           <br />
           <span className="subtitle">
-            {variables.getMessage(`${STATS_SECTION}.unlocked`, {
+            {t(`${STATS_SECTION}.unlocked`, {
               count: `${getUnlockedCount}/${achievements.length}`,
             })}
           </span>
@@ -202,7 +204,7 @@ const Stats = () => {
               }
             })}
           </div>
-          <span className="title">{variables.getMessage(`${STATS_SECTION}.locked`)}</span>
+          <span className="title">{t(`${STATS_SECTION}.locked`)}</span>
           <div className="achievementsGrid preferencesInactive">
             {achievements.map((achievement, index) => {
               if (!achievement.achieved) {

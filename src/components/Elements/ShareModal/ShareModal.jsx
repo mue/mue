@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { MdClose, MdEmail, MdContentCopy } from 'react-icons/md';
 import { FaFacebookF } from 'react-icons/fa';
 import { AiFillWechat } from 'react-icons/ai';
@@ -12,37 +12,34 @@ import { Button } from 'components/Elements';
 import './sharemodal.scss';
 
 function ShareModal({ modalClose, data }) {
+  const t = useT();
   if (data.startsWith('https://cdn.')) {
     data = {
       url: data,
-      name: 'this image',
+      name: t('modals.share.item_type.image'),
     };
   } else if (data.startsWith('"')) {
     data = {
       url: data,
-      name: 'this quote',
+      name: t('modals.share.item_type.quote'),
     };
   } else {
     data = {
       url: data,
-      name: 'this marketplace item',
+      name: t('modals.share.item_type.marketplace_item'),
     };
   }
 
   const copyLink = () => {
     navigator.clipboard.writeText(data.url);
-    toast(
-      data.startsWith('"')
-        ? variables.getMessage('toasts.quote')
-        : variables.getMessage('toasts.link_copied'),
-    );
+    toast(data.startsWith('"') ? t('toasts.quote') : t('toasts.link_copied'));
   };
 
   return (
     <div className="smallModal">
       <div className="shareHeader">
-        <span className="title">{variables.getMessage('widgets.quote.share')}</span>
-        <Tooltip title={variables.getMessage('modals.welcome.buttons.close')}>
+        <span className="title">{t('widgets.quote.share')}</span>
+        <Tooltip title={t('modals.welcome.buttons.close')}>
           <div className="close" onClick={modalClose}>
             <MdClose />
           </div>
@@ -53,13 +50,13 @@ function ShareModal({ modalClose, data }) {
           onClick={() =>
             window
               .open(
-                `https://x.com/intent/tweet?text=Check out ${data.name} on @getmue: ${data.url}`,
+                `https://x.com/intent/tweet?text=${t('modals.share.twitter_message', { name: data.name })}: ${data.url}`,
                 '_blank',
               )
               .focus()
           }
           icon={<SiX />}
-          tooltipTitle="X (Twitter)"
+          tooltipTitle={t('modals.share.social.twitter')}
           type="icon"
         />
         <Button
@@ -69,23 +66,20 @@ function ShareModal({ modalClose, data }) {
               .focus()
           }
           icon={<FaFacebookF />}
-          tooltipTitle="Facebook"
+          tooltipTitle={t('modals.share.social.facebook')}
           type="icon"
         />
         <Button
           onClick={() =>
             window
               .open(
-                'mailto:email@example.com?subject=Check%20out%20this%20%on%20%Mue!&body=' +
-                  data.name +
-                  'on Mue: ' +
-                  data.url,
+                `mailto:email@example.com?subject=${encodeURIComponent(t('modals.share.email_subject'))}&body=${encodeURIComponent(t('modals.share.email_body', { name: data.name, url: data.url }))}`,
                 '_blank',
               )
               .focus()
           }
           icon={<MdEmail />}
-          tooltipTitle="Email"
+          tooltipTitle={t('modals.share.social.email')}
           type="icon"
         />
         <Button
@@ -98,7 +92,7 @@ function ShareModal({ modalClose, data }) {
               .focus()
           }
           icon={<AiFillWechat />}
-          tooltipTitle="WeChat"
+          tooltipTitle={t('modals.share.social.wechat')}
           type="icon"
         />
         <Button
@@ -108,7 +102,7 @@ function ShareModal({ modalClose, data }) {
               .focus()
           }
           icon={<SiTencentqq />}
-          tooltipTitle="Tencent QQ"
+          tooltipTitle={t('modals.share.social.qq')}
           type="icon"
         />
       </div>
@@ -117,7 +111,7 @@ function ShareModal({ modalClose, data }) {
         <Button
           onClick={() => copyLink()}
           icon={<MdContentCopy />}
-          tooltipTitle={variables.getMessage('modals.share.copy_link')}
+          tooltipTitle={t('modals.share.copy_link')}
           type="icon"
         />
       </div>

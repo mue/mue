@@ -1,4 +1,5 @@
 import variables from 'config/variables';
+import { useT } from 'contexts';
 import { memo, useRef, useState, useEffect, useCallback } from 'react';
 import { toast } from 'react-toastify';
 import {
@@ -10,9 +11,10 @@ import {
   MdFolder,
   MdChevronLeft,
   MdChevronRight,
-  MdDelete,
-  MdInfo,
+  MdImage,
 } from 'react-icons/md';
+import { BiSolidFilm } from 'react-icons/bi';
+
 import EventBus from 'utils/eventbus';
 import { compressAccurately, filetoDataURL } from 'image-conversion';
 import videoCheck from '../api/videoCheck';
@@ -33,6 +35,7 @@ import {
   calculateStorageSize,
   calculateTotalStorageSize,
   formatBytes,
+  extractVideoThumbnail,
 } from 'utils/imageMetadata';
 import { generateBlurHashDataUrl } from '../api/blurHash';
 
@@ -44,15 +47,16 @@ import CustomURLModal from './CustomURLModal';
 import FolderTaggingModal from './FolderTaggingModal';
 
 const CustomSettings = memo(() => {
+  const t = useT();
   const [customBackground, setCustomBackground] = useState([]);
   const [customURLModal, setCustomURLModal] = useState(false);
   const [folderTaggingModal, setFolderTaggingModal] = useState(false);
   const [pendingFiles, setPendingFiles] = useState([]);
   const [urlError, setUrlError] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
-  const [isUploading, setIsUploading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState({ current: 0, total: 0 });
-  const [isDragging, setIsDragging] = useState(false);
+  const [dragging, setDragging] = useState(false);
   const [selectedImages, setSelectedImages] = useState(new Set());
   const [sortBy, setSortBy] = useState(localStorage.getItem('customImageSort') || 'date_desc');
   const [storageQuotaModal, setStorageQuotaModal] = useState(false);
@@ -60,10 +64,8 @@ const CustomSettings = memo(() => {
   const customDnd = useRef(null);
   const dragCounter = useRef(0);
 
-  // IndexedDB typically has 50MB+ quota, we'll check dynamically
   const FALLBACK_STORAGE_LIMIT = 50000000; // 50MB fallback if API unavailable
 
-  // Fetch storage quota
   useEffect(() => {
     const fetchQuota = async () => {
       if (navigator.storage && navigator.storage.estimate) {
@@ -84,25 +86,20 @@ const CustomSettings = memo(() => {
     fetchQuota();
   }, [customBackground]);
 
-  // Load backgrounds from IndexedDB on mount
   useEffect(() => {
     const loadBackgrounds = async () => {
       try {
-        // Try migration first
         await migrateFromLocalStorage();
 
-        // Load from IndexedDB
         const backgrounds = await getAllBackgroundsWithMetadata();
         setCustomBackground(backgrounds);
 
-        // Backfill missing metadata for existing images
         backgrounds.forEach(async (bg) => {
           if (!bg.dimensions && bg.url && !videoCheck(bg.url)) {
             try {
               const dimensions = await getImageDimensions(bg.url);
               const blurHash = await generateBlurHash(bg.url);
               await updateBackgroundMetadata(bg.id, { dimensions, blurHash });
-              // Reload backgrounds to show updated metadata
               const updatedBackgrounds = await getAllBackgroundsWithMetadata();
               setCustomBackground(updatedBackgrounds);
             } catch (error) {
@@ -112,9 +109,9 @@ const CustomSettings = memo(() => {
         });
       } catch (error) {
         console.error('Error loading backgrounds:', error);
-        toast(variables.getMessage('toasts.error'));
+        toast(t('toasts.error'));
       } finally {
-        setIsLoading(false);
+        setLoading(false);
       }
     };
 
@@ -132,11 +129,11 @@ const CustomSettings = memo(() => {
           fileSize: metadata.fileSize,
           folder: metadata.folder || '',
           blurHash: metadata.blurHash,
+          thumbnail: metadata.thumbnail || null,
         };
 
         await addBackground(backgroundData);
 
-        // Reload from IndexedDB to get the latest state and update React state
         const backgrounds = await getAllBackgroundsWithMetadata();
         setCustomBackground(backgrounds);
 
@@ -147,20 +144,18 @@ const CustomSettings = memo(() => {
           localStorage.setItem('customBackgroundCount', backgrounds.length.toString());
         }
 
-        // Only emit refresh if not part of a batch upload
         if (!skipRefresh) {
           EventBus.emit('refresh', 'background');
         }
       } catch (error) {
         console.error('Error saving background:', error);
-        toast(variables.getMessage('toasts.error'));
+        toast(t('toasts.error'));
       }
     },
     [],
   );
 
   const processImageFile = async (file, folderName = '') => {
-    // Calculate actual storage from existing backgrounds
     const storageSize = customBackground.reduce((total, bg) => {
       if (bg.url && bg.url.startsWith('data:')) {
         return total + getDataUrlSize(bg.url);
@@ -170,7 +165,6 @@ const CustomSettings = memo(() => {
 
     const availableQuota = storageQuota.quota || FALLBACK_STORAGE_LIMIT;
 
-    // Request persistent storage if approaching limit (90%)
     if (storageSize / availableQuota > 0.9 && navigator.storage && navigator.storage.persist) {
       try {
         const isPersisted = await navigator.storage.persist();
@@ -189,23 +183,40 @@ const CustomSettings = memo(() => {
 
       const reader = new FileReader();
       return new Promise((resolve, reject) => {
-        reader.onloadend = () => {
-          resolve({
-            dataUrl: reader.result,
-            metadata: {
-              name: getFileName(file, customBackground.length),
-              dimensions: null,
-              fileSize: file.size,
-              folder: folderName,
-              blurHash: null,
-            },
-          });
+        reader.onloadend = async () => {
+          try {
+            const { thumbnail, dimensions } = await extractVideoThumbnail(reader.result);
+
+            resolve({
+              dataUrl: reader.result,
+              metadata: {
+                name: getFileName(file, customBackground.length),
+                dimensions,
+                fileSize: file.size,
+                folder: folderName,
+                blurHash: null,
+                thumbnail,
+              },
+            });
+          } catch (error) {
+            console.warn('Could not extract video thumbnail:', error);
+            resolve({
+              dataUrl: reader.result,
+              metadata: {
+                name: getFileName(file, customBackground.length),
+                dimensions: null,
+                fileSize: file.size,
+                folder: folderName,
+                blurHash: null,
+                thumbnail: null,
+              },
+            });
+          }
         };
         reader.onerror = reject;
         reader.readAsDataURL(file);
       });
     } else {
-      // Compress image
       const compressed = await compressAccurately(file, {
         size: 450,
         accuracy: 0.9,
@@ -218,10 +229,9 @@ const CustomSettings = memo(() => {
 
       const dataUrl = await filetoDataURL(compressed);
 
-      // Generate metadata in parallel
       const [dimensions, blurHash] = await Promise.all([
         getImageDimensions(dataUrl),
-        generateBlurHash(dataUrl).catch(() => null), // Don't fail if blur hash fails
+        generateBlurHash(dataUrl).catch(() => null),
       ]);
 
       return {
@@ -238,7 +248,7 @@ const CustomSettings = memo(() => {
   };
 
   const handleBatchUpload = async (files, folderName = '') => {
-    setIsUploading(true);
+    setUploading(true);
     setUploadProgress({ current: 0, total: files.length });
 
     const errors = [];
@@ -246,12 +256,11 @@ const CustomSettings = memo(() => {
     for (let i = 0; i < files.length; i++) {
       try {
         const result = await processImageFile(files[i], folderName);
-        // Skip refresh during batch upload to prevent background flashing
         await handleCustomBackground(files[i], result.dataUrl, result.metadata, true);
         setUploadProgress({ current: i + 1, total: files.length });
       } catch (error) {
         if (error.message === 'no_storage') {
-          toast(variables.getMessage('toasts.no_storage'));
+          toast(t('toasts.no_storage'));
           break;
         }
         errors.push(files[i].name);
@@ -259,13 +268,12 @@ const CustomSettings = memo(() => {
     }
 
     if (errors.length > 0) {
-      toast(variables.getMessage('toasts.error') + `: ${errors.join(', ')}`);
+      toast(t('toasts.error') + `: ${errors.join(', ')}`);
     }
 
-    // Emit refresh once after all images are uploaded
     EventBus.emit('refresh', 'background');
 
-    setIsUploading(false);
+    setUploading(false);
     setUploadProgress({ current: 0, total: 0 });
   };
 
@@ -283,11 +291,9 @@ const CustomSettings = memo(() => {
         await deleteBackground(index);
       }
 
-      // Reload from IndexedDB to get the latest state
       const backgrounds = await getAllBackgroundsWithMetadata();
       setCustomBackground(backgrounds);
 
-      // Store in localStorage with quota handling
       try {
         localStorage.setItem('customBackground', JSON.stringify(backgrounds.map((bg) => bg.url)));
       } catch (_quotaError) {
@@ -298,7 +304,7 @@ const CustomSettings = memo(() => {
       EventBus.emit('refresh', 'background');
     } catch (error) {
       console.error('Error modifying background:', error);
-      toast(variables.getMessage('toasts.error'));
+      toast(t('toasts.error'));
     }
   }, []);
 
@@ -311,12 +317,10 @@ const CustomSettings = memo(() => {
       const indices = Array.from(selectedImages).sort((a, b) => b - a);
       await deleteMultipleBackgrounds(indices);
 
-      // Reload from IndexedDB
       const backgrounds = await getAllBackgroundsWithMetadata();
       setCustomBackground(backgrounds);
       setSelectedImages(new Set());
 
-      // Update localStorage
       try {
         localStorage.setItem('customBackground', JSON.stringify(backgrounds.map((bg) => bg.url)));
       } catch (_quotaError) {
@@ -324,10 +328,10 @@ const CustomSettings = memo(() => {
       }
 
       EventBus.emit('refresh', 'background');
-      toast(variables.getMessage('toasts.deleted'));
+      toast(t('toasts.deleted'));
     } catch (error) {
       console.error('Error batch deleting:', error);
-      toast(variables.getMessage('toasts.error'));
+      toast(t('toasts.error'));
     }
   };
 
@@ -356,17 +360,15 @@ const CustomSettings = memo(() => {
       const urlRegex =
         /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._~#=]{1,256}\.[a-zA-Z0-9()]{1,63}\b([-a-zA-Z0-9()!@:%_.~#?&=]*)/;
       if (urlRegex.test(e) === false) {
-        return setUrlError(variables.getMessage('widgets.quicklinks.url_error'));
+        return setUrlError(t('widgets.quicklinks.url_error'));
       }
 
       setCustomURLModal(false);
 
       try {
-        // Extract filename from URL
         const urlParts = e.split('/');
         const filename = urlParts[urlParts.length - 1].split('?')[0] || 'Remote Image';
 
-        // Try to extract metadata from the remote image
         let dimensions = null;
         let blurHash = null;
         try {
@@ -381,7 +383,7 @@ const CustomSettings = memo(() => {
           name: filename,
           uploadDate: Date.now(),
           dimensions,
-          fileSize: null, // Cannot determine file size for remote URLs without fetching
+          fileSize: null,
           folder: '',
           blurHash,
         };
@@ -391,16 +393,13 @@ const CustomSettings = memo(() => {
         setCustomBackground(backgrounds);
       } catch (error) {
         console.error('Error adding URL:', error);
-        toast(variables.getMessage('toasts.error'));
+        toast(t('toasts.error'));
       }
 
       try {
-        localStorage.setItem(
-          'customBackground',
-          JSON.stringify(updatedBackgrounds.map((bg) => bg.url)),
-        );
+        localStorage.setItem('customBackground', JSON.stringify(backgrounds.map((bg) => bg.url)));
       } catch (_quotaError) {
-        localStorage.setItem('customBackgroundCount', updatedBackgrounds.length.toString());
+        localStorage.setItem('customBackgroundCount', backgrounds.length.toString());
       }
 
       EventBus.emit('refresh', 'background');
@@ -410,16 +409,13 @@ const CustomSettings = memo(() => {
 
   const handleFileInputChange = async (files) => {
     if (files.length > 1) {
-      // Multiple files - show tagging modal
       setPendingFiles(files);
       setFolderTaggingModal(true);
     } else {
-      // Single file - upload directly
       await handleBatchUpload(files, '');
     }
   };
 
-  // Sorted backgrounds
   const sortedBackgrounds = [...customBackground].sort((a, b) => {
     switch (sortBy) {
       case 'date_asc':
@@ -439,9 +435,7 @@ const CustomSettings = memo(() => {
     }
   });
 
-  // Calculate storage usage from actual background data
   const storageUsed = customBackground.reduce((total, bg) => {
-    // Calculate size of the data URL
     if (bg.url && bg.url.startsWith('data:')) {
       return total + getDataUrlSize(bg.url);
     }
@@ -454,7 +448,9 @@ const CustomSettings = memo(() => {
 
   useEffect(() => {
     const dnd = customDnd.current;
-    if (!dnd) return;
+    if (!dnd) {
+      return;
+    }
 
     const handleDragOver = (e) => {
       e.preventDefault();
@@ -466,7 +462,7 @@ const CustomSettings = memo(() => {
       e.stopPropagation();
       dragCounter.current++;
       if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
-        setIsDragging(true);
+        setDragging(true);
       }
     };
 
@@ -475,14 +471,14 @@ const CustomSettings = memo(() => {
       e.stopPropagation();
       dragCounter.current--;
       if (dragCounter.current === 0) {
-        setIsDragging(false);
+        setDragging(false);
       }
     };
 
     const handleDrop = async (e) => {
       e.preventDefault();
       e.stopPropagation();
-      setIsDragging(false);
+      setDragging(false);
       dragCounter.current = 0;
 
       const files = Array.from(e.dataTransfer.files);
@@ -492,11 +488,9 @@ const CustomSettings = memo(() => {
       }
 
       if (files.length > 1) {
-        // Multiple files - show tagging modal
         setPendingFiles(files);
         setFolderTaggingModal(true);
       } else {
-        // Single file - upload directly
         await handleBatchUpload(files, '');
       }
     };
@@ -518,24 +512,24 @@ const CustomSettings = memo(() => {
 
   const hasVideo = sortedBackgrounds.filter((bg) => bg && videoCheck(bg.url)).length > 0;
 
-  if (isLoading) {
+  if (loading) {
     return (
       <div className="photosEmpty">
         <div className="loaderHolder">
           <div id="loader"></div>
-          <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
+          <span className="subtitle">{t('modals.main.loading')}</span>
         </div>
       </div>
     );
   }
 
-  if (isUploading) {
+  if (uploading) {
     return (
       <div className="photosEmpty">
         <div className="loaderHolder">
           <div id="loader"></div>
           <span className="subtitle">
-            {variables.getMessage('modals.main.settings.sections.background.source.uploading', {
+            {t('modals.main.settings.sections.background.source.uploading', {
               current: uploadProgress.current,
               total: uploadProgress.total,
             })}
@@ -551,10 +545,10 @@ const CustomSettings = memo(() => {
   return (
     <>
       <div
-        className={`dropzone ${isDragging ? 'dragging' : ''}`}
+        className={`dropzone ${dragging ? 'dragging' : ''}`}
         ref={customDnd}
         style={
-          isDragging
+          dragging
             ? {
                 outline: '2px dashed #ff5c25',
                 outlineOffset: '-2px',
@@ -569,14 +563,10 @@ const CustomSettings = memo(() => {
             <MdAddPhotoAlternate />
             <div>
               <span className="title">
-                {variables.getMessage(
-                  'modals.main.settings.sections.background.source.custom_title',
-                )}
+                {t('modals.main.settings.sections.background.source.custom_title')}
               </span>
               <span className="subtitle">
-                {variables.getMessage(
-                  'modals.main.settings.sections.background.source.custom_description',
-                )}
+                {t('modals.main.settings.sections.background.source.custom_description')}
               </span>
             </div>
           </div>
@@ -585,7 +575,7 @@ const CustomSettings = memo(() => {
               type="settings"
               onClick={uploadCustomBackground}
               icon={<MdOutlineFileUpload />}
-              label={variables.getMessage('modals.main.settings.sections.background.source.upload')}
+              label={t('modals.main.settings.sections.background.source.upload')}
             />
           </div>
         </div>
@@ -598,7 +588,11 @@ const CustomSettings = memo(() => {
                 {' '}
                 · {formatBytes(storageUsed)} / {formatBytes(availableStorageLimit)}
                 {storagePercent > 80 && navigator.storage && navigator.storage.persist && (
-                  <Tooltip title="Request persistent storage to prevent browser from automatically clearing your images">
+                  <Tooltip
+                    title={t(
+                      'modals.main.settings.sections.background.source.persistent_storage_tooltip',
+                    )}
+                  >
                     <button
                       className="request-storage-link"
                       onClick={async () => {
@@ -606,11 +600,15 @@ const CustomSettings = memo(() => {
                           const isPersisted = await navigator.storage.persist();
                           if (isPersisted) {
                             toast(
-                              'Persistent storage granted - your images are protected from eviction',
+                              t(
+                                'modals.main.settings.sections.background.source.persistent_storage_granted',
+                              ),
                             );
                           } else {
                             toast(
-                              'Persistent storage denied - images may be cleared if storage is low',
+                              t(
+                                'modals.main.settings.sections.background.source.persistent_storage_denied',
+                              ),
                             );
                           }
                         } catch (error) {
@@ -625,7 +623,7 @@ const CustomSettings = memo(() => {
                 )}
               </span>
             </span>
-            <span className="selection-separator">·</span>
+            {customBackground.length > 0 && <span className="selection-separator">·</span>}
             {selectedImages.size > 0 ? (
               <>
                 <span className="selected-count">{selectedImages.size} selected</span>
@@ -671,39 +669,27 @@ const CustomSettings = memo(() => {
               items={[
                 {
                   value: 'date_desc',
-                  text: variables.getMessage(
-                    'modals.main.settings.sections.background.source.sort.date_newest',
-                  ),
+                  text: t('modals.main.settings.sections.background.source.sort.date_newest'),
                 },
                 {
                   value: 'date_asc',
-                  text: variables.getMessage(
-                    'modals.main.settings.sections.background.source.sort.date_oldest',
-                  ),
+                  text: t('modals.main.settings.sections.background.source.sort.date_oldest'),
                 },
                 {
                   value: 'name_asc',
-                  text: variables.getMessage(
-                    'modals.main.settings.sections.background.source.sort.name_asc',
-                  ),
+                  text: t('modals.main.settings.sections.background.source.sort.name_asc'),
                 },
                 {
                   value: 'name_desc',
-                  text: variables.getMessage(
-                    'modals.main.settings.sections.background.source.sort.name_desc',
-                  ),
+                  text: t('modals.main.settings.sections.background.source.sort.name_desc'),
                 },
                 {
                   value: 'size_asc',
-                  text: variables.getMessage(
-                    'modals.main.settings.sections.background.source.sort.size_small',
-                  ),
+                  text: t('modals.main.settings.sections.background.source.sort.size_small'),
                 },
                 {
                   value: 'size_desc',
-                  text: variables.getMessage(
-                    'modals.main.settings.sections.background.source.sort.size_large',
-                  ),
+                  text: t('modals.main.settings.sections.background.source.sort.size_large'),
                 },
               ]}
             />
@@ -722,7 +708,6 @@ const CustomSettings = memo(() => {
                     key={originalIndex}
                     className="image-card"
                     onClick={(e) => {
-                      // Only select if clicking the card itself, not navigation buttons
                       if (!e.target.closest('.image-nav-buttons')) {
                         toggleImageSelection(originalIndex);
                       }
@@ -757,16 +742,63 @@ const CustomSettings = memo(() => {
                           ) : null;
                         })()}
                       {isVideo ? (
-                        <div className="video-icon-wrapper">
-                          <MdPersonalVideo className="customvideoicon" />
-                        </div>
+                        bg.thumbnail ? (
+                          <>
+                            <img
+                              alt={bg.name || 'Custom video'}
+                              src={bg.thumbnail}
+                              loading="lazy"
+                              style={{ position: 'relative', zIndex: 1 }}
+                            />
+                            <div
+                              className="video-overlay-icon"
+                              style={{
+                                position: 'absolute',
+                                top: '8px',
+                                right: '8px',
+                                zIndex: 2,
+                                background: 'rgba(0, 0, 0, 0.6)',
+                                borderRadius: '4px',
+                                padding: '4px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                              }}
+                            >
+                              <BiSolidFilm style={{ fontSize: '20px', color: 'white' }} />
+                            </div>
+                          </>
+                        ) : (
+                          <div className="video-icon-wrapper">
+                            <MdPersonalVideo className="customvideoicon" />
+                          </div>
+                        )
                       ) : (
-                        <img
-                          alt={bg.name || 'Custom background'}
-                          src={bg.url}
-                          loading="lazy"
-                          style={{ position: 'relative', zIndex: 1 }}
-                        />
+                        <>
+                          <img
+                            alt={bg.name || 'Custom background'}
+                            src={bg.url}
+                            loading="lazy"
+                            style={{ position: 'relative', zIndex: 1 }}
+                          />
+                          <div
+                            className="photo-overlay-icon"
+                            style={{
+                              position: 'absolute',
+                              top: '8px',
+                              right: '8px',
+                              zIndex: 2,
+                              background: 'rgba(0, 0, 0, 0.6)',
+                              borderRadius: '4px',
+                              padding: '4px',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                            }}
+                          >
+                            <MdImage style={{ fontSize: '20px', color: 'white' }} />
+                          </div>
+                        </>
                       )}
                       <div className="image-nav-buttons">
                         <button
@@ -809,11 +841,7 @@ const CustomSettings = memo(() => {
                         {bg.folder && <span className="detail folder-tag">{bg.folder}</span>}
                       </div>
                     </div>
-                    <Tooltip
-                      title={variables.getMessage(
-                        'modals.main.settings.sections.background.source.remove',
-                      )}
-                    >
+                    <Tooltip title={t('modals.main.settings.sections.background.source.remove')}>
                       <button
                         className="delete-button"
                         onClick={() => modifyCustomBackground('remove', originalIndex)}
@@ -830,12 +858,10 @@ const CustomSettings = memo(() => {
               <div className="emptyNewMessage">
                 <MdAddPhotoAlternate />
                 <span className="title">
-                  {variables.getMessage(
-                    'modals.main.settings.sections.background.source.drop_to_upload',
-                  )}
+                  {t('modals.main.settings.sections.background.source.drop_to_upload')}
                 </span>
                 <span className="subtitle">
-                  {variables.getMessage('modals.main.settings.sections.background.source.formats', {
+                  {t('modals.main.settings.sections.background.source.formats', {
                     list: 'jpeg, png, webp, webm, gif, mp4, webm, ogg',
                   })}
                 </span>
@@ -843,9 +869,7 @@ const CustomSettings = memo(() => {
                   type="settings"
                   onClick={uploadCustomBackground}
                   icon={<MdFolder />}
-                  label={variables.getMessage(
-                    'modals.main.settings.sections.background.source.select',
-                  )}
+                  label={t('modals.main.settings.sections.background.source.select')}
                 />
               </div>
             </div>
@@ -866,15 +890,11 @@ const CustomSettings = memo(() => {
         <>
           <Checkbox
             name="backgroundVideoLoop"
-            text={variables.getMessage(
-              'modals.main.settings.sections.background.source.loop_video',
-            )}
+            text={t('modals.main.settings.sections.background.source.loop_video')}
           />
           <Checkbox
             name="backgroundVideoMute"
-            text={variables.getMessage(
-              'modals.main.settings.sections.background.source.mute_video',
-            )}
+            text={t('modals.main.settings.sections.background.source.mute_video')}
           />
         </>
       )}
@@ -926,7 +946,7 @@ const CustomSettings = memo(() => {
         <div className="smallModal">
           <div className="shareHeader">
             <span className="title">
-              {variables.getMessage('modals.main.settings.sections.background.source.storage_info')}
+              {t('modals.main.settings.sections.background.source.storage_info')}
             </span>
             <button className="closeModal" onClick={() => setStorageQuotaModal(false)}>
               <MdCancel />
@@ -934,9 +954,7 @@ const CustomSettings = memo(() => {
           </div>
           <div style={{ padding: '20px' }}>
             <p className="subtitle">
-              {variables.getMessage(
-                'modals.main.settings.sections.background.source.storage_description',
-              )}
+              {t('modals.main.settings.sections.background.source.storage_description')}
             </p>
             <div style={{ marginTop: '20px' }}>
               <p className="subtitle" style={{ fontWeight: '600', marginBottom: '8px' }}>
@@ -964,7 +982,7 @@ const CustomSettings = memo(() => {
             <Button
               type="settings"
               onClick={() => setStorageQuotaModal(false)}
-              label={variables.getMessage('modals.main.settings.buttons.close')}
+              label={t('modals.main.settings.buttons.close')}
             />
           </div>
         </div>

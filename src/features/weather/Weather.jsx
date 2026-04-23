@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { memo, useState, useEffect, useCallback } from 'react';
 import { formatNumber } from 'utils/formatNumber';
 
@@ -13,18 +13,44 @@ import { getWeather } from './api/getWeather.js';
 import './weather.scss';
 
 const WeatherWidget = memo(() => {
-  const [location, setLocation] = useState(localStorage.getItem('location') || 'London');
+  const t = useT();
+  const [location, setLocation] = useState(() => {
+    const stored = localStorage.getItem('location');
+    if (!stored) return 'London';
+
+    try {
+      const parsed = JSON.parse(stored);
+      if (parsed && typeof parsed === 'object') {
+        return parsed;
+      }
+    } catch {}
+    return stored;
+  });
   const [done, setDone] = useState(false);
   const [weatherData, setWeatherData] = useState({});
 
+  const getLocationFromStorage = useCallback(() => {
+    const stored = localStorage.getItem('location');
+    if (!stored) return 'London';
+
+    try {
+      const parsed = JSON.parse(stored);
+      if (parsed && typeof parsed === 'object') {
+        return parsed;
+      }
+    } catch {}
+    return stored;
+  }, []);
+
   const updateWeather = useCallback(async () => {
-    const data = await getWeather(location);
-    console.log('Weather data received:', data);
+    const currentLocation = getLocationFromStorage();
+    setLocation(currentLocation);
+
+    const data = await getWeather(currentLocation);
     if (data) {
       setWeatherData(data);
       setDone(data.done);
     } else {
-      // Fallback if data is undefined
       setWeatherData({ done: true });
       setDone(true);
     }
@@ -34,7 +60,7 @@ const WeatherWidget = memo(() => {
     if (weatherElement) {
       weatherElement.style.fontSize = zoomWeather;
     }
-  }, [location]);
+  }, [getLocationFromStorage]);
 
   useEffect(() => {
     const handleRefresh = async (data) => {
@@ -57,10 +83,14 @@ const WeatherWidget = memo(() => {
     return <WeatherSkeleton weatherType={weatherType} />;
   }
 
+  const locationDisplay = (
+    typeof location === 'object' ? location.displayName || location.name : location
+  ).split(',')[0];
+
   if (!weatherData.weather) {
     return (
       <div className="weather">
-        <span className="loc">{location}</span>
+        <span className="loc">{locationDisplay}</span>
       </div>
     );
   }
@@ -83,17 +113,15 @@ const WeatherWidget = memo(() => {
         {weatherType >= 2 && (
           <div className="extra-info">
             <span>
-              {variables.getMessage('widgets.weather.feels_like', {
+              {t('widgets.weather.feels_like', {
                 amount: `${formatNumber(weatherData.weather.feels_like)}${weatherData.temp_text}`,
               })}
             </span>
-            <span className="loc">{location}</span>
+            <span className="loc">{locationDisplay}</span>
           </div>
         )}
       </div>
-      {weatherType >= 3 && (
-        <Expanded weatherType={weatherType} state={weatherData} variables={variables} />
-      )}
+      {weatherType >= 3 && <Expanded weatherType={weatherType} state={weatherData} />}
     </div>
   );
 });

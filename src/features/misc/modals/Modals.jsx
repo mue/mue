@@ -1,5 +1,6 @@
 import variables from 'config/variables';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
+import { useLocation, useNavigate } from 'react-router';
 import Modal from 'react-modal';
 
 import { MainModal } from 'components/Elements';
@@ -9,8 +10,9 @@ import Preview from '../../helpers/preview/Preview';
 import EventBus from 'utils/eventbus';
 import { parseDeepLink, shouldAutoOpenModal, updateHash } from 'utils/deepLinking';
 import { install } from 'utils/marketplace';
+import { useRouterBridge } from '../../../router/RouterBridge';
 
-import Welcome from 'features/welcome/Welcome';
+const Welcome = lazy(() => import('features/welcome/Welcome'));
 
 const DEFAULT_PACK_ID = '0c8a5bdebd13';
 
@@ -25,7 +27,6 @@ const isDefaultPackUninstalled = () => {
 };
 
 const tryInstallDefaultPack = async () => {
-  // Don't install if offline mode, already installed, or explicitly uninstalled
   if (
     localStorage.getItem('offlineMode') === 'true' ||
     isDefaultPackInstalled() ||
@@ -40,6 +41,7 @@ const tryInstallDefaultPack = async () => {
     );
     const { data } = await response.json();
     install(data.type, data, false, true);
+    window.dispatchEvent(new Event('installedAddonsChanged'));
     return true;
   } catch (e) {
     console.error('Failed to install default pack:', e);
@@ -48,29 +50,47 @@ const tryInstallDefaultPack = async () => {
 };
 
 const Modals = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { deepLinkData } = useRouterBridge();
+
   const [mainModal, setMainModal] = useState(false);
   const [updateModal, setUpdateModal] = useState(false);
   const [welcomeModal, setWelcomeModal] = useState(false);
   const [appsModal, setAppsModal] = useState(false);
   const [preview, setPreview] = useState(false);
-  const [deepLinkData, setDeepLinkData] = useState(null);
+  const [isModalClosing, setIsModalClosing] = useState(false);
 
+  // Sync modal open state with router location
   useEffect(() => {
-    // Check for preview mode - block deep links and redirect to /
-    const isPreviewMode = localStorage.getItem('showWelcome') === 'true';
-    if (isPreviewMode && shouldAutoOpenModal()) {
-      window.history.replaceState(null, null, '/');
-      setWelcomeModal(true);
-      setPreview(false);
+    const hasRoute = location.pathname !== '/';
+    // Skip sync if modal is in the middle of closing to avoid race conditions
+    // Also skip if welcome modal is open to prevent main modal from appearing on top
+    if (isModalClosing || welcomeModal) {
       return;
     }
 
-    // Check for deep link first (has priority)
-    if (shouldAutoOpenModal()) {
-      const linkData = parseDeepLink();
-      setMainModal(true);
-      setDeepLinkData(linkData);
-      variables.stats.postEvent('modal', `Opened via deep link: ${linkData.tab}`);
+    const timer = setTimeout(() => {
+      if (hasRoute && !mainModal) {
+        setMainModal(true);
+        if (deepLinkData?.tab) {
+          variables.stats.postEvent('modal', `Opened via deep link: ${deepLinkData.tab}`);
+        }
+      } else if (!hasRoute && mainModal && !isModalClosing) {
+        setMainModal(false);
+      }
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, [location.pathname, mainModal, deepLinkData, isModalClosing, welcomeModal]);
+
+  useEffect(() => {
+    const isPreviewMode = localStorage.getItem('showWelcome') === 'true';
+    if (isPreviewMode && shouldAutoOpenModal()) {
+      navigate('/');
+      setMainModal(false);
+      setWelcomeModal(true);
+      setPreview(false);
       return;
     }
 
@@ -78,6 +98,7 @@ const Modals = () => {
       localStorage.getItem('showWelcome') === 'true' &&
       window.location.search !== '?nointro=true'
     ) {
+      setMainModal(false);
       setWelcomeModal(true);
       variables.stats.postEvent('modal', 'Opened welcome');
     }
@@ -90,13 +111,10 @@ const Modals = () => {
       }
     }
 
-    // Only hide refresh reminder if user navigated naturally (not via deep link or forced intro skip)
-    // This ensures the reminder shows after user refreshes when they've made changes
     if (!shouldAutoOpenModal() && window.location.search !== '?nointro=true') {
       localStorage.setItem('showReminder', false);
     }
 
-    // Try to install default pack if it wasn't installed during welcome (e.g., no internet)
     if (localStorage.getItem('showWelcome') !== 'true') {
       tryInstallDefaultPack().then((installed) => {
         if (installed) {
@@ -105,11 +123,9 @@ const Modals = () => {
       });
     }
 
-    // Listen for EventBus modal open requests
     const handleModalOpen = (data) => {
       if (data === 'openMainModal') {
-        const linkData = parseDeepLink();
-        setDeepLinkData(linkData);
+        navigate('/settings');
         setMainModal(true);
       }
     };
@@ -119,7 +135,7 @@ const Modals = () => {
     return () => {
       EventBus.off('modal', handleModalOpen);
     };
-  }, []);
+  }, [navigate]);
 
   const closeWelcome = async () => {
     localStorage.setItem('showWelcome', false);
@@ -154,10 +170,18 @@ const Modals = () => {
 
     if (action !== false) {
       variables.stats.postEvent('modal', `Opened ${type.replace('Modal', '')}`);
-      // Set initial hash when opening main modal
       if (type === 'mainModal') {
-        updateHash('#settings');
+        navigate('/settings');
       }
+    } else if (action === false && type === 'mainModal') {
+      // Mark modal as closing to prevent sync logic from interfering
+      setIsModalClosing(true);
+      // Navigate immediately to avoid URL flash
+      navigate('/');
+      // Wait for close animation to complete, then reset closing flag
+      setTimeout(() => {
+        setIsModalClosing(false);
+      }, 350);
     }
   };
 
@@ -184,7 +208,9 @@ const Modals = () => {
         shouldCloseOnOverlayClick={false}
         ariaHideApp={false}
       >
-        <Welcome modalClose={() => closeWelcome()} modalSkip={() => previewWelcome()} />
+        <Suspense fallback={<div />}>
+          <Welcome modalClose={() => closeWelcome()} modalSkip={() => previewWelcome()} />
+        </Suspense>
       </Modal>
       {preview && <Preview setup={() => window.location.reload()} />}
     </>

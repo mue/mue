@@ -1,5 +1,11 @@
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { useState, useEffect, useCallback } from 'react';
+
+import example1 from 'assets/welcome-images/example1.webp';
+import example2 from 'assets/welcome-images/example2.webp';
+import example3 from 'assets/welcome-images/example3.webp';
+import example4 from 'assets/welcome-images/example4.webp';
 
 import { Header, Content } from '../Layout';
 import { MdOutlineWavingHand, MdOpenInNew } from 'react-icons/md';
@@ -10,6 +16,7 @@ const GITHUB_LINK =
   'https://github.com/' + variables.constants.ORG_NAME + '/' + variables.constants.REPO_NAME;
 
 function WelcomeNotice({ config }) {
+  const t = useT();
   const { icon: Icon, title, subtitle, link } = config;
   return (
     <div className="welcomeNotice">
@@ -23,12 +30,14 @@ function WelcomeNotice({ config }) {
       {link && (
         <a href={link} target="_blank" rel="noopener noreferrer">
           <MdOpenInNew />
-          {variables.getMessage('modals.welcome.sections.intro.notices.github_open')}
+          {t('modals.welcome.sections.intro.notices.github_open')}
         </a>
       )}
     </div>
   );
 }
+
+const welcomeImages = [example1, example2, example3, example4];
 
 function Intro() {
   const [welcomeImage, setWelcomeImage] = useState(0);
@@ -40,7 +49,7 @@ function Intro() {
   const ShareYourMue = (
     <div className="examples">
       <img
-        src={`/src/assets/welcome-images/example${welcomeImage + 1}.webp`}
+        src={welcomeImages[welcomeImage]}
         alt="Example Mue setup"
         draggable={false}
       />
@@ -55,32 +64,28 @@ function Intro() {
 
   return (
     <Content>
-      <Header title={variables.getMessage('modals.welcome.sections.intro.title')} />
+      <Header title={t('modals.welcome.sections.intro.title')} />
       {ShareYourMue}
       <WelcomeNotice
         config={{
           icon: MdOutlineWavingHand,
-          title: variables.getMessage('modals.welcome.sections.intro.title'),
-          subtitle: variables.getMessage('modals.welcome.sections.intro.description'),
+          title: t('modals.welcome.sections.intro.title'),
+          subtitle: t('modals.welcome.sections.intro.description'),
         }}
       />
       <WelcomeNotice
         config={{
           icon: FaDiscord,
-          title: variables.getMessage('modals.welcome.sections.intro.notices.discord_title'),
-          subtitle: variables.getMessage(
-            'modals.welcome.sections.intro.notices.discord_description',
-          ),
+          title: t('modals.welcome.sections.intro.notices.discord_title'),
+          subtitle: t('modals.welcome.sections.intro.notices.discord_description'),
           link: DISCORD_LINK,
         }}
       />
       <WelcomeNotice
         config={{
           icon: FaGithub,
-          title: variables.getMessage('modals.welcome.sections.intro.notices.github_title'),
-          subtitle: variables.getMessage(
-            'modals.welcome.sections.intro.notices.github_description',
-          ),
+          title: t('modals.welcome.sections.intro.notices.github_title'),
+          subtitle: t('modals.welcome.sections.intro.notices.github_description'),
           link: GITHUB_LINK,
         }}
       />

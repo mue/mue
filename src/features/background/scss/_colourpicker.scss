@@ -1,6 +1,6 @@
 @use 'scss/variables' as *;
 
-// Main wrapper - cleaner appearance without heavy border
+/* Main wrapper - cleaner appearance without heavy border */
 #rbgcp-wrapper,
 #rbgcp-color-picker-dark {
   @include themed {
@@ -10,27 +10,27 @@
   }
 }
 
-// Override any remaining dark backgrounds from inline styles
+/* Override any remaining dark backgrounds from inline styles */
 div[style*='background: rgb(32, 32, 32)'] {
   @include themed {
     background: transparent !important;
   }
 }
 
-// Canvas wrapper - smoother corners
+/* Canvas wrapper - smoother corners */
 #rbgcp-square-canvas-wrapper-dark {
   border-radius: 6px !important;
   overflow: hidden;
 }
 
-// Bottom controls section
+/* Bottom controls section */
 #rbgcp-body {
   @include themed {
     background: t($modal-secondaryColour) !important;
   }
 }
 
-// Control wrappers - SPECIFIC targeting to avoid breaking sliders
+/* Control wrappers - SPECIFIC targeting to avoid breaking sliders */
 #rbgcp-controls-wrapper-dark,
 #rbgcp-color-type-btns-dark,
 #rbgcp-control-rightside-wrapper-dark,
@@ -41,12 +41,12 @@ div[style*='background: rgb(32, 32, 32)'] {
   }
 }
 
-// Slider area backgrounds - soft grey for light theme
+/* Slider area backgrounds - soft grey for light theme */
 #rbgcp-hue-wrap-dark,
 #rbgcp-opacity-wrapper-dark {
   position: relative !important;
 
-  // Add a soft background wrapper
+  /* Add a soft background wrapper */
   &::before {
     content: '';
     position: absolute;
@@ -56,16 +56,17 @@ div[style*='background: rgb(32, 32, 32)'] {
 
     @include themed {
       .light & {
-        background: rgba(0, 0, 0, 0.08) !important;
+        background: rgb(0 0 0 / 8%) !important;
       }
+
       .dark & {
-        background: rgba(0, 0, 0, 0.3) !important;
+        background: rgb(0 0 0 / 30%) !important;
       }
     }
   }
 }
 
-// Input fields and buttons - cover all variations
+/* Input fields and buttons - cover all variations */
 #rbgcp-solid-btn,
 #rbgcp-solid-btn-dark,
 #rbgcp-gradient-btn,
@@ -88,11 +89,11 @@ input[id*='rbgcp'],
   @include themed {
     background: t($btn-background) !important;
     color: t($color) !important;
-    border: 1px solid rgba(128, 128, 128, 0.2) !important;
+    border: 1px solid rgb(128 128 128 / 20%) !important;
   }
 }
 
-// Active state for Solid/Gradient buttons - check for black background or box-shadow
+/* Active state for Solid/Gradient buttons - check for black background or box-shadow */
 #rbgcp-solid-btn-dark[style*='background: black'],
 #rbgcp-solid-btn-dark[style*='background: rgb(0, 0, 0)'],
 #rbgcp-gradient-btn-dark[style*='background: black'],
@@ -105,7 +106,7 @@ input[id*='rbgcp'],
   }
 }
 
-// Icon buttons - make icons more visible
+/* Icon buttons - make icons more visible */
 #rbgcp-advanced-btn-dark,
 #rbgcp-color-model-btn-dark {
   svg,
@@ -135,7 +136,7 @@ input[id*='rbgcp'],
   }
 }
 
-// Labels under inputs
+/* Labels under inputs */
 #rbgcp-hex-input-wrapper-dark div,
 #rbgcp-R-input-wrapper-dark div,
 #rbgcp-G-input-wrapper-dark div,
@@ -146,7 +147,7 @@ input[id*='rbgcp'],
   }
 }
 
-// Hover states
+/* Hover states */
 #rbgcp-gradient-btn:hover,
 #rbgcp-solid-btn:hover,
 #rbgcp-eyedropper-btn:hover,
@@ -163,7 +164,7 @@ input[id*='rbgcp'],
   }
 }
 
-// Active/selected button states
+/* Active/selected button states */
 #rbgcp-solid-btn[style*='background: rgb(242, 242, 242)'],
 #rbgcp-gradient-btn[style*='background: rgb(242, 242, 242)'] {
   @include themed {
@@ -185,7 +186,7 @@ input[id*='rbgcp'],
   height: 28px;
 }
 
-// Text labels
+/* Text labels */
 #rbgcp-wrapper {
   label {
     @include themed {
@@ -194,7 +195,7 @@ input[id*='rbgcp'],
   }
 }
 
-// Reset button styling
+/* Reset button styling */
 .colourReset {
   margin-top: 12px;
 

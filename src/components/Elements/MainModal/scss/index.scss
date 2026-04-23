@@ -9,7 +9,8 @@
 @use 'modules/scrollbars' as *;
 @use 'settings/main' as *;
 @use 'marketplace/main' as *;
-// Fixed: Added sass:map module
+
+/* Fixed: Added sass:map module */
 
 .Overlay {
   position: fixed;
@@ -19,6 +20,16 @@
   height: 100vh;
   display: grid;
   place-items: center;
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &.ReactModal__Overlay--after-open {
+    opacity: 1;
+  }
+
+  &.ReactModal__Overlay--before-close {
+    opacity: 0;
+  }
 }
 
 .Modal {
@@ -27,14 +38,15 @@
   }
 
   box-shadow: 0 0 20px rgb(0 0 0 / 30%);
-  opacity: 1;
+  opacity: 0;
   z-index: -2;
-  transition-timing-function: ease-in;
   border-radius: map.get($modal, 'border-radius');
+  -webkit-user-select: none;
   user-select: none;
   overflow: hidden;
-  transform: scale(0);
-  transition: all 0.3s cubic-bezier(0.47, 1.64, 0.41, 0.8);
+  transform: scale(0.95);
+  transition: opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
   &:focus {
     outline: 0;
@@ -48,7 +60,7 @@
 .closePositioning {
   position: absolute;
   top: 3rem;
-  right: 3rem;
+  inset-inline-end: 3rem;
 }
 
 .closeModal {
@@ -90,14 +102,13 @@
 
 .ReactModal__Content--before-close {
   opacity: 0;
-  transform: scale(0);
+  transform: scale(0.95);
 }
 
 #modal {
   height: 80vh;
   width: clamp(60vw, 1400px, 90vw);
-
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  backdrop-filter: blur(16px) saturate(180%);
   backdrop-filter: blur(16px) saturate(180%);
   overflow: hidden;
   border-radius: 12px;
@@ -269,7 +280,7 @@ h5 {
   @include themed {
     background: t($modal-sidebar);
     border-radius: t($borderRadius);
-    box-shadow: 0 0 0 1px t($modal-sidebarActive);
+    box-shadow: 0 0 0 1px t($modal-border);
 
     &:hover {
       background: t($modal-sidebarActive);
@@ -294,6 +305,7 @@ h5 {
 
       padding: 15px;
       border-radius: 100%;
+      flex-shrink: 0;
     }
   }
 
@@ -312,27 +324,51 @@ h5 {
 
 .reminder-info {
   display: flex;
-  flex-flow: column;
-  position: absolute;
-  bottom: 0;
-  padding: 15px;
-  gap: 15px;
+  flex-flow: row;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  flex-shrink: 0;
 
   @include themed {
     background-color: t($modal-secondaryColour);
-    border-radius: t($borderRadius);
-    border: 1px solid t($modal-sidebarActive);
+    border-bottom: 1px solid t($modal-sidebarActive);
+  }
+
+  .title {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .subtitle {
+    opacity: 0.7;
+    flex: 1;
   }
 
   button {
-    @include basicIconButton(5px, 5px, modal);
+    @include basicIconButton(8px 14px, 0.875rem, modal);
 
     display: flex;
-    justify-content: center;
-    gap: 15px;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    cursor: pointer;
 
     svg {
       margin: 0 !important;
+      font-size: 1rem;
+    }
+  }
+
+  .closeModal {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 1;
     }
   }
 

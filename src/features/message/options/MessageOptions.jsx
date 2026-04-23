@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { useState } from 'react';
 import { MdCancel, MdAdd, MdOutlineTextsms } from 'react-icons/md';
 import { toast } from 'react-toastify';
@@ -9,12 +9,13 @@ import { Button } from 'components/Elements';
 import EventBus from 'utils/eventbus';
 
 const MessageOptions = () => {
+  const t = useT();
   const [messages, setMessages] = useState(JSON.parse(localStorage.getItem('messages')) || []);
 
   const reset = () => {
     localStorage.setItem('messages', '[]');
     setMessages([]);
-    toast(variables.getMessage('toasts.reset'));
+    toast(t('toasts.reset'));
     EventBus.emit('refresh', 'message');
   };
 
@@ -38,8 +39,8 @@ const MessageOptions = () => {
     setMessages(updatedMessages);
 
     localStorage.setItem('messages', JSON.stringify(updatedMessages));
-    document.querySelector('.reminder-info').style.display = 'flex';
-    localStorage.setItem('showReminder', true);
+    localStorage.setItem('showReminder', 'true');
+    EventBus.emit('showReminder');
   };
 
   const MESSAGE_SECTION = 'modals.main.settings.sections.message';
@@ -47,7 +48,7 @@ const MessageOptions = () => {
   return (
     <>
       <Header
-        title={variables.getMessage(`${MESSAGE_SECTION}.title`)}
+        title={t(`${MESSAGE_SECTION}.title`)}
         setting="message"
         category="message"
         element=".message"
@@ -61,13 +62,13 @@ const MessageOptions = () => {
         zoomSetting="zoomMessage"
       >
         <Row final={true}>
-          <Content title={variables.getMessage(`${MESSAGE_SECTION}.messages`)} />
+          <Content title={t(`${MESSAGE_SECTION}.messages`)} />
           <Action>
             <Button
               type="settings"
               onClick={() => modifyMessage('add')}
               icon={<MdAdd />}
-              label={variables.getMessage(`${MESSAGE_SECTION}.add`)}
+              label={t(`${MESSAGE_SECTION}.add`)}
             />
           </Action>
         </Row>
@@ -79,14 +80,10 @@ const MessageOptions = () => {
                   <MdOutlineTextsms />
                 </div>
                 <div className="messageText">
-                  <span className="subtitle">
-                    {variables.getMessage(`${MESSAGE_SECTION}.title`)}
-                  </span>
+                  <span className="subtitle">{t(`${MESSAGE_SECTION}.title`)}</span>
                   <Textarea
                     value={messages[index]}
-                    placeholder={variables.getMessage(
-                      'modals.main.settings.sections.message.content',
-                    )}
+                    placeholder={t('modals.main.settings.sections.message.content')}
                     onChange={(e) => message(e, true, index)}
                     minRows={2}
                   />
@@ -98,7 +95,7 @@ const MessageOptions = () => {
                     type="settings"
                     onClick={() => modifyMessage('remove', index)}
                     icon={<MdCancel />}
-                    label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+                    label={t('modals.main.marketplace.product.buttons.remove')}
                   />
                 </div>
               </div>
@@ -109,17 +106,13 @@ const MessageOptions = () => {
           <div className="photosEmpty">
             <div className="emptyNewMessage">
               <MdOutlineTextsms />
-              <span className="title">
-                {variables.getMessage(`${MESSAGE_SECTION}.no_messages`)}
-              </span>
-              <span className="subtitle">
-                {variables.getMessage(`${MESSAGE_SECTION}.add_some`)}
-              </span>
+              <span className="title">{t(`${MESSAGE_SECTION}.no_messages`)}</span>
+              <span className="subtitle">{t(`${MESSAGE_SECTION}.add_some`)}</span>
               <Button
                 type="settings"
                 onClick={() => modifyMessage('add')}
                 icon={<MdAdd />}
-                label={variables.getMessage(`${MESSAGE_SECTION}.add`)}
+                label={t(`${MESSAGE_SECTION}.add`)}
               />
             </div>
           </div>

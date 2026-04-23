@@ -19,16 +19,19 @@
 
 .radio-group {
   width: 100%;
-  margin-top: 10px;
 
-  .radio-title {
-    font-weight: bold;
-    font-size: 1.17rem;
-    margin-bottom: 12px;
-    display: block;
+  .radio-header {
+    margin-bottom: 18px;
+  }
+
+  .radio-header-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 
     @include themed {
-      color: t($color);
+      color: t($subColor);
     }
   }
 
@@ -88,7 +91,7 @@
 
   .radio-label {
     flex: 1;
-    font-size: 15px;
+    font-size: 0.9375rem;
     pointer-events: none;
 
     @include themed {
@@ -120,7 +123,7 @@
 
     &:active:not(.disabled) {
       @include themed {
-        box-shadow: 0 0 0 4px rgba(255, 92, 37, 0.1);
+        box-shadow: 0 0 0 4px rgb(255 92 37 / 10%);
       }
     }
   }
@@ -129,6 +132,7 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
+
     @include animation(radioDotScale 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55));
 
     @include themed {

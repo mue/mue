@@ -1,13 +1,17 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { memo, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { compressAccurately, filetoDataURL } from 'image-conversion';
 import videoCheck from 'features/background/api/videoCheck';
 
 const FileUpload = memo(({ id, type, accept, loadFunction, multiple }) => {
+  const t = useT();
+
   useEffect(() => {
     const fileInput = document.getElementById(id);
-    if (!fileInput) return;
+    if (!fileInput) {
+      return;
+    }
 
     const handleChange = (e) => {
       const files = Array.from(e.target.files);
@@ -17,14 +21,14 @@ const FileUpload = memo(({ id, type, accept, loadFunction, multiple }) => {
         const file = files[0];
         reader.readAsText(file, 'UTF-8');
         reader.onload = (e) => {
+          e.target.value = '';
           return loadFunction(e.target.result);
         };
       } else {
-        // Pass files directly to loadFunction if it's a newer implementation
         if (typeof loadFunction === 'function' && loadFunction.length === 1) {
           loadFunction(files);
+          e.target.value = '';
         } else {
-          // Legacy background upload - handle multiple files
           const settings = {};
 
           Object.keys(localStorage).forEach((key) => {
@@ -33,11 +37,10 @@ const FileUpload = memo(({ id, type, accept, loadFunction, multiple }) => {
 
           const settingsSize = new TextEncoder().encode(JSON.stringify(settings)).length;
 
-          // Process each file
           files.forEach((file, index) => {
             if (videoCheck(file.type) === true) {
               if (settingsSize + file.size > 4850000) {
-                return toast(variables.getMessage('toasts.no_storage'));
+                return toast(t('toasts.no_storage'));
               }
 
               return loadFunction(file, index);
@@ -48,7 +51,7 @@ const FileUpload = memo(({ id, type, accept, loadFunction, multiple }) => {
               accuracy: 0.9,
             }).then(async (res) => {
               if (settingsSize + res.size > 4850000) {
-                return toast(variables.getMessage('toasts.no_storage'));
+                return toast(t('toasts.no_storage'));
               }
 
               loadFunction(
@@ -61,6 +64,8 @@ const FileUpload = memo(({ id, type, accept, loadFunction, multiple }) => {
               );
             });
           });
+          // Clear the input value so subsequent uploads work
+          e.target.value = '';
         }
       }
     };

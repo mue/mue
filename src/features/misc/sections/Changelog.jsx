@@ -1,15 +1,16 @@
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { useState, useRef } from 'react';
 import { MdOutlineWifiOff } from 'react-icons/md';
 
 const Changelog = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const t = useT();
+  const [loading, setLoading] = useState(true);
   const iframeRef = useRef(null);
 
   const offlineMode = localStorage.getItem('offlineMode') === 'true';
   const isOffline = navigator.onLine === false || offlineMode;
 
-  // Helper function to resolve auto theme
   const getResolvedTheme = () => {
     const theme = localStorage.getItem('theme') || 'auto';
     if (theme === 'auto') {
@@ -21,9 +22,8 @@ const Changelog = () => {
   };
 
   const handleLoad = () => {
-    setIsLoading(false);
+    setLoading(false);
 
-    // Send theme to iframe after it loads
     if (iframeRef.current?.contentWindow) {
       const theme = getResolvedTheme();
       const blogOrigin = new URL(variables.constants.CHANGELOG_URL).origin;
@@ -32,21 +32,18 @@ const Changelog = () => {
           type: 'mue:theme',
           payload: { theme },
         },
-        blogOrigin
+        blogOrigin,
       );
     }
   };
 
-  // Show offline error message if offline
   if (isOffline) {
     return (
       <div className="emptyItems">
         <div className="emptyMessage">
           <MdOutlineWifiOff />
-          <h1>{variables.getMessage('modals.main.marketplace.offline.title')}</h1>
-          <p className="description">
-            {variables.getMessage('modals.main.marketplace.offline.description')}
-          </p>
+          <h1>{t('modals.main.marketplace.offline.title')}</h1>
+          <p className="description">{t('modals.main.marketplace.offline.description')}</p>
         </div>
       </div>
     );
@@ -54,7 +51,7 @@ const Changelog = () => {
 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-      {isLoading && (
+      {loading && (
         <div
           className="loaderHolder"
           style={{
@@ -66,7 +63,7 @@ const Changelog = () => {
           }}
         >
           <div id="loader"></div>
-          <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
+          <span className="subtitle">{t('modals.main.loading')}</span>
         </div>
       )}
       <iframe
@@ -80,10 +77,10 @@ const Changelog = () => {
           width: '100%',
           height: '100%',
           border: 'none',
-          opacity: isLoading ? 0 : 1,
+          opacity: loading ? 0 : 1,
           transition: 'opacity 0.2s ease-in-out',
         }}
-        title="Changelog"
+        title={t('modals.main.settings.sections.changelog.iframe_title')}
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { useState } from 'react';
 import { MdAutoAwesome, MdLightMode, MdDarkMode } from 'react-icons/md';
 import { loadSettings } from 'utils/settings';
@@ -11,6 +11,7 @@ const THEMES = {
 };
 
 function ThemeSelection() {
+  const t = useT();
   const currentTheme = localStorage.getItem('theme') || THEMES.AUTO;
   const [theme, setTheme] = useState(currentTheme);
 
@@ -24,25 +25,25 @@ function ThemeSelection() {
     [THEMES.AUTO]: {
       className: theme === THEMES.AUTO ? 'toggle auto active' : 'toggle auto',
       icon: <MdAutoAwesome />,
-      text: variables.getMessage('modals.main.settings.sections.appearance.theme.auto'),
+      text: t('modals.main.settings.sections.appearance.theme.auto'),
     },
     [THEMES.LIGHT]: {
       className: theme === THEMES.LIGHT ? 'toggle lightTheme active' : 'toggle lightTheme',
       icon: <MdLightMode />,
-      text: variables.getMessage('modals.main.settings.sections.appearance.theme.light'),
+      text: t('modals.main.settings.sections.appearance.theme.light'),
     },
     [THEMES.DARK]: {
       className: theme === THEMES.DARK ? 'toggle darkTheme active' : 'toggle darkTheme',
       icon: <MdDarkMode />,
-      text: variables.getMessage('modals.main.settings.sections.appearance.theme.dark'),
+      text: t('modals.main.settings.sections.appearance.theme.dark'),
     },
   };
 
   return (
     <Content>
       <Header
-        title={variables.getMessage('modals.welcome.sections.theme.title')}
-        subtitle={variables.getMessage('modals.welcome.sections.theme.description')}
+        title={t('modals.welcome.sections.theme.title')}
+        subtitle={t('modals.welcome.sections.theme.description')}
       />
       <div className="themesToggleArea">
         <div
@@ -63,8 +64,8 @@ function ThemeSelection() {
             ))}
         </div>
       </div>
-      <span className="title">{variables.getMessage('modals.welcome.tip')}</span>
-      <span className="subtitle">{variables.getMessage('modals.welcome.sections.theme.tip')}</span>
+      <span className="title">{t('modals.welcome.tip')}</span>
+      <span className="subtitle">{t('modals.welcome.sections.theme.tip')}</span>
     </Content>
   );
 }

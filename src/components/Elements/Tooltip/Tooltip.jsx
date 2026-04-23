@@ -1,12 +1,12 @@
-import { useState, memo, useRef } from 'react';
+import { useState, memo, useRef, useId } from 'react';
 import { useFloating, flip, offset, shift } from '@floating-ui/react-dom';
 import './tooltip.scss';
 
 function Tooltip({ children, title, style, placement, subtitle }) {
   const [showTooltip, setShowTooltip] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
+  const [closing, setClosing] = useState(false);
   const [reference, setReference] = useState(null);
-  const tooltipId = useRef(`tooltip-${Math.random()}`);
+  const tooltipId = useId();
   const closeTimeout = useRef(null);
 
   const {
@@ -23,23 +23,23 @@ function Tooltip({ children, title, style, placement, subtitle }) {
     },
   });
 
+  const { setFloating } = refs;
+
   const handleMouseEnter = () => {
-    // Clear any pending close timeout if mouse re-enters during exit
     if (closeTimeout.current) {
       clearTimeout(closeTimeout.current);
       closeTimeout.current = null;
     }
-    setIsClosing(false);
+    setClosing(false);
     setShowTooltip(true);
   };
 
   const handleMouseLeave = () => {
-    setIsClosing(true);
-    // Wait for exit animation to complete before unmounting
+    setClosing(true);
     closeTimeout.current = setTimeout(() => {
       setShowTooltip(false);
-      setIsClosing(false);
-    }, 200); // Match exit animation duration
+      setClosing(false);
+    }, 200);
   };
 
   const handleFocus = () => {
@@ -47,22 +47,25 @@ function Tooltip({ children, title, style, placement, subtitle }) {
       clearTimeout(closeTimeout.current);
       closeTimeout.current = null;
     }
-    setIsClosing(false);
+    setClosing(false);
     setShowTooltip(true);
   };
 
   const handleBlur = () => {
-    setIsClosing(true);
+    setClosing(true);
     closeTimeout.current = setTimeout(() => {
       setShowTooltip(false);
-      setIsClosing(false);
+      setClosing(false);
     }, 200);
   };
 
-  // Determine the data-status attribute value
   const getStatus = () => {
-    if (!showTooltip && !isClosing) return 'initial';
-    if (isClosing) return 'close';
+    if (!showTooltip && !closing) {
+      return 'initial';
+    }
+    if (closing) {
+      return 'close';
+    }
     return 'open';
   };
 
@@ -76,13 +79,13 @@ function Tooltip({ children, title, style, placement, subtitle }) {
         onFocus={handleFocus}
         onBlur={handleBlur}
         ref={setReference}
-        aria-describedby={tooltipId.current}
+        aria-describedby={tooltipId}
       >
         {children}
       </div>
-      {(showTooltip || isClosing) && (
+      {(showTooltip || closing) && (
         <span
-          ref={refs.setFloating}
+          ref={setFloating}
           style={{
             position: strategy,
             top: y ?? '',

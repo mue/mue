@@ -35,7 +35,9 @@
   height: 100vh;
   pointer-events: none;
   z-index: 0;
-  transition: backdrop-filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition:
+    backdrop-filter 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
 }
 
 .backgroundPreload {

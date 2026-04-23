@@ -6,48 +6,6 @@
 @use 'modules/tabs/stats' as *;
 
 input {
-  /* colour picker */
-  &[type='color'] {
-    border-radius: 100%;
-    height: 30px;
-    width: 30px;
-    border: none;
-    outline: none;
-    appearance: none;
-    vertical-align: middle;
-    background: none;
-
-    @include themed {
-      border: t($modal-sidebarActive) 1px solid;
-    }
-
-    &::-webkit-color-swatch-wrapper {
-      padding: 0;
-    }
-
-    &::-webkit-color-swatch {
-      border: none;
-      border-radius: 100%;
-    }
-  }
-
-  /* firefox fixes for colour picker (using "," didn't work) */
-  &[type='color']::-moz-color-swatch {
-    border-radius: 100%;
-    height: 30px;
-    width: 30px;
-    border: none;
-    outline: none;
-    appearance: none;
-    vertical-align: middle;
-    background: none;
-
-    &::-moz-color-swatch {
-      border: none;
-      border-radius: 100%;
-    }
-  }
-
   /* date picker */
   &[type='date'] {
     width: 260px;
@@ -95,7 +53,7 @@ h4 {
   position: sticky;
   top: -20px;
   z-index: 90;
-  padding: 25px 0 15px 0;
+  padding: 25px 0 15px;
   display: flex;
   flex-flow: row;
   justify-content: space-between;
@@ -211,7 +169,7 @@ h4 {
       background: none;
       border: none;
       padding: 0;
-      margin-left: 5px;
+      margin-inline-start: 5px;
       cursor: pointer;
       text-decoration: underline;
       font-size: 14px;
@@ -230,7 +188,7 @@ h4 {
       background: none;
       border: none;
       padding: 0;
-      margin-left: 5px;
+      margin-inline-start: 5px;
       cursor: pointer;
       text-decoration: underline;
       font-size: 14px;
@@ -273,7 +231,7 @@ h4 {
   transition: 0.4s ease-in-out;
 }
 
-// Warning banner (used in Search settings and potentially others)
+/* Warning banner (used in Search settings and potentially others) */
 .itemWarning {
   padding: 10px 20px;
   display: flex;

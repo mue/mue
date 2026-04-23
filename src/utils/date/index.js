@@ -1,11 +1,16 @@
 // todo: maybe move stuff
 /**
- * If the number is between 3 and 20, return the number with the suffix "th". Otherwise, return the
- * number with the suffix "st", "nd", "rd", or "th" depending on the last digit of the number
- * @param d - The day of the month.
- * @returns the day of the month with the appropriate suffix.
+ * Returns the number with an ordinal suffix for English locales (st, nd, rd, th).
+ * For non-English locales, returns the plain number since ordinal conventions vary by language.
+ * @param d - The day of the month or any number.
+ * @param lang - Optional language code (e.g., 'en', 'tr'). If starts with 'en', applies English ordinals.
+ * @returns The number, optionally with an English ordinal suffix.
  */
-export function nth(d) {
+export function nth(d, lang) {
+  if (lang && !lang.startsWith('en')) {
+    return d;
+  }
+
   if (d > 3 && d < 21) {
     return d + 'th';
   }

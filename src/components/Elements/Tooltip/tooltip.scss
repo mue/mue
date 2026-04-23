@@ -5,6 +5,54 @@
   display: grid;
 }
 
+@keyframes floatingFromTop {
+  0% {
+    transform: translateY(5px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes floatingFromBottom {
+  0% {
+    transform: translateY(-5px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes floatingFromLeft {
+  0% {
+    transform: translateX(5px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes floatingFromRight {
+  0% {
+    transform: translateX(-5px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 @keyframes floating {
   0% {
     transform: translate(0, -5px);
@@ -37,21 +85,36 @@
     opacity 0.2s ease-out,
     transform 0.2s ease-out;
 
-  // Initial state (not yet shown)
+  /* Initial state (not yet shown) */
   &[data-status='initial'] {
     opacity: 0;
   }
 
-  // Open state - entrance animation
+  /* Open state - entrance animation */
   &[data-status='open'] {
     opacity: 1;
     transform: translate(0, 0);
-    animation-name: floating;
     animation-duration: 0.3s;
     animation-timing-function: ease-in;
+
+    &[data-placement^='top'] {
+      animation-name: floatingFromTop;
+    }
+
+    &[data-placement^='bottom'] {
+      animation-name: floatingFromBottom;
+    }
+
+    &[data-placement^='left'] {
+      animation-name: floatingFromLeft;
+    }
+
+    &[data-placement^='right'] {
+      animation-name: floatingFromRight;
+    }
   }
 
-  // Closing state - exit animation
+  /* Closing state - exit animation */
   &[data-status='close'] {
     opacity: 0;
 

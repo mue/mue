@@ -1,6 +1,7 @@
 import { memo, useState } from 'react';
 
-import variables from 'config/variables';
+import { useT } from 'contexts';
+import googleFonts from 'config/googleFonts.json';
 
 import { Checkbox, Dropdown, Radio, Slider, Text } from 'components/Form/Settings';
 import { Header, Section, Row, Content, Action } from 'components/Layout/Settings';
@@ -10,30 +11,28 @@ import { MdAccessibility } from 'react-icons/md';
 import values from 'utils/data/slider_values.json';
 
 function AppearanceOptions({ currentSubSection, onSubSectionChange, sectionName }) {
-
+  const t = useT();
   const ThemeSelection = () => {
     return (
       <Row>
         <Content
-          title={variables.getMessage('modals.main.settings.sections.appearance.theme.title')}
-          subtitle={variables.getMessage(
-            'modals.main.settings.sections.appearance.theme.description',
-          )}
+          title={t('modals.main.settings.sections.appearance.theme.title')}
+          subtitle={t('modals.main.settings.sections.appearance.theme.description')}
         />
         <Action>
           <Radio
             name="theme"
             options={[
               {
-                name: variables.getMessage('modals.main.settings.sections.appearance.theme.auto'),
+                name: t('modals.main.settings.sections.appearance.theme.auto'),
                 value: 'auto',
               },
               {
-                name: variables.getMessage('modals.main.settings.sections.appearance.theme.light'),
+                name: t('modals.main.settings.sections.appearance.theme.light'),
                 value: 'light',
               },
               {
-                name: variables.getMessage('modals.main.settings.sections.appearance.theme.dark'),
+                name: t('modals.main.settings.sections.appearance.theme.dark'),
                 value: 'dark',
               },
             ]}
@@ -44,94 +43,162 @@ function AppearanceOptions({ currentSubSection, onSubSectionChange, sectionName 
     );
   };
 
-  const FontOptions = () => {
-    const fontWeight = 'modals.main.settings.sections.appearance.font.weight';
+  const WidgetFontOptions = () => {
+    const fontWeight = 'modals.main.settings.sections.appearance.widget_font.weight';
     return (
       <Row>
         <Content
-          title={variables.getMessage('modals.main.settings.sections.appearance.font.title')}
-          subtitle={variables.getMessage(
-            'modals.main.settings.sections.appearance.font.description',
-          )}
+          title={t('modals.main.settings.sections.appearance.widget_font.title')}
+          subtitle={t('modals.main.settings.sections.appearance.widget_font.description')}
         />
         <Action>
-          <Checkbox
-            name="fontGoogle"
-            text={variables.getMessage('modals.main.settings.sections.appearance.font.google')}
-            category="other"
-          />
-          <Text
-            title={variables.getMessage('modals.main.settings.sections.appearance.font.custom')}
-            name="font"
-            upperCaseFirst={true}
-            category="other"
-          />
-          {/* names are taken from https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight */}
           <Dropdown
-            label={variables.getMessage(
-              'modals.main.settings.sections.appearance.font.weight.title',
-            )}
-            name="fontweight"
+            label={t('modals.main.settings.sections.appearance.widget_font.custom')}
+            name="widgetFont"
+            category="other"
+            searchable={true}
+            items={googleFonts.map((font) => ({
+              value: font,
+              text: font,
+            }))}
+          />
+          <Dropdown
+            label={t('modals.main.settings.sections.appearance.widget_font.weight.title')}
+            name="widgetFontWeight"
             category="other"
             items={[
               {
+                value: '400',
+                text: t(fontWeight + '.normal'),
+              },
+              {
                 value: '100',
-                text: variables.getMessage(fontWeight + '.thin'),
+                text: t(fontWeight + '.thin'),
               },
               {
                 value: '200',
-                text: variables.getMessage(fontWeight + '.extra_light'),
+                text: t(fontWeight + '.extra_light'),
               },
               {
                 value: '300',
-                text: variables.getMessage(fontWeight + '.light'),
-              },
-              {
-                value: '400',
-                text: variables.getMessage(fontWeight + '.normal'),
+                text: t(fontWeight + '.light'),
               },
               {
                 value: '500',
-                text: variables.getMessage(fontWeight + '.medium'),
+                text: t(fontWeight + '.medium'),
               },
               {
                 value: '600',
-                text: variables.getMessage(fontWeight + '.semi_bold'),
+                text: t(fontWeight + '.semi_bold'),
               },
               {
                 value: '700',
-                text: variables.getMessage(fontWeight + '.bold'),
+                text: t(fontWeight + '.bold'),
               },
               {
                 value: '800',
-                text: variables.getMessage(fontWeight + '.extra_bold'),
+                text: t(fontWeight + '.extra_bold'),
               },
             ]}
           />
           <Dropdown
-            label={variables.getMessage(
-              'modals.main.settings.sections.appearance.font.style.title',
-            )}
-            name="fontstyle"
+            label={t('modals.main.settings.sections.appearance.widget_font.style.title')}
+            name="widgetFontStyle"
             category="other"
             items={[
               {
                 value: 'normal',
-                text: variables.getMessage(
-                  'modals.main.settings.sections.appearance.font.style.normal',
-                ),
+                text: t('modals.main.settings.sections.appearance.widget_font.style.normal'),
               },
               {
                 value: 'italic',
-                text: variables.getMessage(
-                  'modals.main.settings.sections.appearance.font.style.italic',
-                ),
+                text: t('modals.main.settings.sections.appearance.widget_font.style.italic'),
               },
               {
                 value: 'oblique',
-                text: variables.getMessage(
-                  'modals.main.settings.sections.appearance.font.style.oblique',
-                ),
+                text: t('modals.main.settings.sections.appearance.widget_font.style.oblique'),
+              },
+            ]}
+          />
+        </Action>
+      </Row>
+    );
+  };
+
+  const SettingsFontOptions = () => {
+    const fontWeight = 'modals.main.settings.sections.appearance.settings_font.weight';
+    return (
+      <Row>
+        <Content
+          title={t('modals.main.settings.sections.appearance.settings_font.title')}
+          subtitle={t('modals.main.settings.sections.appearance.settings_font.description')}
+        />
+        <Action>
+          <Dropdown
+            label={t('modals.main.settings.sections.appearance.settings_font.custom')}
+            name="settingsFont"
+            category="other"
+            searchable={true}
+            items={googleFonts.map((font) => ({
+              value: font,
+              text: font,
+            }))}
+          />
+          <Dropdown
+            label={t('modals.main.settings.sections.appearance.settings_font.weight.title')}
+            name="settingsFontWeight"
+            category="other"
+            items={[
+              {
+                value: '400',
+                text: t(fontWeight + '.normal'),
+              },
+              {
+                value: '100',
+                text: t(fontWeight + '.thin'),
+              },
+              {
+                value: '200',
+                text: t(fontWeight + '.extra_light'),
+              },
+              {
+                value: '300',
+                text: t(fontWeight + '.light'),
+              },
+              {
+                value: '500',
+                text: t(fontWeight + '.medium'),
+              },
+              {
+                value: '600',
+                text: t(fontWeight + '.semi_bold'),
+              },
+              {
+                value: '700',
+                text: t(fontWeight + '.bold'),
+              },
+              {
+                value: '800',
+                text: t(fontWeight + '.extra_bold'),
+              },
+            ]}
+          />
+          <Dropdown
+            label={t('modals.main.settings.sections.appearance.settings_font.style.title')}
+            name="settingsFontStyle"
+            category="other"
+            items={[
+              {
+                value: 'normal',
+                text: t('modals.main.settings.sections.appearance.settings_font.style.normal'),
+              },
+              {
+                value: 'italic',
+                text: t('modals.main.settings.sections.appearance.settings_font.style.italic'),
+              },
+              {
+                value: 'oblique',
+                text: t('modals.main.settings.sections.appearance.settings_font.style.oblique'),
               },
             ]}
           />
@@ -144,10 +211,8 @@ function AppearanceOptions({ currentSubSection, onSubSectionChange, sectionName 
     return (
       <Row final={true}>
         <Content
-          title={variables.getMessage('modals.main.settings.sections.appearance.style.title')}
-          subtitle={variables.getMessage(
-            'modals.main.settings.sections.appearance.style.description',
-          )}
+          title={t('modals.main.settings.sections.appearance.style.title')}
+          subtitle={t('modals.main.settings.sections.appearance.style.description')}
         />
         <Action>
           <Radio
@@ -155,11 +220,11 @@ function AppearanceOptions({ currentSubSection, onSubSectionChange, sectionName 
             element=".other"
             options={[
               {
-                name: variables.getMessage('modals.main.settings.sections.appearance.style.legacy'),
+                name: t('modals.main.settings.sections.appearance.style.legacy'),
                 value: 'legacy',
               },
               {
-                name: variables.getMessage('modals.main.settings.sections.appearance.style.new'),
+                name: t('modals.main.settings.sections.appearance.style.new'),
                 value: 'new',
               },
             ]}
@@ -174,64 +239,43 @@ function AppearanceOptions({ currentSubSection, onSubSectionChange, sectionName 
     return (
       <Row final={true}>
         <Content
-          title={variables.getMessage(
-            'modals.main.settings.sections.appearance.accessibility.title',
-          )}
-          subtitle={variables.getMessage(
-            'modals.main.settings.sections.appearance.accessibility.description',
-          )}
+          title={t('modals.main.settings.sections.appearance.accessibility.title')}
+          subtitle={t('modals.main.settings.sections.appearance.accessibility.description')}
         />
         <Action>
           <Dropdown
-            label={variables.getMessage(
-              'modals.main.settings.sections.appearance.accessibility.text_shadow.title',
-            )}
+            label={t('modals.main.settings.sections.appearance.accessibility.text_shadow.title')}
             name="textBorder"
             category="other"
             items={[
               {
                 value: 'new',
-                text: variables.getMessage(
-                  'modals.main.settings.sections.appearance.accessibility.text_shadow.new',
-                ),
+                text: t('modals.main.settings.sections.appearance.accessibility.text_shadow.new'),
               },
               {
                 value: 'true',
-                text: variables.getMessage(
-                  'modals.main.settings.sections.appearance.accessibility.text_shadow.old',
-                ),
+                text: t('modals.main.settings.sections.appearance.accessibility.text_shadow.old'),
               },
               {
                 value: 'none',
-                text: variables.getMessage(
-                  'modals.main.settings.sections.appearance.accessibility.text_shadow.none',
-                ),
+                text: t('modals.main.settings.sections.appearance.accessibility.text_shadow.none'),
               },
             ]}
           />
           <Checkbox
-            text={variables.getMessage(
-              'modals.main.settings.sections.appearance.accessibility.animations',
-            )}
+            text={t('modals.main.settings.sections.appearance.accessibility.animations')}
             name="animations"
             category="other"
           />
           <Slider
-            title={variables.getMessage(
-              'modals.main.settings.sections.appearance.accessibility.toast_duration',
-            )}
+            title={t('modals.main.settings.sections.appearance.accessibility.toast_duration')}
             name="toastDisplayTime"
             default="2500"
             step="100"
             min="500"
             max="5000"
             marks={values.toast}
-            display={
-              ' ' +
-              variables.getMessage(
-                'modals.main.settings.sections.appearance.accessibility.milliseconds',
-              )
-            }
+            display={' ' + t('modals.main.settings.sections.appearance.accessibility.milliseconds')}
           />
         </Action>
       </Row>
@@ -244,21 +288,14 @@ function AppearanceOptions({ currentSubSection, onSubSectionChange, sectionName 
   if (isAccessibilitySection) {
     header = (
       <Header
-        title={variables.getMessage('modals.main.settings.sections.appearance.title')}
-        secondaryTitle={variables.getMessage(
-          'modals.main.settings.sections.appearance.accessibility.title',
-        )}
+        title={t('modals.main.settings.sections.appearance.title')}
+        secondaryTitle={t('modals.main.settings.sections.appearance.accessibility.title')}
         goBack={() => onSubSectionChange(null, sectionName)}
         report={false}
       />
     );
   } else {
-    header = (
-      <Header
-        title={variables.getMessage('modals.main.settings.sections.appearance.title')}
-        report={false}
-      />
-    );
+    header = <Header title={t('modals.main.settings.sections.appearance.title')} report={false} />;
   }
   return (
     <>
@@ -268,17 +305,14 @@ function AppearanceOptions({ currentSubSection, onSubSectionChange, sectionName 
       ) : (
         <>
           <Section
-            title={variables.getMessage(
-              'modals.main.settings.sections.appearance.accessibility.title',
-            )}
-            subtitle={variables.getMessage(
-              'modals.main.settings.sections.appearance.accessibility.description',
-            )}
+            title={t('modals.main.settings.sections.appearance.accessibility.title')}
+            subtitle={t('modals.main.settings.sections.appearance.accessibility.description')}
             icon={<MdAccessibility />}
             onClick={() => onSubSectionChange('accessibility', sectionName)}
           />
           <ThemeSelection />
-          <FontOptions />
+          <WidgetFontOptions />
+          <SettingsFontOptions />
           <WidgetStyle />
         </>
       )}

@@ -1,41 +1,38 @@
 import { memo } from 'react';
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { MdClose, MdRestartAlt } from 'react-icons/md';
 import { Tooltip, Button } from 'components/Elements';
 
 function ClearModal({ modalClose, resetStats }) {
+  const t = useT();
   return (
     <div className="smallModal">
       <div className="shareHeader">
         <span className="title">
-          {variables.getMessage('modals.main.settings.sections.advanced.reset_modal.title')}
+          {t('modals.main.settings.sections.advanced.reset_modal.title')}
         </span>
-        <Tooltip
-          title={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
-        >
+        <Tooltip title={t('modals.main.settings.sections.advanced.reset_modal.cancel')}>
           <div className="close" onClick={modalClose}>
             <MdClose />
           </div>
         </Tooltip>
       </div>
-      <span className="title">
-        {variables.getMessage('modals.main.settings.sections.stats.clear_modal.question')}
-      </span>
+      <span className="title">{t('modals.main.settings.sections.stats.clear_modal.question')}</span>
       <span className="subtitle">
-        {variables.getMessage('modals.main.settings.sections.stats.clear_modal.information')}
+        {t('modals.main.settings.sections.stats.clear_modal.information')}
       </span>
       <div className="resetFooter">
         <Button
           type="secondary"
           onClick={modalClose}
           icon={<MdClose />}
-          label={variables.getMessage('modals.main.settings.sections.advanced.reset_modal.cancel')}
+          label={t('modals.main.settings.sections.advanced.reset_modal.cancel')}
         />
         <Button
           type="settings"
           onClick={() => resetStats()}
           icon={<MdRestartAlt />}
-          label={variables.getMessage('modals.main.settings.buttons.reset')}
+          label={t('modals.main.settings.buttons.reset')}
         />
       </div>
     </div>

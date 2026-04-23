@@ -21,7 +21,6 @@ function openDB() {
     request.onupgradeneeded = (event) => {
       const db = event.target.result;
 
-      // Create object store if it doesn't exist
       if (!db.objectStoreNames.contains(STORE_NAME)) {
         const objectStore = db.createObjectStore(STORE_NAME, {
           keyPath: 'id',
@@ -47,12 +46,9 @@ export async function getAllBackgroundsWithMetadata() {
     return new Promise((resolve, reject) => {
       request.onsuccess = () => {
         const results = request.result;
-        // Return array of background objects in order
-        // For backward compatibility, convert old string URLs to objects
         resolve(
           results.map((item) => {
             if (typeof item.url === 'string' && !item.name) {
-              // Old format - migrate to new format
               return {
                 id: item.id,
                 url: item.url,
@@ -102,7 +98,6 @@ export async function addBackground(backgroundData) {
   const transaction = db.transaction(STORE_NAME, 'readwrite');
   const store = transaction.objectStore(STORE_NAME);
 
-  // Support old string format for backward compatibility
   const data =
     typeof backgroundData === 'string'
       ? { url: backgroundData, name: 'Image', uploadDate: Date.now(), folder: '' }
@@ -127,7 +122,6 @@ export async function updateBackground(index, backgroundData) {
   const transaction = db.transaction(STORE_NAME, 'readwrite');
   const store = transaction.objectStore(STORE_NAME);
 
-  // Get all items to find the one at the specified index
   const getAllRequest = store.getAll();
 
   return new Promise((resolve, reject) => {
@@ -136,7 +130,6 @@ export async function updateBackground(index, backgroundData) {
       if (items[index]) {
         const item = items[index];
 
-        // Support old string format
         if (typeof backgroundData === 'string') {
           item.url = backgroundData;
         } else {
@@ -148,7 +141,6 @@ export async function updateBackground(index, backgroundData) {
         updateRequest.onsuccess = () => resolve();
         updateRequest.onerror = () => reject(updateRequest.error);
       } else {
-        // If index doesn't exist, add it
         addBackground(backgroundData).then(resolve).catch(reject);
       }
     };
@@ -166,7 +158,6 @@ export async function deleteBackground(index) {
   const transaction = db.transaction(STORE_NAME, 'readwrite');
   const store = transaction.objectStore(STORE_NAME);
 
-  // Get all items to find the one at the specified index
   const getAllRequest = store.getAll();
 
   return new Promise((resolve, reject) => {
@@ -177,7 +168,7 @@ export async function deleteBackground(index) {
         deleteRequest.onsuccess = () => resolve();
         deleteRequest.onerror = () => reject(deleteRequest.error);
       } else {
-        resolve(); // Index doesn't exist, nothing to delete
+        resolve();
       }
     };
     getAllRequest.onerror = () => reject(getAllRequest.error);
@@ -194,7 +185,6 @@ export async function deleteMultipleBackgrounds(indices) {
   const transaction = db.transaction(STORE_NAME, 'readwrite');
   const store = transaction.objectStore(STORE_NAME);
 
-  // Get all items first
   const getAllRequest = store.getAll();
 
   return new Promise((resolve, reject) => {
@@ -202,7 +192,6 @@ export async function deleteMultipleBackgrounds(indices) {
       const items = getAllRequest.result;
       const idsToDelete = indices.filter((index) => items[index]).map((index) => items[index].id);
 
-      // Delete all selected items
       let completed = 0;
       const total = idsToDelete.length;
 
@@ -308,27 +297,23 @@ export async function migrateFromLocalStorage() {
       backgrounds = [stored];
     }
 
-    // Filter out null/empty values
     backgrounds = backgrounds.filter((bg) => bg && bg.trim() !== '');
 
     if (backgrounds.length === 0) {
       return false;
     }
 
-    // Check if we already have data in IndexedDB
     const count = await getBackgroundCount();
     if (count > 0) {
-      return false; // Already migrated
+      return false;
     }
 
-    // Migrate each background
     for (const bg of backgrounds) {
       await addBackground(bg);
     }
 
     console.log(`Migrated ${backgrounds.length} backgrounds from localStorage to IndexedDB`);
 
-    // Keep localStorage as backup for now, but mark as migrated
     localStorage.setItem('customBackgroundMigrated', 'true');
 
     return true;

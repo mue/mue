@@ -19,14 +19,81 @@
 .quicklinkscontainer {
   border-radius: 12px;
   z-index: 1;
-  display: flex;
-  place-content: center center;
-  flex-wrap: wrap;
   padding: 0 25px;
-  gap: 12px;
   max-width: 100%;
   overflow-x: visible;
   box-sizing: border-box;
+
+  &.layout-grid {
+    display: grid;
+    gap: 16px;
+    justify-content: center;
+
+    &.cols-auto {
+      grid-template-columns: repeat(auto-fit, minmax(80px, 120px));
+    }
+
+    &.cols-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &.cols-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &.cols-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    &.cols-5 {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    &.cols-6 {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    &.rows-auto {
+      grid-auto-rows: auto;
+    }
+
+    &.rows-2 {
+      grid-template-rows: repeat(2, 1fr);
+      grid-auto-flow: column;
+    }
+
+    &.rows-3 {
+      grid-template-rows: repeat(3, 1fr);
+      grid-auto-flow: column;
+    }
+
+    &.rows-4 {
+      grid-template-rows: repeat(4, 1fr);
+      grid-auto-flow: column;
+    }
+  }
+
+  &.layout-flex {
+    display: flex;
+    place-content: center center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  &.layout-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  &:not(.layout-grid, .layout-flex, .layout-compact) {
+    display: flex;
+    place-content: center center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
 
   &.sortable-quicklinks {
     cursor: default;
@@ -43,6 +110,60 @@
   ::placeholder {
     color: #636e72;
     opacity: 1;
+  }
+}
+
+.quicklinks-group {
+  grid-column: 1 / -1;
+  margin-top: 16px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  .group-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    background: rgb(255 255 255 / 5%);
+    cursor: pointer;
+    user-select: none;
+
+    .group-icon {
+      font-size: 20px;
+    }
+
+    .group-name {
+      flex: 1;
+      font-size: 16px;
+      font-weight: 600;
+      color: rgb(255 255 255 / 90%);
+    }
+
+    .group-count {
+      font-size: 14px;
+      color: rgb(255 255 255 / 50%);
+    }
+
+    .group-toggle {
+      font-size: 18px;
+      transition: transform 0.2s ease;
+
+      &.collapsed {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  .group-items {
+    display: contents;
+
+    &.collapsed {
+      display: none;
+    }
   }
 }
 
@@ -85,7 +206,7 @@
   padding: 4px;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgb(255 255 255 / 5%);
 
     .quicklink-drag-handle {
       opacity: 1;
@@ -111,7 +232,7 @@
   justify-content: center;
   width: 20px;
   height: 20px;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgb(255 255 255 / 40%);
   cursor: grab;
   opacity: 0;
   transition:
@@ -120,8 +241,8 @@
   border-radius: 4px;
 
   &:hover {
-    color: rgba(255, 255, 255, 0.8);
-    background: rgba(255, 255, 255, 0.1);
+    color: rgb(255 255 255 / 80%);
+    background: rgb(255 255 255 / 10%);
   }
 
   svg {
@@ -145,6 +266,10 @@
   text-decoration: none;
   color: white;
   font-size: 0.8em;
+  line-height: 1.5;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
 
   &:hover {
     text-decoration: underline;
@@ -240,7 +365,7 @@ button.quicklinks {
   display: grid;
   grid-template-rows: auto 1fr; /* Two rows: first auto-sized, second filling remaining space */
   grid-template-columns: repeat(2, 1fr); /* Two equal-width columns for the first row */
-  grid-gap: 10px; /* Optional gap between items */
+  gap: 10px; /* Optional gap between items */
   padding: 15px 0;
 
   button {
@@ -307,6 +432,68 @@ button.quicklinks {
   }
 }
 
+.quickLinksCard {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  transition: all 0.2s ease;
+  padding: 5px;
+  border-radius: 12px;
+
+  &:hover {
+    background-color: rgb(255 255 255 / 20%);
+  }
+
+  &:hover .card-icon-container {
+    transform: scale(1.1);
+
+    @include themed {
+      background: t($modal-sidebarActive);
+    }
+  }
+
+  .card-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    transition: all 0.2s ease;
+
+    @include themed {
+      background: t($modal-sidebar);
+    }
+
+    img {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+  }
+
+  .card-label {
+    font-size: 11px;
+    text-align: center;
+    word-break: break-word;
+    line-height: 1.2;
+    max-width: 76px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-shadow: 0 0 10px rgb(0 0 0 / 30%);
+
+    @include themed {
+      color: t($color);
+    }
+  }
+}
+
 .quicklinknostyle {
   text-decoration: none;
   font-size: 14px;
@@ -329,7 +516,7 @@ button.quicklinks {
   cursor: grab;
   user-select: none;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.03);
+  border: 1px solid rgb(255 255 255 / 3%);
 
   &:active {
     cursor: grabbing;
@@ -338,21 +525,21 @@ button.quicklinks {
   &.dragging {
     opacity: 0.6;
     transform: scale(0.995);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 8px 20px rgb(0 0 0 / 35%);
     z-index: 10;
   }
 
   &.drag-over {
-    outline: 2px dashed rgba(255, 255, 255, 0.08);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
-    background: rgba(255, 255, 255, 0.01);
+    outline: 2px dashed rgb(255 255 255 / 8%);
+    box-shadow: inset 0 0 0 1px rgb(255 255 255 / 3%);
+    background: rgb(255 255 255 / 1%);
   }
 
   .dragHandle {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(255, 255, 255, 0.65);
+    color: rgb(255 255 255 / 65%);
     font-size: 20px;
     padding: 6px;
     border-radius: 8px;
@@ -364,14 +551,15 @@ button.quicklinks {
       color 0.12s ease;
 
     &:hover {
-      color: rgba(255, 255, 255, 0.9);
-      background: rgba(255, 255, 255, 0.02);
+      color: rgb(255 255 255 / 90%);
+      background: rgb(255 255 255 / 2%);
     }
   }
 
   .messageText {
     flex: 1 1 auto;
     min-width: 0;
+
     .title {
       font-weight: 600;
       font-size: 0.95rem;
@@ -380,9 +568,10 @@ button.quicklinks {
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     .subtitle {
       font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.6);
+      color: rgb(255 255 255 / 60%);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -408,8 +597,8 @@ button.quicklinks {
   display: flex;
   align-items: center;
   gap: 16px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgb(255 255 255 / 3%);
+  border: 1px solid rgb(255 255 255 / 8%);
   border-radius: 12px;
   padding: 16px 20px;
   transition: all 0.01s ease;
@@ -417,12 +606,12 @@ button.quicklinks {
   user-select: none;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.12);
+    background: rgb(255 255 255 / 6%);
+    border-color: rgb(255 255 255 / 12%);
 
     .quicklink-drag-handle {
       opacity: 1;
-      color: rgba(255, 255, 255, 0.7);
+      color: rgb(255 255 255 / 70%);
     }
   }
 
@@ -435,7 +624,7 @@ button.quicklinks {
     align-items: center;
     justify-content: center;
     cursor: grab;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgb(255 255 255 / 40%);
     font-size: 24px;
     padding: 4px;
     opacity: 0.3;
@@ -448,7 +637,7 @@ button.quicklinks {
     }
 
     &:hover {
-      color: rgba(255, 255, 255, 0.9);
+      color: rgb(255 255 255 / 90%);
     }
   }
 
@@ -456,13 +645,13 @@ button.quicklinks {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgb(255 255 255 / 8%);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgb(255 255 255 / 10%);
 
     img {
       width: 32px;
@@ -496,7 +685,7 @@ button.quicklinks {
 
     .quicklink-url {
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.5);
+      color: rgb(255 255 255 / 50%);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -515,8 +704,8 @@ button.quicklinks {
       gap: 6px;
       padding: 8px 16px;
       border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgb(255 255 255 / 15%);
+      background: rgb(255 255 255 / 5%);
       color: #fff;
       font-size: 14px;
       cursor: pointer;
@@ -529,8 +718,8 @@ button.quicklinks {
       }
 
       &:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.25);
+        background: rgb(255 255 255 / 10%);
+        border-color: rgb(255 255 255 / 25%);
       }
 
       &:active {
@@ -539,8 +728,8 @@ button.quicklinks {
 
       &.quicklink-remove-btn {
         &:hover {
-          background: rgba(239, 68, 68, 0.15);
-          border-color: rgba(239, 68, 68, 0.4);
+          background: rgb(239 68 68 / 15%);
+          border-color: rgb(239 68 68 / 40%);
           color: #ef4444;
         }
       }
@@ -551,10 +740,12 @@ button.quicklinks {
 .quicklink-item.disabled {
   cursor: default;
 }
+
 .quicklink-item.disabled .quicklink-action-btn {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
 .quicklink-item.disabled .drag-handle {
   cursor: not-allowed;
   opacity: 0.5;
@@ -564,17 +755,17 @@ button.quicklinks {
   transform: scale(1.02);
   z-index: 9999 !important;
   opacity: 0.5 !important;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 12px 40px rgb(0 0 0 / 50%) !important;
   cursor: grabbing !important;
 
   &.quicklink-item {
-    background: rgba(255, 255, 255, 0.1) !important;
-    border-color: rgba(255, 255, 255, 0.2) !important;
+    background: rgb(255 255 255 / 10%) !important;
+    border-color: rgb(255 255 255 / 20%) !important;
   }
 
   .quicklink-drag-handle {
     opacity: 1 !important;
-    color: rgba(255, 255, 255, 0.9) !important;
+    color: rgb(255 255 255 / 90%) !important;
   }
 
   .quicklink-icon,
@@ -598,7 +789,7 @@ button.quicklinks {
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
-  background: rgba(255, 255, 255, 0.1) !important;
+  background: rgb(255 255 255 / 10%) !important;
   transition: none !important;
 }
 
@@ -616,10 +807,14 @@ button.quicklinks {
   padding: 8px 12px;
   border-radius: 6px;
   transition: all 0.2s ease;
+  line-height: 1.5;
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
 
   &:hover {
     text-decoration: underline;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgb(255 255 255 / 10%);
   }
 }
 
@@ -630,6 +825,6 @@ button.quicklinks {
   .subtitle {
     margin-top: 8px;
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgb(255 255 255 / 90%);
   }
 }

@@ -1,5 +1,9 @@
 {
   "tabname": "Yeni Sekme",
+  "branding": {
+    "name": "Mue",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "Günaydın",
@@ -12,7 +16,6 @@
     },
     "background": {
       "credit": "Fotoğraf sahibi",
-      "unsplash": ", Unsplash",
       "information": "Bilgilendirme",
       "download": "İndir",
       "downloads": "İndirilenler",
@@ -36,10 +39,20 @@
       "icon": "İkon (İsteğe Bağlı)",
       "add": "Ekle",
       "name_error": "İsim belirtilmelidir",
-      "url_error": "URL sağlanmalıdır"
+      "url_error": "URL sağlanmalıdır",
+      "suggested": "Suggested: {name}",
+      "name_placeholder": "Enter link name (optional)",
+      "url_placeholder": "example.com",
+      "icon_url_placeholder": "https://example.com/icon.png",
+      "icon_type_label": "Icon Type",
+      "icon_type_auto": "Auto-detect Icon",
+      "icon_type_custom_url": "Custom Icon URL",
+      "icon_type_upload": "Upload Icon",
+      "icon_type_emoji": "Emoji",
+      "icon_type_letter": "Letter Avatar"
     },
     "date": {
-      "week": "Hafta"
+      "week": "{number}. Hafta"
     },
     "weather": {
       "not_found": "Bulunamadı",
@@ -52,7 +65,8 @@
       "share": "Paylaş",
       "copy": "Kopyala",
       "favourite": "Favorilere Ekle",
-      "unfavourite": "Favorilerden Çıkar"
+      "unfavourite": "Favorilerden Çıkar",
+      "author_info_aria": "Learn about the author of the quote."
     },
     "navbar": {
       "tooltips": {
@@ -60,7 +74,8 @@
       },
       "notes": {
         "title": "Notlar",
-        "placeholder": "Buraya yaz"
+        "placeholder": "Buraya yaz",
+        "export_filename": "mue-notes.txt"
       },
       "todo": {
         "title": "Yapılacaklar",
@@ -84,6 +99,10 @@
         "library": "Eklentilerim",
         "discover": "Market"
       },
+      "sidebar": {
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar"
+      },
       "error_boundary": {
         "title": "Hata",
         "message": "Mue bileşeni yüklenemedi",
@@ -93,7 +112,6 @@
       },
       "settings": {
         "enabled": "Etkinleştir",
-        "open_knowledgebase": "Bilgilendirme Sayfasını Aç",
         "additional_settings": "Ek Ayarlar",
         "reminder": {
           "title": "BİLDİRİM",
@@ -135,6 +153,38 @@
               "change_hour_colour": "Saat kısmının metin rengini değiştirin",
               "change_minute_colour": "Dakika kısmının metin rengini değiştirin",
               "change_second_colour": "Saniye kısmının metin rengini değiştirin"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the time looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the time",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the time text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the time text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the time text"
+              }
             }
           },
           "date": {
@@ -166,6 +216,11 @@
             "author_details": "Yazar hakkında daha fazla bilgi göster",
             "custom": "Özel Alıntı",
             "custom_subtitle": "Kendi özel alıntınızı belirleyin, ekleyin.",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
+            "suggested_packs_title": "Suggested Quote Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
             "no_quotes": "Alıntı yok",
             "author": "Yazar",
             "custom_buttons": "Butonlar",
@@ -179,6 +234,42 @@
               "copy": "Kopyala",
               "tweet": "Tweet'le",
               "favourite": "Favorilere Ekle"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the quote looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the quote",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the quote text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the quote text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the quote text"
+              }
             }
           },
           "greeting": {
@@ -199,7 +290,39 @@
             "month": "Ay",
             "no_events": "Olay Yok",
             "no_events_description": "Bazı Olaylar Ekleyin",
-            "add_event": "Olay Ekle"
+            "add_event": "Olay Ekle",
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the greeting looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the greeting",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the greeting text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the greeting text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the greeting text"
+              }
+            }
           },
           "background": {
             "title": "Arka Plan",
@@ -246,6 +369,10 @@
               "title": "Kaynak",
               "subtitle": "Arka plan görüntülerinin nereden alınacağını seçin.",
               "api": "Arka plan API",
+              "api_title": "API",
+              "api_mue": "Mue",
+              "api_unsplash": "Unsplash",
+              "collection_placeholder": "e.g. 123456, 654321",
               "custom_background": "Özel arka plan görseli",
               "custom_colour": "Özel Arka Plan Rengi",
               "upload": "Yükle",
@@ -258,6 +385,9 @@
               "disabled": "Kullanılamaz",
               "loop_video": "Tekrarlayan video",
               "mute_video": "Videonun sesini kapat",
+              "persistent_storage_tooltip": "Request persistent storage to prevent browser from automatically clearing your images",
+              "persistent_storage_granted": "Persistent storage granted - your images are protected from eviction",
+              "persistent_storage_denied": "Persistent storage denied - images may be cleared if storage is low",
               "quality": {
                 "title": "Kalite",
                 "original": "Orjinal",
@@ -285,22 +415,42 @@
                 "name_desc": "Name (Z-A)",
                 "size_small": "File Size (Smallest)",
                 "size_large": "File Size (Largest)"
-              }
+              },
+              "pack_count": {
+                "singular": "pack",
+                "plural": "packs"
+              },
+              "photo_count": {
+                "singular": "photo",
+                "plural": "photos"
+              },
+              "get_more": "Get more"
             },
             "display": "Görüntüleme",
             "display_subtitle": "Arka plan ve fotoğraf bilgilerinin nasıl yükleneceğini değiştirin",
             "api": "API Ayarları",
-            "api_subtitle": "Harici bir hizmet (API) aracılığıyla görüntü alma seçeneklerini belirleyin."
+            "api_subtitle": "Harici bir hizmet (API) aracılığıyla görüntü alma seçeneklerini belirleyin.",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            },
+            "installed_packs_title": "Installed Photo Packs",
+            "suggested_packs_title": "Suggested Photo Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
+            "photo_pack_settings": {
+              "title": "{name} Settings",
+              "refresh_photos": "Refresh Photos"
+            }
           },
           "search": {
             "title": "Arama",
             "additional": "Arama aracı için ekran ve işlevsellik seçeneklerini belirleyin.",
-            "search_engine": "Arama Motoru",
-            "search_engine_subtitle": "Arama çubuğunda kullanılacak arama motorunu seçin.",
-            "custom": "Özel URL/bağlantı",
-            "autocomplete": "Otomatik Tamamlama",
-            "autocomplete_provider": "Otomatik Tamamlama Sağlayıcısı",
-            "autocomplete_provider_subtitle": "Otomatik tamamlama açılır sonuçları için kullanılacak arama motorunu belirleyin.",
             "voice_search": "Sesli Arama",
             "dropdown": "Arama Motorları Açılır Menüsü",
             "focus": "Açık Sekmeye Odaklan",
@@ -355,7 +505,60 @@
               "metro": "Metro"
             },
             "styling": "Hızlı Bağlantı Görünümü",
-            "styling_description": "Bağlantıların görünümünü özelleştirin."
+            "styling_description": "Bağlantıların görünümünü özelleştirin.",
+            "layout": "Layout",
+            "layout_description": "Configure grid layout and organization",
+            "layout_mode": "Layout Mode",
+            "layout_grid": "Grid",
+            "layout_flex": "Flexible",
+            "layout_compact": "Compact",
+            "layout_card": "Card",
+            "grid_columns": "Grid Columns",
+            "grid_rows": "Grid Rows",
+            "grid_columns_auto": "Auto",
+            "appearance_title": "Appearance",
+            "appearance_subtitle": "Customize style and layout of quick links",
+            "display_title": "Display",
+            "display_subtitle": "Configure tooltips and tab behavior",
+            "organization_title": "Organization",
+            "organization_subtitle": "Organize links into groups",
+            "grouping": "Groups",
+            "grouping_description": "Organize quick links into groups",
+            "enable_grouping": "Enable Grouping",
+            "show_group_headers": "Show Group Headers",
+            "collapsible_groups": "Collapsible Groups",
+            "manage_groups": "Manage Groups",
+            "bookmark_sync": "Bookmark Sync",
+            "bookmark_sync_description": "Import and sync browser bookmarks",
+            "bookmark_sync_title": "Bookmark Sync",
+            "bookmark_sync_subtitle": "Automatically sync browser bookmarks to quick links",
+            "bookmark_sync_section_title": "Bookmark Sync",
+            "bookmark_sync_section_subtitle": "Import and sync browser bookmarks",
+            "enable_bookmark_sync": "Enable Bookmark Sync",
+            "sync_direction": "Sync Direction",
+            "import_only": "Import Only",
+            "two_way": "Two-Way Sync",
+            "sync_now": "Sync Now",
+            "manual_sync_title": "Manual Sync",
+            "manual_sync_subtitle": "Manually sync bookmarks now",
+            "sync_bookmarks_button": "Sync Bookmarks",
+            "syncing": "Syncing...",
+            "permission_denied": "Permission denied",
+            "sync_success": "Synced: {imported} imported, {updated} updated, {removed} removed",
+            "sync_error": "Error: {message}",
+            "icon_settings": "Icon Settings",
+            "icon_settings_description": "Configure icon behavior and fallbacks",
+            "custom_icons_enabled": "Allow Custom Icon Uploads",
+            "primary_icon_source": "Primary Icon Source",
+            "icon_type": "Icon Type",
+            "icon_auto": "Auto-detect",
+            "icon_custom_url": "Custom URL",
+            "icon_custom_upload": "Upload Image",
+            "icon_emoji": "Emoji",
+            "icon_letter": "Letter Avatar",
+            "upload_icon": "Upload Icon",
+            "group": "Group",
+            "no_group": "No Group"
           },
           "message": {
             "title": "Mesaj",
@@ -395,27 +598,50 @@
               },
               "apps_subtitle": "Sık kullandığınız diğer web sitelerinin kısayollarını oluşturun."
             },
-            "font": {
-              "title": "Yazı tipi",
-              "description": "Mue'da kullanılan yazı tipini değiştirin.",
-              "custom": "Özel yazı tipi",
-              "google": "Google Fonts'tan içeri aktar.",
+            "widget_font": {
+              "title": "Widget Font",
+              "description": "Change the font used for widgets on the new tab page",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
               "weight": {
-                "title": "Yazı tipi genişliği",
-                "thin": "Ekstra İnce",
-                "extra_light": "İnce",
-                "light": "Hafif İnce",
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
                 "normal": "Normal",
-                "medium": "Orta",
-                "semi_bold": "Hafif Kalın",
-                "bold": "Kalın",
-                "extra_bold": "Ekstra Kalın"
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
               },
               "style": {
-                "title": "Yazı stili",
+                "title": "Font style",
                 "normal": "Normal",
-                "italic": "İtalik",
-                "oblique": "Eğik"
+                "italic": "Italic",
+                "oblique": "Oblique"
+              }
+            },
+            "settings_font": {
+              "title": "Settings Font",
+              "description": "Change the font used for the settings modal",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
+              "weight": {
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "style": {
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
               }
             },
             "accessibility": {
@@ -440,6 +666,8 @@
             "title": "Gelişmiş",
             "offline_mode": "Çevrimdışı Mod",
             "offline_subtitle": "Etkinleştirildiğinde, çevrimiçi hizmetlere yönelik tüm talepler devre dışı bırakılır.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "Verileriniz",
             "data_description": "Mue ayarlarınızı bilgisayarınıza aktarmayı, mevcut bir ayar dosyasını içe aktarmayı veya ayarlarınızı varsayılan değerlerine sıfırlamayı seçin.",
             "data_subtitle": "Mue'daki verilerinizi yönetin.",
@@ -452,6 +680,25 @@
             "customisation": "Özelleştirme",
             "custom_css": "Özel CSS",
             "custom_css_subtitle": "Mue'nin stilini Cascading Style Sheets (CSS) ile özelleştirin.",
+            "custom_widget": {
+              "title": "Custom Widget",
+              "subtitle": "Embed your favourite sites or tools directly into Mue with iFrames.",
+              "add": "Add Widget",
+              "new": "New Widget",
+              "edit": "Edit Widget",
+              "name": "Widget Name",
+              "url": "Widget URL",
+              "no_widgets": "No custom widgets",
+              "add_some": "Add some",
+              "render_above": "Render above other widgets",
+              "positions": {
+                "center": "Center (with other widgets)",
+                "top_left": "Top Left",
+                "top_right": "Top Right",
+                "bottom_left": "Bottom Left",
+                "bottom_right": "Bottom Right"
+              }
+            },
             "custom_js": "Özel JS",
             "tab_name": "Sekme Adı",
             "tab_name_subtitle": "Tarayıcınızda görünen sekmenin adını değiştirin.",
@@ -490,7 +737,17 @@
           "experimental": {
             "title": "Deneysel",
             "warning": "Bu ayarlar tam olarak test edilmemiştir/uygulanmamıştır ve doğru çalışmayabilir!",
-            "developer": "Geliştirici"
+            "developer": "Geliştirici",
+            "debug_hotkey": "Debug hotkey (Ctrl + #)",
+            "debug_timeout": "Debug timeout",
+            "send_event": "Send Event",
+            "event_type": "Type",
+            "event_name": "Name",
+            "normal_toast": "Normal Toast",
+            "achievement_toast": "Achievement Unlocked Toast",
+            "toast_success": "Toasted successfully",
+            "clear_localstorage": "Clear LocalStorage",
+            "data_section": "Data"
           },
           "language": {
             "title": "Dil",
@@ -502,7 +759,8 @@
           },
           "changelog": {
             "title": "Değişiklik Günlüğü",
-            "by": "{author}"
+            "by": "{author}",
+            "iframe_title": "Changelog"
           },
           "about": {
             "title": "Hakkında",
@@ -530,11 +788,20 @@
             "supporters": "Destekleyenler",
             "no_supporters": "Şu anda Mue destekçisi yok",
             "photographers": "Fotoğrafçılar",
-            "curators": "Eklenti Oluşturucular"
+            "curators": "Eklenti Oluşturucular",
+            "social": {
+              "email": "Email",
+              "twitter": "X (Twitter)",
+              "discord": "Discord"
+            },
+            "license": "Licensed under the BSD-3-Clause License",
+            "copyright": "Copyright {startYear}-{currentYear}",
+            "image_count": "{count} images"
           }
         },
         "buttons": {
           "reset": "Sıfırla",
+          "default": "Default",
           "import": "İçeri Aktar",
           "export": "Dışarı Aktar",
           "cancel": "Cancel",
@@ -546,52 +813,10 @@
         "title": "Marketplace",
         "by": "{author}",
         "all": "Tümü",
-        "learn_more": "Daha Fazla Bilgi Edin",
         "photo_packs": "Fotoğraf Paketleri",
         "quote_packs": "Alıntı Paketleri",
         "preset_settings": "Ön Ayar Paketleri",
-        "no_items": "Bu kategoride öğe yok",
-        "collection": "Koleksiyon",
-        "explore_collection": "Koleksiyonu Keşfedin",
-        "add_all": "Hepsini Ekle",
         "collections": "Koleksiyonlar",
-        "cant_find": "Aradığınızı bulamıyor musunuz?",
-        "knowledgebase_one": "Kendiniz oluşturmak için",
-        "knowledgebase_two": "bilgilendirme sayfamızı",
-        "knowledgebase_three": "ziyaret edin.",
-        "installing": "Kurulum",
-        "product": {
-          "overview": "Genel Bakış",
-          "information": "Bilgi",
-          "last_updated": "Son Güncelleme",
-          "description": "Açıklama",
-          "details": "Ayrıntılar",
-          "more_from_curator": "{name} tarafından sağlanan buna benzer diğer içerikler",
-          "show_more": "Daha Fazla Göster",
-          "show_less": "Daha Az Göster",
-          "show_all": "Hepsini Göster",
-          "showing": "Gösteriliyor",
-          "no_images": "Fotoğraf bulunamadı",
-          "no_quotes": "Alıntı Sayısı",
-          "version": "Versiyon",
-          "created_by": "Oluşturan",
-          "updated_at": "Tarihinde güncellendi",
-          "part_of": "Parçası",
-          "explore": "Keşfet",
-          "buttons": {
-            "addtomue": "Mue Tab'ıma Ekle",
-            "remove": "Kaldır",
-            "update_addon": "Eklentiyi Güncelle",
-            "back": "Geri",
-            "report": "Raporla",
-            "not_available_preview": "Önizlemede Kullanılamıyor"
-          },
-          "not_in_language": "Bu eklenti sizin dilinizde değil",
-          "third_party_api": "Bu eklenti üçüncü taraf bir API kullanır",
-          "sideload_warning": "Bu eklenti dışarıdan yüklenmiştir.",
-          "setting": "Ayar",
-          "value": "Değer"
-        },
         "offline": {
           "title": "Görünüşe bakılırsa çevrimdışısınız",
           "description": "Lütfen internete bağlanın"
@@ -606,6 +831,9 @@
           "title": "Boş",
           "description": "Hiçbir eklenti yüklü değil"
         },
+        "get_some": "Get Some",
+        "remove_all": "Remove all addons",
+        "recently_updated": "Recently Updated",
         "sideload": {
           "title": "Dışarıdan Eklentiler",
           "description": "Bilgisayarınızdan pazar yerinde olmayan bir Mue eklentisi yükleyin.",
@@ -623,24 +851,7 @@
           "newest": "Kurulanlar (En Yeni)",
           "a_z": "Alfabetik (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Oluştur",
-          "moved_title": "Eklenti oluşturma taşındı!",
-          "moved_description": "7.1 güncellemesinden sonra, eklentilerin oluşturulması web kullanıcı arayüzüne taşındı",
-          "moved_button": "Çok Yakında...."
         }
-      }
-    },
-    "update": {
-      "title": "Güncelleme",
-      "offline": {
-        "title": "Çevrimdışı",
-        "description": "Çevrimdışı moddayken güncelleme günlükleri alınamıyor"
-      },
-      "error": {
-        "title": "Hata",
-        "description": "Sunucuya bağlanılamadı"
       }
     },
     "welcome": {
@@ -710,8 +921,59 @@
     },
     "share": {
       "copy_link": "Bağlantıyı kopyala",
-      "email": "E-posta"
+      "item_type": {
+        "image": "this image",
+        "quote": "this quote",
+        "marketplace_item": "this marketplace item"
+      },
+      "social": {
+        "twitter": "X (Twitter)",
+        "facebook": "Facebook",
+        "email": "Email",
+        "wechat": "WeChat",
+        "qq": "Tencent QQ"
+      },
+      "twitter_message": "Check out {name} on @getmue",
+      "email_subject": "Check out this on Mue!",
+      "email_body": "{name} on Mue: {url}"
     }
+  },
+  "common": {
+    "navigation": {
+      "back": "Back",
+      "forward": "Forward",
+      "navigate_back": "Navigate back",
+      "navigate_forward": "Navigate forward",
+      "navigate_to": "Navigate to {item}",
+      "breadcrumb_navigation": "Breadcrumb navigation"
+    },
+    "actions": {
+      "edit": "Edit",
+      "remove": "Remove",
+      "close": "Close",
+      "send": "Send"
+    },
+    "alt_text": {
+      "preview": "Preview",
+      "location": "Location",
+      "screenshot": "Screenshot",
+      "logo": "Logo"
+    },
+    "add_translation": "Add translation",
+    "above_widgets": "Above widgets",
+    "view_mode": {
+      "grid": "Grid view",
+      "list": "List view"
+    },
+    "search_label": "Search",
+    "microphone_search": "Microphone Search"
+  },
+  "error_boundary": {
+    "title": "A critical error has occurred",
+    "message": "The new tab page could not be loaded. Please uninstall the extension and try again.",
+    "report_button": "Report Issue",
+    "sent_successfully": "Sent Successfully",
+    "support_discord": "Support Discord"
   },
   "toasts": {
     "quote": "Alıntı kopyalandı",
@@ -723,6 +985,7 @@
     "error": "Bir şeyler yanlış gitti",
     "imported": "Başarıyla içe aktarıldı",
     "no_storage": "Yeteri kadar yer yok",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Bağlantı kopyalandı",
     "stats_reset": "İstatistikler sıfırlandı"
   }

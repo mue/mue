@@ -1,3 +1,4 @@
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { useState, useEffect, useRef } from 'react';
 
@@ -7,6 +8,7 @@ import EventBus from 'utils/eventbus';
 import './date.scss';
 
 const DateWidget = () => {
+  const t = useT();
   const [date, setDate] = useState('');
   const [weekNumber, setWeekNumber] = useState(null);
   const [display, setDisplay] = useState('block');
@@ -29,11 +31,12 @@ const DateWidget = () => {
       dateToday.setMonth(0, 1 + ((4 - dateToday.getDay() + 7) % 7));
     }
 
-    setWeekNumber(
-      `${variables.getMessage('widgets.date.week')} ${
-        1 + Math.ceil((firstThursday - dateToday) / 604800000)
-      }`,
-    );
+    const weekLabel = t('widgets.date.week');
+    const weekNum = 1 + Math.ceil((firstThursday - dateToday) / 604800000);
+    const weekText = weekLabel.includes('{number}')
+      ? weekLabel.replace('{number}', weekNum)
+      : `${weekLabel} ${weekNum}`;
+    setWeekNumber(weekText);
   };
 
   const getDate = () => {
@@ -61,15 +64,16 @@ const DateWidget = () => {
       let year = dateYear;
 
       switch (localStorage.getItem('dateFormat')) {
-        case 'MDY':
-          day = dateMonth;
-          month = dateDay;
+        case 'MDY': {
+          const temp = day;
+          day = month;
+          month = temp;
           break;
+        }
         case 'YMD':
           day = dateYear;
-          year = dateDay;
+          year = zero ? ('00' + dateDay).slice(-2) : dateDay;
           break;
-        // DMY
         default:
           break;
       }
@@ -94,10 +98,9 @@ const DateWidget = () => {
 
       setDate(format);
     } else {
-      // Long date
       const lang = variables.languagecode.split('_')[0];
       const datenth =
-        localStorage.getItem('datenth') === 'true' ? nth(date.getDate()) : date.getDate();
+        localStorage.getItem('datenth') === 'true' ? nth(date.getDate(), lang) : date.getDate();
       const dateDay =
         localStorage.getItem('dayofweek') === 'true'
           ? date.toLocaleDateString(lang, { weekday: 'long' })
@@ -114,7 +117,6 @@ const DateWidget = () => {
         case 'YMD':
           formattedDate = `${dateYear} ${dateMonth} ${datenth}${dateDay ? `, ${dateDay}` : ''}`;
           break;
-        // DMY
         default:
           formattedDate = `${datenth} ${dateMonth} ${dateYear}${dateDay ? `, ${dateDay}` : ''}`;
           break;
@@ -126,7 +128,13 @@ const DateWidget = () => {
 
   useEffect(() => {
     const handleRefresh = (data) => {
-      if (data === 'date' || data === 'timezone') {
+      if (
+        data === 'date' ||
+        data === 'timezone' ||
+        data === 'language' ||
+        data === 'other' ||
+        data === 'welcomeLanguage'
+      ) {
         if (localStorage.getItem('date') === 'false') {
           setDisplay('none');
           return;
@@ -143,7 +151,7 @@ const DateWidget = () => {
 
     EventBus.on('refresh', handleRefresh);
     return () => {
-      EventBus.off('refresh');
+      EventBus.off('refresh', handleRefresh);
     };
   }, []);
 

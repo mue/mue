@@ -1,7 +1,8 @@
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { MARKETPLACE_URL } from 'config/constants';
 import { memo, useEffect, useRef, useState } from 'react';
-import { updateHash } from 'utils/deepLinking';
+import { useNavigate } from 'react-router';
 import { MdOutlineWifiOff } from 'react-icons/md';
 import Modal from 'react-modal';
 import Tabs from 'components/Elements/MainModal/backend/Tabs';
@@ -9,20 +10,19 @@ import { useMarketplaceInstall } from 'features/marketplace/components/hooks/use
 import Lightbox from 'features/marketplace/components/Elements/Lightbox/Lightbox';
 
 function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
+  const t = useT();
+  const navigate = useNavigate();
   const iframeRef = useRef(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [showLightbox, setShowLightbox] = useState(false);
   const [lightboxImg, setLightboxImg] = useState(null);
   const { installItem, uninstallItem } = useMarketplaceInstall();
 
-  // Check for offline mode
   const offlineMode = localStorage.getItem('offlineMode') === 'true';
-  // Check for preview mode
   const isPreviewMode = localStorage.getItem('showWelcome') === 'true';
   const previewParam = isPreviewMode ? '&preview=true' : '';
   const isOffline = navigator.onLine === false || offlineMode;
 
-  // Clear breadcrumbs when component unmounts (navigating away from discover)
   useEffect(() => {
     return () => {
       if (onBreadcrumbsChange) {
@@ -31,7 +31,6 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
     };
   }, [onBreadcrumbsChange]);
 
-  // Helper function to resolve auto theme
   const getResolvedTheme = () => {
     const theme = localStorage.getItem('theme') || 'auto';
     if (theme === 'auto') {
@@ -43,25 +42,19 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
   };
 
   useEffect(() => {
-    // Skip category navigation if we have a deep link item to navigate to
-    if (deepLinkData?.itemId) {
+    if (deepLinkData?.itemId || deepLinkData?.collection) {
       return;
     }
 
-    // Show loader when category changes
-    setIsLoading(true);
-    // Clear breadcrumbs when navigating to a new category
+    setLoading(true);
     if (onBreadcrumbsChange) {
       onBreadcrumbsChange([]);
     }
 
-    // Get current theme
     const theme = getResolvedTheme();
     const themeParam = `&theme=${theme}`;
 
-    // Update iframe src with category
     if (iframeRef.current) {
-      // Collections use path-based routing, others use query params
       if (category === 'collections') {
         iframeRef.current.src = `${MARKETPLACE_URL}/collections?embed=true${previewParam}${themeParam}`;
       } else {
@@ -71,79 +64,63 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
   }, [category, onBreadcrumbsChange, previewParam, deepLinkData]);
 
   useEffect(() => {
-    // Check for item parameter in URL and update iframe
-    const checkAndLoadItem = () => {
-      const hash = window.location.hash;
-      const urlParams = new URLSearchParams(hash.split('?')[1]);
-      const itemId = urlParams.get('item');
+    if (!iframeRef.current) {
+      return;
+    }
 
-      if (itemId && iframeRef.current) {
-        setIsLoading(true);
+    const theme = getResolvedTheme();
+    const themeParam = `&theme=${theme}`;
 
-        // Get current theme
-        const theme = getResolvedTheme();
-        const themeParam = `&theme=${theme}`;
+    // Handle collection deep link
+    if (deepLinkData?.collection && !deepLinkData?.itemId) {
+      setLoading(true);
+      const url = `${MARKETPLACE_URL}/collection/${encodeURIComponent(deepLinkData.collection)}?embed=true${previewParam}${themeParam}`;
+      console.log('[Discover] Loading collection iframe:', {
+        collection: deepLinkData.collection,
+        url,
+      });
+      iframeRef.current.src = url;
+      return;
+    }
 
-        // Get item from localStorage to determine type
-        const installed = JSON.parse(localStorage.getItem('installed')) || [];
-        const item = installed.find((i) => i.name === itemId);
+    // Handle item deep link (with or without collection context)
+    if (deepLinkData?.itemId) {
+      setLoading(true);
 
-        if (item) {
-          // Map item type to URL path
-          const pathMap = {
-            photo_packs: 'packs',
-            quote_packs: 'packs',
-            preset_settings: 'presets',
-          };
-
-          const pathSegment = pathMap[item.type] || 'packs';
-          const itemIdToUse = item.id || itemId;
-
-          // Navigate to /packs/{id} or /presets/{id}
-          iframeRef.current.src = `${MARKETPLACE_URL}/${pathSegment}/${itemIdToUse}?embed=true${previewParam}${themeParam}`;
-        } else {
-          // Fallback if item not found in localStorage
-          iframeRef.current.src = `${MARKETPLACE_URL}/packs/${itemId}?embed=true${previewParam}${themeParam}`;
-        }
-      }
-    };
-
-    // Check on mount and when category changes
-    checkAndLoadItem();
-
-    // Listen for hash changes and popstate (from history.pushState)
-    window.addEventListener('hashchange', checkAndLoadItem);
-    window.addEventListener('popstate', checkAndLoadItem);
-
-    return () => {
-      window.removeEventListener('hashchange', checkAndLoadItem);
-      window.removeEventListener('popstate', checkAndLoadItem);
-    };
-  }, [category, previewParam]);
-
-  // Handle deep link item navigation on mount
-  useEffect(() => {
-    if (deepLinkData?.itemId && iframeRef.current) {
-      setIsLoading(true);
-      const theme = getResolvedTheme();
-      const themeParam = `&theme=${theme}`;
-
-      // Map category to URL path segment
       const pathMap = {
         photo_packs: 'packs',
         quote_packs: 'packs',
         preset_settings: 'presets',
       };
 
-      const pathSegment = deepLinkData.category ? (pathMap[deepLinkData.category] || 'packs') : 'packs';
+      let pathSegment = 'packs'; // default
+
+      // If category is known and not 'all', use it
+      if (deepLinkData.category && deepLinkData.category !== 'all') {
+        pathSegment = pathMap[deepLinkData.category] || 'packs';
+      } else {
+        // Look up the item to determine its type
+        const installed = JSON.parse(localStorage.getItem('installed')) || [];
+        const item = installed.find(
+          (i) => i.name === deepLinkData.itemId || i.id === deepLinkData.itemId,
+        );
+
+        if (item) {
+          const typeMap = {
+            photos: 'packs',
+            quotes: 'packs',
+            settings: 'presets',
+          };
+          pathSegment = typeMap[item.type] || 'packs';
+        }
+      }
+
       iframeRef.current.src = `${MARKETPLACE_URL}/${pathSegment}/${deepLinkData.itemId}?embed=true${previewParam}${themeParam}`;
     }
   }, [deepLinkData, previewParam]);
 
   useEffect(() => {
-    // Listen for postMessage events from the iframe
     const handleMessage = (event) => {
-      // Verify the origin if needed
       const marketplaceOrigin = new URL(MARKETPLACE_URL).origin;
       if (event.origin !== marketplaceOrigin) {
         return;
@@ -154,31 +131,42 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
       switch (type) {
         case 'marketplace:item:install':
           if (payload?.item) {
-            installItem(payload.item.type, payload.item);
-            // Send confirmation back to iframe
-            if (iframeRef.current?.contentWindow) {
-              iframeRef.current.contentWindow.postMessage(
-                {
-                  type: 'marketplace:item:installed',
-                  payload: { id: payload.item.id || payload.item.name, installed: true },
-                },
-                MARKETPLACE_URL
-              );
-            }
+            const itemId = payload.item.id || payload.item.name;
+            const itemType = payload.item.type;
+
+            fetch(`${variables.constants.API_URL}/marketplace/item/${itemId}`)
+              .then((res) => res.json())
+              .then(({ data }) => {
+                installItem(data.type, data);
+              })
+              .catch((error) => {
+                console.error('Failed to fetch item from API, using iframe data:', error);
+                installItem(itemType, payload.item);
+              })
+              .finally(() => {
+                if (iframeRef.current?.contentWindow) {
+                  iframeRef.current.contentWindow.postMessage(
+                    {
+                      type: 'marketplace:item:installed',
+                      payload: { id: itemId, installed: true },
+                    },
+                    MARKETPLACE_URL,
+                  );
+                }
+              });
           }
           break;
 
         case 'marketplace:item:uninstall':
           if (payload?.item) {
             uninstallItem(payload.item.type, payload.item.name || payload.item.display_name);
-            // Send confirmation back to iframe
             if (iframeRef.current?.contentWindow) {
               iframeRef.current.contentWindow.postMessage(
                 {
                   type: 'marketplace:item:installed',
                   payload: { id: payload.item.id || payload.item.name, installed: false },
                 },
-                MARKETPLACE_URL
+                MARKETPLACE_URL,
               );
             }
           }
@@ -186,18 +174,16 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
 
         case 'marketplace:item:check-installed':
           if (payload?.id) {
-            // Check if item is installed
             const installed = JSON.parse(localStorage.getItem('installed')) || [];
             const isInstalled = installed.some((item) => item.id === payload.id);
 
-            // Send status back to iframe
             if (iframeRef.current?.contentWindow) {
               iframeRef.current.contentWindow.postMessage(
                 {
                   type: 'marketplace:item:installed',
                   payload: { id: payload.id, installed: isInstalled },
                 },
-                MARKETPLACE_URL
+                MARKETPLACE_URL,
               );
             }
           }
@@ -206,7 +192,6 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
         case 'marketplace:breadcrumbs':
           if (payload?.breadcrumbs && onBreadcrumbsChange) {
             onBreadcrumbsChange(payload.breadcrumbs);
-            // Scroll modal content to top when navigating to an item
             if (payload.breadcrumbs.length > 0) {
               const modalContent = document.querySelector('.modalTabContent');
               if (modalContent) {
@@ -224,11 +209,48 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
           break;
 
         case 'marketplace:navigate':
-          // Update parent URL when iframe navigates
           if (payload?.itemId) {
-            updateHash(`#discover/${payload.itemId}`);
+            // Use the simpler item route
+            navigate(`/discover/item/${payload.itemId}`);
           } else if (payload?.category) {
-            updateHash(`#discover/${payload.category}`);
+            navigate(`/discover/${payload.category}`);
+          }
+          break;
+
+        case 'marketplace:navigation':
+          // Handle navigation from the iframe (website sends this when URL changes)
+          if (payload?.path) {
+            // Parse the path: /marketplace/packs/abc123 or /marketplace/presets/xyz789 or /marketplace/collection/collection-name
+            const pathParts = payload.path.split('/').filter(Boolean);
+
+            if (pathParts.length >= 3 && pathParts[0] === 'marketplace') {
+              const secondSegment = pathParts[1];
+              const thirdSegment = pathParts[2];
+
+              if (secondSegment === 'collection') {
+                // Collection path: /marketplace/collection/collection-name
+                const collectionId = thirdSegment;
+                console.log('[Discover] Collection navigation:', {
+                  collectionId,
+                  fullPath: payload.path,
+                });
+                if (pathParts.length >= 4) {
+                  // Collection item path: /marketplace/collection/collection-name/item-id
+                  const itemId = pathParts[3];
+                  navigate(`/discover/collection/${collectionId}/${itemId}`);
+                } else {
+                  // Just collection
+                  navigate(`/discover/collection/${collectionId}`);
+                }
+              } else {
+                // Item path: /marketplace/packs/abc123 or /marketplace/presets/xyz789
+                const itemId = thirdSegment;
+                navigate(`/discover/item/${itemId}`);
+              }
+            } else if (pathParts.length === 2 && pathParts[0] === 'marketplace') {
+              // Category page like /marketplace?type=photo_packs
+              // Already on the category, no need to navigate
+            }
           }
           break;
 
@@ -242,17 +264,15 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
     return () => {
       window.removeEventListener('message', handleMessage);
     };
-  }, [installItem, uninstallItem, onBreadcrumbsChange]);
+  }, [installItem, uninstallItem, onBreadcrumbsChange, navigate]);
 
   const handleLoad = () => {
-    setIsLoading(false);
+    setLoading(false);
 
-    // Clear breadcrumbs when iframe loads - if on an item page, iframe will send new breadcrumbs
     if (onBreadcrumbsChange) {
       onBreadcrumbsChange([]);
     }
 
-    // Send theme to iframe after it loads
     if (iframeRef.current?.contentWindow) {
       const theme = getResolvedTheme();
       iframeRef.current.contentWindow.postMessage(
@@ -260,21 +280,18 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
           type: 'marketplace:theme',
           payload: { theme },
         },
-        MARKETPLACE_URL
+        MARKETPLACE_URL,
       );
     }
   };
 
-  // Show offline error message if offline
   if (isOffline) {
     return (
       <div className="emptyItems">
         <div className="emptyMessage">
           <MdOutlineWifiOff />
-          <h1>{variables.getMessage('modals.main.marketplace.offline.title')}</h1>
-          <p className="description">
-            {variables.getMessage('modals.main.marketplace.offline.description')}
-          </p>
+          <h1>{t('modals.main.marketplace.offline.title')}</h1>
+          <p className="description">{t('modals.main.marketplace.offline.description')}</p>
         </div>
       </div>
     );
@@ -285,26 +302,26 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
       <Modal
         closeTimeoutMS={300}
         onRequestClose={() => setShowLightbox(false)}
-        isOpen={showLightbox}
+        open={showLightbox}
         className="Modal lightBoxModal"
         overlayClassName="Overlay"
         ariaHideApp={false}
       >
-        <Lightbox
-          modalClose={() => setShowLightbox(false)}
-          img={lightboxImg}
-        />
+        <Lightbox modalClose={() => setShowLightbox(false)} img={lightboxImg} />
       </Modal>
-      {isLoading && (
-        <div className="loaderHolder" style={{
-          position: 'absolute',
-          top: '20%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 10
-        }}>
+      {loading && (
+        <div
+          className="loaderHolder"
+          style={{
+            position: 'absolute',
+            top: '20%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 10,
+          }}
+        >
           <div id="loader"></div>
-          <span className="subtitle">{variables.getMessage('modals.main.loading')}</span>
+          <span className="subtitle">{t('modals.main.loading')}</span>
         </div>
       )}
       <iframe
@@ -312,16 +329,26 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
         src={(() => {
           const theme = getResolvedTheme();
           const themeParam = `&theme=${theme}`;
-          // If we have a deep link item ID, navigate directly to the item
+
+          // Handle collection deep link
+          if (deepLinkData?.collection && !deepLinkData?.itemId) {
+            return `${MARKETPLACE_URL}/collection/${encodeURIComponent(deepLinkData.collection)}?embed=true${previewParam}${themeParam}`;
+          }
+
+          // Handle item deep link
           if (deepLinkData?.itemId) {
             const pathMap = {
               photo_packs: 'packs',
               quote_packs: 'packs',
               preset_settings: 'presets',
             };
-            const pathSegment = deepLinkData.category ? (pathMap[deepLinkData.category] || 'packs') : 'packs';
+            const pathSegment = deepLinkData.category
+              ? pathMap[deepLinkData.category] || 'packs'
+              : 'packs';
             return `${MARKETPLACE_URL}/${pathSegment}/${deepLinkData.itemId}?embed=true${previewParam}${themeParam}`;
           }
+
+          // Handle category view
           return category === 'collections'
             ? `${MARKETPLACE_URL}/collections?embed=true${previewParam}${themeParam}`
             : `${MARKETPLACE_URL}?embed=true&type=${category}${previewParam}${themeParam}`;
@@ -333,10 +360,10 @@ function DiscoverContent({ category, onBreadcrumbsChange, deepLinkData }) {
           height: '1500px',
           minHeight: '100vh',
           border: 'none',
-          opacity: isLoading ? 0 : 1,
+          opacity: loading ? 0 : 1,
           transition: 'opacity 0.2s ease-in-out',
         }}
-        title={variables.getMessage('modals.main.marketplace.title')}
+        title={t('modals.main.marketplace.title')}
       />
     </div>
   );
@@ -357,10 +384,16 @@ function Discover(props) {
       current="discover"
       currentTab={props.currentTab}
       onSectionChange={props.onSectionChange}
+      sections={sections}
+      deepLinkData={props.deepLinkData}
     >
       {sections.map(({ label, name }) => (
-        <div key={name} label={variables.getMessage(label)} name={name}>
-          <DiscoverContent category={name} onBreadcrumbsChange={props.onBreadcrumbsChange} deepLinkData={props.deepLinkData} />
+        <div key={name} label={t(label)} name={name}>
+          <DiscoverContent
+            category={name}
+            onBreadcrumbsChange={props.onBreadcrumbsChange}
+            deepLinkData={props.deepLinkData}
+          />
         </div>
       ))}
     </Tabs>

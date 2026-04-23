@@ -1,6 +1,5 @@
-// Importing necessary libraries and components
 import { useState, useEffect } from 'react';
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { MdArrowBackIosNew, MdArrowForwardIos, MdOutlinePreview } from 'react-icons/md';
 
 import EventBus from 'utils/eventbus';
@@ -21,61 +20,52 @@ import {
   Final,
 } from './components/Sections';
 
-// WelcomeModal component
 function WelcomeModal({ modalClose, modalSkip }) {
-  // State variables
+  const t = useT();
   const [currentTab, setCurrentTab] = useState(0);
-  const [buttonText, setButtonText] = useState(variables.getMessage('modals.welcome.buttons.next'));
+  const [buttonText, setButtonText] = useState(t('modals.welcome.buttons.next'));
   const [importedSettings, setImportedSettings] = useState([]);
   const finalTab = 6;
 
-  // useEffect hook to handle tab changes
   useEffect(() => {
-    // Get the current welcome tab from local storage
     const welcomeTab = localStorage.getItem('welcomeTab');
     if (welcomeTab) {
       const tab = Number(welcomeTab);
       setCurrentTab(tab);
       setButtonText(
         tab !== finalTab + 1
-          ? variables.getMessage('modals.welcome.buttons.next')
-          : variables.getMessage('modals.welcome.buttons.finish'),
+          ? t('modals.welcome.buttons.next')
+          : t('modals.welcome.buttons.finish'),
       );
     }
   }, [finalTab]);
 
-  // Function to update the current tab and button text
   const updateTabAndButtonText = (newTab) => {
     setCurrentTab(newTab);
     setButtonText(
-      newTab !== finalTab
-        ? variables.getMessage('modals.welcome.buttons.next')
-        : variables.getMessage('modals.welcome.buttons.finish'),
+      newTab !== finalTab ? t('modals.welcome.buttons.next') : t('modals.welcome.buttons.finish'),
     );
 
     localStorage.setItem('bgtransition', true);
     localStorage.removeItem('welcomeTab');
   };
 
-  // Functions to navigate to the previous and next tabs
   const prevTab = () => {
     updateTabAndButtonText(currentTab - 1);
   };
 
   const nextTab = () => {
-    if (buttonText === variables.getMessage('modals.welcome.buttons.finish')) {
+    if (buttonText === t('modals.welcome.buttons.finish')) {
       modalClose();
       return;
     }
     updateTabAndButtonText(currentTab + 1);
   };
 
-  // Function to switch to a specific tab
   const switchToTab = (tab) => {
     updateTabAndButtonText(tab);
   };
 
-  // Navigation component
   const Navigation = () => {
     return (
       <div className="welcomeButtons">
@@ -84,14 +74,14 @@ function WelcomeModal({ modalClose, modalSkip }) {
             type="settings"
             onClick={() => prevTab()}
             icon={<MdArrowBackIosNew />}
-            label={variables.getMessage('modals.welcome.buttons.previous')}
+            label={t('modals.welcome.buttons.previous')}
           />
         ) : (
           <Button
             type="settings"
             onClick={() => modalSkip()}
             icon={<MdOutlinePreview />}
-            label={variables.getMessage('modals.welcome.buttons.preview')}
+            label={t('modals.welcome.buttons.preview')}
           />
         )}
         <Button
@@ -105,7 +95,6 @@ function WelcomeModal({ modalClose, modalSkip }) {
     );
   };
 
-  // Mapping of tab numbers to components
   const tabComponents = {
     0: <Intro />,
     1: <ChooseLanguage />,
@@ -118,10 +107,8 @@ function WelcomeModal({ modalClose, modalSkip }) {
     ),
   };
 
-  // Current tab component
   const CurrentTab = tabComponents[currentTab] || <Intro />;
 
-  // Render the WelcomeModal component
   return (
     <Wrapper>
       <Panel type="aside">
@@ -141,5 +128,4 @@ function WelcomeModal({ modalClose, modalSkip }) {
   );
 }
 
-// Export the WelcomeModal component
 export default WelcomeModal;

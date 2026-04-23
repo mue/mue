@@ -1,5 +1,6 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { useState } from 'react';
+import EventBus from 'utils/eventbus';
 
 import {
   Header,
@@ -9,15 +10,18 @@ import {
   PreferencesWrapper,
   Section,
 } from 'components/Layout/Settings';
-import { Checkbox, Switch, Text } from 'components/Form/Settings';
+import { Checkbox, ColourPicker, Switch, Text, Dropdown } from 'components/Form/Settings';
+import { DatePicker } from 'components/Form/Settings/DatePicker';
 import { Button } from 'components/Elements';
 import { toast } from 'react-toastify';
 
 import defaultEvents from '../events.json';
+import googleFonts from 'config/googleFonts.json';
 
-import { MdEventNote, MdAdd, MdCancel, MdRefresh } from 'react-icons/md';
+import { MdEventNote, MdAdd, MdCancel, MdRefresh, MdPalette } from 'react-icons/md';
 
 const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName }) => {
+  const t = useT();
   const [customEvents, setCustomEvents] = useState(
     JSON.parse(localStorage.getItem('customEvents')) || [],
   );
@@ -44,53 +48,41 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
   const GREETING_SECTION = 'modals.main.settings.sections.greeting';
 
   const addEvent = () => {
-    // Retrieve the current array of events from localStorage
     const customEvents = JSON.parse(localStorage.getItem('customEvents')) || [];
 
-    // Create a new event
     const newEvent = { id: 'widgets.greeting.halloween', name: '', month: 1, date: 1 };
 
-    // Add the new event to the array
     const updatedEvents = [...customEvents, newEvent];
 
-    // Add the new event to the array
     customEvents.push(newEvent);
 
-    // Store the updated array back in localStorage
     localStorage.setItem('customEvents', JSON.stringify(customEvents));
 
     setCustomEvents(updatedEvents);
   };
 
   const removeEvent = (index) => {
-    // Remove the event at the given index
     const updatedEvents = customEvents.filter((_, i) => i !== index);
 
-    // Store the updated array back in localStorage
     localStorage.setItem('customEvents', JSON.stringify(updatedEvents));
 
-    // Update the state
     setCustomEvents(updatedEvents);
   };
 
   const resetEvents = () => {
-    // Reset the events array in localStorage
     localStorage.setItem('customEvents', JSON.stringify(defaultEvents));
 
-    // Update the state
     setCustomEvents(defaultEvents);
-    toast(variables.getMessage('toasts.reset'));
+    toast(t('toasts.reset'));
   };
 
   const updateEvent = (index, updatedEvent) => {
-    // Update the event in your state
     setCustomEvents((prevEvents) => {
       const newEvents = [...prevEvents];
       newEvents[index] = updatedEvent;
       return newEvents;
     });
 
-    // Update the event in localStorage
     const customEvents = JSON.parse(localStorage.getItem('customEvents') || '[]');
     customEvents[index] = updatedEvent;
     localStorage.setItem('customEvents', JSON.stringify(customEvents));
@@ -100,20 +92,16 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
     return (
       <Row final={true}>
         <Content
-          title={variables.getMessage('modals.main.settings.additional_settings')}
-          subtitle={variables.getMessage(`${GREETING_SECTION}.additional`)}
+          title={t('modals.main.settings.additional_settings')}
+          subtitle={t(`${GREETING_SECTION}.additional`)}
         />
         <Action>
           <Checkbox
             name="defaultGreetingMessage"
-            text={variables.getMessage(`${GREETING_SECTION}.default`)}
+            text={t(`${GREETING_SECTION}.default`)}
             category="greeting"
           />
-          <Text
-            title={variables.getMessage(`${GREETING_SECTION}.name`)}
-            name="greetingName"
-            category="greeting"
-          />
+          <Text title={t(`${GREETING_SECTION}.name`)} name="greetingName" category="greeting" />
         </Action>
       </Row>
     );
@@ -123,15 +111,13 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
     return (
       <Row>
         <Content
-          title={variables.getMessage(`${GREETING_SECTION}.birthday`)}
-          subtitle={variables.getMessage(
-            'modals.main.settings.sections.greeting.birthday_subtitle',
-          )}
+          title={t(`${GREETING_SECTION}.birthday`)}
+          subtitle={t('modals.main.settings.sections.greeting.birthday_subtitle')}
         />
         <Action>
           <Switch
             name="birthdayenabled"
-            text={variables.getMessage('modals.main.settings.enabled')}
+            text={t('modals.main.settings.enabled')}
             category="greeting"
             onChange={(value) => {
               setEnableBirthday(value ? 'preferences' : 'preferencesInactive');
@@ -140,17 +126,16 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
           <div className={enableBirthday}>
             <Checkbox
               name="birthdayage"
-              text={variables.getMessage(`${GREETING_SECTION}.birthday_age`)}
+              text={t(`${GREETING_SECTION}.birthday_age`)}
               category="greeting"
             />
-            <p style={{ marginRight: 'auto' }}>
-              {variables.getMessage(`${GREETING_SECTION}.birthday_date`)}
-            </p>
-            <input
-              type="date"
-              onChange={changeDate}
-              value={birthday.toISOString().substring(0, 10)}
-              required
+            <p style={{ marginRight: 'auto' }}>{t(`${GREETING_SECTION}.birthday_date`)}</p>
+            <DatePicker
+              value={birthday}
+              onChange={(newDate) => {
+                localStorage.setItem('birthday', newDate);
+                setBirthday(newDate);
+              }}
             />
           </div>
         </Action>
@@ -162,20 +147,20 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
     return (
       <div className={enableCustomEvents}>
         <Row final={true}>
-          <Content title={variables.getMessage(`${GREETING_SECTION}.custom`)} />
+          <Content title={t(`${GREETING_SECTION}.custom`)} />
           <Action>
             <div className="headerActions">
               <Button
                 type="settings"
                 onClick={resetEvents}
                 icon={<MdRefresh />}
-                label={variables.getMessage('modals.main.settings.buttons.reset')}
+                label={t('modals.main.settings.buttons.reset')}
               />
               <Button
                 type="settings"
                 onClick={addEvent}
                 icon={<MdAdd />}
-                label={variables.getMessage('widgets.quicklinks.add')}
+                label={t('widgets.quicklinks.add')}
               />
             </div>
           </Action>
@@ -188,14 +173,12 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
                   <MdEventNote />
                 </div>
                 <div className="messageText">
-                  <span className="subtitle">
-                    {variables.getMessage(`${GREETING_SECTION}.event_name`)}
-                  </span>
+                  <span className="subtitle">{t(`${GREETING_SECTION}.event_name`)}</span>
                   <input
                     type="text"
-                    className="text-field-input"
+                    className="text-field-input event-name-input"
                     value={event.name}
-                    placeholder={variables.getMessage(`${GREETING_SECTION}.event_name`)}
+                    placeholder={t(`${GREETING_SECTION}.event_name`)}
                     onChange={(e) => {
                       const updatedEvent = { ...event, name: e.target.value };
                       updateEvent(index, updatedEvent);
@@ -205,48 +188,23 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
               </div>
               <div>
                 <div className="messageAction">
-                  <div className="eventDateSelection">
-                    <label className="subtitle">
-                      {variables.getMessage(`${GREETING_SECTION}.day`)}:
-                    </label>
-                    <input
-                      id="day"
-                      type="number"
-                      min="1"
-                      max="31"
-                      value={event.date}
-                      onChange={(e) => {
-                        const value = parseInt(e.target.value, 10);
-                        if (value >= 1 && value <= 31) {
-                          const updatedEvent = { ...event, date: value };
-                          updateEvent(index, updatedEvent);
-                        }
-                      }}
-                    />
-                    <hr />
-                    <label className="subtitle">
-                      {variables.getMessage(`${GREETING_SECTION}.month`)}:
-                    </label>
-                    <input
-                      id="month"
-                      type="number"
-                      min="1"
-                      max="12"
-                      value={event.month}
-                      onChange={(e) => {
-                        const value = parseInt(e.target.value, 10);
-                        if (value >= 1 && value <= 12) {
-                          const updatedEvent = { ...event, month: value };
-                          updateEvent(index, updatedEvent);
-                        }
-                      }}
-                    />
-                  </div>
+                  <DatePicker
+                    value={new Date(2000, event.month - 1, event.date)}
+                    hideYear={true}
+                    onChange={(newDate) => {
+                      const updatedEvent = {
+                        ...event,
+                        month: newDate.getMonth() + 1,
+                        date: newDate.getDate(),
+                      };
+                      updateEvent(index, updatedEvent);
+                    }}
+                  />
                   <Button
                     type="settings"
                     onClick={() => removeEvent(index)}
                     icon={<MdCancel />}
-                    label={variables.getMessage('modals.main.marketplace.product.buttons.remove')}
+                    label={t('modals.main.marketplace.product.buttons.remove')}
                   />
                 </div>
               </div>
@@ -257,15 +215,13 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
           <div className="photosEmpty">
             <div className="emptyNewMessage">
               <MdEventNote />
-              <span className="title">{variables.getMessage(`${GREETING_SECTION}.no_events`)}</span>
-              <span className="subtitle">
-                {variables.getMessage(`${GREETING_SECTION}.no_events_description`)}
-              </span>
+              <span className="title">{t(`${GREETING_SECTION}.no_events`)}</span>
+              <span className="subtitle">{t(`${GREETING_SECTION}.no_events_description`)}</span>
               <Button
                 type="settings"
                 onClick={addEvent}
                 icon={<MdAdd />}
-                label={variables.getMessage(`${GREETING_SECTION}.add_event`)}
+                label={t(`${GREETING_SECTION}.add_event`)}
               />
             </div>
           </div>
@@ -274,22 +230,141 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
     );
   };
 
+  const AppearanceSection = () => {
+    const [greetingColor, setGreetingColor] = useState(
+      localStorage.getItem('greetingColor') || '#ffffff',
+    );
+
+    const fontWeight = `${GREETING_SECTION}.appearance.font_weight`;
+
+    const updateColor = (event) => {
+      const color = event.target.value;
+      setGreetingColor(color);
+      localStorage.setItem('greetingColor', color);
+      EventBus.emit('refresh', 'greeting');
+    };
+
+    return (
+      <>
+        <Row>
+          <Content
+            title={t(`${GREETING_SECTION}.appearance.font.title`)}
+            subtitle={t(`${GREETING_SECTION}.appearance.font.description`)}
+          />
+          <Action>
+            <Dropdown
+              label={t(`${GREETING_SECTION}.appearance.font.custom`)}
+              name="greetingFont"
+              category="greeting"
+              searchable={true}
+              items={googleFonts.map((font) => ({
+                value: font,
+                text: font,
+              }))}
+            />
+          </Action>
+        </Row>
+        <Row>
+          <Content
+            title={t(`${GREETING_SECTION}.appearance.font_weight.title`)}
+            subtitle={t(`${GREETING_SECTION}.appearance.font_weight.description`)}
+          />
+          <Action>
+            <Dropdown
+              label={t(`${GREETING_SECTION}.appearance.font_weight.title`)}
+              name="greetingFontWeight"
+              category="greeting"
+              items={[
+                { value: '700', text: t(fontWeight + '.bold') },
+                { value: '100', text: t(fontWeight + '.thin') },
+                { value: '200', text: t(fontWeight + '.extra_light') },
+                { value: '300', text: t(fontWeight + '.light') },
+                { value: '400', text: t(fontWeight + '.normal') },
+                { value: '500', text: t(fontWeight + '.medium') },
+                { value: '600', text: t(fontWeight + '.semi_bold') },
+                { value: '800', text: t(fontWeight + '.extra_bold') },
+              ]}
+            />
+          </Action>
+        </Row>
+        <Row>
+          <Content
+            title={t(`${GREETING_SECTION}.appearance.font_style.title`)}
+            subtitle={t(`${GREETING_SECTION}.appearance.font_style.description`)}
+          />
+          <Action>
+            <Dropdown
+              label={t(`${GREETING_SECTION}.appearance.font_style.title`)}
+              name="greetingFontStyle"
+              category="greeting"
+              items={[
+                { value: 'normal', text: t(`${GREETING_SECTION}.appearance.font_style.normal`) },
+                { value: 'italic', text: t(`${GREETING_SECTION}.appearance.font_style.italic`) },
+                { value: 'oblique', text: t(`${GREETING_SECTION}.appearance.font_style.oblique`) },
+              ]}
+            />
+          </Action>
+        </Row>
+        <Row final={true}>
+          <Content
+            title={t(`${GREETING_SECTION}.appearance.color.title`)}
+            subtitle={t(`${GREETING_SECTION}.appearance.color.description`)}
+          />
+          <Action>
+            <ColourPicker
+              name="greetingColor"
+              label={t(`${GREETING_SECTION}.appearance.color.title`)}
+              category="greeting"
+              defaultValue="#ffffff"
+              value={greetingColor}
+              onChange={updateColor}
+            />
+          </Action>
+        </Row>
+      </>
+    );
+  };
+
   const isEventsSection = currentSubSection === 'events';
+  const isAppearanceSection = currentSubSection === 'appearance';
 
   let header;
   if (isEventsSection) {
     header = (
       <Header
-        title={variables.getMessage(`${GREETING_SECTION}.title`)}
-        secondaryTitle={variables.getMessage(`${GREETING_SECTION}.events.title`)}
+        title={t(`${GREETING_SECTION}.title`)}
+        secondaryTitle={t(`${GREETING_SECTION}.events.title`)}
         goBack={() => onSubSectionChange(null, sectionName)}
         report={false}
       />
     );
+  } else if (isAppearanceSection) {
+    header = (
+      <Header
+        title={t(`${GREETING_SECTION}.title`)}
+        secondaryTitle={t(`${GREETING_SECTION}.appearance.title`)}
+        goBack={() => onSubSectionChange(null, sectionName)}
+        report={false}
+      >
+        <Button
+          type="settings"
+          onClick={() => {
+            localStorage.removeItem('greetingFont');
+            localStorage.removeItem('greetingFontStyle');
+            localStorage.setItem('greetingFontWeight', '700');
+            localStorage.setItem('greetingColor', '#ffffff');
+            EventBus.emit('refresh', 'greeting');
+            toast(t('toasts.reset'));
+          }}
+          icon={<MdRefresh />}
+          label={t('modals.main.settings.buttons.reset')}
+        />
+      </Header>
+    );
   } else {
     header = (
       <Header
-        title={variables.getMessage(`${GREETING_SECTION}.title`)}
+        title={t(`${GREETING_SECTION}.title`)}
         setting="greeting"
         category="greeting"
         element=".greeting"
@@ -306,13 +381,13 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
         <>
           <Row>
             <Content
-              title={variables.getMessage(`${GREETING_SECTION}.events`)}
-              subtitle={variables.getMessage(`${GREETING_SECTION}.enable_events`)}
+              title={t(`${GREETING_SECTION}.events`)}
+              subtitle={t(`${GREETING_SECTION}.enable_events`)}
             />
             <Action>
               <Checkbox
                 name="events"
-                text={variables.getMessage(`${GREETING_SECTION}.events`)}
+                text={t(`${GREETING_SECTION}.events`)}
                 category="greeting"
                 onChange={(value) => {
                   setEnableCustomEvents(value ? 'preferences' : 'preferencesInactive');
@@ -323,6 +398,8 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
           {BirthdayOptions()}
           {CustomEventsSection()}
         </>
+      ) : isAppearanceSection ? (
+        <AppearanceSection />
       ) : (
         <PreferencesWrapper
           setting="greeting"
@@ -332,8 +409,29 @@ const GreetingOptions = ({ currentSubSection, onSubSectionChange, sectionName })
         >
           <AdditionalOptions />
           <Section
-            title={variables.getMessage(`${GREETING_SECTION}.events`)}
-            subtitle={variables.getMessage(`${GREETING_SECTION}.events_description`)}
+            title={t(`${GREETING_SECTION}.appearance.title`)}
+            subtitle={t(`${GREETING_SECTION}.appearance.description`)}
+            onClick={() => onSubSectionChange('appearance', sectionName)}
+            icon={<MdPalette />}
+          >
+            <Button
+              type="settings"
+              onClick={(e) => {
+                e.stopPropagation();
+                localStorage.removeItem('greetingFont');
+                localStorage.removeItem('greetingFontStyle');
+                localStorage.setItem('greetingFontWeight', '700');
+                localStorage.setItem('greetingColor', '#ffffff');
+                EventBus.emit('refresh', 'greeting');
+                toast(t('toasts.reset'));
+              }}
+              icon={<MdRefresh />}
+              label={t('modals.main.settings.buttons.reset')}
+            />
+          </Section>
+          <Section
+            title={t(`${GREETING_SECTION}.events`)}
+            subtitle={t(`${GREETING_SECTION}.events_description`)}
             onClick={() => onSubSectionChange('events', sectionName)}
             icon={<MdEventNote />}
           />

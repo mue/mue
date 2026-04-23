@@ -17,15 +17,13 @@ const Switch = memo((props) => {
       props.onChange(value);
     }
 
-    variables.stats.postEvent(
-      'setting',
-      `${props.name} ${checked ? 'enabled' : 'disabled'}`,
-    );
+    variables.stats.postEvent('setting', `${props.name} ${checked ? 'enabled' : 'disabled'}`);
 
     if (props.element) {
       if (!document.querySelector(props.element)) {
-        document.querySelector('.reminder-info').style.display = 'flex';
-        return localStorage.setItem('showReminder', true);
+        localStorage.setItem('showReminder', 'true');
+        EventBus.emit('showReminder');
+        return;
       }
     }
 

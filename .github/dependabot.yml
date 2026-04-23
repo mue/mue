@@ -1,1 +1,12 @@
-
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    target-branch: "dev"
+    labels:
+      - "dependencies"
+    commit-message:
+      prefix: "chore"
+      include: "scope"

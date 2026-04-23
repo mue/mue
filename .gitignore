@@ -29,6 +29,7 @@ safari/DerivedData/
 safari/build/
 
 # Files
+unused-translations.txt
 package-lock.json
 .stylelintcache
 yarn-error.log

@@ -28,7 +28,7 @@ const Notes = ({ notesRef, floatRef, position, xPosition, yPosition }) => {
 
     EventBus.on('refresh', handleRefresh);
     return () => {
-      EventBus.off('refresh');
+      EventBus.off('refresh', handleRefresh);
     };
   }, []);
 
@@ -64,7 +64,7 @@ const Notes = ({ notesRef, floatRef, position, xPosition, yPosition }) => {
     }
 
     variables.stats.postEvent('feature', 'Notes download');
-    saveFile(notes, 'mue-notes.txt', 'text/plain');
+    saveFile(notes, t('widgets.navbar.notes.export_filename'), 'text/plain');
   };
 
   return (

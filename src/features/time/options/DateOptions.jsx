@@ -1,4 +1,4 @@
-import variables from 'config/variables';
+import { useT } from 'contexts';
 import { useState } from 'react';
 
 import { Header } from 'components/Layout/Settings';
@@ -7,13 +7,14 @@ import { Checkbox, Dropdown } from 'components/Form/Settings';
 import { Row, Content, Action, PreferencesWrapper } from 'components/Layout/Settings';
 
 function DateOptions() {
+  const t = useT();
   const [dateType, setDateType] = useState(localStorage.getItem('dateType') || 'long');
   const dateFormats = ['DMY', 'MDY', 'YMD'];
 
   const longSettings = (
     <>
       <Dropdown
-        label={variables.getMessage('modals.main.settings.sections.date.long_format')}
+        label={t('modals.main.settings.sections.date.long_format')}
         name="longFormat"
         category="date"
         items={dateFormats.map((format) => {
@@ -25,12 +26,12 @@ function DateOptions() {
       />
       <Checkbox
         name="dayofweek"
-        text={variables.getMessage('modals.main.settings.sections.date.day_of_week')}
+        text={t('modals.main.settings.sections.date.day_of_week')}
         category="date"
       />
       <Checkbox
         name="datenth"
-        text={variables.getMessage('modals.main.settings.sections.date.datenth')}
+        text={t('modals.main.settings.sections.date.datenth')}
         category="date"
       />
     </>
@@ -39,7 +40,7 @@ function DateOptions() {
   const shortSettings = (
     <>
       <Dropdown
-        label={variables.getMessage('modals.main.settings.sections.date.short_format')}
+        label={t('modals.main.settings.sections.date.short_format')}
         name="dateFormat"
         category="date"
         items={dateFormats.map((format) => {
@@ -51,27 +52,25 @@ function DateOptions() {
       />
 
       <Dropdown
-        label={variables.getMessage('modals.main.settings.sections.date.short_separator.title')}
+        label={t('modals.main.settings.sections.date.short_separator.title')}
         name="shortFormat"
         category="date"
         items={[
           {
             value: 'dash',
-            text: variables.getMessage('modals.main.settings.sections.date.short_separator.dash'),
+            text: t('modals.main.settings.sections.date.short_separator.dash'),
           },
           {
             value: 'dots',
-            text: variables.getMessage('modals.main.settings.sections.date.short_separator.dots'),
+            text: t('modals.main.settings.sections.date.short_separator.dots'),
           },
           {
             value: 'gaps',
-            text: variables.getMessage('modals.main.settings.sections.date.short_separator.gaps'),
+            text: t('modals.main.settings.sections.date.short_separator.gaps'),
           },
           {
             value: 'slashes',
-            text: variables.getMessage(
-              'modals.main.settings.sections.date.short_separator.slashes',
-            ),
+            text: t('modals.main.settings.sections.date.short_separator.slashes'),
           },
         ]}
       />
@@ -81,7 +80,7 @@ function DateOptions() {
   return (
     <>
       <Header
-        title={variables.getMessage('modals.main.settings.sections.date.title')}
+        title={t('modals.main.settings.sections.date.title')}
         setting="date"
         category="date"
         element=".date"
@@ -96,8 +95,8 @@ function DateOptions() {
       >
         <Row>
           <Content
-            title={variables.getMessage('modals.main.settings.sections.time.type')}
-            subtitle={variables.getMessage('modals.main.settings.sections.date.type.subtitle')}
+            title={t('modals.main.settings.sections.time.type')}
+            subtitle={t('modals.main.settings.sections.date.type.subtitle')}
           />
           <Action>
             <Dropdown
@@ -110,11 +109,11 @@ function DateOptions() {
               items={[
                 {
                   value: 'long',
-                  text: variables.getMessage('modals.main.settings.sections.date.type.long'),
+                  text: t('modals.main.settings.sections.date.type.long'),
                 },
                 {
                   value: 'short',
-                  text: variables.getMessage('modals.main.settings.sections.date.type.short'),
+                  text: t('modals.main.settings.sections.date.type.short'),
                 },
               ]}
             />
@@ -124,21 +123,21 @@ function DateOptions() {
           <Content
             title={
               dateType === 'long'
-                ? variables.getMessage('modals.main.settings.sections.date.type.long')
-                : variables.getMessage('modals.main.settings.sections.date.type.short')
+                ? t('modals.main.settings.sections.date.type.long')
+                : t('modals.main.settings.sections.date.type.short')
             }
-            subtitle={variables.getMessage('modals.main.settings.sections.date.type_settings')}
+            subtitle={t('modals.main.settings.sections.date.type_settings')}
           />
           <Action>
             {dateType === 'long' ? longSettings : shortSettings}
             <Checkbox
               name="weeknumber"
-              text={variables.getMessage('modals.main.settings.sections.date.week_number')}
+              text={t('modals.main.settings.sections.date.week_number')}
               category="date"
             />
             <Checkbox
               name="datezero"
-              text={variables.getMessage('modals.main.settings.sections.time.digital.zero')}
+              text={t('modals.main.settings.sections.time.digital.zero')}
               category="date"
             />
           </Action>

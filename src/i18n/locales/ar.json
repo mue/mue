@@ -1,5 +1,9 @@
 {
   "tabname": "علامة تبويب جديدة",
+  "branding": {
+    "name": "ميو",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "صباح الخير",
@@ -12,7 +16,6 @@
     },
     "background": {
       "credit": "الصورة بواسطة",
-      "unsplash": "على Unsplash",
       "information": "معلومات",
       "download": "تنزيل",
       "downloads": "التنزيلات",
@@ -36,7 +39,17 @@
       "icon": "الأيقونة (اختياري)",
       "add": "إضافة",
       "name_error": "يجب إدخال الاسم",
-      "url_error": "يجب إدخال الرابط"
+      "url_error": "يجب إدخال الرابط",
+      "suggested": "Suggested: {name}",
+      "name_placeholder": "Enter link name (optional)",
+      "url_placeholder": "example.com",
+      "icon_url_placeholder": "https://example.com/icon.png",
+      "icon_type_label": "Icon Type",
+      "icon_type_auto": "Auto-detect Icon",
+      "icon_type_custom_url": "Custom Icon URL",
+      "icon_type_upload": "Upload Icon",
+      "icon_type_emoji": "Emoji",
+      "icon_type_letter": "Letter Avatar"
     },
     "date": {
       "week": "الأسبوع"
@@ -52,7 +65,8 @@
       "share": "مشاركة",
       "copy": "نسخ",
       "favourite": "إضافة إلى المفضلة",
-      "unfavourite": "إزالة من المفضلة"
+      "unfavourite": "إزالة من المفضلة",
+      "author_info_aria": "Learn about the author of the quote."
     },
     "navbar": {
       "tooltips": {
@@ -60,7 +74,8 @@
       },
       "notes": {
         "title": "الملاحظات",
-        "placeholder": "اكتب هنا"
+        "placeholder": "اكتب هنا",
+        "export_filename": "mue-notes.txt"
       },
       "todo": {
         "title": "المهام",
@@ -84,6 +99,10 @@
         "library": "الإضافات",
         "discover": "السوق"
       },
+      "sidebar": {
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar"
+      },
       "error_boundary": {
         "title": "خطأ",
         "message": "فشل تحميل هذا المكون من Mue",
@@ -93,7 +112,6 @@
       },
       "settings": {
         "enabled": "مفعّل",
-        "open_knowledgebase": "فتح قاعدة المعرفة",
         "additional_settings": "إعدادات إضافية",
         "reminder": {
           "title": "تنبيه",
@@ -135,6 +153,38 @@
               "change_hour_colour": "تغيير لون نص الساعات",
               "change_minute_colour": "تغيير لون نص الدقائق",
               "change_second_colour": "تغيير لون نص الثواني"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the time looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the time",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the time text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the time text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the time text"
+              }
             }
           },
           "date": {
@@ -166,6 +216,11 @@
             "author_details": "تفاصيل المؤلف",
             "custom": "اقتباس مخصص",
             "custom_subtitle": "قم بتعيين اقتباساتك المخصصة",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
+            "suggested_packs_title": "Suggested Quote Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
             "no_quotes": "لا توجد اقتباسات",
             "author": "المؤلف",
             "custom_buttons": "الأزرار",
@@ -179,6 +234,42 @@
               "copy": "نسخ",
               "tweet": "تغريد",
               "favourite": "إضافة إلى المفضلة"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the quote looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the quote",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the quote text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the quote text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the quote text"
+              }
             }
           },
           "greeting": {
@@ -199,7 +290,39 @@
             "month": "الشهر",
             "no_events": "لا توجد أحداث",
             "no_events_description": "أضف بعض الأحداث",
-            "add_event": "إضافة حدث"
+            "add_event": "إضافة حدث",
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the greeting looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the greeting",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the greeting text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the greeting text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the greeting text"
+              }
+            }
           },
           "background": {
             "title": "الخلفية",
@@ -246,6 +369,10 @@
               "title": "المصدر",
               "subtitle": "اختر مصدر صور الخلفية",
               "api": "واجهة برمجية للخلفية",
+              "api_title": "API",
+              "api_mue": "Mue",
+              "api_unsplash": "Unsplash",
+              "collection_placeholder": "e.g. 123456, 654321",
               "custom_background": "خلفية مخصصة",
               "custom_colour": "لون خلفية مخصص",
               "upload": "رفع",
@@ -258,6 +385,9 @@
               "disabled": "معطل",
               "loop_video": "تكرار الفيديو",
               "mute_video": "كتم الفيديو",
+              "persistent_storage_tooltip": "Request persistent storage to prevent browser from automatically clearing your images",
+              "persistent_storage_granted": "Persistent storage granted - your images are protected from eviction",
+              "persistent_storage_denied": "Persistent storage denied - images may be cleared if storage is low",
               "quality": {
                 "title": "الجودة",
                 "original": "الأصلية",
@@ -285,22 +415,42 @@
                 "name_desc": "Name (Z-A)",
                 "size_small": "File Size (Smallest)",
                 "size_large": "File Size (Largest)"
-              }
+              },
+              "pack_count": {
+                "singular": "pack",
+                "plural": "packs"
+              },
+              "photo_count": {
+                "singular": "photo",
+                "plural": "photos"
+              },
+              "get_more": "Get more"
             },
             "display": "العرض",
             "display_subtitle": "تغيير طريقة تحميل الخلفية ومعلومات الصور",
             "api": "إعدادات الواجهة البرمجية",
-            "api_subtitle": "خيارات الحصول على صورة من خدمة خارجية (واجهة برمجية)"
+            "api_subtitle": "خيارات الحصول على صورة من خدمة خارجية (واجهة برمجية)",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            },
+            "installed_packs_title": "Installed Photo Packs",
+            "suggested_packs_title": "Suggested Photo Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
+            "photo_pack_settings": {
+              "title": "{name} Settings",
+              "refresh_photos": "Refresh Photos"
+            }
           },
           "search": {
             "title": "البحث",
             "additional": "خيارات إضافية لعرض ووظائف عنصر البحث",
-            "search_engine": "محرك البحث",
-            "search_engine_subtitle": "اختر محرك البحث لاستخدامه في شريط البحث",
-            "custom": "رابط بحث مخصص",
-            "autocomplete": "الإكمال التلقائي",
-            "autocomplete_provider": "مزود الإكمال التلقائي",
-            "autocomplete_provider_subtitle": "محرك البحث لنتائج القائمة المنسدلة للإكمال التلقائي",
             "voice_search": "البحث الصوتي",
             "dropdown": "قائمة البحث المنسدلة",
             "focus": "التركيز عند فتح علامة التبويب",
@@ -355,7 +505,60 @@
               "metro": "ميترو"
             },
             "styling": "التصميم",
-            "styling_description": "تخصيص مظهر الروابط السريعة"
+            "styling_description": "تخصيص مظهر الروابط السريعة",
+            "layout": "Layout",
+            "layout_description": "Configure grid layout and organization",
+            "layout_mode": "Layout Mode",
+            "layout_grid": "Grid",
+            "layout_flex": "Flexible",
+            "layout_compact": "Compact",
+            "layout_card": "Card",
+            "grid_columns": "Grid Columns",
+            "grid_rows": "Grid Rows",
+            "grid_columns_auto": "Auto",
+            "appearance_title": "Appearance",
+            "appearance_subtitle": "Customize style and layout of quick links",
+            "display_title": "Display",
+            "display_subtitle": "Configure tooltips and tab behavior",
+            "organization_title": "Organization",
+            "organization_subtitle": "Organize links into groups",
+            "grouping": "Groups",
+            "grouping_description": "Organize quick links into groups",
+            "enable_grouping": "Enable Grouping",
+            "show_group_headers": "Show Group Headers",
+            "collapsible_groups": "Collapsible Groups",
+            "manage_groups": "Manage Groups",
+            "bookmark_sync": "Bookmark Sync",
+            "bookmark_sync_description": "Import and sync browser bookmarks",
+            "bookmark_sync_title": "Bookmark Sync",
+            "bookmark_sync_subtitle": "Automatically sync browser bookmarks to quick links",
+            "bookmark_sync_section_title": "Bookmark Sync",
+            "bookmark_sync_section_subtitle": "Import and sync browser bookmarks",
+            "enable_bookmark_sync": "Enable Bookmark Sync",
+            "sync_direction": "Sync Direction",
+            "import_only": "Import Only",
+            "two_way": "Two-Way Sync",
+            "sync_now": "Sync Now",
+            "manual_sync_title": "Manual Sync",
+            "manual_sync_subtitle": "Manually sync bookmarks now",
+            "sync_bookmarks_button": "Sync Bookmarks",
+            "syncing": "Syncing...",
+            "permission_denied": "Permission denied",
+            "sync_success": "Synced: {imported} imported, {updated} updated, {removed} removed",
+            "sync_error": "Error: {message}",
+            "icon_settings": "Icon Settings",
+            "icon_settings_description": "Configure icon behavior and fallbacks",
+            "custom_icons_enabled": "Allow Custom Icon Uploads",
+            "primary_icon_source": "Primary Icon Source",
+            "icon_type": "Icon Type",
+            "icon_auto": "Auto-detect",
+            "icon_custom_url": "Custom URL",
+            "icon_custom_upload": "Upload Image",
+            "icon_emoji": "Emoji",
+            "icon_letter": "Letter Avatar",
+            "upload_icon": "Upload Icon",
+            "group": "Group",
+            "no_group": "No Group"
           },
           "message": {
             "title": "الرسالة",
@@ -395,27 +598,50 @@
               },
               "apps_subtitle": "إنشاء اختصارات لمواقعك الأخرى المستخدمة بشكل متكرر."
             },
-            "font": {
-              "title": "الخط",
-              "description": "تغيير الخط المستخدم في Mue",
-              "custom": "خط مخصص",
-              "google": "استيراد من Google Fonts",
+            "widget_font": {
+              "title": "Widget Font",
+              "description": "Change the font used for widgets on the new tab page",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
               "weight": {
-                "title": "وزن الخط",
-                "thin": "رفيع",
-                "extra_light": "خفيف جدًا",
-                "light": "خفيف",
-                "normal": "عادي",
-                "medium": "متوسط",
-                "semi_bold": "شبه غامق",
-                "bold": "غامق",
-                "extra_bold": "غامق جدًا"
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
               },
               "style": {
-                "title": "نمط الخط",
-                "normal": "عادي",
-                "italic": "مائل",
-                "oblique": "مائل غير منتظم"
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              }
+            },
+            "settings_font": {
+              "title": "Settings Font",
+              "description": "Change the font used for the settings modal",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
+              "weight": {
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "style": {
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
               }
             },
             "accessibility": {
@@ -440,6 +666,8 @@
             "title": "متقدم",
             "offline_mode": "وضع عدم الاتصال",
             "offline_subtitle": "عند التفعيل، سيتم تعطيل جميع الطلبات إلى الخدمات عبر الإنترنت.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "البيانات",
             "data_description": "اختر تصدير إعدادات Mue إلى جهازك، استيراد ملف إعدادات موجود، أو إعادة تعيين الإعدادات إلى قيمها الافتراضية",
             "data_subtitle": "إدارة بياناتك على Mue.",
@@ -452,6 +680,25 @@
             "customisation": "التخصيص",
             "custom_css": "CSS مخصص",
             "custom_css_subtitle": "تخصيص تصميم Mue باستخدام أوراق الأنماط المتتالية (CSS).",
+            "custom_widget": {
+              "title": "Custom Widget",
+              "subtitle": "Embed your favourite sites or tools directly into Mue with iFrames.",
+              "add": "Add Widget",
+              "new": "New Widget",
+              "edit": "Edit Widget",
+              "name": "Widget Name",
+              "url": "Widget URL",
+              "no_widgets": "No custom widgets",
+              "add_some": "Add some",
+              "render_above": "Render above other widgets",
+              "positions": {
+                "center": "Center (with other widgets)",
+                "top_left": "Top Left",
+                "top_right": "Top Right",
+                "bottom_left": "Bottom Left",
+                "bottom_right": "Bottom Right"
+              }
+            },
             "custom_js": "JS مخصص",
             "tab_name": "اسم علامة التبويب",
             "tab_name_subtitle": "تغيير اسم علامة التبويب التي تظهر في متصفحك",
@@ -490,7 +737,17 @@
           "experimental": {
             "title": "تجريبي",
             "warning": "هذه الإعدادات لم يتم اختبارها/تنفيذها بالكامل وقد لا تعمل بشكل صحيح!",
-            "developer": "المطور"
+            "developer": "المطور",
+            "debug_hotkey": "Debug hotkey (Ctrl + #)",
+            "debug_timeout": "Debug timeout",
+            "send_event": "Send Event",
+            "event_type": "Type",
+            "event_name": "Name",
+            "normal_toast": "Normal Toast",
+            "achievement_toast": "Achievement Unlocked Toast",
+            "toast_success": "Toasted successfully",
+            "clear_localstorage": "Clear LocalStorage",
+            "data_section": "Data"
           },
           "language": {
             "title": "اللغة",
@@ -502,7 +759,8 @@
           },
           "changelog": {
             "title": "سجل التغييرات",
-            "by": "بواسطة {author}"
+            "by": "بواسطة {author}",
+            "iframe_title": "Changelog"
           },
           "about": {
             "title": "حول",
@@ -530,11 +788,20 @@
             "supporters": "الداعمون",
             "no_supporters": "لا يوجد داعمون لـ Mue حاليًا",
             "photographers": "المصورون",
-            "curators": "مبدعو الإضافات"
+            "curators": "مبدعو الإضافات",
+            "social": {
+              "email": "Email",
+              "twitter": "X (Twitter)",
+              "discord": "Discord"
+            },
+            "license": "Licensed under the BSD-3-Clause License",
+            "copyright": "Copyright {startYear}-{currentYear}",
+            "image_count": "{count} images"
           }
         },
         "buttons": {
           "reset": "إعادة تعيين",
+          "default": "Default",
           "import": "استيراد",
           "export": "تصدير",
           "cancel": "Cancel",
@@ -546,52 +813,10 @@
         "title": "Marketplace",
         "by": "بواسطة {author}",
         "all": "الكل",
-        "learn_more": "معرفة المزيد",
         "photo_packs": "حزم الصور",
         "quote_packs": "حزم الاقتباسات",
         "preset_settings": "إعدادات مسبقة",
-        "no_items": "لا توجد عناصر في هذه الفئة",
-        "collection": "مجموعة",
-        "explore_collection": "استكشاف المجموعة",
-        "add_all": "إضافة الكل إلى Mue",
         "collections": "المجموعات",
-        "cant_find": "لا تجد ما تبحث عنه؟",
-        "knowledgebase_one": "قم بزيارة",
-        "knowledgebase_two": "قاعدة المعرفة",
-        "knowledgebase_three": "لإنشاء ما يناسبك.",
-        "installing": "جارٍ التثبيت",
-        "product": {
-          "overview": "نظرة عامة",
-          "information": "معلومات",
-          "last_updated": "آخر تحديث",
-          "description": "الوصف",
-          "details": "التفاصيل",
-          "more_from_curator": "المزيد من {name}",
-          "show_more": "إظهار المزيد",
-          "show_less": "إظهار أقل",
-          "show_all": "إظهار الكل",
-          "showing": "يتم العرض",
-          "no_images": "عدد الصور",
-          "no_quotes": "عدد الاقتباسات",
-          "version": "الإصدار",
-          "created_by": "أنشأها",
-          "updated_at": "تم التحديث في",
-          "part_of": "جزء من",
-          "explore": "استكشاف",
-          "buttons": {
-            "addtomue": "إضافة إلى Mue",
-            "remove": "إزالة",
-            "update_addon": "تحديث الإضافة",
-            "back": "رجوع",
-            "report": "الإبلاغ",
-            "not_available_preview": "غير متاح في المعاينة"
-          },
-          "not_in_language": "هذه الإضافة غير متوفرة بلغتك",
-          "third_party_api": "تستخدم هذه الإضافة واجهة برمجية تابعة لجهة خارجية",
-          "sideload_warning": "تم تثبيت هذه الإضافة جانبيًا.",
-          "setting": "الإعداد",
-          "value": "القيمة"
-        },
         "offline": {
           "title": "يبدو أنك غير متصل",
           "description": "يرجى الاتصال بالإنترنت"
@@ -606,6 +831,9 @@
           "title": "فارغ",
           "description": "لم يتم تثبيت أي إضافات"
         },
+        "get_some": "Get Some",
+        "remove_all": "Remove all addons",
+        "recently_updated": "Recently Updated",
         "sideload": {
           "title": "التثبيت الجانبي",
           "description": "تثبيت إضافة Mue غير موجودة في السوق من جهازك",
@@ -623,24 +851,7 @@
           "newest": "المثبتة (الأحدث)",
           "a_z": "أبجدي (أ-ي)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "إنشاء",
-          "moved_title": "تم نقل إنشاء الإضافة!",
-          "moved_description": "بعد تحديث 7.1، تم نقل إنشاء الإضافات الآن إلى واجهة الويب",
-          "moved_button": "قريبًا..."
         }
-      }
-    },
-    "update": {
-      "title": "تحديث",
-      "offline": {
-        "title": "غير متصل",
-        "description": "لا يمكن الحصول على سجلات التحديث في وضع عدم الاتصال"
-      },
-      "error": {
-        "title": "خطأ",
-        "description": "تعذر الاتصال بالخادم"
       }
     },
     "welcome": {
@@ -710,8 +921,59 @@
     },
     "share": {
       "copy_link": "نسخ الرابط",
-      "email": "البريد الإلكتروني"
+      "item_type": {
+        "image": "this image",
+        "quote": "this quote",
+        "marketplace_item": "this marketplace item"
+      },
+      "social": {
+        "twitter": "X (Twitter)",
+        "facebook": "Facebook",
+        "email": "Email",
+        "wechat": "WeChat",
+        "qq": "Tencent QQ"
+      },
+      "twitter_message": "Check out {name} on @getmue",
+      "email_subject": "Check out this on Mue!",
+      "email_body": "{name} on Mue: {url}"
     }
+  },
+  "common": {
+    "navigation": {
+      "back": "Back",
+      "forward": "Forward",
+      "navigate_back": "Navigate back",
+      "navigate_forward": "Navigate forward",
+      "navigate_to": "Navigate to {item}",
+      "breadcrumb_navigation": "Breadcrumb navigation"
+    },
+    "actions": {
+      "edit": "Edit",
+      "remove": "Remove",
+      "close": "Close",
+      "send": "Send"
+    },
+    "alt_text": {
+      "preview": "Preview",
+      "location": "Location",
+      "screenshot": "Screenshot",
+      "logo": "Logo"
+    },
+    "add_translation": "Add translation",
+    "above_widgets": "Above widgets",
+    "view_mode": {
+      "grid": "Grid view",
+      "list": "List view"
+    },
+    "search_label": "Search",
+    "microphone_search": "Microphone Search"
+  },
+  "error_boundary": {
+    "title": "A critical error has occurred",
+    "message": "The new tab page could not be loaded. Please uninstall the extension and try again.",
+    "report_button": "Report Issue",
+    "sent_successfully": "Sent Successfully",
+    "support_discord": "Support Discord"
   },
   "toasts": {
     "quote": "تم نسخ الاقتباس",
@@ -723,6 +985,7 @@
     "error": "حدث خطأ ما",
     "imported": "تم الاستيراد بنجاح",
     "no_storage": "مساحة التخزين غير كافية",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "تم نسخ الرابط",
     "stats_reset": "تم إعادة تعيين الإحصائيات"
   }

@@ -11,11 +11,15 @@ export function useQuoteState() {
     authorlink: null,
     authorimg: null,
     authorimglicense: null,
+    packName: null,
+    packId: null,
+    realAuthor: null,
     noQuote: false,
   });
 
   const [uiState, setUiState] = useState({
     shareModal: false,
+    infoModal: false,
   });
 
   const updateQuote = useCallback((newData) => {
@@ -32,10 +36,18 @@ export function useQuoteState() {
     }));
   }, []);
 
+  const toggleInfoModal = useCallback((isOpen) => {
+    setUiState((prev) => ({
+      ...prev,
+      infoModal: isOpen,
+    }));
+  }, []);
+
   return {
     quoteData,
     uiState,
     updateQuote,
     toggleShareModal,
+    toggleInfoModal,
   };
 }

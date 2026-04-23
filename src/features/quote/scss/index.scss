@@ -5,15 +5,15 @@
   font-size: 0.8em;
   text-shadow: 0 0 10px rgb(0 0 0 / 30%);
   cursor: initial;
-  -webkit-user-select: none;
+  user-select: none;
   user-select: none;
 
   --shadow-shift: 0.125rem;
 
   color: #fff;
-  font-weight: 600;
+  font-weight: 700;
   max-width: 45vw;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -21,7 +21,7 @@
 .quoteauthor {
   font-size: 0.9em;
   letter-spacing: 0.5px;
-  -webkit-user-select: none;
+  user-select: none;
   user-select: none;
 
   --shadow-shift: 0.125rem;
@@ -40,7 +40,7 @@ h1.quoteauthor {
 .quoteAuthorLink {
   text-decoration: none;
   color: white;
-  -webkit-user-select: none;
+  user-select: none;
   user-select: none;
 }
 
@@ -113,6 +113,29 @@ h1.quoteauthor {
   }
 }
 
+.author-name-link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  .author-arrow {
+    font-size: 1rem;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover .author-arrow {
+    transform: translateX(3px);
+  }
+}
+
 .author-holder {
   display: flex;
   align-items: center;
@@ -155,6 +178,246 @@ h1.quoteauthor {
 
   button {
     @include basicIconButton(11px, 1.3rem, ui);
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.quote-info-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  margin-top: -5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-user-select: none;
+  user-select: none;
+  align-self: center;
+  width: fit-content;
+  border-radius: 12px;
+  background: rgb(0 0 0 / 25%);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  color: #fff;
+
+  svg {
+    font-size: 0.95rem;
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
+    background: rgb(0 0 0 / 35%);
+    transform: translateY(-1px);
+
+    svg {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.quote-info-button {
+  @include basicIconButton(11px, 1.3rem, ui);
+}
+
+// Quote Info Modal Styles
+.quoteInfoModal {
+  @extend %tabText;
+
+  display: flex;
+  flex-flow: column;
+  gap: 15px;
+  padding: 15px;
+  width: 550px;
+
+  @include themed {
+    background: t($modal-secondaryColour);
+  }
+
+  .shareHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h4 {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    .close {
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+
+      &:hover {
+        @include themed {
+          background: t($modal-sidebarActive);
+        }
+      }
+
+      svg {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+.quoteInfoContent {
+  padding: 1rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.quoteInfoWarning {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  align-items: flex-start;
+
+  @include themed {
+    background: rgba(255, 152, 0, 0.1);
+    border: 1px solid rgba(255, 152, 0, 0.3);
+  }
+
+  .warningIcon {
+    flex-shrink: 0;
+
+    svg {
+      font-size: 1.5rem;
+      color: #ff9800;
+    }
+  }
+
+  .warningText {
+    flex: 1;
+    word-wrap: break-word;
+
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.5;
+
+      @include themed {
+        color: t($color);
+      }
+    }
+  }
+}
+
+.quoteInfoSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.quoteInfoRow {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+
+  &:hover {
+    @include themed {
+      background: t($modal-sidebarActive);
+    }
+  }
+
+  .quoteInfoIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+
+    @include themed {
+      background: t($modal-sidebar);
+    }
+
+    svg {
+      font-size: 1.2rem;
+
+      @include themed {
+        color: t($color);
+      }
+    }
+  }
+
+  .quoteInfoText {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    .quoteInfoLabel {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+
+      @include themed {
+        color: t($subColor);
+      }
+    }
+
+    .quoteInfoValue {
+      font-size: 0.95rem;
+      text-transform: capitalize;
+
+      @include themed {
+        color: t($color);
+      }
+
+      .quoteInfoLink {
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        transition: opacity 0.2s ease;
+        cursor: pointer;
+
+        @include themed {
+          color: t($link);
+        }
+
+        svg {
+          font-size: 0.9rem;
+          transition: transform 0.2s ease;
+        }
+
+        &:hover {
+          opacity: 0.8;
+          text-decoration: underline;
+
+          svg {
+            transform: translateX(2px);
+          }
+        }
+      }
+    }
+  }
+}
+
+.quoteInfoFooter {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  border-top: 1px solid;
+
+  @include themed {
+    border-color: t($modal-sidebarActive);
+  }
+
+  button {
+    @include modal-button(standard);
   }
 }
 

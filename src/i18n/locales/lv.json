@@ -1,5 +1,9 @@
 {
   "tabname": "Jauna cilne",
+  "branding": {
+    "name": "Mue",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "Labrīt",
@@ -12,7 +16,6 @@
     },
     "background": {
       "credit": "Fotogrāfijas autors",
-      "unsplash": "Unsplash",
       "information": "Informācija",
       "download": "Lejupielādēt",
       "downloads": "Lejupielādes",
@@ -36,7 +39,17 @@
       "icon": "Ikona (neobligāti)",
       "add": "Pievienot",
       "name_error": "Jānorāda nosaukums",
-      "url_error": "Jānorāda URL"
+      "url_error": "Jānorāda URL",
+      "suggested": "Suggested: {name}",
+      "name_placeholder": "Enter link name (optional)",
+      "url_placeholder": "example.com",
+      "icon_url_placeholder": "https://example.com/icon.png",
+      "icon_type_label": "Icon Type",
+      "icon_type_auto": "Auto-detect Icon",
+      "icon_type_custom_url": "Custom Icon URL",
+      "icon_type_upload": "Upload Icon",
+      "icon_type_emoji": "Emoji",
+      "icon_type_letter": "Letter Avatar"
     },
     "date": {
       "week": "Nedēļa"
@@ -52,7 +65,8 @@
       "share": "Dalīties",
       "copy": "Kopēt",
       "favourite": "Pievienot izlasei",
-      "unfavourite": "Noņemt no izlases"
+      "unfavourite": "Noņemt no izlases",
+      "author_info_aria": "Learn about the author of the quote."
     },
     "navbar": {
       "tooltips": {
@@ -60,7 +74,8 @@
       },
       "notes": {
         "title": "Piezīmes",
-        "placeholder": "Rakstiet šeit"
+        "placeholder": "Rakstiet šeit",
+        "export_filename": "mue-notes.txt"
       },
       "todo": {
         "title": "Darāmo lietu saraksts",
@@ -84,6 +99,10 @@
         "library": "Paplašinājumi",
         "discover": "Tirgus"
       },
+      "sidebar": {
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar"
+      },
       "error_boundary": {
         "title": "Kļūda",
         "message": "Neizdevās ielādēt šo Mue komponentu",
@@ -93,7 +112,6 @@
       },
       "settings": {
         "enabled": "Iespējots",
-        "open_knowledgebase": "Atvērt zināšanu bāzi",
         "additional_settings": "Papildu iestatījumi",
         "reminder": {
           "title": "PAZIŅOJUMS",
@@ -135,6 +153,38 @@
               "change_hour_colour": "Mainīt stundu teksta krāsu",
               "change_minute_colour": "Mainīt minūšu teksta krāsu",
               "change_second_colour": "Mainīt sekunžu teksta krāsu"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the time looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the time",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the time text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the time text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the time text"
+              }
             }
           },
           "date": {
@@ -166,6 +216,11 @@
             "author_details": "Rādīt autora detaļas",
             "custom": "Pielāgots citāts",
             "custom_subtitle": "Iestatiet savus pielāgotos citātus",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
+            "suggested_packs_title": "Suggested Quote Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
             "no_quotes": "Nav citātu",
             "author": "Autors",
             "custom_buttons": "Pogas",
@@ -179,6 +234,42 @@
               "copy": "Kopēt",
               "tweet": "Tvītot",
               "favourite": "Pievienot izlasei"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the quote looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the quote",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the quote text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the quote text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the quote text"
+              }
             }
           },
           "greeting": {
@@ -199,7 +290,39 @@
             "month": "Mēnesis",
             "no_events": "Nav notikumu",
             "no_events_description": "Pievienojiet dažus notikumus",
-            "add_event": "Pievienot notikumu"
+            "add_event": "Pievienot notikumu",
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the greeting looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the greeting",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the greeting text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the greeting text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the greeting text"
+              }
+            }
           },
           "background": {
             "title": "Fons",
@@ -246,6 +369,10 @@
               "title": "Avots",
               "subtitle": "Izvēlieties, no kurienes iegūt fona attēlus",
               "api": "Fona API",
+              "api_title": "API",
+              "api_mue": "Mue",
+              "api_unsplash": "Unsplash",
+              "collection_placeholder": "e.g. 123456, 654321",
               "custom_background": "Pielāgots fons",
               "custom_colour": "Pielāgota fona krāsa",
               "upload": "Augšupielādēt",
@@ -258,6 +385,9 @@
               "disabled": "Atspējots",
               "loop_video": "Atkārtot video",
               "mute_video": "Izslēgt video skaņu",
+              "persistent_storage_tooltip": "Request persistent storage to prevent browser from automatically clearing your images",
+              "persistent_storage_granted": "Persistent storage granted - your images are protected from eviction",
+              "persistent_storage_denied": "Persistent storage denied - images may be cleared if storage is low",
               "quality": {
                 "title": "Kvalitāte",
                 "original": "Oriģinālā",
@@ -285,22 +415,42 @@
                 "name_desc": "Name (Z-A)",
                 "size_small": "File Size (Smallest)",
                 "size_large": "File Size (Largest)"
-              }
+              },
+              "pack_count": {
+                "singular": "pack",
+                "plural": "packs"
+              },
+              "photo_count": {
+                "singular": "photo",
+                "plural": "photos"
+              },
+              "get_more": "Get more"
             },
             "display": "Attēlošana",
             "display_subtitle": "Mainīt, kā tiek ielādēts fons un fotogrāfijas informācija",
             "api": "API iestatījumi",
-            "api_subtitle": "Opcijas attēla iegūšanai no ārēja pakalpojuma (API)"
+            "api_subtitle": "Opcijas attēla iegūšanai no ārēja pakalpojuma (API)",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            },
+            "installed_packs_title": "Installed Photo Packs",
+            "suggested_packs_title": "Suggested Photo Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
+            "photo_pack_settings": {
+              "title": "{name} Settings",
+              "refresh_photos": "Refresh Photos"
+            }
           },
           "search": {
             "title": "Meklēšana",
             "additional": "Papildu opcijas meklēšanas logrīka attēlošanai un funkcionalitātei",
-            "search_engine": "Meklētājprogramma",
-            "search_engine_subtitle": "Izvēlieties meklētājprogrammu, ko izmantot meklēšanas joslā",
-            "custom": "Pielāgots meklēšanas URL",
-            "autocomplete": "Automātiskā pabeigšana",
-            "autocomplete_provider": "Automātiskās pabeigšanas nodrošinātājs",
-            "autocomplete_provider_subtitle": "Meklētājprogramma, ko izmantot automātiskās pabeigšanas nolaižamā saraksta rezultātiem",
             "voice_search": "Balss meklēšana",
             "dropdown": "Meklēšanas nolaižamais saraksts",
             "focus": "Fokuss cilnes atvēršanā",
@@ -355,7 +505,60 @@
               "metro": "Metro"
             },
             "styling": "Stils",
-            "styling_description": "Pielāgot ātro saišu izskatu"
+            "styling_description": "Pielāgot ātro saišu izskatu",
+            "layout": "Layout",
+            "layout_description": "Configure grid layout and organization",
+            "layout_mode": "Layout Mode",
+            "layout_grid": "Grid",
+            "layout_flex": "Flexible",
+            "layout_compact": "Compact",
+            "layout_card": "Card",
+            "grid_columns": "Grid Columns",
+            "grid_rows": "Grid Rows",
+            "grid_columns_auto": "Auto",
+            "appearance_title": "Appearance",
+            "appearance_subtitle": "Customize style and layout of quick links",
+            "display_title": "Display",
+            "display_subtitle": "Configure tooltips and tab behavior",
+            "organization_title": "Organization",
+            "organization_subtitle": "Organize links into groups",
+            "grouping": "Groups",
+            "grouping_description": "Organize quick links into groups",
+            "enable_grouping": "Enable Grouping",
+            "show_group_headers": "Show Group Headers",
+            "collapsible_groups": "Collapsible Groups",
+            "manage_groups": "Manage Groups",
+            "bookmark_sync": "Bookmark Sync",
+            "bookmark_sync_description": "Import and sync browser bookmarks",
+            "bookmark_sync_title": "Bookmark Sync",
+            "bookmark_sync_subtitle": "Automatically sync browser bookmarks to quick links",
+            "bookmark_sync_section_title": "Bookmark Sync",
+            "bookmark_sync_section_subtitle": "Import and sync browser bookmarks",
+            "enable_bookmark_sync": "Enable Bookmark Sync",
+            "sync_direction": "Sync Direction",
+            "import_only": "Import Only",
+            "two_way": "Two-Way Sync",
+            "sync_now": "Sync Now",
+            "manual_sync_title": "Manual Sync",
+            "manual_sync_subtitle": "Manually sync bookmarks now",
+            "sync_bookmarks_button": "Sync Bookmarks",
+            "syncing": "Syncing...",
+            "permission_denied": "Permission denied",
+            "sync_success": "Synced: {imported} imported, {updated} updated, {removed} removed",
+            "sync_error": "Error: {message}",
+            "icon_settings": "Icon Settings",
+            "icon_settings_description": "Configure icon behavior and fallbacks",
+            "custom_icons_enabled": "Allow Custom Icon Uploads",
+            "primary_icon_source": "Primary Icon Source",
+            "icon_type": "Icon Type",
+            "icon_auto": "Auto-detect",
+            "icon_custom_url": "Custom URL",
+            "icon_custom_upload": "Upload Image",
+            "icon_emoji": "Emoji",
+            "icon_letter": "Letter Avatar",
+            "upload_icon": "Upload Icon",
+            "group": "Group",
+            "no_group": "No Group"
           },
           "message": {
             "title": "Ziņojums",
@@ -395,27 +598,50 @@
               },
               "apps_subtitle": "Izveidojiet saīsni uz citām bieži lietotajām vietnēm."
             },
-            "font": {
-              "title": "Fonts",
-              "description": "Mainīt Mue izmantoto fontu",
-              "custom": "Pielāgots fonts",
-              "google": "Importēt no Google Fonts",
+            "widget_font": {
+              "title": "Widget Font",
+              "description": "Change the font used for widgets on the new tab page",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
               "weight": {
-                "title": "Fonta biezums",
-                "thin": "Plāns",
-                "extra_light": "Īpaši viegls",
-                "light": "Viegls",
-                "normal": "Normāls",
-                "medium": "Vidējs",
-                "semi_bold": "Pus-treknraksts",
-                "bold": "Treknraksts",
-                "extra_bold": "Īpaši treknraksts"
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
               },
               "style": {
-                "title": "Fonta stils",
-                "normal": "Normāls",
-                "italic": "Slīpraksts",
-                "oblique": "Slīps"
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              }
+            },
+            "settings_font": {
+              "title": "Settings Font",
+              "description": "Change the font used for the settings modal",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
+              "weight": {
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "style": {
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
               }
             },
             "accessibility": {
@@ -440,6 +666,8 @@
             "title": "Papildu",
             "offline_mode": "Bezsaistes režīms",
             "offline_subtitle": "Kad iespējots, visi pieprasījumi tiešsaistes pakalpojumiem tiks atspējoti.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "Dati",
             "data_description": "Izvēlieties, vai eksportēt savus Mue iestatījumus uz datoru, importēt esošo iestatījumu failu vai atiestatīt iestatījumus uz noklusējuma vērtībām",
             "data_subtitle": "Pārvaldiet savus datus Mue.",
@@ -452,6 +680,25 @@
             "customisation": "Pielāgošana",
             "custom_css": "Pielāgots CSS",
             "custom_css_subtitle": "Pielāgojiet Mue stilu sev ar kaskādes stila lapām (CSS).",
+            "custom_widget": {
+              "title": "Custom Widget",
+              "subtitle": "Embed your favourite sites or tools directly into Mue with iFrames.",
+              "add": "Add Widget",
+              "new": "New Widget",
+              "edit": "Edit Widget",
+              "name": "Widget Name",
+              "url": "Widget URL",
+              "no_widgets": "No custom widgets",
+              "add_some": "Add some",
+              "render_above": "Render above other widgets",
+              "positions": {
+                "center": "Center (with other widgets)",
+                "top_left": "Top Left",
+                "top_right": "Top Right",
+                "bottom_left": "Bottom Left",
+                "bottom_right": "Bottom Right"
+              }
+            },
             "custom_js": "Pielāgots JS",
             "tab_name": "Cilnes nosaukums",
             "tab_name_subtitle": "Mainīt cilnes nosaukumu, kas parādās pārlūkprogrammā",
@@ -490,7 +737,17 @@
           "experimental": {
             "title": "Eksperimentāls",
             "warning": "Šie iestatījumi nav pilnībā pārbaudīti/ieviesti un var nedarboties pareizi!",
-            "developer": "Izstrādātājs"
+            "developer": "Izstrādātājs",
+            "debug_hotkey": "Debug hotkey (Ctrl + #)",
+            "debug_timeout": "Debug timeout",
+            "send_event": "Send Event",
+            "event_type": "Type",
+            "event_name": "Name",
+            "normal_toast": "Normal Toast",
+            "achievement_toast": "Achievement Unlocked Toast",
+            "toast_success": "Toasted successfully",
+            "clear_localstorage": "Clear LocalStorage",
+            "data_section": "Data"
           },
           "language": {
             "title": "Valoda",
@@ -502,7 +759,8 @@
           },
           "changelog": {
             "title": "Izmaiņu žurnāls",
-            "by": "Autors {author}"
+            "by": "Autors {author}",
+            "iframe_title": "Changelog"
           },
           "about": {
             "title": "Par",
@@ -530,11 +788,20 @@
             "supporters": "Atbalstītāji",
             "no_supporters": "Pašlaik nav Mue atbalstītāju",
             "photographers": "Fotogrāfi",
-            "curators": "Paplašinājumu veidotāji"
+            "curators": "Paplašinājumu veidotāji",
+            "social": {
+              "email": "Email",
+              "twitter": "X (Twitter)",
+              "discord": "Discord"
+            },
+            "license": "Licensed under the BSD-3-Clause License",
+            "copyright": "Copyright {startYear}-{currentYear}",
+            "image_count": "{count} images"
           }
         },
         "buttons": {
           "reset": "Atiestatīt",
+          "default": "Default",
           "import": "Importēt",
           "export": "Eksportēt",
           "cancel": "Cancel",
@@ -546,52 +813,10 @@
         "title": "Marketplace",
         "by": "autors {author}",
         "all": "Visi",
-        "learn_more": "Uzzināt vairāk",
         "photo_packs": "Fotogrāfiju pakotnes",
         "quote_packs": "Citātu pakotnes",
         "preset_settings": "Iepriekš iestatīti iestatījumi",
-        "no_items": "Nav vienumu šajā kategorijā",
-        "collection": "Kolekcija",
-        "explore_collection": "Izpētīt kolekciju",
-        "add_all": "Pievienot visus Mue",
         "collections": "Kolekcijas",
-        "cant_find": "Nevarat atrast to, ko meklējat?",
-        "knowledgebase_one": "Apmeklējiet",
-        "knowledgebase_two": "zināšanu bāzi",
-        "knowledgebase_three": "lai izveidotu savu.",
-        "installing": "Instalē",
-        "product": {
-          "overview": "Pārskats",
-          "information": "Informācija",
-          "last_updated": "Pēdējoreiz atjaunināts",
-          "description": "Apraksts",
-          "details": "Detaļas",
-          "more_from_curator": "Vairāk līdzīgu no {name}",
-          "show_more": "Rādīt vairāk",
-          "show_less": "Rādīt mazāk",
-          "show_all": "Rādīt visus",
-          "showing": "Rāda",
-          "no_images": "Attēlu skaits",
-          "no_quotes": "Citātu skaits",
-          "version": "Versija",
-          "created_by": "Izveidoja",
-          "updated_at": "Atjaunināts",
-          "part_of": "Daļa no",
-          "explore": "Izpētīt",
-          "buttons": {
-            "addtomue": "Pievienot Mue",
-            "remove": "Noņemt",
-            "update_addon": "Atjaunināt paplašinājumu",
-            "back": "Atpakaļ",
-            "report": "Ziņot",
-            "not_available_preview": "Nav pieejams priekšskatījumā"
-          },
-          "not_in_language": "Šis paplašinājums nav jūsu valodā",
-          "third_party_api": "Šis paplašinājums izmanto trešās puses API",
-          "sideload_warning": "Šis paplašinājums ir ielādēts no malas.",
-          "setting": "Iestatījums",
-          "value": "Vērtība"
-        },
         "offline": {
           "title": "Izskatās, ka esat bezsaistē",
           "description": "Lūdzu, izveidojiet savienojumu ar internetu"
@@ -606,6 +831,9 @@
           "title": "Tukšs",
           "description": "Nav instalētu paplašinājumu"
         },
+        "get_some": "Get Some",
+        "remove_all": "Remove all addons",
+        "recently_updated": "Recently Updated",
         "sideload": {
           "title": "Sānu ielāde",
           "description": "Instalēt Mue paplašinājumu, kas nav tirgū, no jūsu datora",
@@ -623,24 +851,7 @@
           "newest": "Instalēts (Jaunākais)",
           "a_z": "Alfabētiski (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Izveidot",
-          "moved_title": "Paplašinājuma izveide ir pārvietota!",
-          "moved_description": "Pēc 7.1 atjauninājuma paplašinājumu izveide tagad ir pārvietota uz tīmekļa saskarni",
-          "moved_button": "Drīzumā...."
         }
-      }
-    },
-    "update": {
-      "title": "Atjaunināt",
-      "offline": {
-        "title": "Bezsaistē",
-        "description": "Nevar iegūt atjauninājumu žurnālus bezsaistes režīmā"
-      },
-      "error": {
-        "title": "Kļūda",
-        "description": "Nevarēja izveidot savienojumu ar serveri"
       }
     },
     "welcome": {
@@ -710,8 +921,59 @@
     },
     "share": {
       "copy_link": "Kopēt saiti",
-      "email": "E-pasts"
+      "item_type": {
+        "image": "this image",
+        "quote": "this quote",
+        "marketplace_item": "this marketplace item"
+      },
+      "social": {
+        "twitter": "X (Twitter)",
+        "facebook": "Facebook",
+        "email": "Email",
+        "wechat": "WeChat",
+        "qq": "Tencent QQ"
+      },
+      "twitter_message": "Check out {name} on @getmue",
+      "email_subject": "Check out this on Mue!",
+      "email_body": "{name} on Mue: {url}"
     }
+  },
+  "common": {
+    "navigation": {
+      "back": "Back",
+      "forward": "Forward",
+      "navigate_back": "Navigate back",
+      "navigate_forward": "Navigate forward",
+      "navigate_to": "Navigate to {item}",
+      "breadcrumb_navigation": "Breadcrumb navigation"
+    },
+    "actions": {
+      "edit": "Edit",
+      "remove": "Remove",
+      "close": "Close",
+      "send": "Send"
+    },
+    "alt_text": {
+      "preview": "Preview",
+      "location": "Location",
+      "screenshot": "Screenshot",
+      "logo": "Logo"
+    },
+    "add_translation": "Add translation",
+    "above_widgets": "Above widgets",
+    "view_mode": {
+      "grid": "Grid view",
+      "list": "List view"
+    },
+    "search_label": "Search",
+    "microphone_search": "Microphone Search"
+  },
+  "error_boundary": {
+    "title": "A critical error has occurred",
+    "message": "The new tab page could not be loaded. Please uninstall the extension and try again.",
+    "report_button": "Report Issue",
+    "sent_successfully": "Sent Successfully",
+    "support_discord": "Support Discord"
   },
   "toasts": {
     "quote": "Citāts nokopēts",
@@ -723,6 +985,7 @@
     "error": "Kaut kas nogāja greizi",
     "imported": "Veiksmīgi importēts",
     "no_storage": "Nepietiek atmiņas",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Saite nokopēta",
     "stats_reset": "Statistika atiestatīta"
   }

@@ -8,6 +8,7 @@ import QuickLinks from '../../quicklinks/QuickLinks';
 import Date from '../../time/Date';
 import Message from '../../message/Message';
 import { WidgetsLayout } from 'components/Layout';
+import CenteredCustomWidgets from '../CenteredCustomWidgets';
 
 import EventBus from 'utils/eventbus';
 
@@ -33,10 +34,10 @@ const Widgets = () => {
       greeting: enabled('greeting') && <Greeting />,
       quote: enabled('quote') && <Quote />,
       date: enabled('date') && <Date />,
-      quicklinks: enabled('quicklinksenabled') && online ? <QuickLinks /> : null,
+      quicklinks: enabled('quicklinksenabled') && <QuickLinks />,
       message: enabled('message') && <Message />,
     }),
-    [order], // Re-create widgets when order changes
+    [order],
   );
 
   useEffect(() => {
@@ -62,7 +63,7 @@ const Widgets = () => {
 
     EventBus.on('refresh', handleRefresh);
     return () => {
-      EventBus.off('refresh');
+      EventBus.off('refresh', handleRefresh);
     };
   }, []);
 
@@ -77,6 +78,7 @@ const Widgets = () => {
           <Fragment key={key}>{widgets[element]}</Fragment>
         ))}
         {enabled('weatherEnabled') && online ? <Weather /> : null}
+        <CenteredCustomWidgets />
       </Suspense>
     </WidgetsLayout>
   );

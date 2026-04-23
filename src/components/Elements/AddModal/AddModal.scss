@@ -1,0 +1,81 @@
+@use 'scss/variables' as *;
+@use 'scss/mixins' as *;
+
+.addLinkModal {
+  width: 600px;
+  max-width: 90vw;
+
+  .addLinkModal-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    grid-column: span 2;
+  }
+
+  .addLinkModal-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-right: 35px;
+
+    .text-field-container {
+      width: 100%;
+
+      .text-field {
+        width: 100%;
+
+        .text-field-input {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .addLinkModal-labelRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .addLinkModal-label {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    @include themed {
+      color: t($subColor);
+    }
+  }
+
+  .addLinkModal-suggestedText {
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    white-space: nowrap;
+
+    @include themed {
+      color: t($link);
+      opacity: 0.8;
+    }
+  }
+
+  .addLinkModal-required {
+    @include themed {
+      color: t($link);
+    }
+  }
+
+  .addLinkModal-dropdownWrapper {
+    grid-column: span 2;
+
+    .dropdown {
+      width: 100%;
+    }
+  }
+}

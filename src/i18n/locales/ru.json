@@ -1,5 +1,9 @@
 {
   "tabname": "Новая вкладка",
+  "branding": {
+    "name": "Мю",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "Доброе утро",
@@ -12,7 +16,6 @@
     },
     "background": {
       "credit": "Фото",
-      "unsplash": "на Unsplash",
       "information": "Information",
       "download": "Download",
       "downloads": "Загрузки",
@@ -36,7 +39,17 @@
       "icon": "Значок (необязательно)",
       "add": "Add",
       "name_error": "Должно содержать имя",
-      "url_error": "Должно содержать URL"
+      "url_error": "Должно содержать URL",
+      "suggested": "Suggested: {name}",
+      "name_placeholder": "Enter link name (optional)",
+      "url_placeholder": "example.com",
+      "icon_url_placeholder": "https://example.com/icon.png",
+      "icon_type_label": "Icon Type",
+      "icon_type_auto": "Auto-detect Icon",
+      "icon_type_custom_url": "Custom Icon URL",
+      "icon_type_upload": "Upload Icon",
+      "icon_type_emoji": "Emoji",
+      "icon_type_letter": "Letter Avatar"
     },
     "date": {
       "week": "Неделя"
@@ -52,7 +65,8 @@
       "share": "Поделиться",
       "copy": "Копировать",
       "favourite": "Избранное",
-      "unfavourite": "Не нравится"
+      "unfavourite": "Не нравится",
+      "author_info_aria": "Learn about the author of the quote."
     },
     "navbar": {
       "tooltips": {
@@ -60,7 +74,8 @@
       },
       "notes": {
         "title": "Notes",
-        "placeholder": "Напишите здесь"
+        "placeholder": "Напишите здесь",
+        "export_filename": "mue-notes.txt"
       },
       "todo": {
         "title": "Задачи",
@@ -84,6 +99,10 @@
         "library": "Аддоны",
         "discover": "Магазин"
       },
+      "sidebar": {
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar"
+      },
       "error_boundary": {
         "title": "Ошибка",
         "message": "Не удалось загрузить этот компонент Mue",
@@ -93,7 +112,6 @@
       },
       "settings": {
         "enabled": "Включено",
-        "open_knowledgebase": "Открытая база знаний",
         "additional_settings": "Дополнительные настройки",
         "reminder": {
           "title": "NOTICE",
@@ -135,6 +153,38 @@
               "change_hour_colour": "Изменить цвет текста часа",
               "change_minute_colour": "Изменить цвет текста минут",
               "change_second_colour": "Change second text colour"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the time looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the time",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the time text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the time text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the time text"
+              }
             }
           },
           "date": {
@@ -166,6 +216,11 @@
             "author_details": "Авторские сведения",
             "custom": "Пользовательская цитата",
             "custom_subtitle": "Установите свои собственные пользовательские цитаты",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
+            "suggested_packs_title": "Suggested Quote Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
             "no_quotes": "Без кавычек",
             "author": "Автор",
             "custom_buttons": "Кнопки",
@@ -179,6 +234,42 @@
               "copy": "Кнопка копирования",
               "tweet": "Кнопка твита",
               "favourite": "Кнопка для оценки"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the quote looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the quote",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the quote text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the quote text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the quote text"
+              }
             }
           },
           "greeting": {
@@ -199,7 +290,39 @@
             "month": "Month",
             "no_events": "No Events",
             "no_events_description": "Add Some Events",
-            "add_event": "Add Event"
+            "add_event": "Add Event",
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the greeting looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the greeting",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the greeting text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the greeting text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the greeting text"
+              }
+            }
           },
           "background": {
             "title": "Фон",
@@ -246,6 +369,10 @@
               "title": "Source",
               "subtitle": "Выберите, откуда брать фоновые изображения",
               "api": "API для фона",
+              "api_title": "API",
+              "api_mue": "Mue",
+              "api_unsplash": "Unsplash",
+              "collection_placeholder": "e.g. 123456, 654321",
               "custom_background": "Пользовательский фон",
               "custom_colour": "Пользовательский цвет фон",
               "upload": "Загрузить",
@@ -258,6 +385,9 @@
               "disabled": "Выключен",
               "loop_video": "Зацикленное видео",
               "mute_video": "Отключить звук видео",
+              "persistent_storage_tooltip": "Request persistent storage to prevent browser from automatically clearing your images",
+              "persistent_storage_granted": "Persistent storage granted - your images are protected from eviction",
+              "persistent_storage_denied": "Persistent storage denied - images may be cleared if storage is low",
               "quality": {
                 "title": "Качество",
                 "original": "Original",
@@ -285,22 +415,42 @@
                 "name_desc": "Name (Z-A)",
                 "size_small": "File Size (Smallest)",
                 "size_large": "File Size (Largest)"
-              }
+              },
+              "pack_count": {
+                "singular": "pack",
+                "plural": "packs"
+              },
+              "photo_count": {
+                "singular": "photo",
+                "plural": "photos"
+              },
+              "get_more": "Get more"
             },
             "display": "Отображать",
             "display_subtitle": "Изменение способа загрузки фона и информации о фотографии",
             "api": "Настройки API",
-            "api_subtitle": "Варианты получения изображения из внешнего сервиса (API)"
+            "api_subtitle": "Варианты получения изображения из внешнего сервиса (API)",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            },
+            "installed_packs_title": "Installed Photo Packs",
+            "suggested_packs_title": "Suggested Photo Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
+            "photo_pack_settings": {
+              "title": "{name} Settings",
+              "refresh_photos": "Refresh Photos"
+            }
           },
           "search": {
             "title": "Панель поиска",
             "additional": "Дополнительные параметры отображения и функциональности поискового виджета",
-            "search_engine": "Поисковый движок",
-            "search_engine_subtitle": "Выберите поисковую систему для использования в строке поиска",
-            "custom": "Пользовательский поисковый движок",
-            "autocomplete": "Автозаполнение",
-            "autocomplete_provider": "Поставщик автозаполнения",
-            "autocomplete_provider_subtitle": "Поисковая система, используемая для выпадающих результатов автозаполнения",
             "voice_search": "Поиск голосом",
             "dropdown": "Выпадающий список поиска",
             "focus": "Фокус на открытой вкладке",
@@ -355,7 +505,60 @@
               "metro": "Метро"
             },
             "styling": "Стиль быстрых ссылок",
-            "styling_description": "Настройка внешнего вида быстрых ссылок"
+            "styling_description": "Настройка внешнего вида быстрых ссылок",
+            "layout": "Layout",
+            "layout_description": "Configure grid layout and organization",
+            "layout_mode": "Layout Mode",
+            "layout_grid": "Grid",
+            "layout_flex": "Flexible",
+            "layout_compact": "Compact",
+            "layout_card": "Card",
+            "grid_columns": "Grid Columns",
+            "grid_rows": "Grid Rows",
+            "grid_columns_auto": "Auto",
+            "appearance_title": "Appearance",
+            "appearance_subtitle": "Customize style and layout of quick links",
+            "display_title": "Display",
+            "display_subtitle": "Configure tooltips and tab behavior",
+            "organization_title": "Organization",
+            "organization_subtitle": "Organize links into groups",
+            "grouping": "Groups",
+            "grouping_description": "Organize quick links into groups",
+            "enable_grouping": "Enable Grouping",
+            "show_group_headers": "Show Group Headers",
+            "collapsible_groups": "Collapsible Groups",
+            "manage_groups": "Manage Groups",
+            "bookmark_sync": "Bookmark Sync",
+            "bookmark_sync_description": "Import and sync browser bookmarks",
+            "bookmark_sync_title": "Bookmark Sync",
+            "bookmark_sync_subtitle": "Automatically sync browser bookmarks to quick links",
+            "bookmark_sync_section_title": "Bookmark Sync",
+            "bookmark_sync_section_subtitle": "Import and sync browser bookmarks",
+            "enable_bookmark_sync": "Enable Bookmark Sync",
+            "sync_direction": "Sync Direction",
+            "import_only": "Import Only",
+            "two_way": "Two-Way Sync",
+            "sync_now": "Sync Now",
+            "manual_sync_title": "Manual Sync",
+            "manual_sync_subtitle": "Manually sync bookmarks now",
+            "sync_bookmarks_button": "Sync Bookmarks",
+            "syncing": "Syncing...",
+            "permission_denied": "Permission denied",
+            "sync_success": "Synced: {imported} imported, {updated} updated, {removed} removed",
+            "sync_error": "Error: {message}",
+            "icon_settings": "Icon Settings",
+            "icon_settings_description": "Configure icon behavior and fallbacks",
+            "custom_icons_enabled": "Allow Custom Icon Uploads",
+            "primary_icon_source": "Primary Icon Source",
+            "icon_type": "Icon Type",
+            "icon_auto": "Auto-detect",
+            "icon_custom_url": "Custom URL",
+            "icon_custom_upload": "Upload Image",
+            "icon_emoji": "Emoji",
+            "icon_letter": "Letter Avatar",
+            "upload_icon": "Upload Icon",
+            "group": "Group",
+            "no_group": "No Group"
           },
           "message": {
             "title": "Message",
@@ -395,27 +598,50 @@
               },
               "apps_subtitle": "Создайте ярлык других широко используемых веб-сайтов."
             },
-            "font": {
-              "title": "Font",
-              "description": "Измените шрифт, используемый в Mue",
-              "custom": "Пользовательский шрифт",
-              "google": "Импортировать из Google Fonts",
+            "widget_font": {
+              "title": "Widget Font",
+              "description": "Change the font used for widgets on the new tab page",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
               "weight": {
-                "title": "Толщина шрифта",
-                "thin": "Тонкий",
-                "extra_light": "Очень тонкий",
-                "light": "Лёгкий",
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
                 "normal": "Normal",
                 "medium": "Medium",
-                "semi_bold": "Полужирный",
-                "bold": "Жирный",
-                "extra_bold": "Сверхжирный"
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
               },
               "style": {
                 "title": "Font style",
                 "normal": "Normal",
                 "italic": "Italic",
-                "oblique": "Курсив"
+                "oblique": "Oblique"
+              }
+            },
+            "settings_font": {
+              "title": "Settings Font",
+              "description": "Change the font used for the settings modal",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
+              "weight": {
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "style": {
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
               }
             },
             "accessibility": {
@@ -440,6 +666,8 @@
             "title": "Дополнительно",
             "offline_mode": "Офлайн режим",
             "offline_subtitle": "При включении все запросы к онлайн-сервисам будут отключены.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "Data",
             "data_description": "Choose whether to export your Mue settings to your computer, import an existing settings file, or reset your settings to their default values",
             "data_subtitle": "Выберите, следует ли экспортировать настройки Mue на компьютер, импортировать существующий файл настроек или сбросить настройки до значений по умолчанию",
@@ -452,6 +680,25 @@
             "customisation": "Кастомизация",
             "custom_css": "Пользовательский CSS",
             "custom_css_subtitle": "Настройте стиль Mue под себя с помощью каскадных таблиц стилей (CSS).",
+            "custom_widget": {
+              "title": "Custom Widget",
+              "subtitle": "Embed your favourite sites or tools directly into Mue with iFrames.",
+              "add": "Add Widget",
+              "new": "New Widget",
+              "edit": "Edit Widget",
+              "name": "Widget Name",
+              "url": "Widget URL",
+              "no_widgets": "No custom widgets",
+              "add_some": "Add some",
+              "render_above": "Render above other widgets",
+              "positions": {
+                "center": "Center (with other widgets)",
+                "top_left": "Top Left",
+                "top_right": "Top Right",
+                "bottom_left": "Bottom Left",
+                "bottom_right": "Bottom Right"
+              }
+            },
             "custom_js": "Пользовательский JS",
             "tab_name": "Tab name",
             "tab_name_subtitle": "Измените название вкладки, которая появляется в вашем браузере",
@@ -490,7 +737,17 @@
           "experimental": {
             "title": "Экспериментальные настройки",
             "warning": "Данные настройки не были полностью протестированы/реализованы и могут работать некорректно!",
-            "developer": "Developer"
+            "developer": "Developer",
+            "debug_hotkey": "Debug hotkey (Ctrl + #)",
+            "debug_timeout": "Debug timeout",
+            "send_event": "Send Event",
+            "event_type": "Type",
+            "event_name": "Name",
+            "normal_toast": "Normal Toast",
+            "achievement_toast": "Achievement Unlocked Toast",
+            "toast_success": "Toasted successfully",
+            "clear_localstorage": "Clear LocalStorage",
+            "data_section": "Data"
           },
           "language": {
             "title": "Язык",
@@ -502,7 +759,8 @@
           },
           "changelog": {
             "title": "Журнал изменений",
-            "by": "By {author}"
+            "by": "By {author}",
+            "iframe_title": "Changelog"
           },
           "about": {
             "title": "О программе",
@@ -530,11 +788,20 @@
             "supporters": "Поддержка",
             "no_supporters": "В настоящее время нет поддержки Mue",
             "photographers": "Фотографы",
-            "curators": "Add-on creators"
+            "curators": "Add-on creators",
+            "social": {
+              "email": "Email",
+              "twitter": "X (Twitter)",
+              "discord": "Discord"
+            },
+            "license": "Licensed under the BSD-3-Clause License",
+            "copyright": "Copyright {startYear}-{currentYear}",
+            "image_count": "{count} images"
           }
         },
         "buttons": {
           "reset": "Сбросить",
+          "default": "Default",
           "import": "Импорт",
           "export": "Экспорт",
           "cancel": "Cancel",
@@ -546,52 +813,10 @@
         "title": "Marketplace",
         "by": "от {author}",
         "all": "Все",
-        "learn_more": "Узнать больше",
         "photo_packs": "Наборы фото",
         "quote_packs": "Наборы цитат",
         "preset_settings": "Пресеты настроек",
-        "no_items": "Нет элементов в этой категории",
-        "collection": "Коллекция",
-        "explore_collection": "Исследуйте коллекцию",
-        "add_all": "Добавить все в Mue",
         "collections": "Коллекции",
-        "cant_find": "Не можете найти то, что ищете?",
-        "knowledgebase_one": "Посетить",
-        "knowledgebase_two": "база знаний",
-        "knowledgebase_three": "чтобы создать свой собственный.",
-        "installing": "Installing",
-        "product": {
-          "overview": "Обзор",
-          "information": "Информация",
-          "last_updated": "Последнее обновление",
-          "description": "Описание",
-          "details": "Details",
-          "more_from_curator": "More like this from {name}",
-          "show_more": "Показать больше",
-          "show_less": "Показать меньше",
-          "show_all": "Показать все",
-          "showing": "Показаны",
-          "no_images": "№ Изображения",
-          "no_quotes": "Цитаты",
-          "version": "Версия",
-          "created_by": "Created by",
-          "updated_at": "Updated on",
-          "part_of": "Часть",
-          "explore": "Обзор",
-          "buttons": {
-            "addtomue": "Добавить в Mue",
-            "remove": "Удалить",
-            "update_addon": "Update Add-on",
-            "back": "Назад",
-            "report": "Жалоба",
-            "not_available_preview": "Unavailable on Preview"
-          },
-          "not_in_language": "This add-on is not in your language",
-          "third_party_api": "This add-on uses a third-party API",
-          "sideload_warning": "This add-on has been sideloaded.",
-          "setting": "Параметр",
-          "value": "Цена"
-        },
         "offline": {
           "title": "Похоже, что вы офлайн",
           "description": "Пожалуйста, подключитесь к интернету"
@@ -606,6 +831,9 @@
           "title": "Здесь пусто",
           "description": "Зайдите в магазин, чтобы найти что-то интересное"
         },
+        "get_some": "Get Some",
+        "remove_all": "Remove all addons",
+        "recently_updated": "Recently Updated",
         "sideload": {
           "title": "Загрузить",
           "description": "Установить аддон Mue, не представленную на торговой площадке, со своего компьютера",
@@ -623,24 +851,7 @@
           "newest": "Установлено (Новое)",
           "a_z": "Алфавитный (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Создать",
-          "moved_title": "Создание аддонов переместилось!",
-          "moved_description": "После обновления 7.1, создание дополнений теперь переместилось в веб-UI",
-          "moved_button": "Начните"
         }
-      }
-    },
-    "update": {
-      "title": "Обновление",
-      "offline": {
-        "title": "Офлайн",
-        "description": "Не удалось получить журнал обновления в офлайн режиме"
-      },
-      "error": {
-        "title": "Ошибка",
-        "description": "Невозможно подключиться к серверу"
       }
     },
     "welcome": {
@@ -710,8 +921,59 @@
     },
     "share": {
       "copy_link": "Копировать ссылку",
-      "email": "Эл. адрес"
+      "item_type": {
+        "image": "this image",
+        "quote": "this quote",
+        "marketplace_item": "this marketplace item"
+      },
+      "social": {
+        "twitter": "X (Twitter)",
+        "facebook": "Facebook",
+        "email": "Email",
+        "wechat": "WeChat",
+        "qq": "Tencent QQ"
+      },
+      "twitter_message": "Check out {name} on @getmue",
+      "email_subject": "Check out this on Mue!",
+      "email_body": "{name} on Mue: {url}"
     }
+  },
+  "common": {
+    "navigation": {
+      "back": "Back",
+      "forward": "Forward",
+      "navigate_back": "Navigate back",
+      "navigate_forward": "Navigate forward",
+      "navigate_to": "Navigate to {item}",
+      "breadcrumb_navigation": "Breadcrumb navigation"
+    },
+    "actions": {
+      "edit": "Edit",
+      "remove": "Remove",
+      "close": "Close",
+      "send": "Send"
+    },
+    "alt_text": {
+      "preview": "Preview",
+      "location": "Location",
+      "screenshot": "Screenshot",
+      "logo": "Logo"
+    },
+    "add_translation": "Add translation",
+    "above_widgets": "Above widgets",
+    "view_mode": {
+      "grid": "Grid view",
+      "list": "List view"
+    },
+    "search_label": "Search",
+    "microphone_search": "Microphone Search"
+  },
+  "error_boundary": {
+    "title": "A critical error has occurred",
+    "message": "The new tab page could not be loaded. Please uninstall the extension and try again.",
+    "report_button": "Report Issue",
+    "sent_successfully": "Sent Successfully",
+    "support_discord": "Support Discord"
   },
   "toasts": {
     "quote": "Цитата скопирована",
@@ -723,6 +985,7 @@
     "error": "Что-то пошло не так",
     "imported": "Успешно импортировано",
     "no_storage": "Недостаточно места",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Ссылка скопирована",
     "stats_reset": "Stats reset"
   }

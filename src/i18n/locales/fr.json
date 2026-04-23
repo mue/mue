@@ -1,5 +1,9 @@
 {
   "tabname": "Nouvel onglet",
+  "branding": {
+    "name": "Mue",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "Bonjour",
@@ -12,7 +16,6 @@
     },
     "background": {
       "credit": "Photo de",
-      "unsplash": "sur Unsplash",
       "information": "Information",
       "download": "Télécharger",
       "downloads": "Téléchargements",
@@ -36,7 +39,17 @@
       "icon": "Icône (facultatif)",
       "add": "Ajouter",
       "name_error": "Le nom est obligatoire",
-      "url_error": "L'URL est obligatoire"
+      "url_error": "L'URL est obligatoire",
+      "suggested": "Suggested: {name}",
+      "name_placeholder": "Enter link name (optional)",
+      "url_placeholder": "example.com",
+      "icon_url_placeholder": "https://example.com/icon.png",
+      "icon_type_label": "Icon Type",
+      "icon_type_auto": "Auto-detect Icon",
+      "icon_type_custom_url": "Custom Icon URL",
+      "icon_type_upload": "Upload Icon",
+      "icon_type_emoji": "Emoji",
+      "icon_type_letter": "Letter Avatar"
     },
     "date": {
       "week": "Semaine"
@@ -52,7 +65,8 @@
       "share": "Partager",
       "copy": "Copier",
       "favourite": "Favori",
-      "unfavourite": "Défavorisé"
+      "unfavourite": "Défavorisé",
+      "author_info_aria": "Learn about the author of the quote."
     },
     "navbar": {
       "tooltips": {
@@ -60,7 +74,8 @@
       },
       "notes": {
         "title": "Notes",
-        "placeholder": "Tapez ici"
+        "placeholder": "Tapez ici",
+        "export_filename": "mue-notes.txt"
       },
       "todo": {
         "title": "À faire",
@@ -84,6 +99,10 @@
         "library": "Add-ons",
         "discover": "Marché"
       },
+      "sidebar": {
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar"
+      },
       "error_boundary": {
         "title": "Erreur",
         "message": "Échec du chargement de ce composant de Mue",
@@ -93,7 +112,6 @@
       },
       "settings": {
         "enabled": "Activé",
-        "open_knowledgebase": "Ouvrir la base de connaissances",
         "additional_settings": "Paramètres additionnels",
         "reminder": {
           "title": "AVIS",
@@ -135,6 +153,38 @@
               "change_hour_colour": "Changer la couleur du texte de l'heure",
               "change_minute_colour": "Changer la couleur du texte des minutes",
               "change_second_colour": "Changer la couleur du texte des secondes"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the time looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the time",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the time text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the time text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the time text"
+              }
             }
           },
           "date": {
@@ -166,6 +216,11 @@
             "author_details": "Détails de l'auteur",
             "custom": "Citation personnalisée",
             "custom_subtitle": "Définir vos propres citations",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
+            "suggested_packs_title": "Suggested Quote Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
             "no_quotes": "Pas de citations",
             "author": "Auteur",
             "custom_buttons": "Boutons",
@@ -179,6 +234,42 @@
               "copy": "Copier",
               "tweet": "Tweeter",
               "favourite": "Favori"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the quote looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the quote",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the quote text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the quote text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the quote text"
+              }
             }
           },
           "greeting": {
@@ -199,7 +290,39 @@
             "month": "Mois",
             "no_events": "Pas d'événements",
             "no_events_description": "Ajouter des événements",
-            "add_event": "Ajouter un événement"
+            "add_event": "Ajouter un événement",
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the greeting looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the greeting",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the greeting text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the greeting text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the greeting text"
+              }
+            }
           },
           "background": {
             "title": "Fond d'écran",
@@ -246,6 +369,10 @@
               "title": "Source",
               "subtitle": "Sélectionnez d'où obtenir les images d'arrière-plan",
               "api": "API de fond d'écran",
+              "api_title": "API",
+              "api_mue": "Mue",
+              "api_unsplash": "Unsplash",
+              "collection_placeholder": "e.g. 123456, 654321",
               "custom_background": "Fond d'écran personnalisé",
               "custom_colour": "Couleur de fond personnalisée",
               "upload": "Télécharger",
@@ -258,6 +385,9 @@
               "disabled": "Désactivé",
               "loop_video": "Vidéo en boucle",
               "mute_video": "Muet",
+              "persistent_storage_tooltip": "Request persistent storage to prevent browser from automatically clearing your images",
+              "persistent_storage_granted": "Persistent storage granted - your images are protected from eviction",
+              "persistent_storage_denied": "Persistent storage denied - images may be cleared if storage is low",
               "quality": {
                 "title": "Qualité",
                 "original": "Original",
@@ -285,22 +415,42 @@
                 "name_desc": "Name (Z-A)",
                 "size_small": "File Size (Smallest)",
                 "size_large": "File Size (Largest)"
-              }
+              },
+              "pack_count": {
+                "singular": "pack",
+                "plural": "packs"
+              },
+              "photo_count": {
+                "singular": "photo",
+                "plural": "photos"
+              },
+              "get_more": "Get more"
             },
             "display": "Afficher",
             "display_subtitle": "Modifier la façon dont le fond d'écran et les informations photo sont chargés",
             "api": "Paramètres de l'API",
-            "api_subtitle": "Options pour obtenir une image à partir d'un service externe (API)"
+            "api_subtitle": "Options pour obtenir une image à partir d'un service externe (API)",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            },
+            "installed_packs_title": "Installed Photo Packs",
+            "suggested_packs_title": "Suggested Photo Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
+            "photo_pack_settings": {
+              "title": "{name} Settings",
+              "refresh_photos": "Refresh Photos"
+            }
           },
           "search": {
             "title": "Recherche",
             "additional": "Options supplémentaires pour l'affichage et la fonctionnalité du widget de recherche",
-            "search_engine": "Moteur de recherche",
-            "search_engine_subtitle": "Choisissez le moteur de recherche à utiliser dans la barre de recherche",
-            "custom": "URL de recherche personnalisée",
-            "autocomplete": "Saisie semi-automatique",
-            "autocomplete_provider": "Fournisseur de saisie semi-automatique",
-            "autocomplete_provider_subtitle": "Moteur de recherche à utiliser pour les résultats de la liste déroulante de saisie semi-automatique",
             "voice_search": "Recherche vocale",
             "dropdown": "Menu déroulant de recherche",
             "focus": "Focus sur l'onglet ouvert",
@@ -355,7 +505,60 @@
               "metro": "Métro"
             },
             "styling": "Style",
-            "styling_description": "Personnaliser l'apparence des liens rapides"
+            "styling_description": "Personnaliser l'apparence des liens rapides",
+            "layout": "Layout",
+            "layout_description": "Configure grid layout and organization",
+            "layout_mode": "Layout Mode",
+            "layout_grid": "Grid",
+            "layout_flex": "Flexible",
+            "layout_compact": "Compact",
+            "layout_card": "Card",
+            "grid_columns": "Grid Columns",
+            "grid_rows": "Grid Rows",
+            "grid_columns_auto": "Auto",
+            "appearance_title": "Appearance",
+            "appearance_subtitle": "Customize style and layout of quick links",
+            "display_title": "Display",
+            "display_subtitle": "Configure tooltips and tab behavior",
+            "organization_title": "Organization",
+            "organization_subtitle": "Organize links into groups",
+            "grouping": "Groups",
+            "grouping_description": "Organize quick links into groups",
+            "enable_grouping": "Enable Grouping",
+            "show_group_headers": "Show Group Headers",
+            "collapsible_groups": "Collapsible Groups",
+            "manage_groups": "Manage Groups",
+            "bookmark_sync": "Bookmark Sync",
+            "bookmark_sync_description": "Import and sync browser bookmarks",
+            "bookmark_sync_title": "Bookmark Sync",
+            "bookmark_sync_subtitle": "Automatically sync browser bookmarks to quick links",
+            "bookmark_sync_section_title": "Bookmark Sync",
+            "bookmark_sync_section_subtitle": "Import and sync browser bookmarks",
+            "enable_bookmark_sync": "Enable Bookmark Sync",
+            "sync_direction": "Sync Direction",
+            "import_only": "Import Only",
+            "two_way": "Two-Way Sync",
+            "sync_now": "Sync Now",
+            "manual_sync_title": "Manual Sync",
+            "manual_sync_subtitle": "Manually sync bookmarks now",
+            "sync_bookmarks_button": "Sync Bookmarks",
+            "syncing": "Syncing...",
+            "permission_denied": "Permission denied",
+            "sync_success": "Synced: {imported} imported, {updated} updated, {removed} removed",
+            "sync_error": "Error: {message}",
+            "icon_settings": "Icon Settings",
+            "icon_settings_description": "Configure icon behavior and fallbacks",
+            "custom_icons_enabled": "Allow Custom Icon Uploads",
+            "primary_icon_source": "Primary Icon Source",
+            "icon_type": "Icon Type",
+            "icon_auto": "Auto-detect",
+            "icon_custom_url": "Custom URL",
+            "icon_custom_upload": "Upload Image",
+            "icon_emoji": "Emoji",
+            "icon_letter": "Letter Avatar",
+            "upload_icon": "Upload Icon",
+            "group": "Group",
+            "no_group": "No Group"
           },
           "message": {
             "title": "Message",
@@ -395,26 +598,49 @@
               },
               "apps_subtitle": "Créez un raccourci de vos autres sites Web couramment utilisés."
             },
-            "font": {
-              "title": "Police",
-              "description": "Changer la police utilisée dans Mue",
-              "custom": "Police personnalisée",
-              "google": "Importer depuis Google Fonts",
+            "widget_font": {
+              "title": "Widget Font",
+              "description": "Change the font used for widgets on the new tab page",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
               "weight": {
-                "title": "Épaisseur de police",
-                "thin": "Fin",
-                "extra_light": "Extra léger",
-                "light": "Léger",
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
                 "normal": "Normal",
-                "medium": "Moyen",
-                "semi_bold": "Semi-gras",
-                "bold": "Gras",
-                "extra_bold": "Extra-gras"
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
               },
               "style": {
-                "title": "Style de police",
+                "title": "Font style",
                 "normal": "Normal",
-                "italic": "Italique",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              }
+            },
+            "settings_font": {
+              "title": "Settings Font",
+              "description": "Change the font used for the settings modal",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
+              "weight": {
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "style": {
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
                 "oblique": "Oblique"
               }
             },
@@ -440,6 +666,8 @@
             "title": "Avancé",
             "offline_mode": "Mode hors ligne",
             "offline_subtitle": "Lorsqu'il est activé, toutes les requêtes vers les services en ligne seront désactivées.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "Données",
             "data_description": "Choisissez d'exporter vos paramètres Mue sur votre ordinateur, d'importer un fichier de paramètres existant ou de réinitialiser vos paramètres à leurs valeurs par défaut",
             "data_subtitle": "Gérez vos données sur Mue.",
@@ -452,6 +680,25 @@
             "customisation": "Personnalisation",
             "custom_css": "CSS personnalisé",
             "custom_css_subtitle": "Personnalisez le style de Mue avec des feuilles de style en cascade (CSS).",
+            "custom_widget": {
+              "title": "Custom Widget",
+              "subtitle": "Embed your favourite sites or tools directly into Mue with iFrames.",
+              "add": "Add Widget",
+              "new": "New Widget",
+              "edit": "Edit Widget",
+              "name": "Widget Name",
+              "url": "Widget URL",
+              "no_widgets": "No custom widgets",
+              "add_some": "Add some",
+              "render_above": "Render above other widgets",
+              "positions": {
+                "center": "Center (with other widgets)",
+                "top_left": "Top Left",
+                "top_right": "Top Right",
+                "bottom_left": "Bottom Left",
+                "bottom_right": "Bottom Right"
+              }
+            },
             "custom_js": "JS personnalisé",
             "tab_name": "Nom de l'onglet",
             "tab_name_subtitle": "Modifier le nom de l'onglet qui apparaît dans votre navigateur",
@@ -490,7 +737,17 @@
           "experimental": {
             "title": "Expérimental",
             "warning": "Ces paramètres n'ont pas été entièrement testés/implémentés et peuvent ne pas fonctionner correctement !",
-            "developer": "Développeur"
+            "developer": "Développeur",
+            "debug_hotkey": "Debug hotkey (Ctrl + #)",
+            "debug_timeout": "Debug timeout",
+            "send_event": "Send Event",
+            "event_type": "Type",
+            "event_name": "Name",
+            "normal_toast": "Normal Toast",
+            "achievement_toast": "Achievement Unlocked Toast",
+            "toast_success": "Toasted successfully",
+            "clear_localstorage": "Clear LocalStorage",
+            "data_section": "Data"
           },
           "language": {
             "title": "Langue",
@@ -502,7 +759,8 @@
           },
           "changelog": {
             "title": "Journal des modifications",
-            "by": "Par {author}"
+            "by": "Par {author}",
+            "iframe_title": "Changelog"
           },
           "about": {
             "title": "À propos",
@@ -530,11 +788,20 @@
             "supporters": "Supporters",
             "no_supporters": "Il n'y a actuellement aucun supporter de Mue",
             "photographers": "Photographes",
-            "curators": "Créateurs d'add-ons"
+            "curators": "Créateurs d'add-ons",
+            "social": {
+              "email": "Email",
+              "twitter": "X (Twitter)",
+              "discord": "Discord"
+            },
+            "license": "Licensed under the BSD-3-Clause License",
+            "copyright": "Copyright {startYear}-{currentYear}",
+            "image_count": "{count} images"
           }
         },
         "buttons": {
           "reset": "Réinitialiser",
+          "default": "Default",
           "import": "Importer",
           "export": "Exporter",
           "cancel": "Cancel",
@@ -546,52 +813,10 @@
         "title": "Marketplace",
         "by": "par {author}",
         "all": "Tout",
-        "learn_more": "En savoir plus",
         "photo_packs": "Packs de photos",
         "quote_packs": "Packs de citations",
         "preset_settings": "Paramètres prédéfinis",
-        "no_items": "Aucun élément dans cette catégorie",
-        "collection": "Collection",
-        "explore_collection": "Explorer la collection",
-        "add_all": "Ajouter tout à Mue",
         "collections": "Collections",
-        "cant_find": "Vous ne trouvez pas ce que vous cherchez ?",
-        "knowledgebase_one": "Visiter le",
-        "knowledgebase_two": "base de connaissances",
-        "knowledgebase_three": "pour créer le vôtre.",
-        "installing": "Installation",
-        "product": {
-          "overview": "Aperçu",
-          "information": "Informations",
-          "last_updated": "Dernière mise à jour",
-          "description": "Description",
-          "details": "Détails",
-          "more_from_curator": "Plus comme cela de {name}",
-          "show_more": "Afficher plus",
-          "show_less": "Afficher moins",
-          "show_all": "Afficher tout",
-          "showing": "Affichage",
-          "no_images": "Nbre d'images",
-          "no_quotes": "Nbre de citations",
-          "version": "Version",
-          "created_by": "Créé par",
-          "updated_at": "Mis à jour le",
-          "part_of": "Fait partie de",
-          "explore": "Explorer",
-          "buttons": {
-            "addtomue": "Ajouter à",
-            "remove": "Supprimer",
-            "update_addon": "Mettre à jour l'add-on",
-            "back": "Retour",
-            "report": "Signaler",
-            "not_available_preview": "Non disponible en aperçu"
-          },
-          "not_in_language": "Cet add-on n'est pas dans votre langue",
-          "third_party_api": "Cet add-on utilise une API tierce",
-          "sideload_warning": "Cet add-on a été chargé manuellement.",
-          "setting": "Paramètre",
-          "value": "Valeur"
-        },
         "offline": {
           "title": "On dirait que vous êtes hors ligne",
           "description": "Veuillez vous connecter à Internet"
@@ -606,6 +831,9 @@
           "title": "Vide",
           "description": "Aucun add-on n'est installé"
         },
+        "get_some": "Get Some",
+        "remove_all": "Remove all addons",
+        "recently_updated": "Recently Updated",
         "sideload": {
           "title": "Chargement manuel",
           "description": "Installez un addon Mue qui n'est pas sur le marché depuis votre ordinateur",
@@ -623,24 +851,7 @@
           "newest": "Installé (plus récent)",
           "a_z": "Alphabétique (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Créer",
-          "moved_title": "La création d'add-on a été déplacée  !",
-          "moved_description": "A la suite de la mise à jour 7.1, la création d'add-ons a maintenant été déplacée vers l'interface web",
-          "moved_button": "Bientôt disponible...."
         }
-      }
-    },
-    "update": {
-      "title": "Mise à jour",
-      "offline": {
-        "title": "Hors ligne",
-        "description": "Impossible d'obtenir les journaux de mise à jour en mode hors ligne"
-      },
-      "error": {
-        "title": "Erreur",
-        "description": "Impossible de se connecter au serveur"
       }
     },
     "welcome": {
@@ -710,8 +921,59 @@
     },
     "share": {
       "copy_link": "Copier le lien",
-      "email": "E-mail"
+      "item_type": {
+        "image": "this image",
+        "quote": "this quote",
+        "marketplace_item": "this marketplace item"
+      },
+      "social": {
+        "twitter": "X (Twitter)",
+        "facebook": "Facebook",
+        "email": "Email",
+        "wechat": "WeChat",
+        "qq": "Tencent QQ"
+      },
+      "twitter_message": "Check out {name} on @getmue",
+      "email_subject": "Check out this on Mue!",
+      "email_body": "{name} on Mue: {url}"
     }
+  },
+  "common": {
+    "navigation": {
+      "back": "Back",
+      "forward": "Forward",
+      "navigate_back": "Navigate back",
+      "navigate_forward": "Navigate forward",
+      "navigate_to": "Navigate to {item}",
+      "breadcrumb_navigation": "Breadcrumb navigation"
+    },
+    "actions": {
+      "edit": "Edit",
+      "remove": "Remove",
+      "close": "Close",
+      "send": "Send"
+    },
+    "alt_text": {
+      "preview": "Preview",
+      "location": "Location",
+      "screenshot": "Screenshot",
+      "logo": "Logo"
+    },
+    "add_translation": "Add translation",
+    "above_widgets": "Above widgets",
+    "view_mode": {
+      "grid": "Grid view",
+      "list": "List view"
+    },
+    "search_label": "Search",
+    "microphone_search": "Microphone Search"
+  },
+  "error_boundary": {
+    "title": "A critical error has occurred",
+    "message": "The new tab page could not be loaded. Please uninstall the extension and try again.",
+    "report_button": "Report Issue",
+    "sent_successfully": "Sent Successfully",
+    "support_discord": "Support Discord"
   },
   "toasts": {
     "quote": "Citation copiée",
@@ -723,6 +985,7 @@
     "error": "Quelque chose s'est mal passé",
     "imported": "Importé avec succès",
     "no_storage": "Pas assez d'espace de stockage",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Lien copié",
     "stats_reset": "Statistiques réinitialisées"
   }

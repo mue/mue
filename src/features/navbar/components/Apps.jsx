@@ -1,9 +1,10 @@
-// TODO: make it work with pins or on click or smth
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { memo, useState, useEffect } from 'react';
 
 import { MdPlaylistRemove, MdOutlineApps } from 'react-icons/md';
 import { Tooltip } from 'components/Elements';
+import { SmartIcon } from 'components/Elements/SmartIcon';
 
 import { shift, useFloating } from '@floating-ui/react-dom';
 import EventBus from 'utils/eventbus';
@@ -29,9 +30,7 @@ const Apps = ({ appsRef, floatRef, position, xPosition, yPosition }) => {
         setApps(JSON.parse(localStorage.getItem('applinks')));
         try {
           setZoom();
-        } catch {
-          // Ignore errors
-        }
+        } catch {}
       }
     };
 
@@ -78,7 +77,7 @@ const Apps = ({ appsRef, floatRef, position, xPosition, yPosition }) => {
           <div className="flexTodo">
             <div className="topBarNotes" style={{ display: 'flex' }}>
               <MdOutlineApps />
-              <span>{variables.getMessage('widgets.navbar.apps.title')}</span>
+              <span>{t('widgets.navbar.apps.title')}</span>
             </div>
           </div>
           {appsInfo.length > 0 ? (
@@ -90,16 +89,7 @@ const Apps = ({ appsRef, floatRef, position, xPosition, yPosition }) => {
                   key={i}
                 >
                   <a href={info.url} className="appsIcon">
-                    <img
-                      src={
-                        info.icon === ''
-                          ? `https://icon.horse/icon/ ${info.url.replace('https://', '').replace('http://', '')}`
-                          : info.icon
-                      }
-                      width="40px"
-                      height="40px"
-                      alt="Google"
-                    />
+                    <SmartIcon item={info} size={40} />
                     <span>{info.name}</span>
                   </a>
                 </Tooltip>
@@ -125,6 +115,7 @@ const Apps = ({ appsRef, floatRef, position, xPosition, yPosition }) => {
 };
 
 function AppsWrapper() {
+  const t = useT();
   const [reference, setReference] = useState(null);
 
   const { x, y, refs, strategy } = useFloating({

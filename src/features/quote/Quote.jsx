@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
 import Modal from 'react-modal';
+import { MdInfoOutline } from 'react-icons/md';
 import { ShareModal } from 'components/Elements';
 
 import { useQuoteState, useQuoteLoader, useQuoteActions } from './hooks';
 import { AuthorInfo, AuthorInfoLegacy } from './components';
+import QuoteInfoModal from './components/QuoteInfoModal';
 import EventBus from 'utils/eventbus';
+import { useFrequencyInterval } from '../../hooks/useFrequencyInterval';
 
 import './scss/index.scss';
 
@@ -13,7 +16,7 @@ import './scss/index.scss';
  * Supports: API quotes, custom quotes, quote packs, and offline quotes
  */
 export default function Quote() {
-  const { quoteData, uiState, updateQuote, toggleShareModal } = useQuoteState();
+  const { quoteData, uiState, updateQuote, toggleShareModal, toggleInfoModal } = useQuoteState();
   const { getQuote } = useQuoteLoader(updateQuote);
   const { copyQuote, toggleFavourite } = useQuoteActions(quoteData);
 
@@ -24,10 +27,11 @@ export default function Quote() {
     const zoomQuote = localStorage.getItem('zoomQuote');
     return `${1.2 * Number((zoomQuote || 100) / 100)}em`;
   });
-  const [authorDetails, setAuthorDetails] = useState(localStorage.getItem('authorDetails') === 'true');
-  const [isLegacyStyle, setIsLegacyStyle] = useState(localStorage.getItem('widgetStyle') === 'legacy');
+  const [authorDetails, setAuthorDetails] = useState(
+    localStorage.getItem('authorDetails') === 'true',
+  );
+  const [legacyStyle, setLegacyStyle] = useState(localStorage.getItem('widgetStyle') === 'legacy');
 
-  // Compute if current quote is favorited
   const isFavourited = useMemo(() => {
     const favQuote = localStorage.getItem('favouriteQuote');
     return !!favQuote && favQuote === `${quoteData.quote} - ${quoteData.author}`;
@@ -37,6 +41,8 @@ export default function Quote() {
     toggleFavourite();
     setLocalIsFavourited(!localIsFavourited);
   };
+
+  useFrequencyInterval('quote', getQuote);
 
   useEffect(() => {
     const handleRefresh = (data) => {
@@ -49,14 +55,23 @@ export default function Quote() {
         setDisplay(quoteSetting === 'false' ? 'none' : 'block');
         setFontSize(`${1.2 * Number((zoomQuote || 100) / 100)}em`);
         setAuthorDetails(authorDetailsSetting === 'true');
-        setIsLegacyStyle(widgetStyle === 'legacy');
-      } else if (data === 'marketplacequoteuninstall' || data === 'quoterefresh') {
+        setLegacyStyle(widgetStyle === 'legacy');
+      } else if (
+        data === 'marketplacequoteuninstall' ||
+        data === 'quoterefresh' ||
+        data === 'language' ||
+        data === 'other' ||
+        data === 'welcomeLanguage'
+      ) {
+        localStorage.removeItem('quoteQueue');
+        localStorage.removeItem('currentQuote');
         getQuote();
       }
     };
 
-    const shouldRefresh = localStorage.getItem('quotechange') === 'refresh' ||
-                         localStorage.getItem('quotechange') === null;
+    const shouldRefresh =
+      localStorage.getItem('quotechange') === 'refresh' ||
+      localStorage.getItem('quotechange') === null;
 
     if (shouldRefresh) {
       getQuote();
@@ -74,7 +89,7 @@ export default function Quote() {
   }
 
   return (
-    <div className="quotediv" style={{ display, fontSize }}>
+    <div className={`quotediv ${display === 'none' ? 'hidden' : ''}`} style={{ fontSize }}>
       <Modal
         closeTimeoutMS={300}
         isOpen={uiState.shareModal}
@@ -89,18 +104,31 @@ export default function Quote() {
         />
       </Modal>
 
+      <Modal
+        closeTimeoutMS={300}
+        isOpen={uiState.infoModal}
+        className="Modal mainModal"
+        overlayClassName="Overlay"
+        ariaHideApp={false}
+        onRequestClose={() => toggleInfoModal(false)}
+      >
+        <QuoteInfoModal quoteData={quoteData} modalClose={() => toggleInfoModal(false)} />
+      </Modal>
+
       <span className="quote" ref={quoteRef}>
         {quoteData.quote}
       </span>
 
-      {authorDetails && (
-        isLegacyStyle ? (
+      {authorDetails &&
+        quoteData.author &&
+        (legacyStyle ? (
           <AuthorInfoLegacy
             author={quoteData.author}
             authorlink={quoteData.authorlink}
             onCopy={copyQuote}
             onFavourite={handleFavourite}
             onShare={() => toggleShareModal(true)}
+            onInfo={() => toggleInfoModal(true)}
             isFavourited={isFavourited}
           />
         ) : (
@@ -113,10 +141,15 @@ export default function Quote() {
             onCopy={copyQuote}
             onFavourite={handleFavourite}
             onShare={() => toggleShareModal(true)}
+            onInfo={() => toggleInfoModal(true)}
             isFavourited={isFavourited}
           />
-        )
-      )}
+        ))}
+
+      <div className="quote-info-text" onClick={() => toggleInfoModal(true)}>
+        <MdInfoOutline />
+        <span>About this quote</span>
+      </div>
     </div>
   );
 }

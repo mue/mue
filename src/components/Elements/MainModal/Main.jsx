@@ -1,17 +1,18 @@
-import { Suspense, lazy, useState, memo, useEffect } from 'react';
-import variables from 'config/variables';
+import { Suspense, lazy, useState, memo, useEffect, useRef, useMemo } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router';
+import { useT } from 'contexts';
 
 import './scss/index.scss';
 import ModalLoader from './components/ModalLoader';
 import ModalTopBar from './components/ModalTopBar';
 import { TAB_TYPES } from './constants/tabConfig';
 import { updateHash, parseDeepLink } from 'utils/deepLinking';
+import { useRouterBridge } from '../../../router/RouterBridge';
 
 const Settings = lazy(() => import('../../../features/misc/views/Settings'));
 const Library = lazy(() => import('../../../features/misc/views/Library'));
 const Discover = lazy(() => import('../../../features/misc/views/Discover'));
 
-// Map tab types to their corresponding components
 const TAB_COMPONENTS = {
   [TAB_TYPES.SETTINGS]: Settings,
   [TAB_TYPES.LIBRARY]: Library,
@@ -19,185 +20,224 @@ const TAB_COMPONENTS = {
 };
 
 function MainModal({ modalClose, deepLinkData }) {
-  // Initialize with deep link tab if provided, otherwise default to settings
-  const initialTab = deepLinkData?.tab || TAB_TYPES.SETTINGS;
-  const [currentTab, setCurrentTab] = useState(initialTab);
+  const t = useT();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const params = useParams();
+  const { deepLinkData: routerDeepLinkData } = useRouterBridge();
+
+  // Use router-based deepLinkData if available, fallback to prop
+  // Memoize to prevent infinite loops in useEffect
+  const effectiveDeepLinkData = useMemo(
+    () => routerDeepLinkData || deepLinkData,
+    [location.pathname, deepLinkData],
+  );
+
+  // Derive currentTab from router location instead of state
+  const currentTab = effectiveDeepLinkData?.tab || TAB_TYPES.SETTINGS;
+
   const [currentSection, setCurrentSection] = useState('');
   const [currentSectionName, setCurrentSectionName] = useState('');
-  const [currentSubSection, setCurrentSubSection] = useState(deepLinkData?.subSection || null);
+  const [currentSubSection, setCurrentSubSection] = useState(
+    effectiveDeepLinkData?.subSection || null,
+  );
   const [productView, setProductView] = useState(null);
   const [resetDiscoverToAll, setResetDiscoverToAll] = useState(false);
   const [navigationTrigger, setNavigationTrigger] = useState(null);
   const [iframeBreadcrumbs, setIframeBreadcrumbs] = useState([]);
 
-  // Clear product view when changing tabs
+  const historyRef = useRef([]);
+  const historyIndexRef = useRef(-1);
+  const [canGoBack, setCanGoBack] = useState(false);
+  const [canGoForward, setCanGoForward] = useState(false);
+
+  const updateNavButtons = () => {
+    setCanGoBack(historyIndexRef.current > 0);
+    setCanGoForward(historyIndexRef.current < historyRef.current.length - 1);
+  };
+
   useEffect(() => {
     setProductView(null);
   }, [currentTab]);
 
-  // Handle deep link updates (when modal opens via EventBus with new deep link)
   useEffect(() => {
-    if (deepLinkData) {
-      // Update tab if different
-      if (deepLinkData.tab && deepLinkData.tab !== currentTab) {
-        setCurrentTab(deepLinkData.tab);
-      }
-
-      // Handle settings section navigation with subsection
-      if (deepLinkData.tab === TAB_TYPES.SETTINGS && deepLinkData.section) {
+    if (effectiveDeepLinkData) {
+      if (effectiveDeepLinkData.tab === TAB_TYPES.SETTINGS && effectiveDeepLinkData.section) {
         setNavigationTrigger({
           type: 'settings-section',
-          data: deepLinkData.section,
+          data: effectiveDeepLinkData.section,
           timestamp: Date.now(),
         });
-        // Set sub-section if present
-        if (deepLinkData.subSection) {
-          setCurrentSubSection(deepLinkData.subSection);
+        if (effectiveDeepLinkData.subSection) {
+          setCurrentSubSection(effectiveDeepLinkData.subSection);
+          if (historyIndexRef.current >= 0) {
+            historyRef.current[historyIndexRef.current] = {
+              ...historyRef.current[historyIndexRef.current],
+              subSection: effectiveDeepLinkData.subSection,
+            };
+          }
         }
       }
     }
-  }, [deepLinkData]);
+  }, [effectiveDeepLinkData]);
 
-  // Clear hash when modal closes
   useEffect(() => {
     return () => {
-      // When modal unmounts, clear the hash
       if (window.location.hash) {
         window.history.replaceState(null, null, window.location.pathname);
       }
     };
   }, []);
 
+  // React to router location changes
   useEffect(() => {
-    // Listen for browser back/forward navigation via popstate
-    const handlePopState = () => {
-      const linkData = window.location.hash ? parseDeepLink(window.location.hash) : null;
+    if (effectiveDeepLinkData) {
+      if (effectiveDeepLinkData.tab === TAB_TYPES.SETTINGS && effectiveDeepLinkData.section) {
+        setNavigationTrigger({
+          type: 'settings-section',
+          data: effectiveDeepLinkData.section,
+          timestamp: Date.now(),
+        });
+        setCurrentSubSection(effectiveDeepLinkData.subSection || null);
+        return;
+      }
 
-      if (linkData) {
-        // Update tab if different
-        if (linkData.tab && linkData.tab !== currentTab) {
-          setCurrentTab(linkData.tab);
-        }
-
-        // Handle settings section navigation
-        if (linkData.tab === TAB_TYPES.SETTINGS && linkData.section) {
-          setNavigationTrigger({
-            type: 'settings-section',
-            data: linkData.section,
-            timestamp: Date.now(),
-          });
-          // Set sub-section if present in hash
-          setCurrentSubSection(linkData.subSection || null);
-          return;
-        }
-
-        // Handle product and collection navigation
-        if (linkData.itemId && linkData.collection && linkData.fromCollection) {
-          // Product viewed from within a collection
-          // First set collection state, then navigate to product
-          setNavigationTrigger({
-            type: 'collection',
-            data: linkData.collection,
-            timestamp: Date.now(),
-          });
-          // Small delay to ensure collection state is set before navigating to product
-          setTimeout(() => {
-            setNavigationTrigger({
-              type: 'product',
-              data: {
-                id: linkData.itemId,
-                type: linkData.category,
-              },
-              timestamp: Date.now(),
-            });
-          }, 100);
-        } else if (linkData.itemId) {
-          // Product navigation (standalone)
+      if (
+        effectiveDeepLinkData.itemId &&
+        effectiveDeepLinkData.collection &&
+        effectiveDeepLinkData.fromCollection
+      ) {
+        setNavigationTrigger({
+          type: 'collection',
+          data: effectiveDeepLinkData.collection,
+          timestamp: Date.now(),
+        });
+        setTimeout(() => {
           setNavigationTrigger({
             type: 'product',
             data: {
-              id: linkData.itemId,
-              type: linkData.category,
+              id: effectiveDeepLinkData.itemId,
+              type: effectiveDeepLinkData.category,
             },
             timestamp: Date.now(),
           });
-        } else if (linkData.collection) {
-          // Collection page navigation
-          setNavigationTrigger({
-            type: 'collection',
-            data: linkData.collection,
-            timestamp: Date.now(),
-          });
-        } else {
-          // Back to main view (clear collection state)
-          setProductView(null);
-          setNavigationTrigger({
-            type: 'main',
-            data: { clearCollection: true },
-            timestamp: Date.now(),
-          });
-        }
+        }, 100);
+      } else if (effectiveDeepLinkData.itemId) {
+        setNavigationTrigger({
+          type: 'product',
+          data: {
+            id: effectiveDeepLinkData.itemId,
+            type: effectiveDeepLinkData.category,
+          },
+          timestamp: Date.now(),
+        });
+      } else if (effectiveDeepLinkData.collection) {
+        setNavigationTrigger({
+          type: 'collection',
+          data: effectiveDeepLinkData.collection,
+          timestamp: Date.now(),
+        });
+      } else {
+        setProductView(null);
+        setNavigationTrigger({
+          type: 'main',
+          data: { clearCollection: true },
+          timestamp: Date.now(),
+        });
       }
-    };
-
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
-  }, [currentTab]);
+    }
+  }, [effectiveDeepLinkData, currentTab]);
 
   const handleChangeTab = (newTab) => {
-    setCurrentTab(newTab);
-    // Update URL hash when tab changes
+    historyRef.current = [];
+    historyIndexRef.current = -1;
+    updateNavButtons();
     if (newTab === TAB_TYPES.DISCOVER) {
-      updateHash(`#${newTab}/all`);
+      const section = effectiveDeepLinkData?.category || effectiveDeepLinkData?.section || 'all';
+      const itemId = effectiveDeepLinkData?.itemId ? `/${effectiveDeepLinkData.itemId}` : '';
+      navigate(`/${newTab}/${section}${itemId}`);
     } else if (newTab === TAB_TYPES.LIBRARY) {
-      updateHash(`#${newTab}/added`);
+      navigate(`/${newTab}/added`);
     } else {
-      updateHash(`#${newTab}`);
+      navigate(`/${newTab}`);
     }
   };
 
   const handleSectionChange = (section, sectionName) => {
     setCurrentSection(section);
     setCurrentSectionName(sectionName);
-    // Clear sub-section when changing sections
-    setCurrentSubSection(null);
-    // Update URL hash when section changes
+    // Only reset subsection if we're actually changing to a different section
+    // Don't reset on initial section set (when currentSectionName is empty)
+    if (currentSectionName !== '' && currentSectionName !== sectionName) {
+      setCurrentSubSection(null);
+    }
+    const entry = {
+      section,
+      sectionName,
+      subSection:
+        currentSectionName === '' || currentSectionName === sectionName ? currentSubSection : null,
+    };
+    const current = historyRef.current[historyIndexRef.current];
+    if (
+      !current ||
+      current.sectionName !== sectionName ||
+      current.subSection !== entry.subSection
+    ) {
+      historyRef.current = historyRef.current.slice(0, historyIndexRef.current + 1).concat(entry);
+      historyIndexRef.current = historyRef.current.length - 1;
+      updateNavButtons();
+    }
     if (currentTab === TAB_TYPES.DISCOVER) {
-      // For Discover tab, update with the section type
+      // Don't navigate away if we're viewing a specific item
+      if (effectiveDeepLinkData?.itemId) {
+        return;
+      }
       const sectionMap = {
-        [variables.getMessage('modals.main.marketplace.all')]: 'all',
-        [variables.getMessage('modals.main.marketplace.photo_packs')]: 'photo_packs',
-        [variables.getMessage('modals.main.marketplace.quote_packs')]: 'quote_packs',
-        [variables.getMessage('modals.main.marketplace.preset_settings')]: 'preset_settings',
-        [variables.getMessage('modals.main.marketplace.collections')]: 'collections',
+        [t('modals.main.marketplace.all')]: 'all',
+        [t('modals.main.marketplace.photo_packs')]: 'photo_packs',
+        [t('modals.main.marketplace.quote_packs')]: 'quote_packs',
+        [t('modals.main.marketplace.preset_settings')]: 'preset_settings',
+        [t('modals.main.marketplace.collections')]: 'collections',
       };
       const sectionKey = sectionMap[section];
       if (sectionKey) {
-        updateHash(`#${currentTab}/${sectionKey}`);
+        navigate(`/${currentTab}/${sectionKey}`);
       }
     } else if (currentTab === TAB_TYPES.SETTINGS && sectionName) {
-      // For Settings tab, update with the section name
-      updateHash(`#${currentTab}/${sectionName}`, false);
+      // Include subsection in hash if it exists and we're not changing sections
+      const path =
+        currentSubSection && (currentSectionName === '' || currentSectionName === sectionName)
+          ? `/${currentTab}/${sectionName}/${currentSubSection}`
+          : `/${currentTab}/${sectionName}`;
+      navigate(path, { replace: true });
     }
   };
 
   const handleSubSectionChange = (subSection, sectionName) => {
     setCurrentSubSection(subSection);
-    // Update URL hash when sub-section changes
+    const effectiveSectionName = sectionName || currentSectionName;
+    const entry = { section: currentSection, sectionName: effectiveSectionName, subSection };
+    const current = historyRef.current[historyIndexRef.current];
+    if (
+      !current ||
+      current.sectionName !== effectiveSectionName ||
+      current.subSection !== subSection
+    ) {
+      historyRef.current = historyRef.current.slice(0, historyIndexRef.current + 1).concat(entry);
+      historyIndexRef.current = historyRef.current.length - 1;
+      updateNavButtons();
+    }
     if (currentTab === TAB_TYPES.SETTINGS && sectionName) {
       if (subSection) {
-        updateHash(`#${currentTab}/${sectionName}/${subSection}`);
+        navigate(`/${currentTab}/${sectionName}/${subSection}`);
       } else {
-        // Going back to section, remove sub-section from hash
-        updateHash(`#${currentTab}/${sectionName}`);
+        navigate(`/${currentTab}/${sectionName}`);
       }
     }
   };
 
   const handleProductView = (product) => {
     setProductView(product);
-    // URL hash is already updated by child components (Browse.jsx)
-    // Browser history automatically tracks hash changes
   };
 
   const handleResetDiscoverToAll = () => {
@@ -205,20 +245,38 @@ function MainModal({ modalClose, deepLinkData }) {
     setTimeout(() => setResetDiscoverToAll(false), 100);
   };
 
+  const restoreHistoryEntry = (entry) => {
+    setCurrentSubSection(entry.subSection);
+    if (entry.sectionName !== currentSectionName) {
+      setCurrentSection(entry.section);
+      setCurrentSectionName(entry.sectionName);
+      setNavigationTrigger({
+        type: 'settings-section',
+        data: entry.sectionName,
+        timestamp: Date.now(),
+      });
+    }
+    if (currentTab === TAB_TYPES.SETTINGS) {
+      const hash = entry.subSection
+        ? `#${currentTab}/${entry.sectionName}/${entry.subSection}`
+        : `#${currentTab}/${entry.sectionName}`;
+      window.history.replaceState(null, null, hash);
+    }
+  };
+
   const handleBack = () => {
-    // Clear iframe breadcrumbs when navigating back
-    setIframeBreadcrumbs([]);
-    window.history.back();
+    if (historyIndexRef.current <= 0) return;
+    historyIndexRef.current -= 1;
+    updateNavButtons();
+    restoreHistoryEntry(historyRef.current[historyIndexRef.current]);
   };
 
   const handleForward = () => {
-    window.history.forward();
+    if (historyIndexRef.current >= historyRef.current.length - 1) return;
+    historyIndexRef.current += 1;
+    updateNavButtons();
+    restoreHistoryEntry(historyRef.current[historyIndexRef.current]);
   };
-
-  // Browser manages history state, so we always show buttons enabled
-  // Browser will handle whether there's actually history to go back/forward
-  const canGoBack = true;
-  const canGoForward = true;
 
   const TabComponent = TAB_COMPONENTS[currentTab] || Settings;
 
@@ -244,7 +302,7 @@ function MainModal({ modalClose, deepLinkData }) {
           <TabComponent
             key={currentTab}
             changeTab={handleChangeTab}
-            deepLinkData={deepLinkData}
+            deepLinkData={effectiveDeepLinkData}
             currentTab={currentTab}
             onSectionChange={handleSectionChange}
             onSubSectionChange={handleSubSectionChange}

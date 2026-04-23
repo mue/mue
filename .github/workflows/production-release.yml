@@ -162,6 +162,25 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Back-merge main to beta
+        run: |
+          git fetch origin beta
+          git checkout beta
+          git merge --no-ff main -m "chore: back-merge production release v${{ steps.version.outputs.version }} from main"
+          git push origin beta
+
+      - name: Back-merge main to dev
+        run: |
+          git fetch origin dev
+          git checkout dev
+          git merge --no-ff main -m "chore: back-merge production release v${{ steps.version.outputs.version }} from main"
+          git push origin dev
+
       - name: Output success summary
         run: |
           echo "## 🚀 Production Release Published!" >> $GITHUB_STEP_SUMMARY
@@ -184,4 +203,4 @@ jobs:
           echo "- [ ] Update [muetab.com/blog/changelog](https://muetab.com/blog/changelog)" >> $GITHUB_STEP_SUMMARY
           echo "- [ ] Announce release on Discord/social media" >> $GITHUB_STEP_SUMMARY
           echo "- [ ] Monitor issue tracker for bug reports" >> $GITHUB_STEP_SUMMARY
-          echo "- [ ] Merge \`main\` back to \`beta\` and \`dev\` to sync version" >> $GITHUB_STEP_SUMMARY
+          echo "- [x] Back-merged \`main\` to \`beta\` and \`dev\` (automated)" >> $GITHUB_STEP_SUMMARY

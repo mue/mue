@@ -1,9 +1,12 @@
 import { MdEdit, MdDelete } from 'react-icons/md';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { useT } from 'contexts/TranslationContext';
 import { DragHandle } from './DragHandle';
+import { SmartIcon } from 'components/Elements/SmartIcon';
 
 export const SortableItem = ({ value, enabled, startEditLink, deleteLink }) => {
+  const t = useT();
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: value.key,
     disabled: !enabled,
@@ -13,13 +16,6 @@ export const SortableItem = ({ value, enabled, startEditLink, deleteLink }) => {
     transform: CSS.Transform.toString(transform),
     transition,
     opacity: isDragging ? 0.5 : 1,
-  };
-
-  const getIconUrl = (item) => {
-    return (
-      item.icon ||
-      'https://icon.horse/icon/' + item.url.replace('https://', '').replace('http://', '')
-    );
   };
 
   return (
@@ -33,7 +29,7 @@ export const SortableItem = ({ value, enabled, startEditLink, deleteLink }) => {
     >
       <DragHandle />
       <div className="quicklink-icon">
-        <img src={getIconUrl(value)} alt={value.name} draggable={false} />
+        <SmartIcon item={value} size={32} />
       </div>
       <div className="quicklink-content">
         <div className="quicklink-name">{value.name}</div>
@@ -43,16 +39,18 @@ export const SortableItem = ({ value, enabled, startEditLink, deleteLink }) => {
         <button
           className="quicklink-action-btn"
           onClick={(e) => {
-            if (!enabled) return;
+            if (!enabled) {
+              return;
+            }
             e.stopPropagation();
             startEditLink(value);
           }}
-          title="Edit"
+          title={t('common.actions.edit')}
           disabled={!enabled}
           aria-disabled={!enabled}
         >
           <MdEdit />
-          <span>Edit</span>
+          <span>{t('common.actions.edit')}</span>
         </button>
         <button
           className="quicklink-action-btn quicklink-remove-btn"
@@ -61,12 +59,12 @@ export const SortableItem = ({ value, enabled, startEditLink, deleteLink }) => {
             e.stopPropagation();
             deleteLink(value.key, e);
           }}
-          title="Remove"
+          title={t('common.actions.remove')}
           disabled={!enabled}
           aria-disabled={!enabled}
         >
           <MdDelete />
-          <span>Remove</span>
+          <span>{t('common.actions.remove')}</span>
         </button>
       </div>
     </div>

@@ -1,5 +1,9 @@
 {
   "tabname": "புதிய தாவல்",
+  "branding": {
+    "name": "Mue",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "காலை வணக்கம்",
@@ -12,7 +16,6 @@
     },
     "background": {
       "credit": "புகைப்படம்",
-      "unsplash": "Unsplash இல்",
       "information": "தகவல்",
       "download": "பதிவிறக்கம்",
       "downloads": "பதிவிறக்கங்கள்",
@@ -36,7 +39,17 @@
       "icon": "படவுரு (விரும்பினால்)",
       "add": "கூட்டு",
       "name_error": "பெயரை வழங்க வேண்டும்",
-      "url_error": "முகவரி ஐ வழங்க வேண்டும்"
+      "url_error": "முகவரி ஐ வழங்க வேண்டும்",
+      "suggested": "Suggested: {name}",
+      "name_placeholder": "Enter link name (optional)",
+      "url_placeholder": "example.com",
+      "icon_url_placeholder": "https://example.com/icon.png",
+      "icon_type_label": "Icon Type",
+      "icon_type_auto": "Auto-detect Icon",
+      "icon_type_custom_url": "Custom Icon URL",
+      "icon_type_upload": "Upload Icon",
+      "icon_type_emoji": "Emoji",
+      "icon_type_letter": "Letter Avatar"
     },
     "date": {
       "week": "வாரம்"
@@ -52,7 +65,8 @@
       "share": "பங்கு",
       "copy": "நகலெடு",
       "favourite": "பிடித்த",
-      "unfavourite": "விடுதலை"
+      "unfavourite": "விடுதலை",
+      "author_info_aria": "Learn about the author of the quote."
     },
     "navbar": {
       "tooltips": {
@@ -60,7 +74,8 @@
       },
       "notes": {
         "title": "குறிப்புகள்",
-        "placeholder": "இங்கே தட்டச்சு செய்க"
+        "placeholder": "இங்கே தட்டச்சு செய்க",
+        "export_filename": "mue-notes.txt"
       },
       "todo": {
         "title": "அனைத்தும்",
@@ -84,6 +99,10 @@
         "library": "துணை நிரல்கள்",
         "discover": "சந்தை"
       },
+      "sidebar": {
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar"
+      },
       "error_boundary": {
         "title": "பிழை",
         "message": "மியூவின் இந்த கூறுகளை ஏற்றுவதில் தோல்வி",
@@ -93,7 +112,6 @@
       },
       "settings": {
         "enabled": "இயக்கப்பட்டது",
-        "open_knowledgebase": "திறந்த அறிவுத் தளம்",
         "additional_settings": "கூடுதல் அமைப்புகள்",
         "reminder": {
           "title": "அறிவிப்பு",
@@ -135,6 +153,38 @@
               "change_hour_colour": "மணிநேர உரை நிறத்தை மாற்றவும்",
               "change_minute_colour": "நிமிட உரை நிறத்தை மாற்றவும்",
               "change_second_colour": "இரண்டாவது உரை நிறத்தை மாற்றவும்"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the time looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the time",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the time text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the time text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the time text"
+              }
             }
           },
           "date": {
@@ -166,6 +216,11 @@
             "author_details": "ஆசிரியர் விவரங்கள்",
             "custom": "தனிப்பயன் மேற்கோள்",
             "custom_subtitle": "உங்கள் சொந்த தனிப்பயன் மேற்கோள்களை அமைக்கவும்",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
+            "suggested_packs_title": "Suggested Quote Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
             "no_quotes": "மேற்கோள்கள் இல்லை",
             "author": "நூலாசிரியர்",
             "custom_buttons": "பொத்தான்கள்",
@@ -179,6 +234,42 @@
               "copy": "நகலெடு",
               "tweet": "ட்வீட்",
               "favourite": "பிடித்த"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the quote looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the quote",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the quote text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the quote text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the quote text"
+              }
             }
           },
           "greeting": {
@@ -199,7 +290,39 @@
             "month": "மாதம்",
             "no_events": "நிகழ்வுகள் இல்லை",
             "no_events_description": "சில நிகழ்வுகளைச் சேர்க்கவும்",
-            "add_event": "நிகழ்வைச் சேர்க்கவும்"
+            "add_event": "நிகழ்வைச் சேர்க்கவும்",
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the greeting looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the greeting",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the greeting text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the greeting text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the greeting text"
+              }
+            }
           },
           "background": {
             "title": "பின்னணி",
@@ -246,6 +369,10 @@
               "title": "மூலம்",
               "subtitle": "பின்னணி படங்களை எங்கிருந்து பெறுவது என்பதைத் தேர்ந்தெடுக்கவும்",
               "api": "பின்னணி பநிஇ",
+              "api_title": "API",
+              "api_mue": "Mue",
+              "api_unsplash": "Unsplash",
+              "collection_placeholder": "e.g. 123456, 654321",
               "custom_background": "தனிப்பயன் பின்னணி",
               "custom_colour": "தனிப்பயன் பின்னணி நிறம்",
               "upload": "பதிவேற்றும்",
@@ -258,6 +385,9 @@
               "disabled": "முடக்கப்பட்டது",
               "loop_video": "லூப் வீடியோ",
               "mute_video": "முடக்கு வீடியோ",
+              "persistent_storage_tooltip": "Request persistent storage to prevent browser from automatically clearing your images",
+              "persistent_storage_granted": "Persistent storage granted - your images are protected from eviction",
+              "persistent_storage_denied": "Persistent storage denied - images may be cleared if storage is low",
               "quality": {
                 "title": "தகுதி",
                 "original": "அசல்",
@@ -285,22 +415,42 @@
                 "name_desc": "Name (Z-A)",
                 "size_small": "File Size (Smallest)",
                 "size_large": "File Size (Largest)"
-              }
+              },
+              "pack_count": {
+                "singular": "pack",
+                "plural": "packs"
+              },
+              "photo_count": {
+                "singular": "photo",
+                "plural": "photos"
+              },
+              "get_more": "Get more"
             },
             "display": "காட்சி",
             "display_subtitle": "பின்னணி மற்றும் புகைப்படத் தகவல்கள் எவ்வாறு ஏற்றப்படுகின்றன என்பதை மாற்றவும்",
             "api": "பநிஇ அமைப்புகள்",
-            "api_subtitle": "வெளிப்புற சேவையிலிருந்து (ஏபிஐ) படத்தைப் பெறுவதற்கான விருப்பங்கள்"
+            "api_subtitle": "வெளிப்புற சேவையிலிருந்து (ஏபிஐ) படத்தைப் பெறுவதற்கான விருப்பங்கள்",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            },
+            "installed_packs_title": "Installed Photo Packs",
+            "suggested_packs_title": "Suggested Photo Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
+            "photo_pack_settings": {
+              "title": "{name} Settings",
+              "refresh_photos": "Refresh Photos"
+            }
           },
           "search": {
             "title": "தேடல்",
             "additional": "தேடல் விட்செட் காட்சி மற்றும் செயல்பாட்டிற்கான கூடுதல் விருப்பங்கள்",
-            "search_engine": "தேடுபொறி",
-            "search_engine_subtitle": "தேடல் பட்டியில் பயன்படுத்த தேடுபொறியைத் தேர்வுசெய்க",
-            "custom": "தனிப்பயன் தேடல் முகவரி",
-            "autocomplete": "தன்னியக்க வேறுபாடு",
-            "autocomplete_provider": "தன்னியக்க ஒப்புதல் வழங்குநர்",
-            "autocomplete_provider_subtitle": "தன்னியக்க மாறுபட்ட கீழ்தோன்றும் முடிவுகளுக்கு பயன்படுத்த தேடுபொறி",
             "voice_search": "குரல் தேடல்",
             "dropdown": "கீழ்தோன்றும் தேடல்",
             "focus": "தாவல் திறந்த மீது கவனம் செலுத்துங்கள்",
@@ -355,7 +505,60 @@
               "metro": "மெட்ரோ"
             },
             "styling": "ச்டைலிங்",
-            "styling_description": "விரைவான இணைப்புகள் தோற்றத்தைத் தனிப்பயனாக்குங்கள்"
+            "styling_description": "விரைவான இணைப்புகள் தோற்றத்தைத் தனிப்பயனாக்குங்கள்",
+            "layout": "Layout",
+            "layout_description": "Configure grid layout and organization",
+            "layout_mode": "Layout Mode",
+            "layout_grid": "Grid",
+            "layout_flex": "Flexible",
+            "layout_compact": "Compact",
+            "layout_card": "Card",
+            "grid_columns": "Grid Columns",
+            "grid_rows": "Grid Rows",
+            "grid_columns_auto": "Auto",
+            "appearance_title": "Appearance",
+            "appearance_subtitle": "Customize style and layout of quick links",
+            "display_title": "Display",
+            "display_subtitle": "Configure tooltips and tab behavior",
+            "organization_title": "Organization",
+            "organization_subtitle": "Organize links into groups",
+            "grouping": "Groups",
+            "grouping_description": "Organize quick links into groups",
+            "enable_grouping": "Enable Grouping",
+            "show_group_headers": "Show Group Headers",
+            "collapsible_groups": "Collapsible Groups",
+            "manage_groups": "Manage Groups",
+            "bookmark_sync": "Bookmark Sync",
+            "bookmark_sync_description": "Import and sync browser bookmarks",
+            "bookmark_sync_title": "Bookmark Sync",
+            "bookmark_sync_subtitle": "Automatically sync browser bookmarks to quick links",
+            "bookmark_sync_section_title": "Bookmark Sync",
+            "bookmark_sync_section_subtitle": "Import and sync browser bookmarks",
+            "enable_bookmark_sync": "Enable Bookmark Sync",
+            "sync_direction": "Sync Direction",
+            "import_only": "Import Only",
+            "two_way": "Two-Way Sync",
+            "sync_now": "Sync Now",
+            "manual_sync_title": "Manual Sync",
+            "manual_sync_subtitle": "Manually sync bookmarks now",
+            "sync_bookmarks_button": "Sync Bookmarks",
+            "syncing": "Syncing...",
+            "permission_denied": "Permission denied",
+            "sync_success": "Synced: {imported} imported, {updated} updated, {removed} removed",
+            "sync_error": "Error: {message}",
+            "icon_settings": "Icon Settings",
+            "icon_settings_description": "Configure icon behavior and fallbacks",
+            "custom_icons_enabled": "Allow Custom Icon Uploads",
+            "primary_icon_source": "Primary Icon Source",
+            "icon_type": "Icon Type",
+            "icon_auto": "Auto-detect",
+            "icon_custom_url": "Custom URL",
+            "icon_custom_upload": "Upload Image",
+            "icon_emoji": "Emoji",
+            "icon_letter": "Letter Avatar",
+            "upload_icon": "Upload Icon",
+            "group": "Group",
+            "no_group": "No Group"
           },
           "message": {
             "title": "செய்தி",
@@ -395,27 +598,50 @@
               },
               "apps_subtitle": "நீங்கள் பொதுவாகப் பயன்படுத்தப்படும் பிற வலைத்தளங்களின் குறுக்குவழியை உருவாக்கவும்."
             },
-            "font": {
-              "title": "எழுத்துரு",
-              "description": "பயன்படுத்தப்படும் எழுத்துருவை மியூவில் மாற்றவும்",
-              "custom": "தனிப்பயன் எழுத்துரு",
-              "google": "Google எழுத்துருக்களிலிருந்து இறக்குமதி செய்யுங்கள்",
+            "widget_font": {
+              "title": "Widget Font",
+              "description": "Change the font used for widgets on the new tab page",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
               "weight": {
-                "title": "எழுத்துரு எடை",
-                "thin": "மெல்லிய",
-                "extra_light": "கூடுதல் ஒளி",
-                "light": "ஒளி",
-                "normal": "சாதாரண",
-                "medium": "சராசரி",
-                "semi_bold": "அரை-பிணைப்பு",
-                "bold": "தடிமான",
-                "extra_bold": "கூடுதல்"
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
               },
               "style": {
-                "title": "எழுத்துரு நடை",
-                "normal": "சாதாரண",
-                "italic": "சாய்வு",
-                "oblique": "சாய்வான"
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              }
+            },
+            "settings_font": {
+              "title": "Settings Font",
+              "description": "Change the font used for the settings modal",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
+              "weight": {
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "style": {
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
               }
             },
             "accessibility": {
@@ -440,6 +666,8 @@
             "title": "மேம்பட்ட",
             "offline_mode": "இணைப்பில்லாத பயன்முறை",
             "offline_subtitle": "இயக்கப்பட்டால், நிகழ்நிலை சேவைகளுக்கான அனைத்து கோரிக்கைகளும் முடக்கப்படும்.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "தகவல்கள்",
             "data_description": "உங்கள் MUE அமைப்புகளை உங்கள் கணினியில் ஏற்றுமதி செய்யலாமா, ஏற்கனவே உள்ள அமைப்புகள் கோப்பை இறக்குமதி செய்யலாமா அல்லது உங்கள் அமைப்புகளை அவற்றின் இயல்புநிலை மதிப்புகளுக்கு மீட்டமைக்க வேண்டுமா என்பதைத் தேர்வுசெய்க",
             "data_subtitle": "உங்கள் தரவை MUE இல் நிர்வகிக்கவும்.",
@@ -452,6 +680,25 @@
             "customisation": "தனிப்பயனாக்கம்",
             "custom_css": "தனிப்பயன் சிஎச்எச்",
             "custom_css_subtitle": "மியூ ச்டைலிங் அடுக்கு பாணி தாள்கள் (சிஎச்எச்) மூலம் உங்களுக்கு தனிப்பயனாக்கப்பட்டது.",
+            "custom_widget": {
+              "title": "Custom Widget",
+              "subtitle": "Embed your favourite sites or tools directly into Mue with iFrames.",
+              "add": "Add Widget",
+              "new": "New Widget",
+              "edit": "Edit Widget",
+              "name": "Widget Name",
+              "url": "Widget URL",
+              "no_widgets": "No custom widgets",
+              "add_some": "Add some",
+              "render_above": "Render above other widgets",
+              "positions": {
+                "center": "Center (with other widgets)",
+                "top_left": "Top Left",
+                "top_right": "Top Right",
+                "bottom_left": "Bottom Left",
+                "bottom_right": "Bottom Right"
+              }
+            },
             "custom_js": "தனிப்பயன் js",
             "tab_name": "தாவல் பெயர்",
             "tab_name_subtitle": "உங்கள் உலாவியில் தோன்றும் தாவலின் பெயரை மாற்றவும்",
@@ -490,7 +737,17 @@
           "experimental": {
             "title": "சோதனை",
             "warning": "இந்த அமைப்புகள் முழுமையாக சோதிக்கப்படவில்லை/செயல்படுத்தப்படவில்லை மற்றும் சரியாக வேலை செய்யாது!",
-            "developer": "உருவாக்குநர்"
+            "developer": "உருவாக்குநர்",
+            "debug_hotkey": "Debug hotkey (Ctrl + #)",
+            "debug_timeout": "Debug timeout",
+            "send_event": "Send Event",
+            "event_type": "Type",
+            "event_name": "Name",
+            "normal_toast": "Normal Toast",
+            "achievement_toast": "Achievement Unlocked Toast",
+            "toast_success": "Toasted successfully",
+            "clear_localstorage": "Clear LocalStorage",
+            "data_section": "Data"
           },
           "language": {
             "title": "மொழி",
@@ -502,7 +759,8 @@
           },
           "changelog": {
             "title": "பதிவை மாற்றவும்",
-            "by": "எழுதியவர் {author}"
+            "by": "எழுதியவர் {author}",
+            "iframe_title": "Changelog"
           },
           "about": {
             "title": "பற்றி",
@@ -530,11 +788,20 @@
             "supporters": "ஆதரவாளர்கள்",
             "no_supporters": "தற்போது MUE ஆதரவாளர்கள் இல்லை",
             "photographers": "புகைப்படக் கலைஞர்கள்",
-            "curators": "கூடுதல் படைப்பாளிகள்"
+            "curators": "கூடுதல் படைப்பாளிகள்",
+            "social": {
+              "email": "Email",
+              "twitter": "X (Twitter)",
+              "discord": "Discord"
+            },
+            "license": "Licensed under the BSD-3-Clause License",
+            "copyright": "Copyright {startYear}-{currentYear}",
+            "image_count": "{count} images"
           }
         },
         "buttons": {
           "reset": "மீட்டமை",
+          "default": "Default",
           "import": "இறக்குமதி",
           "export": "ஏற்றுமதி",
           "cancel": "Cancel",
@@ -546,52 +813,10 @@
         "title": "Marketplace",
         "by": "எழுதியவர் {author}",
         "all": "அனைத்தும்",
-        "learn_more": "மேலும் அறிக",
         "photo_packs": "புகைப்பட பொதிகள்",
         "quote_packs": "மேற்கோள் பொதிகள்",
         "preset_settings": "முன்னமைக்கப்பட்ட அமைப்புகள்",
-        "no_items": "இந்த பிரிவில் உருப்படிகள் இல்லை",
-        "collection": "சேகரிப்பு",
-        "explore_collection": "தொகுப்பை ஆராயுங்கள்",
-        "add_all": "அனைத்தையும் மியூ சேர்க்கவும்",
         "collections": "சேகரிப்புகள்",
-        "cant_find": "நீங்கள் தேடுவதைக் கண்டுபிடிக்க முடியவில்லையா?",
-        "knowledgebase_one": "பார்வையிடவும்",
-        "knowledgebase_two": "அறிவுத் தளம்",
-        "knowledgebase_three": "உங்கள் சொந்தத்தை உருவாக்க.",
-        "installing": "நிறுவுகிறது",
-        "product": {
-          "overview": "கண்ணோட்டம்",
-          "information": "தகவல்",
-          "last_updated": "கடைசியாக புதுப்பிக்கப்பட்டது",
-          "description": "விவரம்",
-          "details": "விவரங்கள்",
-          "more_from_curator": "{name} இலிருந்து இது போன்றது",
-          "show_more": "மேலும் காட்டு",
-          "show_less": "குறைவாகக் காட்டு",
-          "show_all": "அனைத்தையும் காட்டு",
-          "showing": "காண்பிக்க",
-          "no_images": "படங்கள்",
-          "no_quotes": "இல்லை மேற்கோள்கள்",
-          "version": "பதிப்பு",
-          "created_by": "உருவாக்கியது",
-          "updated_at": "புதுப்பிக்கப்பட்டது",
-          "part_of": "ஒரு பகுதி",
-          "explore": "ஆராயுங்கள்",
-          "buttons": {
-            "addtomue": "MUE இல் சேர்க்கவும்",
-            "remove": "அகற்று",
-            "update_addon": "கூடுதல் புதுப்பிப்பு",
-            "back": "பின்",
-            "report": "அறிக்கை",
-            "not_available_preview": "முன்னோட்டத்தில் கிடைக்கவில்லை"
-          },
-          "not_in_language": "இந்த துணை நிரல் உங்கள் மொழியில் இல்லை",
-          "third_party_api": "இந்த துணை நிரல் மூன்றாம் தரப்பு பநிஇ ஐப் பயன்படுத்துகிறது",
-          "sideload_warning": "இந்த துணை நிரல் ஓரங்கட்டப்பட்டுள்ளது.",
-          "setting": "அமைத்தல்",
-          "value": "மதிப்பு"
-        },
         "offline": {
           "title": "நீங்கள் ஆஃப்லைனில் தெரிகிறது",
           "description": "இணையத்துடன் இணைக்கவும்"
@@ -606,6 +831,9 @@
           "title": "காலி",
           "description": "துணை நிரல்கள் எதுவும் நிறுவப்படவில்லை"
         },
+        "get_some": "Get Some",
+        "remove_all": "Remove all addons",
+        "recently_updated": "Recently Updated",
         "sideload": {
           "title": "பக்கவாட்டு",
           "description": "உங்கள் கணினியிலிருந்து சந்தையில் இல்லாத ஒரு மியூ துணை நிரலை நிறுவவும்",
@@ -623,24 +851,7 @@
           "newest": "நிறுவப்பட்டது (புதியது)",
           "a_z": "அகரவரிசை (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "உருவாக்கு",
-          "moved_title": "கூடுதல் ஐ உருவாக்குங்கள்!",
-          "moved_description": "7.1 புதுப்பிப்பைத் தொடர்ந்து, துணை நிரல்களின் உருவாக்கம் இப்போது வலை இடைமுகம் க்கு நகர்ந்தது",
-          "moved_button": "விரைவில் வருகிறது ...."
         }
-      }
-    },
-    "update": {
-      "title": "புதுப்பிப்பு",
-      "offline": {
-        "title": "இணையமில்லாமல்",
-        "description": "இணைப்பில்லாத பயன்முறையில் இருக்கும்போது புதுப்பிப்பு பதிவுகளைப் பெற முடியாது"
-      },
-      "error": {
-        "title": "பிழை",
-        "description": "சேவையகத்துடன் இணைக்க முடியவில்லை"
       }
     },
     "welcome": {
@@ -710,8 +921,59 @@
     },
     "share": {
       "copy_link": "இணைப்பை நகலெடுக்கவும்",
-      "email": "மின்னஞ்சல்"
+      "item_type": {
+        "image": "this image",
+        "quote": "this quote",
+        "marketplace_item": "this marketplace item"
+      },
+      "social": {
+        "twitter": "X (Twitter)",
+        "facebook": "Facebook",
+        "email": "Email",
+        "wechat": "WeChat",
+        "qq": "Tencent QQ"
+      },
+      "twitter_message": "Check out {name} on @getmue",
+      "email_subject": "Check out this on Mue!",
+      "email_body": "{name} on Mue: {url}"
     }
+  },
+  "common": {
+    "navigation": {
+      "back": "Back",
+      "forward": "Forward",
+      "navigate_back": "Navigate back",
+      "navigate_forward": "Navigate forward",
+      "navigate_to": "Navigate to {item}",
+      "breadcrumb_navigation": "Breadcrumb navigation"
+    },
+    "actions": {
+      "edit": "Edit",
+      "remove": "Remove",
+      "close": "Close",
+      "send": "Send"
+    },
+    "alt_text": {
+      "preview": "Preview",
+      "location": "Location",
+      "screenshot": "Screenshot",
+      "logo": "Logo"
+    },
+    "add_translation": "Add translation",
+    "above_widgets": "Above widgets",
+    "view_mode": {
+      "grid": "Grid view",
+      "list": "List view"
+    },
+    "search_label": "Search",
+    "microphone_search": "Microphone Search"
+  },
+  "error_boundary": {
+    "title": "A critical error has occurred",
+    "message": "The new tab page could not be loaded. Please uninstall the extension and try again.",
+    "report_button": "Report Issue",
+    "sent_successfully": "Sent Successfully",
+    "support_discord": "Support Discord"
   },
   "toasts": {
     "quote": "மேற்கோள் நகலெடுக்கப்பட்டது",
@@ -723,6 +985,7 @@
     "error": "ஏதோ தவறு நடந்தது",
     "imported": "வெற்றிகரமாக இறக்குமதி செய்யப்பட்டது",
     "no_storage": "போதுமான சேமிப்பு இல்லை",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "இணைப்பு நகலெடுக்கப்பட்டது",
     "stats_reset": "புள்ளிவிவரங்கள் மீட்டமைக்கப்படுகின்றன"
   }

@@ -1,3 +1,4 @@
+import { useT } from 'contexts';
 import variables from 'config/variables';
 import { useState, useEffect } from 'react';
 import {
@@ -14,6 +15,7 @@ export const CustomActions = ({ children }) => {
 };
 
 function Header(props) {
+  const t = useT();
   const [setting, setSetting] = useState(localStorage.getItem(props.setting) === 'true');
 
   useEffect(() => {
@@ -22,24 +24,28 @@ function Header(props) {
 
   const changeSetting = () => {
     const toggle = localStorage.getItem(props.setting) === 'true';
-    localStorage.setItem(props.setting, !toggle);
-    setSetting(!toggle);
 
-    variables.stats.postEvent(
-      'setting',
-      `${props.name} ${setting === true ? 'enabled' : 'disabled'}`,
-    );
+    setTimeout(() => {
+      localStorage.setItem(props.setting, !toggle);
+      setSetting(!toggle);
 
-    EventBus.emit('toggle', props.setting);
+      variables.stats.postEvent(
+        'setting',
+        `${props.name} ${setting === true ? 'enabled' : 'disabled'}`,
+      );
 
-    if (props.element) {
-      if (!document.querySelector(props.element)) {
-        document.querySelector('.reminder-info').style.display = 'flex';
-        return localStorage.setItem('showReminder', true);
+      EventBus.emit('toggle', props.setting);
+
+      if (props.element) {
+        if (!document.querySelector(props.element)) {
+          localStorage.setItem('showReminder', 'true');
+          EventBus.emit('showReminder');
+          return;
+        }
       }
-    }
 
-    EventBus.emit('refresh', props.category);
+      EventBus.emit('refresh', props.category);
+    }, 100);
   };
 
   const VisibilityToggle = () => (
@@ -59,16 +65,14 @@ function Header(props) {
           window.open(variables.constants.BUG_REPORT + props.title.split(' ').join('+'), '_blank')
         }
         icon={<MdFlag />}
-        label={variables.getMessage('modals.main.settings.sections.header.report_issue')}
+        label={t('modals.main.settings.sections.header.report_issue')}
       />
     );
   };
 
   return (
     <div className="modalHeader">
-      <span className="mainTitle">
-        {props.secondaryTitle || props.title}
-      </span>
+      <span className="mainTitle">{props.secondaryTitle || props.title}</span>
       <div className="headerActions">
         {props.visibilityToggle && <VisibilityToggle />}
         {props.report !== false && <ReportButton />}

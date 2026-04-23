@@ -1,5 +1,9 @@
 {
   "tabname": "Uus vahekaart",
+  "branding": {
+    "name": "Mue",
+    "author": "The Mue Authors"
+  },
   "widgets": {
     "greeting": {
       "morning": "Tere hommikust",
@@ -12,7 +16,6 @@
     },
     "background": {
       "credit": "Foto autor",
-      "unsplash": "Unsplashis",
       "information": "Teave",
       "download": "Lae alla",
       "downloads": "Allalaadimised",
@@ -36,7 +39,17 @@
       "icon": "Ikoon (valikuline)",
       "add": "Lisa",
       "name_error": "Nimi peab olema määratud",
-      "url_error": "URL peab olema määratud"
+      "url_error": "URL peab olema määratud",
+      "suggested": "Suggested: {name}",
+      "name_placeholder": "Enter link name (optional)",
+      "url_placeholder": "example.com",
+      "icon_url_placeholder": "https://example.com/icon.png",
+      "icon_type_label": "Icon Type",
+      "icon_type_auto": "Auto-detect Icon",
+      "icon_type_custom_url": "Custom Icon URL",
+      "icon_type_upload": "Upload Icon",
+      "icon_type_emoji": "Emoji",
+      "icon_type_letter": "Letter Avatar"
     },
     "date": {
       "week": "Nädal"
@@ -52,7 +65,8 @@
       "share": "Jaga",
       "copy": "Kopeeri",
       "favourite": "Lisa lemmikuks",
-      "unfavourite": "Eemalda lemmikutest"
+      "unfavourite": "Eemalda lemmikutest",
+      "author_info_aria": "Learn about the author of the quote."
     },
     "navbar": {
       "tooltips": {
@@ -60,7 +74,8 @@
       },
       "notes": {
         "title": "Märkmed",
-        "placeholder": "Kirjuta siia"
+        "placeholder": "Kirjuta siia",
+        "export_filename": "mue-notes.txt"
       },
       "todo": {
         "title": "Ülesanded",
@@ -84,6 +99,10 @@
         "library": "Lisad",
         "discover": "Rakenduste pood"
       },
+      "sidebar": {
+        "collapse": "Collapse sidebar",
+        "expand": "Expand sidebar"
+      },
       "error_boundary": {
         "title": "Viga",
         "message": "Mue komponendi laadimine ebaõnnestus",
@@ -93,7 +112,6 @@
       },
       "settings": {
         "enabled": "Lubatud",
-        "open_knowledgebase": "Ava teadmusbaas",
         "additional_settings": "Lisaseaded",
         "reminder": {
           "title": "MÄRKUS",
@@ -135,6 +153,38 @@
               "change_hour_colour": "Muuda tunni teksti värvi",
               "change_minute_colour": "Muuda minuti teksti värvi",
               "change_second_colour": "Muuda sekundi teksti värvi"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the time looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the time",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the time text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the time text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the time text"
+              }
             }
           },
           "date": {
@@ -166,6 +216,11 @@
             "author_details": "Näita autori üksikasju",
             "custom": "Kohandatud tsitaat",
             "custom_subtitle": "Määra oma kohandatud tsitaadid",
+            "installed_packs_title": "Installed Quote Packs",
+            "get_more": "Get More",
+            "suggested_packs_title": "Suggested Quote Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
             "no_quotes": "Tsitaate pole",
             "author": "Autor",
             "custom_buttons": "Nupud",
@@ -179,6 +234,42 @@
               "copy": "Kopeeri",
               "tweet": "Tweedi",
               "favourite": "Lisa lemmikuks"
+            },
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the quote changes"
+            },
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the quote looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the quote",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the quote text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the quote text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the quote text"
+              }
             }
           },
           "greeting": {
@@ -199,7 +290,39 @@
             "month": "Kuu",
             "no_events": "Sündmusi pole",
             "no_events_description": "Lisa mõned sündmused",
-            "add_event": "Lisa sündmus"
+            "add_event": "Lisa sündmus",
+            "appearance": {
+              "title": "Appearance",
+              "description": "Customise how the greeting looks",
+              "font": {
+                "title": "Font",
+                "description": "Change the font used for the greeting",
+                "custom": "Custom font"
+              },
+              "font_weight": {
+                "title": "Font Weight",
+                "description": "Change the thickness of the greeting text",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "font_style": {
+                "title": "Font Style",
+                "description": "Change the style of the greeting text",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              },
+              "color": {
+                "title": "Text Colour",
+                "description": "Change the colour of the greeting text"
+              }
+            }
           },
           "background": {
             "title": "Taust",
@@ -246,6 +369,10 @@
               "title": "Allikas",
               "subtitle": "Vali, kust taustapilte võtta",
               "api": "Tausta API",
+              "api_title": "API",
+              "api_mue": "Mue",
+              "api_unsplash": "Unsplash",
+              "collection_placeholder": "e.g. 123456, 654321",
               "custom_background": "Kohandatud taust",
               "custom_colour": "Kohandatud taustavärv",
               "upload": "Lae üles",
@@ -258,6 +385,9 @@
               "disabled": "Keelatud",
               "loop_video": "Korda videot",
               "mute_video": "Vaigista video",
+              "persistent_storage_tooltip": "Request persistent storage to prevent browser from automatically clearing your images",
+              "persistent_storage_granted": "Persistent storage granted - your images are protected from eviction",
+              "persistent_storage_denied": "Persistent storage denied - images may be cleared if storage is low",
               "quality": {
                 "title": "Kvaliteet",
                 "original": "Originaal",
@@ -285,22 +415,42 @@
                 "name_desc": "Name (Z-A)",
                 "size_small": "File Size (Smallest)",
                 "size_large": "File Size (Largest)"
-              }
+              },
+              "pack_count": {
+                "singular": "pack",
+                "plural": "packs"
+              },
+              "photo_count": {
+                "singular": "photo",
+                "plural": "photos"
+              },
+              "get_more": "Get more"
             },
             "display": "Kuva",
             "display_subtitle": "Muuda tausta ja foto teabe laadimise viisi",
             "api": "API seaded",
-            "api_subtitle": "Valikud pildi saamiseks välisest teenusest (API)"
+            "api_subtitle": "Valikud pildi saamiseks välisest teenusest (API)",
+            "frequency": {
+              "title": "Update Frequency",
+              "subtitle": "How often the background changes",
+              "refresh": "Every tab",
+              "minute": "Once a minute",
+              "thirty": "Once every 30 minutes",
+              "hour": "Once an hour",
+              "day": "Once a day"
+            },
+            "installed_packs_title": "Installed Photo Packs",
+            "suggested_packs_title": "Suggested Photo Packs",
+            "suggested_packs_subtitle": "Trending packs you might like",
+            "explore_all": "Explore All",
+            "photo_pack_settings": {
+              "title": "{name} Settings",
+              "refresh_photos": "Refresh Photos"
+            }
           },
           "search": {
             "title": "Otsing",
             "additional": "Lisavalikud otsingu vidina kuvamiseks ja funktsionaalsuseks",
-            "search_engine": "Otsingumootor",
-            "search_engine_subtitle": "Vali otsinguriba jaoks kasutatav otsingumootor",
-            "custom": "Kohandatud otsingu URL",
-            "autocomplete": "Automaatne lõpetamine",
-            "autocomplete_provider": "Automaatse lõpetamise pakkuja",
-            "autocomplete_provider_subtitle": "Otsingumootor, mida kasutada automaatse lõpetamise rippmenüü tulemusteks",
             "voice_search": "Häälega otsing",
             "dropdown": "Otsingu rippmenüü",
             "focus": "Fookus vahekaardi avamisel",
@@ -355,7 +505,60 @@
               "metro": "Metro"
             },
             "styling": "Kujundus",
-            "styling_description": "Kohanda kiirlinkide välimust"
+            "styling_description": "Kohanda kiirlinkide välimust",
+            "layout": "Layout",
+            "layout_description": "Configure grid layout and organization",
+            "layout_mode": "Layout Mode",
+            "layout_grid": "Grid",
+            "layout_flex": "Flexible",
+            "layout_compact": "Compact",
+            "layout_card": "Card",
+            "grid_columns": "Grid Columns",
+            "grid_rows": "Grid Rows",
+            "grid_columns_auto": "Auto",
+            "appearance_title": "Appearance",
+            "appearance_subtitle": "Customize style and layout of quick links",
+            "display_title": "Display",
+            "display_subtitle": "Configure tooltips and tab behavior",
+            "organization_title": "Organization",
+            "organization_subtitle": "Organize links into groups",
+            "grouping": "Groups",
+            "grouping_description": "Organize quick links into groups",
+            "enable_grouping": "Enable Grouping",
+            "show_group_headers": "Show Group Headers",
+            "collapsible_groups": "Collapsible Groups",
+            "manage_groups": "Manage Groups",
+            "bookmark_sync": "Bookmark Sync",
+            "bookmark_sync_description": "Import and sync browser bookmarks",
+            "bookmark_sync_title": "Bookmark Sync",
+            "bookmark_sync_subtitle": "Automatically sync browser bookmarks to quick links",
+            "bookmark_sync_section_title": "Bookmark Sync",
+            "bookmark_sync_section_subtitle": "Import and sync browser bookmarks",
+            "enable_bookmark_sync": "Enable Bookmark Sync",
+            "sync_direction": "Sync Direction",
+            "import_only": "Import Only",
+            "two_way": "Two-Way Sync",
+            "sync_now": "Sync Now",
+            "manual_sync_title": "Manual Sync",
+            "manual_sync_subtitle": "Manually sync bookmarks now",
+            "sync_bookmarks_button": "Sync Bookmarks",
+            "syncing": "Syncing...",
+            "permission_denied": "Permission denied",
+            "sync_success": "Synced: {imported} imported, {updated} updated, {removed} removed",
+            "sync_error": "Error: {message}",
+            "icon_settings": "Icon Settings",
+            "icon_settings_description": "Configure icon behavior and fallbacks",
+            "custom_icons_enabled": "Allow Custom Icon Uploads",
+            "primary_icon_source": "Primary Icon Source",
+            "icon_type": "Icon Type",
+            "icon_auto": "Auto-detect",
+            "icon_custom_url": "Custom URL",
+            "icon_custom_upload": "Upload Image",
+            "icon_emoji": "Emoji",
+            "icon_letter": "Letter Avatar",
+            "upload_icon": "Upload Icon",
+            "group": "Group",
+            "no_group": "No Group"
           },
           "message": {
             "title": "Sõnum",
@@ -395,27 +598,50 @@
               },
               "apps_subtitle": "Loo otsetee oma teistele sageli kasutatavatele veebisaitidele."
             },
-            "font": {
-              "title": "Font",
-              "description": "Muuda Mues kasutatavat fonti",
-              "custom": "Kohandatud font",
-              "google": "Impordi Google Fontsist",
+            "widget_font": {
+              "title": "Widget Font",
+              "description": "Change the font used for widgets on the new tab page",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
               "weight": {
-                "title": "Fondi paksus",
-                "thin": "Õhuke",
-                "extra_light": "Eriti kerge",
-                "light": "Kerge",
-                "normal": "Tavaline",
-                "medium": "Keskmine",
-                "semi_bold": "Poolpaks",
-                "bold": "Paks",
-                "extra_bold": "Eriti paks"
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
               },
               "style": {
-                "title": "Fondi stiil",
-                "normal": "Tavaline",
-                "italic": "Kursiiv",
-                "oblique": "Kaldkiri"
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
+              }
+            },
+            "settings_font": {
+              "title": "Settings Font",
+              "description": "Change the font used for the settings modal",
+              "custom": "Custom font",
+              "google": "Import from Google Fonts",
+              "weight": {
+                "title": "Font weight",
+                "thin": "Thin",
+                "extra_light": "Extra Light",
+                "light": "Light",
+                "normal": "Normal",
+                "medium": "Medium",
+                "semi_bold": "Semi-Bold",
+                "bold": "Bold",
+                "extra_bold": "Extra-Bold"
+              },
+              "style": {
+                "title": "Font style",
+                "normal": "Normal",
+                "italic": "Italic",
+                "oblique": "Oblique"
               }
             },
             "accessibility": {
@@ -440,6 +666,8 @@
             "title": "Täpsemad seaded",
             "offline_mode": "Võrguühenduseta režiim",
             "offline_subtitle": "Kui see on lubatud, keelatakse kõik päringud veebiteenustele.",
+            "marketplace_img_proxy": "Use DuckDuckGo Image Proxy",
+            "marketplace_img_proxy_subtitle": "Proxy marketplace and photo pack images through DuckDuckGo for enhanced privacy. Useful if Imgur is blocked in your region.",
             "data": "Andmed",
             "data_description": "Vali, kas eksportida oma Mue seaded arvutisse, importida olemasolev seadete fail või lähtestada seaded vaikeväärtustele",
             "data_subtitle": "Halda oma andmeid Mues.",
@@ -452,6 +680,25 @@
             "customisation": "Kohandamine",
             "custom_css": "Kohandatud CSS",
             "custom_css_subtitle": "Kohanda Mue stiili kaskaadlaadistiku (CSS) abil.",
+            "custom_widget": {
+              "title": "Custom Widget",
+              "subtitle": "Embed your favourite sites or tools directly into Mue with iFrames.",
+              "add": "Add Widget",
+              "new": "New Widget",
+              "edit": "Edit Widget",
+              "name": "Widget Name",
+              "url": "Widget URL",
+              "no_widgets": "No custom widgets",
+              "add_some": "Add some",
+              "render_above": "Render above other widgets",
+              "positions": {
+                "center": "Center (with other widgets)",
+                "top_left": "Top Left",
+                "top_right": "Top Right",
+                "bottom_left": "Bottom Left",
+                "bottom_right": "Bottom Right"
+              }
+            },
             "custom_js": "Kohandatud JS",
             "tab_name": "Vahekaardi nimi",
             "tab_name_subtitle": "Muuda brauseris kuvatava vahekaardi nime",
@@ -490,7 +737,17 @@
           "experimental": {
             "title": "Eksperimentaalne",
             "warning": "Neid seadeid pole täielikult testitud/rakendatud ja need ei pruugi korrektselt töötada!",
-            "developer": "Arendaja"
+            "developer": "Arendaja",
+            "debug_hotkey": "Debug hotkey (Ctrl + #)",
+            "debug_timeout": "Debug timeout",
+            "send_event": "Send Event",
+            "event_type": "Type",
+            "event_name": "Name",
+            "normal_toast": "Normal Toast",
+            "achievement_toast": "Achievement Unlocked Toast",
+            "toast_success": "Toasted successfully",
+            "clear_localstorage": "Clear LocalStorage",
+            "data_section": "Data"
           },
           "language": {
             "title": "Keel",
@@ -502,7 +759,8 @@
           },
           "changelog": {
             "title": "Muudatuste logi",
-            "by": "Autor: {author}"
+            "by": "Autor: {author}",
+            "iframe_title": "Changelog"
           },
           "about": {
             "title": "Teave",
@@ -530,11 +788,20 @@
             "supporters": "Toetajad",
             "no_supporters": "Hetkel pole Muel toetajaid",
             "photographers": "Fotograafid",
-            "curators": "Lisade loojad"
+            "curators": "Lisade loojad",
+            "social": {
+              "email": "Email",
+              "twitter": "X (Twitter)",
+              "discord": "Discord"
+            },
+            "license": "Licensed under the BSD-3-Clause License",
+            "copyright": "Copyright {startYear}-{currentYear}",
+            "image_count": "{count} images"
           }
         },
         "buttons": {
           "reset": "Lähtesta",
+          "default": "Default",
           "import": "Impordi",
           "export": "Ekspordi",
           "cancel": "Cancel",
@@ -546,52 +813,10 @@
         "title": "Marketplace",
         "by": "autor: {author}",
         "all": "Kõik",
-        "learn_more": "Loe lähemalt",
         "photo_packs": "Fotokomplektid",
         "quote_packs": "Tsitaadikomplektid",
         "preset_settings": "Eelseadistatud seaded",
-        "no_items": "Selles kategoorias pole üksusi",
-        "collection": "Kollektsioon",
-        "explore_collection": "Uuri kollektsiooni",
-        "add_all": "Lisa kõik Muesse",
         "collections": "Kollektsioonid",
-        "cant_find": "Ei leia, mida otsid?",
-        "knowledgebase_one": "Külasta",
-        "knowledgebase_two": "teadmusbaasi",
-        "knowledgebase_three": "oma loomiseks.",
-        "installing": "Installimine",
-        "product": {
-          "overview": "Ülevaade",
-          "information": "Teave",
-          "last_updated": "Viimati uuendatud",
-          "description": "Kirjeldus",
-          "details": "Üksikasjad",
-          "more_from_curator": "Rohkem sarnaseid autorilt {name}",
-          "show_more": "Näita rohkem",
-          "show_less": "Näita vähem",
-          "show_all": "Näita kõiki",
-          "showing": "Näidatakse",
-          "no_images": "Piltide arv",
-          "no_quotes": "Tsitaatide arv",
-          "version": "Versioon",
-          "created_by": "Loodud",
-          "updated_at": "Uuendatud",
-          "part_of": "Osa",
-          "explore": "Uuri",
-          "buttons": {
-            "addtomue": "Lisa Muesse",
-            "remove": "Eemalda",
-            "update_addon": "Uuenda lisa",
-            "back": "Tagasi",
-            "report": "Teata",
-            "not_available_preview": "Pole eelvaates saadaval"
-          },
-          "not_in_language": "See lisa pole sinu keeles",
-          "third_party_api": "See lisa kasutab kolmanda osapoole API-t",
-          "sideload_warning": "See lisa on kõrvalt laaditud.",
-          "setting": "Seade",
-          "value": "Väärtus"
-        },
         "offline": {
           "title": "Tundub, et oled võrguühenduseta",
           "description": "Palun loo internetiühendus"
@@ -606,6 +831,9 @@
           "title": "Tühi",
           "description": "Lisasid pole installitud"
         },
+        "get_some": "Get Some",
+        "remove_all": "Remove all addons",
+        "recently_updated": "Recently Updated",
         "sideload": {
           "title": "Kõrvalt laadimine",
           "description": "Installi Mue lisa, mida pole rakenduste poes, oma arvutist",
@@ -623,24 +851,7 @@
           "newest": "Installitud (uusimad)",
           "a_z": "Tähestikuline (A-Z)",
           "recently_updated": "Recently Updated"
-        },
-        "create": {
-          "title": "Loo",
-          "moved_title": "Lisa loomine on kolinud!",
-          "moved_description": "Pärast 7.1 versiooni uuendust on lisade loomine nüüd kolinud veebi kasutajaliidesesse",
-          "moved_button": "Tulemas...."
         }
-      }
-    },
-    "update": {
-      "title": "Uuenda",
-      "offline": {
-        "title": "Võrguühenduseta",
-        "description": "Võrguühenduseta režiimis ei saa uuenduste logisid hankida"
-      },
-      "error": {
-        "title": "Viga",
-        "description": "Serveriga ei õnnestunud ühendust luua"
       }
     },
     "welcome": {
@@ -710,8 +921,59 @@
     },
     "share": {
       "copy_link": "Kopeeri link",
-      "email": "E-post"
+      "item_type": {
+        "image": "this image",
+        "quote": "this quote",
+        "marketplace_item": "this marketplace item"
+      },
+      "social": {
+        "twitter": "X (Twitter)",
+        "facebook": "Facebook",
+        "email": "Email",
+        "wechat": "WeChat",
+        "qq": "Tencent QQ"
+      },
+      "twitter_message": "Check out {name} on @getmue",
+      "email_subject": "Check out this on Mue!",
+      "email_body": "{name} on Mue: {url}"
     }
+  },
+  "common": {
+    "navigation": {
+      "back": "Back",
+      "forward": "Forward",
+      "navigate_back": "Navigate back",
+      "navigate_forward": "Navigate forward",
+      "navigate_to": "Navigate to {item}",
+      "breadcrumb_navigation": "Breadcrumb navigation"
+    },
+    "actions": {
+      "edit": "Edit",
+      "remove": "Remove",
+      "close": "Close",
+      "send": "Send"
+    },
+    "alt_text": {
+      "preview": "Preview",
+      "location": "Location",
+      "screenshot": "Screenshot",
+      "logo": "Logo"
+    },
+    "add_translation": "Add translation",
+    "above_widgets": "Above widgets",
+    "view_mode": {
+      "grid": "Grid view",
+      "list": "List view"
+    },
+    "search_label": "Search",
+    "microphone_search": "Microphone Search"
+  },
+  "error_boundary": {
+    "title": "A critical error has occurred",
+    "message": "The new tab page could not be loaded. Please uninstall the extension and try again.",
+    "report_button": "Report Issue",
+    "sent_successfully": "Sent Successfully",
+    "support_discord": "Support Discord"
   },
   "toasts": {
     "quote": "Tsitaat kopeeritud",
@@ -723,6 +985,7 @@
     "error": "Midagi läks valesti",
     "imported": "Edukalt imporditud",
     "no_storage": "Pole piisavalt mäluruumi",
+    "quote_pack_only_one": "Cannot remove the only remaining quote pack",
     "link_copied": "Link kopeeritud",
     "stats_reset": "Statistika lähtestatud"
   }

@@ -4,7 +4,13 @@ import EventBus from 'utils/eventbus';
 
 import './autocomplete.scss';
 
-const Autocomplete = ({ suggestions, onChange: onChangeCallback, onClick: onClickCallback, placeholder, id }) => {
+const Autocomplete = ({
+  suggestions,
+  onChange: onChangeCallback,
+  onClick: onClickCallback,
+  placeholder,
+  id,
+}) => {
   const [filtered, setFiltered] = useState([]);
   const [input, setInput] = useState('');
   const [autocompleteDisabled, setAutocompleteDisabled] = useState(
@@ -48,7 +54,7 @@ const Autocomplete = ({ suggestions, onChange: onChangeCallback, onClick: onClic
 
     EventBus.on('refresh', handleRefresh);
     return () => {
-      EventBus.off('refresh');
+      EventBus.off('refresh', handleRefresh);
     };
   }, []);
 

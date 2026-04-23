@@ -1,16 +1,27 @@
 import EventBus from 'utils/eventbus';
+import { clearQueuesOnSettingChange } from 'utils/queueOperations';
+import { getHandler } from './handlerRegistry';
 
-// todo: relocate this function
 function showReminder() {
-  document.querySelector('.reminder-info').style.display = 'flex';
-  localStorage.setItem('showReminder', true);
+  localStorage.setItem('showReminder', 'true');
+  EventBus.emit('showReminder');
 }
 
 export function uninstall(type, name) {
-  let installedContents, packContents;
   let refreshEvent = null;
 
-  switch (type) {
+  const handler = getHandler(type);
+  if (handler) {
+    const installed = JSON.parse(localStorage.getItem('installed'));
+    const packData = installed.find((item) => item.name === name);
+    if (packData) {
+      const result = handler.uninstall(packData, { name, installed });
+      refreshEvent = result.refreshEvent;
+    }
+  } else {
+    let installedContents, packContents;
+
+    switch (type) {
     case 'settings': {
       const oldSettings = JSON.parse(localStorage.getItem('backup_settings'));
       localStorage.clear();
@@ -40,6 +51,8 @@ export function uninstall(type, name) {
         localStorage.removeItem('quote_packs');
       }
       localStorage.removeItem('quotechange');
+      localStorage.removeItem('quoteQueue');
+      localStorage.removeItem('currentQuote');
       refreshEvent = 'marketplacequoteuninstall';
       break;
 
@@ -48,35 +61,49 @@ export function uninstall(type, name) {
       packContents = JSON.parse(localStorage.getItem('installed')).find(
         (content) => content.name === name,
       );
-      if (packContents && packContents.photos) {
-        installedContents = installedContents.filter((item) => {
-          return !packContents.photos.some(
-            (content) => content.url?.default === item.url?.default,
-          );
-        });
+
+      if (packContents) {
+        if (packContents.api_enabled) {
+          const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
+          delete apiPackCache[packContents.id];
+          localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
+
+          const apiPacksReady = JSON.parse(localStorage.getItem('api_packs_ready') || '[]');
+          const filtered = apiPacksReady.filter((id) => id !== packContents.id);
+          localStorage.setItem('api_packs_ready', JSON.stringify(filtered));
+        } else if (packContents.photos) {
+          installedContents = installedContents.filter((item) => {
+            return !packContents.photos.some(
+              (content) => content.url?.default === item.url?.default,
+            );
+          });
+          localStorage.setItem('photo_packs', JSON.stringify(installedContents));
+        }
       }
-      localStorage.setItem('photo_packs', JSON.stringify(installedContents));
-      if (installedContents.length === 0) {
-        // Switch back to old background type or default to mue api
+
+      const remainingInstalled = JSON.parse(localStorage.getItem('installed')).filter(
+        (item) => item.type === 'photos' && item.name !== name,
+      );
+
+      if (remainingInstalled.length === 0) {
         localStorage.setItem('backgroundType', localStorage.getItem('oldBackgroundType') || 'api');
         localStorage.removeItem('oldBackgroundType');
         localStorage.removeItem('photo_packs');
       }
+
       localStorage.removeItem('backgroundchange');
-      // Clear image queue to ensure fresh background loads
-      localStorage.removeItem('imageQueue');
-      // Set refresh event to emit after installed data is saved
-      refreshEvent = 'marketplacebackgrounduninstall';
+      clearQueuesOnSettingChange('packUninstall');
+      refreshEvent = null;
       break;
 
     default:
       break;
+    }
   }
 
   const installed = JSON.parse(localStorage.getItem('installed'));
   for (let i = 0; i < installed.length; i++) {
     if (installed[i].name === name) {
-      // Track uninstalled pack IDs to prevent auto-reinstall
       if (installed[i].id) {
         const uninstalledPacks = JSON.parse(localStorage.getItem('uninstalledPacks') || '[]');
         if (!uninstalledPacks.includes(installed[i].id)) {
@@ -91,7 +118,15 @@ export function uninstall(type, name) {
 
   localStorage.setItem('installed', JSON.stringify(installed));
 
-  // Emit refresh event after all data is saved
+  const enabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
+  const installedItems = JSON.parse(localStorage.getItem('installed') || '[]');
+  const packToRemove = installedItems.find((item) => item.name === name);
+  if (packToRemove) {
+    const packId = packToRemove.id || packToRemove.name;
+    delete enabledPacks[packId];
+    localStorage.setItem('enabledPacks', JSON.stringify(enabledPacks));
+  }
+
   if (refreshEvent) {
     EventBus.emit('refresh', refreshEvent);
   }

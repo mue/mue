@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react';
+import { Outlet } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 import Background from 'features/background/Background';
 import Widgets from 'features/misc/views/Widgets';
 import Modals from 'features/misc/modals/Modals';
+import CustomWidgets from 'features/misc/CustomWidgets';
 import { loadSettings, moveSettings } from 'utils/settings';
 import EventBus from 'utils/eventbus';
 import variables from 'config/variables';
 import { TranslationProvider } from 'contexts/TranslationContext';
+import { registerAllHandlers } from 'utils/marketplace/registerHandlers';
+import { installDefaultPacks } from 'utils/marketplace/installDefaultPacks';
 
 const useAppSetup = () => {
   useEffect(() => {
+    registerAllHandlers();
+
     const firstRun = localStorage.getItem('firstRun');
     const stats = localStorage.getItem('stats');
 
@@ -20,8 +26,10 @@ const useAppSetup = () => {
 
     loadSettings();
 
+    installDefaultPacks();
+
     const refreshHandler = (data) => {
-      if (data === 'other') {
+      if (data === 'other' || data === 'greeting' || data === 'clock' || data === 'quote') {
         loadSettings(true);
       }
     };
@@ -55,11 +63,15 @@ const App = () => {
 
   useAppSetup();
 
-  const languagecode = localStorage.getItem('language') || 'en_GB';
+  const languagecode = variables.languagecode || localStorage.getItem('language') || 'en_GB';
 
   return (
-    <TranslationProvider initialLanguage={languagecode}>
+    <TranslationProvider
+      initialLanguage={languagecode}
+      initialTranslations={variables.language?.messages || {}}
+    >
       {showBackground && <Background />}
+      <CustomWidgets />
       <ToastContainer
         position="top-center"
         autoClose={toastDisplayTime}
@@ -71,6 +83,7 @@ const App = () => {
         <Widgets />
         <Modals />
       </div>
+      <Outlet />
     </TranslationProvider>
   );
 };
