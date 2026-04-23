@@ -33,15 +33,6 @@ const Dropdown = memo((props) => {
     }, 200);
   }, []);
 
-  const closeDropdown = useCallback(() => {
-    setIsClosing(true);
-    setTimeout(() => {
-      setIsOpen(false);
-      setIsClosing(false);
-      setFocusedIndex(-1);
-    }, 200); // Match animation duration
-  }, []);
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       // Ignore clicks on color inputs to prevent closing when native color picker opens
