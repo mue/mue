@@ -6,7 +6,7 @@ widgets:
     evening: Selamat Malam
     christmas: Selamat Natal
     newyear: Selamat Tahun Baru
-    halloween: Selamat Hari Halloween
+    halloween: Selamat Halloween
     birthday: Selamat Ulang Tahun
   background:
     credit: Foto oleh
@@ -14,7 +14,7 @@ widgets:
     information: Informasi
     download: Unduh
     downloads: Unduhan
-    views: Tayangan
+    views: Tampilan
     likes: Suka
     location: Lokasi
     camera: Kamera
@@ -25,33 +25,35 @@ widgets:
     exclude_confirm: >-
       Apakah Anda yakin tidak ingin melihat gambar ini lagi?
 
-      Catatan: jika Anda tidak menyukai gambar "{category}", Anda dapat
-      membatalkan pilihan kategori di setelan sumber latar belakang.
+      Catatan: jika Anda tidak menyukai gambar "{category}", Anda dapat membatalkan
+      pilihan kategori tersebut di pengaturan sumber latar belakang.
     confirm: Konfirmasi
   search: Cari
   quicklinks:
-    new: Pranala Baru
+    new: Tautan Baru
     name: Nama
     icon: Ikon (opsional)
     add: Tambah
-    name_error: Harap cantumkan nama
-    url_error: Harap cantumkan URL
+    name_error: Nama harus diisi
+    url_error: URL harus diisi
+    edit: Edit Tautan
+    url: URL
   date:
-    week: Pekan
+    week: Minggu
   weather:
     not_found: Tidak Ditemukan
     meters: "{amount} meter"
     extra_information: Informasi Tambahan
-    feels_like: Terasa seperti {jumlah}
+    feels_like: Terasa seperti {amount}
   quote:
     link_tooltip: Buka di Wikipedia
     share: Bagikan
     copy: Salin
     favourite: Favorit
-    unfavourite: Copot favorit
+    unfavourite: Hapus dari favorit
   navbar:
     tooltips:
-      refresh: Muat Ulang
+      refresh: Segarkan
     notes:
       title: Catatan
       placeholder: Ketik di sini
@@ -59,38 +61,45 @@ widgets:
       title: Tugas
       pin: Sematkan
       add: Tambah
-      no_todos: Tidak ada Tugas
-    apps: {}
+      no_todos: Tidak Ada Tugas
+    apps:
+      title: Aplikasi
+      no_apps: Tidak ada tautan aplikasi yang ditemukan
 modals:
   main:
-    title: Setelan
-    loading: Sedang memuat...
-    file_upload_error: Ukuran berkas lebih dari 2MB
+    title: Opsi
+    loading: Memuat...
+    file_upload_error: File melebihi 2MB
     navbar:
       settings: Pengaturan
-      addons: Pengaya
+      addons: Perpustakaan
+      marketplace: Temukan
     error_boundary:
-      title: Galat
-      message: Gagal memuat komponen Mue
-      report_error: Kirim Laporan Galat
+      title: Kesalahan
+      message: Gagal memuat komponen Mue ini
+      report_error: Kirim Laporan Kesalahan
       sent: Terkirim!
-      refresh: Muat Ulang
+      refresh: Segarkan
   update:
-    title: Pembaruan
+    title: Perbarui
     offline:
-      title: Anda dalam mode luring
-      description: Tidak dapat memeriksa pembaruan. Harap periksa kembali koneksi
-        Anda dan coba lagi nanti.
+      title: Luring
+      description: Tidak dapat memuat log pembaruan dalam mode luring
     error:
-      title: Galat
-      description: Tidak dapat terhubung ke peladen
-  share: {}
+      title: Kesalahan
+      description: Tidak dapat terhubung ke server
+  share:
+    copy_link: Salin tautan
+    email: Email
 toasts:
-  quote: Berhasil menyalin kutipan
-  notes: Berhasil menyalin catatan
-  reset: Reset berhasil
-  installed: Berhasil menginstal
-  uninstalled: Berhasil menghapus
+  quote: Kutipan disalin
+  notes: Catatan disalin
+  reset: Berhasil direset
+  installed: Berhasil dipasang
+  uninstalled: Berhasil dihapus
   updated: Berhasil diperbarui
-  error: Terdapat kesalahan
-  imported: Berhasil mengimpor
+  error: Terjadi kesalahan
+  imported: Berhasil diimpor
+  no_storage: Penyimpanan tidak mencukupi
+  link_copied: Tautan disalin
+  stats_reset: Statistik direset
