@@ -58,8 +58,12 @@ jobs:
           MINOR="${VERSION_PARTS[1]}"
           PATCH="${VERSION_PARTS[2]}"
           
-          # If requesting a pre-release and current is already a pre-release, keep base version
-          # Otherwise, bump the version based on type
+          if echo "$CURRENT_VERSION" | grep -q '\-'; then
+            IS_PRERELEASE="true"
+          else
+            IS_PRERELEASE="false"
+          fi
+
           if [ -n "${{ github.event.inputs.pre_release }}" ] && [ "$IS_PRERELEASE" = "true" ]; then
             # Keep existing base version for iterative betas (7.6.0-beta.1 -> 7.6.0-beta.2)
             NEW_VERSION="$BASE_VERSION"

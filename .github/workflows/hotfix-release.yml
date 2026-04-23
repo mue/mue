@@ -42,6 +42,21 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+      - name: Generate changelog
+        id: changelog
+        run: |
+          COMMITS=$(git log --pretty=format:"- %s (%h)" origin/main..${{ github.event.inputs.branch_name }})
+
+          {
+            echo "changelog<<EOF"
+            echo "### 🚨 Hotfix"
+            echo "${{ github.event.inputs.description }}"
+            echo ""
+            echo "### Changes"
+            echo "$COMMITS"
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
+
       - name: Calculate hotfix version (auto-patch bump)
         id: version
         run: |
@@ -100,23 +115,6 @@ jobs:
           git tag -a "v${{ steps.version.outputs.new_version }}" -m "Hotfix v${{ steps.version.outputs.new_version }}: ${{ github.event.inputs.description }}"
           git push origin main
           git push origin "v${{ steps.version.outputs.new_version }}"
-
-      - name: Generate changelog
-        id: changelog
-        run: |
-          # Get commits from hotfix branch
-          git checkout ${{ github.event.inputs.branch_name }}
-          COMMITS=$(git log --pretty=format:"- %s (%h)" origin/main..${{ github.event.inputs.branch_name }})
-          
-          {
-            echo "changelog<<EOF"
-            echo "### 🚨 Hotfix"
-            echo "${{ github.event.inputs.description }}"
-            echo ""
-            echo "### Changes"
-            echo "$COMMITS"
-            echo "EOF"
-          } >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
         run: |
