@@ -1,87 +1,109 @@
-enabled: Aktif
+enabled: Diaktifkan
 open_knowledgebase: Buka Basis Pengetahuan
 additional_settings: Pengaturan Tambahan
 reminder:
-  title: PERHATIAN
-  message: Agar semua perubahan dapat diterapkan, harap muat ulang halaman ini
+  title: PEMBERITAHUAN
+  message: Agar semua perubahan diterapkan, halaman harus disegarkan.
 sections:
   header:
-    more_info: Info lebih lanjut
+    more_info: Info selengkapnya
     report_issue: Laporkan Masalah
     enabled: Pilih apakah akan menampilkan widget ini atau tidak
-    size: Slider untuk mengontrol seberapa besar widget tersebut
+    size: Geser untuk mengatur seberapa besar widget
   time:
     title: Waktu
-    type: Tipe
+    type: Jenis
     digital:
-      subtitle: Mengubah tampilan jam digital
+      subtitle: Ubah tampilan jam digital
       seconds: Detik
-      twentyfourhour: "24"
-      twelvehour: 12 (AM/PM)
+      twentyfourhour: "24 Jam"
+      twelvehour: 12 jam
+      title: Digital
+      zero: Dengan nol di depan
     analogue:
       title: Analog
-      subtitle: Mengubah tampilan jam analog
-      second_hand: Jarum Detik
-      minute_hand: Jarum Menit
-      hour_hand: Jarum Jam
-      hour_marks: Penanda Jam
-      minute_marks: Penanda Menit
-      round_clock: Latar belakang berbentuk bulat
-    percentage_complete: Persentase
+      subtitle: Ubah tampilan jam analog
+      second_hand: Jarum detik
+      minute_hand: Jarum menit
+      hour_hand: Jarum jam
+      hour_marks: Tanda jam
+      minute_marks: Tanda menit
+      round_clock: Latar belakang bulat
+    percentage_complete: Persentase selesai
     vertical_clock:
       title: Jam Vertikal
       change_hour_colour: Ubah warna teks jam
       change_minute_colour: Ubah warna teks menit
+      change_second_colour: Ubah warna teks detik
+    format: Format
+    type_subtitle: Pilih apakah akan menampilkan waktu dalam format digital, 
+      analog, atau persentase penyelesaian hari
   date:
     title: Tanggal
-    week_number: Nomor Urut Pekan
-    day_of_week: Hari
-    datenth: Imbuhan nth
+    week_number: Nomor minggu
+    day_of_week: Hari dalam minggu
+    datenth: Tanggal ke-n
     type:
-      short: Ringkas
-      long: Lengkap
-      subtitle: Apakah akan menampilkan tanggal dalam bentuk panjang atau bentuk pendek
-    type_settings: Tampilkan setelan dan format untuk jenis tanggal yang dipilih
-    short_date: Tanggal Ringkas
-    short_format: Format Ringkas
+      short: Pendek
+      long: Panjang
+      subtitle: Apakah akan menampilkan tanggal dalam bentuk panjang atau pendek
+    type_settings: Pengaturan tampilan dan format untuk jenis tanggal yang 
+      dipilih
+    short_date: Tanggal singkat
+    short_format: Format singkat
     long_format: Format panjang
     short_separator:
-      title: Pemisah
+      title: Pemisah singkat
       dots: Titik
-      dash: Setrip
+      dash: Strip
       gaps: Spasi
-      slashes: Garis Miring
+      slashes: Garis miring
   quote:
     title: Kutipan
     additional: Pengaturan lain untuk menyesuaikan gaya widget kutipan
-    author_link: Pranala penulis
+    author_link: Tautan penulis
     custom: Kutipan kustom
-    custom_subtitle: Tetapkan kutipan khusus Anda sendiri
+    custom_subtitle: Atur kutipan kustom Anda sendiri
     no_quotes: Tidak ada kutipan
-    author: Kreator
+    author: Penulis
     custom_buttons: Tombol
     custom_author: Penulis kustom
-    author_img: Tampilkan pemilik gambar
-    add: Tambahkan kutipan
+    author_img: Tampilkan gambar penulis
+    add: Tambah kutipan
     buttons:
-      title: Aksi
+      title: Tombol
       copy: Salin
       favourite: Favorit
+      subtitle: Pilih tombol mana yang ditampilkan pada kutipan
+      tweet: Tweet
+    source_subtitle: Pilih dari mana mendapatkan kutipan
   greeting:
-    title: Sapaan
-    events: Hari Besar
-    default: Sapaan bawaan
-    name: Nama
-    birthday: Hari Ulang Tahun
-    birthday_age: Usia
-    birthday_date: Tanggal Ulang Tahun
+    title: Salam
+    events: Acara
+    default: Pesan salam default
+    name: Nama untuk salam
+    birthday: Ulang tahun
+    birthday_age: Usia ulang tahun
+    birthday_date: Tanggal ulang tahun
+    events_description: Kelola acara di Mue seperti ulang tahun.
+    enable_events: Tampilkan pesan pada hari-hari istimewa
+    birthday_subtitle: Tampilkan pesan Selamat Ulang Tahun saat hari ulang tahun
+      Anda
+    additional: Pengaturan untuk tampilan salam
+    custom: Acara kustom
+    event_name: Nama Acara
+    day: Hari
+    month: Bulan
+    no_events: Tidak Ada Acara
+    no_events_description: Tambahkan Beberapa Acara
+    add_event: Tambah Acara
   background:
-    transition: Transisi Fade-in
+    transition: Transisi pudar masuk
     photo_information: Tampilkan informasi foto
-    show_map: Tampilkan informasi lokasi foto jika ada
+    show_map: Tampilkan peta lokasi pada informasi foto jika tersedia
     buttons:
-      title: Aksi
-      view: Layar Penuh
+      title: Tombol
+      view: Perbesar
       favourite: Favorit
       download: Unduh
     effects:
@@ -89,99 +111,196 @@ sections:
       blur: Sesuaikan blur
       brightness: Sesuaikan kecerahan
       filters:
-        title: Filter background
-        amount: Sesuaikan filter
+        title: Filter latar belakang
+        amount: Jumlah filter
+        grayscale: Skala abu-abu
+        sepia: Sepia
+        invert: Balik warna
+        saturate: Saturasi
+        contrast: Kontras
+      subtitle: Tambahkan efek pada gambar latar belakang
     type:
-      title: Tipe
+      title: Jenis
       custom_image: Gambar kustom
-      custom_colour: Warna/gradasi kustom
+      custom_colour: Warna/gradien kustom
       random_colour: Warna acak
-      random_gradient: Gradasi acak
-    unsplash: {}
+      random_gradient: Gradien acak
+      api: API
+    unsplash:
+      title: Koleksi Unsplash
+      subtitle: Pilih koleksi yang ingin Anda gunakan untuk latar belakang
+      id: ID Koleksi
+      id_subtitle: Masukkan daftar ID Unsplash yang dipisahkan dengan koma
     source:
       title: Sumber
-      custom_background: Background kustom
-      custom_colour: Background warna kustom
+      custom_background: Latar belakang kustom
+      custom_colour: Warna latar belakang kustom
       upload: Unggah
       add_colour: Tambah warna
-      add_background: Tambah background
+      add_background: Tambah latar belakang
       add_url: Tambah URL
-      disabled: Nonaktif
-      loop_video: Ulang video
+      disabled: Dinonaktifkan
+      loop_video: Putar video berulang
       mute_video: Bisukan video
       quality:
         title: Kualitas
+        original: Asli
+        high: Kualitas Tinggi
+        normal: Kualitas Normal
+        datasaver: Hemat Data
+      subtitle: Pilih dari mana mendapatkan gambar latar belakang
+      api: API Latar Belakang
+      drop_to_upload: Jatuhkan untuk mengunggah
+      formats: 'Format yang tersedia: {list}'
+      select: Atau Pilih
+      custom_title: Gambar Kustom
+      custom_description: Pilih gambar dari komputer lokal Anda
+      remove: Hapus Gambar
+    title: Latar Belakang
+    categories: Kategori
+    category: Kategori
+    display: Tampilan
+    display_subtitle: Ubah cara latar belakang dan informasi foto dimuat
+    api: Pengaturan API
+    api_subtitle: Opsi untuk mendapatkan gambar dari layanan eksternal (API)
   search:
-    title: Cari
-    search_engine: Mesin pencari
-    custom: URL Kustom
-    autocomplete_provider: Provider Autocomplete
+    title: Pencarian
+    search_engine: Mesin Pencari
+    custom: URL Pencarian Kustom
+    autocomplete_provider: Penyedia Pelengkapan Otomatis
     voice_search: Pencarian suara
-    dropdown: Dropdown pencarian
+    dropdown: Dropdown Pencarian
+    additional: Opsi tambahan untuk tampilan dan fungsi widget pencarian
+    search_engine_subtitle: Pilih mesin pencari yang digunakan di bilah 
+      pencarian
+    autocomplete: Pelengkapan otomatis
+    autocomplete_provider_subtitle: Mesin pencari yang digunakan untuk hasil 
+      dropdown pelengkapan otomatis
+    focus: Fokus saat tab dibuka
   weather:
     title: Cuaca
     location: Lokasi
     auto: Otomatis
     temp_format:
       title: Format suhu
+      celsius: Celsius
+      fahrenheit: Fahrenheit
+      kelvin: Kelvin
     extra_info:
-      title: Informasi Tambahan
+      title: Informasi tambahan
       show_location: Tampilkan lokasi
       show_description: Tampilkan deskripsi
-      cloudiness: Kondisi awan
+      cloudiness: Keawanan
       humidity: Kelembapan
       visibility: Jarak pandang
       wind_speed: Kecepatan angin
       wind_direction: Arah angin
-      min_temp: Temperatur minimal
-      max_temp: Temperatur maksimal
+      min_temp: Suhu minimum
+      max_temp: Suhu maksimum
       atmospheric_pressure: Tekanan atmosfer
-    options: {}
+      weather_description: Deskripsi cuaca
+    options:
+      basic: Dasar
+      standard: Standar
+      expanded: Diperluas
+      custom: Kustom
+    widget_type: Jenis Widget
+    custom_settings: Pengaturan Kustom
   quicklinks:
-    title: Pranala cepat
+    title: Tautan Cepat
     open_new: Buka di tab baru
-    text_only: Hanya teks
-    options: {}
+    text_only: Tampilkan teks saja
+    options:
+      icon: Ikon
+      text_only: Teks Saja
+      metro: Metro
+    additional: Pengaturan tambahan untuk tampilan dan fungsi tautan cepat
+    tooltip: Tooltip
+    add_link: Tambah Tautan
+    no_quicklinks: Tidak ada tautan cepat
+    edit: Edit
+    style: Gaya
+    styling: Penataan gaya
+    styling_description: Sesuaikan tampilan Tautan Cepat
   message:
     title: Pesan
-    add: Tambahkan pesan
+    add: Tambah pesan
     text: Teks
+    messages: Pesan-pesan
+    no_messages: Tidak ada pesan
+    add_some: Silakan tambahkan beberapa.
+    content: Isi Pesan
   appearance:
-    title: Antarmuka
-    style: {}
+    title: Tampilan
+    style:
+      title: Gaya Widget
+      description: Pilih antara dua gaya, lama (diaktifkan untuk pengguna 
+        sebelum versi 7.0) dan gaya modern kami yang elegan.
+      legacy: Lama
+      new: Baru
     theme:
       title: Tema
       auto: Otomatis
+      description: Ubah tema widget dan modal Mue
+      light: Terang
+      dark: Gelap
     navbar:
       notes: Catatan
-      refresh: Muat ulang
-      hover: Tampilkan ketika hover
+      refresh: Segarkan
+      hover: Tampilkan hanya saat diarahkan kursor
       refresh_options:
-        none: Nonaktif
+        none: Tidak ada
         page: Halaman
+      title: Bilah navigasi
+      widgets: Widget Bilah Navigasi
+      refresh_subtitle: Pilih apa yang disegarkan saat Anda mengklik tombol 
+        segarkan
+      additional: Ubah gaya bilah navigasi dan tombol mana yang ingin Anda 
+        tampilkan
+      apps_subtitle: Buat pintasan ke situs web lain yang sering Anda gunakan.
     font:
       custom: Font kustom
       google: Impor dari Google Fonts
-      weight: {}
-      style: {}
+      weight:
+        title: Ketebalan font
+        thin: Tipis
+        extra_light: Sangat Tipis
+        light: Ringan
+        normal: Normal
+        medium: Sedang
+        semi_bold: Semi-Tebal
+        bold: Tebal
+        extra_bold: Sangat Tebal
+      style:
+        title: Gaya font
+        normal: Normal
+        italic: Miring
+        oblique: Condong
+      title: Font
+      description: Ubah font yang digunakan di Mue
     accessibility:
       title: Aksesibilitas
       animations: Animasi
-      text_shadow: {}
-      toast_duration: Durasi toast
+      text_shadow:
+        title: Bayangan teks widget
+        new: Baru
+        old: Lama
+        none: Tidak ada
+      toast_duration: Durasi Toast
+      description: Buat Mue nyaman dan mudah diakses
+      widget_zoom: Zoom Widget
+      milliseconds: milidetik
   order:
     title: Urutan Widget
   advanced:
     title: Lanjutan
-    offline_mode: Mode Luring
-    data_subtitle: Choose whether to export your Mue settings to your computer,
-      import an existing settings file, or reset your settings to their default
-      values
+    offline_mode: Mode luring
+    data_subtitle: Kelola data Anda di Mue.
     reset_modal:
       title: PERINGATAN
-      question: Apakah Anda ingin me-reset Mue?
-      information: Aksi ini akan menghapus semua data Anda. Harap ekspor pengaturan
-        Anda sebelum melakukan reset.
+      question: Apakah Anda ingin mereset Mue?
+      information: Tindakan ini akan menghapus semua data. Jika Anda ingin 
+        menyimpan data dan preferensi, silakan ekspor terlebih dahulu.
       cancel: Batal
     customisation: Kustomisasi
     custom_css: CSS Kustom
@@ -190,50 +309,80 @@ sections:
     timezone:
       title: Zona Waktu
       automatic: Otomatis
-    experimental_warning: Harap diperhatikan bahwa tim Mue tidak menyediakan
-      dukungan jika Anda mengaktifkan mode experimental. Harap nonaktifkan
-      terlebih dahulu dan lihat apabila kendala Anda masih terjadi sebelum
-      menghubungi kami.
-    preview_data_disabled: {}
+      subtitle: Pilih zona waktu dari daftar alih-alih default otomatis dari 
+        komputer Anda
+    experimental_warning: Harap dicatat bahwa tim Mue tidak dapat memberikan 
+      dukungan jika mode eksperimental aktif. Harap nonaktifkan terlebih dahulu 
+      dan periksa apakah masalah masih terjadi sebelum menghubungi dukungan.
+    preview_data_disabled:
+      title: Pengaturan Data Dinonaktifkan
+      description: Pengaturan data dinonaktifkan dalam mode pratinjau. Silakan 
+        keluar dari mode pratinjau untuk menggunakan fitur ini.
+    offline_subtitle: Jika diaktifkan, semua permintaan ke layanan daring akan 
+      dinonaktifkan.
+    data: Data
+    data_description: Pilih apakah akan mengekspor pengaturan Mue ke komputer, 
+      mengimpor file pengaturan yang ada, atau mereset pengaturan ke nilai 
+      defaultnya
+    custom_css_subtitle: Sesuaikan tampilan Mue dengan Cascading Style Sheets 
+      (CSS).
+    tab_name_subtitle: Ubah nama tab yang muncul di browser Anda
   stats:
     title: Statistik
     sections:
-      tabs_opened: Riwayat tab terbuka
-      backgrounds_favourited: Backgrounds favorit
-      backgrounds_downloaded: Backgrounds terunduh
-      quotes_favourited: Kutipan favorit
-      quicklinks_added: Pranala cepat ditambahkan
-      settings_changed: Perubahan pengaturan
-      addons_installed: Add-ons ditambahkan
+      tabs_opened: Tab dibuka
+      backgrounds_favourited: Latar belakang difavoritkan
+      backgrounds_downloaded: Latar belakang diunduh
+      quotes_favourited: Kutipan difavoritkan
+      quicklinks_added: Tautan cepat ditambahkan
+      settings_changed: Pengaturan diubah
+      addons_installed: Add-on dipasang
     usage: Statistik Penggunaan
-    clear_modal: {}
-  experimental: {}
+    clear_modal:
+      question: Apakah Anda ingin menghapus statistik Anda?
+      information: Tindakan ini akan menghapus semua pencapaian dan statistik 
+        penggunaan.
+    achievements: Pencapaian
+    achievement_unlocked: 'Pencapaian Terbuka: {name}'
+    unlocked: '{count} Terbuka'
+    locked: Terkunci
+  experimental:
+    title: Eksperimental
+    warning: Pengaturan ini belum sepenuhnya diuji/diimplementasikan dan mungkin
+      tidak berfungsi dengan benar!
+    developer: Pengembang
   language:
     title: Bahasa
-    quote: Bahasa untuk kutipan
+    quote: Bahasa kutipan
   changelog:
-    title: Changelog
+    title: Catatan Perubahan
     by: Oleh {author}
   about:
-    title: Tentang Mue
+    title: Tentang
     version:
       title: Versi
-      checking_update: Periksa pembaruan
+      checking_update: Memeriksa pembaruan
       update_available: Pembaruan tersedia
-      no_update: Tidak ada pembaruan
-      offline_mode: Periksa pembaruan tidak dapat dilakukan pada mode luring
+      no_update: Tidak ada pembaruan tersedia
+      offline_mode: Tidak dapat memeriksa pembaruan dalam mode luring
       error:
         title: Gagal mendapatkan informasi pembaruan
-        description: Muncul galat saat mencoba mendapatkan informasi pembaruan. Harap
-          coba lagi nanti.
+        description: Terjadi kesalahan
     contact_us: Hubungi Kami
     support_mue: Dukung Mue
     resources_used:
-      title: Resources yang kami gunakan
+      title: Sumber daya yang digunakan
+      bg_images: Gambar latar belakang luring
     contributors: Kontributor
-    supporters: Suporter
-    no_supporters: Mue belum punya suporter saat ini.
+    supporters: Pendukung
+    no_supporters: Saat ini tidak ada pendukung Mue
     photographers: Fotografer
+    support_subtitle: Karena Mue sepenuhnya gratis, kami bergantung pada donasi 
+      untuk menutup biaya server dan mendanai pengembangan
+    support_donate: Donasi
+    form_button: Formulir
+    curators: Pembuat add-on
 buttons:
   import: Impor
   export: Ekspor
+  reset: Reset
