@@ -1,7 +1,5 @@
 import variables from 'config/variables';
 import { useState, memo, lazy, Suspense } from 'react';
-
-const LocationMap = lazy(() => import('./LocationMap'));
 import { useT } from 'contexts';
 import { useNavigate } from 'react-router';
 import Favourite from './Favourite';
@@ -27,6 +25,7 @@ import { getAttributionConfig, addUTMParams } from '../utils/attributionHelper';
 import Modal from 'react-modal';
 import { ShareModal } from 'components/Elements';
 import ExcludeModal from './ExcludeModal';
+const LocationMap = lazy(() => import('./LocationMap'));
 
 /**
  * It takes a URL, fetches the resource, and returns a URL to the resource.
@@ -406,15 +405,28 @@ function PhotoInformation({ info, url, api }) {
         <div className="photoInformation">
           {/* PRIMARY SECTION - Always Visible */}
           <div className="primary-content">
-            <div className="photoInformation-text">
-              {getPrimaryText() && (
-                <span className="title" title={info.description || ''}>
-                  {getPrimaryText()}
-                </span>
+            <div className="primary-main-row">
+              {localStorage.getItem('photoMap') === 'true' && info.latitude && info.longitude && (
+                <Suspense
+                  fallback={
+                    <div className="location-map-section location-map-section--compact">
+                      <div className="location-map-container location-map-container--compact" />
+                    </div>
+                  }
+                >
+                  <LocationMap latitude={info.latitude} longitude={info.longitude} compact />
+                </Suspense>
               )}
-              <span className="subtitle attribution" id="credit">
-                {photo} {credit}
-              </span>
+              <div className="photoInformation-text">
+                {getPrimaryText() && (
+                  <span className="title" title={info.description || ''}>
+                    {getPrimaryText()}
+                  </span>
+                )}
+                <span className="subtitle attribution" id="credit">
+                  {photo} {credit}
+                </span>
+              </div>
             </div>
             {info.views && info.downloads !== null && (
               <UnsplashStats views={info.views} downloads={info.downloads} likes={info.likes} />
@@ -423,6 +435,15 @@ function PhotoInformation({ info, url, api }) {
 
           {/* EXPANDED SECTION - CSS :hover controlled */}
           <div className="extra-content">
+            {localStorage.getItem('photoMap') === 'true' && info.latitude && info.longitude && (
+              <>
+                <Suspense fallback={<div className="location-map-container" />}>
+                  <LocationMap latitude={info.latitude} longitude={info.longitude} />
+                </Suspense>
+                <div className="section-divider" />
+              </>
+            )}
+
             <MetadataGrid
               location={info.location}
               camera={info.camera}
@@ -434,15 +455,6 @@ function PhotoInformation({ info, url, api }) {
               packName={info.pack_name}
               onPackClick={handlePackClick}
             />
-
-            {localStorage.getItem('photoMap') === 'true' && info.latitude && info.longitude && (
-              <>
-                <div className="section-divider" />
-                <Suspense fallback={<div className="location-map-container" />}>
-                  <LocationMap latitude={info.latitude} longitude={info.longitude} />
-                </Suspense>
-              </>
-            )}
 
             <div className="buttons-wrapper">
               <ActionButtons
