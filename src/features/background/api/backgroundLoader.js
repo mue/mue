@@ -27,7 +27,7 @@ export async function fetchAPIImageData(excludedPun = null) {
   const url =
     api === 'unsplash' || api === 'pexels'
       ? `${baseURL}/unsplash?${collection ? `collections=${collection}` : `categories=${categories || ''}`}&quality=${quality}`
-      : `${baseURL}/random?categories=${categories || ''}&quality=${quality}&excludes=${excludes}`;
+      : `${baseURL}/random?categories=${categories || ''}&quality=${quality}&exclude=${excludes}`;
 
   try {
     const accept = `application/json, ${(await supportsAVIF()) ? 'image/avif' : 'image/webp'}`;
@@ -79,7 +79,7 @@ function getColourBackground() {
 async function getAPIBackground(isOffline) {
   if (isOffline) return getOfflineImage('api');
 
-  const queueManager = new BackgroundQueueManager('imageQueue', 3);
+  const queueManager = new BackgroundQueueManager('imageQueue', 5);
   let data;
 
   const cachedQueue = queueManager.getQueue();
@@ -306,7 +306,7 @@ function getPhotoPackBackground(isOffline) {
     return getAPIBackground(isOffline);
   }
 
-  const queueManager = new BackgroundQueueManager('photoPackQueue', 3);
+  const queueManager = new BackgroundQueueManager('photoPackQueue', 5);
   let photoData;
 
   const cachedQueue = queueManager.getQueue();

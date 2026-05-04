@@ -8,10 +8,10 @@ import { MdClose, MdDone } from 'react-icons/md';
 function ExcludeModal({ modalClose, info }) {
   const t = useT();
   const excludeImage = async () => {
-    let backgroundExclude = JSON.parse(localStorage.getItem('backgroundExclude'));
+    const backgroundExclude = JSON.parse(localStorage.getItem('backgroundExclude'));
     backgroundExclude.push(info.pun);
-    backgroundExclude = JSON.stringify(backgroundExclude);
-    localStorage.setItem('backgroundExclude', backgroundExclude);
+    const capped = backgroundExclude.slice(-50);
+    localStorage.setItem('backgroundExclude', JSON.stringify(capped));
     EventBus.emit('refresh', 'background');
     modalClose();
   };
