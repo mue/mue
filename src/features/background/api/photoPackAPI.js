@@ -211,20 +211,42 @@ export async function refreshAPIPackCache(packId) {
 
   const settings = JSON.parse(localStorage.getItem(`photopack_settings_${packId}`) || '{}');
 
-  const promises = Array.from({ length: 8 }, () => fetchFromProvider(packId, pack, settings));
+  const promises = Array.from({ length: 20 }, () => fetchFromProvider(packId, pack, settings));
   const results = await Promise.all(promises);
-  const validPhotos = results.filter(Boolean);
+
+  const seen = new Set();
+  const validPhotos = results.filter((photo) => {
+    if (!photo) return false;
+    const url = photo.url?.default || photo.url;
+    if (seen.has(url)) return false;
+    seen.add(url);
+    return true;
+  });
+
+  const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
+  const now = Date.now();
 
   if (validPhotos.length === 0) {
     console.warn(`No photos fetched for pack ${packId}`);
+    apiPackCache[packId] = {
+      photos: [],
+      last_fetched: now,
+      last_refresh_attempt: now,
+    };
+    localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
+
+    const apiPacksReady = JSON.parse(localStorage.getItem('api_packs_ready') || '[]');
+    if (!apiPacksReady.includes(packId)) {
+      apiPacksReady.push(packId);
+      localStorage.setItem('api_packs_ready', JSON.stringify(apiPacksReady));
+    }
     return false;
   }
 
-  const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
   apiPackCache[packId] = {
     photos: validPhotos,
-    last_fetched: Date.now(),
-    last_refresh_attempt: Date.now(),
+    last_fetched: now,
+    last_refresh_attempt: now,
   };
 
   try {
@@ -239,7 +261,7 @@ export async function refreshAPIPackCache(packId) {
     return true;
   } catch (error) {
     if (error.name === 'QuotaExceededError') {
-      apiPackCache[packId].photos = validPhotos.slice(0, 5);
+      apiPackCache[packId].photos = validPhotos.slice(0, 10);
       localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
 
       const apiPacksReady = JSON.parse(localStorage.getItem('api_packs_ready') || '[]');
@@ -261,9 +283,18 @@ export async function checkAndRefreshAPIPacks() {
   const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
   const installed = JSON.parse(localStorage.getItem('installed') || '[]');
 
-  const DEFAULT_CACHE_REFRESH_INTERVAL = 3600 * 1000; // 1 hour in milliseconds
+  const DEFAULT_CACHE_REFRESH_INTERVAL = 3600 * 1000;
 
-  for (const packId of apiPacksReady) {
+  const packsToCheck = new Set([
+    ...apiPacksReady,
+    ...Object.keys(apiPackCache).filter((id) => {
+      const cached = apiPackCache[id];
+      const pack = installed.find((p) => p.id === id);
+      return cached.photos.length === 0 && !pack?.requires_api_key;
+    }),
+  ]);
+
+  for (const packId of packsToCheck) {
     const pack = installed.find((p) => p.id === packId);
     const cached = apiPackCache[packId];
 
@@ -272,7 +303,10 @@ export async function checkAndRefreshAPIPacks() {
       : DEFAULT_CACHE_REFRESH_INTERVAL;
 
     const needsRefresh =
-      !cached || Date.now() - cached.last_fetched > refreshInterval || cached.photos.length < 3;
+      !cached ||
+      cached.photos.length === 0 ||
+      Date.now() - cached.last_fetched > refreshInterval ||
+      cached.photos.length < 5;
 
     if (needsRefresh) {
       refreshAPIPackCache(packId).catch((error) => {
