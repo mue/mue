@@ -601,12 +601,12 @@
     display: block;
   }
 
-  .location-map-image {
+  .location-map-container {
     width: 100%;
     height: 150px;
-    object-fit: cover;
     background: rgba(0, 0, 0, 0.1);
     border-radius: 12px;
+    overflow: hidden;
   }
 
   .map-copyright {

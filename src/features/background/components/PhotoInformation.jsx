@@ -1,5 +1,7 @@
 import variables from 'config/variables';
-import { useState, memo } from 'react';
+import { useState, memo, lazy, Suspense } from 'react';
+
+const LocationMap = lazy(() => import('./LocationMap'));
 import { useT } from 'contexts';
 import { useNavigate } from 'react-router';
 import Favourite from './Favourite';
@@ -196,40 +198,6 @@ function MetadataGrid({
           }
         />
       )}
-    </div>
-  );
-}
-
-/**
- * LocationMap - Displays interactive location map
- */
-function LocationMap({ latitude, longitude }) {
-  const t = useT();
-  const tileUrl = `${variables.constants.API_URL}/map?latitude=${latitude}&longitude=${longitude}`;
-
-  return (
-    <div className="location-map-section">
-      <a
-        href={`${variables.constants.OPENSTREETMAP_URL}/?mlat=${latitude}&mlon=${longitude}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          className="location-map-image"
-          src={tileUrl}
-          alt={t('common.alt_text.location')}
-          draggable={false}
-        />
-      </a>
-      <div className="map-copyright">
-        <a href="https://www.mapbox.com/about/maps/" target="_blank" rel="noopener noreferrer">
-          © Mapbox
-        </a>
-        {' • '}
-        <a href="https://www.openstreetmap.org/about/" target="_blank" rel="noopener noreferrer">
-          © OpenStreetMap
-        </a>
-      </div>
     </div>
   );
 }
@@ -470,7 +438,9 @@ function PhotoInformation({ info, url, api }) {
             {localStorage.getItem('photoMap') === 'true' && info.latitude && info.longitude && (
               <>
                 <div className="section-divider" />
-                <LocationMap latitude={info.latitude} longitude={info.longitude} />
+                <Suspense fallback={<div className="location-map-container" />}>
+                  <LocationMap latitude={info.latitude} longitude={info.longitude} />
+                </Suspense>
               </>
             )}
 

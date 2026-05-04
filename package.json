@@ -29,6 +29,7 @@
     "blurhash": "^2.0.5",
     "fast-blurhash": "^1.1.4",
     "image-conversion": "^2.1.1",
+    "maplibre-gl": "^5.24.0",
     "react": "^19.2.3",
     "react-best-gradient-color-picker": "^3.0.14",
     "react-clock": "6.0.0",
