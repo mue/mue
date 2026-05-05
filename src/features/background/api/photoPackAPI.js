@@ -1,5 +1,14 @@
 import variables from 'config/variables';
 
+const toNumericCoordinate = (value) => {
+  if (value === null || value === undefined || value === '') {
+    return null;
+  }
+
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
+};
+
 const responseParser = {
   pexels: (data, query) => {
     const photos = data.photos || [];
@@ -59,17 +68,27 @@ const responseParser = {
     };
   },
 
-  default: (data) => ({
-    photographer: data.photographer,
-    location: data.location?.name || data.location || 'Unknown',
-    url: { default: data.file },
-    blur_hash: data.blur_hash || null,
-    colour: data.colour,
-    ...(data.photo_page && { photo_page: data.photo_page }),
-    ...(data.photographer_page && { photographer_page: data.photographer_page }),
-    ...(data.category && { category: data.category }),
-    ...(data.camera && { camera: data.camera }),
-  }),
+  default: (data) => {
+    const latitude = toNumericCoordinate(data.location?.latitude);
+    const longitude = toNumericCoordinate(data.location?.longitude);
+
+    return {
+      photographer: data.photographer,
+      location: data.location?.name || data.location || 'Unknown',
+      url: { default: data.file },
+      blur_hash: data.blur_hash || null,
+      colour: data.colour,
+      ...(latitude !== null && longitude !== null && { latitude, longitude }),
+      ...(data.photo_page && { photo_page: data.photo_page }),
+      ...(data.photographer_page && { photographer_page: data.photographer_page }),
+      ...(data.category && { category: data.category }),
+      ...(data.camera && { camera: data.camera }),
+      ...(data.views !== undefined && { views: data.views }),
+      ...(data.downloads !== undefined && { downloads: data.downloads }),
+      ...(data.likes !== undefined && { likes: data.likes }),
+      ...(data.description && { description: data.description }),
+    };
+  },
 };
 
 /**
@@ -363,8 +382,8 @@ export function buildPhotoPool() {
           ...(photo.colour && { colour: photo.colour }),
           ...(photo.camera && { camera: photo.camera }),
           ...(photo.category && { category: photo.category }),
-          ...(photo.latitude &&
-            photo.longitude && { latitude: photo.latitude, longitude: photo.longitude }),
+          ...(photo.latitude != null &&
+            photo.longitude != null && { latitude: photo.latitude, longitude: photo.longitude }),
           ...(photo.photo_page && { photo_page: photo.photo_page }),
           ...(photo.photographer_page && { photographer_page: photo.photographer_page }),
         });

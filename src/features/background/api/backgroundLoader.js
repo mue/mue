@@ -330,8 +330,8 @@ function getPhotoPackBackground(isOffline) {
         ...(selected.colour && { colour: selected.colour }),
         ...(selected.camera && { camera: selected.camera }),
         ...(selected.category && { category: selected.category }),
-        ...(selected.latitude &&
-          selected.longitude && {
+        ...(selected.latitude != null &&
+          selected.longitude != null && {
             latitude: selected.latitude,
             longitude: selected.longitude,
           }),
@@ -395,8 +395,8 @@ async function prefetchPhotoPackImages(queueManager, pool, currentPhoto, current
       ...(photo.colour && { colour: photo.colour }),
       ...(photo.camera && { camera: photo.camera }),
       ...(photo.category && { category: photo.category }),
-      ...(photo.latitude &&
-        photo.longitude && {
+      ...(photo.latitude != null &&
+        photo.longitude != null && {
           latitude: photo.latitude,
           longitude: photo.longitude,
         }),

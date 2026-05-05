@@ -278,6 +278,9 @@ function PhotoInformation({ info, url, api }) {
   const [shareModal, openShareModal] = useState(false);
   const [excludeModal, openExcludeModal] = useState(false);
   const [favouriteTooltipText, setFavouriteTooltipText] = useState(t('widgets.quote.favourite'));
+  const latitude = Number(info.latitude);
+  const longitude = Number(info.longitude);
+  const hasCoordinates = Number.isFinite(latitude) && Number.isFinite(longitude);
 
   // Handle pack link click
   const handlePackClick = (packId) => {
@@ -406,7 +409,7 @@ function PhotoInformation({ info, url, api }) {
           {/* PRIMARY SECTION - Always Visible */}
           <div className="primary-content">
             <div className="primary-main-row">
-              {localStorage.getItem('photoMap') === 'true' && info.latitude && info.longitude && (
+              {localStorage.getItem('photoMap') === 'true' && hasCoordinates && (
                 <Suspense
                   fallback={
                     <div className="location-map-section location-map-section--compact">
@@ -414,7 +417,7 @@ function PhotoInformation({ info, url, api }) {
                     </div>
                   }
                 >
-                  <LocationMap latitude={info.latitude} longitude={info.longitude} compact />
+                  <LocationMap latitude={latitude} longitude={longitude} compact />
                 </Suspense>
               )}
               <div className="photoInformation-text">
@@ -435,10 +438,10 @@ function PhotoInformation({ info, url, api }) {
 
           {/* EXPANDED SECTION - CSS :hover controlled */}
           <div className="extra-content">
-            {localStorage.getItem('photoMap') === 'true' && info.latitude && info.longitude && (
+            {localStorage.getItem('photoMap') === 'true' && hasCoordinates && (
               <>
                 <Suspense fallback={<div className="location-map-container" />}>
-                  <LocationMap latitude={info.latitude} longitude={info.longitude} />
+                  <LocationMap latitude={latitude} longitude={longitude} />
                 </Suspense>
                 <div className="section-divider" />
               </>
