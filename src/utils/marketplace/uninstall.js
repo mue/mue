@@ -102,6 +102,7 @@ export function uninstall(type, name) {
   }
 
   const installed = JSON.parse(localStorage.getItem('installed'));
+  const enabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
   for (let i = 0; i < installed.length; i++) {
     if (installed[i].name === name) {
       if (installed[i].id) {
@@ -111,21 +112,18 @@ export function uninstall(type, name) {
           localStorage.setItem('uninstalledPacks', JSON.stringify(uninstalledPacks));
         }
       }
+      const packId = installed[i].id || installed[i].name;
+      delete enabledPacks[packId];
+      if (installed[i].api_enabled) {
+        localStorage.removeItem(`photopack_settings_${packId}`);
+      }
       installed.splice(i, 1);
       break;
     }
   }
 
   localStorage.setItem('installed', JSON.stringify(installed));
-
-  const enabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
-  const installedItems = JSON.parse(localStorage.getItem('installed') || '[]');
-  const packToRemove = installedItems.find((item) => item.name === name);
-  if (packToRemove) {
-    const packId = packToRemove.id || packToRemove.name;
-    delete enabledPacks[packId];
-    localStorage.setItem('enabledPacks', JSON.stringify(enabledPacks));
-  }
+  localStorage.setItem('enabledPacks', JSON.stringify(enabledPacks));
 
   if (refreshEvent) {
     EventBus.emit('refresh', refreshEvent);

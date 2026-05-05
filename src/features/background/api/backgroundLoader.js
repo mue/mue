@@ -337,6 +337,7 @@ function getPhotoPackBackground(isOffline) {
           }),
         ...(selected.photographer_page && { photographerURL: selected.photographer_page }),
         ...(selected.photo_page && { photoURL: selected.photo_page }),
+        ...(selected.attribution_config && { attribution_config: selected.attribution_config }),
       },
     };
   }
@@ -401,6 +402,7 @@ async function prefetchPhotoPackImages(queueManager, pool, currentPhoto, current
         }),
       ...(photo.photographer_page && { photographerURL: photo.photographer_page }),
       ...(photo.photo_page && { photoURL: photo.photo_page }),
+      ...(photo.attribution_config && { attribution_config: photo.attribution_config }),
     },
   }));
 

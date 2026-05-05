@@ -26,20 +26,10 @@ async function trackDownload(itemId) {
 }
 
 export function install(type, input, sideload, collection) {
-  console.log(`[Install] Installing ${type}: ${input.display_name || input.name}`, {
-    sideload,
-    collection,
-    id: input.id,
-  });
-
   const installed = JSON.parse(localStorage.getItem('installed') || '[]');
   const isNewInstall = !installed.some((item) => item.id === input.id || item.name === input.name);
 
-  console.log(`[Install] isNewInstall: ${isNewInstall}`);
-
-  // Prevent duplicate installations - if pack already exists, skip
   if (!isNewInstall) {
-    console.log(`[Install] Pack ${input.display_name || input.name} already installed, skipping`);
     return;
   }
 
@@ -47,11 +37,9 @@ export function install(type, input, sideload, collection) {
 
   const handler = getHandler(type);
   if (handler) {
-    console.log(`[Install] Using handler for type: ${type}`);
     const result = handler.install(input, { isNewInstall, installed });
     refreshEvent = result.refreshEvent;
   } else {
-    console.log(`[Install] No handler found, using fallback switch for type: ${type}`);
     switch (type) {
       case 'settings': {
         localStorage.removeItem('backup_settings');
@@ -147,26 +135,19 @@ export function install(type, input, sideload, collection) {
   installed.push(input);
 
   localStorage.setItem('installed', JSON.stringify(installed));
-  console.log(`[Install] Updated installed list, count: ${installed.length}`);
 
   if (isNewInstall) {
     const packId = input.id || input.name;
     const enabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
     enabledPacks[packId] = true;
     localStorage.setItem('enabledPacks', JSON.stringify(enabledPacks));
-    console.log(`[Install] Set pack ${packId} as enabled`);
   }
 
-  // Track download regardless of whether it's a new install or reinstall
-  // This ensures download counts are accurate even after architectural changes
   if (input.id) {
     trackDownload(input.id);
   }
 
   if (refreshEvent) {
-    console.log(`[Install] Emitting refresh event: ${refreshEvent}`);
     EventBus.emit('refresh', refreshEvent);
   }
-
-  console.log(`[Install] Installation complete for ${input.display_name || input.name}`);
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Modal from 'react-modal';
 import { useT } from 'contexts';
 import variables from 'config/variables';
@@ -11,7 +11,14 @@ import { getProxiedImageUrl } from 'utils/marketplace';
 import placeholderIcon from 'assets/icons/marketplace-placeholder.png';
 import './ItemSettingsModal.scss';
 
+const TYPE_TRANSLATION_KEYS = {
+  photos: 'photo_packs',
+  quotes: 'quote_packs',
+  settings: 'preset_settings',
+};
+
 const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
+  const t = useT();
   const [settings, setSettings] = useState(() => {
     const saved = localStorage.getItem(`photopack_settings_${pack.id}`);
     return saved ? JSON.parse(saved) : {};
@@ -20,6 +27,7 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
   const [dynamicOptions, setDynamicOptions] = useState({});
   const [refreshing, setRefreshing] = useState(false);
   const [validationErrors, setValidationErrors] = useState([]);
+  const debounceTimerRef = useRef(null);
 
   const validateSettings = useCallback(() => {
     const errors = [];
@@ -76,7 +84,7 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
     validateSettings();
   }, [settings, validateSettings, pack.settings_schema]);
 
-  const handleSettingChange = async (key, value, secure = false) => {
+  const handleSettingChange = (key, value, secure = false, fieldType = 'text') => {
     const processedValue = secure ? btoa(value) : value;
     const newSettings = { ...settings, [key]: processedValue };
     setSettings(newSettings);
@@ -88,10 +96,22 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
       localStorage.setItem('api_pack_cache', JSON.stringify(apiPackCache));
     }
 
-    setRefreshing(true);
-    await refreshAPIPackCache(pack.id);
-    setRefreshing(false);
-    EventBus.emit('refresh', 'background');
+    if (fieldType === 'dropdown' || fieldType === 'switch' || fieldType === 'slider' || fieldType === 'chipselect') {
+      setRefreshing(true);
+      refreshAPIPackCache(pack.id).then(() => {
+        setRefreshing(false);
+        EventBus.emit('refresh', 'background');
+      });
+    } else {
+      if (debounceTimerRef.current) clearTimeout(debounceTimerRef.current);
+      debounceTimerRef.current = setTimeout(() => {
+        setRefreshing(true);
+        refreshAPIPackCache(pack.id).then(() => {
+          setRefreshing(false);
+          EventBus.emit('refresh', 'background');
+        });
+      }, 500);
+    }
   };
 
   const handleManualRefresh = async () => {
@@ -119,7 +139,7 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
             name={`${pack.id}_${field.key}`}
             value={value}
             items={dropdownItems}
-            onChange={(newValue) => handleSettingChange(field.key, newValue)}
+            onChange={(newValue) => handleSettingChange(field.key, newValue, false, 'dropdown')}
           />
         );
       }
@@ -131,7 +151,7 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
             label={field.label}
             options={options}
             name={`${pack.id}_${field.key}`}
-            onChange={(newValue) => handleSettingChange(field.key, newValue)}
+            onChange={(newValue) => handleSettingChange(field.key, newValue, false, 'chipselect')}
           />
         );
       }
@@ -143,7 +163,7 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
             <input
               type={field.secure ? 'password' : 'text'}
               value={value}
-              onChange={(e) => handleSettingChange(field.key, e.target.value, field.secure)}
+              onChange={(e) => handleSettingChange(field.key, e.target.value, field.secure, 'text')}
               placeholder={field.placeholder || ''}
               className="itemSettings-field-input"
             />
@@ -157,7 +177,7 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
             name={`${pack.id}_${field.key}`}
             text={field.label}
             value={value}
-            onChange={(newValue) => handleSettingChange(field.key, newValue)}
+            onChange={(newValue) => handleSettingChange(field.key, newValue, false, 'switch')}
           />
         );
 
@@ -170,7 +190,7 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
             max={field.max || 100}
             step={field.step || 1}
             value={value}
-            onChange={(newValue) => handleSettingChange(field.key, newValue)}
+            onChange={(newValue) => handleSettingChange(field.key, newValue, false, 'slider')}
           />
         );
 
@@ -268,7 +288,7 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
             <div className="itemSettings-info-item">
               <span className="label">Type</span>
               <span className="value">
-                {t('modals.main.marketplace.' + getTypeTranslationKey(pack.type))}
+                {t('modals.main.marketplace.' + (TYPE_TRANSLATION_KEYS[pack.type] || pack.type))}
               </span>
             </div>
             {pack.description && (
@@ -289,15 +309,5 @@ const ItemSettingsModal = ({ pack, isOpen, onClose, isEnabled }) => {
     </Modal>
   );
 };
-
-function getTypeTranslationKey(type) {
-  const t = useT();
-  const typeMap = {
-    photos: 'photo_packs',
-    quotes: 'quote_packs',
-    settings: 'preset_settings',
-  };
-  return typeMap[type] || type;
-}
 
 export default ItemSettingsModal;

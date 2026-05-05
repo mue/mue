@@ -16,7 +16,7 @@ export function useSuggestedPacks(category, limit = 4, minToShow = 2) {
 
   const cacheKey = `suggested_${category}`;
   const timestampKey = `${cacheKey}_timestamp`;
-  const cacheExpiryMs = 24 * 60 * 60 * 1000; // 24 hours
+  const cacheExpiryMs = 60 * 60 * 1000; // 1 hour
 
   const getInstalledPackIds = useCallback(() => {
     const installed = safeParseJSON('installed', []);

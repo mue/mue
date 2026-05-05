@@ -40,7 +40,9 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
   const [backgroundAPI, setBackgroundAPI] = useState(
     localStorage.getItem('backgroundAPI') || 'mue',
   );
-  const [marketplaceEnabled] = useState(localStorage.getItem('photo_packs'));
+  const [marketplaceEnabled] = useState(
+    JSON.parse(localStorage.getItem('installed') || '[]').some((p) => p.type === 'photos'),
+  );
 
   const getInstalledPhotoPacks = () => {
     try {
@@ -156,7 +158,11 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
   };
 
   const getTotalPhotoCount = () => {
+    const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
     return installedPhotoPacks.reduce((total, pack) => {
+      if (pack.api_enabled) {
+        return total + (apiPackCache[pack.id]?.photos?.length || 0);
+      }
       return total + (pack.photos?.length || 0);
     }, 0);
   };

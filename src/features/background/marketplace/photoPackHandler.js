@@ -3,21 +3,12 @@ import { refreshAPIPackCache } from 'features/background/api/photoPackAPI';
 
 export const photoPackHandler = {
   install: (packData, context) => {
-    console.log(`[Photo Handler] Installing ${packData.display_name || packData.name}`, {
-      api_enabled: packData.api_enabled,
-      requires_api_key: packData.requires_api_key,
-      photo_count: packData.photos?.length,
-      isNewInstall: context.isNewInstall,
-    });
-
     const currentPhotos = JSON.parse(localStorage.getItem('photo_packs')) || [];
-    const hadPhotoPacks = currentPhotos.length > 0;
 
     if (packData.api_enabled) {
-      console.log(`[Photo Handler] Setting up API pack ${packData.id}`);
       const defaultSettings = {};
       packData.settings_schema?.forEach((field) => {
-        defaultSettings[field.id] = field.default || '';
+        defaultSettings[field.key] = field.default || '';
       });
       localStorage.setItem(`photopack_settings_${packData.id}`, JSON.stringify(defaultSettings));
 
@@ -34,16 +25,13 @@ export const photoPackHandler = {
       }
 
       if (!packData.requires_api_key) {
-        console.log(`[Photo Handler] Refreshing API cache for ${packData.id}`);
         refreshAPIPackCache(packData.id);
       }
     } else {
-      console.log(`[Photo Handler] Adding ${packData.photos.length} static photos to pool`);
       packData.photos.forEach((photo) => {
         currentPhotos.push(photo);
       });
       localStorage.setItem('photo_packs', JSON.stringify(currentPhotos));
-      console.log(`[Photo Handler] Photo pool now has ${currentPhotos.length} photos`);
     }
 
     if (localStorage.getItem('backgroundType') !== 'photo_pack') {
@@ -55,12 +43,6 @@ export const photoPackHandler = {
 
     const backgroundElement = document.getElementById('backgroundImage');
     const hasBackground = backgroundElement && backgroundElement.style.backgroundImage;
-
-    console.log(`[Photo Handler] Background check:`, {
-      elementExists: !!backgroundElement,
-      hasBackgroundImage: !!hasBackground,
-      willRefresh: !hasBackground,
-    });
 
     return {
       refreshEvent: !hasBackground ? 'backgroundrefresh' : null,

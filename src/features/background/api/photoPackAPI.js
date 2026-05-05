@@ -211,7 +211,7 @@ export async function refreshAPIPackCache(packId) {
 
   const settings = JSON.parse(localStorage.getItem(`photopack_settings_${packId}`) || '{}');
 
-  const promises = Array.from({ length: 20 }, () => fetchFromProvider(packId, pack, settings));
+  const promises = Array.from({ length: 5 }, () => fetchFromProvider(packId, pack, settings));
   const results = await Promise.all(promises);
 
   const seen = new Set();
@@ -327,41 +327,17 @@ export function buildPhotoPool() {
   const apiPacksReady = JSON.parse(localStorage.getItem('api_packs_ready') || '[]');
   const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
 
-  console.log('[Build Pool] Building photo pool', {
-    installed_count: installed.filter((p) => p.type === 'photos').length,
-    enabledPacks,
-    apiPacksReady,
-  });
-
   installed.forEach((pack) => {
     if (pack.type !== 'photos') return;
 
     const packId = pack.id || pack.name;
-    const isEnabled = enabledPacks[packId] !== false;
 
-    console.log(`[Build Pool] Processing pack: ${pack.display_name || pack.name}`, {
-      packId,
-      enabled: isEnabled,
-      enabledPacksValue: enabledPacks[packId],
-      api_enabled: pack.api_enabled,
-      api_ready: apiPacksReady.includes(pack.id),
-      cached_photos: pack.api_enabled
-        ? apiPackCache[pack.id]?.photos?.length || 0
-        : pack.photos?.length || 0,
-    });
-
-    if (enabledPacks[packId] === false) {
-      console.log(`[Build Pool] Skipping disabled pack: ${pack.display_name || pack.name}`);
-      return;
-    }
+    if (enabledPacks[packId] === false) return;
 
     if (pack.api_enabled) {
       if (apiPacksReady.includes(pack.id)) {
         const cached = apiPackCache[pack.id];
         if (cached && cached.photos.length > 0) {
-          console.log(
-            `[Build Pool] Adding ${cached.photos.length} API photos from ${pack.display_name || pack.name}`,
-          );
           cached.photos.forEach((photo) => {
             pool.push({
               ...photo,
@@ -371,18 +347,9 @@ export function buildPhotoPool() {
               attribution_config: pack.attribution || null,
             });
           });
-        } else {
-          console.log(
-            `[Build Pool] API pack ${pack.display_name || pack.name} has no cached photos`,
-          );
         }
-      } else {
-        console.log(`[Build Pool] API pack ${pack.display_name || pack.name} is not ready yet`);
       }
     } else {
-      console.log(
-        `[Build Pool] Adding ${pack.photos.length} static photos from ${pack.display_name || pack.name}`,
-      );
       pack.photos.forEach((photo) => {
         pool.push({
           photographer: photo.photographer,
@@ -393,11 +360,17 @@ export function buildPhotoPool() {
           pack_id: pack.id,
           pack_name: pack.display_name || pack.name,
           attribution_config: pack.attribution || null,
+          ...(photo.colour && { colour: photo.colour }),
+          ...(photo.camera && { camera: photo.camera }),
+          ...(photo.category && { category: photo.category }),
+          ...(photo.latitude &&
+            photo.longitude && { latitude: photo.latitude, longitude: photo.longitude }),
+          ...(photo.photo_page && { photo_page: photo.photo_page }),
+          ...(photo.photographer_page && { photographer_page: photo.photographer_page }),
         });
       });
     }
   });
 
-  console.log(`[Build Pool] Final pool size: ${pool.length} photos`);
   return pool;
 }
