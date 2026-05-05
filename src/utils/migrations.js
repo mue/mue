@@ -41,6 +41,7 @@ export async function migrateAPIUsersToPhotoPacks() {
   if (wasUsingAPIBackgrounds) {
     // Preserve existing settings for API users
     const existingQuality = localStorage.getItem('apiQuality') || 'high';
+    const normalizedQuality = existingQuality === 'low' ? 'datasaver' : existingQuality;
     const existingCategories = JSON.parse(localStorage.getItem('apiCategories') || '["nature"]');
     const existingCollections = localStorage.getItem('unsplashCollections') || '';
 
@@ -62,11 +63,11 @@ export async function migrateAPIUsersToPhotoPacks() {
           if (data.api_provider === 'mue') {
             localStorage.setItem(
               `photopack_settings_${data.id}`,
-              JSON.stringify({
-                quality: existingQuality,
-                categories: existingCategories,
-              }),
-            );
+                JSON.stringify({
+                  quality: normalizedQuality,
+                  categories: existingCategories,
+                }),
+              );
           } else if (data.api_provider === 'unsplash') {
             localStorage.setItem(
               `photopack_settings_${data.id}`,

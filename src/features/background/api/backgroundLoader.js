@@ -12,8 +12,12 @@ import { buildPhotoPool, checkAndRefreshAPIPacks } from './photoPackAPI';
 /**
  * Fetches image data from the configured API
  */
-export async function fetchAPIImageData(excludedPun = null) {
-  const api = localStorage.getItem('backgroundAPI') || 'mue';
+export async function fetchAPIImageData(
+  excludedPun = null,
+  excludedUnsplashIds = [],
+  forcedAPI = null,
+) {
+  const api = forcedAPI || localStorage.getItem('backgroundAPI') || 'mue';
   const quality = localStorage.getItem('apiQuality') || 'high';
   const categories = safeParseJSON('apiCategories', localStorage.getItem('apiCategories'));
   const excludes = [
@@ -23,17 +27,24 @@ export async function fetchAPIImageData(excludedPun = null) {
 
   const baseURL = `${variables.constants.API_URL}/images`;
   const collection = localStorage.getItem('unsplashCollections');
+  const recentUnsplashIds = safeParseJSON('unsplashRecentPhotoIds', []);
+  const unsplashExclude = Array.from(
+    new Set([
+      ...excludedUnsplashIds.filter(Boolean),
+      ...recentUnsplashIds.filter(Boolean),
+    ]),
+  ).slice(-30);
 
   const url =
     api === 'unsplash' || api === 'pexels'
-      ? `${baseURL}/unsplash?${collection ? `collections=${collection}` : `categories=${categories || ''}`}&quality=${quality}`
+      ? `${baseURL}/unsplash?${collection ? `collections=${collection}` : `categories=${categories || ''}`}&quality=${quality}${api === 'unsplash' && unsplashExclude.length > 0 ? `&exclude=${encodeURIComponent(unsplashExclude.join(','))}` : ''}`
       : `${baseURL}/random?categories=${categories || ''}&quality=${quality}&exclude=${excludes}`;
 
   try {
     const accept = `application/json, ${(await supportsAVIF()) ? 'image/avif' : 'image/webp'}`;
     const data = await (await fetch(url, { headers: { accept } })).json();
 
-    return {
+    const parsed = {
       url: data.file,
       type: 'api',
       currentAPI: api,
@@ -54,9 +65,23 @@ export async function fetchAPIImageData(excludedPun = null) {
         description: data.description,
         colour: data.colour,
         blur_hash: data.blur_hash,
+        id: data.id,
         pun: data.pun,
       },
     };
+
+    if (api === 'unsplash' && data.id) {
+      try {
+        localStorage.setItem(
+          'unsplashRecentPhotoIds',
+          JSON.stringify([...unsplashExclude, data.id].slice(-30)),
+        );
+      } catch (e) {
+        console.warn('Could not update unsplashRecentPhotoIds in localStorage:', e);
+      }
+    }
+
+    return parsed;
   } catch (error) {
     console.error('Failed to fetch API image:', error);
     return null;
@@ -76,7 +101,7 @@ function getColourBackground() {
 /**
  * Gets API background with caching and prefetching
  */
-async function getAPIBackground(isOffline) {
+async function getAPIBackground(isOffline, forcedAPI = null) {
   if (isOffline) return getOfflineImage('api');
 
   const queueManager = new BackgroundQueueManager('imageQueue', 5);
@@ -86,7 +111,7 @@ async function getAPIBackground(isOffline) {
   if (cachedQueue.length > 0) {
     data = queueManager.shift();
   } else {
-    data = await fetchAPIImageData();
+    data = await fetchAPIImageData(null, [], forcedAPI);
   }
 
   if (!data) {
@@ -120,14 +145,29 @@ async function prefetchAPIImages(queueManager, currentImage, currentQueue) {
     currentImage.photoInfo.pun,
     ...currentQueue.map((img) => img.photoInfo?.pun).filter(Boolean),
   ];
+  const excludedUnsplashIds = [
+    currentImage.photoInfo?.id,
+    ...currentQueue.map((img) => img.photoInfo?.id).filter(Boolean),
+  ];
 
   const newImages = await Promise.all(
     Array.from({ length: count }, (_, i) =>
-      fetchAPIImageData(excludedPuns[i] || currentImage.photoInfo.pun),
+      fetchAPIImageData(
+        excludedPuns[i] || currentImage.photoInfo.pun,
+        excludedUnsplashIds.slice(0, i + 1),
+        currentImage.currentAPI,
+      ),
     ),
   );
 
-  const validImages = newImages.filter(Boolean);
+  const seen = new Set();
+  const validImages = newImages.filter((image) => {
+    if (!image) return false;
+    const key = image.photoInfo?.id || image.url;
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
   if (validImages.length > 0) {
     queueManager.push(validImages);
   }
@@ -302,8 +342,13 @@ function getPhotoPackBackground(isOffline) {
   const pool = buildPhotoPool();
 
   if (pool.length === 0) {
-    console.warn('Photo pack pool is empty, falling back to API background');
-    return getAPIBackground(isOffline);
+    checkAndRefreshAPIPacks().catch((error) => {
+      console.error('Failed to refresh API packs while pool is empty:', error);
+    });
+
+    const fallbackAPI = getEnabledAPIPackProvider() || localStorage.getItem('backgroundAPI') || 'mue';
+    console.warn(`Photo pack pool is empty, falling back to API background (${fallbackAPI})`);
+    return getAPIBackground(isOffline, fallbackAPI);
   }
 
   const queueManager = new BackgroundQueueManager('photoPackQueue', 5);
@@ -355,6 +400,21 @@ function getPhotoPackBackground(isOffline) {
   }
 
   return photoData;
+}
+
+function getEnabledAPIPackProvider() {
+  const installed = safeParseJSON('installed', []);
+  const enabledPacks = safeParseJSON('enabledPacks', {});
+
+  const enabledAPIPack = installed.find((pack) => {
+    if (pack.type !== 'photos' || !pack.api_enabled || pack.requires_api_key) {
+      return false;
+    }
+    const packId = pack.id || pack.name;
+    return enabledPacks[packId] !== false;
+  });
+
+  return enabledAPIPack?.api_provider || null;
 }
 
 /**

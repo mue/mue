@@ -9,6 +9,13 @@ const toNumericCoordinate = (value) => {
   return Number.isFinite(parsed) ? parsed : null;
 };
 
+const normalizeQualitySetting = (value) => {
+  if (value === 'low') {
+    return 'datasaver';
+  }
+  return value;
+};
+
 const responseParser = {
   pexels: (data, query) => {
     const photos = data.photos || [];
@@ -45,7 +52,7 @@ const responseParser = {
     if (photos.length === 0) return null;
     const photo = photos[Math.floor(Math.random() * photos.length)];
 
-    const infoParams = new URLSearchParams({
+    const infoParams = new window.URLSearchParams({
       method: 'flickr.photos.getInfo',
       api_key: apiKey,
       photo_id: photo.id,
@@ -106,7 +113,7 @@ export async function fetchFromProvider(packId, pack, settings) {
   }
 
   try {
-    const params = new URLSearchParams();
+    const params = new window.URLSearchParams();
     const headers = {};
     let apiKey = null;
 
@@ -135,7 +142,7 @@ export async function fetchFromProvider(packId, pack, settings) {
           params.append('page', Math.floor(Math.random() * 3) + 1);
           break;
 
-        case 'flickr':
+        case 'flickr': {
           apiKey = settings.api_key;
           if (apiKey) params.append('api_key', atob(apiKey));
           params.append('method', 'flickr.photos.search');
@@ -158,12 +165,16 @@ export async function fetchFromProvider(packId, pack, settings) {
           params.append('format', 'json');
           params.append('nojsoncallback', '1');
           break;
+        }
       }
     } else {
       pack.settings_schema?.forEach((setting) => {
         let value = settings[setting.key];
         if (setting.secure && value) {
           value = atob(value);
+        }
+        if (setting.key === 'quality') {
+          value = normalizeQualitySetting(value);
         }
         if (value !== undefined && value !== null && value !== '') {
           params.append(setting.key, value);
@@ -301,6 +312,7 @@ export async function checkAndRefreshAPIPacks() {
   const apiPacksReady = JSON.parse(localStorage.getItem('api_packs_ready') || '[]');
   const apiPackCache = JSON.parse(localStorage.getItem('api_pack_cache') || '{}');
   const installed = JSON.parse(localStorage.getItem('installed') || '[]');
+  const enabledPacks = JSON.parse(localStorage.getItem('enabledPacks') || '{}');
 
   const DEFAULT_CACHE_REFRESH_INTERVAL = 3600 * 1000;
 
@@ -316,6 +328,11 @@ export async function checkAndRefreshAPIPacks() {
   for (const packId of packsToCheck) {
     const pack = installed.find((p) => p.id === packId);
     const cached = apiPackCache[packId];
+    const isEnabled = enabledPacks[packId] !== false;
+
+    if (!isEnabled || !pack?.api_enabled) {
+      continue;
+    }
 
     const refreshInterval = pack?.cache_refresh_interval
       ? pack.cache_refresh_interval * 1000
