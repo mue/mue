@@ -5,6 +5,7 @@ node_modules/
 build/
 .idea/
 dist/
+.claude/worktrees/
 
 # Safari Extension Build Files
 safari/Mue Extension/Resources/*.html
