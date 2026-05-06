@@ -69,7 +69,7 @@ const Favourite = memo(({ tooltipText, credit, offline, pun }) => {
                 credit: credit || '',
                 location: location?.innerText,
                 camera: camera?.innerText,
-                resolution: document.getElementById('infoResolution').textContent || '',
+                resolution: document.getElementById('infoResolution')?.textContent || '',
                 offline,
                 pun,
               }),

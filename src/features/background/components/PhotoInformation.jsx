@@ -11,7 +11,7 @@ import {
   MdGetApp as Download,
   MdVisibility as Views,
   MdIosShare as Share,
-  MdSource as Source,
+  MdPhotoLibrary as Source,
   MdFavorite as MdFavourite,
   MdCategory as Category,
   MdVisibilityOff as VisibilityOff,
@@ -155,7 +155,7 @@ function MetadataGrid({
         />
       )}
 
-      {width !== null && height !== null && (
+      {/* {width !== null && height !== null && (
         <MetadataItem
           icon={<Resolution />}
           label={t('widgets.background.resolution')}
@@ -169,7 +169,7 @@ function MetadataGrid({
           label={t('widgets.background.color')}
           value={<ColorSwatch hex={colour} />}
         />
-      )}
+      )} */}
 
       {category && (
         <MetadataItem
@@ -350,13 +350,13 @@ function PhotoInformation({ info, url, api }) {
     );
   }
 
-  // get resolution
+  /* // get resolution
   const img = new Image();
   img.onload = (event) => {
     setWidth(event.target.width);
     setHeight(event.target.height);
   };
-  img.src = getProxiedImageUrl(url);
+  img.src = getProxiedImageUrl(url); */
 
   // info is still there because we want the favourite button to work
   if (localStorage.getItem('photoInformation') === 'false') {
@@ -365,9 +365,9 @@ function PhotoInformation({ info, url, api }) {
         <span id="credit">{credit}</span>
         <span id="infoLocation">{info.location}</span>
         <span id="infoCamera">{info.camera}</span>
-        <span id="infoResolution">
+        {/* <span id="infoResolution">
           {width}x{height}
-        </span>
+        </span> */}
       </div>
     );
   }

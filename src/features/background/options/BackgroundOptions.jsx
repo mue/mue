@@ -2,7 +2,7 @@ import variables from 'config/variables';
 import { useT } from 'contexts';
 import { memo, useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router';
-import { MdSource, MdOutlineAutoAwesome } from 'react-icons/md';
+import { MdPhotoLibrary, MdOutlineAutoAwesome } from 'react-icons/md';
 import { toast } from 'react-toastify';
 import EventBus from 'utils/eventbus';
 import { clearQueuesOnSettingChange } from 'utils/queueOperations';
@@ -243,7 +243,7 @@ const BackgroundOptions = memo(({ currentSubSection, onSubSectionChange, section
       {!currentSubSection && (
         <>
           <NavigationCard
-            icon={MdSource}
+            icon={MdPhotoLibrary}
             title={t('modals.main.settings.sections.background.source.title')}
             subtitle={t('modals.main.settings.sections.background.source.subtitle')}
             onClick={() => onSubSectionChange('source', sectionName)}
