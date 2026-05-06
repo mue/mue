@@ -13,16 +13,6 @@ const COMPACT_ZOOM = 1.2;
 const COUNTRY_ZOOM_PADDING = 5;
 const COUNTRY_BOUNDS_CACHE = new Map();
 
-const MARKER_COLORS = {
-  light: '#555555',
-  dark: '#2d3e5f',
-};
-
-const MARKER_BORDERS = {
-  light: 'rgba(255, 255, 255, 0.95)',
-  dark: 'rgba(255, 255, 255, 0.95)',
-};
-
 const getResolvedTheme = () => {
   const theme = localStorage.getItem('theme') || 'auto';
   if (theme === 'auto') {
@@ -32,21 +22,6 @@ const getResolvedTheme = () => {
   }
 
   return theme === 'dark' ? 'dark' : 'light';
-};
-
-const createCircleMarker = (theme, compact) => {
-  const markerElement = document.createElement('div');
-  markerElement.className = `location-map-marker${compact ? ' location-map-marker--compact' : ''}`;
-  markerElement.style.width = compact ? '8px' : '12px';
-  markerElement.style.height = compact ? '8px' : '12px';
-  markerElement.style.borderRadius = '50%';
-  markerElement.style.borderStyle = 'solid';
-  markerElement.style.borderWidth = compact ? '1.5px' : '2px';
-  markerElement.style.boxShadow = compact ? '0 0 0 1px rgba(0, 0, 0, 0.2)' : '0 0 0 2px rgba(0, 0, 0, 0.2)';
-  markerElement.style.opacity = compact && theme === 'light' ? '0.82' : '1';
-  markerElement.style.backgroundColor = MARKER_COLORS[theme] || MARKER_COLORS.light;
-  markerElement.style.borderColor = MARKER_BORDERS[theme] || MARKER_BORDERS.light;
-  return markerElement;
 };
 
 const hideCompactMapLabels = (mapInstance) => {
@@ -209,13 +184,6 @@ function LocationMap({ latitude, longitude, compact = false }) {
         zoom: compact ? COMPACT_ZOOM : STANDARD_ZOOM,
       });
     });
-
-    new maplibregl.Marker({
-      element: createCircleMarker(resolvedTheme, compact),
-      anchor: 'center',
-    })
-      .setLngLat([longitude, latitude])
-      .addTo(mapInstance);
 
     return () => {
       mapInstance.remove();
