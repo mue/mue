@@ -31,8 +31,12 @@ export default function QuoteButtons({ onCopy, onFavourite, onShare, isFavourite
     };
   }, []);
 
+  if (!showCopy && !showShare && !showFavourite) {
+    return null;
+  }
+
   return (
-    <>
+    <div className="quote-buttons">
       {showCopy && (
         <Tooltip title={t('widgets.quote.copy')}>
           <button onClick={onCopy} aria-label={t('widgets.quote.copy')}>
@@ -65,6 +69,6 @@ export default function QuoteButtons({ onCopy, onFavourite, onShare, isFavourite
           </button>
         </Tooltip>
       )}
-    </>
+    </div>
   );
 }

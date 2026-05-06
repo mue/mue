@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
 import Modal from 'react-modal';
-import { MdInfoOutline } from 'react-icons/md';
 import { ShareModal } from 'components/Elements';
 
 import { useQuoteState, useQuoteLoader, useQuoteActions } from './hooks';
@@ -135,7 +134,6 @@ export default function Quote() {
           <AuthorInfo
             author={quoteData.author}
             authorOccupation={quoteData.authorOccupation}
-            authorlink={quoteData.authorlink}
             authorimg={quoteData.authorimg}
             authorimglicense={quoteData.authorimglicense}
             onCopy={copyQuote}
@@ -146,10 +144,6 @@ export default function Quote() {
           />
         ))}
 
-      <div className="quote-info-text" onClick={() => toggleInfoModal(true)}>
-        <MdInfoOutline />
-        <span>About this quote</span>
-      </div>
     </div>
   );
 }

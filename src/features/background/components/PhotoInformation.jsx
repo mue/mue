@@ -444,7 +444,6 @@ function PhotoInformation({ info, url, api }) {
                 <Suspense fallback={<div className="location-map-container" />}>
                   <LocationMap latitude={latitude} longitude={longitude} crosshair={crosshair} />
                 </Suspense>
-                <div className="section-divider" />
               </>
             )}
 

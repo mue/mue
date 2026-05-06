@@ -23,14 +23,22 @@ bun run translations:unused       # Find unused translation keys
 
 Build outputs: `build/chrome/`, `build/firefox/`, `safari/Mue Extension/Resources/`. Vite's `prepareBuilds` plugin (in `vite.config.mjs`) copies dist + manifests + icons into each browser folder and creates versioned zips.
 
-There are no tests in this project.
+E2E tests use Cypress:
+
+```bash
+bun run test:e2e          # Open Cypress UI
+bun run test:e2e:headless # Run headlessly (CI)
+```
+
+Tests live in `cypress/e2e/`.
 
 ## Architecture
 
 ### Bootstrap Flow
 
-1. `src/index.jsx` - Initializes i18n from localStorage language, sets up Sentry, runs data migrations, exposes global `window.t()`, renders `<ErrorBoundary><App/></ErrorBoundary>`
-2. `src/App.jsx` - `useAppSetup()` checks first-run state, calls `loadSettings()` (which applies theme, fonts, custom CSS to the DOM), listens for EventBus `'refresh'` events. Renders: `<TranslationProvider>` → `<Background>` + `<CustomWidgets>` + `<Widgets>` + `<Modals>`
+1. `src/index.jsx` - Initializes i18n from localStorage language, sets up Sentry, runs data migrations, exposes global `window.t()`, renders `<RouterProvider router={router} />`
+2. `src/router/` - Hash-based router (`createHashRouter`) required for extension compatibility (no physical file routing). `ModalRouter.jsx` and `RouterBridge.jsx` handle modal deep-linking.
+3. `src/App.jsx` - `useAppSetup()` checks first-run state, calls `loadSettings()` (which applies theme, fonts, custom CSS to the DOM), listens for EventBus `'refresh'` events. Renders: `<TranslationProvider>` → `<Background>` + `<CustomWidgets>` + `<Widgets>` + `<Modals>`
 
 ### State Management (no Redux/Zustand)
 
@@ -54,7 +62,7 @@ Pattern: register in `useEffect`, clean up with `EventBus.off()` on unmount.
 
 ### Feature Organization (`src/features/`)
 
-Each feature (background, time, quote, greeting, weather, search, quicklinks, message, navbar, stats, marketplace, welcome) follows this structure:
+Each feature (background, time, quote, greeting, weather, search, quicklinks, message, navbar, stats, marketplace, welcome, helpers, modals) follows this structure:
 
 ```
 feature/
