@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { MdOutlineDragIndicator } from 'react-icons/md';
 import {
   DndContext,
@@ -64,16 +64,6 @@ const Overview = () => {
         'message',
       ],
   );
-  const [news, setNews] = useState({
-    title: '',
-    date: '',
-    description: '',
-    link: '',
-    linkText: '',
-  });
-  const [newsDone, setNewsDone] = useState(false);
-  const [loading, setLoading] = useState(true);
-
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
@@ -125,27 +115,6 @@ const Overview = () => {
         return null;
     }
   };
-
-  const getNews = useCallback(async () => {
-    try {
-      const response = await fetch(`${variables.constants.API_URL}/news`);
-      const data = await response.json();
-      data.date = new window.Date(data.date).toLocaleDateString(
-        variables.languagecode.replace('_', '-'),
-        { year: 'numeric', month: 'long', day: 'numeric' },
-      );
-      setNews(data);
-      setNewsDone(true);
-    } catch (error) {
-      console.error('Failed to fetch news:', error);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    getNews();
-  }, [getNews]);
 
   useEffect(() => {
     localStorage.setItem('order', JSON.stringify(items));
