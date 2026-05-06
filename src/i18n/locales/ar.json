@@ -26,6 +26,8 @@
       "resolution": "الدقة",
       "source": "المصدر",
       "category": "الفئة",
+      "color": "Color",
+      "pack": "Pack",
       "exclude": "عدم العرض مرة أخرى",
       "exclude_confirm": "هل أنت متأكد من أنك لا تريد رؤية هذه الصورة مجددًا؟\nملاحظة: إذا لم تعجبك صور فئة \"{category}\"، يمكنك إلغاء تحديد الفئة في إعدادات مصدر الخلفية.",
       "confirm": "تأكيد"
@@ -329,6 +331,7 @@
             "transition": "انتقال التدرج",
             "photo_information": "إظهار معلومات الصورة",
             "show_map": "إظهار خريطة الموقع في معلومات الصورة إذا كانت متاحة",
+            "map_crosshair": "Use crosshair marker on location map",
             "categories": "الفئات",
             "buttons": {
               "title": "الأزرار",

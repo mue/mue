@@ -26,6 +26,8 @@
       "resolution": "Ločljivost",
       "source": "Vir",
       "category": "Kategorija",
+      "color": "Color",
+      "pack": "Pack",
       "exclude": "Ne prikaži več",
       "exclude_confirm": "Ali ste prepričani, da ne želite več videti te slike?\nOpomba: če vam slike iz kategorije \"{category}\" niso všeč, lahko izklopite kategorijo v nastavitvah vira ozadja.",
       "confirm": "Potrdi"
@@ -329,6 +331,7 @@
             "transition": "Prehod zbledi",
             "photo_information": "Prikaži informacije o fotografiji",
             "show_map": "Prikaži zemljevid lokacije na informacijah o fotografiji, če je na voljo",
+            "map_crosshair": "Use crosshair marker on location map",
             "categories": "Kategorije",
             "buttons": {
               "title": "Gumbi",

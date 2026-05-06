@@ -26,6 +26,8 @@
       "resolution": "Resolutie",
       "source": "Bron",
       "category": "Categorie",
+      "color": "Color",
+      "pack": "Pack",
       "exclude": "Niet meer laten zien",
       "exclude_confirm": "Weet je zeker dat je deze afbeelding niet meer wilt zien?\nOpmerking: als u niet van \"{category}\"-afbeeldingen houdt, kunt u de categorie deselecteren in de achtergrondbroninstellingen.",
       "confirm": "Bevestigen"
@@ -329,6 +331,7 @@
             "transition": "Fade-in transition",
             "photo_information": "Show photo information",
             "show_map": "Show location map on photo information if available",
+            "map_crosshair": "Use crosshair marker on location map",
             "categories": "Categorieën",
             "buttons": {
               "title": "Buttons",

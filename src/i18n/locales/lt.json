@@ -26,6 +26,8 @@
       "resolution": "Rezoliucija",
       "source": "Šaltinis",
       "category": "Kategorija",
+      "color": "Color",
+      "pack": "Pack",
       "exclude": "Daugiau nerodyti",
       "exclude_confirm": "Ar tikrai nenorite matyti šio paveikslėlio?\nPastaba: jei nepatinka \"{category}\" paveikslėliai, galite atšaukti šios kategorijos pasirinkimą fono šaltinio nustatymuose.",
       "confirm": "Patvirtinti"
@@ -329,6 +331,7 @@
             "transition": "Išblukimo perėjimas",
             "photo_information": "Rodyti nuotraukos informaciją",
             "show_map": "Rodyti vietos žemėlapį nuotraukos informacijoje, jei įmanoma",
+            "map_crosshair": "Use crosshair marker on location map",
             "categories": "Kategorijos",
             "buttons": {
               "title": "Mygtukai",

@@ -26,6 +26,8 @@
       "resolution": "Çözünürlük",
       "source": "Kaynak",
       "category": "Kategori",
+      "color": "Color",
+      "pack": "Pack",
       "exclude": "Tekrar Gösterme",
       "exclude_confirm": "Bu görseli tekrar görmek istemediğinize emin misiniz?\nNot: \"{category}\" kategorisine ait görselleri beğenmediyseniz, arka plan kaynağı ayarlarından kategorinin seçimini kaldırabilirsiniz.",
       "confirm": "Onayla"
@@ -329,6 +331,7 @@
             "transition": "Geçiş sırasında solma efekti uygula.",
             "photo_information": "Fotoğraf bilgilerini göster.",
             "show_map": "Varsa fotoğraf bilgilerinde konum bilgisini göster.",
+            "map_crosshair": "Use crosshair marker on location map",
             "categories": "Kategoriler",
             "buttons": {
               "title": "Butonlar",

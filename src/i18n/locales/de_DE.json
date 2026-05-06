@@ -26,6 +26,8 @@
       "resolution": "Auflösung",
       "source": "Quelle",
       "category": "Kategorie",
+      "color": "Color",
+      "pack": "Pack",
       "exclude": "Nicht mehr anzeigen",
       "exclude_confirm": "Sind Sie sicher, dass Sie dieses Bild nicht mehr sehen wollen?\nHinweis: Wenn Sie \"{category}\"-Bilder nicht mögen, können Sie die Kategorie in den Einstellungen für die Hintergrundquelle abwählen.",
       "confirm": "Bestätigen"
@@ -329,6 +331,7 @@
             "transition": "Weicher übergang",
             "photo_information": "Foto-Informationen anzeigen",
             "show_map": "Standortkarte auf dem Foto anzeigen, falls verfügbar",
+            "map_crosshair": "Use crosshair marker on location map",
             "categories": "Kategorien",
             "buttons": {
               "title": "Schaltflächen",

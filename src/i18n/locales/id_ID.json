@@ -26,6 +26,8 @@
       "resolution": "Resolusi",
       "source": "Sumber",
       "category": "Kategori",
+      "color": "Color",
+      "pack": "Pack",
       "exclude": "Jangan tampilkan lagi",
       "exclude_confirm": "Apakah Anda yakin tidak ingin melihat gambar ini lagi?\nCatatan: jika Anda tidak menyukai gambar \"{category}\", Anda dapat membatalkan pilihan kategori di setelan sumber latar belakang.",
       "confirm": "Konfirmasi"
@@ -329,6 +331,7 @@
             "transition": "Transisi Fade-in",
             "photo_information": "Tampilkan informasi foto",
             "show_map": "Tampilkan informasi lokasi foto jika ada",
+            "map_crosshair": "Use crosshair marker on location map",
             "categories": "Categories",
             "buttons": {
               "title": "Aksi",

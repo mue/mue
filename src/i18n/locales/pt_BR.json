@@ -26,6 +26,8 @@
       "resolution": "Resolução",
       "source": "Fonte",
       "category": "Categoria",
+      "color": "Color",
+      "pack": "Pack",
       "exclude": "Não mostrar novamente",
       "exclude_confirm": "Tem certeza de que não deseja ver esta imagem novamente?\nNota: se você não gosta de imagens \"{category}\", pode desmarcar a categoria nas configurações de origem do plano de fundo.",
       "confirm": "Confirmar"
@@ -329,6 +331,7 @@
             "transition": "Transição gradual",
             "photo_information": "Mostrar informações da foto",
             "show_map": "Mostrar mapa de localização nas informações da foto, se disponível",
+            "map_crosshair": "Use crosshair marker on location map",
             "categories": "Categorias",
             "buttons": {
               "title": "Botões",

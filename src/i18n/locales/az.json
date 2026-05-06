@@ -26,6 +26,8 @@
       "resolution": "Həllolma",
       "source": "Mənbə",
       "category": "Kateqoriya",
+      "color": "Color",
+      "pack": "Pack",
       "exclude": "Bir daha göstərmə",
       "exclude_confirm": "Bu şəkli bir daha görmək istədiyinizə əminsiniz?\nQeyd: əgər \"{category}\" şəkillərini bəyənmirsinizsə, fon mənbə parametrlərində kateqoriyanı seçməyə bilərsiniz.",
       "confirm": "Təsdiq et"
@@ -329,6 +331,7 @@
             "transition": "Solğunlaşma keçidi",
             "photo_information": "Foto məlumatını göstər",
             "show_map": "Mövcud olduqda foto məlumatında yer xəritəsini göstər",
+            "map_crosshair": "Use crosshair marker on location map",
             "categories": "Kateqoriyalar",
             "buttons": {
               "title": "Düymələr",

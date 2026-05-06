@@ -636,39 +636,39 @@
       transition: filter 0.2s ease;
     }
 
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      background: rgb(255 255 255 / 92%);
-      box-shadow: 0 0 3px rgb(0 0 0 / 40%);
-      border-radius: 1px;
-      z-index: 1;
-      pointer-events: none;
-    }
+    &--crosshair {
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background: rgb(255 255 255 / 92%);
+        box-shadow: 0 0 3px rgb(0 0 0 / 40%);
+        border-radius: 1px;
+        z-index: 1;
+        pointer-events: none;
+      }
 
-    &::before {
-      width: 18px;
-      height: 1.5px;
-      transform: translate(-50%, -50%);
-    }
+      &::before {
+        width: 18px;
+        height: 1.5px;
+        transform: translate(-50%, -50%);
+      }
 
-    &::after {
-      width: 1.5px;
-      height: 18px;
-      transform: translate(-50%, -50%);
-    }
-  }
+      &::after {
+        width: 1.5px;
+        height: 18px;
+        transform: translate(-50%, -50%);
+      }
 
-  .location-map-container--compact {
-    &::before {
-      width: 12px;
-    }
+      &.location-map-container--compact::before {
+        width: 12px;
+      }
 
-    &::after {
-      height: 12px;
+      &.location-map-container--compact::after {
+        height: 12px;
+      }
     }
   }
 
@@ -709,6 +709,19 @@
   border-color: rgb(255 255 255 / 28%);
 }
 
+
+.location-map-marker {
+  width: 12px;
+  height: 12px;
+  border: 2px solid;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgb(0 0 0 / 20%);
+
+  &--compact {
+    width: 8px;
+    height: 8px;
+  }
+}
 
 // Smooth expansion animations
 .extra-content {

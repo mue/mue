@@ -373,6 +373,7 @@ function PhotoInformation({ info, url, api }) {
   }
 
   const widgetStyle = localStorage.getItem('widgetStyle');
+  const crosshair = localStorage.getItem('mapCrosshair') === 'true';
 
   return (
     <div className="photoInformationHolder">
@@ -417,7 +418,7 @@ function PhotoInformation({ info, url, api }) {
                     </div>
                   }
                 >
-                  <LocationMap latitude={latitude} longitude={longitude} compact />
+                  <LocationMap latitude={latitude} longitude={longitude} compact crosshair={crosshair} />
                 </Suspense>
               )}
               <div className="photoInformation-text">
@@ -441,7 +442,7 @@ function PhotoInformation({ info, url, api }) {
             {localStorage.getItem('photoMap') === 'true' && hasCoordinates && (
               <>
                 <Suspense fallback={<div className="location-map-container" />}>
-                  <LocationMap latitude={latitude} longitude={longitude} />
+                  <LocationMap latitude={latitude} longitude={longitude} crosshair={crosshair} />
                 </Suspense>
                 <div className="section-divider" />
               </>

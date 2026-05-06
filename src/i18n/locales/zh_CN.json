@@ -26,6 +26,8 @@
       "resolution": "分辨率",
       "source": "来源",
       "category": "分类",
+      "color": "Color",
+      "pack": "Pack",
       "exclude": "不再显示",
       "exclude_confirm": "您确定不希望看到这张照片吗？\n值得注意的是，如果你不喜欢 \"{category}\" 图片, 你可以在背景的来源设置中取消选择。",
       "confirm": "确认"
@@ -329,6 +331,7 @@
             "transition": "过渡动画",
             "photo_information": "显示图片信息",
             "show_map": "在图片信息内显示位置信息 (如果可用)",
+            "map_crosshair": "Use crosshair marker on location map",
             "categories": "分类",
             "buttons": {
               "title": "显示顶部按钮",

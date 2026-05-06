@@ -331,6 +331,7 @@
             "transition": "Fade-in transition",
             "photo_information": "Show photo information",
             "show_map": "Show location map on photo information if available",
+            "map_crosshair": "Use crosshair marker on location map",
             "categories": "Categories",
             "buttons": {
               "title": "Buttons",

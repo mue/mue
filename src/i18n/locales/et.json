@@ -26,6 +26,8 @@
       "resolution": "Resolutsioon",
       "source": "Allikas",
       "category": "Kategooria",
+      "color": "Color",
+      "pack": "Pack",
       "exclude": "Ära enam näita",
       "exclude_confirm": "Kas oled kindel, et ei soovi seda pilti enam näha?\nMärkus: kui sulle ei meeldi \"{category}\" pildid, saad selle kategooria taustapildi allika seadetest eemaldada.",
       "confirm": "Kinnita"
@@ -329,6 +331,7 @@
             "transition": "Sissehajumine",
             "photo_information": "Näita foto teavet",
             "show_map": "Näita asukoha kaarti foto teabes, kui saadaval",
+            "map_crosshair": "Use crosshair marker on location map",
             "categories": "Kategooriad",
             "buttons": {
               "title": "Nupud",

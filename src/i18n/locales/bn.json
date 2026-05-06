@@ -26,6 +26,8 @@
       "resolution": "রেজোলিউশন",
       "source": "উৎস",
       "category": "শ্রেণী",
+      "color": "Color",
+      "pack": "Pack",
       "exclude": "আবার দেখাবেন না",
       "exclude_confirm": "আপনি কি নিশ্চিত যে আপনি এই ছবিটি আবার দেখতে চান না?\nদ্রষ্টব্য: আপনি যদি \"{category}\" ছবিগুলি পছন্দ না করেন, তাহলে আপনি ব্যাকগ্রাউন্ড সোর্স সেটিংসে বিভাগটি অনির্বাচন করতে পারেন।",
       "confirm": "নিশ্চিত করুন"
@@ -329,6 +331,7 @@
             "transition": "ফেইড-ইন ট্রানজিশন",
             "photo_information": "ছবির তথ্য দেখান",
             "show_map": "উপলব্ধ থাকলে ছবির তথ্যে অবস্থান মানচিত্র দেখান",
+            "map_crosshair": "Use crosshair marker on location map",
             "categories": "ক্যাটাগরি",
             "buttons": {
               "title": "বোতাম",

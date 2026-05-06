@@ -26,6 +26,8 @@
       "resolution": "وضوح",
       "source": "منبع",
       "category": "دسته بندی",
+      "color": "Color",
+      "pack": "Pack",
       "exclude": "مجدد نشان نده",
       "exclude_confirm": "مطمئنی که نمیخوای دوباره این تصویر رو ببینی؟\n\nتوجه: اگر تصاویر \"{دسته بندی}\" را دوست ندارید، می توانید دسته بندی را در تنظیمات منبع پس زمینه انتخاب کنید.",
       "confirm": "Confirm"
@@ -329,6 +331,7 @@
             "transition": "Fade-in transition",
             "photo_information": "Show photo information",
             "show_map": "Show location map on photo information if available",
+            "map_crosshair": "Use crosshair marker on location map",
             "categories": "Categories",
             "buttons": {
               "title": "Buttons",

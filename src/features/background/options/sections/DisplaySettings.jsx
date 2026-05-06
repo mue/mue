@@ -59,6 +59,12 @@ const DisplaySettings = ({ usingImage }) => {
             element=".other"
             disabled={!usingImage}
           />
+          <Checkbox
+            name="mapCrosshair"
+            text={t('modals.main.settings.sections.background.map_crosshair')}
+            element=".other"
+            disabled={!usingImage}
+          />
         </Action>
       </Row>
     </>

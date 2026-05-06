@@ -26,6 +26,8 @@
       "resolution": "İcazə",
       "source": "Mənbə",
       "category": "Kateqoriya",
+      "color": "Color",
+      "pack": "Pack",
       "exclude": "Bir daha göstərmə",
       "exclude_confirm": "Bu şəkili bir daha görmək istəmədiyinizə əminsiniz?\nQeyd: Əgər \"{category}\" şəkillərini bəyənmirsinizsə, arxa fon mənbə parametrlərində kateqoriyanı seçə bilərsiniz.",
       "confirm": "Təsdiqlə"
@@ -329,6 +331,7 @@
             "transition": "Yavaş-yavaş keçid",
             "photo_information": "Foto məlumatını göstər",
             "show_map": "Mövcuddursa, foto məlumatında yerləşmə xəritəsini göstərin",
+            "map_crosshair": "Use crosshair marker on location map",
             "categories": "Kateqoriyalar",
             "buttons": {
               "title": "Düymələr",

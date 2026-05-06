@@ -26,6 +26,8 @@
       "resolution": "解析度",
       "source": "來源",
       "category": "類別",
+      "color": "Color",
+      "pack": "Pack",
       "exclude": "不要再顯示",
       "exclude_confirm": "你確定你不想再次看到此影像嗎？\n注意：如果你不喜歡「{category}」影像，你可以在背景來源設定中取消選擇該類別。",
       "confirm": "確認"
@@ -329,6 +331,7 @@
             "transition": "Fade-in transition",
             "photo_information": "Show photo information",
             "show_map": "Show location map on photo information if available",
+            "map_crosshair": "Use crosshair marker on location map",
             "categories": "Categories",
             "buttons": {
               "title": "Buttons",
