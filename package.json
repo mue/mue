@@ -39,7 +39,7 @@
     "use-debounce": "^10.1.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.3.1",
+    "@commitlint/cli": "^21.0.1",
     "@commitlint/config-conventional": "^20.3.1",
     "@eartharoid/deep-merge": "^0.0.2",
     "@eslint/js": "^10.0.1",
