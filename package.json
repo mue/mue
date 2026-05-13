@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^20.3.1",
-    "@commitlint/config-conventional": "^20.3.1",
+    "@commitlint/config-conventional": "^21.0.1",
     "@eartharoid/deep-merge": "^0.0.2",
     "@eslint/js": "^10.0.1",
     "@vitejs/plugin-react-swc": "^4.2.2",
