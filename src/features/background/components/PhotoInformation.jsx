@@ -60,6 +60,9 @@ const downloadImage = async (info) => {
   link.click();
   document.body.removeChild(link);
   variables.stats.postEvent('feature', 'Background download');
+  if (info.source === 'mue' && info.id) {
+    fetch(`${variables.constants.API_URL}/images/${info.id}/download`, { method: 'POST' }).catch(() => {});
+  }
 };
 
 /**
@@ -108,6 +111,9 @@ function MetadataGrid({
   packId,
   packName,
   onPackClick,
+  views,
+  downloads,
+  hearts,
 }) {
   const t = useT();
 
@@ -197,31 +203,29 @@ function MetadataGrid({
           }
         />
       )}
-    </div>
-  );
-}
 
-/**
- * UnsplashStats - Displays Unsplash statistics (views, downloads, likes)
- */
-function UnsplashStats({ views, downloads, likes }) {
-  const t = useT();
+      {views != null && (
+        <MetadataItem
+          icon={<Views />}
+          label={t('widgets.background.views')}
+          value={views.toLocaleString()}
+        />
+      )}
 
-  return (
-    <div className="unsplashStats">
-      <div className="stat-item" title={t('widgets.background.views')}>
-        <Views />
-        <span>{views.toLocaleString()}</span>
-      </div>
-      <div className="stat-item" title={t('widgets.background.downloads')}>
-        <Download />
-        <span>{downloads.toLocaleString()}</span>
-      </div>
-      {likes && (
-        <div className="stat-item" title={t('widgets.background.likes')}>
-          <MdFavourite />
-          <span>{likes.toLocaleString()}</span>
-        </div>
+      {downloads != null && (
+        <MetadataItem
+          icon={<Download />}
+          label={t('widgets.background.downloads')}
+          value={downloads.toLocaleString()}
+        />
+      )}
+
+      {hearts != null && (
+        <MetadataItem
+          icon={<MdFavourite />}
+          label={t('widgets.background.likes')}
+          value={hearts.toLocaleString()}
+        />
       )}
     </div>
   );
@@ -280,7 +284,11 @@ function PhotoInformation({ info, url, api }) {
   const [favouriteTooltipText, setFavouriteTooltipText] = useState(t('widgets.quote.favourite'));
   const latitude = Number(info.latitude);
   const longitude = Number(info.longitude);
-  const hasCoordinates = Number.isFinite(latitude) && Number.isFinite(longitude);
+  const hasCoordinates =
+    info.latitude != null &&
+    info.longitude != null &&
+    Number.isFinite(latitude) &&
+    Number.isFinite(longitude);
 
   // Handle pack link click
   const handlePackClick = (packId) => {
@@ -309,13 +317,20 @@ function PhotoInformation({ info, url, api }) {
 
   // Build photographer credit
   let credit = info.credit;
-  if (attributionConfig.photographer_link && info.photographerURL) {
-    const photographerUrl = addUTMParams(info.photographerURL, attributionConfig);
-    credit = (
-      <a href={photographerUrl} target="_blank" rel="noopener noreferrer">
-        {info.credit}
-      </a>
-    );
+  if (attributionConfig.photographer_link) {
+    const resolvedPhotographerUrl =
+      info.photographerURL ||
+      (info.source === 'mue' && info.credit
+        ? `https://mue.photos/${info.credit.toLowerCase().replace(/\s+/g, '-')}`
+        : null);
+    if (resolvedPhotographerUrl) {
+      const photographerUrl = addUTMParams(resolvedPhotographerUrl, attributionConfig);
+      credit = (
+        <a href={photographerUrl} target="_blank" rel="noopener noreferrer">
+          {info.credit}
+        </a>
+      );
+    }
   }
 
   // Add source platform credit
@@ -432,9 +447,6 @@ function PhotoInformation({ info, url, api }) {
                 </span>
               </div>
             </div>
-            {info.views && info.downloads !== null && (
-              <UnsplashStats views={info.views} downloads={info.downloads} likes={info.likes} />
-            )}
           </div>
 
           {/* EXPANDED SECTION - CSS :hover controlled */}
@@ -457,6 +469,9 @@ function PhotoInformation({ info, url, api }) {
               packId={info.pack_id}
               packName={info.pack_name}
               onPackClick={handlePackClick}
+              views={info.views != null ? info.views : null}
+              downloads={info.downloads != null ? info.downloads : null}
+              hearts={info.likes != null ? info.likes : null}
             />
 
             <div className="buttons-wrapper">

@@ -103,7 +103,9 @@ function getDefaultConfigForProvider(provider, photoInfo) {
     mue: {
       enabled: true,
       photographer_link: true,
-      source_link: false,
+      source_link: true,
+      source_name: 'Mue',
+      source_url: 'https://mue.photos/',
       utm_enabled: false,
       photo_page_link: true,
     },
