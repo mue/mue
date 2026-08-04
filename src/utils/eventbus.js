@@ -2,19 +2,20 @@ export default class EventBus {
   static listeners = {};
 
   /**
-   * The on function adds an event listener to the document, and then pushes the callback function into
-   * the listeners array.
+   * The on function adds an event listener to the document, and then stores the callback and listener
+   * in the listeners array.
    * @param event - The event name
    * @param callback - The function to be called when the event is triggered.
    */
   static on(event, callback) {
-    document.addEventListener(event, (e) => {
+    const listener = (e) => {
       callback(e.detail);
-    });
+    };
+    document.addEventListener(event, listener);
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
-    this.listeners[event].push(callback);
+    this.listeners[event].push({ callback, listener, capture: false });
   }
 
   /**
@@ -36,10 +37,19 @@ export default class EventBus {
    * @param callback - The function to be called when the event is triggered.
    */
   static off(event, callback) {
-    document.removeEventListener(event, callback);
-    if (this.listeners[event]) {
-      this.listeners[event] = this.listeners[event].filter((listener) => listener !== callback);
+    if (!this.listeners[event]) {
+      document.removeEventListener(event, callback);
+      return;
     }
+
+    this.listeners[event] = this.listeners[event].filter((registeredListener) => {
+      const { callback: registeredCallback, listener, capture = false } = registeredListener;
+      if (registeredCallback === callback || listener === callback) {
+        document.removeEventListener(event, listener, capture);
+        return false;
+      }
+      return true;
+    });
   }
 
   /**
@@ -57,7 +67,7 @@ export default class EventBus {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
-    this.listeners[event].push({ callback, listener });
+    this.listeners[event].push({ callback, listener, capture: false });
   }
 
   /**
@@ -77,7 +87,7 @@ export default class EventBus {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
-    this.listeners[event].unshift({ callback, listener });
+    this.listeners[event].unshift({ callback, listener, capture: true });
   }
 
   /**
@@ -99,7 +109,7 @@ export default class EventBus {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
-    this.listeners[event].unshift({ callback, listener });
+    this.listeners[event].unshift({ callback, listener, capture: true });
   }
 
   /**
@@ -127,8 +137,8 @@ export default class EventBus {
    */
   static removeAllListeners() {
     Object.keys(this.listeners).forEach((event) => {
-      this.listeners[event].forEach(({ listener }) => {
-        document.removeEventListener(event, listener);
+      this.listeners[event].forEach(({ listener, capture = false }) => {
+        document.removeEventListener(event, listener, capture);
       });
     });
     this.listeners = {};
