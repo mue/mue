@@ -391,18 +391,18 @@ const CustomSettings = memo(() => {
         await addBackground(backgroundData);
         const backgrounds = await getAllBackgroundsWithMetadata();
         setCustomBackground(backgrounds);
+
+        try {
+          localStorage.setItem('customBackground', JSON.stringify(backgrounds.map((bg) => bg.url)));
+        } catch (_quotaError) {
+          localStorage.setItem('customBackgroundCount', backgrounds.length.toString());
+        }
+
+        EventBus.emit('refresh', 'background');
       } catch (error) {
         console.error('Error adding URL:', error);
         toast(t('toasts.error'));
       }
-
-      try {
-        localStorage.setItem('customBackground', JSON.stringify(backgrounds.map((bg) => bg.url)));
-      } catch (_quotaError) {
-        localStorage.setItem('customBackgroundCount', backgrounds.length.toString());
-      }
-
-      EventBus.emit('refresh', 'background');
     },
     [customBackground.length],
   );
