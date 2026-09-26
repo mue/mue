@@ -16,6 +16,9 @@ jobs:
   submit:
     runs-on: ubuntu-latest
     environment: production
+    concurrency:
+      group: chrome-web-store
+      cancel-in-progress: false
 
     steps:
       - name: Resolve tag and version
@@ -44,11 +47,26 @@ jobs:
           test -f "dist/chrome-${{ steps.tag.outputs.version }}.zip" || \
             { echo "chrome ZIP not found"; exit 1; }
 
+      - name: Read Chrome Web Store credentials
+        id: chrome-keys
+        env:
+          SUBMIT_KEYS: ${{ secrets.SUBMIT_KEYS }}
+        run: |
+          for field in clientId clientSecret refreshToken; do
+            value=$(jq -er ".chrome.$field" <<< "$SUBMIT_KEYS")
+            echo "::add-mask::$value"
+            echo "$field=$value" >> "$GITHUB_OUTPUT"
+          done
+
       - name: Submit to Chrome Web Store
-        uses: PlasmoHQ/bpp@v3
+        uses: hamzahamidi/publish-to-chrome-web-store@v1
         with:
-          keys: ${{ secrets.SUBMIT_KEYS }}
-          chrome-zip: dist/chrome-${{ steps.tag.outputs.version }}.zip
+          client-id: ${{ steps.chrome-keys.outputs.clientId }}
+          client-secret: ${{ steps.chrome-keys.outputs.clientSecret }}
+          refresh-token: ${{ steps.chrome-keys.outputs.refreshToken }}
+          publisher-id: ${{ vars.CWS_PUBLISHER_ID }}
+          item-id: bngmbednanpcfochchhgbkookpiaiaid
+          zip: dist/chrome-${{ steps.tag.outputs.version }}.zip
 
       - name: Summary
         if: always()
